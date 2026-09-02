@@ -1,0 +1,72 @@
+experiment:
+  id: <experiment-id>
+  title: <human-readable-title>
+  date: YYYY-MM-DD
+  status: draft | reproduced | validated | closed
+
+source:
+  repository: star-nexus/star
+  problem_commit: <EXACT_SHA or null>
+  measurement_commit: <EXACT_SHA>
+  fix_commit: <EXACT_SHA or null>
+  validated_commit: <EXACT_SHA or null>
+  branch_at_time: <historical-branch-name or null>
+  validated_tag: <annotated-tag or null>
+
+hardware:
+  machine: <model>
+  cpu: <cpu>
+  memory: <memory>
+  gpu: <gpu-or-null>
+  display: <display-or-null>
+
+software:
+  os: <os-version>
+  python: <python-version>
+  dependency_lock: <uv-lock-sha-or-note>
+
+scenario:
+  name: <scenario>
+  map_size: <map-size>
+  resident_units: <count>
+  moving_units: <count>
+
+workload:
+  seed: <seed>
+  target_radius: <radius>
+  density: <density>
+  phase: <staggered|synchronized|other>
+  fog: <true|false>
+  camera: <fixed description>
+  zoom: <zoom>
+
+measurement:
+  warmup_seconds: <seconds>
+  sustained_seconds: <seconds>
+  sample_after_seconds: <seconds>
+  sample_window_frames: <frames>
+  gc_policy: <policy>
+  guards_required:
+    - <guard>
+
+variables:
+  independent:
+    <name>:
+      - <value>
+  controlled:
+    - <condition>
+
+artifacts:
+  formal:
+    - path: results/<file>
+      sha256: <optional checksum for ordinary small Git files>
+  external: []
+
+headline:
+  problem_signature: <short text>
+  root_cause: <short text>
+  resolution: <short text>
+  result: <short text>
+
+revisit_when:
+  - <condition>

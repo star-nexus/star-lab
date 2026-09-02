@@ -1,0 +1,463 @@
+{
+  "density": 1.0,
+  "experiment": "dynamic_world_density_curve_v1",
+  "ok": true,
+  "prepare": {
+    "batch_id": 1,
+    "batch_planning_ms": 1042.264,
+    "budget_corrected_units": 4275,
+    "correct_unreachable": true,
+    "corrected_units": 4356,
+    "density": 1.0,
+    "failed_units": 0,
+    "failure_reasons": {},
+    "living_units_at_prepare": 5000,
+    "ok": true,
+    "phase": "prepared",
+    "plan_p50_ms": 0.0345,
+    "plan_p95_ms": 0.0967,
+    "plan_p99_ms": 10.2941,
+    "planning_snapshot_ms": 2.687,
+    "policy": "stress_stack_endpoint",
+    "preparation_success_ratio": 1.0,
+    "prepared_units": 5000,
+    "prepared_world_density": 1.0,
+    "requested_units": 5000,
+    "seed": 42,
+    "target_generation_ms": 351.857,
+    "target_radius": 12,
+    "unreachable_corrected_units": 81
+  },
+  "sample_after_seconds": 10.0,
+  "snapshot": {
+    "active_ms": 19.654010709999998,
+    "avg_fps": 47.55539598965936,
+    "avg_frame_ms": 21.028107939999998,
+    "context": {
+      "initial_units": 5000,
+      "map_id": "untitled-scale-5000",
+      "map_size": "91x91",
+      "measurement_epoch": "dynamic_world_density_curve.density_1.00.staggered",
+      "measurement_epoch_serial": 1,
+      "scale_active_moving_units": 5000,
+      "scale_actual_density": 1.0,
+      "scale_batch_planning_ms": 1042.264,
+      "scale_budget_corrected_units": 4275,
+      "scale_execution_mode": "sustained",
+      "scale_execution_requested_units": 5000,
+      "scale_execution_selection_seed": 42,
+      "scale_experiment_kind": "dynamic_world_density_curve",
+      "scale_full_prepared_units": 5000,
+      "scale_gc_automatic_enabled": false,
+      "scale_gc_full_collect_collected": 0,
+      "scale_gc_full_collect_ms": 22.175417,
+      "scale_gc_policy": "realtime_defer",
+      "scale_gc_policy_active": true,
+      "scale_harness": true,
+      "scale_harness_socket": "/tmp/star-scale.sock",
+      "scale_last_batch": 1,
+      "scale_measurement_batch": 1,
+      "scale_measurement_camera_x": 1240.0,
+      "scale_measurement_camera_y": 634.0,
+      "scale_measurement_camera_zoom": 0.15,
+      "scale_measurement_density": 1.0,
+      "scale_measurement_duration_seconds": 20.0,
+      "scale_measurement_fog": true,
+      "scale_measurement_phase": "staggered",
+      "scale_measurement_required_fog": "on",
+      "scale_plan_p95_ms": 0.0967,
+      "scale_plan_p99_ms": 10.2941,
+      "scale_planning_snapshot_ms": 2.687,
+      "scale_prepared_units": 5000,
+      "scale_render_ablate_terrain_present": true,
+      "scale_render_pixel_metrics_enabled": false,
+      "scale_render_queue_last_batch_runs": 6,
+      "scale_render_queue_last_blit_batches": 4,
+      "scale_render_queue_last_commands": 1691,
+      "scale_render_queue_last_layers": 1,
+      "scale_render_queue_last_max_batch_size": 1673,
+      "scale_render_queue_last_scalar_commands": 5,
+      "scale_render_queue_last_simple_blits": 1686,
+      "scale_render_terrain_present_last_suppressed_commands": 1,
+      "scale_render_terrain_present_last_suppressed_pixels": 1224348,
+      "scale_render_terrain_present_last_suppression_missed": false,
+      "scale_requested_units": 5000,
+      "scale_sustained_accepted": 5000,
+      "scale_sustained_animation_segments_total": 205000,
+      "scale_sustained_batch": 1,
+      "scale_sustained_duration_seconds": 20.0,
+      "scale_sustained_phase": "staggered",
+      "scale_sustained_phase_seed": 42,
+      "scale_sustained_segments_total": 200000,
+      "scale_sustained_start_ms": 47.329,
+      "scale_target_generation_ms": 351.857,
+      "scale_unreachable_corrected_units": 81,
+      "scale_vision_geometry_cache_capacity": 16384,
+      "scenario": "TestMap-8K-scale-5000",
+      "window": "2480x1268"
+    },
+    "epoch_worst_slow_frame_ms": null,
+    "fps_limiter_wait_ms": 0.0062193199999999995,
+    "gc_policy": {
+      "activation_serial": 1,
+      "active": true,
+      "automatic_gc_enabled": false,
+      "deadline_remaining_seconds": 9.958035,
+      "full_collect_collected": 0,
+      "full_collect_ms": 22.175417,
+      "gc_count": [
+        30210,
+        0,
+        0
+      ],
+      "last_restore_reason": "",
+      "mode": "realtime_defer",
+      "original_automatic_gc_enabled": true
+    },
+    "guards": {
+      "active_moving_units": 5000,
+      "actual_density": 1.0,
+      "camera_current": {
+        "offset_x": 1240.0,
+        "offset_y": 634.0,
+        "zoom": 0.15
+      },
+      "camera_start": {
+        "offset_x": 1240.0,
+        "offset_y": 634.0,
+        "zoom": 0.15
+      },
+      "camera_unchanged": true,
+      "execution_requested_units": 5000,
+      "execution_selection_seed": 42,
+      "fog_enabled": true,
+      "fog_matches_required": true,
+      "full_prepared_units": 5000,
+      "gc_automatic_enabled": false,
+      "gc_policy_active": true,
+      "gc_policy_matches_requested": true,
+      "gc_policy_mode": "realtime_defer",
+      "gc_policy_requested": "realtime_defer",
+      "living_units": 5000,
+      "required_fog": "on",
+      "vision_cache_capacity_unchanged": true
+    },
+    "max_fps": 59.04887032129967,
+    "max_frame_ms": 25.466792,
+    "measurement_epoch": "dynamic_world_density_curve.density_1.00.staggered",
+    "measurement_epoch_serial": 1,
+    "memory": {
+      "current": {
+        "max_rss_bytes": 391921664,
+        "max_rss_mb": 373.766,
+        "rss_bytes": 378880000,
+        "rss_mb": 361.328,
+        "rss_source": "ps_rss"
+      },
+      "rss_growth_mb": 28.594,
+      "start": {
+        "max_rss_bytes": 366460928,
+        "max_rss_mb": 349.484,
+        "rss_bytes": 348897280,
+        "rss_mb": 332.734,
+        "rss_source": "ps_rss"
+      }
+    },
+    "min_fps": 39.266822456475865,
+    "ok": true,
+    "p50_frame_ms": 20.191271,
+    "p95_frame_ms": 24.56347295,
+    "p99_frame_ms": 24.78326875,
+    "present_ms": 1.3678779099999998,
+    "rolling_max_frame_ms": 25.466792,
+    "rolling_window_full": true,
+    "sample_count": 300,
+    "sample_window": 300,
+    "sections": {
+      "AnimationSystem": {
+        "category": "work",
+        "frame_share_pct": 15.199914066384931,
+        "inclusive_ms": 3.1962543366666663,
+        "max_inclusive_ms": 3.9815,
+        "max_self_ms": 3.9815,
+        "self_ms": 3.1962543366666663
+      },
+      "MapRenderSystem": {
+        "category": "work",
+        "frame_share_pct": 11.035868688811764,
+        "inclusive_ms": 2.3720155299999997,
+        "max_inclusive_ms": 3.280917,
+        "max_self_ms": 3.213542,
+        "self_ms": 2.32063438
+      },
+      "MiniMapSystem": {
+        "category": "work",
+        "frame_share_pct": 0.38471456188146874,
+        "inclusive_ms": 1.07409098,
+        "max_inclusive_ms": 4.292667,
+        "max_self_ms": 0.106208,
+        "self_ms": 0.08089819333333333
+      },
+      "UnitRenderSystem": {
+        "category": "work",
+        "frame_share_pct": 0.49733892828146986,
+        "inclusive_ms": 5.234074570000001,
+        "max_inclusive_ms": 5.979167,
+        "max_self_ms": 0.157042,
+        "self_ms": 0.10458096666666666
+      },
+      "VisionSystem": {
+        "category": "work",
+        "frame_share_pct": 6.517918099165574,
+        "inclusive_ms": 1.4079081866666667,
+        "max_inclusive_ms": 3.673334,
+        "max_self_ms": 1.846416,
+        "self_ms": 1.3705948533333332
+      },
+      "display_present": {
+        "category": "present",
+        "frame_share_pct": 6.504997567555762,
+        "inclusive_ms": 1.3678779099999998,
+        "max_inclusive_ms": 1.641,
+        "max_self_ms": 1.641,
+        "self_ms": 1.3678779099999998
+      },
+      "fog_surface_patch": {
+        "category": "render",
+        "frame_share_pct": 0.24434509346540856,
+        "inclusive_ms": 0.05138115,
+        "max_inclusive_ms": 0.153666,
+        "max_self_ms": 0.153666,
+        "self_ms": 0.05138115
+      },
+      "fps_limiter_wait": {
+        "category": "wait",
+        "frame_share_pct": 0.02957622253864082,
+        "inclusive_ms": 0.0062193199999999995,
+        "max_inclusive_ms": 0.010334,
+        "max_self_ms": 0.010334,
+        "self_ms": 0.0062193199999999995
+      },
+      "input_event_pump": {
+        "category": "input",
+        "frame_share_pct": 0.11346923556515345,
+        "inclusive_ms": 0.023860433333333333,
+        "max_inclusive_ms": 0.041334,
+        "max_self_ms": 0.041334,
+        "self_ms": 0.023860433333333333
+      },
+      "minimap_unit_refresh": {
+        "category": "render",
+        "frame_share_pct": 4.72316762640066,
+        "inclusive_ms": 0.9931927866666667,
+        "max_inclusive_ms": 4.186459,
+        "max_self_ms": 4.186459,
+        "self_ms": 0.9931927866666667
+      },
+      "render_batch_blits": {
+        "category": "render",
+        "frame_share_pct": 18.096358459152935,
+        "inclusive_ms": 3.80532179,
+        "max_inclusive_ms": 3.926292,
+        "max_self_ms": 3.926292,
+        "self_ms": 3.80532179
+      },
+      "render_batch_pack": {
+        "category": "render",
+        "frame_share_pct": 0.9859508548822867,
+        "inclusive_ms": 0.20732681,
+        "max_inclusive_ms": 0.28221,
+        "max_self_ms": 0.28221,
+        "self_ms": 0.20732681
+      },
+      "render_engine": {
+        "category": "render",
+        "frame_share_pct": 0.40320195984942875,
+        "inclusive_ms": 4.13221084,
+        "max_inclusive_ms": 4.305083,
+        "max_self_ms": 0.113542,
+        "self_ms": 0.08478574333333333
+      },
+      "render_queue_clear": {
+        "category": "render",
+        "frame_share_pct": 0.00455996010705913,
+        "inclusive_ms": 0.0009588733333333333,
+        "max_inclusive_ms": 0.002833,
+        "max_self_ms": 0.002833,
+        "self_ms": 0.0009588733333333333
+      },
+      "render_queue_prepare": {
+        "category": "render",
+        "frame_share_pct": 0.006399402823939153,
+        "inclusive_ms": 0.0013456733333333333,
+        "max_inclusive_ms": 0.002167,
+        "max_self_ms": 0.002167,
+        "self_ms": 0.0013456733333333333
+      },
+      "render_queue_submit": {
+        "category": "render",
+        "frame_share_pct": 0.07210219155203114,
+        "inclusive_ms": 4.04512055,
+        "max_inclusive_ms": 4.188416,
+        "max_self_ms": 0.026417,
+        "self_ms": 0.015161726666666667
+      },
+      "render_scalar_execute": {
+        "category": "render",
+        "frame_share_pct": 0.08231945252861078,
+        "inclusive_ms": 0.017310223333333333,
+        "max_inclusive_ms": 0.025376,
+        "max_self_ms": 0.025376,
+        "self_ms": 0.017310223333333333
+      },
+      "unit_animated_draw": {
+        "category": "render",
+        "frame_share_pct": 7.60728795903895,
+        "inclusive_ms": 1.5996687233333333,
+        "max_inclusive_ms": 2.056833,
+        "max_self_ms": 2.056833,
+        "self_ms": 1.5996687233333333
+      },
+      "unit_batch_prepare": {
+        "category": "render",
+        "frame_share_pct": 9.116125769072244,
+        "inclusive_ms": 1.9169487666666667,
+        "max_inclusive_ms": 2.408958,
+        "max_self_ms": 2.408958,
+        "self_ms": 1.9169487666666667
+      },
+      "unit_static_draw": {
+        "category": "render",
+        "frame_share_pct": 0.3711665685251693,
+        "inclusive_ms": 0.07804930666666667,
+        "max_inclusive_ms": 0.117833,
+        "max_self_ms": 0.117833,
+        "self_ms": 0.07804930666666667
+      },
+      "unit_visible_cull": {
+        "category": "render",
+        "frame_share_pct": 7.235717264758662,
+        "inclusive_ms": 1.5215344366666668,
+        "max_inclusive_ms": 2.210291,
+        "max_self_ms": 2.210291,
+        "self_ms": 1.5215344366666668
+      },
+      "vision_audit_scan": {
+        "category": "vision",
+        "frame_share_pct": 0.1774450342360823,
+        "inclusive_ms": 0.03731333333333334,
+        "max_inclusive_ms": 2.289041,
+        "max_self_ms": 2.289041,
+        "self_ms": 0.03731333333333334
+      },
+      "world_update": {
+        "category": "update",
+        "frame_share_pct": 0.14589095107463418,
+        "inclusive_ms": 15.202520119999999,
+        "max_inclusive_ms": 19.502417,
+        "max_self_ms": 0.044083,
+        "self_ms": 0.030678106666666666
+      }
+    },
+    "slow_frame_count": 0,
+    "vision_cache": {
+      "current": {
+        "geometry_cache_capacity": 16384,
+        "geometry_cache_evictions": 0,
+        "geometry_cache_hits": 71889,
+        "geometry_cache_misses": 5639,
+        "geometry_cache_size": 5639
+      },
+      "delta": {
+        "geometry_cache_capacity": 16384,
+        "geometry_cache_evictions": 0,
+        "geometry_cache_hits": 71889,
+        "geometry_cache_lookups": 72528,
+        "geometry_cache_misses": 639,
+        "geometry_cache_size_current": 5639,
+        "geometry_cache_size_start": 5000,
+        "geometry_hit_rate": 0.9911896095301125
+      },
+      "start": {
+        "geometry_cache_capacity": 16384,
+        "geometry_cache_evictions": 0,
+        "geometry_cache_hits": 0,
+        "geometry_cache_misses": 5000,
+        "geometry_cache_size": 5000
+      }
+    },
+    "worst_slow_frame": null
+  },
+  "start": {
+    "accepted_units": 5000,
+    "activation_ratio": 1.0,
+    "active_moving_units": 5000,
+    "actual_density": 1.0,
+    "animation_segments_total": 205000,
+    "batch_id": 1,
+    "camera_start": {
+      "offset_x": 1240.0,
+      "offset_y": 634.0,
+      "zoom": 0.15
+    },
+    "duration_seconds": 20.0,
+    "execution_density": 1.0,
+    "execution_mode": "sustained",
+    "execution_requested_units": 5000,
+    "execution_selection_seed": 42,
+    "experiment_kind": "dynamic_world_density_curve",
+    "fog_enabled": true,
+    "full_prepared_units": 5000,
+    "gc_automatic_enabled": false,
+    "gc_full_collect_collected": 0,
+    "gc_full_collect_ms": 22.175417,
+    "gc_policy": "realtime_defer",
+    "gc_policy_active": true,
+    "measurement_epoch": "dynamic_world_density_curve.density_1.00.staggered",
+    "measurement_epoch_pending": true,
+    "memory_start": {
+      "max_rss_bytes": 366460928,
+      "max_rss_mb": 349.484,
+      "rss_bytes": 348897280,
+      "rss_mb": 332.734,
+      "rss_source": "ps_rss"
+    },
+    "motion_phase": "staggered",
+    "normal_move_side_effects": false,
+    "ok": true,
+    "pathfinding_during_execution": false,
+    "phase": "started",
+    "phase_progress_p50": 0.504,
+    "phase_progress_p95": 0.9503,
+    "phase_seed": 42,
+    "prepared_units": 5000,
+    "rejected_units": 0,
+    "rejection_reasons": {},
+    "required_fog": "on",
+    "segments_max_per_unit": 40,
+    "segments_min_per_unit": 40,
+    "segments_total": 200000,
+    "sustained_start_ms": 47.329,
+    "vision_cache_start": {
+      "geometry_cache_capacity": 16384,
+      "geometry_cache_evictions": 0,
+      "geometry_cache_hits": 0,
+      "geometry_cache_misses": 5000,
+      "geometry_cache_size": 5000
+    }
+  },
+  "validation": {
+    "actual_density": 1.0,
+    "checks": {
+      "camera_unchanged": true,
+      "density_matches_requested": true,
+      "fog_matches_required": true,
+      "rolling_window_full": true,
+      "snapshot_ok": true
+    },
+    "density_tolerance": 0.0002,
+    "requested_density": 1.0,
+    "valid": true
+  },
+  "warmup_seconds": 5.0
+}

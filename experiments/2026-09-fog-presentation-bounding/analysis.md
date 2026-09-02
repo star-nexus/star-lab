@@ -84,6 +84,16 @@ render_engine            -1.992 ms
 
 Source inspection confirmed the content rectangle is computed only during `_full_rebuild`, piggybacking on the existing visible-tile traversal. Normal incremental frames reuse `self.presentation_rect`; no new steady-state O(Nmap) scan was introduced.
 
+### Regression evidence
+
+The final combined renderer regression suite ran at integration commit `54d17745098fb3fc4c43861d839e8dc40164c030` and reported:
+
+```text
+43 passed in 1.12s
+```
+
+A source comparison from the Fog fix commit `6a61115...` to that regression commit shows no subsequent change to the Fog production presenter. The regression therefore validates the integrated descendant state without changing the original performance-measurement provenance.
+
 ## 5. Root cause
 
 > Fog had an already-bounded semantic update path but an unbounded presentation representation: the entire viewport-sized alpha Surface was still composed every frame. The steady-state bottleneck was therefore presentation pixel volume, not semantic Fog recomputation.
@@ -116,7 +126,7 @@ cached map-content presentation rect
 - Fixed-camera production validation does not characterize camera-induced Fog full rebuilds; that later frontier is recorded separately.
 - Aggregate FPS is noisier than the renderer-local causal metrics and should not be used alone.
 - Exact Python runtime version was not captured in archived metadata.
-- Regression-test stdout is not archived yet, so this case is VALIDATED but not formally CLOSED under `PROTOCOL.md`.
+- Regression validation was executed at descendant integration commit `54d1774...`, not by rerunning pytest on the exact performance-measurement commit; Fog production code was unchanged across that interval.
 
 ## 9. Raw evidence
 

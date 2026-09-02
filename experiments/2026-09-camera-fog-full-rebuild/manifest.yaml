@@ -1,72 +1,107 @@
 experiment:
-  id: <experiment-id>
-  title: <human-readable-title>
-  date: YYYY-MM-DD
-  status: draft | reproduced | validated | closed
+  id: camera-fog-full-rebuild
+  title: Camera Geometry Change -> Fog Full Rebuild
+  date: 2026-09-02
+  status: reproduced
 
 source:
   repository: star-nexus/star
-  problem_commit: <EXACT_SHA or null>
-  measurement_commit: <EXACT_SHA>
-  fix_commit: <EXACT_SHA or null>
-  validated_commit: <EXACT_SHA or null>
-  branch_at_time: <historical-branch-name or null>
-  validated_tag: <annotated-tag or null>
+  problem_commit: 54d17745098fb3fc4c43861d839e8dc40164c030
+  measurement_commit: 54d17745098fb3fc4c43861d839e8dc40164c030
+  fix_commit: null
+  validated_commit: null
+  branch_at_time: perf/render-engine-breakdown
+  validated_tag: null
 
 hardware:
-  machine: <model>
-  cpu: <cpu>
-  memory: <memory>
-  gpu: <gpu-or-null>
-  display: <display-or-null>
+  machine: Mac mini
+  cpu: null
+  memory: null
+  gpu: null
+  display: 2480x1268
 
 software:
-  os: <os-version>
-  python: <python-version>
-  dependency_lock: <uv-lock-sha-or-note>
+  os: macOS
+  python: "not captured in archived run metadata; reproduce with uv at exact source commit"
+  dependency_lock: star repository at exact measurement commit
 
 scenario:
-  name: <scenario>
-  map_size: <map-size>
-  resident_units: <count>
-  moving_units: <count>
+  name: TestMap-8K-scale-5000
+  map_size: 91x91
+  resident_units: 5000
+  moving_units: 5000
 
 workload:
-  seed: <seed>
-  target_radius: <radius>
-  density: <density>
-  phase: <staggered|synchronized|other>
-  fog: <true|false>
-  camera: <fixed description>
-  zoom: <zoom>
+  seed: 42
+  target_radius: 12
+  density: 1.0
+  phase: staggered
+  fog: true
+  camera: "deterministic discrete pan/zoom state jumps from offset_x=1240.0, offset_y=634.0"
+  zoom: 0.15
 
 measurement:
-  warmup_seconds: <seconds>
-  sustained_seconds: <seconds>
-  sample_after_seconds: <seconds>
-  sample_window_frames: <frames>
-  gc_policy: <policy>
+  warmup_seconds: 5
+  sustained_seconds: 20
+  sample_after_seconds: null
+  sample_window_frames: 300
+  gc_policy: realtime_defer
+  vision_geometry_cache_capacity: 16384
+  camera_stress:
+    stress_duration_seconds: 10
+    step_seconds: 0.75
+    pattern_steps: 9
+    expected_transitions: "10-11"
+    motion_semantics: discrete_state_jumps_not_smooth_motion
   guards_required:
-    - <guard>
+    - rolling_window_full
+    - fog_matches_required
+    - density_matches_requested
+    - gc_policy_matches_requested
+    - vision_cache_capacity_unchanged
+    - camera_stress_transitions_at_least_2
 
 variables:
   independent:
-    <name>:
-      - <value>
+    camera_geometry_state:
+      - discrete_pan_jump
+      - discrete_zoom_jump
+      - restore
   controlled:
-    - <condition>
+    - same map, seed, density and movement phase
+    - Fog semantically ON
+    - realtime_defer GC policy
+  not_yet_orthogonalized:
+    - smooth_pan_vs_threshold_crossing
+    - pan_vs_zoom_invalidation
+    - exact Fog rebuild trigger condition
 
 artifacts:
-  formal:
-    - path: results/<file>
-      sha256: <optional checksum for ordinary small Git files>
+  formal: []
   external: []
+  canonical_references:
+    - path: ../2026-09-terrain-presentation/results/validation/camera-stress/terrain-camera-legacy-run1.json
+      sha256: fc6da8f2b5532de83321c6d8bc5f4663ce955b96151ba7d2b3a6b2cbf614eec6
+    - path: ../2026-09-terrain-presentation/results/validation/camera-stress/terrain-camera-legacy-run2.json
+      sha256: 2458f6cb3d457413efcaf08640da012589f6aaa55bd620472eeb57810dd848a1
+    - path: ../2026-09-terrain-presentation/results/validation/camera-stress/terrain-camera-legacy-run3.json
+      sha256: 43a90c07e3ef41d7d1bafbffe3589988087c875f1cd4f0ec9198356665349fe2
+    - path: ../2026-09-terrain-presentation/results/validation/camera-stress/terrain-camera-opaque-run1.json
+      sha256: 27d7cfd2fbee82e4760de4445b5474cacc91971fd7ec24e39a37ac827dd28e17
+    - path: ../2026-09-terrain-presentation/results/validation/camera-stress/terrain-camera-opaque-run2.json
+      sha256: 6dd2f71b99da49e71d111a27bcf515b571ea8259aa5c6f6d8c89d1a7e5a06245
+    - path: ../2026-09-terrain-presentation/results/validation/camera-stress/terrain-camera-opaque-run3.json
+      sha256: f849038a99cea67569147145c943eed1243fd95bf1769967dd75c093b0240d59
+  checksums: null
+  integrity_note: "No local raw artifacts; integrity is inherited from the canonical Terrain case checksums."
 
 headline:
-  problem_signature: <short text>
-  root_cause: <short text>
-  resolution: <short text>
-  result: <short text>
+  problem_signature: "Discrete camera geometry transitions correlate with ~25-30 ms Fog full rebuilds, ~39-46 ms MapRenderSystem maxima, and ~56-68 ms epoch worst slow frames."
+  root_cause: "Not yet closed. Working hypothesis: view-geometry invalidation triggers expensive Fog full rebuilds during camera transitions."
+  resolution: "None yet. Build continuous-camera attribution before changing Fog architecture."
+  result: "Problem reproduced under deterministic discrete camera stress; continuous-motion frequency and exact invalidation trigger remain unknown."
 
 revisit_when:
-  - <condition>
+  - continuous-camera attribution is implemented
+  - pan-only and zoom-only invalidation can be measured separately
+  - Fog full-rebuild frequency can be counted per camera-change frame

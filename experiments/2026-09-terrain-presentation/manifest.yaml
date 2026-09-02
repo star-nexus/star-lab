@@ -2,7 +2,7 @@ experiment:
   id: terrain-opaque-presentation-cache
   title: Terrain Opaque Presentation Cache
   date: 2026-09-02
-  status: validated
+  status: closed
 
 source:
   repository: star-nexus/star
@@ -10,6 +10,7 @@ source:
   measurement_commit: 54d17745098fb3fc4c43861d839e8dc40164c030
   fix_commit: 89f667985810fca8bb2756058e34f6b4d3663a5a
   validated_commit: 54d17745098fb3fc4c43861d839e8dc40164c030
+  regression_commit: 54d17745098fb3fc4c43861d839e8dc40164c030
   branch_at_time: perf/render-engine-breakdown
   validated_tag: null
   instrumentation_commits:
@@ -146,6 +147,7 @@ artifacts:
       classification: invalid-intended-variable-but-informative
   checksums: artifacts/SHA256SUMS
   integrity_verified_at_archive_creation: true
+  integrity_reverified_after_documentation: true
   external: []
 
 headline:
@@ -157,8 +159,11 @@ headline:
 closure:
   performance_validation: passed
   stress_validation: passed
-  regression_test_evidence: pending_archive
-  formal_closed: false
+  regression_test_evidence: passed
+  regression_test_commit: 54d17745098fb3fc4c43861d839e8dc40164c030
+  regression_test_result: "43 passed in 1.12s"
+  artifact_integrity: verified
+  formal_closed: true
 
 revisit_when:
   - renderer migrates away from Pygame/SDL software Surfaces

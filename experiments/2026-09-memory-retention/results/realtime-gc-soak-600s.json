@@ -1,0 +1,2045 @@
+{
+  "baseline_collect": {
+    "after": {
+      "gc": {
+        "count": [
+          33,
+          0,
+          0
+        ],
+        "enabled": true,
+        "generations": [
+          {
+            "collected": 374,
+            "collections": 1225,
+            "uncollectable": 0
+          },
+          {
+            "collected": 11,
+            "collections": 111,
+            "uncollectable": 0
+          },
+          {
+            "collected": 9,
+            "collections": 8,
+            "uncollectable": 0
+          }
+        ],
+        "tracked_objects": 183958
+      },
+      "gc_policy": {
+        "activation_serial": 0,
+        "active": false,
+        "automatic_gc_enabled": true,
+        "deadline_remaining_seconds": null,
+        "full_collect_collected": 0,
+        "full_collect_ms": 0.0,
+        "gc_count": [
+          2,
+          0,
+          0
+        ],
+        "last_restore_reason": "",
+        "mode": "auto",
+        "original_automatic_gc_enabled": null
+      },
+      "memory": {
+        "max_rss_bytes": 366493696,
+        "max_rss_mb": 349.516,
+        "rss_bytes": 354959360,
+        "rss_mb": 338.516,
+        "rss_source": "ps_rss"
+      },
+      "workload": {
+        "active_moving_units": 0,
+        "density": 0.0,
+        "living_units": 5000
+      },
+      "world": {
+        "component_instances": 74852,
+        "component_types": 15,
+        "entities": 13288,
+        "query_cache_entries": 13,
+        "singleton_components": 20
+      }
+    },
+    "before": {
+      "gc": {
+        "count": [
+          35,
+          4,
+          13
+        ],
+        "enabled": true,
+        "generations": [
+          {
+            "collected": 374,
+            "collections": 1225,
+            "uncollectable": 0
+          },
+          {
+            "collected": 11,
+            "collections": 111,
+            "uncollectable": 0
+          },
+          {
+            "collected": 9,
+            "collections": 7,
+            "uncollectable": 0
+          }
+        ],
+        "tracked_objects": 187874
+      },
+      "gc_policy": {
+        "activation_serial": 0,
+        "active": false,
+        "automatic_gc_enabled": true,
+        "deadline_remaining_seconds": null,
+        "full_collect_collected": 0,
+        "full_collect_ms": 0.0,
+        "gc_count": [
+          29,
+          4,
+          13
+        ],
+        "last_restore_reason": "",
+        "mode": "auto",
+        "original_automatic_gc_enabled": null
+      },
+      "memory": {
+        "max_rss_bytes": 366493696,
+        "max_rss_mb": 349.516,
+        "rss_bytes": 353452032,
+        "rss_mb": 337.078,
+        "rss_source": "ps_rss"
+      },
+      "workload": {
+        "active_moving_units": 0,
+        "density": 0.0,
+        "living_units": 5000
+      },
+      "world": {
+        "component_instances": 74852,
+        "component_types": 15,
+        "entities": 13288,
+        "query_cache_entries": 13,
+        "singleton_components": 20
+      }
+    },
+    "collect_ms": 16.659917,
+    "collected": 0,
+    "ok": true,
+    "rss_delta_mb": 1.438,
+    "tracked_objects_delta": -3916
+  },
+  "config": {
+    "cycle_realtime_seconds": 15.0,
+    "density": 1.0,
+    "gc_policy": "realtime_defer",
+    "phase": "staggered",
+    "realtime_seconds": 600.0,
+    "require_fog": "on",
+    "seed": 42,
+    "sustained_duration": 20.0,
+    "target_radius": 12
+  },
+  "cycles": [
+    {
+      "cumulative_realtime_seconds": 15.0,
+      "cycle": 1,
+      "deferred": {
+        "gc": {
+          "count": [
+            36468,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1324,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 120,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 9,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 270562
+        },
+        "gc_policy": {
+          "activation_serial": 1,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.973843,
+          "full_collect_collected": 0,
+          "full_collect_ms": 20.688042,
+          "gc_count": [
+            36462,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 391249920,
+          "max_rss_mb": 373.125,
+          "rss_bytes": 378208256,
+          "rss_mb": 360.688,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "workload": {
+          "active_moving_units": 5000,
+          "density": 1.0,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 13,
+          "singleton_components": 20
+        }
+      },
+      "ok": true,
+      "post_collect": {
+        "after": {
+          "gc": {
+            "count": [
+              33,
+              0,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1326,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 120,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 10,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 202061
+          },
+          "gc_policy": {
+            "activation_serial": 1,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 20.688042,
+            "gc_count": [
+              2,
+              0,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 393428992,
+            "max_rss_mb": 375.203,
+            "rss_bytes": 380387328,
+            "rss_mb": 362.766,
+            "rss_source": "ps_rss"
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 13,
+            "singleton_components": 20
+          }
+        },
+        "before": {
+          "gc": {
+            "count": [
+              504,
+              2,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1326,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 120,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 9,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 213481
+          },
+          "gc_policy": {
+            "activation_serial": 1,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 20.688042,
+            "gc_count": [
+              502,
+              2,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 393428992,
+            "max_rss_mb": 375.203,
+            "rss_bytes": 380387328,
+            "rss_mb": 362.766,
+            "rss_source": "ps_rss"
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 13,
+            "singleton_components": 20
+          }
+        },
+        "collect_ms": 25.4255,
+        "collected": 0,
+        "ok": true,
+        "rss_delta_mb": 0.0,
+        "tracked_objects_delta": -11420
+      },
+      "prepare": {
+        "batch_id": 1,
+        "batch_planning_ms": 988.287,
+        "ok": true,
+        "prepared_units": 5000
+      },
+      "realtime_seconds": 15.0,
+      "start": {
+        "accepted_units": 5000,
+        "actual_density": 1.0,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 20.688042,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      },
+      "stop": {
+        "gc_automatic_enabled": true,
+        "gc_policy_restored": true,
+        "ok": true,
+        "stopped_units": 5000
+      }
+    },
+    {
+      "cumulative_realtime_seconds": 30.0,
+      "cycle": 2,
+      "deferred": {
+        "gc": {
+          "count": [
+            43245,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1370,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 124,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 11,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 280759
+        },
+        "gc_policy": {
+          "activation_serial": 2,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.980488,
+          "full_collect_collected": 0,
+          "full_collect_ms": 27.703208,
+          "gc_count": [
+            43239,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 400785408,
+          "max_rss_mb": 382.219,
+          "rss_bytes": 387743744,
+          "rss_mb": 369.781,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "workload": {
+          "active_moving_units": 5000,
+          "density": 1.0,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 13,
+          "singleton_components": 20
+        }
+      },
+      "ok": true,
+      "post_collect": {
+        "after": {
+          "gc": {
+            "count": [
+              33,
+              0,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1372,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 124,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 12,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 207345
+          },
+          "gc_policy": {
+            "activation_serial": 2,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 27.703208,
+            "gc_count": [
+              2,
+              0,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 403062784,
+            "max_rss_mb": 384.391,
+            "rss_bytes": 391774208,
+            "rss_mb": 373.625,
+            "rss_source": "ps_rss"
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 13,
+            "singleton_components": 20
+          }
+        },
+        "before": {
+          "gc": {
+            "count": [
+              556,
+              2,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1372,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 124,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 11,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 218600
+          },
+          "gc_policy": {
+            "activation_serial": 2,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 27.703208,
+            "gc_count": [
+              554,
+              2,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 403062784,
+            "max_rss_mb": 384.391,
+            "rss_bytes": 390021120,
+            "rss_mb": 371.953,
+            "rss_source": "ps_rss"
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 13,
+            "singleton_components": 20
+          }
+        },
+        "collect_ms": 28.667167,
+        "collected": 0,
+        "ok": true,
+        "rss_delta_mb": 1.672,
+        "tracked_objects_delta": -11255
+      },
+      "prepare": {
+        "batch_id": 2,
+        "batch_planning_ms": 452.142,
+        "ok": true,
+        "prepared_units": 5000
+      },
+      "realtime_seconds": 15.0,
+      "start": {
+        "accepted_units": 5000,
+        "actual_density": 1.0,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 27.703208,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      },
+      "stop": {
+        "gc_automatic_enabled": true,
+        "gc_policy_restored": true,
+        "ok": true,
+        "stopped_units": 5000
+      }
+    },
+    {
+      "cumulative_realtime_seconds": 45.0,
+      "cycle": 3,
+      "deferred": {
+        "gc": {
+          "count": [
+            38672,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1406,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 127,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 13,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 275986
+        },
+        "gc_policy": {
+          "activation_serial": 3,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.990795,
+          "full_collect_collected": 0,
+          "full_collect_ms": 29.741459,
+          "gc_count": [
+            38666,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 409714688,
+          "max_rss_mb": 390.734,
+          "rss_bytes": 396673024,
+          "rss_mb": 378.297,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "workload": {
+          "active_moving_units": 5000,
+          "density": 1.0,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 13,
+          "singleton_components": 20
+        }
+      },
+      "ok": true,
+      "post_collect": {
+        "after": {
+          "gc": {
+            "count": [
+              33,
+              0,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1408,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 127,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 14,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 214248
+          },
+          "gc_policy": {
+            "activation_serial": 3,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 29.741459,
+            "gc_count": [
+              2,
+              0,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 409714688,
+            "max_rss_mb": 390.734,
+            "rss_bytes": 396673024,
+            "rss_mb": 378.297,
+            "rss_source": "ps_rss"
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 13,
+            "singleton_components": 20
+          }
+        },
+        "before": {
+          "gc": {
+            "count": [
+              663,
+              2,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1408,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 127,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 13,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 225504
+          },
+          "gc_policy": {
+            "activation_serial": 3,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 29.741459,
+            "gc_count": [
+              661,
+              2,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 409714688,
+            "max_rss_mb": 390.734,
+            "rss_bytes": 396673024,
+            "rss_mb": 378.297,
+            "rss_source": "ps_rss"
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 13,
+            "singleton_components": 20
+          }
+        },
+        "collect_ms": 31.092583,
+        "collected": 0,
+        "ok": true,
+        "rss_delta_mb": 0.0,
+        "tracked_objects_delta": -11256
+      },
+      "prepare": {
+        "batch_id": 3,
+        "batch_planning_ms": 336.653,
+        "ok": true,
+        "prepared_units": 5000
+      },
+      "realtime_seconds": 15.0,
+      "start": {
+        "accepted_units": 5000,
+        "actual_density": 1.0,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 29.741459,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      },
+      "stop": {
+        "gc_automatic_enabled": true,
+        "gc_policy_restored": true,
+        "ok": true,
+        "stopped_units": 5000
+      }
+    },
+    {
+      "cumulative_realtime_seconds": 60.0,
+      "cycle": 4,
+      "deferred": {
+        "gc": {
+          "count": [
+            37471,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1463,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 132,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 15,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 286337
+        },
+        "gc_policy": {
+          "activation_serial": 4,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.98019,
+          "full_collect_collected": 0,
+          "full_collect_ms": 32.7395,
+          "gc_count": [
+            37469,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 415989760,
+          "max_rss_mb": 396.719,
+          "rss_bytes": 402964480,
+          "rss_mb": 384.297,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "workload": {
+          "active_moving_units": 4999,
+          "density": 0.9998,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 13,
+          "singleton_components": 20
+        }
+      },
+      "ok": true,
+      "post_collect": {
+        "after": {
+          "gc": {
+            "count": [
+              33,
+              0,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1465,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 132,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 16,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 217884
+          },
+          "gc_policy": {
+            "activation_serial": 4,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 32.7395,
+            "gc_count": [
+              2,
+              0,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 418381824,
+            "max_rss_mb": 399.0,
+            "rss_bytes": 405340160,
+            "rss_mb": 386.562,
+            "rss_source": "ps_rss"
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 13,
+            "singleton_components": 20
+          }
+        },
+        "before": {
+          "gc": {
+            "count": [
+              785,
+              2,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1465,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 132,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 15,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 229163
+          },
+          "gc_policy": {
+            "activation_serial": 4,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 32.7395,
+            "gc_count": [
+              783,
+              2,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 418381824,
+            "max_rss_mb": 399.0,
+            "rss_bytes": 405340160,
+            "rss_mb": 386.562,
+            "rss_source": "ps_rss"
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 13,
+            "singleton_components": 20
+          }
+        },
+        "collect_ms": 32.851917,
+        "collected": 0,
+        "ok": true,
+        "rss_delta_mb": 0.0,
+        "tracked_objects_delta": -11279
+      },
+      "prepare": {
+        "batch_id": 4,
+        "batch_planning_ms": 576.769,
+        "ok": true,
+        "prepared_units": 4999
+      },
+      "realtime_seconds": 15.0,
+      "start": {
+        "accepted_units": 4999,
+        "actual_density": 0.9998,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 32.7395,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      },
+      "stop": {
+        "gc_automatic_enabled": true,
+        "gc_policy_restored": true,
+        "ok": true,
+        "stopped_units": 4999
+      }
+    },
+    {
+      "cumulative_realtime_seconds": 75.0,
+      "cycle": 5,
+      "deferred": {
+        "gc": {
+          "count": [
+            37551,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1515,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 136,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 17,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 285403
+        },
+        "gc_policy": {
+          "activation_serial": 5,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.973113,
+          "full_collect_collected": 0,
+          "full_collect_ms": 35.301708,
+          "gc_count": [
+            37540,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 421822464,
+          "max_rss_mb": 402.281,
+          "rss_bytes": 408780800,
+          "rss_mb": 389.844,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "workload": {
+          "active_moving_units": 5000,
+          "density": 1.0,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 13,
+          "singleton_components": 20
+        }
+      },
+      "ok": true,
+      "post_collect": {
+        "after": {
+          "gc": {
+            "count": [
+              33,
+              0,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1517,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 136,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 18,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 221612
+          },
+          "gc_policy": {
+            "activation_serial": 5,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 35.301708,
+            "gc_count": [
+              2,
+              0,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 421838848,
+            "max_rss_mb": 402.297,
+            "rss_bytes": 397623296,
+            "rss_mb": 379.203,
+            "rss_source": "ps_rss"
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 13,
+            "singleton_components": 20
+          }
+        },
+        "before": {
+          "gc": {
+            "count": [
+              776,
+              2,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1517,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 136,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 17,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 232831
+          },
+          "gc_policy": {
+            "activation_serial": 5,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 35.301708,
+            "gc_count": [
+              774,
+              2,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 421838848,
+            "max_rss_mb": 402.297,
+            "rss_bytes": 408797184,
+            "rss_mb": 389.859,
+            "rss_source": "ps_rss"
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 13,
+            "singleton_components": 20
+          }
+        },
+        "collect_ms": 35.506125,
+        "collected": 0,
+        "ok": true,
+        "rss_delta_mb": -10.656,
+        "tracked_objects_delta": -11219
+      },
+      "prepare": {
+        "batch_id": 5,
+        "batch_planning_ms": 495.018,
+        "ok": true,
+        "prepared_units": 5000
+      },
+      "realtime_seconds": 15.0,
+      "start": {
+        "accepted_units": 5000,
+        "actual_density": 1.0,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 35.301708,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      },
+      "stop": {
+        "gc_automatic_enabled": true,
+        "gc_policy_restored": true,
+        "ok": true,
+        "stopped_units": 5000
+      }
+    },
+    {
+      "cumulative_realtime_seconds": 90.0,
+      "cycle": 6,
+      "deferred": {
+        "gc": {
+          "count": [
+            29016,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1569,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 140,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 19,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 285223
+        },
+        "gc_policy": {
+          "activation_serial": 6,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.979735,
+          "full_collect_collected": 0,
+          "full_collect_ms": 37.694292,
+          "gc_count": [
+            29014,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 426426368,
+          "max_rss_mb": 406.672,
+          "rss_bytes": 413384704,
+          "rss_mb": 394.234,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "workload": {
+          "active_moving_units": 4999,
+          "density": 0.9998,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 13,
+          "singleton_components": 20
+        }
+      },
+      "ok": true,
+      "post_collect": {
+        "after": {
+          "gc": {
+            "count": [
+              33,
+              0,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1571,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 140,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 20,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 224806
+          },
+          "gc_policy": {
+            "activation_serial": 6,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 37.694292,
+            "gc_count": [
+              2,
+              0,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 426426368,
+            "max_rss_mb": 406.672,
+            "rss_bytes": 413384704,
+            "rss_mb": 394.234,
+            "rss_source": "ps_rss"
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 13,
+            "singleton_components": 20
+          }
+        },
+        "before": {
+          "gc": {
+            "count": [
+              832,
+              2,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1571,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 140,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 19,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 235997
+          },
+          "gc_policy": {
+            "activation_serial": 6,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 37.694292,
+            "gc_count": [
+              830,
+              2,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 426426368,
+            "max_rss_mb": 406.672,
+            "rss_bytes": 413384704,
+            "rss_mb": 394.234,
+            "rss_source": "ps_rss"
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 13,
+            "singleton_components": 20
+          }
+        },
+        "collect_ms": 36.616917,
+        "collected": 0,
+        "ok": true,
+        "rss_delta_mb": 0.0,
+        "tracked_objects_delta": -11191
+      },
+      "prepare": {
+        "batch_id": 6,
+        "batch_planning_ms": 472.432,
+        "ok": true,
+        "prepared_units": 4999
+      },
+      "realtime_seconds": 15.0,
+      "start": {
+        "accepted_units": 4999,
+        "actual_density": 0.9998,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 37.694292,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      },
+      "stop": {
+        "gc_automatic_enabled": true,
+        "gc_policy_restored": true,
+        "ok": true,
+        "stopped_units": 4999
+      }
+    },
+    {
+      "cumulative_realtime_seconds": 105.0,
+      "cycle": 7,
+      "deferred": {
+        "gc": {
+          "count": [
+            33630,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1620,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 144,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 21,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 290078
+        },
+        "gc_policy": {
+          "activation_serial": 7,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.980228,
+          "full_collect_collected": 0,
+          "full_collect_ms": 38.631875,
+          "gc_count": [
+            33624,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 430014464,
+          "max_rss_mb": 410.094,
+          "rss_bytes": 416989184,
+          "rss_mb": 397.672,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "workload": {
+          "active_moving_units": 4999,
+          "density": 0.9998,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 13,
+          "singleton_components": 20
+        }
+      },
+      "ok": true,
+      "post_collect": {
+        "after": {
+          "gc": {
+            "count": [
+              33,
+              0,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1622,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 144,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 22,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 227018
+          },
+          "gc_policy": {
+            "activation_serial": 7,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 38.631875,
+            "gc_count": [
+              2,
+              0,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 430080000,
+            "max_rss_mb": 410.156,
+            "rss_bytes": 417038336,
+            "rss_mb": 397.719,
+            "rss_source": "ps_rss"
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 13,
+            "singleton_components": 20
+          }
+        },
+        "before": {
+          "gc": {
+            "count": [
+              869,
+              2,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1622,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 144,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 21,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 238186
+          },
+          "gc_policy": {
+            "activation_serial": 7,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 38.631875,
+            "gc_count": [
+              867,
+              2,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 430080000,
+            "max_rss_mb": 410.156,
+            "rss_bytes": 417038336,
+            "rss_mb": 397.719,
+            "rss_source": "ps_rss"
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 13,
+            "singleton_components": 20
+          }
+        },
+        "collect_ms": 38.266833,
+        "collected": 0,
+        "ok": true,
+        "rss_delta_mb": 0.0,
+        "tracked_objects_delta": -11168
+      },
+      "prepare": {
+        "batch_id": 7,
+        "batch_planning_ms": 425.811,
+        "ok": true,
+        "prepared_units": 4999
+      },
+      "realtime_seconds": 15.0,
+      "start": {
+        "accepted_units": 4999,
+        "actual_density": 0.9998,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 38.631875,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      },
+      "stop": {
+        "gc_automatic_enabled": true,
+        "gc_policy_restored": true,
+        "ok": true,
+        "stopped_units": 4999
+      }
+    },
+    {
+      "cumulative_realtime_seconds": 120.0,
+      "cycle": 8,
+      "deferred": {
+        "gc": {
+          "count": [
+            38582,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1666,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 147,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 23,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 295475
+        },
+        "gc_policy": {
+          "activation_serial": 8,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.970361,
+          "full_collect_collected": 0,
+          "full_collect_ms": 41.38125,
+          "gc_count": [
+            38580,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 433520640,
+          "max_rss_mb": 413.438,
+          "rss_bytes": 407453696,
+          "rss_mb": 388.578,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "workload": {
+          "active_moving_units": 5000,
+          "density": 1.0,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 13,
+          "singleton_components": 20
+        }
+      },
+      "ok": true,
+      "post_collect": {
+        "after": {
+          "gc": {
+            "count": [
+              33,
+              0,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1669,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 147,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 24,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 231160
+          },
+          "gc_policy": {
+            "activation_serial": 8,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 41.38125,
+            "gc_count": [
+              2,
+              0,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 433537024,
+            "max_rss_mb": 413.453,
+            "rss_bytes": 420495360,
+            "rss_mb": 401.016,
+            "rss_source": "ps_rss"
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 13,
+            "singleton_components": 20
+          }
+        },
+        "before": {
+          "gc": {
+            "count": [
+              31,
+              3,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1669,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 147,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 23,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 241410
+          },
+          "gc_policy": {
+            "activation_serial": 8,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 41.38125,
+            "gc_count": [
+              29,
+              3,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 433537024,
+            "max_rss_mb": 413.453,
+            "rss_bytes": 420495360,
+            "rss_mb": 401.016,
+            "rss_source": "ps_rss"
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 13,
+            "singleton_components": 20
+          }
+        },
+        "collect_ms": 40.667,
+        "collected": 0,
+        "ok": true,
+        "rss_delta_mb": 0.0,
+        "tracked_objects_delta": -10250
+      },
+      "prepare": {
+        "batch_id": 8,
+        "batch_planning_ms": 410.506,
+        "ok": true,
+        "prepared_units": 5000
+      },
+      "realtime_seconds": 15.0,
+      "start": {
+        "accepted_units": 5000,
+        "actual_density": 1.0,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 41.38125,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      },
+      "stop": {
+        "gc_automatic_enabled": true,
+        "gc_policy_restored": true,
+        "ok": true,
+        "stopped_units": 5000
+      }
+    },
+    {
+      "cycle": 9,
+      "deferred": {
+        "gc": {
+          "count": [
+            28871,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1706,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 150,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 25,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 291718
+        },
+        "gc_policy": {
+          "activation_serial": 9,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.980626,
+          "full_collect_collected": 0,
+          "full_collect_ms": 43.059792,
+          "gc_count": [
+            28869,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 436273152,
+          "max_rss_mb": 416.062,
+          "rss_bytes": 423231488,
+          "rss_mb": 403.625,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "workload": {
+          "active_moving_units": 4997,
+          "density": 0.9994,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 13,
+          "singleton_components": 20
+        }
+      },
+      "error": "invalid_deferred_snapshot",
+      "ok": false,
+      "prepare": {
+        "batch_id": 9,
+        "batch_planning_ms": 345.234,
+        "ok": true,
+        "prepared_units": 4997
+      },
+      "realtime_seconds": 15.0,
+      "start": {
+        "accepted_units": 4997,
+        "actual_density": 0.9994,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 43.059792,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      }
+    }
+  ],
+  "error": "soak_incomplete",
+  "experiment": "realtime_gc_memory_soak_v1",
+  "ok": false,
+  "summary": {
+    "baseline_rss_mb": 338.516,
+    "baseline_tracked_objects": 183958,
+    "component_instance_growth": 5000,
+    "cycles_completed": 8,
+    "entity_growth": 0,
+    "final_post_collect_rss_mb": 401.016,
+    "final_post_collect_tracked_objects": 231160,
+    "max_safe_collect_ms": 40.667,
+    "peak_deferred_rss_mb": 397.672,
+    "post_collect_rss_growth_mb": 62.5,
+    "post_collect_rss_slope_mb_per_hour": 1224.777,
+    "post_collect_tracked_objects_growth": 47202,
+    "post_collect_tracked_objects_slope_per_hour": 964171.429,
+    "realtime_seconds_completed": 120.0,
+    "total_safe_collect_collected": 0
+  }
+}

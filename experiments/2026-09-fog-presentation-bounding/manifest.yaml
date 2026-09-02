@@ -2,7 +2,7 @@ experiment:
   id: fog-presentation-bounding
   title: Fog Presentation Bounding
   date: 2026-09-02
-  status: validated
+  status: closed
 
 source:
   repository: star-nexus/star
@@ -10,6 +10,7 @@ source:
   measurement_commit: 6a61115ab29a0c4aeb39fa8b74c7cbcded314180
   fix_commit: 6a61115ab29a0c4aeb39fa8b74c7cbcded314180
   validated_commit: 6a61115ab29a0c4aeb39fa8b74c7cbcded314180
+  regression_commit: 54d17745098fb3fc4c43861d839e8dc40164c030
   branch_at_time: perf/render-engine-breakdown
   validated_tag: null
 
@@ -76,6 +77,7 @@ artifacts:
       sha256: e581727d061d1b3242f7c11d9dcf31dcb3f8fd81efb9cc866563055f934f8831
   checksums: artifacts/SHA256SUMS
   integrity_verified_at_archive_creation: true
+  integrity_reverified_after_documentation: true
   external: []
   canonical_references:
     - path: ../2026-09-render-engine-attribution/results/causal-ablation/causal-normal-run1.json
@@ -93,8 +95,12 @@ headline:
 
 closure:
   performance_validation: passed
-  regression_test_evidence: pending_archive
-  formal_closed: false
+  regression_test_evidence: passed
+  regression_test_commit: 54d17745098fb3fc4c43861d839e8dc40164c030
+  regression_test_result: "43 passed in 1.12s"
+  regression_scope_note: "Fog production presenter did not change between fix commit 6a61115... and regression commit 54d1774...; intervening changes were Terrain/testing/stress-harness work."
+  artifact_integrity: verified
+  formal_closed: true
 
 revisit_when:
   - viewport or map-content geometry changes materially

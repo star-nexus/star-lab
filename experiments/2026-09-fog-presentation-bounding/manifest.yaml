@@ -1,72 +1,103 @@
 experiment:
-  id: <experiment-id>
-  title: <human-readable-title>
-  date: YYYY-MM-DD
-  status: draft | reproduced | validated | closed
+  id: fog-presentation-bounding
+  title: Fog Presentation Bounding
+  date: 2026-09-02
+  status: validated
 
 source:
   repository: star-nexus/star
-  problem_commit: <EXACT_SHA or null>
-  measurement_commit: <EXACT_SHA>
-  fix_commit: <EXACT_SHA or null>
-  validated_commit: <EXACT_SHA or null>
-  branch_at_time: <historical-branch-name or null>
-  validated_tag: <annotated-tag or null>
+  problem_commit: 6e8c151494de2b37071ecdcd5f1898b7387e057a
+  measurement_commit: 6a61115ab29a0c4aeb39fa8b74c7cbcded314180
+  fix_commit: 6a61115ab29a0c4aeb39fa8b74c7cbcded314180
+  validated_commit: 6a61115ab29a0c4aeb39fa8b74c7cbcded314180
+  branch_at_time: perf/render-engine-breakdown
+  validated_tag: null
 
 hardware:
-  machine: <model>
-  cpu: <cpu>
-  memory: <memory>
-  gpu: <gpu-or-null>
-  display: <display-or-null>
+  machine: Mac mini
+  cpu: null
+  memory: null
+  gpu: null
+  display: 2480x1268
 
 software:
-  os: <os-version>
-  python: <python-version>
-  dependency_lock: <uv-lock-sha-or-note>
+  os: macOS
+  python: "not captured in archived run metadata; reproduce with uv at exact source commit"
+  dependency_lock: star repository at exact measurement commit
 
 scenario:
-  name: <scenario>
-  map_size: <map-size>
-  resident_units: <count>
-  moving_units: <count>
+  name: TestMap-8K-scale-5000
+  map_size: 91x91
+  resident_units: 5000
+  moving_units: 5000
 
 workload:
-  seed: <seed>
-  target_radius: <radius>
-  density: <density>
-  phase: <staggered|synchronized|other>
-  fog: <true|false>
-  camera: <fixed description>
-  zoom: <zoom>
+  seed: 42
+  target_radius: 12
+  density: 1.0
+  phase: staggered
+  fog: true
+  camera: "fixed at offset_x=1240.0, offset_y=634.0"
+  zoom: 0.15
 
 measurement:
-  warmup_seconds: <seconds>
-  sustained_seconds: <seconds>
-  sample_after_seconds: <seconds>
-  sample_window_frames: <frames>
-  gc_policy: <policy>
+  warmup_seconds: 5
+  sustained_seconds: 20
+  sample_after_seconds: 10
+  sample_window_frames: 300
+  gc_policy: realtime_defer
+  vision_geometry_cache_capacity: 16384
   guards_required:
-    - <guard>
+    - rolling_window_full
+    - fog_matches_required
+    - camera_unchanged
+    - density_matches_requested
+    - gc_policy_matches_requested
+    - vision_cache_capacity_unchanged
 
 variables:
   independent:
-    <name>:
-      - <value>
+    fog_presentation:
+      - full_viewport_problem_state
+      - bounded_content_rect_fix
   controlled:
-    - <condition>
+    - Fog semantic state remains ON
+    - viewport-sized semantic Fog Surface retained
+    - same workload, map, seed, camera and zoom
+    - fresh process per run
 
 artifacts:
   formal:
-    - path: results/<file>
-      sha256: <optional checksum for ordinary small Git files>
+    - path: results/fog-bounded-run1.json
+      sha256: bc6e00aa251f15db67fafe78d0cd760d555aac43b98d7f31faf0410388bdd24e
+    - path: results/fog-bounded-run2.json
+      sha256: fafa6cf910ed3782bfc95eff71ac4c2d29767e6800c76598346bdd005228e2fe
+    - path: results/fog-bounded-run3.json
+      sha256: e581727d061d1b3242f7c11d9dcf31dcb3f8fd81efb9cc866563055f934f8831
+  checksums: artifacts/SHA256SUMS
+  integrity_verified_at_archive_creation: true
   external: []
+  canonical_references:
+    - path: ../2026-09-render-engine-attribution/results/causal-ablation/causal-normal-run1.json
+      sha256: 3a58b303d1497fd3289ab036917493aea3f163889769229d52e1d986685a7c30
+    - path: ../2026-09-render-engine-attribution/results/causal-ablation/causal-normal-run2.json
+      sha256: 3714036d80a8660130f022ce7df9800fd6115d72f1171fde06ab4a2a0464ae88
+    - path: ../2026-09-render-engine-attribution/results/causal-ablation/causal-normal-run3.json
+      sha256: ead7eaf3796fb64f6910e746cd9289bc883c03d0cd0b5d3466b25afce3d3a8f0
 
 headline:
-  problem_signature: <short text>
-  root_cause: <short text>
-  resolution: <short text>
-  result: <short text>
+  problem_signature: "Fog semantic updates were incremental, but final presentation still submitted 3,144,640 SRCALPHA pixels every frame."
+  root_cause: "A full-window Fog presentation blit remained in the steady-state render path after semantic work had already become incremental."
+  resolution: "Keep the semantic Surface unchanged and cache a map-content screen-space presentation rectangle computed during full rebuild."
+  result: "Presentation pixels fell 61.06%; RenderEngine fell from 5.425 ms to 3.433 ms and queue_submit by ~2.00 ms in the comparable causal chain."
+
+closure:
+  performance_validation: passed
+  regression_test_evidence: pending_archive
+  formal_closed: false
 
 revisit_when:
-  - <condition>
+  - viewport or map-content geometry changes materially
+  - Fog semantic Surface representation changes
+  - renderer backend changes
+  - bounded presentation no longer covers later clear-to-fog transitions correctly

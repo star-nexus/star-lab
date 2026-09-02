@@ -1,0 +1,84 @@
+experiment:
+  id: realtime-gen2-gc-tail
+  title: Realtime Gen2 GC Tail Latency
+  date: 2026-09-02
+  status: closed_historical_backfill
+
+source:
+  repository: star-nexus/star
+  problem_commit: 916d88dcd3d796fe49a0cadd64be40b68c331b5c
+  measurement_commit: 33b18bc777df992ff8665d458d70782451d05a51
+  fix_commit: 6bdeabe210fbc2e8dc3612a03e0cab11df1e77a1
+  integration_commit: 74708af3f1bf2c31b050cf816e30aa52613fcda8
+  validated_commit: 33b18bc777df992ff8665d458d70782451d05a51
+  documentation_commit: 3c9f54124686b1b3c8c94a12d0174228d78a87f9
+  branch_at_time: perf/scale-harness
+  validated_tag: null
+  later_scale_milestone: a24482d438157aa23b371b6e34d49b1c04fec7f7
+
+hardware:
+  machine: Mac mini
+  cpu: not_backfilled
+  memory: not_backfilled
+  gpu: integrated_or_not_backfilled
+
+software:
+  os: macOS
+  python: not_backfilled_for_original_ab
+  dependency_lock: star repository at exact measurement commit
+
+scenario:
+  name: TestMap-8K-scale-5000
+  map_size: 91x91
+  resident_units: 5000
+  moving_units: 5000
+
+workload:
+  seed: 42
+  target_radius: 12
+  density: 1.0
+  phase: staggered
+  fog: true
+  camera: fixed
+  zoom: 0.15
+
+measurement:
+  warmup_seconds: 5
+  sustained_seconds: 20
+  sample_after_seconds: 10
+  sample_window_frames: 300
+  guards_required:
+    - rolling_window_full
+    - fog_matches_required
+    - camera_unchanged
+    - density_matches_requested
+    - gc_policy_matches_requested
+
+variables:
+  independent:
+    gc_policy:
+      - auto
+      - realtime_defer
+  controlled:
+    - fresh process for each policy
+    - same 5000-unit workload
+    - same scenario and seed
+    - same camera and zoom
+    - Fog ON
+    - staggered movement
+
+artifacts:
+  formal: []
+  backfill_status: "Original AUTO/realtime_defer formal JSON artifacts were not available when STAR Lab was initialized. Exact source provenance and validated numeric summaries are preserved; do not synthesize replacement raw data."
+
+headline:
+  problem_signature: "Rare ~50 ms-class frame/UnitRender tails coincide with a ~30.9 ms generation-2 CPython cyclic-GC pause inside the timed render call; collected objects = 0."
+  root_cause: "Automatic generation-2 cyclic GC can run unpredictably inside the latency-critical realtime loop, so profiler attribution lands on UnitRender even though the long pause is GC maintenance."
+  resolution: "Perform a full Gen2 collection before the bounded realtime measurement phase, temporarily disable automatic cyclic GC during that phase, then restore the caller's prior GC state at deadline/safe point."
+  result: "P99 improved from 48.815 ms to 25.489 ms; max fell to 26.581 ms; UnitRender max fell from 34.839 ms to 7.103 ms."
+
+revisit_when:
+  - Python runtime or GC implementation changes materially
+  - the realtime critical-window lifecycle changes
+  - safe-point collection cost becomes operationally unacceptable
+  - evidence shows cyclic garbage must be reclaimed within a bounded realtime phase

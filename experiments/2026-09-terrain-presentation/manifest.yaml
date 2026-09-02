@@ -1,72 +1,167 @@
 experiment:
-  id: <experiment-id>
-  title: <human-readable-title>
-  date: YYYY-MM-DD
-  status: draft | reproduced | validated | closed
+  id: terrain-opaque-presentation-cache
+  title: Terrain Opaque Presentation Cache
+  date: 2026-09-02
+  status: validated
 
 source:
   repository: star-nexus/star
-  problem_commit: <EXACT_SHA or null>
-  measurement_commit: <EXACT_SHA>
-  fix_commit: <EXACT_SHA or null>
-  validated_commit: <EXACT_SHA or null>
-  branch_at_time: <historical-branch-name or null>
-  validated_tag: <annotated-tag or null>
+  problem_commit: 6a61115ab29a0c4aeb39fa8b74c7cbcded314180
+  measurement_commit: 54d17745098fb3fc4c43861d839e8dc40164c030
+  fix_commit: 89f667985810fca8bb2756058e34f6b4d3663a5a
+  validated_commit: 54d17745098fb3fc4c43861d839e8dc40164c030
+  branch_at_time: perf/render-engine-breakdown
+  validated_tag: null
+  instrumentation_commits:
+    - b2dd5d03c09bae46ba8b0d92e78559bcc7d0d836
+    - 0f9368c942ad3a75fd872ec9e1e0cd979e23cae1
+  measurement_commits:
+    diagnostic: b2dd5d03c09bae46ba8b0d92e78559bcc7d0d836
+    orthogonal_abcd: 0f9368c942ad3a75fd872ec9e1e0cd979e23cae1
+    production_validation: 54d17745098fb3fc4c43861d839e8dc40164c030
 
 hardware:
-  machine: <model>
-  cpu: <cpu>
-  memory: <memory>
-  gpu: <gpu-or-null>
-  display: <display-or-null>
+  machine: Mac mini
+  cpu: null
+  memory: null
+  gpu: null
+  display: 2480x1268
 
 software:
-  os: <os-version>
-  python: <python-version>
-  dependency_lock: <uv-lock-sha-or-note>
+  os: macOS
+  python: "not captured in archived run metadata; reproduce with uv at exact source commit"
+  dependency_lock: star repository at exact measurement commit
 
 scenario:
-  name: <scenario>
-  map_size: <map-size>
-  resident_units: <count>
-  moving_units: <count>
+  name: TestMap-8K-scale-5000
+  map_size: 91x91
+  resident_units: 5000
+  moving_units: 5000
 
 workload:
-  seed: <seed>
-  target_radius: <radius>
-  density: <density>
-  phase: <staggered|synchronized|other>
-  fog: <true|false>
-  camera: <fixed description>
-  zoom: <zoom>
+  seed: 42
+  target_radius: 12
+  density: 1.0
+  phase: staggered
+  fog: true
+  camera: "fixed at offset_x=1240.0, offset_y=634.0 for steady state; deterministic discrete pan/zoom pattern for stress validation"
+  zoom: 0.15
 
 measurement:
-  warmup_seconds: <seconds>
-  sustained_seconds: <seconds>
-  sample_after_seconds: <seconds>
-  sample_window_frames: <frames>
-  gc_policy: <policy>
+  warmup_seconds: 5
+  sustained_seconds: 20
+  sample_after_seconds: 10
+  sample_window_frames: 300
+  gc_policy: realtime_defer
+  vision_geometry_cache_capacity: 16384
+  camera_stress:
+    stress_duration_seconds: 10
+    step_seconds: 0.75
+    overscan_margin_px: 256
+    pattern_kind: deterministic_discrete_state_jumps
   guards_required:
-    - <guard>
+    - rolling_window_full
+    - fog_matches_required
+    - density_matches_requested
+    - gc_policy_matches_requested
+    - vision_cache_capacity_unchanged
 
 variables:
   independent:
-    <name>:
-      - <value>
+    abcd_variant:
+      - original
+      - compact_alpha
+      - compact_flat_srcalpha
+      - compact_opaque_rgb
+    production_mode:
+      - legacy_alpha
+      - opaque_compact
   controlled:
-    - <condition>
+    - same map, seed, density and movement phase
+    - same submitted Terrain content region within each attribution comparison
+    - fresh process per formal run
+    - same source commit for final production Legacy/Opaque A/B
 
 artifacts:
   formal:
-    - path: results/<file>
-      sha256: <optional checksum for ordinary small Git files>
+    - path: results/diagnostics/terrain-alpha-diag-run1.json
+      sha256: d4bc04981c5c65e784a6eea21fb06b7a5e98b89ae55d7a2aa7cce805b5e63f67
+    - path: results/abcd/terrain-abcd-a-run1.json
+      sha256: c902fc33aa069879d3a2c9e6128535f48a0228719f84184f450cf6aa09c00c94
+    - path: results/abcd/terrain-abcd-a-run2.json
+      sha256: e846da571510dcfba82de6a6ba395f4d5ac9c194c1c1986ed6a98571e94a812b
+    - path: results/abcd/terrain-abcd-a-run3.json
+      sha256: 92e9c322210377b84c68a46be0cf9a1aaaef9c5dab84744ef81c775cc8b66fc9
+    - path: results/abcd/terrain-abcd-b-run1.json
+      sha256: a398b9283111796fe437c7d27ea3dc5d02cfbb02fb8400a2549cb0d075175eac
+    - path: results/abcd/terrain-abcd-b-run2.json
+      sha256: 2157d215ea567e6e0e4d2c4b119520046203c1a2e58664e3f6b692a9646679cd
+    - path: results/abcd/terrain-abcd-b-run3.json
+      sha256: c044dfefc72ff8e87bf0edd763518206375e0d4618bba8b6e83835d27b792745
+    - path: results/abcd/terrain-abcd-c-run1.json
+      sha256: 2b6016e8506346a2a3c68cbaa8cc76966f9211bfc855fb9a8c7a4f706f1316e8
+    - path: results/abcd/terrain-abcd-c-run2.json
+      sha256: 85553cd999aca8d6ef4e7a8cecddf924ba4db8c66fb933ab257b67cbc3e12826
+    - path: results/abcd/terrain-abcd-c-run3.json
+      sha256: e0c893f34343d19a7bc821c506a652a6eac87c536cf8a0df16b530f8a1dd4f0d
+    - path: results/abcd/terrain-abcd-d-run1.json
+      sha256: 0137c8ca1e00777f96c40fadc6976fd039fac69dd830fb0c0086602d436735f2
+    - path: results/abcd/terrain-abcd-d-run2.json
+      sha256: f726c204458b27fc6cb0caeda6db4b357ec01bf528c513a1822d76006cb99b15
+    - path: results/abcd/terrain-abcd-d-run3.json
+      sha256: 8f69d42da83223cd1700853b8ab939b3dcdedc6acf92deb399e4e5a733ce655f
+    - path: results/validation/fixed-camera/terrain-prod-legacy-run1.json
+      sha256: cfb6f7050351f5dbccaf374546f315fdf8951a392e00550903454256937af98c
+    - path: results/validation/fixed-camera/terrain-prod-legacy-run2.json
+      sha256: d841b466988b37942b3dbcdf9af4890520f45b5d9af384adb12a60e674fe2273
+    - path: results/validation/fixed-camera/terrain-prod-legacy-run3.json
+      sha256: d75390863c705c9ce5f77ca3efbb9a1909a89b0a1ba520eeb0cf6a9e8d6749b5
+    - path: results/validation/fixed-camera/terrain-prod-opaque-run1.json
+      sha256: 9490e92e2bf004e3df58e72dc74875206224d25f89e3506858612f2fb8337db9
+    - path: results/validation/fixed-camera/terrain-prod-opaque-run2.json
+      sha256: 3755a67612880a167cb8d42e0f43cad6d069f90942d25fcd79abd7c60faff1ef
+    - path: results/validation/fixed-camera/terrain-prod-opaque-run3.json
+      sha256: 33a4e6f5266c6442ce4231ca7d6e0c9fdd2e6da8e9ff14fafec13c0bf617919d
+    - path: results/validation/camera-stress/terrain-camera-legacy-run1.json
+      sha256: fc6da8f2b5532de83321c6d8bc5f4663ce955b96151ba7d2b3a6b2cbf614eec6
+    - path: results/validation/camera-stress/terrain-camera-legacy-run2.json
+      sha256: 2458f6cb3d457413efcaf08640da012589f6aaa55bd620472eeb57810dd848a1
+    - path: results/validation/camera-stress/terrain-camera-legacy-run3.json
+      sha256: 43a90c07e3ef41d7d1bafbffe3589988087c875f1cd4f0ec9198356665349fe2
+    - path: results/validation/camera-stress/terrain-camera-opaque-run1.json
+      sha256: 27d7cfd2fbee82e4760de4445b5474cacc91971fd7ec24e39a37ac827dd28e17
+    - path: results/validation/camera-stress/terrain-camera-opaque-run2.json
+      sha256: 6dd2f71b99da49e71d111a27bcf515b571ea8259aa5c6f6d8c89d1a7e5a06245
+    - path: results/validation/camera-stress/terrain-camera-opaque-run3.json
+      sha256: f849038a99cea67569147145c943eed1243fd95bf1769967dd75c093b0240d59
+  intermediate:
+    - path: results/intermediate/terrain-opaque-run1.json
+      sha256: a7998f4c5631e801e15b107f9e89de1bbfbf0440d74660fe1651b87e20db1fd8
+      classification: invalid-intended-variable-but-informative
+    - path: results/intermediate/terrain-opaque-run2.json
+      sha256: 0a560600dfb26d7d65901d4c3d3dc1a465d23b04aa1106b3c34ef3aa42eefb3a
+      classification: invalid-intended-variable-but-informative
+    - path: results/intermediate/terrain-opaque-run3.json
+      sha256: d730f6f069e8cf0aa648b2120e34d5c5968685c1e2668043b5c54d127d757cbb
+      classification: invalid-intended-variable-but-informative
+  checksums: artifacts/SHA256SUMS
+  integrity_verified_at_archive_creation: true
   external: []
 
 headline:
-  problem_signature: <short text>
-  root_cause: <short text>
-  resolution: <short text>
-  result: <short text>
+  problem_signature: "Terrain presentation remained a ~1.37 ms scalar Surface hot path after Fog bounding."
+  root_cause: "The dominant extra cost was Pygame/SDL SRCALPHA Surface software-blit semantics; large backing pitch/locality was secondary and flattening alpha values while retaining SRCALPHA was negligible."
+  resolution: "Keep the oversized SRCALPHA overscan raster for construction, but build a compact display-format opaque RGB presentation cache at cache-install boundaries."
+  result: "Production fixed-camera RenderEngine improved by ~0.889 ms (-26.7%); camera-stress RenderEngine improved by ~0.645 ms (-17.3%) without a new tail pathology."
+
+closure:
+  performance_validation: passed
+  stress_validation: passed
+  regression_test_evidence: pending_archive
+  formal_closed: false
 
 revisit_when:
-  - <condition>
+  - renderer migrates away from Pygame/SDL software Surfaces
+  - frame clear/background semantics change
+  - viewport scale makes opaque-cache rebuild cost material
+  - GPU-backed rendering is introduced

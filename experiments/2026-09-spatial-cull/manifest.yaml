@@ -1,0 +1,82 @@
+experiment:
+  id: unit-spatial-cull-hot-loop
+  title: Unit Spatial Cull Hot-Loop Reduction
+  date: 2026-09-02
+  status: closed
+
+source:
+  repository: star-nexus/star
+  problem_commit: 0dceb2f92c34bc3f24c746898142ff2e88e8efa2
+  measurement_commit: 500daa045888310f23fa64eb016e79e0af5e89bf
+  fix_commit: 500daa045888310f23fa64eb016e79e0af5e89bf
+  validated_commit: 615c3ac27f23f73b38d13b97280861fd1b0c9b72
+  branch_at_time: perf/scale-harness
+  validated_tag: null
+  later_scale_milestone: a24482d438157aa23b371b6e34d49b1c04fec7f7
+
+hardware:
+  machine: Mac mini
+  cpu: not_backfilled
+  memory: not_backfilled
+  gpu: integrated_or_not_backfilled
+  display: 2480x1268 in later formal scale runs
+
+software:
+  os: macOS
+  python: not_backfilled_for_original_run
+  dependency_lock: star repository at exact commit
+
+scenario:
+  name: TestMap-8K-scale-5000
+  map_size: 91x91
+  resident_units: 5000
+  moving_units: 5000
+
+workload:
+  seed: 42
+  target_radius: 12
+  density: 1.0
+  phase: staggered
+  fog: true
+  camera: fixed
+  zoom: 0.15
+
+measurement:
+  warmup_seconds: 5
+  sustained_seconds: 20
+  sample_after_seconds: 10
+  sample_window_frames: 300
+  gc_policy: realtime_defer
+  guards_required:
+    - rolling_window_full
+    - fog_matches_required
+    - camera_unchanged
+    - density_matches_requested
+
+variables:
+  independent:
+    implementation:
+      - legacy_candidate_hot_loop
+      - cached_record_and_frame_state
+  controlled:
+    - 5000 resident units
+    - 5000 moving units
+    - same scenario and seed
+    - fixed camera and zoom
+    - Fog ON
+    - staggered movement
+
+artifacts:
+  formal: []
+  note: Historical raw before/after JSON was not imported when STAR Lab was initialized. The recorded measurements are preserved in the archive narrative; future reruns should add raw artifacts here.
+
+headline:
+  problem_signature: "Spatial candidate discovery existed, but per-candidate legacy ECS/singleton/coordinate work kept unit_visible_cull near 3.53 ms."
+  root_cause: "Repeated candidate-level state lookup and coordinate work after the spatial prefilter, amplified by a screen-space margin at low zoom."
+  resolution: "Cache world coordinates on state change, cache Fog/view state per frame, reject exact bounds first, and use a world-space margin."
+  result: "unit_visible_cull reduced from about 3.53 ms to about 1.28-1.33 ms (~64%)."
+
+revisit_when:
+  - unit_visible_cull again becomes a top-tier frame cost
+  - candidate_to_visible ratio materially worsens on larger maps
+  - viewport/camera semantics change

@@ -1,42 +1,67 @@
 # Scale Runtime Memory Retention — Visibility History
 
-**Status:** CLOSED (historical archive; original soak JSON backfill pending)  
+**Status:** CLOSED — pre-fix formal evidence complete; final post-fix PASS transcript backfill pending  
 **STAR repository:** `star-nexus/star`  
 **Problem/reproduction commit:** `c16aed62975f48a80b85db0f594789372cf2a782`  
 **Fix commit:** `cc47acb661500787395b2b9b241256edadfed1d4`  
-**Later validated scale milestone:** `a24482d438157aa23b371b6e34d49b1c04fec7f7`
+**Later milestone tag:** `scale-v1-cull-vision-closed`
 
 ## 1. Problem
 
-After the Vision geometry cache had already been bounded, long repeated realtime soak runs still showed growing RSS and tracked Python objects even though full safe-point generation-2 collections repeatedly reported `collected=0`, the Vision cache stayed capped, and ECS entity/component counts stayed flat.
+After the Vision geometry cache had already been bounded, a repeated 600-second realtime soak still showed growing RSS and tracked Python objects even though safe-point full generation-2 collections repeatedly reported `collected=0`, the Vision cache stayed capped, and ECS entity/component counts stayed flat.
 
-The important diagnostic question was therefore not "why is GC failing?" but:
+The useful question became:
 
-> What live application state is still intentionally retaining historical objects?
+> What reachable application state is intentionally retaining historical objects?
 
-## 2. Historical pre-fix signature
+## 2. Canonical pre-fix evidence
 
-A long soak before the visibility-history fix showed approximately:
+Formal completed soak:
+
+- [`results/realtime-gc-soak-v2-600s.json`](results/realtime-gc-soak-v2-600s.json)
+- SHA256: `84e67049916b9fc49f0c20aa5b07c864ebd283a2780fdecda0b47b517e72a35d`
+
+It completed **40/40 cycles (600 s)** and reported:
 
 ```text
-baseline RSS              328.359 MB
-later RSS                 380.312 MB
-post-baseline growth      +51.953 MB
-tracked-object growth     +149,950
-safe full GC collected    0 repeatedly
-Vision geometry cache     fixed at 4096
-ECS entities/components   stable
+baseline RSS                    328.359 MB
+final post-collect RSS          380.312 MB
+RSS growth                      +51.953 MB
+baseline tracked objects        200,104
+final tracked objects           350,054
+tracked-object growth           +149,950
+total safe-GC collected         0
+entity growth                   0
+component-instance growth       0
+Vision geometry-cache size      4096 (bounded)
 ```
 
-Inspection then identified scale statistics visibility history as a bounded-but-large live retention structure:
+An earlier partial but diagnostically useful soak is retained separately:
+
+- [`results/intermediate/realtime-gc-soak-600s-incomplete.json`](results/intermediate/realtime-gc-soak-600s-incomplete.json)
+
+It executed eight valid cycles before terminating as `soak_incomplete`; it is investigation evidence, **not** formal validation evidence.
+
+## 3. Root-cause investigation
+
+Inspection found:
 
 ```text
 VisibilityTracker.visibility_history
 VISIBILITY_HISTORY_LIMIT = 100
-5000 units × up to 100 records = up to 500,000 retained transition dicts
 ```
 
-## 3. Reproduce the old retention policy
+At 5000 units this permits as many as:
+
+```text
+5000 × 100 = 500,000
+```
+
+reachable historical transition records.
+
+Because those objects remained reachable by application state, additional GC was the wrong remedy. Current visibility semantics already lived in current-state structures; the full per-unit transition trajectory was telemetry.
+
+## 4. Reproduce the pre-fix retention
 
 ```bash
 git clone https://github.com/star-nexus/star.git
@@ -46,56 +71,46 @@ git checkout c16aed62975f48a80b85db0f594789372cf2a782
 uv sync
 ```
 
-Start the formal 5000-unit realtime ENV with the scale harness and `realtime_defer`, then run the repeated GC soak driver. The historical command family was:
+Run the 5K repeated realtime soak with `realtime_defer`, Fog ON, density 1.0, staggered movement, 15-second cycles, and a 600-second horizon.
 
-```bash
-uv run tools/scale_gc_soak.py \
-  --socket /tmp/star-scale.sock \
-  --realtime-seconds 120 \
-  --cycle-realtime-seconds 15 \
-  --priming-realtime-seconds 15 \
-  --sustained-duration 20 \
-  --density 1.0 \
-  --seed 42 \
-  --target-radius 12 \
-  --phase staggered \
-  --require-fog on \
-  --output results/gc-soak/realtime-gc-soak.json
-```
+Expected signature: post-safe-GC tracked objects and RSS keep climbing while safe Gen2 collections reclaim zero and ECS/major cache cardinalities stay bounded.
 
-For stronger reproduction, extend `--realtime-seconds` toward the historical long-soak horizon.
-
-Expected pre-fix signature: safe full collections reclaim little or nothing while retained visibility-history records and tracked objects continue to rise with historical activity.
-
-## 4. Validate the fix
+## 5. Fix
 
 ```bash
 git checkout cc47acb661500787395b2b9b241256edadfed1d4
 ```
 
-The scale/window `VISIBILITY_HISTORY_LIMIT` becomes `1`; canonical/headless behavior is unchanged.
-
-The later 120-second v3 validation produced:
+The scale/window visibility-history retention becomes:
 
 ```text
-primed RSS                         368.812 MB
-final RSS                          337.438 MB
-visibility_history_records         exactly 5000
-visibility_history_max_per_unit    exactly 1
-unit_observation_history_records   10000
-Vision cache                        4096
-ECS entities/components             stable
-safe full GC collected              0
+VISIBILITY_HISTORY_LIMIT = 1
 ```
 
-Tracked objects warmed to roughly 209.7k and then plateaued; late-window slope was effectively zero rather than leak-shaped.
-
-## 5. Resolution
-
-The runtime keeps only the latest scale-mode visibility transition per unit. Full visibility trajectories are historical telemetry and belong in logging/evaluation/archive planes, not live realtime ECS state.
+Canonical/headless behavior is unchanged.
 
 > Runtime state is not historical telemetry.
 
-## 6. Archive note
+## 6. Final post-fix validation — backfill pending
 
-This investigation predates `star-lab`. The exact source commits and validated numeric summaries are preserved here, but the original long-soak raw JSON files were not available in the current archive workspace. They should be added later if recovered; this omission is explicit rather than silently reconstructing fake raw evidence.
+The original final PASS was recorded as terminal output rather than a JSON artifact. Its historical validated summary indicates:
+
+```text
+visibility_history_records         5000
+visibility_history_max_per_unit    1
+Vision cache                        4096
+ECS entities/components             stable
+safe full GC collected              0
+late tracked-object values          plateau near 209.7k
+RSS                                 no monotonic growth
+```
+
+STAR Lab intentionally does **not** promote this summary to raw-evidence status. When the original terminal transcript is recovered, archive it as a text artifact (or faithful transcript), add its SHA256, and update the manifest from `pending_transcript_backfill` to verified post-fix evidence.
+
+## 7. Integrity
+
+```bash
+shasum -a 256 -c artifacts/SHA256SUMS
+```
+
+The current checksum set covers the complete pre-fix formal soak and the retained intermediate partial soak.

@@ -1,0 +1,61 @@
+experiment:
+  id: dynamic-world-scaling-methodology
+  title: Dynamic World Scaling Methodology Evolution
+  date: 2026-09-02
+  status: archived_provenance_backfill_pending
+
+source:
+  repository: star-nexus/star
+  branch_at_time: perf/scale-harness
+  v1_commit: null
+  v2_commit: null
+  v2_1_commit: null
+  provenance_status: pending_exact_commit_backfill
+  note: "Do not infer commit SHAs from file/directory names. Exact source identity must be proven from Git or another primary record."
+
+scenario:
+  name: TestMap-8K-scale-5000
+  map_size: 91x91
+  resident_units: 5000
+
+common_workload:
+  seed: 42
+  target_radius: 12
+  fog_formal: true
+  camera_epoch_guard: fixed
+  canonical_large_window_zoom: 0.15
+  sample_window_frames: 300
+
+cohorts:
+  v1:
+    artifacts: 8
+    contents:
+      - density_0
+      - density_010
+      - density_025
+      - density_050
+      - density_075
+      - density_100
+      - burst_0_synchronized
+      - burst_100_synchronized
+  v2:
+    artifacts: 3
+    contents: [density_000, density_010, density_100]
+  v2_1:
+    artifacts: 3
+    contents: [density_000, density_100, density_100_frontwindow]
+
+artifacts:
+  root: results/
+  checksums: artifacts/SHA256SUMS
+  integrity_verified: true
+  total_raw_json: 14
+
+headline:
+  purpose: "Preserve the evolution of the controlled 5K Dynamic World workload and the evidence context that exposed later GC, memory, cull, and Vision bottlenecks."
+  limitation: "Raw artifacts are authentic and checksummed, but exact STAR source SHA per V1/V2/V2.1 cohort remains unproven."
+
+completion_requirements:
+  - prove exact STAR commit for each cohort or prove that cohorts share a commit
+  - record those SHAs here
+  - verify reproduction commands against the bound source state

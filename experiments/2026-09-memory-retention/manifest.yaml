@@ -2,25 +2,16 @@ experiment:
   id: scale-visibility-history-retention
   title: Scale Runtime Memory Retention — Visibility History
   date: 2026-09-02
-  status: closed_historical_backfill
+  status: closed_post_fix_evidence_backfill_pending
 
 source:
   repository: star-nexus/star
   problem_commit: c16aed62975f48a80b85db0f594789372cf2a782
   measurement_commit: c16aed62975f48a80b85db0f594789372cf2a782
   fix_commit: cc47acb661500787395b2b9b241256edadfed1d4
-  validated_commit: a24482d438157aa23b371b6e34d49b1c04fec7f7
+  later_validated_commit: a24482d438157aa23b371b6e34d49b1c04fec7f7
+  later_validated_tag: scale-v1-cull-vision-closed
   branch_at_time: perf/scale-harness
-  validated_tag: null
-
-hardware:
-  machine: Mac mini
-  cpu: not_backfilled
-  memory: not_backfilled
-
-software:
-  os: macOS
-  python: not_backfilled_for_original_soak
 
 scenario:
   name: TestMap-8K-scale-5000
@@ -34,27 +25,33 @@ workload:
   density: 1.0
   phase: staggered
   fog: true
-  camera: fixed during formal scale workload
-  zoom: 0.15
+  gc_policy: realtime_defer
 
 measurement:
+  formal_pre_fix_soak_seconds: 600
   cycle_realtime_seconds: 15
   priming_realtime_seconds: 15
   sustained_seconds: 20
-  gc_policy: realtime_defer
   safe_gc_collect_generation: 2
 
 artifacts:
-  formal: []
-  backfill_status: "Original historical soak JSON not yet recovered into star-lab. Numeric summaries and exact code provenance are preserved."
+  formal_pre_fix:
+    - path: results/realtime-gc-soak-v2-600s.json
+      sha256: 84e67049916b9fc49f0c20aa5b07c864ebd283a2780fdecda0b47b517e72a35d
+      validity: formal_complete
+  intermediate:
+    - path: results/intermediate/realtime-gc-soak-600s-incomplete.json
+      sha256: 4ddf995b1bea77ac9f961dcdf682ce73b6f6e7b24c7dc657bef47b9f4bbf39a7
+      validity: partial_diagnostic_only
+      note: "Eight valid cycles completed; overall result soak_incomplete. Never use as final validation."
+  checksums: artifacts/SHA256SUMS
+  integrity_verified: true
+  post_fix_validation:
+    status: pending_transcript_backfill
+    note: "Final 120s PASS existed as terminal output. Preserve the original transcript when recovered; do not synthesize raw JSON from the summary."
 
 headline:
-  problem_signature: "RSS +51.953 MB and tracked objects +149950 across long soak while full safe GC repeatedly collected 0; Vision cache and ECS counts stayed bounded."
-  root_cause: "Scale VisibilityTracker retained up to 100 historical visibility-change dicts per unit: up to 500k live historical records at 5000 units."
+  problem_signature: "Completed 600s soak: RSS +51.953 MB, tracked objects +149950, total safe-GC collected 0, entity/component growth 0, Vision cache bounded at 4096."
+  root_cause: "Scale VisibilityTracker retained up to 100 reachable historical visibility-change dicts per unit: up to 500k records at 5K units."
   resolution: "Scale/window retains only the latest visibility transition per unit; canonical/headless behavior unchanged."
-  result: "120s v3 validation kept exactly 5000 visibility-history records (max 1/unit), stable ECS/vision bounds, and late tracked-object plateau near 209.7k."
-
-revisit_when:
-  - runtime begins retaining new historical per-unit structures
-  - long soak shows sustained post-warmup tracked-object or RSS slope
-  - telemetry requirements are moved back into realtime ECS state
+  post_fix_summary_unverified_as_raw: "Final terminal PASS showed 5000 visibility-history records (max 1/unit), stable bounded structures, no monotonic RSS growth, and late tracked-object plateau near 209.7k."

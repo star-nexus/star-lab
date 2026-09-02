@@ -1,6 +1,6 @@
 # STAR Engineering Experiment & Reproducibility Protocol
 
-**Version:** 1.0  
+**Version:** 1.1  
 **Status:** Normative  
 **Applies to:** STAR / StarBench performance work, scalability experiments, runtime debugging, architecture optimization, and engineering investigations.
 
@@ -16,7 +16,8 @@ A formal engineering conclusion is complete only when a future engineer can:
 4. inspect the evidence used to identify the root cause;
 5. run the corrected version under comparable conditions;
 6. understand why the final design was selected;
-7. trace any reported number back to raw evidence.
+7. trace any reported number back to raw evidence;
+8. verify that archived evidence is byte-identical to the recorded artifact.
 
 > A conclusion without reproduction is a memory, not engineering evidence.
 
@@ -41,21 +42,15 @@ STAR Lab is **not** a source-code fork. Every formal experiment references `star
 ## 3. Version semantics
 
 ```text
-branch           = active work line
-checkpoint branch= temporary debugging / A-B comparison point
-annotated tag    = validated, immutable engineering milestone
-star-lab         = durable evidence and decision history
+branch            = active work line
+checkpoint branch = temporary debugging / A-B comparison point
+annotated tag     = validated, immutable engineering milestone
+star-lab          = durable evidence and decision history
 ```
 
-### Branch
+Branches may move. Never use a branch name alone as the identity of a formal experiment.
 
-Branches may move and evolve. Never use a branch name alone as the identity of a formal experiment.
-
-### Checkpoint branch
-
-Use checkpoints for regression comparison, `git diff`, `git bisect`, or returning to a known development baseline. Checkpoints are useful working references but are not permanent historical identities.
-
-### Annotated tag
+Use checkpoints for regression comparison, `git diff`, `git bisect`, or returning to a known development baseline. They are useful working references but are not permanent historical identities.
 
 Use annotated tags for important validated milestones. Tags are treated as immutable once published.
 
@@ -63,7 +58,7 @@ Example:
 
 ```bash
 git tag -a scale-v1-cull-vision-closed <EXACT_SHA> \
-  -m "Validated scale baseline: GC, bounded memory, spatial cull and Vision cache closed"
+  -m "Validated scale baseline: realtime GC, bounded memory, spatial cull and Vision cache closed"
 git push origin scale-v1-cull-vision-closed
 ```
 
@@ -91,13 +86,6 @@ Observation
   -> Archive / Performance Frontier
 ```
 
-Examples of invalid reasoning:
-
-```text
-"This looks slow" -> "rewrite it in Rust"
-"After is faster" -> "therefore my intended mechanism caused the gain"
-```
-
 Intermediate causal metrics are required whenever they materially distinguish competing explanations.
 
 ---
@@ -122,18 +110,17 @@ Intermediate causal metrics are required whenever they materially distinguish co
 
 - representative rejected designs;
 - platform-specific findings likely to recur;
-- instrumentation methodology that future engineers should reuse.
+- instrumentation methodology that future engineers should reuse;
+- partial experiments that executed a valid workload and materially changed the investigation.
 
 ### Do not promote to formal evidence
 
 - configuration mistakes;
-- failed experiment guards;
+- failed guards before the intended workload starts;
 - uncontrolled camera/Fog/workload runs;
 - disposable smoke tests;
 - results whose exact source state is unknown;
 - random profiler dumps that support no durable conclusion.
-
-Invalid runs may be retained under `results/invalid/` only when the failure itself is useful. They must be marked invalid and must never be mixed into formal result sets.
 
 ---
 
@@ -152,8 +139,6 @@ experiments/YYYY-MM-<name>/
 ```
 
 Use the files in `templates/` rather than inventing a new layout.
-
-The four required documents have distinct responsibilities:
 
 | File | Question it answers |
 |---|---|
@@ -189,9 +174,7 @@ raw result paths
 validation guards
 ```
 
-### Checkout must be executable
-
-A future engineer should be able to follow commands such as:
+A future engineer should be able to execute:
 
 ```bash
 git clone https://github.com/star-nexus/star.git
@@ -203,23 +186,7 @@ uv sync
 
 Then run the documented commands without guessing omitted arguments.
 
-### Expected signature is mandatory
-
-Do not write only "performance becomes worse." Record enough numbers or events to tell whether reproduction succeeded, for example:
-
-```text
-geometry cache full
-hit rate ~72%
-sustained evictions
-VisionSystem ~2.9 ms
-```
-
-or:
-
-```text
-rare UnitRender tail ~25-30 ms
-Gen2 GC pause coincides with spike
-```
+Expected signatures must be specific enough to determine whether reproduction succeeded.
 
 ---
 
@@ -229,7 +196,7 @@ Gen2 GC pause coincides with spike
 
 A branch name may be recorded as historical context but never substitutes for a SHA.
 
-The manifest enables future tooling to enumerate experiments, regenerate tables, verify artifact checksums, and build the Performance Frontier automatically.
+If historical evidence has been recovered but the exact source SHA has not yet been proven, mark the archive explicitly as `provenance_backfill_pending`. Do not guess a commit merely to make the manifest look complete.
 
 ---
 
@@ -237,37 +204,18 @@ The manifest enables future tooling to enumerate experiments, regenerate tables,
 
 `analysis.md` MUST distinguish:
 
-### Observation
-
-Measured facts only.
-
-### Hypothesis
-
-Possible explanations. Label hypotheses as hypotheses.
-
-### Instrumentation
-
-What was added or inspected to distinguish hypotheses.
-
-### Evidence
-
-Measurements supporting or contradicting each explanation.
-
-### Root cause
-
-State only after the evidence supports it.
-
-### Rejected explanations
-
-Preserve important rejected hypotheses when they prevent future engineers from repeating the same investigation.
+- **Observation** — measured facts only.
+- **Hypothesis** — possible explanations, explicitly labeled.
+- **Instrumentation** — what distinguished the hypotheses.
+- **Evidence** — measurements supporting or contradicting each explanation.
+- **Root cause** — state only after evidence supports it.
+- **Rejected explanations** — preserve important rejected hypotheses when they prevent repeated investigation.
 
 ---
 
 ## 10. Decision discipline
 
-`decision.md` must record more than the winning number.
-
-For a parameter decision it should state:
+`decision.md` must record more than the winning number. For a parameter decision it should state:
 
 ```text
 measured minimum sufficient value
@@ -305,34 +253,101 @@ If aggregate metrics disagree with causal intermediate metrics, investigate conf
 
 Keep controlled evidence that supports a durable conclusion. Do not keep every local debugging run.
 
-Good archival set:
+Before committing raw data, classify each artifact as:
 
 ```text
-capacity-4096.json
-capacity-8192.json
-capacity-16384.json
-capacity-32768.json
+formal
+intermediate / invalid-but-informative
+disposable
 ```
 
-Bad archival set:
+### `ok:false` is not an automatic deletion rule
+
+Classify the run by what actually executed:
 
 ```text
-test1.json
-test2.json
-final2.json
-really-final.json
-debug3.json
+ok:false
+  |
+  +-- guard/config failed before valid workload
+  |      -> discard
+  |
+  +-- accidental/debug run
+  |      -> discard
+  |
+  +-- valid workload partially completed
+         + produced useful diagnostic evidence
+         -> keep under results/intermediate/ (or results/invalid/)
+         -> never use as a formal conclusion
 ```
 
-Before committing raw data, classify each artifact as formal, invalid-but-informative, or disposable.
+A partial run may be valuable investigation evidence even though it cannot validate a final result.
+
+### One canonical location per raw artifact
+
+Do not duplicate the same raw JSON into multiple case directories merely because it supports more than one investigation.
+
+Use:
+
+```text
+one canonical raw artifact
+       -> canonical checksum
+       -> cross-case references from other manifests / analyses
+```
+
+This prevents two copies of the same evidence from silently diverging.
 
 ---
 
-## 13. Large artifact policy
+## 13. Artifact integrity (SHA256)
+
+Every small formal raw artifact committed to Git **MUST** be covered by SHA256 integrity metadata.
+
+Standard location:
+
+```text
+experiment/
+├── results/
+└── artifacts/
+    └── SHA256SUMS
+```
+
+`SHA256SUMS` paths MUST be relative to the experiment root, for example:
+
+```text
+<sha256>  results/capacity-4096.json
+<sha256>  results/capacity-8192.json
+```
+
+Verification MUST work from the experiment root:
+
+```bash
+cd experiments/<experiment>
+shasum -a 256 -c artifacts/SHA256SUMS
+```
+
+All listed artifacts must report `OK` before the archive is considered integrity-verified.
+
+If a case owns no local raw artifacts and only cross-references canonical evidence in another case, **do not create an empty `SHA256SUMS`**. Reference the canonical artifact path and checksum instead.
+
+For GB-scale traces, heap dumps, video, or other external artifacts, keep the artifact outside ordinary Git and record at least:
+
+```text
+artifact name
+size
+storage locator
+SHA256
+creation/source context
+```
+
+An external artifact without a checksum is not durable evidence.
+
+---
+
+## 14. Large artifact policy
 
 Ordinary Git stores small structured evidence: Markdown, YAML, JSON, CSV, compact profiler summaries, and checksums.
 
-Do **not** put GB-scale traces, heap dumps, videos, trajectories, or frame captures directly into normal Git history.
+Do not put GB-scale traces, heap dumps, videos, trajectories, or frame captures directly into normal Git history.
 
 Use:
 
@@ -341,13 +356,9 @@ Git                 -> manifest + metadata + checksum
 Release/LFS/storage -> large immutable artifact
 ```
 
-The manifest must retain at least artifact name, size, checksum, storage locator, and creation context.
-
-An external artifact without a checksum is not considered durable evidence.
-
 ---
 
-## 14. Fix validation
+## 15. Fix validation
 
 A closed problem must demonstrate both sides:
 
@@ -362,7 +373,7 @@ A code change without controlled validation is not a closed engineering investig
 
 ---
 
-## 15. Performance Frontier
+## 16. Performance Frontier
 
 `records/performance-frontier.md` records how STAR's validated scalability boundary moves over time.
 
@@ -371,6 +382,7 @@ A Frontier entry requires:
 - valid experiment guards;
 - exact source SHA;
 - raw result preserved;
+- artifact integrity verified;
 - workload and machine documented;
 - no known measurement contamination;
 - experiment marked validated;
@@ -380,7 +392,7 @@ A frontier is not a casual benchmark leaderboard. It is a historical record of v
 
 ---
 
-## 16. Definition of CLOSED
+## 17. Definition of CLOSED
 
 An important issue is CLOSED only when all applicable items are complete:
 
@@ -390,7 +402,8 @@ root cause demonstrated
 fix implemented
 controlled validation passed
 regression tests passed
-raw evidence archived
+raw evidence archived or canonical evidence referenced
+artifact integrity verified
 reproduction documented
 exact commits recorded
 decision documented
@@ -401,41 +414,33 @@ milestone/tag preserved when appropriate
 
 ---
 
-## 17. Engineering principles
+## 18. Engineering principles
 
 ### Profile first. Native second.
-
 Do not migrate work to Rust/native code simply because Python appears slow. Establish a stable hot boundary first.
 
 ### Tight budgets expose wrong complexity.
-
-Prefer constrained resources during diagnosis. Excess capacity can hide full scans, unbounded state, repeated work, random maintenance, and poor data structures.
-
-Remove wrong complexity before scaling hardware.
+Prefer constrained resources during diagnosis. Excess capacity can hide full scans, unbounded state, repeated work, random maintenance, and poor data structures. Remove wrong complexity before scaling hardware.
 
 ### Runtime state is not historical telemetry.
-
 Do not retain complete historical trajectories in latency-critical runtime state merely because they may be useful for later analysis. Historical evidence belongs in logging/evaluation/archive planes.
 
 ### Expensive work may move rather than disappear.
-
 Maintenance that is necessary but unpredictable should execute at safe points or state-change boundaries rather than randomly inside latency-critical loops.
 
 ### Do not optimize a black box.
-
 If a section is 5.3 ms, first split and instrument the 5.3 ms. Attribute cost before redesigning it.
 
 ### Every important number must have provenance.
-
 Every reported result should trace to:
 
 ```text
-raw artifact -> manifest -> exact source commit -> machine/workload
+raw artifact -> SHA256 -> manifest -> exact source commit -> machine/workload
 ```
 
 ---
 
-## 18. New-engineer training procedure
+## 19. New-engineer training procedure
 
 Before independently owning STAR runtime/performance work, a new engineer SHOULD reproduce one historical closed investigation.
 
@@ -448,17 +453,18 @@ Training sequence:
 5. Check out the fix/validated SHA.
 6. Re-run the comparable workload and reproduce the fixed signature.
 7. Create a temporary training experiment package using the standard templates.
-8. Have an existing engineer review provenance, measurement controls, interpretation, and archive quality.
+8. Verify artifact checksums.
+9. Have an existing engineer review provenance, measurement controls, interpretation, and archive quality.
 
 Training is complete when the engineer can independently perform:
 
 ```text
-checkout -> reproduce -> measure -> interpret -> validate -> archive
+checkout -> reproduce -> measure -> interpret -> validate -> archive -> verify
 ```
 
 ---
 
-## 19. Formal archive review checklist
+## 20. Formal archive review checklist
 
 ### Source
 - [ ] exact problem SHA recorded
@@ -476,17 +482,25 @@ checkout -> reproduce -> measure -> interpret -> validate -> archive
 
 ### Measurement
 - [ ] profiler window valid
-- [ ] experiment guards pass
+- [ ] experiment guards pass for formal results
 - [ ] no uncontrolled camera/Fog/workload change
 - [ ] primary metrics recorded
 - [ ] causal intermediate metrics recorded when needed
 
 ### Evidence
-- [ ] formal raw results preserved
-- [ ] invalid/debug runs separated
+- [ ] formal raw results preserved or canonical evidence referenced
+- [ ] intermediate/invalid runs separated
+- [ ] disposable invalid runs removed
 - [ ] observations and hypotheses separated
 - [ ] root cause supported by evidence
 - [ ] useful rejected hypotheses preserved
+
+### Integrity
+- [ ] every local formal raw artifact is listed in `artifacts/SHA256SUMS`
+- [ ] checksum paths are experiment-relative
+- [ ] `shasum -a 256 -c artifacts/SHA256SUMS` reports `OK`
+- [ ] external large artifacts include checksum + size + locator
+- [ ] no empty checksum file exists for a cross-reference-only case
 
 ### Fix
 - [ ] before/after comparable
@@ -496,6 +510,5 @@ checkout -> reproduce -> measure -> interpret -> validate -> archive
 ### Archive
 - [ ] `decision.md` complete
 - [ ] large artifacts kept out of normal Git history
-- [ ] external artifacts include checksums
 - [ ] Performance Frontier updated when applicable
 - [ ] annotated milestone tag created when appropriate

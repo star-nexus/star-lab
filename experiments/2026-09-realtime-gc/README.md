@@ -1,24 +1,20 @@
 # Realtime Gen2 GC Tail Latency
 
-**Status:** CLOSED (historical archive; original A/B JSON backfill pending)  
+**Status:** CLOSED — complete formal archive  
 **STAR repository:** `star-nexus/star`  
 **Diagnostic pre-policy commit:** `916d88dcd3d796fe49a0cadd64be40b68c331b5c`  
 **GC policy implementation:** `6bdeabe210fbc2e8dc3612a03e0cab11df1e77a1`  
 **Scale integration:** `74708af3f1bf2c31b050cf816e30aa52613fcda8`  
-**Formal env-selected A/B guard:** `33b18bc777df992ff8665d458d70782451d05a51`  
-**Policy documentation:** `3c9f54124686b1b3c8c94a12d0174228d78a87f9`
+**Formal A/B measurement commit:** `33b18bc777df992ff8665d458d70782451d05a51`  
+**Later milestone tag:** `scale-v1-cull-vision-closed`
 
 ## 1. Problem
 
-The 5000-unit realtime workload had acceptable average throughput but rare frame/UnitRender tails near the 50 ms class. Initial profiling attributed the spike to `UnitRenderSystem`, but detailed GC instrumentation showed that the long pause was a CPython generation-2 cyclic collection occurring inside the timed render call.
+The 5000-unit realtime workload had acceptable average throughput but rare frame tails near the 50 ms class. Initial profiling attributed the spike to `UnitRenderSystem`; GC instrumentation showed that a CPython generation-2 cyclic collection was occurring inside the timed render call.
 
-This is a classic attribution trap:
+> The profiler showed where execution was paused, not which semantic subsystem owned the maintenance work.
 
-> The profiler showed where the process was paused, not necessarily which subsystem created the expensive work.
-
-## 2. Diagnostic source state
-
-The commit below contains low-overhead UnitRender/GC tail attribution but predates the controlled realtime GC policy:
+## 2. Reproduce the diagnostic state
 
 ```bash
 git clone https://github.com/star-nexus/star.git
@@ -28,32 +24,27 @@ git checkout 916d88dcd3d796fe49a0cadd64be40b68c331b5c
 uv sync
 ```
 
-Under the formal 5000-unit 100%-moving workload, the historical slow-frame signature included:
+Expected slow-frame signature under the formal 5K / 100%-moving workload:
 
 ```text
-UnitRender / frame tail        ~50 ms class
-GC pause in worst frame        30.897 ms
-Gen2 portion                   30.846 ms
+GC pause in worst frame        30.896833 ms
+Gen2 portion                   30.845625 ms
 GC collected objects           0
 ```
 
-The fact that the collection reclaimed zero objects was also important: the pause itself was expensive even when it found nothing to reclaim.
-
 ## 3. Reproduce the controlled A/B
 
-Use the formal measurement source:
+Use:
 
 ```bash
 git checkout 33b18bc777df992ff8665d458d70782451d05a51
 ```
 
-Start a fresh ENV for each policy.
-
-### AUTO
+Start a fresh ENV for each policy:
 
 ```bash
 STAR_SCALE_HARNESS_SOCKET=/tmp/star-scale.sock \
-STAR_SCALE_GC_POLICY=auto \
+STAR_SCALE_GC_POLICY=<auto|realtime_defer> \
 uv run rotk_env/main.py \
   --skip-start \
   --scenario TestMap-8K-scale-5000 \
@@ -64,50 +55,38 @@ uv run rotk_env/main.py \
   --profile
 ```
 
-Run the formal 100%-moving staggered density point with Fog ON and fixed camera/zoom.
+Run the same 100%-moving staggered density point with Fog ON, fixed camera, zoom `0.15`, warmup 5 s, sustained duration 20 s, and the 300-frame formal measurement window.
 
-### realtime_defer
+The policy guard must match the requested runtime state.
 
-Restart a fresh ENV and change only:
+## 4. Canonical raw evidence
+
+- [`results/density-100-auto.json`](results/density-100-auto.json)
+- [`results/density-100-realtime-gc.json`](results/density-100-realtime-gc.json)
+- [`artifacts/SHA256SUMS`](artifacts/SHA256SUMS)
+
+Verify from this experiment directory:
 
 ```bash
-STAR_SCALE_GC_POLICY=realtime_defer
+shasum -a 256 -c artifacts/SHA256SUMS
 ```
 
-The measurement guard must report that the requested policy matches the active runtime state.
+## 5. Formal A/B result
 
-## 4. Historical A/B result
+| Metric | AUTO | `realtime_defer` |
+|---|---:|---:|
+| Avg frame | 23.244 ms | 21.837 ms |
+| P50 | 21.861 ms | 21.001 ms |
+| P95 | 25.984 ms | 24.940 ms |
+| P99 | 48.815 ms | 25.489 ms |
+| Max frame | 52.742 ms | 26.581 ms |
+| UnitRender max | 34.839 ms | 7.103 ms |
+| Animated draw max | 29.434 ms | 1.582 ms |
+| In-window worst GC pause | 30.897 ms | none observed |
 
-### AUTO
+The deferred run performs a proactive full Gen2 collection before the measured critical epoch (`19.745916 ms`, `collected=0`) and keeps automatic cyclic GC disabled only for the bounded realtime phase.
 
-```text
-avg frame                 23.244 ms
-P50                       21.861 ms
-P95                       25.984 ms
-P99                       48.815 ms
-max                       ~52.742 ms (worst observed 57.756 ms)
-UnitRender max            34.839 ms
-animated draw max         29.434 ms
-worst-frame GC            30.897 ms
-Gen2                      30.846 ms
-collected                 0
-```
-
-### realtime_defer
-
-```text
-pre-measurement Gen2 GC   ~19.746 ms at safe boundary
-avg frame                 21.837 ms
-P50                       21.001 ms
-P95                       24.940 ms
-P99                       25.489 ms
-max                       26.581 ms
-slow frames               0
-UnitRender max            7.103 ms
-animated draw max         1.582 ms
-```
-
-## 5. Policy
+## 6. Policy
 
 ```text
 before bounded realtime critical phase:
@@ -118,23 +97,17 @@ during critical phase:
   CPython reference counting remains active
   automatic cyclic collection is deferred
 
-at explicit safe point / deadline:
-  restore the caller's previous automatic-GC state
-  maintenance may run outside the latency-critical epoch
+at deadline / explicit safe point:
+  restore caller's previous GC-enabled state
 ```
 
-The policy is bounded and restores the exact prior GC-enabled state. It is not "disable garbage collection forever."
+This is not “disable GC forever.” It schedules unpredictable maintenance outside the latency-critical loop.
 
-## 6. Result
-
-The P99 cliff was removed by moving unpredictable cyclic-GC maintenance out of the realtime measurement window:
+## 7. Result
 
 ```text
-P99: 48.815 ms -> 25.489 ms
-max: ~52-58 ms -> 26.581 ms
-UnitRender max: 34.839 ms -> 7.103 ms
+P99             48.815 -> 25.489 ms
+UnitRender max  34.839 ->  7.103 ms
 ```
 
-## 7. Archive note
-
-This investigation predates STAR Lab. Exact implementation/diagnostic commits and validated numeric summaries are preserved, but the original AUTO/defer JSON artifacts are not present in the current archive workspace. Add them if recovered; do not synthesize replacements.
+The raw A/B artifacts are now recovered and integrity-verified; this case no longer depends on summary-only historical backfill.

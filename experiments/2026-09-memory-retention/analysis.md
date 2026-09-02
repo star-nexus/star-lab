@@ -2,125 +2,103 @@
 
 ## 1. Observation
 
-After Vision geometry caching itself was bounded, a long repeated realtime soak still showed material RSS/tracked-object growth.
-
-At the same time:
+The completed pre-fix 600-second soak (`results/realtime-gc-soak-v2-600s.json`) showed:
 
 ```text
-safe generation-2 GC collections repeatedly collected 0
-Vision geometry cache remained at its configured bound
-ECS entity count remained flat
-ECS component-instance count remained flat
+cycles completed                 40 / 40
+RSS growth                       +51.953 MB
+tracked-object growth            +149,950
+total safe-GC collected          0
+entity growth                    0
+component-instance growth        0
+Vision geometry-cache size       4096 (bounded)
 ```
 
-Therefore the remaining growth did not have the shape of unreachable cyclic garbage or entity leakage.
+Therefore the remaining growth did not have the shape of unreachable cyclic garbage, an ECS entity leak, or an unbounded Vision cache.
 
 ## 2. Competing hypotheses
 
 ### H1 — Python cyclic garbage is accumulating
-
 If true, explicit full GC at safe points should reclaim objects.
 
-### H2 — Vision geometry cache is still effectively unbounded
+### H2 — Vision geometry cache is still unbounded
+If true, cache cardinality should continue growing rather than remain at 4096.
 
-If true, cache size should continue growing rather than remain at 4096.
-
-### H3 — ECS entities/components leak across movement cycles
-
+### H3 — ECS entities/components leak across cycles
 If true, world entity/component counts should rise.
 
-### H4 — Application-owned historical state is intentionally retaining live objects
+### H4 — Application-owned historical state retains reachable objects
+If true, GC can collect zero while selected history structures grow toward their own caps.
 
-If true, GC would collect nothing because the objects remain reachable, while selected bounded history structures would grow toward their own caps.
+## 3. Evidence
 
-## 3. Instrumentation
+The formal soak strongly rejected H1-H3:
 
-The soak tooling exposed at safe/control points:
+- safe Gen2 collections reclaimed zero in aggregate;
+- entity and component-instance growth were zero;
+- the Vision geometry cache stayed bounded at 4096.
 
-```text
-RSS
-tracked Python objects
-GC collection result
-entity count
-component-instance count
-Vision cache size/capacity/evictions
-Statistics retained history counts
-UnitObservation movement-path entries
-```
-
-This was deliberately sampled outside the realtime hot loop.
-
-## 4. Evidence
-
-The long-soak summary showed roughly:
-
-```text
-RSS growth               +51.953 MB
-tracked-object growth    +149,950
-full GC collected        0 repeatedly
-Vision cache             4096 / 4096
-entity growth            0
-component growth         0
-```
-
-Inspection of `scale_statistics_system.py` then found:
+Inspection then found:
 
 ```text
 VisibilityTracker.visibility_history: Dict[int, List[Dict]]
 VISIBILITY_HISTORY_LIMIT = 100
 ```
 
-At 5000 units this allows as many as:
+At 5000 units:
 
 ```text
-5000 × 100 = 500,000
+5000 × 100 = 500,000 potential live history records
 ```
 
-live historical transition records.
+Those records remain reachable by design, explaining why GC does not reclaim them.
 
-No realtime consumer required the full per-unit trajectory. Current visibility semantics already lived in current-state structures such as `faction_visible_units` and `UnitObservation.is_visible_to`.
+## 4. Root cause
 
-The fix commit `cc47acb...` changed scale/window retention from 100 records to 1 and explicitly documented that historical trajectories are telemetry rather than realtime state.
+> The runtime was not leaking unreachable objects; it was intentionally retaining too much historical visibility telemetry inside live scale runtime state.
 
-The later 120s soak held:
+No realtime consumer required the full per-unit visibility trajectory. Current visibility semantics already lived in current-state structures.
+
+## 5. Fix
+
+The scale/window policy changed to:
 
 ```text
-visibility_history_records       5000 exactly
-max records per unit             1 exactly
-Vision cache                     4096 exactly
+VISIBILITY_HISTORY_LIMIT = 1
+```
+
+This keeps the latest transition available while moving the conceptual responsibility for full trajectories to logging/evaluation/archive planes.
+
+## 6. Post-fix validation status
+
+The original final 120-second PASS was terminal-only and is not yet archived as a raw artifact. Historical summary values indicate:
+
+```text
+visibility_history_records       5000
+max records per unit             1
+Vision cache                     4096
 entities/components              stable
 safe full GC collected           0
+tracked objects                  late plateau near 209.7k
+RSS                              no monotonic growth
 ```
 
-while late tracked-object values plateaued tightly around 209.7k rather than continuing a monotonic rise.
+These values are useful for locating the transcript, but STAR Lab currently labels them **summary-only** rather than raw evidence. The case should be upgraded once the original terminal transcript is recovered and checksummed.
 
-## 5. Root cause
+## 7. Intermediate run policy
 
-> The runtime was not leaking unreachable objects; it was intentionally retaining too much historical visibility telemetry inside live ECS state.
+`results/intermediate/realtime-gc-soak-600s-incomplete.json` ended with `soak_incomplete`, but it completed eight valid cycles and already showed a retention signal. It is preserved because it materially contributed to the investigation, but it is not used to validate the final conclusion.
 
-## 6. Causal chain
+This is the intended distinction:
 
 ```text
-visibility change events
- -> append reachable history dicts
- -> up to 100 records per unit
- -> up to 500k live records at 5K units
- -> tracked-object / RSS growth despite GC collecting 0
-
-retain latest transition only in scale runtime
- -> bounded 1 record/unit
- -> 5000 total visibility records
- -> post-warmup memory plateau
+invalid before workload -> discard
+valid partial workload + diagnostic value -> keep as intermediate
+complete valid workload -> formal evidence
 ```
-
-## 7. Rejected explanations
-
-- **Cyclic GC leak:** rejected because explicit generation-2 collections repeatedly collected zero.
-- **Vision cache leak:** rejected because cache size stayed exactly at its configured cap.
-- **ECS entity/component leak:** rejected because counts stayed flat.
 
 ## 8. Broader lesson
 
-The strongest diagnostic signal was `collected=0`: the objects were not garbage. They were still reachable because application semantics retained them.
+The strongest diagnostic signal was `collected=0`: the growing objects were not garbage. They were still reachable because application semantics retained them.
 
-This distinction prevents an incorrect response such as "run GC more often" and directs investigation toward ownership and data-lifecycle design.
+> Runtime state is not historical telemetry.

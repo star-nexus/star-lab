@@ -2,28 +2,23 @@ experiment:
   id: vision-geometry-cache-working-set
   title: Vision Geometry Cache Working-Set Ablation
   date: 2026-09-02
-  status: closed
+  status: closed_complete_formal_archive
 
 source:
   repository: star-nexus/star
   problem_commit: 615c3ac27f23f73b38d13b97280861fd1b0c9b72
   measurement_commit: 253c78730dee2b50c038d9d8cad70c661b2e04c5
   fix_commit: 6b5a24053a10a0bca721a2750a5753195bbf2d34
-  validated_commit: 86672d6f00a995c36a5f268a47f46ffe8d382301
+  validated_commit: a24482d438157aa23b371b6e34d49b1c04fec7f7
   branch_at_time: perf/scale-harness
-  validated_tag: null
-  later_scale_milestone: a24482d438157aa23b371b6e34d49b1c04fec7f7
+  validated_tag: scale-v1-cull-vision-closed
 
 hardware:
   machine: Mac mini
-  cpu: not_backfilled
-  memory: not_backfilled
-  gpu: integrated_or_not_backfilled
   display: 2480x1268
 
 software:
   os: macOS
-  python: not_backfilled_for_formal_run
   dependency_lock: star repository at exact measurement commit
 
 scenario:
@@ -57,38 +52,23 @@ measurement:
 
 variables:
   independent:
-    geometry_cache_capacity:
-      - 4096
-      - 8192
-      - 16384
-      - 32768
-  controlled:
-    - fresh process for each capacity
-    - same source measurement commit
-    - same 5000-unit plan workload
-    - same seed and target radius
-    - same camera and zoom
-    - Fog ON
-    - staggered phase
-    - realtime_defer GC policy
+    geometry_cache_capacity: [4096, 8192, 16384, 32768]
 
 artifacts:
   formal:
     - path: results/capacity-4096.json
+      sha256: b60f7d33e5b26c93a8773b06b0fa4fdca8cb5747dcb1aa1fb47e57ec0a4e97ed
     - path: results/capacity-8192.json
+      sha256: c4de94cc01570b587c47e16ab39e321b4237b380ed98490e471e2c13e10b1689
     - path: results/capacity-16384.json
+      sha256: f9ea376497c8c0f39a343ec99965dc2b27800c509b2bef89eb578df108daaa32
     - path: results/capacity-32768.json
-  external: []
+      sha256: ac9de3f2e87e5ec0cb8c02dd778d64bd3205d8ac6247ffdfbc9afc3d84fc8bee
+  checksums: artifacts/SHA256SUMS
+  integrity_verified: true
 
 headline:
-  problem_signature: "4096-entry bounded LRU is saturated; epoch misses and evictions both reach 19010, hit rate falls to 72.39%, and Vision self time rises to 2.925 ms."
-  root_cause: "The 4096 capacity is below the active geometry working set and causes sustained LRU thrashing."
-  resolution: "8192 is the measured minimum sufficient capacity; use 16384 as the scale/window operational default for headroom without preallocation."
+  problem_signature: "4096-entry LRU saturates; epoch misses and evictions both reach 19010, hit rate falls to 72.39%, and Vision self time rises to 2.925 ms."
+  root_cause: "4096 is below the active geometry working set and causes sustained LRU thrashing."
+  resolution: "8192 is the measured minimum sufficient capacity; 16384 is the scale/window operational default for headroom without preallocation."
   result: "At 8192/16384, evictions are zero, hit rate is ~99.14%, final working set is 5639 entries, and Vision self time returns to ~1.22 ms."
-
-revisit_when:
-  - sustained geometry cache eviction becomes nonzero at the operational scale
-  - geometry hit rate materially declines
-  - cache occupancy persistently approaches capacity
-  - map scale increases materially
-  - effective-range diversity increases materially

@@ -1,53 +1,70 @@
 # STAR Lab Experiment Index
 
-This directory contains reproducible engineering investigations and controlled experiments for STAR / StarBench.
+This directory is the STAR / StarBench engineering **case library**: reproducible problems, investigation evidence, fixes, decisions, and validated performance milestones.
 
-Read [`../PROTOCOL.md`](../PROTOCOL.md) before adding or modifying a formal experiment package.
+Read [`../PROTOCOL.md`](../PROTOCOL.md) before adding or modifying a case.
 
 ## Archived cases
 
-| Experiment | Status | Problem / question | Main conclusion | Raw evidence |
+| Experiment | Status | Problem / question | Main conclusion | Evidence state |
 |---|---|---|---|---|
-| [`2026-09-realtime-gc`](2026-09-realtime-gc/) | **CLOSED — historical backfill** | Why do rare UnitRender frames jump to ~50 ms? | Automatic CPython Gen2 GC was running inside the timed render section; bounded `realtime_defer` moved cyclic-GC maintenance out of the critical window. | Historical formal JSON not yet recovered; exact source provenance + validated summaries preserved. |
-| [`2026-09-memory-retention`](2026-09-memory-retention/) | **CLOSED — historical backfill** | Why do RSS/tracked objects rise although full safe GC collects 0 and ECS/Vision caches are bounded? | Scale runtime retained historical visibility telemetry: up to 100 records/unit. Runtime now keeps the latest transition only. | Historical soak JSON not yet recovered; exact source provenance + validated summaries preserved. |
-| [`2026-09-spatial-cull`](2026-09-spatial-cull/) | **CLOSED — historical backfill** | Why is `unit_visible_cull` still ~3.53 ms although spatial candidate discovery already exists? | Residual per-candidate ECS/singleton lookups, repeated coordinate conversion, filter order, and low-zoom overscan were the real costs; ~3.53 -> ~1.3 ms. | Historical before/after JSON not yet recovered; exact problem/fix commits preserved. |
-| [`2026-09-vision-cache`](2026-09-vision-cache/) | **CLOSED — complete formal archive** | What bounded geometry-cache capacity avoids memory growth without cache thrashing? | 4096 thrashes; 8192 is measured minimum sufficient; 16384 is the scale/window operational default with headroom. | **Complete:** 4096 / 8192 / 16384 / 32768 formal JSON runs archived. |
+| [`2026-09-realtime-gc`](2026-09-realtime-gc/) | **CLOSED — complete formal archive** | Why do rare UnitRender frames jump to ~50 ms? | Automatic CPython Gen2 GC ran inside the timed render section; bounded `realtime_defer` moved cyclic-GC maintenance outside the critical window. | AUTO/defer raw JSON recovered and SHA256-verified. |
+| [`2026-09-memory-retention`](2026-09-memory-retention/) | **CLOSED — final PASS evidence backfill pending** | Why do RSS/tracked objects rise although full safe GC collects 0 and ECS/Vision caches are bounded? | Runtime retained historical visibility telemetry (up to 100 records/unit); scale/window now keeps the latest transition only. | Pre-fix 600s formal raw complete; final post-fix PASS was terminal-only and is pending transcript backfill. |
+| [`2026-09-spatial-cull`](2026-09-spatial-cull/) | **CLOSED — canonical cross-case evidence** | Why is `unit_visible_cull` still ~3.53 ms although spatial candidate discovery already exists? | Residual per-candidate ECS/singleton/coordinate work and low-zoom overscan were the real costs; ~3.53 -> ~1.33 ms. | No duplicated local raw; before references GC A/B raw, after references Vision 16384 raw. |
+| [`2026-09-vision-cache`](2026-09-vision-cache/) | **CLOSED — complete formal archive** | What bounded geometry-cache capacity avoids memory growth without thrashing? | 4096 thrashes; 8192 is measured minimum sufficient; 16384 is the scale/window operational default with headroom. | Four original formal JSON runs + SHA256. |
+| [`2026-09-dynamic-world-scaling`](2026-09-dynamic-world-scaling/) | **ARCHIVED — source provenance backfill pending** | How did the controlled 5K Dynamic World workload evolve into the scale methodology used by later investigations? | V1/V2/V2.1 preserve the progression of density/burst measurement and expose the bottlenecks later closed by GC/Cull/Vision work. | 14 raw JSON runs + SHA256; exact STAR commit per cohort still needs proof. |
 
 ## Reading order for a case
 
-Use the same order for every experiment:
-
 ```text
 README.md
-  -> reproduce the problem and validation workload
+  -> reproduce / understand the case
 
 manifest.yaml
-  -> exact source commits, machine/workload identity, artifact list
+  -> exact source identity, workload, artifact references
 
 analysis.md
-  -> observation, hypotheses, instrumentation, evidence, root cause
+  -> observation -> hypotheses -> evidence -> root cause
 
 decision.md
-  -> accepted engineering choice, rejected alternatives, revisit triggers
+  -> accepted engineering choice and revisit conditions
 
 results/
-  -> raw formal evidence when available
+  -> canonical raw evidence when owned by this case
+
+artifacts/SHA256SUMS
+  -> byte-integrity verification for local raw artifacts
+```
+
+## Evidence ownership
+
+One raw artifact has one canonical archive location. If a measurement supports several cases, keep the raw file once and cross-reference it elsewhere.
+
+Example:
+
+```text
+realtime-gc/results/density-100-realtime-gc.json
+        -> GC policy A/B evidence
+        -> also pre-fix Spatial Cull baseline
+
+vision-cache/results/capacity-16384.json
+        -> Vision cache ablation evidence
+        -> also post-fix Spatial Cull evidence
 ```
 
 ## Historical backfill rule
 
-Some important investigations were completed before STAR Lab existed. Backfilling them is allowed, but the archive must distinguish three evidence levels:
+Some investigations predate STAR Lab. Preserve evidence levels explicitly:
 
 ```text
 1. exact source provenance confirmed from Git
-2. validated numeric summaries preserved from the original investigation
-3. original raw artifact recovered and committed
+2. validated numeric summary preserved
+3. original raw artifact recovered
+4. checksum/integrity verified
 ```
 
-Never fabricate level 3 from level 2. If a raw artifact cannot be recovered, say so explicitly.
+Never fabricate a higher evidence level from a lower one.
 
-## Next experiments
+## Next performance work
 
-New work should follow the protocol from the start, so future cases should normally arrive in STAR Lab with raw evidence rather than requiring historical backfill.
-
-The next performance investigation after the current closed milestone is expected to decompose the `render_engine` cost before attempting any redesign.
+The next optimization target should be decomposed before redesign: the current `render_engine` section is still a multi-millisecond black box. Follow the protocol: instrument -> attribute -> optimize.

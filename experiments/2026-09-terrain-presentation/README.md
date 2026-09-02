@@ -1,14 +1,13 @@
 # Terrain Opaque Presentation Cache
 
-**Status:** VALIDATED  
+**Status:** CLOSED  
 **STAR repository:** `star-nexus/star`  
 **Problem commit:** `6a61115ab29a0c4aeb39fa8b74c7cbcded314180`  
 **Diagnostic commit:** `b2dd5d03c09bae46ba8b0d92e78559bcc7d0d836`  
 **Orthogonal attribution commit:** `0f9368c942ad3a75fd872ec9e1e0cd979e23cae1`  
 **Fix commit:** `89f667985810fca8bb2756058e34f6b4d3663a5a`  
 **Validated commit:** `54d17745098fb3fc4c43861d839e8dc40164c030`  
-**Validated tag:** N/A — no separate Terrain-presentation milestone tag has been created  
-**Formal closure gap:** regression-test stdout is not archived in this case yet
+**Validated tag:** N/A — no separate Terrain-presentation milestone tag has been created
 
 ## 1. Problem
 
@@ -44,7 +43,7 @@ The investigation chain is:
 b2dd5d0  alpha/format diagnostics + first opaque attempt
 0f9368c  A-B-C-D orthogonal attribution
 89f6679  production opaque compact presentation cache
-54d1774  same-commit Legacy/Opaque A/B + deterministic camera stress
+54d1774  same-commit Legacy/Opaque A/B + deterministic camera stress + regression validation
 ```
 
 ## 4. Environment
@@ -269,20 +268,32 @@ rolling max              67.204       67.464 ms    +0.260 ms
 
 Opaque cache rebuilds occurred about 9-10 times per run. Their observed maximum build cost averaged ~2.51 ms, while `map_overscan_build_step` maximum averaged ~4.16 ms versus ~1.53 ms in Legacy. Despite that extra rebuild work, P95/P99/max did not develop a new tail pathology.
 
-## 11. Regression-test command
+## 11. Regression validation
+
+At the validated production commit `54d17745098fb3fc4c43861d839e8dc40164c030`, run:
 
 ```bash
 uv run pytest \
+  rotk_env/tests/test_incremental_fog_presenter.py \
   rotk_env/tests/test_terrain_presentation_cache.py \
   rotk_env/tests/test_scale_camera_stress.py \
   rotk_env/tests/test_scale_map_overscan.py \
   rotk_env/tests/test_render_presentation_ablation.py \
   framework/tests/test_render_blit_batching.py \
   framework/tests/test_render_engine_profile_breakdown.py \
+  framework/tests/test_performance_profiler_v2.py \
+  rotk_env/tests/test_render_engine_profile_export.py \
+  rotk_env/tests/test_scale_experiment_measurement.py \
   -q
 ```
 
-The exact stdout is not currently archived, so the case remains **VALIDATED** rather than formally CLOSED under `PROTOCOL.md`.
+Observed result:
+
+```text
+43 passed in 1.12s
+```
+
+This closes the regression-test requirement in `PROTOCOL.md`. The 28 canonical Terrain JSON artifacts were separately SHA256-verified after archival and remained byte-identical.
 
 ## 12. Formal artifacts
 

@@ -1,0 +1,60 @@
+experiment:
+  id: scale-visibility-history-retention
+  title: Scale Runtime Memory Retention — Visibility History
+  date: 2026-09-02
+  status: closed_historical_backfill
+
+source:
+  repository: star-nexus/star
+  problem_commit: c16aed62975f48a80b85db0f594789372cf2a782
+  measurement_commit: c16aed62975f48a80b85db0f594789372cf2a782
+  fix_commit: cc47acb661500787395b2b9b241256edadfed1d4
+  validated_commit: a24482d438157aa23b371b6e34d49b1c04fec7f7
+  branch_at_time: perf/scale-harness
+  validated_tag: null
+
+hardware:
+  machine: Mac mini
+  cpu: not_backfilled
+  memory: not_backfilled
+
+software:
+  os: macOS
+  python: not_backfilled_for_original_soak
+
+scenario:
+  name: TestMap-8K-scale-5000
+  map_size: 91x91
+  resident_units: 5000
+  moving_units: 5000
+
+workload:
+  seed: 42
+  target_radius: 12
+  density: 1.0
+  phase: staggered
+  fog: true
+  camera: fixed during formal scale workload
+  zoom: 0.15
+
+measurement:
+  cycle_realtime_seconds: 15
+  priming_realtime_seconds: 15
+  sustained_seconds: 20
+  gc_policy: realtime_defer
+  safe_gc_collect_generation: 2
+
+artifacts:
+  formal: []
+  backfill_status: "Original historical soak JSON not yet recovered into star-lab. Numeric summaries and exact code provenance are preserved."
+
+headline:
+  problem_signature: "RSS +51.953 MB and tracked objects +149950 across long soak while full safe GC repeatedly collected 0; Vision cache and ECS counts stayed bounded."
+  root_cause: "Scale VisibilityTracker retained up to 100 historical visibility-change dicts per unit: up to 500k live historical records at 5000 units."
+  resolution: "Scale/window retains only the latest visibility transition per unit; canonical/headless behavior unchanged."
+  result: "120s v3 validation kept exactly 5000 visibility-history records (max 1/unit), stable ECS/vision bounds, and late tracked-object plateau near 209.7k."
+
+revisit_when:
+  - runtime begins retaining new historical per-unit structures
+  - long soak shows sustained post-warmup tracked-object or RSS slope
+  - telemetry requirements are moved back into realtime ECS state

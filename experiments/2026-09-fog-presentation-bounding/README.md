@@ -1,12 +1,12 @@
 # Fog Presentation Bounding
 
-**Status:** VALIDATED  
+**Status:** CLOSED  
 **STAR repository:** `star-nexus/star`  
 **Problem commit:** `6e8c151494de2b37071ecdcd5f1898b7387e057a`  
 **Fix commit:** `6a61115ab29a0c4aeb39fa8b74c7cbcded314180`  
-**Validated commit:** `6a61115ab29a0c4aeb39fa8b74c7cbcded314180`  
-**Validated tag:** N/A — no separate Fog-presentation milestone tag has been created  
-**Formal closure gap:** regression-test stdout is not archived in this case yet
+**Validated performance commit:** `6a61115ab29a0c4aeb39fa8b74c7cbcded314180`  
+**Regression / integration validation commit:** `54d17745098fb3fc4c43861d839e8dc40164c030`  
+**Validated tag:** N/A — no separate Fog-presentation milestone tag has been created
 
 ## 1. Problem
 
@@ -44,11 +44,19 @@ git checkout 6e8c151494de2b37071ecdcd5f1898b7387e057a
 uv sync
 ```
 
-Validated fix:
+Validated performance fix:
 
 ```bash
 git checkout 6a61115ab29a0c4aeb39fa8b74c7cbcded314180
 ```
+
+Regression/integration validation was later run at:
+
+```bash
+git checkout 54d17745098fb3fc4c43861d839e8dc40164c030
+```
+
+No Fog production presenter file changed between the performance fix commit and this regression commit; the intervening changes were Terrain/testing/stress-harness work.
 
 ## 4. Environment
 
@@ -172,20 +180,32 @@ queue_submit      -2.001 ms
 render_engine     -1.992 ms
 ```
 
-## 8. Regression-test command
+## 8. Regression validation
 
-The production change added/updated Fog presenter and ablation tests. Re-run at the validated commit:
+The final combined renderer regression suite was executed at integration commit `54d17745098fb3fc4c43861d839e8dc40164c030`:
 
 ```bash
 uv run pytest \
   rotk_env/tests/test_incremental_fog_presenter.py \
+  rotk_env/tests/test_terrain_presentation_cache.py \
+  rotk_env/tests/test_scale_camera_stress.py \
+  rotk_env/tests/test_scale_map_overscan.py \
   rotk_env/tests/test_render_presentation_ablation.py \
   framework/tests/test_render_blit_batching.py \
   framework/tests/test_render_engine_profile_breakdown.py \
+  framework/tests/test_performance_profiler_v2.py \
+  rotk_env/tests/test_render_engine_profile_export.py \
+  rotk_env/tests/test_scale_experiment_measurement.py \
   -q
 ```
 
-The exact stdout from this regression run is not currently archived in STAR Lab. Under `PROTOCOL.md`, this archive remains **VALIDATED** rather than formally CLOSED until that evidence is recorded.
+Observed result:
+
+```text
+43 passed in 1.12s
+```
+
+This closes the regression-test requirement in `PROTOCOL.md`. The canonical raw JSON artifacts were separately SHA256-verified after archival and remained byte-identical.
 
 ## 9. Formal artifacts
 

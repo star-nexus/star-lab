@@ -1,6 +1,6 @@
 # Scale Runtime Memory Retention — Visibility History
 
-**Status:** CLOSED — pre-fix formal evidence complete; final post-fix PASS transcript backfill pending  
+**Status:** CLOSED — raw evidence complete; exact post-fix run SHA not encoded in artifact  
 **STAR repository:** `star-nexus/star`  
 **Problem/reproduction commit:** `c16aed62975f48a80b85db0f594789372cf2a782`  
 **Fix commit:** `cc47acb661500787395b2b9b241256edadfed1d4`  
@@ -36,13 +36,13 @@ component-instance growth       0
 Vision geometry-cache size      4096 (bounded)
 ```
 
-An earlier partial but diagnostically useful soak is retained separately:
+An earlier partial but diagnostically useful soak remains under:
 
 - [`results/intermediate/realtime-gc-soak-600s-incomplete.json`](results/intermediate/realtime-gc-soak-600s-incomplete.json)
 
-It executed eight valid cycles before terminating as `soak_incomplete`; it is investigation evidence, **not** formal validation evidence.
+It executed eight valid cycles before ending as `soak_incomplete`; it is investigation evidence, not formal validation evidence.
 
-## 3. Root-cause investigation
+## 3. Root cause
 
 Inspection found:
 
@@ -51,7 +51,7 @@ VisibilityTracker.visibility_history
 VISIBILITY_HISTORY_LIMIT = 100
 ```
 
-At 5000 units this permits as many as:
+At 5000 units this permits up to:
 
 ```text
 5000 × 100 = 500,000
@@ -59,31 +59,15 @@ At 5000 units this permits as many as:
 
 reachable historical transition records.
 
-Because those objects remained reachable by application state, additional GC was the wrong remedy. Current visibility semantics already lived in current-state structures; the full per-unit transition trajectory was telemetry.
+Because those objects remained reachable by application state, more GC was the wrong remedy. Current visibility semantics already lived in current-state structures; the full per-unit transition trajectory was telemetry.
 
-## 4. Reproduce the pre-fix retention
+## 4. Fix
 
-```bash
-git clone https://github.com/star-nexus/star.git
-cd star
-git fetch --all --tags
-git checkout c16aed62975f48a80b85db0f594789372cf2a782
-uv sync
-```
-
-Run the 5K repeated realtime soak with `realtime_defer`, Fog ON, density 1.0, staggered movement, 15-second cycles, and a 600-second horizon.
-
-Expected signature: post-safe-GC tracked objects and RSS keep climbing while safe Gen2 collections reclaim zero and ECS/major cache cardinalities stay bounded.
-
-## 5. Fix
-
-```bash
-git checkout cc47acb661500787395b2b9b241256edadfed1d4
-```
-
-The scale/window visibility-history retention becomes:
+At commit `cc47acb661500787395b2b9b241256edadfed1d4`:
 
 ```text
+VISIBILITY_HISTORY_LIMIT = 100
+                         ↓
 VISIBILITY_HISTORY_LIMIT = 1
 ```
 
@@ -91,26 +75,102 @@ Canonical/headless behavior is unchanged.
 
 > Runtime state is not historical telemetry.
 
-## 6. Final post-fix validation — backfill pending
+## 5. Canonical post-fix evidence
 
-The original final PASS was recorded as terminal output rather than a JSON artifact. Its historical validated summary indicates:
+Recovered formal validation:
+
+- [`results/realtime-gc-soak-v3-120s.json`](results/realtime-gc-soak-v3-120s.json)
+- SHA256: `7db3c6fe035bf56a800d021dabaea4c33c465e01c7d4ecb351d0f98907145de3`
+
+The artifact is a valid completed run:
 
 ```text
-visibility_history_records         5000
-visibility_history_max_per_unit    1
-Vision cache                        4096
-ECS entities/components             stable
-safe full GC collected              0
-late tracked-object values          plateau near 209.7k
-RSS                                 no monotonic growth
+top-level ok                      true
+cycles completed                  8 / 8
+realtime completed                120 s
+GC policy                         realtime_defer
+Fog guard                         ON
+requested density                 1.0
 ```
 
-STAR Lab intentionally does **not** promote this summary to raw-evidence status. When the original terminal transcript is recovered, archive it as a text artifact (or faithful transcript), add its SHA256, and update the manifest from `pending_transcript_backfill` to verified post-fix evidence.
+All eight cycles passed their run guards. One cycle had 4999 active movers (`0.9998` density), within the configured `max_missing_moving_units=10` tolerance.
+
+Post-safe-GC retained-state invariants were stable throughout the run:
+
+```text
+visibility_history_records        5000 exactly
+visibility_history_max_per_unit   1 exactly
+entities                           13288 exactly
+component instances               79852 exactly
+Vision geometry-cache size        4096 exactly
+total safe-GC collected           0
+```
+
+Memory/tracked-object sequence after each safe collection:
+
+```text
+priming tracked                   198808
+15s                               202693
+30s                               206762
+45s                               209291
+60s                               209508
+75s                               209741
+90s                               209747
+105s                              209700
+120s                              209756
+
+priming RSS                       368.812 MB
+120s RSS                          337.438 MB
+post-collect RSS growth           -31.374 MB
+```
+
+The tracked-object series warms into a plateau near 209.7k rather than continuing the pre-fix leak-shaped rise. For the final five post-GC samples:
+
+```text
+mean                              209690.4
+sample SD                         104.2
+range                             248
+```
+
+For the final four samples (75–120 s), the linear slope is approximately:
+
+```text
+-48 objects / hour
+```
+
+which is effectively flat at this scale.
+
+### Why the JSON's whole-run slope is not the steady-state leak metric
+
+The raw summary also contains a large positive `post_collect_tracked_objects_slope_per_hour`. That regression includes the initial state-population/warm-up transition from `198808` toward the ~`209.7k` steady-state working set. It must not be interpreted as the late steady-state retention slope.
+
+For leak diagnosis, the relevant question is whether the post-warmup retained working set continues to grow. In this run it does not: the late samples stay within a 248-object band and the final-four slope is approximately zero.
+
+## 6. Source-provenance note for the recovered post-fix run
+
+The recovered JSON does not encode a Git SHA. Repository history proves:
+
+```text
+cc47acb6  perf: bound scale visibility history to latest change
+5382834a  diagnostics: expose retained statistics history in memory soak
+0c65bfc4  test: bound scale visibility history retention
+04c58ad5  test: expose retained statistics counts in soak snapshots
+```
+
+The JSON contains the retained-statistics fields introduced by this sequence, so it is definitely post-fix and post-diagnostics. The exact checkout SHA used for this individual run is not encoded in the artifact and is therefore not guessed here. The later validated milestone remains `a24482d438157aa23b371b6e34d49b1c04fec7f7` / `scale-v1-cull-vision-closed`.
 
 ## 7. Integrity
+
+From this experiment root:
 
 ```bash
 shasum -a 256 -c artifacts/SHA256SUMS
 ```
 
-The current checksum set covers the complete pre-fix formal soak and the retained intermediate partial soak.
+The checksum set covers:
+
+```text
+results/intermediate/realtime-gc-soak-600s-incomplete.json
+results/realtime-gc-soak-v2-600s.json
+results/realtime-gc-soak-v3-120s.json
+```

@@ -2,13 +2,19 @@ experiment:
   id: scale-visibility-history-retention
   title: Scale Runtime Memory Retention — Visibility History
   date: 2026-09-02
-  status: closed_post_fix_evidence_backfill_pending
+  status: closed_raw_evidence_complete_post_fix_exact_sha_not_encoded
 
 source:
   repository: star-nexus/star
   problem_commit: c16aed62975f48a80b85db0f594789372cf2a782
-  measurement_commit: c16aed62975f48a80b85db0f594789372cf2a782
+  pre_fix_measurement_commit: c16aed62975f48a80b85db0f594789372cf2a782
   fix_commit: cc47acb661500787395b2b9b241256edadfed1d4
+  post_fix_diagnostics_commit: 5382834a5655dcca4a0e53821fdf2e8eb5799672
+  post_fix_test_commits:
+    - 0c65bfc4854b134011866084a327881637bc0298
+    - 04c58ad5da9ee4584312a9c1ac689c7fb898a6f6
+  post_fix_measurement_commit: null
+  post_fix_measurement_commit_note: "The recovered 120s JSON does not encode a Git SHA. Its retained-statistics fields prove it is post-fix/post-diagnostics, but the exact checkout is not guessed."
   later_validated_commit: a24482d438157aa23b371b6e34d49b1c04fec7f7
   later_validated_tag: scale-v1-cull-vision-closed
   branch_at_time: perf/scale-harness
@@ -26,19 +32,31 @@ workload:
   phase: staggered
   fog: true
   gc_policy: realtime_defer
+  max_missing_moving_units: 10
 
 measurement:
-  formal_pre_fix_soak_seconds: 600
-  cycle_realtime_seconds: 15
-  priming_realtime_seconds: 15
-  sustained_seconds: 20
-  safe_gc_collect_generation: 2
+  pre_fix:
+    realtime_seconds: 600
+    cycle_realtime_seconds: 15
+    priming_realtime_seconds: 15
+    safe_gc_collect_generation: 2
+  post_fix:
+    realtime_seconds: 120
+    cycles_completed: 8
+    cycle_realtime_seconds: 15
+    priming_realtime_seconds: 15
+    safe_gc_collect_generation: 2
+    top_level_ok: true
 
 artifacts:
   formal_pre_fix:
     - path: results/realtime-gc-soak-v2-600s.json
       sha256: 84e67049916b9fc49f0c20aa5b07c864ebd283a2780fdecda0b47b517e72a35d
       validity: formal_complete
+  formal_post_fix:
+    - path: results/realtime-gc-soak-v3-120s.json
+      sha256: 7db3c6fe035bf56a800d021dabaea4c33c465e01c7d4ecb351d0f98907145de3
+      validity: complete_valid_run_source_sha_not_encoded
   intermediate:
     - path: results/intermediate/realtime-gc-soak-600s-incomplete.json
       sha256: 4ddf995b1bea77ac9f961dcdf682ce73b6f6e7b24c7dc657bef47b9f4bbf39a7
@@ -46,12 +64,35 @@ artifacts:
       note: "Eight valid cycles completed; overall result soak_incomplete. Never use as final validation."
   checksums: artifacts/SHA256SUMS
   integrity_verified: true
-  post_fix_validation:
-    status: pending_transcript_backfill
-    note: "Final 120s PASS existed as terminal output. Preserve the original transcript when recovered; do not synthesize raw JSON from the summary."
+
+post_fix_validation:
+  invariants:
+    visibility_history_records: 5000
+    visibility_history_max_per_unit: 1
+    world_entities: 13288
+    component_instances: 79852
+    vision_geometry_cache_size: 4096
+    total_safe_gc_collected: 0
+  tracked_objects:
+    priming: 198808
+    final: 209756
+    late_last5_mean: 209690.4
+    late_last5_sample_sd: 104.2
+    late_last5_range: 248
+    late_last4_slope_objects_per_hour: -48.0
+  rss_mb:
+    priming: 368.812
+    final: 337.438
+    post_collect_growth: -31.374
+  interpretation: "The baseline-to-final slope includes warm-up/state-population. The post-warmup tail plateaus near 209.7k; use the late window rather than the whole-run regression for steady-state leak diagnosis."
 
 headline:
-  problem_signature: "Completed 600s soak: RSS +51.953 MB, tracked objects +149950, total safe-GC collected 0, entity/component growth 0, Vision cache bounded at 4096."
+  problem_signature: "Completed pre-fix 600s soak: RSS +51.953 MB, tracked objects +149950, total safe-GC collected 0, entity/component growth 0, Vision cache bounded at 4096."
   root_cause: "Scale VisibilityTracker retained up to 100 reachable historical visibility-change dicts per unit: up to 500k records at 5K units."
   resolution: "Scale/window retains only the latest visibility transition per unit; canonical/headless behavior unchanged."
-  post_fix_summary_unverified_as_raw: "Final terminal PASS showed 5000 visibility-history records (max 1/unit), stable bounded structures, no monotonic RSS growth, and late tracked-object plateau near 209.7k."
+  result: "Recovered post-fix 120s run is valid and complete: visibility history remains exactly 5000 records / max 1 per unit, ECS and Vision cardinalities stay fixed, safe GC collects 0, RSS is non-monotonic/down overall, and late tracked objects plateau near 209.7k."
+
+revisit_when:
+  - runtime begins retaining new historical per-unit structures
+  - long soak shows sustained post-warmup tracked-object or RSS slope
+  - telemetry requirements are moved back into realtime ECS state

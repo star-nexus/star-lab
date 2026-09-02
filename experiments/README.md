@@ -9,7 +9,7 @@ Read [`../PROTOCOL.md`](../PROTOCOL.md) before adding or modifying a case.
 | Experiment | Status | Problem / question | Main conclusion | Evidence state |
 |---|---|---|---|---|
 | [`2026-09-realtime-gc`](2026-09-realtime-gc/) | **CLOSED — complete formal archive** | Why do rare UnitRender frames jump to ~50 ms? | Automatic CPython Gen2 GC ran inside the timed render section; bounded `realtime_defer` moved cyclic-GC maintenance outside the critical window. | AUTO/defer raw JSON recovered and SHA256-verified. |
-| [`2026-09-memory-retention`](2026-09-memory-retention/) | **CLOSED — final PASS evidence backfill pending** | Why do RSS/tracked objects rise although full safe GC collects 0 and ECS/Vision caches are bounded? | Runtime retained historical visibility telemetry (up to 100 records/unit); scale/window now keeps the latest transition only. | Pre-fix 600s formal raw complete; final post-fix PASS was terminal-only and is pending transcript backfill. |
+| [`2026-09-memory-retention`](2026-09-memory-retention/) | **CLOSED — raw evidence complete** | Why do RSS/tracked objects rise although full safe GC collects 0 and ECS/Vision caches are bounded? | Runtime retained historical visibility telemetry (up to 100 records/unit); scale/window now keeps the latest transition only. | Pre-fix 600s + post-fix 120s raw JSON recovered and SHA256-verified. Exact checkout SHA for the recovered post-fix run is not encoded and is documented rather than guessed. |
 | [`2026-09-spatial-cull`](2026-09-spatial-cull/) | **CLOSED — canonical cross-case evidence** | Why is `unit_visible_cull` still ~3.53 ms although spatial candidate discovery already exists? | Residual per-candidate ECS/singleton/coordinate work and low-zoom overscan were the real costs; ~3.53 -> ~1.33 ms. | No duplicated local raw; before references GC A/B raw, after references Vision 16384 raw. |
 | [`2026-09-vision-cache`](2026-09-vision-cache/) | **CLOSED — complete formal archive** | What bounded geometry-cache capacity avoids memory growth without thrashing? | 4096 thrashes; 8192 is measured minimum sufficient; 16384 is the scale/window operational default with headroom. | Four original formal JSON runs + SHA256. |
 | [`2026-09-dynamic-world-scaling`](2026-09-dynamic-world-scaling/) | **ARCHIVED — source provenance backfill pending** | How did the controlled 5K Dynamic World workload evolve into the scale methodology used by later investigations? | V1/V2/V2.1 preserve the progression of density/burst measurement and expose the bottlenecks later closed by GC/Cull/Vision work. | 14 raw JSON runs + SHA256; exact STAR commit per cohort still needs proof. |
@@ -63,7 +63,7 @@ Some investigations predate STAR Lab. Preserve evidence levels explicitly:
 4. checksum/integrity verified
 ```
 
-Never fabricate a higher evidence level from a lower one.
+Never fabricate a higher evidence level from a lower one. A recovered artifact may have complete raw evidence while still carrying an explicit provenance limitation if the artifact itself did not record its exact source SHA.
 
 ## Next performance work
 

@@ -1,0 +1,2702 @@
+{
+  "baseline_collect": {
+    "after": {
+      "gc": {
+        "count": [
+          33,
+          0,
+          0
+        ],
+        "enabled": true,
+        "generations": [
+          {
+            "collected": 374,
+            "collections": 1168,
+            "uncollectable": 0
+          },
+          {
+            "collected": 11,
+            "collections": 105,
+            "uncollectable": 0
+          },
+          {
+            "collected": 9,
+            "collections": 9,
+            "uncollectable": 0
+          }
+        ],
+        "tracked_objects": 198808
+      },
+      "gc_policy": {
+        "activation_serial": 1,
+        "active": false,
+        "automatic_gc_enabled": true,
+        "deadline_remaining_seconds": null,
+        "full_collect_collected": 0,
+        "full_collect_ms": 20.472458,
+        "gc_count": [
+          2,
+          0,
+          0
+        ],
+        "last_restore_reason": "stop_sustained",
+        "mode": "realtime_defer",
+        "original_automatic_gc_enabled": null
+      },
+      "memory": {
+        "max_rss_bytes": 398065664,
+        "max_rss_mb": 379.625,
+        "rss_bytes": 386727936,
+        "rss_mb": 368.812,
+        "rss_source": "ps_rss"
+      },
+      "statistics": {
+        "movement_path_entries": 24701,
+        "unit_observation_components": 5000,
+        "unit_observation_history_records": 10000,
+        "visibility_history_max_per_unit": 1,
+        "visibility_history_records": 5000,
+        "visibility_history_units": 5000
+      },
+      "vision": {
+        "geometry_cache_capacity": 4096,
+        "geometry_cache_evictions": 28016,
+        "geometry_cache_hits": 69542,
+        "geometry_cache_misses": 32112,
+        "geometry_cache_size": 4096
+      },
+      "workload": {
+        "active_moving_units": 0,
+        "density": 0.0,
+        "living_units": 5000
+      },
+      "world": {
+        "component_instances": 79852,
+        "component_types": 16,
+        "entities": 13288,
+        "query_cache_entries": 14,
+        "singleton_components": 20
+      }
+    },
+    "before": {
+      "gc": {
+        "count": [
+          508,
+          2,
+          0
+        ],
+        "enabled": true,
+        "generations": [
+          {
+            "collected": 374,
+            "collections": 1168,
+            "uncollectable": 0
+          },
+          {
+            "collected": 11,
+            "collections": 105,
+            "uncollectable": 0
+          },
+          {
+            "collected": 9,
+            "collections": 8,
+            "uncollectable": 0
+          }
+        ],
+        "tracked_objects": 212178
+      },
+      "gc_policy": {
+        "activation_serial": 1,
+        "active": false,
+        "automatic_gc_enabled": true,
+        "deadline_remaining_seconds": null,
+        "full_collect_collected": 0,
+        "full_collect_ms": 20.472458,
+        "gc_count": [
+          506,
+          2,
+          0
+        ],
+        "last_restore_reason": "stop_sustained",
+        "mode": "realtime_defer",
+        "original_automatic_gc_enabled": null
+      },
+      "memory": {
+        "max_rss_bytes": 398065664,
+        "max_rss_mb": 379.625,
+        "rss_bytes": 385024000,
+        "rss_mb": 367.188,
+        "rss_source": "ps_rss"
+      },
+      "statistics": {
+        "movement_path_entries": 24701,
+        "unit_observation_components": 5000,
+        "unit_observation_history_records": 10000,
+        "visibility_history_max_per_unit": 1,
+        "visibility_history_records": 5000,
+        "visibility_history_units": 5000
+      },
+      "vision": {
+        "geometry_cache_capacity": 4096,
+        "geometry_cache_evictions": 28016,
+        "geometry_cache_hits": 69542,
+        "geometry_cache_misses": 32112,
+        "geometry_cache_size": 4096
+      },
+      "workload": {
+        "active_moving_units": 0,
+        "density": 0.0,
+        "living_units": 5000
+      },
+      "world": {
+        "component_instances": 79852,
+        "component_types": 16,
+        "entities": 13288,
+        "query_cache_entries": 14,
+        "singleton_components": 20
+      }
+    },
+    "collect_ms": 30.078084,
+    "collected": 0,
+    "ok": true,
+    "rss_delta_mb": 1.624,
+    "tracked_objects_delta": -13370
+  },
+  "config": {
+    "cycle_realtime_seconds": 15.0,
+    "density": 1.0,
+    "gc_policy": "realtime_defer",
+    "max_missing_moving_units": 10,
+    "phase": "staggered",
+    "priming_realtime_seconds": 15.0,
+    "realtime_seconds": 120.0,
+    "require_fog": "on",
+    "seed": 42,
+    "sustained_duration": 20.0,
+    "target_radius": 12
+  },
+  "cycles": [
+    {
+      "cumulative_realtime_seconds": 15.0,
+      "cycle": 1,
+      "deferred": {
+        "gc": {
+          "count": [
+            38122,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1211,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 108,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 10,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 346008
+        },
+        "gc_policy": {
+          "activation_serial": 2,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.983066,
+          "full_collect_collected": 0,
+          "full_collect_ms": 30.388792,
+          "gc_count": [
+            38116,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 401866752,
+          "max_rss_mb": 383.25,
+          "rss_bytes": 364871680,
+          "rss_mb": 347.969,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "statistics": {
+          "movement_path_entries": 48697,
+          "unit_observation_components": 5000,
+          "unit_observation_history_records": 10000,
+          "visibility_history_max_per_unit": 1,
+          "visibility_history_records": 5000,
+          "visibility_history_units": 5000
+        },
+        "vision": {
+          "geometry_cache_capacity": 4096,
+          "geometry_cache_evictions": 52784,
+          "geometry_cache_hits": 138628,
+          "geometry_cache_misses": 56880,
+          "geometry_cache_size": 4096
+        },
+        "workload": {
+          "active_moving_units": 5000,
+          "density": 1.0,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 14,
+          "singleton_components": 20
+        }
+      },
+      "density_check": {
+        "active_delta_units": 0,
+        "active_moving_units": 5000,
+        "actual_density": 1.0,
+        "expected_active_units": 5000,
+        "living_units": 5000,
+        "max_missing_units": 10
+      },
+      "ok": true,
+      "post_collect": {
+        "after": {
+          "gc": {
+            "count": [
+              33,
+              0,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1213,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 108,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 11,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 202693
+          },
+          "gc_policy": {
+            "activation_serial": 2,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 30.388792,
+            "gc_count": [
+              2,
+              0,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 401866752,
+            "max_rss_mb": 383.25,
+            "rss_bytes": 366641152,
+            "rss_mb": 349.656,
+            "rss_source": "ps_rss"
+          },
+          "statistics": {
+            "movement_path_entries": 48697,
+            "unit_observation_components": 5000,
+            "unit_observation_history_records": 10000,
+            "visibility_history_max_per_unit": 1,
+            "visibility_history_records": 5000,
+            "visibility_history_units": 5000
+          },
+          "vision": {
+            "geometry_cache_capacity": 4096,
+            "geometry_cache_evictions": 52834,
+            "geometry_cache_hits": 138738,
+            "geometry_cache_misses": 56930,
+            "geometry_cache_size": 4096
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 14,
+            "singleton_components": 20
+          }
+        },
+        "before": {
+          "gc": {
+            "count": [
+              529,
+              2,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1213,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 108,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 10,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 216008
+          },
+          "gc_policy": {
+            "activation_serial": 2,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 30.388792,
+            "gc_count": [
+              527,
+              2,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 401866752,
+            "max_rss_mb": 383.25,
+            "rss_bytes": 366641152,
+            "rss_mb": 349.656,
+            "rss_source": "ps_rss"
+          },
+          "statistics": {
+            "movement_path_entries": 48697,
+            "unit_observation_components": 5000,
+            "unit_observation_history_records": 10000,
+            "visibility_history_max_per_unit": 1,
+            "visibility_history_records": 5000,
+            "visibility_history_units": 5000
+          },
+          "vision": {
+            "geometry_cache_capacity": 4096,
+            "geometry_cache_evictions": 52834,
+            "geometry_cache_hits": 138738,
+            "geometry_cache_misses": 56930,
+            "geometry_cache_size": 4096
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 14,
+            "singleton_components": 20
+          }
+        },
+        "collect_ms": 30.912375,
+        "collected": 0,
+        "ok": true,
+        "rss_delta_mb": 0.0,
+        "tracked_objects_delta": -13315
+      },
+      "prepare": {
+        "batch_id": 2,
+        "batch_planning_ms": 432.477,
+        "ok": true,
+        "prepared_units": 5000
+      },
+      "realtime_seconds": 15.0,
+      "seed": 43,
+      "start": {
+        "accepted_units": 5000,
+        "actual_density": 1.0,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 30.388792,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      },
+      "stop": {
+        "gc_automatic_enabled": true,
+        "gc_policy_restored": true,
+        "ok": true,
+        "stopped_units": 5000
+      }
+    },
+    {
+      "cumulative_realtime_seconds": 30.0,
+      "cycle": 2,
+      "deferred": {
+        "gc": {
+          "count": [
+            41054,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1263,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 112,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 12,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 350699
+        },
+        "gc_policy": {
+          "activation_serial": 3,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.976277,
+          "full_collect_collected": 0,
+          "full_collect_ms": 31.545834,
+          "gc_count": [
+            41048,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 401866752,
+          "max_rss_mb": 383.25,
+          "rss_bytes": 348979200,
+          "rss_mb": 332.812,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "statistics": {
+          "movement_path_entries": 72665,
+          "unit_observation_components": 5000,
+          "unit_observation_history_records": 10000,
+          "visibility_history_max_per_unit": 1,
+          "visibility_history_records": 5000,
+          "visibility_history_units": 5000
+        },
+        "vision": {
+          "geometry_cache_capacity": 4096,
+          "geometry_cache_evictions": 77500,
+          "geometry_cache_hits": 207076,
+          "geometry_cache_misses": 81596,
+          "geometry_cache_size": 4096
+        },
+        "workload": {
+          "active_moving_units": 5000,
+          "density": 1.0,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 14,
+          "singleton_components": 20
+        }
+      },
+      "density_check": {
+        "active_delta_units": 0,
+        "active_moving_units": 5000,
+        "actual_density": 1.0,
+        "expected_active_units": 5000,
+        "living_units": 5000,
+        "max_missing_units": 10
+      },
+      "ok": true,
+      "post_collect": {
+        "after": {
+          "gc": {
+            "count": [
+              33,
+              0,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1265,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 112,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 13,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 206762
+          },
+          "gc_policy": {
+            "activation_serial": 3,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 31.545834,
+            "gc_count": [
+              2,
+              0,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 401866752,
+            "max_rss_mb": 383.25,
+            "rss_bytes": 350683136,
+            "rss_mb": 334.438,
+            "rss_source": "ps_rss"
+          },
+          "statistics": {
+            "movement_path_entries": 72848,
+            "unit_observation_components": 5000,
+            "unit_observation_history_records": 10000,
+            "visibility_history_max_per_unit": 1,
+            "visibility_history_records": 5000,
+            "visibility_history_units": 5000
+          },
+          "vision": {
+            "geometry_cache_capacity": 4096,
+            "geometry_cache_evictions": 77539,
+            "geometry_cache_hits": 207208,
+            "geometry_cache_misses": 81635,
+            "geometry_cache_size": 4096
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 14,
+            "singleton_components": 20
+          }
+        },
+        "before": {
+          "gc": {
+            "count": [
+              567,
+              2,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1265,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 112,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 12,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 220066
+          },
+          "gc_policy": {
+            "activation_serial": 3,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 31.545834,
+            "gc_count": [
+              565,
+              2,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 401866752,
+            "max_rss_mb": 383.25,
+            "rss_bytes": 349028352,
+            "rss_mb": 332.859,
+            "rss_source": "ps_rss"
+          },
+          "statistics": {
+            "movement_path_entries": 72848,
+            "unit_observation_components": 5000,
+            "unit_observation_history_records": 10000,
+            "visibility_history_max_per_unit": 1,
+            "visibility_history_records": 5000,
+            "visibility_history_units": 5000
+          },
+          "vision": {
+            "geometry_cache_capacity": 4096,
+            "geometry_cache_evictions": 77539,
+            "geometry_cache_hits": 207208,
+            "geometry_cache_misses": 81635,
+            "geometry_cache_size": 4096
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 14,
+            "singleton_components": 20
+          }
+        },
+        "collect_ms": 33.363333,
+        "collected": 0,
+        "ok": true,
+        "rss_delta_mb": 1.579,
+        "tracked_objects_delta": -13304
+      },
+      "prepare": {
+        "batch_id": 3,
+        "batch_planning_ms": 519.797,
+        "ok": true,
+        "prepared_units": 5000
+      },
+      "realtime_seconds": 15.0,
+      "seed": 44,
+      "start": {
+        "accepted_units": 5000,
+        "actual_density": 1.0,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 31.545834,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      },
+      "stop": {
+        "gc_automatic_enabled": true,
+        "gc_policy_restored": true,
+        "ok": true,
+        "stopped_units": 5000
+      }
+    },
+    {
+      "cumulative_realtime_seconds": 45.0,
+      "cycle": 3,
+      "deferred": {
+        "gc": {
+          "count": [
+            38394,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1301,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 115,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 14,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 353061
+        },
+        "gc_policy": {
+          "activation_serial": 4,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.983355,
+          "full_collect_collected": 0,
+          "full_collect_ms": 33.443208,
+          "gc_count": [
+            38392,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 401866752,
+          "max_rss_mb": 383.25,
+          "rss_bytes": 354795520,
+          "rss_mb": 338.359,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "statistics": {
+          "movement_path_entries": 96221,
+          "unit_observation_components": 5000,
+          "unit_observation_history_records": 10000,
+          "visibility_history_max_per_unit": 1,
+          "visibility_history_records": 5000,
+          "visibility_history_units": 5000
+        },
+        "vision": {
+          "geometry_cache_capacity": 4096,
+          "geometry_cache_evictions": 102393,
+          "geometry_cache_hits": 274519,
+          "geometry_cache_misses": 106489,
+          "geometry_cache_size": 4096
+        },
+        "workload": {
+          "active_moving_units": 5000,
+          "density": 1.0,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 14,
+          "singleton_components": 20
+        }
+      },
+      "density_check": {
+        "active_delta_units": 0,
+        "active_moving_units": 5000,
+        "actual_density": 1.0,
+        "expected_active_units": 5000,
+        "living_units": 5000,
+        "max_missing_units": 10
+      },
+      "ok": true,
+      "post_collect": {
+        "after": {
+          "gc": {
+            "count": [
+              33,
+              0,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1303,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 115,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 15,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 209291
+          },
+          "gc_policy": {
+            "activation_serial": 4,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 33.443208,
+            "gc_count": [
+              2,
+              0,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 401866752,
+            "max_rss_mb": 383.25,
+            "rss_bytes": 341819392,
+            "rss_mb": 325.984,
+            "rss_source": "ps_rss"
+          },
+          "statistics": {
+            "movement_path_entries": 96382,
+            "unit_observation_components": 5000,
+            "unit_observation_history_records": 10000,
+            "visibility_history_max_per_unit": 1,
+            "visibility_history_records": 5000,
+            "visibility_history_units": 5000
+          },
+          "vision": {
+            "geometry_cache_capacity": 4096,
+            "geometry_cache_evictions": 102444,
+            "geometry_cache_hits": 274660,
+            "geometry_cache_misses": 106540,
+            "geometry_cache_size": 4096
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 14,
+            "singleton_components": 20
+          }
+        },
+        "before": {
+          "gc": {
+            "count": [
+              584,
+              2,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1303,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 115,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 14,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 222511
+          },
+          "gc_policy": {
+            "activation_serial": 4,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 33.443208,
+            "gc_count": [
+              582,
+              2,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 401866752,
+            "max_rss_mb": 383.25,
+            "rss_bytes": 354861056,
+            "rss_mb": 338.422,
+            "rss_source": "ps_rss"
+          },
+          "statistics": {
+            "movement_path_entries": 96382,
+            "unit_observation_components": 5000,
+            "unit_observation_history_records": 10000,
+            "visibility_history_max_per_unit": 1,
+            "visibility_history_records": 5000,
+            "visibility_history_units": 5000
+          },
+          "vision": {
+            "geometry_cache_capacity": 4096,
+            "geometry_cache_evictions": 102444,
+            "geometry_cache_hits": 274660,
+            "geometry_cache_misses": 106540,
+            "geometry_cache_size": 4096
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 14,
+            "singleton_components": 20
+          }
+        },
+        "collect_ms": 34.0945,
+        "collected": 0,
+        "ok": true,
+        "rss_delta_mb": -12.438,
+        "tracked_objects_delta": -13220
+      },
+      "prepare": {
+        "batch_id": 4,
+        "batch_planning_ms": 339.071,
+        "ok": true,
+        "prepared_units": 5000
+      },
+      "realtime_seconds": 15.0,
+      "seed": 45,
+      "start": {
+        "accepted_units": 5000,
+        "actual_density": 1.0,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 33.443208,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      },
+      "stop": {
+        "gc_automatic_enabled": true,
+        "gc_policy_restored": true,
+        "ok": true,
+        "stopped_units": 5000
+      }
+    },
+    {
+      "cumulative_realtime_seconds": 60.0,
+      "cycle": 4,
+      "deferred": {
+        "gc": {
+          "count": [
+            30245,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1356,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 119,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 16,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 352145
+        },
+        "gc_policy": {
+          "activation_serial": 5,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.974268,
+          "full_collect_collected": 0,
+          "full_collect_ms": 35.514834,
+          "gc_count": [
+            30243,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 401866752,
+          "max_rss_mb": 383.25,
+          "rss_bytes": 355303424,
+          "rss_mb": 338.844,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "statistics": {
+          "movement_path_entries": 117495,
+          "unit_observation_components": 5000,
+          "unit_observation_history_records": 10000,
+          "visibility_history_max_per_unit": 1,
+          "visibility_history_records": 5000,
+          "visibility_history_units": 5000
+        },
+        "vision": {
+          "geometry_cache_capacity": 4096,
+          "geometry_cache_evictions": 127310,
+          "geometry_cache_hits": 340774,
+          "geometry_cache_misses": 131406,
+          "geometry_cache_size": 4096
+        },
+        "workload": {
+          "active_moving_units": 5000,
+          "density": 1.0,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 14,
+          "singleton_components": 20
+        }
+      },
+      "density_check": {
+        "active_delta_units": 0,
+        "active_moving_units": 5000,
+        "actual_density": 1.0,
+        "expected_active_units": 5000,
+        "living_units": 5000,
+        "max_missing_units": 10
+      },
+      "ok": true,
+      "post_collect": {
+        "after": {
+          "gc": {
+            "count": [
+              33,
+              0,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1358,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 119,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 17,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 209508
+          },
+          "gc_policy": {
+            "activation_serial": 5,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 35.514834,
+            "gc_count": [
+              2,
+              0,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 401866752,
+            "max_rss_mb": 383.25,
+            "rss_bytes": 358301696,
+            "rss_mb": 341.703,
+            "rss_source": "ps_rss"
+          },
+          "statistics": {
+            "movement_path_entries": 117571,
+            "unit_observation_components": 5000,
+            "unit_observation_history_records": 10000,
+            "visibility_history_max_per_unit": 1,
+            "visibility_history_records": 5000,
+            "visibility_history_units": 5000
+          },
+          "vision": {
+            "geometry_cache_capacity": 4096,
+            "geometry_cache_evictions": 127359,
+            "geometry_cache_hits": 340882,
+            "geometry_cache_misses": 131455,
+            "geometry_cache_size": 4096
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 14,
+            "singleton_components": 20
+          }
+        },
+        "before": {
+          "gc": {
+            "count": [
+              667,
+              2,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1358,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 119,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 16,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 222807
+          },
+          "gc_policy": {
+            "activation_serial": 5,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 35.514834,
+            "gc_count": [
+              665,
+              2,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 401866752,
+            "max_rss_mb": 383.25,
+            "rss_bytes": 358301696,
+            "rss_mb": 341.703,
+            "rss_source": "ps_rss"
+          },
+          "statistics": {
+            "movement_path_entries": 117571,
+            "unit_observation_components": 5000,
+            "unit_observation_history_records": 10000,
+            "visibility_history_max_per_unit": 1,
+            "visibility_history_records": 5000,
+            "visibility_history_units": 5000
+          },
+          "vision": {
+            "geometry_cache_capacity": 4096,
+            "geometry_cache_evictions": 127359,
+            "geometry_cache_hits": 340882,
+            "geometry_cache_misses": 131455,
+            "geometry_cache_size": 4096
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 14,
+            "singleton_components": 20
+          }
+        },
+        "collect_ms": 35.490667,
+        "collected": 0,
+        "ok": true,
+        "rss_delta_mb": 0.0,
+        "tracked_objects_delta": -13299
+      },
+      "prepare": {
+        "batch_id": 5,
+        "batch_planning_ms": 525.769,
+        "ok": true,
+        "prepared_units": 5000
+      },
+      "realtime_seconds": 15.0,
+      "seed": 46,
+      "start": {
+        "accepted_units": 5000,
+        "actual_density": 1.0,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 35.514834,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      },
+      "stop": {
+        "gc_automatic_enabled": true,
+        "gc_policy_restored": true,
+        "ok": true,
+        "stopped_units": 5000
+      }
+    },
+    {
+      "cumulative_realtime_seconds": 75.0,
+      "cycle": 5,
+      "deferred": {
+        "gc": {
+          "count": [
+            28616,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1401,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 122,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 18,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 352750
+        },
+        "gc_policy": {
+          "activation_serial": 6,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.976134,
+          "full_collect_collected": 0,
+          "full_collect_ms": 37.375542,
+          "gc_count": [
+            28614,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 401866752,
+          "max_rss_mb": 383.25,
+          "rss_bytes": 344129536,
+          "rss_mb": 328.188,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "statistics": {
+          "movement_path_entries": 138474,
+          "unit_observation_components": 5000,
+          "unit_observation_history_records": 10000,
+          "visibility_history_max_per_unit": 1,
+          "visibility_history_records": 5000,
+          "visibility_history_units": 5000
+        },
+        "vision": {
+          "geometry_cache_capacity": 4096,
+          "geometry_cache_evictions": 152710,
+          "geometry_cache_hits": 405849,
+          "geometry_cache_misses": 156806,
+          "geometry_cache_size": 4096
+        },
+        "workload": {
+          "active_moving_units": 4999,
+          "density": 0.9998,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 14,
+          "singleton_components": 20
+        }
+      },
+      "density_check": {
+        "active_delta_units": -1,
+        "active_moving_units": 4999,
+        "actual_density": 0.9998,
+        "expected_active_units": 5000,
+        "living_units": 5000,
+        "max_missing_units": 10
+      },
+      "ok": true,
+      "post_collect": {
+        "after": {
+          "gc": {
+            "count": [
+              33,
+              0,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1403,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 122,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 19,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 209741
+          },
+          "gc_policy": {
+            "activation_serial": 6,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 37.375542,
+            "gc_count": [
+              2,
+              0,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 401866752,
+            "max_rss_mb": 383.25,
+            "rss_bytes": 346324992,
+            "rss_mb": 330.281,
+            "rss_source": "ps_rss"
+          },
+          "statistics": {
+            "movement_path_entries": 138530,
+            "unit_observation_components": 5000,
+            "unit_observation_history_records": 10000,
+            "visibility_history_max_per_unit": 1,
+            "visibility_history_records": 5000,
+            "visibility_history_units": 5000
+          },
+          "vision": {
+            "geometry_cache_capacity": 4096,
+            "geometry_cache_evictions": 152751,
+            "geometry_cache_hits": 405956,
+            "geometry_cache_misses": 156847,
+            "geometry_cache_size": 4096
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 14,
+            "singleton_components": 20
+          }
+        },
+        "before": {
+          "gc": {
+            "count": [
+              680,
+              2,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1403,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 122,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 18,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 223057
+          },
+          "gc_policy": {
+            "activation_serial": 6,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 37.375542,
+            "gc_count": [
+              678,
+              2,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 401866752,
+            "max_rss_mb": 383.25,
+            "rss_bytes": 346324992,
+            "rss_mb": 330.281,
+            "rss_source": "ps_rss"
+          },
+          "statistics": {
+            "movement_path_entries": 138530,
+            "unit_observation_components": 5000,
+            "unit_observation_history_records": 10000,
+            "visibility_history_max_per_unit": 1,
+            "visibility_history_records": 5000,
+            "visibility_history_units": 5000
+          },
+          "vision": {
+            "geometry_cache_capacity": 4096,
+            "geometry_cache_evictions": 152751,
+            "geometry_cache_hits": 405956,
+            "geometry_cache_misses": 156847,
+            "geometry_cache_size": 4096
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 14,
+            "singleton_components": 20
+          }
+        },
+        "collect_ms": 37.57475,
+        "collected": 0,
+        "ok": true,
+        "rss_delta_mb": 0.0,
+        "tracked_objects_delta": -13316
+      },
+      "prepare": {
+        "batch_id": 6,
+        "batch_planning_ms": 387.9,
+        "ok": true,
+        "prepared_units": 4999
+      },
+      "realtime_seconds": 15.0,
+      "seed": 47,
+      "start": {
+        "accepted_units": 4999,
+        "actual_density": 0.9998,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 37.375542,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      },
+      "stop": {
+        "gc_automatic_enabled": true,
+        "gc_policy_restored": true,
+        "ok": true,
+        "stopped_units": 4999
+      }
+    },
+    {
+      "cumulative_realtime_seconds": 90.0,
+      "cycle": 6,
+      "deferred": {
+        "gc": {
+          "count": [
+            28285,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1466,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 127,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 20,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 353308
+        },
+        "gc_policy": {
+          "activation_serial": 7,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.983143,
+          "full_collect_collected": 0,
+          "full_collect_ms": 38.370833,
+          "gc_count": [
+            28280,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 401866752,
+          "max_rss_mb": 383.25,
+          "rss_bytes": 349356032,
+          "rss_mb": 333.172,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "statistics": {
+          "movement_path_entries": 160541,
+          "unit_observation_components": 5000,
+          "unit_observation_history_records": 10000,
+          "visibility_history_max_per_unit": 1,
+          "visibility_history_records": 5000,
+          "visibility_history_units": 5000
+        },
+        "vision": {
+          "geometry_cache_capacity": 4096,
+          "geometry_cache_evictions": 177778,
+          "geometry_cache_hits": 470929,
+          "geometry_cache_misses": 181874,
+          "geometry_cache_size": 4096
+        },
+        "workload": {
+          "active_moving_units": 5000,
+          "density": 1.0,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 14,
+          "singleton_components": 20
+        }
+      },
+      "density_check": {
+        "active_delta_units": 0,
+        "active_moving_units": 5000,
+        "actual_density": 1.0,
+        "expected_active_units": 5000,
+        "living_units": 5000,
+        "max_missing_units": 10
+      },
+      "ok": true,
+      "post_collect": {
+        "after": {
+          "gc": {
+            "count": [
+              33,
+              0,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1468,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 127,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 21,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 209747
+          },
+          "gc_policy": {
+            "activation_serial": 7,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 38.370833,
+            "gc_count": [
+              2,
+              0,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 401866752,
+            "max_rss_mb": 383.25,
+            "rss_bytes": 350535680,
+            "rss_mb": 334.297,
+            "rss_source": "ps_rss"
+          },
+          "statistics": {
+            "movement_path_entries": 160541,
+            "unit_observation_components": 5000,
+            "unit_observation_history_records": 10000,
+            "visibility_history_max_per_unit": 1,
+            "visibility_history_records": 5000,
+            "visibility_history_units": 5000
+          },
+          "vision": {
+            "geometry_cache_capacity": 4096,
+            "geometry_cache_evictions": 177811,
+            "geometry_cache_hits": 471068,
+            "geometry_cache_misses": 181907,
+            "geometry_cache_size": 4096
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 14,
+            "singleton_components": 20
+          }
+        },
+        "before": {
+          "gc": {
+            "count": [
+              654,
+              2,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1468,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 127,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 20,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 223030
+          },
+          "gc_policy": {
+            "activation_serial": 7,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 38.370833,
+            "gc_count": [
+              652,
+              2,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 401866752,
+            "max_rss_mb": 383.25,
+            "rss_bytes": 349634560,
+            "rss_mb": 333.438,
+            "rss_source": "ps_rss"
+          },
+          "statistics": {
+            "movement_path_entries": 160541,
+            "unit_observation_components": 5000,
+            "unit_observation_history_records": 10000,
+            "visibility_history_max_per_unit": 1,
+            "visibility_history_records": 5000,
+            "visibility_history_units": 5000
+          },
+          "vision": {
+            "geometry_cache_capacity": 4096,
+            "geometry_cache_evictions": 177811,
+            "geometry_cache_hits": 471068,
+            "geometry_cache_misses": 181907,
+            "geometry_cache_size": 4096
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 14,
+            "singleton_components": 20
+          }
+        },
+        "collect_ms": 38.100333,
+        "collected": 0,
+        "ok": true,
+        "rss_delta_mb": 0.859,
+        "tracked_objects_delta": -13283
+      },
+      "prepare": {
+        "batch_id": 7,
+        "batch_planning_ms": 573.721,
+        "ok": true,
+        "prepared_units": 5000
+      },
+      "realtime_seconds": 15.0,
+      "seed": 48,
+      "start": {
+        "accepted_units": 5000,
+        "actual_density": 1.0,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 38.370833,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      },
+      "stop": {
+        "gc_automatic_enabled": true,
+        "gc_policy_restored": true,
+        "ok": true,
+        "stopped_units": 5000
+      }
+    },
+    {
+      "cumulative_realtime_seconds": 105.0,
+      "cycle": 7,
+      "deferred": {
+        "gc": {
+          "count": [
+            30008,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1526,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 132,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 22,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 354196
+        },
+        "gc_policy": {
+          "activation_serial": 8,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.983648,
+          "full_collect_collected": 0,
+          "full_collect_ms": 37.628917,
+          "gc_count": [
+            30002,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 401866752,
+          "max_rss_mb": 383.25,
+          "rss_bytes": 353370112,
+          "rss_mb": 337.0,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "statistics": {
+          "movement_path_entries": 183683,
+          "unit_observation_components": 5000,
+          "unit_observation_history_records": 10000,
+          "visibility_history_max_per_unit": 1,
+          "visibility_history_records": 5000,
+          "visibility_history_units": 5000
+        },
+        "vision": {
+          "geometry_cache_capacity": 4096,
+          "geometry_cache_evictions": 202765,
+          "geometry_cache_hits": 536114,
+          "geometry_cache_misses": 206861,
+          "geometry_cache_size": 4096
+        },
+        "workload": {
+          "active_moving_units": 5000,
+          "density": 1.0,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 14,
+          "singleton_components": 20
+        }
+      },
+      "density_check": {
+        "active_delta_units": 0,
+        "active_moving_units": 5000,
+        "actual_density": 1.0,
+        "expected_active_units": 5000,
+        "living_units": 5000,
+        "max_missing_units": 10
+      },
+      "ok": true,
+      "post_collect": {
+        "after": {
+          "gc": {
+            "count": [
+              33,
+              0,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1528,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 132,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 23,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 209700
+          },
+          "gc_policy": {
+            "activation_serial": 8,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 37.628917,
+            "gc_count": [
+              2,
+              0,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 401866752,
+            "max_rss_mb": 383.25,
+            "rss_bytes": 353845248,
+            "rss_mb": 337.453,
+            "rss_source": "ps_rss"
+          },
+          "statistics": {
+            "movement_path_entries": 183683,
+            "unit_observation_components": 5000,
+            "unit_observation_history_records": 10000,
+            "visibility_history_max_per_unit": 1,
+            "visibility_history_records": 5000,
+            "visibility_history_units": 5000
+          },
+          "vision": {
+            "geometry_cache_capacity": 4096,
+            "geometry_cache_evictions": 202765,
+            "geometry_cache_hits": 536114,
+            "geometry_cache_misses": 206861,
+            "geometry_cache_size": 4096
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 14,
+            "singleton_components": 20
+          }
+        },
+        "before": {
+          "gc": {
+            "count": [
+              623,
+              2,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1528,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 132,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 22,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 222992
+          },
+          "gc_policy": {
+            "activation_serial": 8,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 37.628917,
+            "gc_count": [
+              621,
+              2,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 401866752,
+            "max_rss_mb": 383.25,
+            "rss_bytes": 353845248,
+            "rss_mb": 337.453,
+            "rss_source": "ps_rss"
+          },
+          "statistics": {
+            "movement_path_entries": 183683,
+            "unit_observation_components": 5000,
+            "unit_observation_history_records": 10000,
+            "visibility_history_max_per_unit": 1,
+            "visibility_history_records": 5000,
+            "visibility_history_units": 5000
+          },
+          "vision": {
+            "geometry_cache_capacity": 4096,
+            "geometry_cache_evictions": 202765,
+            "geometry_cache_hits": 536114,
+            "geometry_cache_misses": 206861,
+            "geometry_cache_size": 4096
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 14,
+            "singleton_components": 20
+          }
+        },
+        "collect_ms": 38.600292,
+        "collected": 0,
+        "ok": true,
+        "rss_delta_mb": 0.0,
+        "tracked_objects_delta": -13292
+      },
+      "prepare": {
+        "batch_id": 8,
+        "batch_planning_ms": 575.066,
+        "ok": true,
+        "prepared_units": 5000
+      },
+      "realtime_seconds": 15.0,
+      "seed": 49,
+      "start": {
+        "accepted_units": 5000,
+        "actual_density": 1.0,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 37.628917,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      },
+      "stop": {
+        "gc_automatic_enabled": true,
+        "gc_policy_restored": true,
+        "ok": true,
+        "stopped_units": 5000
+      }
+    },
+    {
+      "cumulative_realtime_seconds": 120.0,
+      "cycle": 8,
+      "deferred": {
+        "gc": {
+          "count": [
+            30470,
+            0,
+            0
+          ],
+          "enabled": false,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1574,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 136,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 24,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 354343
+        },
+        "gc_policy": {
+          "activation_serial": 9,
+          "active": true,
+          "automatic_gc_enabled": false,
+          "deadline_remaining_seconds": 4.978534,
+          "full_collect_collected": 0,
+          "full_collect_ms": 39.577166,
+          "gc_count": [
+            30465,
+            0,
+            0
+          ],
+          "last_restore_reason": "",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": true
+        },
+        "memory": {
+          "max_rss_bytes": 401866752,
+          "max_rss_mb": 383.25,
+          "rss_bytes": 351830016,
+          "rss_mb": 335.531,
+          "rss_source": "ps_rss"
+        },
+        "ok": true,
+        "statistics": {
+          "movement_path_entries": 207497,
+          "unit_observation_components": 5000,
+          "unit_observation_history_records": 10000,
+          "visibility_history_max_per_unit": 1,
+          "visibility_history_records": 5000,
+          "visibility_history_units": 5000
+        },
+        "vision": {
+          "geometry_cache_capacity": 4096,
+          "geometry_cache_evictions": 227732,
+          "geometry_cache_hits": 600995,
+          "geometry_cache_misses": 231828,
+          "geometry_cache_size": 4096
+        },
+        "workload": {
+          "active_moving_units": 5000,
+          "density": 1.0,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 14,
+          "singleton_components": 20
+        }
+      },
+      "density_check": {
+        "active_delta_units": 0,
+        "active_moving_units": 5000,
+        "actual_density": 1.0,
+        "expected_active_units": 5000,
+        "living_units": 5000,
+        "max_missing_units": 10
+      },
+      "ok": true,
+      "post_collect": {
+        "after": {
+          "gc": {
+            "count": [
+              33,
+              0,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1576,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 136,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 25,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 209756
+          },
+          "gc_policy": {
+            "activation_serial": 9,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 39.577166,
+            "gc_count": [
+              2,
+              0,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 401866752,
+            "max_rss_mb": 383.25,
+            "rss_bytes": 353828864,
+            "rss_mb": 337.438,
+            "rss_source": "ps_rss"
+          },
+          "statistics": {
+            "movement_path_entries": 207497,
+            "unit_observation_components": 5000,
+            "unit_observation_history_records": 10000,
+            "visibility_history_max_per_unit": 1,
+            "visibility_history_records": 5000,
+            "visibility_history_units": 5000
+          },
+          "vision": {
+            "geometry_cache_capacity": 4096,
+            "geometry_cache_evictions": 227775,
+            "geometry_cache_hits": 601104,
+            "geometry_cache_misses": 231871,
+            "geometry_cache_size": 4096
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 14,
+            "singleton_components": 20
+          }
+        },
+        "before": {
+          "gc": {
+            "count": [
+              662,
+              2,
+              0
+            ],
+            "enabled": true,
+            "generations": [
+              {
+                "collected": 374,
+                "collections": 1576,
+                "uncollectable": 0
+              },
+              {
+                "collected": 11,
+                "collections": 136,
+                "uncollectable": 0
+              },
+              {
+                "collected": 9,
+                "collections": 24,
+                "uncollectable": 0
+              }
+            ],
+            "tracked_objects": 223020
+          },
+          "gc_policy": {
+            "activation_serial": 9,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 39.577166,
+            "gc_count": [
+              660,
+              2,
+              0
+            ],
+            "last_restore_reason": "stop_sustained",
+            "mode": "realtime_defer",
+            "original_automatic_gc_enabled": null
+          },
+          "memory": {
+            "max_rss_bytes": 401866752,
+            "max_rss_mb": 383.25,
+            "rss_bytes": 353828864,
+            "rss_mb": 337.438,
+            "rss_source": "ps_rss"
+          },
+          "statistics": {
+            "movement_path_entries": 207497,
+            "unit_observation_components": 5000,
+            "unit_observation_history_records": 10000,
+            "visibility_history_max_per_unit": 1,
+            "visibility_history_records": 5000,
+            "visibility_history_units": 5000
+          },
+          "vision": {
+            "geometry_cache_capacity": 4096,
+            "geometry_cache_evictions": 227775,
+            "geometry_cache_hits": 601104,
+            "geometry_cache_misses": 231871,
+            "geometry_cache_size": 4096
+          },
+          "workload": {
+            "active_moving_units": 0,
+            "density": 0.0,
+            "living_units": 5000
+          },
+          "world": {
+            "component_instances": 79852,
+            "component_types": 16,
+            "entities": 13288,
+            "query_cache_entries": 14,
+            "singleton_components": 20
+          }
+        },
+        "collect_ms": 41.639167,
+        "collected": 0,
+        "ok": true,
+        "rss_delta_mb": 0.0,
+        "tracked_objects_delta": -13264
+      },
+      "prepare": {
+        "batch_id": 9,
+        "batch_planning_ms": 475.334,
+        "ok": true,
+        "prepared_units": 5000
+      },
+      "realtime_seconds": 15.0,
+      "seed": 50,
+      "start": {
+        "accepted_units": 5000,
+        "actual_density": 1.0,
+        "gc_automatic_enabled": false,
+        "gc_full_collect_ms": 39.577166,
+        "gc_policy": "realtime_defer",
+        "gc_policy_active": true,
+        "ok": true
+      },
+      "stop": {
+        "gc_automatic_enabled": true,
+        "gc_policy_restored": true,
+        "ok": true,
+        "stopped_units": 5000
+      }
+    }
+  ],
+  "experiment": "realtime_gc_memory_soak_v2",
+  "ok": true,
+  "priming": {
+    "deferred": {
+      "gc": {
+        "count": [
+          28736,
+          0,
+          0
+        ],
+        "enabled": false,
+        "generations": [
+          {
+            "collected": 374,
+            "collections": 1166,
+            "uncollectable": 0
+          },
+          {
+            "collected": 11,
+            "collections": 105,
+            "uncollectable": 0
+          },
+          {
+            "collected": 9,
+            "collections": 8,
+            "uncollectable": 0
+          }
+        ],
+        "tracked_objects": 341774
+      },
+      "gc_policy": {
+        "activation_serial": 1,
+        "active": true,
+        "automatic_gc_enabled": false,
+        "deadline_remaining_seconds": 4.980156,
+        "full_collect_collected": 0,
+        "full_collect_ms": 20.472458,
+        "gc_count": [
+          28730,
+          0,
+          0
+        ],
+        "last_restore_reason": "",
+        "mode": "realtime_defer",
+        "original_automatic_gc_enabled": true
+      },
+      "memory": {
+        "max_rss_bytes": 395313152,
+        "max_rss_mb": 377.0,
+        "rss_bytes": 382287872,
+        "rss_mb": 364.578,
+        "rss_source": "ps_rss"
+      },
+      "ok": true,
+      "statistics": {
+        "movement_path_entries": 24701,
+        "unit_observation_components": 5000,
+        "unit_observation_history_records": 10000,
+        "visibility_history_max_per_unit": 1,
+        "visibility_history_records": 5000,
+        "visibility_history_units": 5000
+      },
+      "vision": {
+        "geometry_cache_capacity": 4096,
+        "geometry_cache_evictions": 27971,
+        "geometry_cache_hits": 69408,
+        "geometry_cache_misses": 32067,
+        "geometry_cache_size": 4096
+      },
+      "workload": {
+        "active_moving_units": 5000,
+        "density": 1.0,
+        "living_units": 5000
+      },
+      "world": {
+        "component_instances": 79852,
+        "component_types": 16,
+        "entities": 13288,
+        "query_cache_entries": 13,
+        "singleton_components": 20
+      }
+    },
+    "density_check": {
+      "active_delta_units": 0,
+      "active_moving_units": 5000,
+      "actual_density": 1.0,
+      "expected_active_units": 5000,
+      "living_units": 5000,
+      "max_missing_units": 10
+    },
+    "ok": true,
+    "post_collect": {
+      "after": {
+        "gc": {
+          "count": [
+            33,
+            0,
+            0
+          ],
+          "enabled": true,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1168,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 105,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 9,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 198808
+        },
+        "gc_policy": {
+          "activation_serial": 1,
+          "active": false,
+          "automatic_gc_enabled": true,
+          "deadline_remaining_seconds": null,
+          "full_collect_collected": 0,
+          "full_collect_ms": 20.472458,
+          "gc_count": [
+            2,
+            0,
+            0
+          ],
+          "last_restore_reason": "stop_sustained",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": null
+        },
+        "memory": {
+          "max_rss_bytes": 398065664,
+          "max_rss_mb": 379.625,
+          "rss_bytes": 386727936,
+          "rss_mb": 368.812,
+          "rss_source": "ps_rss"
+        },
+        "statistics": {
+          "movement_path_entries": 24701,
+          "unit_observation_components": 5000,
+          "unit_observation_history_records": 10000,
+          "visibility_history_max_per_unit": 1,
+          "visibility_history_records": 5000,
+          "visibility_history_units": 5000
+        },
+        "vision": {
+          "geometry_cache_capacity": 4096,
+          "geometry_cache_evictions": 28016,
+          "geometry_cache_hits": 69542,
+          "geometry_cache_misses": 32112,
+          "geometry_cache_size": 4096
+        },
+        "workload": {
+          "active_moving_units": 0,
+          "density": 0.0,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 14,
+          "singleton_components": 20
+        }
+      },
+      "before": {
+        "gc": {
+          "count": [
+            508,
+            2,
+            0
+          ],
+          "enabled": true,
+          "generations": [
+            {
+              "collected": 374,
+              "collections": 1168,
+              "uncollectable": 0
+            },
+            {
+              "collected": 11,
+              "collections": 105,
+              "uncollectable": 0
+            },
+            {
+              "collected": 9,
+              "collections": 8,
+              "uncollectable": 0
+            }
+          ],
+          "tracked_objects": 212178
+        },
+        "gc_policy": {
+          "activation_serial": 1,
+          "active": false,
+          "automatic_gc_enabled": true,
+          "deadline_remaining_seconds": null,
+          "full_collect_collected": 0,
+          "full_collect_ms": 20.472458,
+          "gc_count": [
+            506,
+            2,
+            0
+          ],
+          "last_restore_reason": "stop_sustained",
+          "mode": "realtime_defer",
+          "original_automatic_gc_enabled": null
+        },
+        "memory": {
+          "max_rss_bytes": 398065664,
+          "max_rss_mb": 379.625,
+          "rss_bytes": 385024000,
+          "rss_mb": 367.188,
+          "rss_source": "ps_rss"
+        },
+        "statistics": {
+          "movement_path_entries": 24701,
+          "unit_observation_components": 5000,
+          "unit_observation_history_records": 10000,
+          "visibility_history_max_per_unit": 1,
+          "visibility_history_records": 5000,
+          "visibility_history_units": 5000
+        },
+        "vision": {
+          "geometry_cache_capacity": 4096,
+          "geometry_cache_evictions": 28016,
+          "geometry_cache_hits": 69542,
+          "geometry_cache_misses": 32112,
+          "geometry_cache_size": 4096
+        },
+        "workload": {
+          "active_moving_units": 0,
+          "density": 0.0,
+          "living_units": 5000
+        },
+        "world": {
+          "component_instances": 79852,
+          "component_types": 16,
+          "entities": 13288,
+          "query_cache_entries": 14,
+          "singleton_components": 20
+        }
+      },
+      "collect_ms": 30.078084,
+      "collected": 0,
+      "ok": true,
+      "rss_delta_mb": 1.624,
+      "tracked_objects_delta": -13370
+    },
+    "prepare": {
+      "batch_id": 1,
+      "batch_planning_ms": 989.958,
+      "ok": true,
+      "prepared_units": 5000
+    },
+    "start": {
+      "accepted_units": 5000,
+      "actual_density": 1.0,
+      "gc_automatic_enabled": false,
+      "gc_full_collect_ms": 20.472458,
+      "gc_policy": "realtime_defer",
+      "gc_policy_active": true,
+      "ok": true
+    },
+    "stop": {
+      "gc_automatic_enabled": true,
+      "gc_policy_restored": true,
+      "ok": true,
+      "stopped_units": 5000
+    }
+  },
+  "summary": {
+    "baseline_rss_mb": 368.812,
+    "baseline_tracked_objects": 198808,
+    "baseline_vision_geometry_cache_size": 4096,
+    "component_instance_growth": 0,
+    "cycles_completed": 8,
+    "entity_growth": 0,
+    "final_post_collect_rss_mb": 337.438,
+    "final_post_collect_tracked_objects": 209756,
+    "final_vision_geometry_cache_evictions": 227775,
+    "final_vision_geometry_cache_size": 4096,
+    "max_safe_collect_ms": 41.639167,
+    "peak_deferred_rss_mb": 347.969,
+    "peak_deferred_vision_geometry_cache_size": 4096,
+    "post_collect_rss_growth_mb": -31.374,
+    "post_collect_rss_slope_mb_per_hour": -162.669,
+    "post_collect_tracked_objects_growth": 10948,
+    "post_collect_tracked_objects_slope_per_hour": 187805.714,
+    "realtime_seconds_completed": 120.0,
+    "total_safe_collect_collected": 0,
+    "vision_geometry_cache_capacity": 4096
+  }
+}

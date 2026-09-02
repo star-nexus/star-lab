@@ -12,7 +12,7 @@ Read [`../PROTOCOL.md`](../PROTOCOL.md) before adding or modifying a case.
 | [`2026-09-memory-retention`](2026-09-memory-retention/) | **CLOSED — raw evidence complete** | Why do RSS/tracked objects rise although full safe GC collects 0 and ECS/Vision caches are bounded? | Runtime retained historical visibility telemetry (up to 100 records/unit); scale/window now keeps the latest transition only. | Pre-fix 600s + post-fix 120s raw JSON recovered and SHA256-verified. Exact checkout SHA for the recovered post-fix run is not encoded and is documented rather than guessed. |
 | [`2026-09-spatial-cull`](2026-09-spatial-cull/) | **CLOSED — canonical cross-case evidence** | Why is `unit_visible_cull` still ~3.53 ms although spatial candidate discovery already exists? | Residual per-candidate ECS/singleton/coordinate work and low-zoom overscan were the real costs; ~3.53 -> ~1.33 ms. | No duplicated local raw; before references GC A/B raw, after references Vision 16384 raw. |
 | [`2026-09-vision-cache`](2026-09-vision-cache/) | **CLOSED — complete formal archive** | What bounded geometry-cache capacity avoids memory growth without thrashing? | 4096 thrashes; 8192 is measured minimum sufficient; 16384 is the scale/window operational default with headroom. | Four original formal JSON runs + SHA256. |
-| [`2026-09-dynamic-world-scaling`](2026-09-dynamic-world-scaling/) | **ARCHIVED — source provenance backfill pending** | How did the controlled 5K Dynamic World workload evolve into the scale methodology used by later investigations? | V1/V2/V2.1 preserve the progression of density/burst measurement and expose the bottlenecks later closed by GC/Cull/Vision work. | 14 raw JSON runs + SHA256; exact STAR commit per cohort still needs proof. |
+| [`2026-09-dynamic-world-scaling`](2026-09-dynamic-world-scaling/) | **ARCHIVED — complete formal archive** | How did the controlled 5K Dynamic World workload evolve into the scale methodology used by later investigations? | V1/V2/V2.1 preserve the progression from formal density control through incremental Fog to rare-tail attribution. | 14 raw JSON runs + SHA256; exact source HEADs recovered for V1 `0f0d0a2`, V2 `571ea207`, V2.1 `916d88dc`. |
 
 ## Reading order for a case
 
@@ -57,13 +57,15 @@ vision-cache/results/capacity-16384.json
 Some investigations predate STAR Lab. Preserve evidence levels explicitly:
 
 ```text
-1. exact source provenance confirmed from Git
+1. exact source provenance confirmed from Git or a contemporaneous primary run record
 2. validated numeric summary preserved
 3. original raw artifact recovered
 4. checksum/integrity verified
 ```
 
 Never fabricate a higher evidence level from a lower one. A recovered artifact may have complete raw evidence while still carrying an explicit provenance limitation if the artifact itself did not record its exact source SHA.
+
+For source identity recovered from an external run-handoff record, archive the basis explicitly: the record must identify the active HEAD, and Git inspection should independently match the implementation/diagnostic generation represented by the raw artifacts.
 
 ## Next performance work
 

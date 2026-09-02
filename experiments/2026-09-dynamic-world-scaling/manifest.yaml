@@ -2,16 +2,21 @@ experiment:
   id: dynamic-world-scaling-methodology
   title: Dynamic World Scaling Methodology Evolution
   date: 2026-09-02
-  status: archived_provenance_backfill_pending
+  status: archived_complete_formal_archive
 
 source:
   repository: star-nexus/star
   branch_at_time: perf/scale-harness
-  v1_commit: null
-  v2_commit: null
-  v2_1_commit: null
-  provenance_status: pending_exact_commit_backfill
-  note: "Do not infer commit SHAs from file/directory names. Exact source identity must be proven from Git or another primary record."
+  v1_commit: 0f0d0a2a173457de099af714b2ee5b86600f91b2
+  v2_commit: 571ea207db52478a56f0710c6cad7e45de3bf0e3
+  v2_1_commit: 916d88dcd3d796fe49a0cadd64be40b68c331b5c
+  provenance_status: complete_from_contemporaneous_run_handoff_plus_git_inspection
+  provenance_basis:
+    v1: "Contemporaneous run-handoff recorded current pushed HEAD immediately before the first formal Dynamic World Density Curve; Git commit documents common-plan-pool density protocol and results/dynamic-world-v1 paths."
+    v2: "Contemporaneous run-handoff recorded current pushed HEAD after incremental Fog delta/presenter work and before V2 measurement; Git snapshot exposes incremental fog and explicit tail diagnostics."
+    v2_1: "Contemporaneous run-handoff recorded current pushed HEAD after UnitRender rare-tail diagnostics and MapRender cleanup and before V2.1 measurement; Git commit is profile: attribute rare UnitRender tails."
+  raw_artifact_sha_field: absent
+  note: "The raw JSON files do not self-encode Git SHAs. Cohort source identity is bound by contemporaneous run-handoff records and independently matching Git commit contents; no SHA was inferred from filenames or performance values."
 
 scenario:
   name: TestMap-8K-scale-5000
@@ -26,8 +31,19 @@ common_workload:
   canonical_large_window_zoom: 0.15
   sample_window_frames: 300
 
+formal_protocol:
+  warmup_wall_seconds: 5
+  sustained_simulation_seconds: 20
+  snapshot_wall_seconds_after_kickoff: 10
+  phase_default: staggered
+  common_plan_pool_units: 5000
+  density_subsets_nested: true
+  planning_excluded_from_execution_epoch: true
+
 cohorts:
   v1:
+    source_commit: 0f0d0a2a173457de099af714b2ee5b86600f91b2
+    role: first_formal_density_curve
     artifacts: 8
     contents:
       - density_0
@@ -39,11 +55,24 @@ cohorts:
       - burst_0_synchronized
       - burst_100_synchronized
   v2:
+    source_commit: 571ea207db52478a56f0710c6cad7e45de3bf0e3
+    role: incremental_fog_generation
     artifacts: 3
     contents: [density_000, density_010, density_100]
+    schema_fingerprint:
+      - fog_render_mode
+      - fog_delta_tiles
+      - fog_patch_tiles
+      - epoch_worst_slow_frame_ms
   v2_1:
+    source_commit: 916d88dcd3d796fe49a0cadd64be40b68c331b5c
+    role: unitrender_rare_tail_attribution
     artifacts: 3
     contents: [density_000, density_100, density_100_frontwindow]
+    source_characteristics:
+      - unitrender_gc_pause_diagnostics
+      - render_queue_command_diagnostics
+      - zero_copy_fog_visible_set_handoff
 
 artifacts:
   root: results/
@@ -53,9 +82,10 @@ artifacts:
 
 headline:
   purpose: "Preserve the evolution of the controlled 5K Dynamic World workload and the evidence context that exposed later GC, memory, cull, and Vision bottlenecks."
-  limitation: "Raw artifacts are authentic and checksummed, but exact STAR source SHA per V1/V2/V2.1 cohort remains unproven."
+  provenance: "V1/V2/V2.1 are bound to exact contemporaneous STAR HEADs: 0f0d0a2 / 571ea207 / 916d88dc."
+  interpretation_boundary: "Cohorts are source-bound historical generations, not a one-variable A/B; dedicated later cases own causal optimization conclusions."
 
-completion_requirements:
-  - prove exact STAR commit for each cohort or prove that cohorts share a commit
-  - record those SHAs here
-  - verify reproduction commands against the bound source state
+replay:
+  environment_command: "STAR_SCALE_HARNESS_SOCKET=/tmp/star-scale.sock uv run rotk_env/main.py --skip-start --scenario TestMap-8K-scale-5000 --mode real_time --players human_vs_two_ai --seed 42 --no-hub --profile"
+  density_point_shape: "uv run tools/scale_driver.py --socket /tmp/star-scale.sock density-point --density <d> --seed 42 --target-radius 12 --duration 20 --phase staggered --require-fog on --warmup 5 --sample-after 10 --output <file>.json"
+  verification: "Check raw guards/metadata for achieved density, Fog, camera/zoom stability, rolling-window completeness, seed and measurement epoch."

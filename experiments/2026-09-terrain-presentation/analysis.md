@@ -141,6 +141,16 @@ rolling max              67.204       67.464 ms
 
 The larger camera-stress tail was instead dominated by Fog full rebuilds, which became the next open investigation.
 
+### Regression evidence
+
+The final combined renderer regression suite was executed at the exact validated production commit `54d17745098fb3fc4c43861d839e8dc40164c030` and reported:
+
+```text
+43 passed in 1.12s
+```
+
+The suite covered Terrain presentation cache behavior, camera stress, overscan behavior, rendering ablations, render batching, RenderEngine profiling, profiler-v2 export behavior, Fog integration, and scale measurement plumbing.
+
 ## 5. Root cause
 
 > The dominant Terrain presentation overhead was not pixel-format mismatch or the small fraction of non-opaque pixels. It was the Pygame/SDL software-blit path selected by a `SRCALPHA` source Surface. A secondary cost came from reading a compact crop out of a much larger backing Surface. The production fix therefore changes presentation representation rather than Terrain construction semantics.
@@ -175,7 +185,6 @@ cache-install boundary
 - Camera stress uses discrete state jumps every 0.75 s, not smooth per-frame pan/zoom.
 - The stress test proves rebuild resilience for this discrete workload; it does not yet characterize continuous-camera invalidation frequency.
 - Exact Python runtime version was not captured in archived raw metadata.
-- Regression-test stdout is not archived yet, so the case is VALIDATED rather than formally CLOSED under `PROTOCOL.md`.
 
 ## 9. Raw evidence
 

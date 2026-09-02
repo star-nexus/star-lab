@@ -1,6 +1,6 @@
 # Decision — Terrain Opaque Presentation Cache
 
-**Status:** accepted  
+**Status:** accepted / CLOSED  
 **Decision date:** 2026-09-02  
 **Validated STAR commit:** `54d17745098fb3fc4c43861d839e8dc40164c030`  
 **Validated STAR tag:** N/A — no separate Terrain-presentation milestone tag has been created
@@ -18,6 +18,7 @@ Use a compact opaque RGB Surface as the **Terrain presentation representation**,
 - Final same-commit production A/B reduces `render_scalar_execute` by ~0.963 ms and `render_engine` by ~0.889 ms.
 - Camera stress retains ~0.645 ms RenderEngine improvement and does not create a new P95/P99/max pathology.
 - The accepted design does not rewrite the already-verified overscan construction logic.
+- The final combined regression suite passed `43 tests in 1.12s` at the exact validated production commit.
 
 ## 3. Measured alternatives
 
@@ -91,7 +92,16 @@ This is favorable for the measured camera pattern because rebuilds are infrequen
 
 ## 9. Closure status
 
-The engineering decision, root-cause attribution, fixed-camera A/B and camera-stress validation are accepted. Formal `PROTOCOL.md` CLOSED status remains pending archived regression-test evidence for the validated commit. The existing JSON and SHA256 evidence does not need to change for that closure step.
+**CLOSED.** Root-cause attribution, controlled A-B-C-D evidence, production fixed-camera A/B, camera-stress validation, regression testing, canonical raw evidence, and SHA256 integrity verification are all complete under `PROTOCOL.md`.
+
+Regression evidence:
+
+```text
+commit: 54d17745098fb3fc4c43861d839e8dc40164c030
+result: 43 passed in 1.12s
+```
+
+No raw result or checksum was regenerated during closure.
 
 ## 10. Provenance
 

@@ -1,8 +1,9 @@
 # Decision — Fog Presentation Bounding
 
-**Status:** accepted  
+**Status:** accepted / CLOSED  
 **Decision date:** 2026-09-02  
-**Validated STAR commit:** `6a61115ab29a0c4aeb39fa8b74c7cbcded314180`  
+**Validated STAR performance commit:** `6a61115ab29a0c4aeb39fa8b74c7cbcded314180`  
+**Regression / integration validation commit:** `54d17745098fb3fc4c43861d839e8dc40164c030`  
 **Validated STAR tag:** N/A — no separate Fog-presentation milestone tag has been created
 
 ## 1. Decision
@@ -16,6 +17,7 @@ Keep the viewport-sized Fog semantic Surface and its incremental patch semantics
 - Production validation reduces RenderEngine by ~1.99 ms while preserving Fog ON and the existing semantic update path.
 - The rectangle is computed only during full rebuild, so the fix does not add a new steady-state map scan.
 - Keeping the semantic Surface preserves stable screen-space dirty-patch coordinates and existing view/faction invalidation semantics.
+- The final combined regression suite passed `43 tests in 1.12s` at descendant integration commit `54d1774...`, with Fog production presenter code unchanged since the fix commit.
 
 ## 3. Measured alternatives
 
@@ -63,7 +65,16 @@ The fix scales presentation cost with visible map-content area rather than full 
 
 ## 9. Closure status
 
-The engineering decision and performance validation are accepted. Formal `PROTOCOL.md` CLOSED status is still pending archived regression-test evidence for the validated commit. No raw result needs to be regenerated for that closure step.
+**CLOSED.** Problem reproduction, causal attribution, production fix, controlled performance validation, regression testing, canonical raw evidence, and SHA256 integrity verification are all complete under `PROTOCOL.md`.
+
+Regression evidence:
+
+```text
+commit: 54d17745098fb3fc4c43861d839e8dc40164c030
+result: 43 passed in 1.12s
+```
+
+No raw result or checksum was regenerated during closure.
 
 ## 10. Provenance
 

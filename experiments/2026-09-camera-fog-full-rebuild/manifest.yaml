@@ -11,6 +11,8 @@ source:
   problem_commit: 54d17745098fb3fc4c43861d839e8dc40164c030
   problem_checkpoint_tag: perf-2026-09-camera-fog-checkpoint-session2
   initial_attribution_commit: 08afd17bfaf84d680cbc8e2dceb6e58f0329718c
+  measurement_commit: be28ca172162cac8a4f684507620fca0a661754e
+  fix_commit: 717932ec520ffc215ab45c32bd33cbb0fa5a68c2
   final_production_fix: 717932ec520ffc215ab45c32bd33cbb0fa5a68c2
   closeout_measurement_commit: be28ca172162cac8a4f684507620fca0a661754e
   validated_commit: be28ca172162cac8a4f684507620fca0a661754e
@@ -170,14 +172,14 @@ workload:
     primary_zoom: 0.15
     long_pan_pixels: 320
     zoom_target_delta: 0.5
-    fog_required: on
+    fog_required: true
   closeout:
     moving_units: 0
     primary_short_pan_pixels: 128
     zooms:
       - 0.15
       - 0.50
-    fine_grained_timers: off
+    fine_grained_timers: false
     full_rebuild_observer: none
     production_paths:
       geometry: fused

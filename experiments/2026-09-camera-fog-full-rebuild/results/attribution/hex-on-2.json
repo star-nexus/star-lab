@@ -1,0 +1,1359 @@
+{
+  "experiment": "2026-09-camera-fog-full-rebuild",
+  "ok": true,
+  "runs": [
+    {
+      "mode": "short-pan",
+      "ok": true,
+      "start": {
+        "camera_start": {
+          "offset_x": 1240.0,
+          "offset_y": 634.0,
+          "zoom": 0.15
+        },
+        "experiment": "2026-09-camera-fog-full-rebuild",
+        "fog_full_build_counter_start": 81,
+        "hex_corners_timer_sanity": {
+          "measured_interval_ns": 502202,
+          "measured_interval_ns_per_sample": 25.1101,
+          "samples": 20000,
+          "wall_ns_per_sample": 72.02295,
+          "wall_time_ns": 1440459
+        },
+        "hex_corners_timing_enabled": true,
+        "measurement_epoch": "fog_camera_attribution.short_pan",
+        "measurement_epoch_pending": true,
+        "mode": "short_pan",
+        "ok": true,
+        "pan_target_pixels": 128.0,
+        "polygon_timing_enabled": true,
+        "stationary_frames": null,
+        "timer_sanity": {
+          "measured_interval_ns": 751994,
+          "measured_interval_ns_per_sample": 37.5997,
+          "samples": 20000,
+          "wall_ns_per_sample": 86.67085,
+          "wall_time_ns": 1733417
+        },
+        "zoom_target_delta": null
+      },
+      "status": {
+        "active": true,
+        "camera_changed_frames": 39,
+        "completed": true,
+        "mode": "short_pan",
+        "ok": true,
+        "total_frames": 39
+      },
+      "stop": {
+        "aborted_reason": null,
+        "active_moving_units_end": 0,
+        "active_moving_units_start": 0,
+        "camera_changed_frames": 39,
+        "camera_end": {
+          "offset_x": 1368.0,
+          "offset_y": 634.0,
+          "zoom": 0.15
+        },
+        "camera_restored": true,
+        "camera_start": {
+          "offset_x": 1240.0,
+          "offset_y": 634.0,
+          "zoom": 0.15
+        },
+        "coarse_full_build_reason_counts": {
+          "view_geometry_changed": 39
+        },
+        "completed": true,
+        "detailed_geometry_change_counts": {
+          "offset_x": 39
+        },
+        "experiment": "2026-09-camera-fog-full-rebuild",
+        "fog_disabled_frames": 0,
+        "fog_enabled_end": true,
+        "fog_enabled_start": true,
+        "fog_full_build_counter_end": 120,
+        "fog_full_build_counter_start": 81,
+        "fog_full_build_delta": 39,
+        "full_build_attribution": {
+          "average_hex_corners_time_per_full_rebuild_ms": 6.89318794871795,
+          "average_hex_corners_time_per_full_rebuild_ns": 6893187.948717949,
+          "average_hex_corners_time_per_input_tile_ns": 832.4100892063699,
+          "full_build_hex_corners_time_ms": 268.83433,
+          "full_build_hex_corners_time_ns": 268834330,
+          "full_build_input_tiles": 322959,
+          "full_build_polygon_draw_tiles": 249327,
+          "full_build_polygon_time_ms": 175.23239,
+          "full_build_polygon_time_ns": 175232390,
+          "full_build_tile_loop_time_ms": 1144.156455,
+          "full_build_tile_loop_time_ns": 1144156455,
+          "full_build_visible_no_fog_tiles": 73632,
+          "hex_corners_fraction_of_non_polygon_tile_loop_time": 0.27745655176806866,
+          "hex_corners_fraction_of_tile_loop_time": 0.2349629098583375,
+          "non_polygon_tile_loop_time_ms": 968.924065,
+          "non_polygon_tile_loop_time_ns": 968924065
+        },
+        "geometry_change_detail_counts": {
+          "offset_x": 39
+        },
+        "hex_corners_timer_sanity": {
+          "measured_interval_ns": 502202,
+          "measured_interval_ns_per_sample": 25.1101,
+          "samples": 20000,
+          "wall_ns_per_sample": 72.02295,
+          "wall_time_ns": 1440459
+        },
+        "hex_corners_timing_enabled": true,
+        "max_active_moving_units": 0,
+        "mode": "short_pan",
+        "offset_x_changed_frames": 39,
+        "offset_y_changed_frames": 0,
+        "ok": true,
+        "polygon_timing_enabled": true,
+        "profile_snapshot": {
+          "active_ms": 41.375236275000006,
+          "avg_fps": 23.27749795784328,
+          "avg_frame_ms": 42.959943625,
+          "context": {
+            "initial_units": 5000,
+            "map_id": "untitled-scale-5000",
+            "map_size": "91x91",
+            "measurement_epoch": "fog_camera_attribution.short_pan",
+            "measurement_epoch_serial": 3,
+            "scale_active_moving_units": 0,
+            "scale_actual_density": 0.0,
+            "scale_experiment_kind": "2026-09-camera-fog-full-rebuild",
+            "scale_fog_camera_attribution_active": true,
+            "scale_fog_camera_attribution_completed": true,
+            "scale_fog_camera_attribution_mode": "short_pan",
+            "scale_fog_camera_start_x": 1240.0,
+            "scale_fog_camera_start_y": 634.0,
+            "scale_fog_camera_start_zoom": 0.15,
+            "scale_fog_present_full_viewport_pixels": 3144640,
+            "scale_fog_present_last_rect": [
+              854,
+              36,
+              1029,
+              1190
+            ],
+            "scale_fog_present_last_saved_pixels": 1920130,
+            "scale_fog_present_last_source_pixels": 1224510,
+            "scale_gc_full_collect_collected": 0,
+            "scale_gc_full_collect_ms": 0.0,
+            "scale_gc_policy": "auto",
+            "scale_harness": true,
+            "scale_harness_socket": "/tmp/star-scale.sock",
+            "scale_render_pixel_metrics_enabled": false,
+            "scale_render_queue_last_batch_runs": 6,
+            "scale_render_queue_last_blit_batches": 4,
+            "scale_render_queue_last_commands": 1692,
+            "scale_render_queue_last_layers": 1,
+            "scale_render_queue_last_max_batch_size": 1672,
+            "scale_render_queue_last_scalar_commands": 7,
+            "scale_render_queue_last_simple_blits": 1685,
+            "scale_terrain_overscan_build_step_last_ms": 2.666083,
+            "scale_terrain_overscan_build_step_max_ms": 2.666083,
+            "scale_terrain_present_cache_build_count": 1,
+            "scale_terrain_present_cache_last_build_ms": 1.828625,
+            "scale_terrain_present_cache_masks": [
+              16711680,
+              65280,
+              255,
+              0
+            ],
+            "scale_terrain_present_cache_max_build_ms": 1.828625,
+            "scale_terrain_present_cache_pitch": 4112,
+            "scale_terrain_present_cache_pixels": 1224348,
+            "scale_terrain_present_cache_present": true,
+            "scale_terrain_present_cache_source_rect": [
+              982,
+              291,
+              1028,
+              1191
+            ],
+            "scale_terrain_present_cache_srcalpha": false,
+            "scale_terrain_present_mode": "opaque_compact",
+            "scenario": "TestMap-8K-scale-5000",
+            "window": "2480x1268"
+          },
+          "epoch_worst_slow_frame_ms": 45.145583,
+          "fps_limiter_wait_ms": 0.0637833,
+          "gc_policy": {
+            "activation_serial": 0,
+            "active": false,
+            "automatic_gc_enabled": true,
+            "deadline_remaining_seconds": null,
+            "full_collect_collected": 0,
+            "full_collect_ms": 0.0,
+            "gc_count": [
+              97,
+              6,
+              10
+            ],
+            "last_restore_reason": "",
+            "mode": "auto",
+            "original_automatic_gc_enabled": null
+          },
+          "guards": {
+            "active_moving_units": 0,
+            "actual_density": 0.0,
+            "camera_current": {
+              "offset_x": 1368.0,
+              "offset_y": 634.0,
+              "zoom": 0.15
+            },
+            "camera_start": {
+              "offset_x": 1240.0,
+              "offset_y": 634.0,
+              "zoom": 0.15
+            },
+            "camera_unchanged": false,
+            "execution_requested_units": null,
+            "execution_selection_seed": null,
+            "fog_enabled": true,
+            "fog_matches_required": true,
+            "full_prepared_units": null,
+            "gc_automatic_enabled": true,
+            "gc_policy_active": false,
+            "gc_policy_matches_requested": true,
+            "gc_policy_mode": "auto",
+            "gc_policy_requested": "auto",
+            "living_units": 5000,
+            "required_fog": "on"
+          },
+          "max_fps": 63.33206057002275,
+          "max_frame_ms": 47.328333,
+          "measurement_epoch": "fog_camera_attribution.short_pan",
+          "measurement_epoch_serial": 3,
+          "min_fps": 21.128992648019103,
+          "ok": true,
+          "p50_frame_ms": 43.550271,
+          "p95_frame_ms": 45.1574372,
+          "p99_frame_ms": 46.56952326,
+          "present_ms": 1.52092405,
+          "rolling_max_frame_ms": 47.328333,
+          "rolling_window_full": false,
+          "sample_count": 40,
+          "sample_window": 300,
+          "sections": {
+            "AnimationSystem": {
+              "category": "work",
+              "frame_share_pct": 0.026497823412821114,
+              "inclusive_ms": 0.011383450000000002,
+              "max_inclusive_ms": 0.013958,
+              "max_self_ms": 0.013958,
+              "self_ms": 0.011383450000000002
+            },
+            "MapRenderSystem": {
+              "category": "work",
+              "frame_share_pct": 6.24460852047964,
+              "inclusive_ms": 31.441146975000002,
+              "max_inclusive_ms": 35.145583,
+              "max_self_ms": 4.869375,
+              "self_ms": 2.6826803
+            },
+            "MiniMapSystem": {
+              "category": "work",
+              "frame_share_pct": 0.1917435593469078,
+              "inclusive_ms": 0.082372925,
+              "max_inclusive_ms": 0.08975,
+              "max_self_ms": 0.08975,
+              "self_ms": 0.082372925
+            },
+            "UnitRenderSystem": {
+              "category": "work",
+              "frame_share_pct": 0.4103142023152504,
+              "inclusive_ms": 5.231587425,
+              "max_inclusive_ms": 6.605083,
+              "max_self_ms": 0.269376,
+              "self_ms": 0.17627075
+            },
+            "VisionSystem": {
+              "category": "work",
+              "frame_share_pct": 0.014182281180775174,
+              "inclusive_ms": 0.0060926999999999995,
+              "max_inclusive_ms": 0.007292,
+              "max_self_ms": 0.007292,
+              "self_ms": 0.0060926999999999995
+            },
+            "display_present": {
+              "category": "present",
+              "frame_share_pct": 3.5403306467909736,
+              "inclusive_ms": 1.52092405,
+              "max_inclusive_ms": 1.695334,
+              "max_self_ms": 1.695334,
+              "self_ms": 1.52092405
+            },
+            "fog_full_build_surface_allocate": {
+              "category": "render",
+              "frame_share_pct": 0.33533400615583325,
+              "inclusive_ms": 0.1440593,
+              "max_inclusive_ms": 0.904791,
+              "max_self_ms": 0.904791,
+              "self_ms": 0.1440593
+            },
+            "fog_full_build_tile_loop": {
+              "category": "render",
+              "frame_share_pct": 66.57566383154209,
+              "inclusive_ms": 28.600867649999998,
+              "max_inclusive_ms": 31.041875,
+              "max_self_ms": 31.041875,
+              "self_ms": 28.600867649999998
+            },
+            "fog_surface_full_build": {
+              "category": "render",
+              "frame_share_pct": 0.03151709210372596,
+              "inclusive_ms": 28.758466675,
+              "max_inclusive_ms": 31.1865,
+              "max_self_ms": 0.022418,
+              "self_ms": 0.013539725
+            },
+            "fps_limiter_wait": {
+              "category": "wait",
+              "frame_share_pct": 0.1484715635494505,
+              "inclusive_ms": 0.0637833,
+              "max_inclusive_ms": 2.264208,
+              "max_self_ms": 2.264208,
+              "self_ms": 0.0637833
+            },
+            "input_event_pump": {
+              "category": "input",
+              "frame_share_pct": 0.06245905542665851,
+              "inclusive_ms": 0.026832375,
+              "max_inclusive_ms": 0.035625,
+              "max_self_ms": 0.035625,
+              "self_ms": 0.026832375
+            },
+            "render_batch_blits": {
+              "category": "render",
+              "frame_share_pct": 1.698209688933222,
+              "inclusive_ms": 0.729549925,
+              "max_inclusive_ms": 0.781249,
+              "max_self_ms": 0.781249,
+              "self_ms": 0.729549925
+            },
+            "render_batch_pack": {
+              "category": "render",
+              "frame_share_pct": 0.5380152544369173,
+              "inclusive_ms": 0.23113104999999998,
+              "max_inclusive_ms": 0.267084,
+              "max_self_ms": 0.267084,
+              "self_ms": 0.23113104999999998
+            },
+            "render_engine": {
+              "category": "render",
+              "frame_share_pct": 0.2043884781750572,
+              "inclusive_ms": 2.605724,
+              "max_inclusive_ms": 2.859375,
+              "max_self_ms": 0.098,
+              "self_ms": 0.087805175
+            },
+            "render_queue_clear": {
+              "category": "render",
+              "frame_share_pct": 0.002546150920373793,
+              "inclusive_ms": 0.001093825,
+              "max_inclusive_ms": 0.001458,
+              "max_self_ms": 0.001458,
+              "self_ms": 0.001093825
+            },
+            "render_queue_prepare": {
+              "category": "render",
+              "frame_share_pct": 0.0024415767607981823,
+              "inclusive_ms": 0.0010489000000000002,
+              "max_inclusive_ms": 0.001291,
+              "max_self_ms": 0.001291,
+              "self_ms": 0.0010489000000000002
+            },
+            "render_queue_submit": {
+              "category": "render",
+              "frame_share_pct": 0.03949074083544028,
+              "inclusive_ms": 2.5157761,
+              "max_inclusive_ms": 2.770291,
+              "max_self_ms": 0.018665,
+              "self_ms": 0.0169652
+            },
+            "render_scalar_execute": {
+              "category": "render",
+              "frame_share_pct": 3.580381618808514,
+              "inclusive_ms": 1.538129925,
+              "max_inclusive_ms": 1.74371,
+              "max_self_ms": 1.74371,
+              "self_ms": 1.538129925
+            },
+            "unit_animated_draw": {
+              "category": "render",
+              "frame_share_pct": 0.0014790522202413618,
+              "inclusive_ms": 0.0006353999999999999,
+              "max_inclusive_ms": 0.0015,
+              "max_self_ms": 0.0015,
+              "self_ms": 0.0006353999999999999
+            },
+            "unit_batch_prepare": {
+              "category": "render",
+              "frame_share_pct": 3.4797045779410047,
+              "inclusive_ms": 1.494879125,
+              "max_inclusive_ms": 2.114084,
+              "max_self_ms": 2.114084,
+              "self_ms": 1.494879125
+            },
+            "unit_static_draw": {
+              "category": "render",
+              "frame_share_pct": 5.533454188744876,
+              "inclusive_ms": 2.3771687999999997,
+              "max_inclusive_ms": 3.207417,
+              "max_self_ms": 3.207417,
+              "self_ms": 2.3771687999999997
+            },
+            "unit_visible_cull": {
+              "category": "render",
+              "frame_share_pct": 2.716391832788398,
+              "inclusive_ms": 1.1669604,
+              "max_inclusive_ms": 1.636375,
+              "max_self_ms": 1.636375,
+              "self_ms": 1.1669604
+            },
+            "world_update": {
+              "category": "update",
+              "frame_share_pct": 0.07345435616828047,
+              "inclusive_ms": 38.415823925,
+              "max_inclusive_ms": 42.590292,
+              "max_self_ms": 0.036543,
+              "self_ms": 0.03155595
+            }
+          },
+          "slow_frame_count": 29,
+          "worst_slow_frame": {
+            "active_ms": 43.692499,
+            "fps_limiter_wait_ms": 0.007125,
+            "frame_index": 30,
+            "frame_metrics": {
+              "animated_visible_units": 0,
+              "fast_unit_texture_evictions": 0,
+              "fast_unit_texture_misses": 0,
+              "fast_unit_texture_scales": 0,
+              "fog_enabled": 1,
+              "fog_full_build_input_tiles": 8281,
+              "fog_full_build_polygon_draw_tiles": 6393,
+              "fog_full_build_polygon_time_ms": 4.719238,
+              "fog_full_build_polygon_time_ns": 4719238,
+              "fog_full_build_polygon_timing_enabled": 1,
+              "fog_full_build_tile_loop_time_ms": 30.977625,
+              "fog_full_build_tile_loop_time_ns": 30977625,
+              "fog_full_build_visible_no_fog_tiles": 1888,
+              "fog_full_builds": 110,
+              "fog_full_rebuild_reason": "view_geometry_changed",
+              "fog_geometry_change_detail": "offset_x",
+              "fog_geometry_change_mask": 4,
+              "fog_patch_tiles": 8281,
+              "fog_patch_updates": 0,
+              "fog_rebuild_camera_dx": 3.3333333333332575,
+              "fog_rebuild_camera_dy": 0.0,
+              "fog_rebuild_zoom_delta": 0.0,
+              "fog_render_mode": "full_build",
+              "fog_toggle_this_frame": 0,
+              "gc_automatic_enabled": 1,
+              "gc_policy_active": 0,
+              "gc_policy_deadline_remaining_seconds": -1.0,
+              "gc_policy_mode": "auto",
+              "minimap_spatial_revision": 1,
+              "render_batch_runs": 6,
+              "render_blit_batches": 4,
+              "render_commands": 1692,
+              "render_draw_commands": 5,
+              "render_layers": 1,
+              "render_max_batch_size": 1672,
+              "render_nonbatch_blits": 2,
+              "render_other_commands": 0,
+              "render_pixel_metrics_enabled": 0,
+              "render_scalar_commands": 7,
+              "render_simple_blits": 1685,
+              "render_single_plain_blits": 2,
+              "unit_animated_commands_added": 0,
+              "unit_animated_draw_units": 0,
+              "unit_full_icon_cache_misses": 0,
+              "unit_gc_animated_draw_pause_ms": 0.0,
+              "unit_gc_collected_objects": 0,
+              "unit_gc_collections": 2,
+              "unit_gc_count0_end": 6,
+              "unit_gc_count0_start": 22,
+              "unit_gc_count1_end": 5,
+              "unit_gc_count1_start": 3,
+              "unit_gc_count2_end": 8,
+              "unit_gc_count2_start": 8,
+              "unit_gc_gen0_collections": 2,
+              "unit_gc_gen0_pause_ms": 0.206708,
+              "unit_gc_gen1_collections": 0,
+              "unit_gc_gen1_pause_ms": 0.0,
+              "unit_gc_gen2_collections": 0,
+              "unit_gc_gen2_pause_ms": 0.0,
+              "unit_gc_other_pause_ms": 0.0,
+              "unit_gc_pause_ms": 0.206708,
+              "unit_gc_static_draw_pause_ms": 0.206708,
+              "unit_gc_uncollectable_objects": 0,
+              "unit_render_commands_added": 1667,
+              "unit_render_strategy": "batch",
+              "unit_static_candidate_units": 1667,
+              "unit_static_commands_added": 1667,
+              "unit_static_groups": 1667,
+              "unit_static_max_group_size": 1,
+              "unit_static_multi_groups": 0,
+              "unit_static_submitted_units": 1667,
+              "unit_texture_cache_evictions": 0,
+              "unit_texture_cache_misses": 0,
+              "unit_texture_scales": 0,
+              "visible_units": 1667,
+              "vision_dirty_units": 0,
+              "vision_fog_delta_tiles": 0,
+              "vision_fog_journal_revision": 1,
+              "vision_geometry_cache_hits": 0,
+              "vision_geometry_cache_misses": 0,
+              "vision_units_changed": 0
+            },
+            "frame_ms": 45.145583,
+            "present_ms": 1.445959,
+            "top_sections": [
+              {
+                "category": "render",
+                "inclusive_ms": 30.974834,
+                "name": "fog_full_build_tile_loop",
+                "self_ms": 30.974834
+              },
+              {
+                "category": "work",
+                "inclusive_ms": 33.673042,
+                "name": "MapRenderSystem",
+                "self_ms": 2.562084
+              },
+              {
+                "category": "render",
+                "inclusive_ms": 2.362167,
+                "name": "unit_static_draw",
+                "self_ms": 2.362167
+              },
+              {
+                "category": "render",
+                "inclusive_ms": 1.626416,
+                "name": "render_scalar_execute",
+                "self_ms": 1.626416
+              },
+              {
+                "category": "render",
+                "inclusive_ms": 1.542041,
+                "name": "unit_batch_prepare",
+                "self_ms": 1.542041
+              }
+            ]
+          }
+        },
+        "rebuild_frames": [
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 82,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.595006,
+            "hex_corners_time_ns": 6595006,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.417252,
+            "polygon_time_ns": 4417252,
+            "tile_loop_time_ms": 28.320166,
+            "tile_loop_time_ns": 28320166,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 83,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.59995,
+            "hex_corners_time_ns": 6599950,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.413497,
+            "polygon_time_ns": 4413497,
+            "tile_loop_time_ms": 28.566542,
+            "tile_loop_time_ns": 28566542,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 84,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.745645,
+            "hex_corners_time_ns": 6745645,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.380947,
+            "polygon_time_ns": 4380947,
+            "tile_loop_time_ms": 28.68825,
+            "tile_loop_time_ns": 28688250,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 85,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.825635,
+            "hex_corners_time_ns": 6825635,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.381836,
+            "polygon_time_ns": 4381836,
+            "tile_loop_time_ms": 28.96375,
+            "tile_loop_time_ns": 28963750,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 86,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.606096,
+            "hex_corners_time_ns": 6606096,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.314583,
+            "polygon_time_ns": 4314583,
+            "tile_loop_time_ms": 28.095,
+            "tile_loop_time_ns": 28095000,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 87,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.908144,
+            "hex_corners_time_ns": 6908144,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.598693,
+            "polygon_time_ns": 4598693,
+            "tile_loop_time_ms": 29.392917,
+            "tile_loop_time_ns": 29392917,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 88,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.842739,
+            "hex_corners_time_ns": 6842739,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.455924,
+            "polygon_time_ns": 4455924,
+            "tile_loop_time_ms": 28.720708,
+            "tile_loop_time_ns": 28720708,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 89,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.8416,
+            "hex_corners_time_ns": 6841600,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.536878,
+            "polygon_time_ns": 4536878,
+            "tile_loop_time_ms": 29.403084,
+            "tile_loop_time_ns": 29403084,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 90,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.886619,
+            "hex_corners_time_ns": 6886619,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.522108,
+            "polygon_time_ns": 4522108,
+            "tile_loop_time_ms": 29.384083,
+            "tile_loop_time_ns": 29384083,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 91,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.857798,
+            "hex_corners_time_ns": 6857798,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.483485,
+            "polygon_time_ns": 4483485,
+            "tile_loop_time_ms": 29.136625,
+            "tile_loop_time_ns": 29136625,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 92,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.878866,
+            "hex_corners_time_ns": 6878866,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.556608,
+            "polygon_time_ns": 4556608,
+            "tile_loop_time_ms": 29.4795,
+            "tile_loop_time_ns": 29479500,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 93,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.826359,
+            "hex_corners_time_ns": 6826359,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.489405,
+            "polygon_time_ns": 4489405,
+            "tile_loop_time_ms": 28.992583,
+            "tile_loop_time_ns": 28992583,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 94,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.995824,
+            "hex_corners_time_ns": 6995824,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.541701,
+            "polygon_time_ns": 4541701,
+            "tile_loop_time_ms": 29.58925,
+            "tile_loop_time_ns": 29589250,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 95,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.604504,
+            "hex_corners_time_ns": 6604504,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.284441,
+            "polygon_time_ns": 4284441,
+            "tile_loop_time_ms": 27.855208,
+            "tile_loop_time_ns": 27855208,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 96,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.587793,
+            "hex_corners_time_ns": 6587793,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.232858,
+            "polygon_time_ns": 4232858,
+            "tile_loop_time_ms": 27.828333,
+            "tile_loop_time_ns": 27828333,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 97,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 7.216098,
+            "hex_corners_time_ns": 7216098,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.204559,
+            "polygon_time_ns": 4204559,
+            "tile_loop_time_ms": 28.467792,
+            "tile_loop_time_ns": 28467792,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 98,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.665985,
+            "hex_corners_time_ns": 6665985,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.19663,
+            "polygon_time_ns": 4196630,
+            "tile_loop_time_ms": 27.857291,
+            "tile_loop_time_ns": 27857291,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 99,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.617765,
+            "hex_corners_time_ns": 6617765,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.161442,
+            "polygon_time_ns": 4161442,
+            "tile_loop_time_ms": 27.826708,
+            "tile_loop_time_ns": 27826708,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 100,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.712117,
+            "hex_corners_time_ns": 6712117,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.197156,
+            "polygon_time_ns": 4197156,
+            "tile_loop_time_ms": 28.022458,
+            "tile_loop_time_ns": 28022458,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 101,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.624861,
+            "hex_corners_time_ns": 6624861,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.27802,
+            "polygon_time_ns": 4278020,
+            "tile_loop_time_ms": 27.928125,
+            "tile_loop_time_ns": 27928125,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 102,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.678873,
+            "hex_corners_time_ns": 6678873,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.386437,
+            "polygon_time_ns": 4386437,
+            "tile_loop_time_ms": 28.49925,
+            "tile_loop_time_ns": 28499250,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 103,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.955909,
+            "hex_corners_time_ns": 6955909,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.522433,
+            "polygon_time_ns": 4522433,
+            "tile_loop_time_ms": 29.757708,
+            "tile_loop_time_ns": 29757708,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 104,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 7.09833,
+            "hex_corners_time_ns": 7098330,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.675254,
+            "polygon_time_ns": 4675254,
+            "tile_loop_time_ms": 30.389041,
+            "tile_loop_time_ns": 30389041,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 105,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.978707,
+            "hex_corners_time_ns": 6978707,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.640805,
+            "polygon_time_ns": 4640805,
+            "tile_loop_time_ms": 29.961792,
+            "tile_loop_time_ns": 29961792,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 106,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 7.321364,
+            "hex_corners_time_ns": 7321364,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.688758,
+            "polygon_time_ns": 4688758,
+            "tile_loop_time_ms": 30.758375,
+            "tile_loop_time_ns": 30758375,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 107,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 7.268827,
+            "hex_corners_time_ns": 7268827,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.554631,
+            "polygon_time_ns": 4554631,
+            "tile_loop_time_ms": 30.194375,
+            "tile_loop_time_ns": 30194375,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 108,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 7.185828,
+            "hex_corners_time_ns": 7185828,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.652449,
+            "polygon_time_ns": 4652449,
+            "tile_loop_time_ms": 31.044625,
+            "tile_loop_time_ns": 31044625,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 109,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 7.077336,
+            "hex_corners_time_ns": 7077336,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.627123,
+            "polygon_time_ns": 4627123,
+            "tile_loop_time_ms": 30.4945,
+            "tile_loop_time_ns": 30494500,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 110,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 7.264729,
+            "hex_corners_time_ns": 7264729,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.719238,
+            "polygon_time_ns": 4719238,
+            "tile_loop_time_ms": 30.977625,
+            "tile_loop_time_ns": 30977625,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 111,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 7.116279,
+            "hex_corners_time_ns": 7116279,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.626386,
+            "polygon_time_ns": 4626386,
+            "tile_loop_time_ms": 30.456667,
+            "tile_loop_time_ns": 30456667,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 112,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.700842,
+            "hex_corners_time_ns": 6700842,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.425075,
+            "polygon_time_ns": 4425075,
+            "tile_loop_time_ms": 28.8305,
+            "tile_loop_time_ns": 28830500,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 113,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 7.018594,
+            "hex_corners_time_ns": 7018594,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.609976,
+            "polygon_time_ns": 4609976,
+            "tile_loop_time_ms": 30.139042,
+            "tile_loop_time_ns": 30139042,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 114,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.841351,
+            "hex_corners_time_ns": 6841351,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.634956,
+            "polygon_time_ns": 4634956,
+            "tile_loop_time_ms": 29.528291,
+            "tile_loop_time_ns": 29528291,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 115,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.910708,
+            "hex_corners_time_ns": 6910708,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.613031,
+            "polygon_time_ns": 4613031,
+            "tile_loop_time_ms": 29.641958,
+            "tile_loop_time_ns": 29641958,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 116,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.808862,
+            "hex_corners_time_ns": 6808862,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.494793,
+            "polygon_time_ns": 4494793,
+            "tile_loop_time_ms": 29.168333,
+            "tile_loop_time_ns": 29168333,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 117,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 6.958512,
+            "hex_corners_time_ns": 6958512,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.589786,
+            "polygon_time_ns": 4589786,
+            "tile_loop_time_ms": 29.963208,
+            "tile_loop_time_ns": 29963208,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 118,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 7.115235,
+            "hex_corners_time_ns": 7115235,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.776648,
+            "polygon_time_ns": 4776648,
+            "tile_loop_time_ms": 30.827334,
+            "tile_loop_time_ns": 30827334,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 3.3333333333332575,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 119,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 7.042557,
+            "hex_corners_time_ns": 7042557,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.679972,
+            "polygon_time_ns": 4679972,
+            "tile_loop_time_ms": 30.407583,
+            "tile_loop_time_ns": 30407583,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          },
+          {
+            "camera_dx": 1.3333333333362134,
+            "camera_dy": 0.0,
+            "coarse_reason": "view_geometry_changed",
+            "full_build_counter": 120,
+            "geometry_change_detail": [
+              "offset_x"
+            ],
+            "geometry_change_mask": 4,
+            "hex_corners_time_ms": 7.052083,
+            "hex_corners_time_ns": 7052083,
+            "input_tile_count": 8281,
+            "polygon_draw_tile_count": 6393,
+            "polygon_time_ms": 4.666616,
+            "polygon_time_ns": 4666616,
+            "tile_loop_time_ms": 30.597875,
+            "tile_loop_time_ns": 30597875,
+            "visible_no_fog_tile_count": 1888,
+            "zoom_delta": 0.0
+          }
+        ],
+        "rebuilds_per_camera_changed_frame": 1.0,
+        "timer_sanity": {
+          "measured_interval_ns": 751994,
+          "measured_interval_ns_per_sample": 37.5997,
+          "samples": 20000,
+          "wall_ns_per_sample": 86.67085,
+          "wall_time_ns": 1733417
+        },
+        "total_frames": 39,
+        "unit_movement_frames": 0,
+        "zoom_changed_frames": 0
+      },
+      "validation": {
+        "checks": {
+          "camera_restored": true,
+          "completed": true,
+          "fog_counter_delta_exact": true,
+          "fog_enabled_at_end": true,
+          "fog_enabled_at_start": true,
+          "fog_enabled_during_epoch": true,
+          "not_aborted": true,
+          "units_stationary_at_end": true,
+          "units_stationary_at_start": true,
+          "units_stationary_during_epoch": true
+        },
+        "valid": true
+      }
+    }
+  ]
+}

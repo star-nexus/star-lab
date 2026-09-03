@@ -1,84 +1,246 @@
 experiment:
   id: camera-fog-full-rebuild
   title: Camera Geometry Change -> Fog Full Rebuild
-  date: 2026-09-02
-  status: reproduced
+  date_opened: 2026-09-02
+  date_closed: 2026-09-04
+  status: closed_complete_formal_archive
 
 source:
   repository: star-nexus/star
-  problem_commit: 54d17745098fb3fc4c43861d839e8dc40164c030
-  measurement_commit: 54d17745098fb3fc4c43861d839e8dc40164c030
-  fix_commit: null
-  validated_commit: null
   branch_at_time: perf/render-engine-breakdown
-  validated_tag: null
+  problem_commit: 54d17745098fb3fc4c43861d839e8dc40164c030
+  problem_checkpoint_tag: perf-2026-09-camera-fog-checkpoint-session2
+  initial_attribution_commit: 08afd17bfaf84d680cbc8e2dceb6e58f0329718c
+  measurement_commit: be28ca172162cac8a4f684507620fca0a661754e
+  fix_commit: 717932ec520ffc215ab45c32bd33cbb0fa5a68c2
+  final_production_fix: 717932ec520ffc215ab45c32bd33cbb0fa5a68c2
+  closeout_measurement_commit: be28ca172162cac8a4f684507620fca0a661754e
+  validated_commit: be28ca172162cac8a4f684507620fca0a661754e
+  validated_tag: perf-2026-09-camera-fog-full-rebuild-closed
+  validated_tag_kind: annotated
+  validated_tag_message: "Validated closeout: Camera -> Fog full rebuild case CLOSED"
+
+source_stages:
+  attribution:
+    - commit: 08afd17bfaf84d680cbc8e2dceb6e58f0329718c
+      role: continuous camera rebuild frequency, tile-loop/polygon/non-polygon split
+      artifacts:
+        - results/attribution/fog-camera-attribution.json
+    - commit: 88b5118b1e267b52af5ceb6bf603416f944b4c3a
+      role: get_hex_corners attribution
+      artifacts:
+        - results/attribution/fog-camera-hex-corners-short-pan.json
+        - results/attribution/hex-on-1.json
+        - results/attribution/hex-on-2.json
+        - results/attribution/hex-off-1.json
+        - results/attribution/hex-off-2.json
+    - commit: 5d44981684a2ade1f4f5bdfb6540fe0edddcccf8
+      role: geometry-preparation attribution
+      artifacts:
+        - results/attribution/geometry-on-1.json
+        - results/attribution/geometry-on-2.json
+        - results/attribution/geometry-off-1.json
+        - results/attribution/geometry-off-2.json
+    - commit: b96c856a747ff0dd0db92d447ccb5513c380f9e4
+      role: screen-transform attribution
+      artifacts:
+        - results/attribution/screen-transform-on-1.json
+        - results/attribution/screen-transform-on-2.json
+        - results/attribution/screen-transform-off-1.json
+        - results/attribution/screen-transform-off-2.json
+    - commit: a96ed0f2191626a54edb6a3f472c58a7a01f6209
+      role: min/max + pygame.Rect attribution
+      artifacts:
+        - results/attribution/bounds-rect-on-1.json
+        - results/attribution/bounds-rect-on-2.json
+        - results/attribution/bounds-rect-off-1.json
+        - results/attribution/bounds-rect-off-2.json
+
+  accepted_optimizations:
+    - commit: e9c69594a971b0093a78693dfaa503e0f282fd5c
+      message: "perf: fuse fog transform bounds pass"
+      role: local-opt-l1
+      artifacts:
+        - results/optimizations/legacy-geometry-1.json
+        - results/optimizations/legacy-geometry-2.json
+        - results/optimizations/fused-geometry-1.json
+        - results/optimizations/fused-geometry-2.json
+    - commit: cafddc4ef1626af93127ff83a1c3f375b65c241c
+      message: "perf: precompute hex corner offsets"
+      role: local-opt-l2
+      artifacts:
+        - results/optimizations/legacy-corners-1.json
+        - results/optimizations/legacy-corners-2.json
+        - results/optimizations/precomputed-corners-1.json
+        - results/optimizations/precomputed-corners-2.json
+    - commit: 46f8ab327cfa5175b8dfee2df0d0d4223c1fa3cb
+      message: "perf: cache fog tile world geometry"
+      role: local-opt-l3
+      artifacts:
+        - results/optimizations/world-corners-legacy-1.json
+        - results/optimizations/world-corners-legacy-2.json
+        - results/optimizations/world-corners-cached-1.json
+        - results/optimizations/world-corners-cached-2.json
+    - commit: 717932ec520ffc215ab45c32bd33cbb0fa5a68c2
+      message: "perf: bound fog presentation to rendered content"
+      role: local-opt-l4-and-final-production-fix
+      artifacts:
+        - results/fog-content/fog-content-bounds-feasibility.json
+        - results/fog-content/fog-content-z015-1.json
+        - results/fog-content/fog-content-z015-2.json
+        - results/fog-content/fog-content-z015-legacy-1.json
+        - results/fog-content/fog-content-z015-legacy-2.json
+        - results/fog-content/fog-content-z050-1.json
+        - results/fog-content/fog-content-z050-2.json
+        - results/fog-content/fog-content-z050-legacy-1.json
+        - results/fog-content/fog-content-z050-legacy-2.json
+
+  rejected_structural_designs:
+    - commit: 1f7d5a84879aa870253a2f01b9f544628b6245ab
+      message: "perf: add fog pan translation feasibility probe"
+      decision: reject_rigid_integer_translation
+      artifact: results/feasibility/fog-pan-translation-feasibility.json
+    - commit: 0ab02f136ac426e7da8f1ab4ec63ff54b320131f
+      message: "perf: add fog raster phase feasibility probe"
+      decision: preliminary_phase_reuse_not_exact
+      artifact: results/feasibility/fog-phase-raster-feasibility.json
+    - commit: 682a1b96dddc9abf3a40fa8b751703d6a5c35ee3
+      message: "perf: add directed fog phase feasibility matrix"
+      decision: abandon_phase_raster_reuse
+      artifact: results/feasibility/fog-directed-phase-analysis-pack.json
+    - commit: def78b9f101bd52a7b71d8f8cb79de3e6bc82d70
+      message: "perf: probe fog presentation bounds decoupling"
+      decision: reject_global_world_extrema_one_clip
+      artifact: results/feasibility/fog-presentation-bounds-feasibility.json
+
+  closeout:
+    - commit: be28ca172162cac8a4f684507620fca0a661754e
+      message: "perf: add camera fog closeout reassessment"
+      artifact: results/closeout/fog-camera-closeout.json
+      residual_classification: EXPLAINED-WORKLOAD-BOUND
+      recommendation: CASE-CLOSEOUT-READY / RECOMMEND-CLOSED
 
 hardware:
   machine: Mac mini
-  cpu: null
-  memory: null
-  gpu: null
+  model_identifier: Mac16,10
+  model_number: MU9D3CH/A
+  chip: Apple M4
+  cpu_cores:
+    total: 10
+    performance: 4
+    efficiency: 6
+  memory_gb: 16
+  architecture: arm64
   display: 2480x1268
+  privacy_note: "Serial number, hardware UUID, provisioning UDID and activation-lock state intentionally omitted."
 
 software:
   os: macOS
-  python: "not captured in archived run metadata; reproduce with uv at exact source commit"
-  dependency_lock: star repository at exact measurement commit
+  os_version: 26.5.2
+  os_build: 25F84
+  python: 3.13.12
+  uv: 0.12.5
+  uv_build: 210d1f678
+  uv_platform: aarch64-apple-darwin
+  dependency_lock: star repository at exact source commit for each experiment stage
 
 scenario:
   name: TestMap-8K-scale-5000
   map_size: 91x91
   resident_units: 5000
-  moving_units: 5000
+  seed: 42
+  window: 2480x1268
 
 workload:
-  seed: 42
-  target_radius: 12
-  density: 1.0
-  phase: staggered
   fog: true
-  camera: "deterministic discrete pan/zoom state jumps from offset_x=1240.0, offset_y=634.0"
-  zoom: 0.15
+  initial_camera:
+    offset_x: 1240.0
+    offset_y: 634.0
+    zoom: 0.15
+  problem_reproduction:
+    motion_semantics: discrete_camera_jump_stress
+    resident_units: 5000
+    moving_units: 5000
+    density: 1.0
+    target_radius: 12
+    gc_policy: realtime_defer
+  causal_attribution:
+    motion_semantics: deterministic_continuous_camera
+    moving_units: 0
+    primary_short_pan_pixels: 128
+    primary_short_pan_camera_frames: 39
+    primary_zoom: 0.15
+    long_pan_pixels: 320
+    zoom_target_delta: 0.5
+    fog_required: true
+  closeout:
+    moving_units: 0
+    primary_short_pan_pixels: 128
+    zooms:
+      - 0.15
+      - 0.50
+    fine_grained_timers: false
+    full_rebuild_observer: none
+    production_paths:
+      geometry: fused
+      corners: precomputed
+      world_corners: cached
+      presentation_bounds: fog_content
 
 measurement:
-  warmup_seconds: 5
-  sustained_seconds: 20
-  sample_after_seconds: null
-  sample_window_frames: 300
-  gc_policy: realtime_defer
-  vision_geometry_cache_capacity: 16384
-  camera_stress:
-    stress_duration_seconds: 10
-    step_seconds: 0.75
-    pattern_steps: 9
-    expected_transitions: "10-11"
-    motion_semantics: discrete_state_jumps_not_smooth_motion
+  primary_causal_metrics:
+    - fog_full_build_tile_loop
+    - fog_surface_full_build
+    - non_polygon_tile_loop_time
+  secondary_metrics:
+    - MapRenderSystem
+    - frame_mean_ms
+    - FPS
+  tail_metrics_diagnostic_only:
+    - p95_frame_ms
+    - p99_frame_ms
+    - max_frame_ms
   guards_required:
-    - rolling_window_full
-    - fog_matches_required
-    - density_matches_requested
-    - gc_policy_matches_requested
-    - vision_cache_capacity_unchanged
-    - camera_stress_transitions_at_least_2
+    - Fog remains enabled
+    - units remain stationary during camera attribution/closeout
+    - camera returns to original state after each epoch
+    - requested and effective geometry/corner/cache/bounds paths match
+    - attribution timers and full-rebuild observer restore correctly
+    - full-build counters equal exact counter deltas
+    - skipped_visible_no_fog == visible_no_fog on fog_content path
+    - skipped + polygon == input on fog_content full rebuilds
+    - zero unexpected world-corner cache misses during measured closeout epochs
 
-variables:
-  independent:
-    camera_geometry_state:
-      - discrete_pan_jump
-      - discrete_zoom_jump
-      - restore
-  controlled:
-    - same map, seed, density and movement phase
-    - Fog semantically ON
-    - realtime_defer GC policy
-  not_yet_orthogonalized:
-    - smooth_pan_vs_threshold_crossing
-    - pan_vs_zoom_invalidation
-    - exact Fog rebuild trigger condition
+headline:
+  problem_signature: "Smooth geometry-key-visible camera motion caused an effectively per-frame Fog full rebuild; the original canonical short-pan tile loop was ~27.918 ms/rebuild for 8281 input tiles."
+  root_cause: "Camera geometry-key invalidation correctly required a Fog rebuild, but the rebuild repeated expensive Python geometry for every camera-visible tile, including 1888 tiles whose final Fog alpha was transparent."
+  resolution: "Keep full-rebuild semantics but fuse transform/bounds, precompute canonical corner offsets, cache camera-independent world corners, and bound presentation to actual Fog content so visible/no-Fog tiles skip all geometry."
+  closeout: "Primary uninstrumented production Fog tile loop 13.983 ms/rebuild; full build 14.116 ms; residual EXPLAINED-WORKLOAD-BOUND."
+  historical_supportive_result: "27.918 -> 13.983 ms/rebuild (-49.91%) across commits; supportive trajectory, not a same-commit A/B."
 
 artifacts:
-  formal: []
-  external: []
+  local_raw_count: 44
+  formal_groups:
+    - path: results/attribution/
+      classification: formal_causal_attribution
+      count: 18
+    - path: results/optimizations/
+      classification: formal_controlled_ab
+      count: 12
+    - path: results/feasibility/
+      classification: formal_negative_and_feasibility_evidence
+      count: 4
+    - path: results/fog-content/
+      classification: formal_correctness_and_controlled_ab
+      count: 9
+    - path: results/closeout/fog-camera-closeout.json
+      classification: formal_uninstrumented_closeout
+      count: 1
+  checksums: artifacts/SHA256SUMS
+  checksum_entries: 44
+  integrity_verified: true
+  integrity_command: "shasum -a 256 -c artifacts/SHA256SUMS"
+  provenance_note: "The 44 JSON files were copied byte-for-byte from star-main/results/fog-camera-attribution into this case; source-to-archive SHA256 verification and STAR Lab checksum verification both passed before documentation closeout."
   canonical_references:
     - path: ../2026-09-terrain-presentation/results/validation/camera-stress/terrain-camera-legacy-run1.json
       sha256: fc6da8f2b5532de83321c6d8bc5f4663ce955b96151ba7d2b3a6b2cbf614eec6
@@ -92,16 +254,33 @@ artifacts:
       sha256: 6dd2f71b99da49e71d111a27bcf515b571ea8259aa5c6f6d8c89d1a7e5a06245
     - path: ../2026-09-terrain-presentation/results/validation/camera-stress/terrain-camera-opaque-run3.json
       sha256: f849038a99cea67569147145c943eed1243fd95bf1769967dd75c093b0240d59
-  checksums: null
-  integrity_note: "No local raw artifacts; integrity is inherited from the canonical Terrain case checksums."
 
-headline:
-  problem_signature: "Discrete camera geometry transitions correlate with ~25-30 ms Fog full rebuilds, ~39-46 ms MapRenderSystem maxima, and ~56-68 ms epoch worst slow frames."
-  root_cause: "Not yet closed. Working hypothesis: view-geometry invalidation triggers expensive Fog full rebuilds during camera transitions."
-  resolution: "None yet. Build continuous-camera attribution before changing Fog architecture."
-  result: "Problem reproduced under deterministic discrete camera stress; continuous-motion frequency and exact invalidation trigger remain unknown."
+regression:
+  final_fix_commit:
+    fog_focused: "881 passed"
+    canonical: "1683 passed, 11 known failed"
+    new_regressions: 0
+  closeout_commit:
+    closeout_and_attribution: "23 passed"
+    fog_focused: "896 passed"
+    canonical: "1698 passed, 11 known failed"
+    known_failure_set_unchanged: true
+    py_compile: passed
+    git_diff_check: passed
+
+closure:
+  definition: "No unexplained Camera->Fog pathology remains under the investigated pixel-exact model; remaining cost scales with actual Fog geometry/raster workload."
+  does_not_claim:
+    - zero Fog rebuild cost
+    - 60 FPS continuous pan on the extreme scale workload
+    - unit-driven Fog reveal hitch solved
+    - manual key-1 Fog toggle hitch solved
+  performance_frontier_updated: false
+  performance_frontier_reason: "This case closes a local renderer pathology but does not establish a new maximum validated system scalability frontier."
 
 revisit_when:
-  - continuous-camera attribution is implemented
-  - pan-only and zoom-only invalidation can be measured separately
-  - Fog full-rebuild frequency can be counted per camera-change frame
+  - renderer backend or polygon semantics materially change
+  - a new pixel-exact translation/raster-reuse representation passes the full correctness matrix
+  - explained Fog polygon workload becomes a new product bottleneck at a larger map/Fog scale
+  - camera geometry-key semantics intentionally change
+  - production evidence shows unexpected world-corner cache invalidation

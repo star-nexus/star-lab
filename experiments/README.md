@@ -19,7 +19,8 @@ Historical coverage of the 2026 performance campaign is tracked in [`../records/
 | [`2026-09-fog-presentation-bounding`](2026-09-fog-presentation-bounding/) | **CLOSED — complete formal archive** | Why is Fog still expensive after semantic updates became incremental? | The steady-state path still submitted 3,144,640 SRCALPHA pixels/frame; bounding only final presentation cut submitted pixels by 61.06% and RenderEngine by ~1.99 ms. | Three fixed-run JSON artifacts + SHA256; canonical pre-fix baseline cross-referenced from RenderEngine attribution; 43-test regression validation. |
 | [`2026-09-terrain-presentation`](2026-09-terrain-presentation/) | **CLOSED — complete formal archive** | Why does Terrain remain a large scalar presentation cost after Fog bounding? | A-B-C-D attribution isolates Pygame/SDL `SRCALPHA` Surface semantics as the dominant cost; a compact opaque RGB presentation cache reduces RenderEngine by ~0.889 ms in same-commit fixed-camera A/B. | Diagnostics + A-B-C-D + fixed-camera + camera-stress raw JSON, including invalid-but-informative first opaque runs, all checksum-covered. |
 | [`2026-09-camera-fog-full-rebuild`](2026-09-camera-fog-full-rebuild/) | **CLOSED — complete formal archive** | Why does smooth camera motion with Fog enabled trigger expensive full rebuilds, and which work can be removed without changing pixels? | Geometry-key-visible camera changes legitimately require rebuilds, but repeated Python geometry and transparent-tile work were avoidable; canonical short-pan Fog tile loop moved from ~27.918 to 13.983 ms/rebuild as a cross-commit supportive trajectory, with final residual `EXPLAINED-WORKLOAD-BOUND`. | 44 local raw JSON artifacts + SHA256, four same-commit optimization A/B stages, three structural negative-result lines, correctness matrices, uninstrumented closeout, immutable validated tag. |
-| [`2026-09-macos-sdl-event-pump-stall`](2026-09-macos-sdl-event-pump-stall/) | **CLOSED — known platform limitation / historical backfill** | Why do rare macOS interactive frames stall for 30–60 ms during keyboard/mouse activity? | The tail is inside SDL/Cocoa `pygame.event.pump()`, not Python queue retrieval or STAR input dispatch; normal gameplay already disables unnecessary SDL text/IME input. | Exact attribution/mitigation SHAs + contemporaneous closeout summary + 2026-09-04 production replication; original historical full raw artifact not recovered. |
+| [`2026-09-macos-sdl-event-pump-stall`](2026-09-macos-sdl-event-pump-stall/) | **CLOSED — known platform limitation / historical backfill** | Why do rare macOS interactive frames stall for 30–70+ ms? | The tail is inside SDL/Cocoa `pygame.event.pump()`, not Python queue retrieval or STAR input dispatch; later capped-60 movement validation reproduced the same signature even with `text_input=False`. | Exact attribution/mitigation SHAs + contemporaneous closeout summary + multiple 2026-09-04 replications; original historical full raw artifact not recovered. |
+| [`2026-09-unit-movement-continuity`](2026-09-unit-movement-continuity/) | **CLOSED — investigation complete; production integration pending** | Was the visible hitch at Fog boundaries caused by Fog reveal work? | No. Fog ON/OFF A/B rejected Fog causality; STAR had movement segment time loss plus renderer animation dead zones. Both were fixed, residual micro-judder was accepted, and rare large tails cross-reference the macOS/SDL case. | Exact problem/fix SHAs, controlled human A/B, profiler excerpts, regression-test source and uploaded-log SHA256 identities; full raw logs and pytest transcript are not archived. |
 
 ## Reading order for a case
 
@@ -76,6 +77,16 @@ For source identity recovered from an external run-handoff record, archive the b
 
 ## Next performance work
 
-The Camera->Fog full-rebuild case is closed. Its remaining low-zoom cost is explained Fog geometry/raster workload, not an unresolved pathology.
+The Camera->Fog full-rebuild case and the unit-driven Fog/movement-continuity investigation are closed.
 
-Unit-driven Fog reveal hitches remain a separate trigger path and require their own attribution if reproduced. Manual Fog-toggle hitches should first be classified by the slow-frame breakdown: a frame dominated by `input_event_pump` matches the closed macOS/SDL platform-tail case above and does **not** reopen Fog rendering; only materially different attribution should open a new case.
+For future interactive hitches, classify the slow frame before opening a case:
+
+```text
+input_event_pump dominated
+  -> known macOS/SDL platform-tail case; do not reopen without new attribution
+
+movement / Fog / Vision / Terrain / RenderEngine dominated
+  -> open a new subsystem case only when the measured signature is materially different
+```
+
+The next planned engineering phase is performance measurement/regression infrastructure, followed by system-scale frontier work across ENV / Hub / Protocol / Agent / rendering resource trade-offs.

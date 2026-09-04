@@ -60,6 +60,32 @@ production_replication_2026_09_04:
   fog_toggle_this_frame: 1
   interpretation: same_known_platform_signature
 
+movement_continuity_replication_2026_09_04:
+  source_sha: cf779e642c9620ed71bbb0ed713f0f2aa7c6c33d
+  canonical_cross_case: ../2026-09-unit-movement-continuity
+  scenario: river_split
+  map_size: 15x15
+  units: 15
+  seed: 42
+  mode: real_time
+  clock_mode: fixed_step_capped
+  fps_cap: 60
+  text_input: false
+  frame_2739:
+    frame_ms: 76.53
+    input_event_pump_ms: 68.98
+    input_events: 2
+    vision_fog_delta_tiles: 0
+    vision_units_changed: 0
+    adjacent_log_message: "error messaging the mach port for IMKCFRunLoopWakeUpReliable"
+  frame_2828:
+    frame_ms: 35.18
+    input_event_pump_ms: 28.50
+    input_events: 0
+    vision_fog_delta_tiles: 0
+    vision_units_changed: 0
+  interpretation: same_known_platform_signature_no_reopen
+
 root_cause: >-
   Rare long frames are dominated by SDL/Cocoa platform-event pumping inside
   pygame.event.pump(), not by Python queue draining or STAR EventBus dispatch.
@@ -67,15 +93,18 @@ root_cause: >-
 mitigation:
   behavior: disable SDL text input during normal gameplay
   api: pygame.key.stop_text_input()
-  effect: reduced frequency and removed unnecessary InputMethodKit/IME path
-  residual: rare platform pump tails may still occur
+  effect: reduced unnecessary text/IME handling
+  residual: rare platform pump tails may still occur even with text_input=false
 
 raw_evidence:
   historical_full_artifact_recovered: false
   production_full_artifact_archived: false
+  movement_validation_full_artifacts_archived_here: false
+  movement_validation_artifact_identity_location: ../2026-09-unit-movement-continuity/manifest.yaml
   evidence_level: >-
     exact source provenance plus contemporaneous documented numeric summary and
-    later production replication; no canonical raw artifact owned by this case
+    later production/movement-validation replications; no canonical raw artifact
+    owned by this case
 
 reopen_conditions:
   - long frames cease to be dominated by input_event_pump

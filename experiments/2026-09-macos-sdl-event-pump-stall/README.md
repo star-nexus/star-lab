@@ -5,7 +5,7 @@
 
 ## Conclusion
 
-Rare 30–60 ms interactive long frames were isolated to `pygame.event.pump()` / SDL/Cocoa platform-event pumping. Python-side queue retrieval and STAR `EventBus` dispatch remain negligible in the representative captures. This is not a STAR simulation, renderer, pathfinding, agent, or input-dispatch bottleneck.
+Rare 30–60+ ms interactive long frames were isolated to `pygame.event.pump()` / SDL/Cocoa platform-event pumping. Python-side queue retrieval and STAR `EventBus` dispatch remain negligible in the representative captures. This is not a STAR simulation, renderer, pathfinding, agent, or input-dispatch bottleneck.
 
 STAR already applies the practical mitigation: normal gameplay disables SDL text input / IME with `pygame.key.stop_text_input()`. The event pump remains on the main thread and must continue to be serviced normally.
 
@@ -78,6 +78,40 @@ fog_toggle_this_frame=1
 
 This matches the historical platform-stall signature. The simultaneous Fog toggle does not reopen a Fog-rendering case because the long-frame attribution remains inside SDL event pumping rather than Fog, Vision, Terrain, or RenderEngine work.
 
+## 2026-09-04 movement-continuity validation replication
+
+During the later capped-60 investigation archived as `../2026-09-unit-movement-continuity`, two additional in-run tails reproduced the same platform boundary after the STAR movement discontinuities had been fixed:
+
+```text
+frame 2739
+frame_ms=76.53
+input_event_pump=68.98ms
+input_events=2
+vision_fog_delta_tiles=0
+vision_units_changed=0
+```
+
+The log was immediately followed by:
+
+```text
+error messaging the mach port for IMKCFRunLoopWakeUpReliable
+```
+
+A second frame then showed:
+
+```text
+frame 2828
+frame_ms=35.18
+input_event_pump=28.50ms
+input_events=0
+vision_fog_delta_tiles=0
+vision_units_changed=0
+```
+
+This is stronger replication than the earlier manual-toggle sample because the second tail returned zero input events and neither frame performed Fog/Vision delta work. It reinforces the existing conclusion that rare residual stalls can occur inside macOS/SDL native event pumping even with `text_input=False`.
+
+The InputMethodKit message narrows the observed platform context but does not by itself justify reopening STAR-side investigation. No claim is made here that every SDL/macOS stall is caused specifically by InputMethodKit; the measured engineering boundary remains `pygame.event.pump()`.
+
 ## Reproduction
 
 Historical reproduction procedure:
@@ -105,7 +139,9 @@ The original full raw profiler artifact for the historical 62.75 ms capture has 
 - the contemporaneous source-side closeout document at exact commit `def78b9`;
 - exact Git commits for the attribution instrumentation and mitigation;
 - the preserved representative numeric signature;
-- an independent production replication on 2026-09-04 with the same attribution pattern.
+- independent 2026-09-04 production and movement-validation replications with the same attribution pattern.
+
+The full movement-validation logs were supplied during the later investigation but are not stored byte-for-byte in STAR Lab; their SHA256 identities are recorded in the movement-continuity case manifest.
 
 No empty `SHA256SUMS` is created because this backfilled case currently owns no canonical raw artifact.
 

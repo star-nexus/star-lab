@@ -1,0 +1,85 @@
+status: closed
+archive_type: historical_backfill
+case: macos-sdl-event-pump-stall
+source_repository: https://github.com/star-nexus/star.git
+
+source:
+  historical_document_commit: def78b9
+  historical_document_path: docs/macos-sdl-event-pump-stall.md
+  historical_document_blob_sha: 8307e98e3fa7c277e988af97b68bcebfcf2904c1
+  initial_input_attribution_sha: 8477aa12de159b153c1cdafc3dbb667ec0f78ffe
+  mitigation_sha: 7cfbecf1d1d5632fe15c60bdd08a26b5723da23d
+  final_pump_attribution_sha: ea6cd8d7e97344e957ec1dfa8e589fd742f92ed5
+  production_validation_sha: 57bd8eac0fa8352cc39876092c9068c9e944e8ac
+  production_validation_tag: perf-2026-09-window-runtime-production
+  historical_container_tag: perf-2026-09-camera-fog-full-rebuild-closed
+  dedicated_case_tag: null
+  dedicated_case_tag_note: >-
+    No dedicated immutable tag was created for this platform-tail investigation;
+    exact commit SHAs are recorded instead. The historical document is retained
+    by the camera-fog closeout tag, and the production implementation is retained
+    by the window-runtime production tag.
+
+runtime:
+  os: macOS
+  pygame: 2.6.1
+  sdl: 2.28.4
+  python: 3.13.12
+  hardware: not_recorded_in_historical_note
+
+historical_workload:
+  display: window
+  mode: real_time
+  map_size: 33x33
+  units: 200
+  interaction: heavy_keyboard_and_mouse
+  command: uv run rotk_env/main.py --profile
+
+historical_signature:
+  frame_ms: 62.75
+  input_event_pump_ms: 54.76
+  input_event_get_queue_ms: approximately_0.01
+  input_dispatch_ms: approximately_0.01
+  input_events: 1
+  input_key_down: 1
+
+production_replication_2026_09_04:
+  source_sha: 57bd8eac0fa8352cc39876092c9068c9e944e8ac
+  scenario: river_split
+  map_size: 15x15
+  units: 15
+  seed: 42
+  mode: real_time
+  clock_mode: uncapped_wall_clock
+  frame_ms: 48.62
+  input_event_pump_ms: 45.30
+  input_event_get_queue_ms: approximately_0
+  input_dispatch_ms: approximately_0
+  input_events: 4
+  input_key_down: 1
+  fog_toggle_this_frame: 1
+  interpretation: same_known_platform_signature
+
+root_cause: >-
+  Rare long frames are dominated by SDL/Cocoa platform-event pumping inside
+  pygame.event.pump(), not by Python queue draining or STAR EventBus dispatch.
+
+mitigation:
+  behavior: disable SDL text input during normal gameplay
+  api: pygame.key.stop_text_input()
+  effect: reduced frequency and removed unnecessary InputMethodKit/IME path
+  residual: rare platform pump tails may still occur
+
+raw_evidence:
+  historical_full_artifact_recovered: false
+  production_full_artifact_archived: false
+  evidence_level: >-
+    exact source provenance plus contemporaneous documented numeric summary and
+    later production replication; no canonical raw artifact owned by this case
+
+reopen_conditions:
+  - long frames cease to be dominated by input_event_pump
+  - input_event_get_queue or input_dispatch becomes material
+  - stalls become frequent enough to affect normal 60 FPS gameplay
+  - similar behavior appears on non-macOS platforms
+  - SDL/Pygame runtime changes materially alter the signature

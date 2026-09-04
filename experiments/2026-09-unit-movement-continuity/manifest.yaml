@@ -1,0 +1,147 @@
+status: closed
+archive_type: causal_investigation
+case: unit-movement-continuity
+source_repository: https://github.com/star-nexus/star.git
+
+source:
+  problem_sha: 57bd8eac0fa8352cc39876092c9068c9e944e8ac
+  fix_stage_1_sha: acc77f8928933dd68f4dc57690d8ae686b06afe1
+  fix_stage_1_message: "fix: preserve movement animation continuity"
+  fix_stage_2_sha: cf779e642c9620ed71bbb0ed713f0f2aa7c6c33d
+  fix_stage_2_message: "fix: remove unit animation render dead zones"
+  accepted_experiment_sha: cf779e642c9620ed71bbb0ed713f0f2aa7c6c33d
+  historical_branch: perf/unit-fog-reveal-tail
+  production_integration_sha: null
+  dedicated_case_tag: null
+  dedicated_case_tag_note: >-
+    The investigation closed on an experimental branch. No immutable milestone tag
+    or production integration SHA had been created at archive time. Exact source
+    commits are recorded; productionization must preserve the accepted delta before
+    deleting the working branch.
+
+runtime:
+  os: macOS
+  pygame: 2.6.1
+  sdl: 2.28.4
+  python: 3.13.12
+  window: 2480x1268
+
+workload:
+  display: window
+  mode: real_time
+  clock_mode: fixed_step_capped
+  fps_cap: 60
+  map_id: river_split
+  map_size: 15x15
+  map_tiles: 225
+  initial_units: 15
+  players: "shu:ai,wei:human,wu:ai"
+  scenario: default
+  seed: 42
+  hub: offline
+  mock_ai: false
+  command: >-
+    uv run rotk_env/main.py --skip-start --no-hub --mode real_time
+    --players human_vs_two_ai --scenario default --seed 42 --profile
+
+observation:
+  original_report: >-
+    A small visible hitch appeared when a moving unit crossed Fog boundaries.
+  controlled_ab:
+    fog_on: boundary_micro_stutter_visible
+    fog_off: same_boundary_micro_stutter_visible
+    conclusion: fog_correlation_rejected
+
+root_causes:
+  - id: movement_segment_time_loss
+    problem: >-
+      MovementAnimation reset progress to zero at each committed segment and
+      discarded overshoot. At 60 Hz and 2 tiles/s floating-point accumulation
+      could also leave tick 30 at 0.9999999999999999, delaying the commit.
+    fix_sha: acc77f8928933dd68f4dc57690d8ae686b06afe1
+    fix: epsilon_safe_boundary_plus_overshoot_preservation_plus_multi_segment_consumption
+  - id: renderer_animation_dead_zone
+    problem: >-
+      Rich unit rendering ignored animation displacement within 5 world pixels
+      of the committed hex centre; the batch path used a 1-pixel dead zone.
+      At default movement speed one frame is only about 2.9 world pixels, so the
+      rich path could visibly freeze then jump after a hex commit.
+    fix_sha: cf779e642c9620ed71bbb0ed713f0f2aa7c6c33d
+    fix: use_any_nonzero_animation_displacement_in_window_render_paths
+
+final_human_validation:
+  result: accepted
+  summary: >-
+    Movement became materially more continuous. Most motion is smooth; small
+    non-uniform residual judder remains visible on close inspection and was
+    accepted. User reported the archer subjectively showed more residual judder
+    than cavalry, but no type-specific animation-speed difference was established,
+    so this was not promoted to a performance conclusion.
+
+steady_state_performance:
+  fog_off:
+    frame_p99_ms_range: "approximately 17.65-17.84"
+    animation_system_ms: "approximately 0.01-0.02"
+    unit_render_system_ms: "approximately 0.16-0.22"
+  fog_on:
+    frame_p99_ms_range: "approximately 17.60-17.81"
+    animation_system_ms: "approximately 0.01-0.02"
+    unit_render_system_ms: "approximately 0.08-0.13"
+    fog_surface_patch_ms: "approximately 0.00-0.02"
+  interpretation: >-
+    No evidence that the accepted animation-continuity fixes materially harm
+    ordinary capped-60 FPS or latency in the tested 15-unit workload.
+
+residual_platform_tails:
+  canonical_case: ../2026-09-macos-sdl-event-pump-stall
+  fog_on_frame_2739:
+    frame_ms: 76.53
+    input_event_pump_ms: 68.98
+    input_events: 2
+    vision_fog_delta_tiles: 0
+    vision_units_changed: 0
+    adjacent_log_message: "error messaging the mach port for IMKCFRunLoopWakeUpReliable"
+  fog_on_frame_2828:
+    frame_ms: 35.18
+    input_event_pump_ms: 28.50
+    input_events: 0
+    vision_fog_delta_tiles: 0
+    vision_units_changed: 0
+  interpretation: same_known_macos_sdl_platform_signature_not_movement_or_fog
+
+regression_tests_present:
+  - rotk_env/tests/test_movement_animation_continuity.py
+  - rotk_env/tests/test_unit_render_batch_animation.py
+regression_execution_archived: false
+regression_execution_note: >-
+  GitHub returned no CI status for cf779e6, and no local pytest transcript was
+  archived with this case. Production integration must rerun the ordinary test gate.
+
+raw_evidence:
+  local_raw_artifacts_committed: false
+  evidence_state: >-
+    Exact source SHAs, controlled human A/B observations, profiler excerpts and
+    artifact identities are archived. Full uploaded validation logs were not
+    transferred byte-for-byte into STAR Lab by the available repository connector.
+  artifacts_not_committed:
+    - name: FOG_ON_2.TXT
+      sha256: 3ae3401029f4f5a176dc085d5ebd9385e0f7593ef30f255926cc101cc7b40b35
+      size_display: 69_KiB
+    - name: FOG_OFF_2.TXT
+      sha256: eb3ba65564d2c1c5894b50bdf0685269ec808a55a63b19961a5eff75d869977f
+      size_display: 67_KiB
+
+closure:
+  fog_reveal_as_regular_stutter_cause: rejected
+  movement_time_discontinuity: fixed
+  render_position_dead_zone: fixed
+  residual_micro_judder: accepted_non_blocking
+  residual_large_platform_tail: cross_referenced_closed_case
+  productionization: pending
+
+reopen_conditions:
+  - comparable motion again shows systematic pauses at every hex boundary
+  - AnimationSystem or UnitRenderSystem becomes a material frame-time contributor
+  - Fog ON shows materially worse movement latency than Fog OFF with causal Fog/Vision cost
+  - a residual hitch no longer matches the closed macOS SDL or display-presentation signatures
+  - production integration changes animation semantics or removes the regression coverage

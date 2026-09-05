@@ -1,6 +1,6 @@
 # Production Fix Retention Audit — 2026-09
 
-**Status:** ACTIVE / FIRST-PASS COMPLETE  
+**Status:** COMPLETE  
 **Scope:** production retention of accepted decisions from the 2026-08/09 STAR performance campaign after experiment-branch cleanup and window-runtime productionization.
 
 ## 1. Why this audit exists
@@ -51,11 +51,11 @@ In particular:
 - an accepted formal-measurement invariant must either survive with the measurement capability or be explicitly rehydrated whenever that capability returns;
 - a retained behavior should retain a regression test or structural contract when practical.
 
-## 3. First-pass findings
+## 3. Final findings
 
 | Case | Accepted durable behavior | Current retention | Regression protection | Audit result |
 |---|---|---|---|---|
-| Dynamic World Scaling | planning/execution separation; common route/plan pool; nested density; staggered/synchronized; fixed Fog/camera; formal guarded epoch | historical harness intentionally removed; Phase-4 production-path harness rebuilt | Phase-4 scale-harness structural tests and driver guards now present | **Experiment tooling intentionally removed; methodology rehydration was initially incomplete** |
+| Dynamic World Scaling | planning/execution separation; common route/plan pool; nested density; staggered/synchronized; fixed Fog/camera; formal guarded epoch | historical harness intentionally removed; Phase-4 production-path harness rebuilt | Phase-4 scale-harness structural tests and driver guards now present | **Experiment tooling intentionally removed; methodology rehydration was initially incomplete, now repaired** |
 | Realtime GC | bounded `realtime_defer` for explicitly selected latency-critical scale/realtime measurement windows | missing from production tree after cleanup; restored on `perf/system-scale-frontier` from historical implementation | restored `test_realtime_gc_policy.py` plus profile/start/window guards | **REAL RETENTION GAP — repaired in Phase 4** |
 | Memory Retention | window visibility history retains only bounded latest state (`VISIBILITY_HISTORY_LIMIT = 1`) | retained in `window_statistics_system.py` | retained window statistics/history tests | **RETAINED** |
 | Spatial Cull | visible-unit path uses spatial candidates rather than resident-wide scan | retained in window renderer | `test_window_unit_render_spatial_cull.py` included in structural performance contracts | **RETAINED** |
@@ -65,7 +65,7 @@ In particular:
 | Terrain Presentation | completed terrain presentation uses opaque compact path rather than repeated SRCALPHA composition | retained in window terrain presentation | opaque-presentation cache test retained in structural suite | **RETAINED** |
 | Camera → Fog Full Rebuild | cache camera-independent tile world corners; skip fully visible tiles; canonical rounded transform; conservative Fog-content bounds | retained in `fog_surface_presenter.py` | full-rebuild pixel/camera/geometry and presentation-bound tests retained | **RETAINED** |
 | macOS SDL Event Pump | text input disabled; platform-input attribution kept separate; no unsafe pump-skipping redesign | retained in current input/profiler semantics | covered by measurement semantics and platform-input instrumentation; platform limitation remains CLOSED | **RETAINED** |
-| Unit Movement Continuity | preserve segment overshoot/residual progress; remove animation boundary dead zones | residual-progress implementation retained in `animation_system.py`; production render path remains continuous | dedicated retained regression coverage should be checked again at Phase-4 closeout | **IMPLEMENTATION RETAINED / TEST COVERAGE FOLLOW-UP** |
+| Unit Movement Continuity | preserve segment overshoot/residual progress; remove animation boundary dead zones | retained in `animation_system.py` and production unit renderer | `test_movement_animation_continuity.py` protects exact-60Hz boundaries, residual overshoot, and multi-segment deltas; `test_unit_render_batch_animation.py` protects subpixel animation displacement below the old 1px/5px dead zones | **RETAINED** |
 
 ## 4. Vision-cache clarification
 
@@ -175,30 +175,56 @@ For every accepted decision:
    do not infer safety merely because the STAR Lab evidence is complete
 ```
 
-## 7. Phase-4 action
+## 7. Phase-4 repair validation
 
-Before further frontier refinement:
+Validated on `perf/system-scale-frontier` at:
 
-- realtime-GC retention gap has been repaired on the Phase-4 branch;
-- the 16,384 Window Vision default now has a dedicated regression contract again;
-- current 25% Vision behavior should not be treated as cache thrashing while capacity remains 16,384 and evictions remain zero;
-- CLOSED cases should be consulted before opening new optimization work when a signature resembles a historical case.
+```text
+7f57f22de6252bcda64c480b687a2bda5d9b2abe
+```
 
-No existing CLOSED case is reopened by this audit.
+Structural performance suite:
+
+```text
+uv run python tools/run_performance_contracts.py
+39 passed in 1.23s
+```
+
+Focused repaired-retention suite:
+
+```text
+uv run pytest -q \
+  framework/tests/test_realtime_gc_policy.py \
+  framework/tests/test_scale_harness_contract.py \
+  rotk_env/tests/test_window_vision_cache_config.py
+10 passed in 0.16s
+```
+
+The final movement-continuity follow-up also found retained direct regression coverage for both causal fixes:
+
+```text
+segment residual / exact 60 Hz boundary / multi-segment delta
+  -> rotk_env/tests/test_movement_animation_continuity.py
+
+subpixel render displacement below historical 1px / 5px dead zones
+  -> rotk_env/tests/test_unit_render_batch_animation.py
+```
+
+No unresolved accepted-fix retention gap remains in the audited performance-case set.
 
 ## 8. Audit conclusion
 
 The archive cleanup was **safe for engineering knowledge**, but the original audit scope was too narrow to guarantee production-decision retention.
 
-The observed state is mixed rather than catastrophic:
+The final state after Phase-4 repair is:
 
 ```text
 most accepted runtime optimizations      retained
-several structural regression guards     retained
-realtime_defer formal measurement policy lost, now restored
-Vision 16384 behavior                    retained
-Vision dedicated default regression test lost, now restored
+realtime_defer formal measurement policy restored + guarded
+Vision 16384 behavior                    retained + dedicated guard restored
+Unit Movement continuity                 implementation + tests retained
 historical experiment tooling            intentionally removed
+unresolved accepted-fix retention gaps   0
 ```
 
 The durable process correction is therefore:

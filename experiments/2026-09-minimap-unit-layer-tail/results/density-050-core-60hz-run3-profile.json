@@ -1,0 +1,3883 @@
+{
+  "active_frame_ms": {
+    "avg": 14.292675038095238,
+    "max": 17.046292,
+    "p50": 14.228417,
+    "p95": 15.2782131,
+    "p99": 16.88654762
+  },
+  "active_ms": 14.292675038095238,
+  "active_tail": {
+    "gt_16.67ms": {
+      "count": 5,
+      "rate": 0.015873015873015872
+    },
+    "gt_33.33ms": {
+      "count": 0,
+      "rate": 0.0
+    },
+    "gt_8.33ms": {
+      "count": 315,
+      "rate": 1.0
+    }
+  },
+  "avg_fps": 63.38710595617125,
+  "avg_fps_semantics": "inverse_mean_frame_body_ms",
+  "avg_frame_ms": 15.776079139682539,
+  "category_self_ms": {
+    "diagnostic": 0.008588488888888888,
+    "input": 0.008547863492063492,
+    "platform_input": 0.029094577777777776,
+    "present": 1.4834041015873016,
+    "render": 3.722924831746032,
+    "update": 0.037535958730158726,
+    "vision": 0.036520371428571424,
+    "work": 10.437527200000002
+  },
+  "controlled_categories": [
+    "input",
+    "render",
+    "update",
+    "vision",
+    "work"
+  ],
+  "controlled_work_frame_ms": {
+    "avg": 14.243056225396824,
+    "max": 16.991708,
+    "p50": 14.180208,
+    "p95": 15.228605000000002,
+    "p99": 16.80107026
+  },
+  "controlled_work_ms": 14.243056225396824,
+  "controlled_work_tail": {
+    "gt_16.67ms": {
+      "count": 5,
+      "rate": 0.015873015873015872
+    },
+    "gt_33.33ms": {
+      "count": 0,
+      "rate": 0.0
+    },
+    "gt_8.33ms": {
+      "count": 315,
+      "rate": 1.0
+    }
+  },
+  "crossing_cost_correlation": {
+    "all_frames": {
+      "commit_count": {
+        "avg": 79.33333333333333,
+        "max": 103.0,
+        "p50": 79.0,
+        "p95": 94.30000000000001,
+        "p99": 100.0
+      },
+      "controlled_work_ms": {
+        "avg": 14.243056225396824,
+        "max": 16.991708,
+        "p50": 14.180208,
+        "p95": 15.228605000000002,
+        "p99": 16.80107026
+      },
+      "minimap_refresh_rate": 0.0,
+      "over_16_67ms": {
+        "count": 5,
+        "rate": 0.015873015873015872
+      },
+      "samples": 315,
+      "sections_inclusive_ms": {
+        "AnimationSystem": {
+          "avg": 2.682739822222222,
+          "max": 3.195708,
+          "p50": 2.672875,
+          "p95": 2.8241668000000004,
+          "p99": 3.0166653800000005
+        },
+        "MapRenderSystem": {
+          "avg": 2.161785317460317,
+          "max": 3.490041,
+          "p50": 2.201792,
+          "p95": 2.5066169000000005,
+          "p99": 2.7931705000000013
+        },
+        "MiniMapSystem": {
+          "avg": 0.04700197142857143,
+          "max": 0.056459,
+          "p50": 0.0465,
+          "p95": 0.0517913,
+          "p99": 0.05381074
+        },
+        "UnitRenderSystem": {
+          "avg": 4.372054504761905,
+          "max": 5.483791,
+          "p50": 4.354708,
+          "p95": 4.5843539,
+          "p99": 5.192261120000004
+        },
+        "VisionSystem": {
+          "avg": 0.7951296825396825,
+          "max": 3.195709,
+          "p50": 0.746375,
+          "p95": 0.9496248,
+          "p99": 2.9527686200000005
+        }
+      },
+      "vision_audit_rate": 0.015873015873015872
+    },
+    "analysis_stage": "snapshot_only",
+    "available": true,
+    "budget_groups": {
+      "over_16_67ms": {
+        "commit_count": {
+          "avg": 81.0,
+          "max": 87.0,
+          "p50": 81.0,
+          "p95": 86.19999999999999,
+          "p99": 86.84
+        },
+        "controlled_work_ms": {
+          "avg": 16.864617,
+          "max": 16.991708,
+          "p50": 16.847583,
+          "p95": 16.972583,
+          "p99": 16.987883
+        },
+        "minimap_refresh_rate": 0.0,
+        "over_16_67ms": {
+          "count": 5,
+          "rate": 1.0
+        },
+        "samples": 5,
+        "sections_inclusive_ms": {
+          "AnimationSystem": {
+            "avg": 2.9470918,
+            "max": 3.195708,
+            "p50": 2.981334,
+            "p95": 3.1828248,
+            "p99": 3.19313136
+          },
+          "MapRenderSystem": {
+            "avg": 2.7473416,
+            "max": 3.490041,
+            "p50": 2.708292,
+            "p95": 3.3560078,
+            "p99": 3.4632343600000004
+          },
+          "MiniMapSystem": {
+            "avg": 0.0509332,
+            "max": 0.053416,
+            "p50": 0.050125,
+            "p95": 0.0533578,
+            "p99": 0.05340436
+          },
+          "UnitRenderSystem": {
+            "avg": 4.9628248,
+            "max": 5.483791,
+            "p50": 5.230417,
+            "p95": 5.455316,
+            "p99": 5.478096
+          },
+          "VisionSystem": {
+            "avg": 1.7617999999999998,
+            "max": 3.195709,
+            "p50": 0.954541,
+            "p95": 3.157159,
+            "p99": 3.187999
+          }
+        },
+        "vision_audit_rate": 0.4
+      },
+      "within_16_67ms": {
+        "commit_count": {
+          "avg": 79.30645161290323,
+          "max": 103.0,
+          "p50": 79.0,
+          "p95": 94.55000000000001,
+          "p99": 100.0
+        },
+        "controlled_work_ms": {
+          "avg": 14.200772987096773,
+          "max": 16.591707,
+          "p50": 14.1693955,
+          "p95": 15.0053515,
+          "p99": 16.073747720000004
+        },
+        "minimap_refresh_rate": 0.0,
+        "over_16_67ms": {
+          "count": 0,
+          "rate": 0.0
+        },
+        "samples": 310,
+        "sections_inclusive_ms": {
+          "AnimationSystem": {
+            "avg": 2.678476080645161,
+            "max": 3.080958,
+            "p50": 2.6721245,
+            "p95": 2.8129517500000003,
+            "p99": 2.8920992500000002
+          },
+          "MapRenderSystem": {
+            "avg": 2.1523408612903228,
+            "max": 2.968833,
+            "p50": 2.198854,
+            "p95": 2.47940845,
+            "p99": 2.71273181
+          },
+          "MiniMapSystem": {
+            "avg": 0.04693856451612903,
+            "max": 0.056459,
+            "p50": 0.046458,
+            "p95": 0.05148575,
+            "p99": 0.05381497000000002
+          },
+          "UnitRenderSystem": {
+            "avg": 4.362525951612903,
+            "max": 5.370208,
+            "p50": 4.354167,
+            "p95": 4.567045650000001,
+            "p99": 4.775396250000001
+          },
+          "VisionSystem": {
+            "avg": 0.7795382258064516,
+            "max": 3.018917,
+            "p50": 0.7423960000000001,
+            "p95": 0.9467543500000001,
+            "p99": 1.1314162800000016
+          }
+        },
+        "vision_audit_rate": 0.00967741935483871
+      }
+    },
+    "commit_buckets": {
+      "30_39": {
+        "commit_count": {
+          "avg": 0.0,
+          "max": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "controlled_work_ms": {
+          "avg": 0.0,
+          "max": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "minimap_refresh_rate": 0.0,
+        "over_16_67ms": {
+          "count": 0,
+          "rate": 0.0
+        },
+        "samples": 0,
+        "sections_inclusive_ms": {
+          "AnimationSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "MapRenderSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "MiniMapSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "UnitRenderSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "VisionSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          }
+        },
+        "vision_audit_rate": 0.0
+      },
+      "40_49": {
+        "commit_count": {
+          "avg": 0.0,
+          "max": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "controlled_work_ms": {
+          "avg": 0.0,
+          "max": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "minimap_refresh_rate": 0.0,
+        "over_16_67ms": {
+          "count": 0,
+          "rate": 0.0
+        },
+        "samples": 0,
+        "sections_inclusive_ms": {
+          "AnimationSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "MapRenderSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "MiniMapSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "UnitRenderSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "VisionSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          }
+        },
+        "vision_audit_rate": 0.0
+      },
+      "50_59": {
+        "commit_count": {
+          "avg": 58.0,
+          "max": 59.0,
+          "p50": 59.0,
+          "p95": 59.0,
+          "p99": 59.0
+        },
+        "controlled_work_ms": {
+          "avg": 14.249608599999998,
+          "max": 15.372792,
+          "p50": 14.056707,
+          "p95": 15.1730588,
+          "p99": 15.33284536
+        },
+        "minimap_refresh_rate": 0.0,
+        "over_16_67ms": {
+          "count": 0,
+          "rate": 0.0
+        },
+        "samples": 5,
+        "sections_inclusive_ms": {
+          "AnimationSystem": {
+            "avg": 2.7129166000000002,
+            "max": 2.860917,
+            "p50": 2.697833,
+            "p95": 2.8290420000000003,
+            "p99": 2.854542
+          },
+          "MapRenderSystem": {
+            "avg": 2.1629916000000002,
+            "max": 2.53025,
+            "p50": 2.144709,
+            "p95": 2.4688666,
+            "p99": 2.5179733200000003
+          },
+          "MiniMapSystem": {
+            "avg": 0.046858,
+            "max": 0.050792,
+            "p50": 0.045958,
+            "p95": 0.04990019999999999,
+            "p99": 0.050613639999999994
+          },
+          "UnitRenderSystem": {
+            "avg": 4.382975,
+            "max": 4.74275,
+            "p50": 4.325917,
+            "p95": 4.6775,
+            "p99": 4.7297
+          },
+          "VisionSystem": {
+            "avg": 0.7833249999999999,
+            "max": 0.886125,
+            "p50": 0.780334,
+            "p95": 0.8808916,
+            "p99": 0.88507832
+          }
+        },
+        "vision_audit_rate": 0.0
+      },
+      "60_plus": {
+        "commit_count": {
+          "avg": 79.6774193548387,
+          "max": 103.0,
+          "p50": 79.0,
+          "p95": 94.55000000000001,
+          "p99": 100.0
+        },
+        "controlled_work_ms": {
+          "avg": 14.242950541935484,
+          "max": 16.991708,
+          "p50": 14.182603,
+          "p95": 15.21310475,
+          "p99": 16.80207231
+        },
+        "minimap_refresh_rate": 0.0,
+        "over_16_67ms": {
+          "count": 5,
+          "rate": 0.016129032258064516
+        },
+        "samples": 310,
+        "sections_inclusive_ms": {
+          "AnimationSystem": {
+            "avg": 2.6822531,
+            "max": 3.195708,
+            "p50": 2.6723745,
+            "p95": 2.8182109000000004,
+            "p99": 3.018719530000001
+          },
+          "MapRenderSystem": {
+            "avg": 2.1617658612903226,
+            "max": 3.490041,
+            "p50": 2.201917,
+            "p95": 2.4915731,
+            "p99": 2.7968892500000018
+          },
+          "MiniMapSystem": {
+            "avg": 0.0470042935483871,
+            "max": 0.056459,
+            "p50": 0.0465,
+            "p95": 0.05179154999999999,
+            "p99": 0.05383369000000001
+          },
+          "UnitRenderSystem": {
+            "avg": 4.371878367741936,
+            "max": 5.483791,
+            "p50": 4.354854,
+            "p95": 4.57642865,
+            "p99": 5.2058882200000065
+          },
+          "VisionSystem": {
+            "avg": 0.7953200806451614,
+            "max": 3.195709,
+            "p50": 0.7452084999999999,
+            "p95": 0.9497287999999999,
+            "p99": 2.954651970000001
+          }
+        },
+        "vision_audit_rate": 0.016129032258064516
+      },
+      "lt_30": {
+        "commit_count": {
+          "avg": 0.0,
+          "max": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "controlled_work_ms": {
+          "avg": 0.0,
+          "max": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "minimap_refresh_rate": 0.0,
+        "over_16_67ms": {
+          "count": 0,
+          "rate": 0.0
+        },
+        "samples": 0,
+        "sections_inclusive_ms": {
+          "AnimationSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "MapRenderSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "MiniMapSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "UnitRenderSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "VisionSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          }
+        },
+        "vision_audit_rate": 0.0
+      }
+    },
+    "commit_metric": "effect_position_index_changes",
+    "frame_budget_ms": 16.67,
+    "linear_fit": {
+      "all_frames": {
+        "AnimationSystem": {
+          "intercept_ms": 2.6025653478035293,
+          "pearson_r": 0.09645267898472894,
+          "r_squared": 0.009303119283331171,
+          "samples": 315,
+          "slope_ms_per_commit": 0.0010106026187230175
+        },
+        "MapRenderSystem": {
+          "intercept_ms": 2.0239803780620744,
+          "pearson_r": 0.0591357504203029,
+          "r_squared": 0.003497036977772354,
+          "samples": 315,
+          "slope_ms_per_commit": 0.0017370370512383557
+        },
+        "MiniMapSystem": {
+          "intercept_ms": 0.04553908733972799,
+          "pearson_r": 0.07732797069107432,
+          "r_squared": 0.0059796150511996484,
+          "samples": 315,
+          "slope_ms_per_commit": 1.843971540558966e-05
+        },
+        "UnitRenderSystem": {
+          "intercept_ms": 4.267835891293375,
+          "pearson_r": 0.06972470541955722,
+          "r_squared": 0.004861534545844032,
+          "samples": 315,
+          "slope_ms_per_commit": 0.0013136800017041603
+        },
+        "VisionSystem": {
+          "intercept_ms": 0.6670869894396295,
+          "pearson_r": 0.04628860996701507,
+          "r_squared": 0.0021426354126784465,
+          "samples": 315,
+          "slope_ms_per_commit": 0.0016139835264712564
+        },
+        "controlled_work_ms": {
+          "intercept_ms": 13.641617934904133,
+          "pearson_r": 0.11137825885809922,
+          "r_squared": 0.012405116546261759,
+          "samples": 315,
+          "slope_ms_per_commit": 0.007581154922176778
+        }
+      },
+      "maintenance_off_only": {
+        "AnimationSystem": {
+          "intercept_ms": 2.5974636466599392,
+          "pearson_r": 0.1010378030038868,
+          "r_squared": 0.010208637635852237,
+          "samples": 310,
+          "slope_ms_per_commit": 0.001069135927124923
+        },
+        "MapRenderSystem": {
+          "intercept_ms": 2.0142553124613767,
+          "pearson_r": 0.06197747076670833,
+          "r_squared": 0.0038412068826381854,
+          "samples": 310,
+          "slope_ms_per_commit": 0.0018374961028121447
+        },
+        "MiniMapSystem": {
+          "intercept_ms": 0.04578476329951586,
+          "pearson_r": 0.06370910821429002,
+          "r_squared": 0.004058850469460116,
+          "samples": 310,
+          "slope_ms_per_commit": 1.5223570093100296e-05
+        },
+        "UnitRenderSystem": {
+          "intercept_ms": 4.279104852523421,
+          "pearson_r": 0.06227466760839465,
+          "r_squared": 0.003878134225736038,
+          "samples": 310,
+          "slope_ms_per_commit": 0.0011829856784185471
+        },
+        "VisionSystem": {
+          "intercept_ms": 0.5874808800828908,
+          "pearson_r": 0.17881893688872474,
+          "r_squared": 0.031976212190013724,
+          "samples": 310,
+          "slope_ms_per_commit": 0.002164841660879089
+        },
+        "controlled_work_ms": {
+          "intercept_ms": 13.58027064850202,
+          "pearson_r": 0.13245377128519378,
+          "r_squared": 0.017544001527670425,
+          "samples": 310,
+          "slope_ms_per_commit": 0.007884799941636456
+        }
+      }
+    },
+    "maintenance_groups": {
+      "minimap_refresh_only": {
+        "commit_count": {
+          "avg": 0.0,
+          "max": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "controlled_work_ms": {
+          "avg": 0.0,
+          "max": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "minimap_refresh_rate": 0.0,
+        "over_16_67ms": {
+          "count": 0,
+          "rate": 0.0
+        },
+        "samples": 0,
+        "sections_inclusive_ms": {
+          "AnimationSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "MapRenderSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "MiniMapSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "UnitRenderSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "VisionSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          }
+        },
+        "vision_audit_rate": 0.0
+      },
+      "none": {
+        "commit_count": {
+          "avg": 79.34838709677419,
+          "max": 103.0,
+          "p50": 79.0,
+          "p95": 94.0,
+          "p99": 100.0
+        },
+        "controlled_work_ms": {
+          "avg": 14.205916806451613,
+          "max": 16.896083,
+          "p50": 14.1693955,
+          "p95": 15.0053515,
+          "p99": 16.09907484
+        },
+        "minimap_refresh_rate": 0.0,
+        "over_16_67ms": {
+          "count": 3,
+          "rate": 0.00967741935483871
+        },
+        "samples": 310,
+        "sections_inclusive_ms": {
+          "AnimationSystem": {
+            "avg": 2.682297858064516,
+            "max": 3.195708,
+            "p50": 2.6721245,
+            "p95": 2.8289583,
+            "p99": 3.018719530000001
+          },
+          "MapRenderSystem": {
+            "avg": 2.160057664516129,
+            "max": 3.490041,
+            "p50": 2.2005625,
+            "p95": 2.5122001500000004,
+            "p99": 2.7968892500000018
+          },
+          "MiniMapSystem": {
+            "avg": 0.04699272903225806,
+            "max": 0.056459,
+            "p50": 0.0464795,
+            "p95": 0.05179154999999999,
+            "p99": 0.05383369000000001
+          },
+          "UnitRenderSystem": {
+            "avg": 4.372972858064516,
+            "max": 5.483791,
+            "p50": 4.3546665,
+            "p95": 4.5858646499999995,
+            "p99": 5.2058882200000065
+          },
+          "VisionSystem": {
+            "avg": 0.7592575741935483,
+            "max": 1.137375,
+            "p50": 0.7423960000000001,
+            "p95": 0.9436728,
+            "p99": 1.03304303
+          }
+        },
+        "vision_audit_rate": 0.0
+      },
+      "vision_audit_and_minimap_refresh": {
+        "commit_count": {
+          "avg": 0.0,
+          "max": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "controlled_work_ms": {
+          "avg": 0.0,
+          "max": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "minimap_refresh_rate": 0.0,
+        "over_16_67ms": {
+          "count": 0,
+          "rate": 0.0
+        },
+        "samples": 0,
+        "sections_inclusive_ms": {
+          "AnimationSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "MapRenderSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "MiniMapSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "UnitRenderSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          },
+          "VisionSystem": {
+            "avg": 0.0,
+            "max": 0.0,
+            "p50": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          }
+        },
+        "vision_audit_rate": 0.0
+      },
+      "vision_audit_only": {
+        "commit_count": {
+          "avg": 78.4,
+          "max": 96.0,
+          "p50": 76.0,
+          "p95": 93.0,
+          "p99": 95.4
+        },
+        "controlled_work_ms": {
+          "avg": 16.5457002,
+          "max": 16.991708,
+          "p50": 16.591707,
+          "p95": 16.9541416,
+          "p99": 16.984194719999998
+        },
+        "minimap_refresh_rate": 0.0,
+        "over_16_67ms": {
+          "count": 2,
+          "rate": 0.4
+        },
+        "samples": 5,
+        "sections_inclusive_ms": {
+          "AnimationSystem": {
+            "avg": 2.7101416,
+            "max": 2.761667,
+            "p50": 2.689041,
+            "p95": 2.7574085999999998,
+            "p99": 2.7608153200000003
+          },
+          "MapRenderSystem": {
+            "avg": 2.2688998000000002,
+            "max": 2.418625,
+            "p50": 2.267583,
+            "p95": 2.394875,
+            "p99": 2.413875
+          },
+          "MiniMapSystem": {
+            "avg": 0.047575,
+            "max": 0.049875,
+            "p50": 0.04825,
+            "p95": 0.04985,
+            "p99": 0.04987
+          },
+          "UnitRenderSystem": {
+            "avg": 4.3151166000000005,
+            "max": 4.4035,
+            "p50": 4.355,
+            "p95": 4.3947082,
+            "p99": 4.40174164
+          },
+          "VisionSystem": {
+            "avg": 3.0192004,
+            "max": 3.195709,
+            "p50": 3.002959,
+            "p95": 3.1603506,
+            "p99": 3.1886373199999998
+          }
+        },
+        "vision_audit_rate": 1.0
+      }
+    },
+    "maintenance_metrics": {
+      "minimap_refresh": "minimap_unit_refreshed",
+      "vision_audit": "vision_audit_scanned"
+    },
+    "runtime_instrumentation_added": false,
+    "sample_count": 315
+  },
+  "epoch_slow_frame_count": 6,
+  "epoch_worst_slow_frame": {
+    "active_ms": 88.239459,
+    "controlled_work_ms": 13.5985,
+    "fps_limiter_wait_ms": 0.0,
+    "frame_index": 189,
+    "frame_metrics": {
+      "effect_position_index_changes": 0,
+      "effect_position_index_units": 5000,
+      "effect_spatial_revision": 1,
+      "fog_enabled": 1,
+      "fog_toggle_this_frame": 0,
+      "input_events": 2,
+      "input_key_down": 0,
+      "input_key_up": 0,
+      "input_mouse_button": 0,
+      "input_mouse_motion": 0,
+      "input_mouse_wheel": 0,
+      "input_other": 2,
+      "input_quit": 0,
+      "input_window": 0,
+      "map_render_mode": "overscan_cached",
+      "map_visible_tiles": 8281,
+      "minimap_layout_rebuilds": 1,
+      "minimap_revision_changed": 0,
+      "minimap_spatial_revision": 1,
+      "minimap_unit_layer_enabled": 0,
+      "minimap_unit_refreshed": 0,
+      "minimap_unit_refreshes": 0,
+      "recovery_ap_active": 0,
+      "recovery_due_updates": 0,
+      "recovery_mp_active": 0,
+      "recovery_pending_detection": 0,
+      "recovery_skill_active": 0,
+      "recovery_units_scanned": 0,
+      "render_batch_runs": 6,
+      "render_blit_batches": 4,
+      "render_commands": 1692,
+      "render_draw_commands": 5,
+      "render_layers": 1,
+      "render_max_batch_size": 1672,
+      "render_nonbatch_blits": 2,
+      "render_other_commands": 0,
+      "render_scalar_commands": 7,
+      "render_simple_blits": 1685,
+      "render_single_plain_blits": 2,
+      "render_uncapped": 1,
+      "scale_configured_moving_units": 0,
+      "scale_execution_density": 0.0,
+      "scale_gc_automatic_enabled": 1,
+      "scale_gc_defer_active": 0,
+      "scale_gc_policy": "auto",
+      "statistics_batch_units": 128,
+      "statistics_phase": "visibility",
+      "statistics_visibility_changes": 0,
+      "statistics_visibility_fog_disabled": 0,
+      "statistics_visibility_history_records": 0,
+      "statistics_visibility_history_trimmed": 0,
+      "unit_action_text_cache_misses": 0,
+      "unit_action_text_cache_size": 38,
+      "vision_audit_scanned": 0,
+      "vision_dirty_units": 0,
+      "vision_faction_tiles_added": 0,
+      "vision_faction_tiles_removed": 0,
+      "vision_fog_delta_tiles": 0,
+      "vision_fog_journal_revision": 1,
+      "vision_geometry_cache_capacity": 16384,
+      "vision_geometry_cache_evictions": 0,
+      "vision_geometry_cache_hits": 0,
+      "vision_geometry_cache_misses": 0,
+      "vision_geometry_cache_size": 5000,
+      "vision_mode": "dirty_refcount",
+      "vision_tile_updates": 0,
+      "vision_unit_tiles_added": 0,
+      "vision_unit_tiles_removed": 0,
+      "vision_units_changed": 0,
+      "vision_units_scanned": 0
+    },
+    "frame_ms": 90.031584,
+    "measured_self_ms": 90.012667,
+    "p99_reference_ms": 36.30831966999994,
+    "platform_input_ms": 74.607625,
+    "present_ms": 1.792125,
+    "threshold_ms": 54.462479504999905,
+    "top_sections": [
+      {
+        "category": "platform_input",
+        "inclusive_ms": 74.5915,
+        "name": "input_event_pump",
+        "self_ms": 74.5915
+      },
+      {
+        "category": "work",
+        "inclusive_ms": 4.991375,
+        "name": "UnitRenderSystem",
+        "self_ms": 3.892625
+      },
+      {
+        "category": "work",
+        "inclusive_ms": 3.568083,
+        "name": "MapRenderSystem",
+        "self_ms": 3.568083
+      },
+      {
+        "category": "render",
+        "inclusive_ms": 1.858833,
+        "name": "render_scalar_execute",
+        "self_ms": 1.858833
+      },
+      {
+        "category": "present",
+        "inclusive_ms": 1.792125,
+        "name": "display_present",
+        "self_ms": 1.792125
+      },
+      {
+        "category": "work",
+        "inclusive_ms": 1.258833,
+        "name": "UIRenderSystem",
+        "self_ms": 1.258833
+      },
+      {
+        "category": "render",
+        "inclusive_ms": 1.09875,
+        "name": "unit_visible_cull",
+        "self_ms": 1.09875
+      },
+      {
+        "category": "render",
+        "inclusive_ms": 0.706083,
+        "name": "render_batch_blits",
+        "self_ms": 0.706083
+      },
+      {
+        "category": "render",
+        "inclusive_ms": 0.318625,
+        "name": "screen_fill",
+        "self_ms": 0.318625
+      },
+      {
+        "category": "render",
+        "inclusive_ms": 0.182583,
+        "name": "render_batch_pack",
+        "self_ms": 0.182583
+      }
+    ],
+    "uninstrumented_ms": 0.01891700000000185
+  },
+  "fps_limiter_wait_frame_ms": {
+    "avg": 0.0,
+    "max": 0.0,
+    "p50": 0.0,
+    "p95": 0.0,
+    "p99": 0.0
+  },
+  "fps_limiter_wait_ms": 0.0,
+  "frame_body_fps": 63.38710595617125,
+  "frame_metrics": {
+    "effect_position_index_changes": {
+      "avg": 79.33333333333333,
+      "kind": "numeric",
+      "last": 90,
+      "max": 103.0,
+      "min": 56.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 79.0,
+      "p95": 94.30000000000001,
+      "p99": 100.0
+    },
+    "effect_position_index_units": {
+      "avg": 5000.0,
+      "kind": "numeric",
+      "last": 5000,
+      "max": 5000.0,
+      "min": 5000.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 5000.0,
+      "p95": 5000.0,
+      "p99": 5000.0
+    },
+    "effect_spatial_revision": {
+      "avg": 20473.450793650794,
+      "kind": "numeric",
+      "last": 32939,
+      "max": 32939.0,
+      "min": 8035.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 20429.0,
+      "p95": 31705.6,
+      "p99": 32694.36
+    },
+    "fog_enabled": {
+      "avg": 1.0,
+      "kind": "numeric",
+      "last": 1,
+      "max": 1.0,
+      "min": 1.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 1.0,
+      "p95": 1.0,
+      "p99": 1.0
+    },
+    "fog_toggle_this_frame": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "input_events": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "input_key_down": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "input_key_up": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "input_mouse_button": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "input_mouse_motion": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "input_mouse_wheel": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "input_other": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "input_quit": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "input_window": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "map_overscan_build_cancels": {
+      "kind": "categorical",
+      "last": null,
+      "missing_samples": 315,
+      "observed_samples": 0,
+      "values": []
+    },
+    "map_overscan_build_phase": {
+      "kind": "categorical",
+      "last": null,
+      "missing_samples": 315,
+      "observed_samples": 0,
+      "values": []
+    },
+    "map_overscan_builds": {
+      "kind": "categorical",
+      "last": null,
+      "missing_samples": 315,
+      "observed_samples": 0,
+      "values": []
+    },
+    "map_overscan_candidates": {
+      "kind": "categorical",
+      "last": null,
+      "missing_samples": 315,
+      "observed_samples": 0,
+      "values": []
+    },
+    "map_overscan_cleared_pixels": {
+      "kind": "categorical",
+      "last": null,
+      "missing_samples": 315,
+      "observed_samples": 0,
+      "values": []
+    },
+    "map_overscan_fallback_direct_tiles": {
+      "kind": "categorical",
+      "last": null,
+      "missing_samples": 315,
+      "observed_samples": 0,
+      "values": []
+    },
+    "map_overscan_rebuild_reason": {
+      "kind": "categorical",
+      "last": null,
+      "missing_samples": 315,
+      "observed_samples": 0,
+      "values": []
+    },
+    "map_overscan_source_pixels": {
+      "kind": "categorical",
+      "last": null,
+      "missing_samples": 315,
+      "observed_samples": 0,
+      "values": []
+    },
+    "map_overscan_tiles": {
+      "kind": "categorical",
+      "last": null,
+      "missing_samples": 315,
+      "observed_samples": 0,
+      "values": []
+    },
+    "map_overscan_tiles_built_progress": {
+      "kind": "categorical",
+      "last": null,
+      "missing_samples": 315,
+      "observed_samples": 0,
+      "values": []
+    },
+    "map_overscan_tiles_examined": {
+      "kind": "categorical",
+      "last": null,
+      "missing_samples": 315,
+      "observed_samples": 0,
+      "values": []
+    },
+    "map_render_mode": {
+      "kind": "categorical",
+      "last": "overscan_cached",
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "values": [
+        "overscan_cached"
+      ]
+    },
+    "map_terrain_blits": {
+      "kind": "categorical",
+      "last": null,
+      "missing_samples": 315,
+      "observed_samples": 0,
+      "values": []
+    },
+    "map_visible_tiles": {
+      "avg": 8281.0,
+      "kind": "numeric",
+      "last": 8281,
+      "max": 8281.0,
+      "min": 8281.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 8281.0,
+      "p95": 8281.0,
+      "p99": 8281.0
+    },
+    "minimap_layout_rebuilds": {
+      "avg": 1.0,
+      "kind": "numeric",
+      "last": 1,
+      "max": 1.0,
+      "min": 1.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 1.0,
+      "p95": 1.0,
+      "p99": 1.0
+    },
+    "minimap_revision_changed": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "minimap_spatial_revision": {
+      "avg": 20473.450793650794,
+      "kind": "numeric",
+      "last": 32939,
+      "max": 32939.0,
+      "min": 8035.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 20429.0,
+      "p95": 31705.6,
+      "p99": 32694.36
+    },
+    "minimap_unit_layer_enabled": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "minimap_unit_refreshed": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "minimap_unit_refreshes": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "recovery_ap_active": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "recovery_due_updates": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "recovery_mp_active": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "recovery_pending_detection": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "recovery_skill_active": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "recovery_units_scanned": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "render_batch_runs": {
+      "avg": 6.0,
+      "kind": "numeric",
+      "last": 6,
+      "max": 6.0,
+      "min": 6.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 6.0,
+      "p95": 6.0,
+      "p99": 6.0
+    },
+    "render_blit_batches": {
+      "avg": 4.0,
+      "kind": "numeric",
+      "last": 4,
+      "max": 4.0,
+      "min": 4.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 4.0,
+      "p95": 4.0,
+      "p99": 4.0
+    },
+    "render_commands": {
+      "avg": 1697.7714285714285,
+      "kind": "numeric",
+      "last": 1699,
+      "max": 1705.0,
+      "min": 1692.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 1698.0,
+      "p95": 1704.0,
+      "p99": 1704.0
+    },
+    "render_draw_commands": {
+      "avg": 5.0,
+      "kind": "numeric",
+      "last": 5,
+      "max": 5.0,
+      "min": 5.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 5.0,
+      "p95": 5.0,
+      "p99": 5.0
+    },
+    "render_layers": {
+      "avg": 1.0,
+      "kind": "numeric",
+      "last": 1,
+      "max": 1.0,
+      "min": 1.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 1.0,
+      "p95": 1.0,
+      "p99": 1.0
+    },
+    "render_max_batch_size": {
+      "avg": 1677.7714285714285,
+      "kind": "numeric",
+      "last": 1679,
+      "max": 1685.0,
+      "min": 1672.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 1678.0,
+      "p95": 1684.0,
+      "p99": 1684.0
+    },
+    "render_nonbatch_blits": {
+      "avg": 2.0,
+      "kind": "numeric",
+      "last": 2,
+      "max": 2.0,
+      "min": 2.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 2.0,
+      "p95": 2.0,
+      "p99": 2.0
+    },
+    "render_other_commands": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "render_scalar_commands": {
+      "avg": 7.0,
+      "kind": "numeric",
+      "last": 7,
+      "max": 7.0,
+      "min": 7.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 7.0,
+      "p95": 7.0,
+      "p99": 7.0
+    },
+    "render_simple_blits": {
+      "avg": 1690.7714285714285,
+      "kind": "numeric",
+      "last": 1692,
+      "max": 1698.0,
+      "min": 1685.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 1691.0,
+      "p95": 1697.0,
+      "p99": 1697.0
+    },
+    "render_single_plain_blits": {
+      "avg": 2.0,
+      "kind": "numeric",
+      "last": 2,
+      "max": 2.0,
+      "min": 2.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 2.0,
+      "p95": 2.0,
+      "p99": 2.0
+    },
+    "render_uncapped": {
+      "avg": 1.0,
+      "kind": "numeric",
+      "last": 1,
+      "max": 1.0,
+      "min": 1.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 1.0,
+      "p95": 1.0,
+      "p99": 1.0
+    },
+    "scale_configured_moving_units": {
+      "avg": 2500.0,
+      "kind": "numeric",
+      "last": 2500,
+      "max": 2500.0,
+      "min": 2500.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 2500.0,
+      "p95": 2500.0,
+      "p99": 2500.0
+    },
+    "scale_execution_density": {
+      "avg": 0.5,
+      "kind": "numeric",
+      "last": 0.5,
+      "max": 0.5,
+      "min": 0.5,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.5,
+      "p95": 0.5,
+      "p99": 0.5
+    },
+    "scale_gc_automatic_enabled": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "scale_gc_defer_active": {
+      "avg": 1.0,
+      "kind": "numeric",
+      "last": 1,
+      "max": 1.0,
+      "min": 1.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 1.0,
+      "p95": 1.0,
+      "p99": 1.0
+    },
+    "scale_gc_policy": {
+      "kind": "categorical",
+      "last": "realtime_defer",
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "values": [
+        "realtime_defer"
+      ]
+    },
+    "scale_motion_phase": {
+      "kind": "categorical",
+      "last": "staggered",
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "values": [
+        "staggered"
+      ]
+    },
+    "statistics_batch_units": {
+      "avg": 124.95238095238095,
+      "kind": "numeric",
+      "last": 128,
+      "max": 128.0,
+      "min": 8.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 128.0,
+      "p95": 128.0,
+      "p99": 128.0
+    },
+    "statistics_cycle_units": {
+      "avg": 5000.0,
+      "kind": "numeric",
+      "last": 5000,
+      "max": 5000.0,
+      "min": 5000.0,
+      "missing_samples": 312,
+      "observed_samples": 3,
+      "p50": 5000.0,
+      "p95": 5000.0,
+      "p99": 5000.0
+    },
+    "statistics_history_size": {
+      "avg": 10000.0,
+      "kind": "numeric",
+      "last": 10000,
+      "max": 10000.0,
+      "min": 10000.0,
+      "missing_samples": 208,
+      "observed_samples": 107,
+      "p50": 10000.0,
+      "p95": 10000.0,
+      "p99": 10000.0
+    },
+    "statistics_history_trimmed": {
+      "avg": 125.75700934579439,
+      "kind": "numeric",
+      "last": 128,
+      "max": 128.0,
+      "min": 8.0,
+      "missing_samples": 208,
+      "observed_samples": 107,
+      "p50": 128.0,
+      "p95": 128.0,
+      "p99": 128.0
+    },
+    "statistics_phase": {
+      "kind": "categorical",
+      "last": "observations",
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "values": [
+        "visibility",
+        "factions",
+        "complete",
+        "observations"
+      ]
+    },
+    "statistics_visibility_changes": {
+      "avg": 2.1704545454545454,
+      "kind": "numeric",
+      "last": 2,
+      "max": 15.0,
+      "min": 0.0,
+      "missing_samples": 227,
+      "observed_samples": 88,
+      "p50": 0.0,
+      "p95": 10.0,
+      "p99": 11.519999999999982
+    },
+    "statistics_visibility_fog_disabled": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 227,
+      "observed_samples": 88,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "statistics_visibility_history_records": {
+      "avg": 2.1704545454545454,
+      "kind": "numeric",
+      "last": 2,
+      "max": 15.0,
+      "min": 0.0,
+      "missing_samples": 227,
+      "observed_samples": 88,
+      "p50": 0.0,
+      "p95": 10.0,
+      "p99": 11.519999999999982
+    },
+    "statistics_visibility_history_trimmed": {
+      "avg": 2.1704545454545454,
+      "kind": "numeric",
+      "last": 2,
+      "max": 15.0,
+      "min": 0.0,
+      "missing_samples": 227,
+      "observed_samples": 88,
+      "p50": 0.0,
+      "p95": 10.0,
+      "p99": 11.519999999999982
+    },
+    "unit_action_text_cache_misses": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "unit_action_text_cache_size": {
+      "avg": 38.0,
+      "kind": "numeric",
+      "last": 38,
+      "max": 38.0,
+      "min": 38.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 38.0,
+      "p95": 38.0,
+      "p99": 38.0
+    },
+    "vision_audit_scanned": {
+      "avg": 79.36507936507937,
+      "kind": "numeric",
+      "last": 0,
+      "max": 5000.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 5000.0
+    },
+    "vision_dirty_units": {
+      "avg": 79.37142857142857,
+      "kind": "numeric",
+      "last": 98,
+      "max": 103.0,
+      "min": 56.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 79.0,
+      "p95": 95.0,
+      "p99": 100.0
+    },
+    "vision_faction_tiles_added": {
+      "avg": 6.603174603174603,
+      "kind": "numeric",
+      "last": 15,
+      "max": 24.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 6.0,
+      "p95": 16.0,
+      "p99": 19.860000000000014
+    },
+    "vision_faction_tiles_removed": {
+      "avg": 4.6380952380952385,
+      "kind": "numeric",
+      "last": 13,
+      "max": 20.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 3.0,
+      "p95": 13.0,
+      "p99": 17.860000000000014
+    },
+    "vision_fog_delta_tiles": {
+      "avg": 11.222222222222221,
+      "kind": "numeric",
+      "last": 28,
+      "max": 37.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 10.0,
+      "p95": 26.30000000000001,
+      "p99": 33.72000000000003
+    },
+    "vision_fog_journal_revision": {
+      "avg": 257.0571428571429,
+      "kind": "numeric",
+      "last": 413,
+      "max": 413.0,
+      "min": 104.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 257.0,
+      "p95": 397.3,
+      "p99": 409.86
+    },
+    "vision_geometry_cache_capacity": {
+      "avg": 16384.0,
+      "kind": "numeric",
+      "last": 16384,
+      "max": 16384.0,
+      "min": 16384.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 16384.0,
+      "p95": 16384.0,
+      "p99": 16384.0
+    },
+    "vision_geometry_cache_evictions": {
+      "avg": 0.0,
+      "kind": "numeric",
+      "last": 0,
+      "max": 0.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "vision_geometry_cache_hits": {
+      "avg": 77.4031746031746,
+      "kind": "numeric",
+      "last": 98,
+      "max": 101.0,
+      "min": 54.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 77.0,
+      "p95": 92.30000000000001,
+      "p99": 97.86000000000001
+    },
+    "vision_geometry_cache_misses": {
+      "avg": 1.9682539682539681,
+      "kind": "numeric",
+      "last": 0,
+      "max": 9.0,
+      "min": 0.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 2.0,
+      "p95": 5.0,
+      "p99": 7.0
+    },
+    "vision_geometry_cache_size": {
+      "avg": 5628.638095238095,
+      "kind": "numeric",
+      "last": 5887,
+      "max": 5887.0,
+      "min": 5270.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 5643.0,
+      "p95": 5887.0,
+      "p99": 5887.0
+    },
+    "vision_mode": {
+      "kind": "categorical",
+      "last": "dirty_refcount",
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "values": [
+        "dirty_refcount"
+      ]
+    },
+    "vision_tile_updates": {
+      "avg": 1508.057142857143,
+      "kind": "numeric",
+      "last": 1862,
+      "max": 1957.0,
+      "min": 1064.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 1501.0,
+      "p95": 1805.0,
+      "p99": 1900.0
+    },
+    "vision_unit_tiles_added": {
+      "avg": 396.85714285714283,
+      "kind": "numeric",
+      "last": 490,
+      "max": 515.0,
+      "min": 280.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 395.0,
+      "p95": 475.0,
+      "p99": 500.0
+    },
+    "vision_unit_tiles_removed": {
+      "avg": 396.85714285714283,
+      "kind": "numeric",
+      "last": 490,
+      "max": 515.0,
+      "min": 280.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 395.0,
+      "p95": 475.0,
+      "p99": 500.0
+    },
+    "vision_units_changed": {
+      "avg": 79.37142857142857,
+      "kind": "numeric",
+      "last": 98,
+      "max": 103.0,
+      "min": 56.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 79.0,
+      "p95": 95.0,
+      "p99": 100.0
+    },
+    "vision_units_scanned": {
+      "avg": 79.37142857142857,
+      "kind": "numeric",
+      "last": 98,
+      "max": 103.0,
+      "min": 56.0,
+      "missing_samples": 0,
+      "observed_samples": 315,
+      "p50": 79.0,
+      "p95": 95.0,
+      "p99": 100.0
+    }
+  },
+  "frame_tail": {
+    "gt_16.67ms": {
+      "count": 20,
+      "rate": 0.06349206349206349
+    },
+    "gt_33.33ms": {
+      "count": 0,
+      "rate": 0.0
+    },
+    "gt_8.33ms": {
+      "count": 315,
+      "rate": 1.0
+    }
+  },
+  "inter_frame_gap_ms": {
+    "avg": 0.10247488216560509,
+    "max": 0.131542,
+    "p50": 0.10102050000000001,
+    "p95": 0.11921874999999997,
+    "p99": 0.12746146
+  },
+  "max_fps": 68.20972526077601,
+  "max_frame_ms": 18.611959,
+  "metadata": {
+    "benchmark_uncapped": true,
+    "clock_mode": "uncapped_wall_clock",
+    "display": "window",
+    "fps_cap": "uncapped",
+    "headless": false,
+    "initial_units": 5000,
+    "map_id": "untitled-scale-5000",
+    "map_size": "91x91",
+    "map_tiles": 8281,
+    "minimap_unit_layer_enabled": false,
+    "minimap_unit_layer_override": "off",
+    "minimap_unit_refresh_hz": 15.0,
+    "mock_ai": false,
+    "mode": "real_time",
+    "players": "shu:ai,wei:human,wu:ai",
+    "scale_accepted_moving_units": 2500,
+    "scale_achieved_density": 0.5,
+    "scale_duration_seconds": 20.0,
+    "scale_execution_density": 0.5,
+    "scale_execution_mode": "sustained_production_animation",
+    "scale_gc_full_collect_collected": 0,
+    "scale_gc_full_collect_ms": 20.378833,
+    "scale_gc_policy": "realtime_defer",
+    "scale_harness": true,
+    "scale_harness_socket": "/tmp/star-scale.sock",
+    "scale_harness_version": "production-v2",
+    "scale_input_policy": "blocked_gameplay_events",
+    "scale_motion_phase": "staggered",
+    "scale_phase_seed": 42,
+    "scale_prepared_units": 5000,
+    "scale_resident_units": 5000,
+    "scale_route_seed": 42,
+    "scale_route_steps": 12,
+    "scenario": "TestMap-8K-scale-5000",
+    "text_input": false,
+    "window": "2480x1268"
+  },
+  "min_fps": 53.72889549133436,
+  "p50_frame_ms": 15.692375,
+  "p95_frame_ms": 16.8154751,
+  "p99_frame_ms": 18.34590462,
+  "platform_input_frame_ms": {
+    "avg": 0.02909457777777778,
+    "max": 0.237125,
+    "p50": 0.0255,
+    "p95": 0.0430795,
+    "p99": 0.06795236000000003
+  },
+  "platform_input_ms": 0.02909457777777778,
+  "present_frame_ms": {
+    "avg": 1.4834041015873016,
+    "max": 1.713709,
+    "p50": 1.475792,
+    "p95": 1.5885,
+    "p99": 1.6554025
+  },
+  "present_ms": 1.4834041015873016,
+  "sample_count": 315,
+  "sections": {
+    "AnimationSystem": {
+      "category": "work",
+      "frame_share_pct": 17.005111336404,
+      "inclusive_ms": 2.682739822222222,
+      "max_inclusive_ms": 3.195708,
+      "max_self_ms": 3.195708,
+      "p95_inclusive_ms": 2.8241668000000004,
+      "p95_self_ms": 2.8241668000000004,
+      "p99_inclusive_ms": 3.0166653800000005,
+      "p99_self_ms": 3.0166653800000005,
+      "samples": 315,
+      "self_ms": 2.682739822222222
+    },
+    "CombatSystem": {
+      "category": "work",
+      "frame_share_pct": 0.0035446472108506557,
+      "inclusive_ms": 0.0005592063492063492,
+      "max_inclusive_ms": 0.001292,
+      "max_self_ms": 0.001292,
+      "p95_inclusive_ms": 0.000667,
+      "p95_self_ms": 0.000667,
+      "p99_inclusive_ms": 0.0009707400000000028,
+      "p99_self_ms": 0.0009707400000000028,
+      "samples": 315,
+      "self_ms": 0.0005592063492063492
+    },
+    "EffectRenderSystem": {
+      "category": "work",
+      "frame_share_pct": 0.035463516196996996,
+      "inclusive_ms": 0.019287584126984128,
+      "max_inclusive_ms": 0.030375,
+      "max_self_ms": 0.011792,
+      "p95_inclusive_ms": 0.024208,
+      "p95_self_ms": 0.0063452000000000005,
+      "p99_inclusive_ms": 0.027996620000000014,
+      "p99_self_ms": 0.00686926,
+      "samples": 315,
+      "self_ms": 0.005594752380952381
+    },
+    "GameTimeSystem": {
+      "category": "work",
+      "frame_share_pct": 0.016150430910909043,
+      "inclusive_ms": 0.002547904761904762,
+      "max_inclusive_ms": 0.005042,
+      "max_self_ms": 0.005042,
+      "p95_inclusive_ms": 0.0030123000000000007,
+      "p95_self_ms": 0.0030123000000000007,
+      "p99_inclusive_ms": 0.004785260000000001,
+      "p99_self_ms": 0.004785260000000001,
+      "samples": 315,
+      "self_ms": 0.002547904761904762
+    },
+    "InputHandlingSystem": {
+      "category": "work",
+      "frame_share_pct": 0.07366489254481265,
+      "inclusive_ms": 0.011621431746031745,
+      "max_inclusive_ms": 0.031167,
+      "max_self_ms": 0.031167,
+      "p95_inclusive_ms": 0.0149583,
+      "p95_self_ms": 0.0149583,
+      "p99_inclusive_ms": 0.016702980000000003,
+      "p99_self_ms": 0.016702980000000003,
+      "samples": 315,
+      "self_ms": 0.011621431746031745
+    },
+    "LLMSystem": {
+      "category": "work",
+      "frame_share_pct": 0.01124030470041778,
+      "inclusive_ms": 0.0017732793650793652,
+      "max_inclusive_ms": 0.006583,
+      "max_self_ms": 0.006583,
+      "p95_inclusive_ms": 0.002208,
+      "p95_self_ms": 0.002208,
+      "p99_inclusive_ms": 0.002459,
+      "p99_self_ms": 0.002459,
+      "samples": 315,
+      "self_ms": 0.0017732793650793652
+    },
+    "MapRenderSystem": {
+      "category": "work",
+      "frame_share_pct": 13.461062801676935,
+      "inclusive_ms": 2.161785317460317,
+      "max_inclusive_ms": 3.490041,
+      "max_self_ms": 3.422041,
+      "p95_inclusive_ms": 2.5066169000000005,
+      "p95_self_ms": 2.4406756,
+      "p99_inclusive_ms": 2.7931705000000013,
+      "p99_self_ms": 2.7026393600000005,
+      "samples": 315,
+      "self_ms": 2.1236279206349207
+    },
+    "MapSystem": {
+      "category": "work",
+      "frame_share_pct": 0.004005340672361951,
+      "inclusive_ms": 0.0006318857142857142,
+      "max_inclusive_ms": 0.0025,
+      "max_self_ms": 0.0025,
+      "p95_inclusive_ms": 0.00075,
+      "p95_self_ms": 0.00075,
+      "p99_inclusive_ms": 0.0008633800000000012,
+      "p99_self_ms": 0.0008633800000000012,
+      "samples": 315,
+      "self_ms": 0.0006318857142857142
+    },
+    "MiniMapSystem": {
+      "category": "work",
+      "frame_share_pct": 0.2979318943091791,
+      "inclusive_ms": 0.04700197142857143,
+      "max_inclusive_ms": 0.056459,
+      "max_self_ms": 0.056459,
+      "p95_inclusive_ms": 0.0517913,
+      "p95_self_ms": 0.0517913,
+      "p99_inclusive_ms": 0.05381074,
+      "p99_self_ms": 0.05381074,
+      "samples": 315,
+      "self_ms": 0.04700197142857143
+    },
+    "MovementSystem": {
+      "category": "work",
+      "frame_share_pct": 0.004333263300508545,
+      "inclusive_ms": 0.0006836190476190476,
+      "max_inclusive_ms": 0.001208,
+      "max_self_ms": 0.001208,
+      "p95_inclusive_ms": 0.0008340000000000001,
+      "p95_self_ms": 0.0008340000000000001,
+      "p99_inclusive_ms": 0.0010713800000000011,
+      "p99_self_ms": 0.0010713800000000011,
+      "samples": 315,
+      "self_ms": 0.0006836190476190476
+    },
+    "PanelRenderSystem": {
+      "category": "work",
+      "frame_share_pct": 0.34416439685875083,
+      "inclusive_ms": 0.054295647619047614,
+      "max_inclusive_ms": 0.076,
+      "max_self_ms": 0.076,
+      "p95_inclusive_ms": 0.0642998,
+      "p95_self_ms": 0.0642998,
+      "p99_inclusive_ms": 0.07384614,
+      "p99_self_ms": 0.07384614,
+      "samples": 315,
+      "self_ms": 0.054295647619047614
+    },
+    "RealtimeSystem": {
+      "category": "work",
+      "frame_share_pct": 0.040466147336402705,
+      "inclusive_ms": 0.006383971428571429,
+      "max_inclusive_ms": 0.015792,
+      "max_self_ms": 0.015792,
+      "p95_inclusive_ms": 0.0075963,
+      "p95_self_ms": 0.0075963,
+      "p99_inclusive_ms": 0.008709120000000004,
+      "p99_self_ms": 0.008709120000000004,
+      "samples": 315,
+      "self_ms": 0.006383971428571429
+    },
+    "ResourceRecoverySystem": {
+      "category": "work",
+      "frame_share_pct": 0.025224949122485296,
+      "inclusive_ms": 0.0039795079365079365,
+      "max_inclusive_ms": 0.008875,
+      "max_self_ms": 0.008875,
+      "p95_inclusive_ms": 0.0047626000000000005,
+      "p95_self_ms": 0.0047626000000000005,
+      "p99_inclusive_ms": 0.005738380000000001,
+      "p99_self_ms": 0.005738380000000001,
+      "samples": 315,
+      "self_ms": 0.0039795079365079365
+    },
+    "ScaleHarnessSystem": {
+      "category": "work",
+      "frame_share_pct": 0.04004201716743819,
+      "inclusive_ms": 0.014905549206349207,
+      "max_inclusive_ms": 0.026333,
+      "max_self_ms": 0.011374,
+      "p95_inclusive_ms": 0.0180963,
+      "p95_self_ms": 0.007680000000000001,
+      "p99_inclusive_ms": 0.020030500000000003,
+      "p99_self_ms": 0.008847260000000011,
+      "samples": 315,
+      "self_ms": 0.006317060317460317
+    },
+    "SettlementReportSystem": {
+      "category": "work",
+      "frame_share_pct": 0.005195227327058575,
+      "inclusive_ms": 0.0008196031746031746,
+      "max_inclusive_ms": 0.002458,
+      "max_self_ms": 0.002458,
+      "p95_inclusive_ms": 0.001042,
+      "p95_self_ms": 0.001042,
+      "p99_inclusive_ms": 0.001125,
+      "p99_self_ms": 0.001125,
+      "samples": 315,
+      "self_ms": 0.0008196031746031746
+    },
+    "StatisticsSystem": {
+      "category": "work",
+      "frame_share_pct": 0.018728837275189068,
+      "inclusive_ms": 0.12378944126984126,
+      "max_inclusive_ms": 0.3585,
+      "max_self_ms": 0.005418,
+      "p95_inclusive_ms": 0.2450373,
+      "p95_self_ms": 0.0034293000000000006,
+      "p99_inclusive_ms": 0.2894488600000002,
+      "p99_self_ms": 0.004460380000000008,
+      "samples": 315,
+      "self_ms": 0.00295467619047619
+    },
+    "UIButtonSystem": {
+      "category": "work",
+      "frame_share_pct": 0.3542460255080714,
+      "inclusive_ms": 0.05588613333333333,
+      "max_inclusive_ms": 0.086334,
+      "max_self_ms": 0.086334,
+      "p95_inclusive_ms": 0.06619550000000002,
+      "p95_self_ms": 0.06619550000000002,
+      "p99_inclusive_ms": 0.07307050000000001,
+      "p99_self_ms": 0.07307050000000001,
+      "samples": 315,
+      "self_ms": 0.05588613333333333
+    },
+    "UIRenderSystem": {
+      "category": "work",
+      "frame_share_pct": 7.995162450617227,
+      "inclusive_ms": 1.2613231555555555,
+      "max_inclusive_ms": 1.406042,
+      "max_self_ms": 1.406042,
+      "p95_inclusive_ms": 1.3206920000000002,
+      "p95_self_ms": 1.3206920000000002,
+      "p99_inclusive_ms": 1.3725936200000002,
+      "p99_self_ms": 1.3725936200000002,
+      "samples": 315,
+      "self_ms": 1.2613231555555555
+    },
+    "UnitActionButtonSystem": {
+      "category": "work",
+      "frame_share_pct": 0.017673069687539393,
+      "inclusive_ms": 0.00278811746031746,
+      "max_inclusive_ms": 0.00425,
+      "max_self_ms": 0.00425,
+      "p95_inclusive_ms": 0.0033873,
+      "p95_self_ms": 0.0033873,
+      "p99_inclusive_ms": 0.003833,
+      "p99_self_ms": 0.003833,
+      "samples": 315,
+      "self_ms": 0.00278811746031746
+    },
+    "UnitRenderSystem": {
+      "category": "work",
+      "frame_share_pct": 20.832511221853522,
+      "inclusive_ms": 4.372054504761905,
+      "max_inclusive_ms": 5.483791,
+      "max_self_ms": 4.0165,
+      "p95_inclusive_ms": 4.5843539,
+      "p95_self_ms": 3.4608918,
+      "p99_inclusive_ms": 5.192261120000004,
+      "p99_self_ms": 3.8952318800000034,
+      "samples": 315,
+      "self_ms": 3.2865534571428574
+    },
+    "VisionSystem": {
+      "category": "work",
+      "frame_share_pct": 4.808604878273807,
+      "inclusive_ms": 0.7951296825396825,
+      "max_inclusive_ms": 3.195709,
+      "max_self_ms": 1.137375,
+      "p95_inclusive_ms": 0.9496248,
+      "p95_self_ms": 0.9427038,
+      "p99_inclusive_ms": 2.9527686200000005,
+      "p99_self_ms": 1.0329513799999999,
+      "samples": 315,
+      "self_ms": 0.7586093111111111
+    },
+    "display_present": {
+      "category": "present",
+      "frame_share_pct": 9.40286929631333,
+      "inclusive_ms": 1.4834041015873016,
+      "max_inclusive_ms": 1.713709,
+      "max_self_ms": 1.713709,
+      "p95_inclusive_ms": 1.5885,
+      "p95_self_ms": 1.5885,
+      "p99_inclusive_ms": 1.6554025,
+      "p99_self_ms": 1.6554025,
+      "samples": 315,
+      "self_ms": 1.4834041015873016
+    },
+    "effect_attack_effects": {
+      "category": "render",
+      "frame_share_pct": 0.021856840032445275,
+      "inclusive_ms": 0.003448152380952381,
+      "max_inclusive_ms": 0.010917,
+      "max_self_ms": 0.010917,
+      "p95_inclusive_ms": 0.004125,
+      "p95_self_ms": 0.004125,
+      "p99_inclusive_ms": 0.006138000000000007,
+      "p99_self_ms": 0.006138000000000007,
+      "samples": 315,
+      "self_ms": 0.003448152380952381
+    },
+    "effect_attack_indicators": {
+      "category": "render",
+      "frame_share_pct": 0.018412424940568488,
+      "inclusive_ms": 0.0029047587301587303,
+      "max_inclusive_ms": 0.011291,
+      "max_self_ms": 0.011291,
+      "p95_inclusive_ms": 0.005625,
+      "p95_self_ms": 0.005625,
+      "p99_inclusive_ms": 0.009316500000000002,
+      "p99_self_ms": 0.009316500000000002,
+      "samples": 315,
+      "self_ms": 0.0029047587301587303
+    },
+    "effect_hover": {
+      "category": "render",
+      "frame_share_pct": 0.022877191332322612,
+      "inclusive_ms": 0.003609123809523809,
+      "max_inclusive_ms": 0.009333,
+      "max_self_ms": 0.009333,
+      "p95_inclusive_ms": 0.0043036,
+      "p95_self_ms": 0.0043036,
+      "p99_inclusive_ms": 0.005143880000000007,
+      "p99_self_ms": 0.005143880000000007,
+      "samples": 315,
+      "self_ms": 0.003609123809523809
+    },
+    "effect_position_index": {
+      "category": "render",
+      "frame_share_pct": 0.004909965227365025,
+      "inclusive_ms": 0.0007746,
+      "max_inclusive_ms": 0.001584,
+      "max_self_ms": 0.001584,
+      "p95_inclusive_ms": 0.0010413,
+      "p95_self_ms": 0.0010413,
+      "p99_inclusive_ms": 0.0013281200000000006,
+      "p99_self_ms": 0.0013281200000000006,
+      "samples": 315,
+      "self_ms": 0.0007746
+    },
+    "effect_projectiles": {
+      "category": "render",
+      "frame_share_pct": 0.013542524388745916,
+      "inclusive_ms": 0.002136479365079365,
+      "max_inclusive_ms": 0.002833,
+      "max_self_ms": 0.002833,
+      "p95_inclusive_ms": 0.002375,
+      "p95_self_ms": 0.002375,
+      "p99_inclusive_ms": 0.0026602600000000007,
+      "p99_self_ms": 0.0026602600000000007,
+      "samples": 315,
+      "self_ms": 0.002136479365079365
+    },
+    "effect_selection": {
+      "category": "render",
+      "frame_share_pct": 0.005195951751126647,
+      "inclusive_ms": 0.0008197174603174604,
+      "max_inclusive_ms": 0.001583,
+      "max_self_ms": 0.001583,
+      "p95_inclusive_ms": 0.0010543000000000004,
+      "p95_self_ms": 0.0010543000000000004,
+      "p99_inclusive_ms": 0.001292,
+      "p99_self_ms": 0.001292,
+      "samples": 315,
+      "self_ms": 0.0008197174603174604
+    },
+    "fog_surface_patch": {
+      "category": "render",
+      "frame_share_pct": 0.24186869555831006,
+      "inclusive_ms": 0.038157396825396823,
+      "max_inclusive_ms": 0.165834,
+      "max_self_ms": 0.165834,
+      "p95_inclusive_ms": 0.11416250000000008,
+      "p95_self_ms": 0.11416250000000008,
+      "p99_inclusive_ms": 0.14861614000000004,
+      "p99_self_ms": 0.14861614000000004,
+      "samples": 315,
+      "self_ms": 0.038157396825396823
+    },
+    "input_dispatch": {
+      "category": "input",
+      "frame_share_pct": 0.0037546698219187696,
+      "inclusive_ms": 0.0005923396825396825,
+      "max_inclusive_ms": 0.001916,
+      "max_self_ms": 0.001916,
+      "p95_inclusive_ms": 0.0010413,
+      "p95_self_ms": 0.0010413,
+      "p99_inclusive_ms": 0.001375,
+      "p99_self_ms": 0.001375,
+      "samples": 315,
+      "self_ms": 0.0005923396825396825
+    },
+    "input_event_get_queue": {
+      "category": "platform_input",
+      "frame_share_pct": 0.01515253675714189,
+      "inclusive_ms": 0.0023904761904761907,
+      "max_inclusive_ms": 0.007875,
+      "max_self_ms": 0.007875,
+      "p95_inclusive_ms": 0.0041376,
+      "p95_self_ms": 0.0041376,
+      "p99_inclusive_ms": 0.005929740000000003,
+      "p99_self_ms": 0.005929740000000003,
+      "samples": 315,
+      "self_ms": 0.0023904761904761907
+    },
+    "input_event_pump": {
+      "category": "platform_input",
+      "frame_share_pct": 0.16926957167786466,
+      "inclusive_ms": 0.026704101587301587,
+      "max_inclusive_ms": 0.233667,
+      "max_self_ms": 0.233667,
+      "p95_inclusive_ms": 0.039904400000000013,
+      "p95_self_ms": 0.039904400000000013,
+      "p99_inclusive_ms": 0.06265436000000002,
+      "p99_self_ms": 0.06265436000000002,
+      "samples": 315,
+      "self_ms": 0.026704101587301587
+    },
+    "input_system": {
+      "category": "input",
+      "frame_share_pct": 0.05042776306511289,
+      "inclusive_ms": 0.03764244126984127,
+      "max_inclusive_ms": 0.249542,
+      "max_self_ms": 0.020376,
+      "p95_inclusive_ms": 0.05442490000000001,
+      "p95_self_ms": 0.011890900000000003,
+      "p99_inclusive_ms": 0.08384912000000008,
+      "p99_self_ms": 0.01622278000000002,
+      "samples": 315,
+      "self_ms": 0.00795552380952381
+    },
+    "map_overscan_build_step": {
+      "category": "render",
+      "frame_share_pct": 0.0,
+      "inclusive_ms": 0.0,
+      "max_inclusive_ms": 0.0,
+      "max_self_ms": 0.0,
+      "p95_inclusive_ms": 0.0,
+      "p95_self_ms": 0.0,
+      "p99_inclusive_ms": 0.0,
+      "p99_self_ms": 0.0,
+      "samples": 315,
+      "self_ms": 0.0
+    },
+    "map_overscan_candidate_scan": {
+      "category": "render",
+      "frame_share_pct": 0.0,
+      "inclusive_ms": 0.0,
+      "max_inclusive_ms": 0.0,
+      "max_self_ms": 0.0,
+      "p95_inclusive_ms": 0.0,
+      "p95_self_ms": 0.0,
+      "p99_inclusive_ms": 0.0,
+      "p99_self_ms": 0.0,
+      "samples": 315,
+      "self_ms": 0.0
+    },
+    "map_overscan_surface_allocate": {
+      "category": "render",
+      "frame_share_pct": 0.0,
+      "inclusive_ms": 0.0,
+      "max_inclusive_ms": 0.0,
+      "max_self_ms": 0.0,
+      "p95_inclusive_ms": 0.0,
+      "p95_self_ms": 0.0,
+      "p99_inclusive_ms": 0.0,
+      "p99_self_ms": 0.0,
+      "samples": 315,
+      "self_ms": 0.0
+    },
+    "map_overscan_tile_raster": {
+      "category": "render",
+      "frame_share_pct": 0.0,
+      "inclusive_ms": 0.0,
+      "max_inclusive_ms": 0.0,
+      "max_self_ms": 0.0,
+      "p95_inclusive_ms": 0.0,
+      "p95_self_ms": 0.0,
+      "p99_inclusive_ms": 0.0,
+      "p99_self_ms": 0.0,
+      "samples": 315,
+      "self_ms": 0.0
+    },
+    "map_terrain_opaque_present_cache_build": {
+      "category": "render",
+      "frame_share_pct": 0.0,
+      "inclusive_ms": 0.0,
+      "max_inclusive_ms": 0.0,
+      "max_self_ms": 0.0,
+      "p95_inclusive_ms": 0.0,
+      "p95_self_ms": 0.0,
+      "p99_inclusive_ms": 0.0,
+      "p99_self_ms": 0.0,
+      "samples": 315,
+      "self_ms": 0.0
+    },
+    "render_batch_blits": {
+      "category": "render",
+      "frame_share_pct": 4.413778145812124,
+      "inclusive_ms": 0.6963211333333333,
+      "max_inclusive_ms": 0.790375,
+      "max_self_ms": 0.790375,
+      "p95_inclusive_ms": 0.7376921000000001,
+      "p95_self_ms": 0.7376921000000001,
+      "p99_inclusive_ms": 0.7636776200000001,
+      "p99_self_ms": 0.7636776200000001,
+      "samples": 315,
+      "self_ms": 0.6963211333333333
+    },
+    "render_batch_pack": {
+      "category": "render",
+      "frame_share_pct": 1.246382435230584,
+      "inclusive_ms": 0.19663027936507937,
+      "max_inclusive_ms": 0.257583,
+      "max_self_ms": 0.257583,
+      "p95_inclusive_ms": 0.21736300000000003,
+      "p95_self_ms": 0.21736300000000003,
+      "p99_inclusive_ms": 0.23873136000000003,
+      "p99_self_ms": 0.23873136000000003,
+      "samples": 315,
+      "self_ms": 0.19663027936507937
+    },
+    "render_engine": {
+      "category": "render",
+      "frame_share_pct": 0.4606442811662311,
+      "inclusive_ms": 2.3320213047619047,
+      "max_inclusive_ms": 2.579375,
+      "max_self_ms": 0.117958,
+      "p95_inclusive_ms": 2.4272537,
+      "p95_self_ms": 0.08518320000000001,
+      "p99_inclusive_ms": 2.5404607400000003,
+      "p99_self_ms": 0.10544986000000002,
+      "samples": 315,
+      "self_ms": 0.07267160634920636
+    },
+    "render_queue_clear": {
+      "category": "render",
+      "frame_share_pct": 0.005530414318776653,
+      "inclusive_ms": 0.0008724825396825397,
+      "max_inclusive_ms": 0.001542,
+      "max_self_ms": 0.001542,
+      "p95_inclusive_ms": 0.001166,
+      "p95_self_ms": 0.001166,
+      "p99_inclusive_ms": 0.0013213800000000011,
+      "p99_self_ms": 0.0013213800000000011,
+      "samples": 315,
+      "self_ms": 0.0008724825396825397
+    },
+    "render_queue_prepare": {
+      "category": "render",
+      "frame_share_pct": 0.007506522439128377,
+      "inclusive_ms": 0.0011842349206349207,
+      "max_inclusive_ms": 0.002208,
+      "max_self_ms": 0.002208,
+      "p95_inclusive_ms": 0.0014293000000000005,
+      "p95_self_ms": 0.0014293000000000005,
+      "p99_inclusive_ms": 0.0017325000000000018,
+      "p99_self_ms": 0.0017325000000000018,
+      "samples": 315,
+      "self_ms": 0.0011842349206349207
+    },
+    "render_queue_submit": {
+      "category": "render",
+      "frame_share_pct": 0.10686645495793176,
+      "inclusive_ms": 2.2572929809523807,
+      "max_inclusive_ms": 2.482875,
+      "max_self_ms": 0.023333,
+      "p95_inclusive_ms": 2.3492501,
+      "p95_self_ms": 0.0192862,
+      "p99_inclusive_ms": 2.4432150000000004,
+      "p99_self_ms": 0.021440620000000004,
+      "samples": 315,
+      "self_ms": 0.016859336507936508
+    },
+    "render_scalar_execute": {
+      "category": "render",
+      "frame_share_pct": 8.541299899774382,
+      "inclusive_ms": 1.3474822317460318,
+      "max_inclusive_ms": 1.453875,
+      "max_self_ms": 1.453875,
+      "p95_inclusive_ms": 1.4001459,
+      "p95_self_ms": 1.4001459,
+      "p99_inclusive_ms": 1.43058126,
+      "p99_self_ms": 1.43058126,
+      "samples": 315,
+      "self_ms": 1.3474822317460318
+    },
+    "scale_harness_control": {
+      "category": "diagnostic",
+      "frame_share_pct": 0.05443994552033994,
+      "inclusive_ms": 0.008588488888888888,
+      "max_inclusive_ms": 0.014959,
+      "max_self_ms": 0.014959,
+      "p95_inclusive_ms": 0.0108043,
+      "p95_self_ms": 0.0108043,
+      "p99_inclusive_ms": 0.012077260000000001,
+      "p99_self_ms": 0.012077260000000001,
+      "samples": 315,
+      "self_ms": 0.008588488888888888
+    },
+    "scene_update": {
+      "category": "update",
+      "frame_share_pct": 0.06281376455207499,
+      "inclusive_ms": 11.657523295238095,
+      "max_inclusive_ms": 14.391375,
+      "max_self_ms": 0.030625,
+      "p95_inclusive_ms": 12.5516831,
+      "p95_self_ms": 0.015149500000000002,
+      "p99_inclusive_ms": 14.03501912,
+      "p99_self_ms": 0.026392759999999998,
+      "samples": 315,
+      "self_ms": 0.009909549206349207
+    },
+    "screen_fill": {
+      "category": "render",
+      "frame_share_pct": 1.6071943386482848,
+      "inclusive_ms": 0.2535522507936508,
+      "max_inclusive_ms": 0.402875,
+      "max_self_ms": 0.402875,
+      "p95_inclusive_ms": 0.3348045,
+      "p95_self_ms": 0.3348045,
+      "p99_inclusive_ms": 0.3937783800000001,
+      "p99_self_ms": 0.3937783800000001,
+      "samples": 315,
+      "self_ms": 0.2535522507936508
+    },
+    "statistics_batch": {
+      "category": "work",
+      "frame_share_pct": 0.02407963467086579,
+      "inclusive_ms": 0.11978820634920635,
+      "max_inclusive_ms": 0.288041,
+      "max_self_ms": 0.015666,
+      "p95_inclusive_ms": 0.2393999,
+      "p95_self_ms": 0.004429300000000001,
+      "p99_inclusive_ms": 0.2537650000000001,
+      "p99_self_ms": 0.011947500000000005,
+      "samples": 315,
+      "self_ms": 0.003798822222222222
+    },
+    "statistics_cycle_snapshot": {
+      "category": "work",
+      "frame_share_pct": 0.0066338329117927464,
+      "inclusive_ms": 0.0010465587301587303,
+      "max_inclusive_ms": 0.13175,
+      "max_self_ms": 0.13175,
+      "p95_inclusive_ms": 0.0,
+      "p95_self_ms": 0.0,
+      "p99_inclusive_ms": 0.0,
+      "p99_self_ms": 0.0,
+      "samples": 315,
+      "self_ms": 0.0010465587301587303
+    },
+    "statistics_factions": {
+      "category": "work",
+      "frame_share_pct": 0.08799394024257537,
+      "inclusive_ms": 0.013881993650793652,
+      "max_inclusive_ms": 0.045083,
+      "max_self_ms": 0.045083,
+      "p95_inclusive_ms": 0.0388456,
+      "p95_self_ms": 0.0388456,
+      "p99_inclusive_ms": 0.041203380000000005,
+      "p99_self_ms": 0.041203380000000005,
+      "samples": 315,
+      "self_ms": 0.013881993650793652
+    },
+    "statistics_observations": {
+      "category": "work",
+      "frame_share_pct": 0.47531016593275577,
+      "inclusive_ms": 0.07498530793650794,
+      "max_inclusive_ms": 0.283917,
+      "max_self_ms": 0.283917,
+      "p95_inclusive_ms": 0.2355124,
+      "p95_self_ms": 0.2355124,
+      "p99_inclusive_ms": 0.24828912000000003,
+      "p99_self_ms": 0.24828912000000003,
+      "samples": 315,
+      "self_ms": 0.07498530793650794
+    },
+    "statistics_visibility": {
+      "category": "work",
+      "frame_share_pct": 0.17191903196948796,
+      "inclusive_ms": 0.027122082539682544,
+      "max_inclusive_ms": 0.128042,
+      "max_self_ms": 0.128042,
+      "p95_inclusive_ms": 0.10927060000000001,
+      "p95_self_ms": 0.10927060000000001,
+      "p99_inclusive_ms": 0.11942450000000003,
+      "p99_self_ms": 0.11942450000000003,
+      "samples": 315,
+      "self_ms": 0.027122082539682544
+    },
+    "unit_visible_cull": {
+      "category": "render",
+      "frame_share_pct": 6.880676992096346,
+      "inclusive_ms": 1.0855010476190476,
+      "max_inclusive_ms": 1.467291,
+      "max_self_ms": 1.467291,
+      "p95_inclusive_ms": 1.170583,
+      "p95_self_ms": 1.170583,
+      "p99_inclusive_ms": 1.30354862,
+      "p99_self_ms": 1.30354862,
+      "samples": 315,
+      "self_ms": 1.0855010476190476
+    },
+    "vision_audit_scan": {
+      "category": "vision",
+      "frame_share_pct": 0.2314920653301586,
+      "inclusive_ms": 0.036520371428571424,
+      "max_inclusive_ms": 2.42,
+      "max_self_ms": 2.42,
+      "p95_inclusive_ms": 0.0,
+      "p95_self_ms": 0.0,
+      "p99_inclusive_ms": 2.259866380000001,
+      "p99_self_ms": 2.259866380000001,
+      "samples": 315,
+      "self_ms": 0.036520371428571424
+    },
+    "world_update": {
+      "category": "update",
+      "frame_share_pct": 0.17511581476742927,
+      "inclusive_ms": 11.647613746031746,
+      "max_inclusive_ms": 14.381458,
+      "max_self_ms": 0.041998,
+      "p95_inclusive_ms": 12.5414749,
+      "p95_self_ms": 0.03230130000000001,
+      "p99_inclusive_ms": 14.02452438,
+      "p99_self_ms": 0.039715120000000007,
+      "samples": 315,
+      "self_ms": 0.02762640952380952
+    }
+  },
+  "slow_frame_count": 6,
+  "slow_frame_scope": "gameplay_epoch",
+  "slow_frame_threshold_ms": 30.0,
+  "slow_frames": [
+    {
+      "active_ms": 32.942167,
+      "controlled_work_ms": 29.598918,
+      "fps_limiter_wait_ms": 0.0,
+      "frame_index": 1,
+      "frame_metrics": {
+        "effect_position_index_changes": 0,
+        "effect_position_index_units": 5000,
+        "effect_spatial_revision": 1,
+        "fog_enabled": 1,
+        "fog_toggle_this_frame": 0,
+        "input_events": 4,
+        "input_key_down": 0,
+        "input_key_up": 0,
+        "input_mouse_button": 0,
+        "input_mouse_motion": 0,
+        "input_mouse_wheel": 0,
+        "input_other": 4,
+        "input_quit": 0,
+        "input_window": 0,
+        "map_overscan_build_cancels": 0,
+        "map_overscan_build_phase": "scan",
+        "map_overscan_candidates": 2048,
+        "map_overscan_cleared_pixels": 0,
+        "map_overscan_fallback_direct_tiles": 8281,
+        "map_overscan_rebuild_reason": "initial",
+        "map_overscan_source_pixels": 0,
+        "map_overscan_tiles_built_progress": 0,
+        "map_overscan_tiles_examined": 2048,
+        "map_render_mode": "overscan_building_fallback",
+        "map_terrain_blits": 8281,
+        "map_visible_tiles": 8281,
+        "minimap_layout_rebuilds": 1,
+        "minimap_revision_changed": 0,
+        "minimap_spatial_revision": 1,
+        "minimap_unit_layer_enabled": 0,
+        "minimap_unit_refreshed": 0,
+        "minimap_unit_refreshes": 0,
+        "recovery_ap_active": 0,
+        "recovery_due_updates": 0,
+        "recovery_mp_active": 0,
+        "recovery_pending_detection": 0,
+        "recovery_skill_active": 0,
+        "recovery_units_scanned": 0,
+        "render_batch_runs": 7,
+        "render_blit_batches": 5,
+        "render_commands": 9972,
+        "render_draw_commands": 5,
+        "render_layers": 1,
+        "render_max_batch_size": 8281,
+        "render_nonbatch_blits": 1,
+        "render_other_commands": 0,
+        "render_scalar_commands": 6,
+        "render_simple_blits": 9966,
+        "render_single_plain_blits": 2,
+        "render_uncapped": 1,
+        "scale_configured_moving_units": 0,
+        "scale_execution_density": 0.0,
+        "scale_gc_automatic_enabled": 1,
+        "scale_gc_defer_active": 0,
+        "scale_gc_policy": "auto",
+        "statistics_batch_units": 128,
+        "statistics_history_size": 256,
+        "statistics_history_trimmed": 0,
+        "statistics_phase": "observations",
+        "unit_action_text_cache_misses": 0,
+        "unit_action_text_cache_size": 38,
+        "vision_audit_scanned": 0,
+        "vision_dirty_units": 0,
+        "vision_faction_tiles_added": 0,
+        "vision_faction_tiles_removed": 0,
+        "vision_fog_delta_tiles": 0,
+        "vision_fog_journal_revision": 1,
+        "vision_geometry_cache_capacity": 16384,
+        "vision_geometry_cache_evictions": 0,
+        "vision_geometry_cache_hits": 0,
+        "vision_geometry_cache_misses": 0,
+        "vision_geometry_cache_size": 5000,
+        "vision_mode": "dirty_refcount",
+        "vision_tile_updates": 0,
+        "vision_unit_tiles_added": 0,
+        "vision_unit_tiles_removed": 0,
+        "vision_units_changed": 0,
+        "vision_units_scanned": 0
+      },
+      "frame_ms": 34.632625,
+      "measured_self_ms": 34.603876,
+      "p99_reference_ms": 0.0,
+      "platform_input_ms": 3.301833,
+      "present_ms": 1.690458,
+      "threshold_ms": 30.0,
+      "top_sections": [
+        {
+          "category": "work",
+          "inclusive_ms": 16.565791,
+          "name": "MapRenderSystem",
+          "self_ms": 14.367166
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 4.194293,
+          "name": "render_batch_blits",
+          "self_ms": 4.194293
+        },
+        {
+          "category": "platform_input",
+          "inclusive_ms": 3.292541,
+          "name": "input_event_pump",
+          "self_ms": 3.292541
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 4.1935,
+          "name": "UnitRenderSystem",
+          "self_ms": 3.149041
+        },
+        {
+          "category": "present",
+          "inclusive_ms": 1.690458,
+          "name": "display_present",
+          "self_ms": 1.690458
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 1.432333,
+          "name": "map_overscan_surface_allocate",
+          "self_ms": 1.432333
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 1.332708,
+          "name": "UIRenderSystem",
+          "self_ms": 1.332708
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 1.054876,
+          "name": "render_batch_pack",
+          "self_ms": 1.054876
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 1.044459,
+          "name": "unit_visible_cull",
+          "self_ms": 1.044459
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.91879,
+          "name": "render_scalar_execute",
+          "self_ms": 0.91879
+        }
+      ],
+      "uninstrumented_ms": 0.028748999999997693
+    },
+    {
+      "active_ms": 45.839209000000004,
+      "controlled_work_ms": 45.752377,
+      "fps_limiter_wait_ms": 0.0,
+      "frame_index": 4,
+      "frame_metrics": {
+        "effect_position_index_changes": 0,
+        "effect_position_index_units": 5000,
+        "effect_spatial_revision": 1,
+        "fog_enabled": 1,
+        "fog_toggle_this_frame": 0,
+        "input_events": 0,
+        "input_key_down": 0,
+        "input_key_up": 0,
+        "input_mouse_button": 0,
+        "input_mouse_motion": 0,
+        "input_mouse_wheel": 0,
+        "input_other": 0,
+        "input_quit": 0,
+        "input_window": 0,
+        "map_overscan_build_cancels": 0,
+        "map_overscan_build_phase": "scan",
+        "map_overscan_candidates": 8192,
+        "map_overscan_fallback_direct_tiles": 8281,
+        "map_overscan_source_pixels": 0,
+        "map_overscan_tiles_built_progress": 0,
+        "map_overscan_tiles_examined": 8192,
+        "map_render_mode": "overscan_building_fallback",
+        "map_terrain_blits": 8281,
+        "map_visible_tiles": 8281,
+        "minimap_layout_rebuilds": 1,
+        "minimap_revision_changed": 0,
+        "minimap_spatial_revision": 1,
+        "minimap_unit_layer_enabled": 0,
+        "minimap_unit_refreshed": 0,
+        "minimap_unit_refreshes": 0,
+        "recovery_ap_active": 0,
+        "recovery_due_updates": 0,
+        "recovery_mp_active": 0,
+        "recovery_pending_detection": 0,
+        "recovery_skill_active": 0,
+        "recovery_units_scanned": 0,
+        "render_batch_runs": 7,
+        "render_blit_batches": 5,
+        "render_commands": 9972,
+        "render_draw_commands": 5,
+        "render_layers": 1,
+        "render_max_batch_size": 8281,
+        "render_nonbatch_blits": 1,
+        "render_other_commands": 0,
+        "render_scalar_commands": 6,
+        "render_simple_blits": 9966,
+        "render_single_plain_blits": 2,
+        "render_uncapped": 1,
+        "scale_configured_moving_units": 0,
+        "scale_execution_density": 0.0,
+        "scale_gc_automatic_enabled": 1,
+        "scale_gc_defer_active": 0,
+        "scale_gc_policy": "auto",
+        "statistics_batch_units": 128,
+        "statistics_history_size": 640,
+        "statistics_history_trimmed": 0,
+        "statistics_phase": "observations",
+        "unit_action_text_cache_misses": 0,
+        "unit_action_text_cache_size": 38,
+        "vision_audit_scanned": 0,
+        "vision_dirty_units": 0,
+        "vision_faction_tiles_added": 0,
+        "vision_faction_tiles_removed": 0,
+        "vision_fog_delta_tiles": 0,
+        "vision_fog_journal_revision": 1,
+        "vision_geometry_cache_capacity": 16384,
+        "vision_geometry_cache_evictions": 0,
+        "vision_geometry_cache_hits": 0,
+        "vision_geometry_cache_misses": 0,
+        "vision_geometry_cache_size": 5000,
+        "vision_mode": "dirty_refcount",
+        "vision_tile_updates": 0,
+        "vision_unit_tiles_added": 0,
+        "vision_unit_tiles_removed": 0,
+        "vision_units_changed": 0,
+        "vision_units_scanned": 0
+      },
+      "frame_ms": 47.522584,
+      "measured_self_ms": 47.494335,
+      "p99_reference_ms": 0.0,
+      "platform_input_ms": 0.041,
+      "present_ms": 1.683375,
+      "threshold_ms": 30.0,
+      "top_sections": [
+        {
+          "category": "render",
+          "inclusive_ms": 20.627666,
+          "name": "render_batch_pack",
+          "self_ms": 20.627666
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 12.963667,
+          "name": "MapRenderSystem",
+          "self_ms": 12.103625
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 4.360876,
+          "name": "render_batch_blits",
+          "self_ms": 4.360876
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 4.417417,
+          "name": "UnitRenderSystem",
+          "self_ms": 3.498792
+        },
+        {
+          "category": "present",
+          "inclusive_ms": 1.683375,
+          "name": "display_present",
+          "self_ms": 1.683375
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 1.089542,
+          "name": "UIRenderSystem",
+          "self_ms": 1.089542
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.934875,
+          "name": "render_scalar_execute",
+          "self_ms": 0.934875
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.918625,
+          "name": "unit_visible_cull",
+          "self_ms": 0.918625
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.853083,
+          "name": "map_overscan_candidate_scan",
+          "self_ms": 0.853083
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.441584,
+          "name": "screen_fill",
+          "self_ms": 0.441584
+        }
+      ],
+      "uninstrumented_ms": 0.02824900000000241
+    },
+    {
+      "active_ms": 56.501333,
+      "controlled_work_ms": 11.075706,
+      "fps_limiter_wait_ms": 0.0,
+      "frame_index": 80,
+      "frame_metrics": {
+        "effect_position_index_changes": 0,
+        "effect_position_index_units": 5000,
+        "effect_spatial_revision": 1,
+        "fog_enabled": 1,
+        "fog_toggle_this_frame": 0,
+        "input_events": 0,
+        "input_key_down": 0,
+        "input_key_up": 0,
+        "input_mouse_button": 0,
+        "input_mouse_motion": 0,
+        "input_mouse_wheel": 0,
+        "input_other": 0,
+        "input_quit": 0,
+        "input_window": 0,
+        "map_render_mode": "overscan_cached",
+        "map_visible_tiles": 8281,
+        "minimap_layout_rebuilds": 1,
+        "minimap_revision_changed": 0,
+        "minimap_spatial_revision": 1,
+        "minimap_unit_layer_enabled": 0,
+        "minimap_unit_refreshed": 0,
+        "minimap_unit_refreshes": 0,
+        "recovery_ap_active": 0,
+        "recovery_due_updates": 0,
+        "recovery_mp_active": 0,
+        "recovery_pending_detection": 0,
+        "recovery_skill_active": 0,
+        "recovery_units_scanned": 0,
+        "render_batch_runs": 6,
+        "render_blit_batches": 4,
+        "render_commands": 1692,
+        "render_draw_commands": 5,
+        "render_layers": 1,
+        "render_max_batch_size": 1672,
+        "render_nonbatch_blits": 2,
+        "render_other_commands": 0,
+        "render_scalar_commands": 7,
+        "render_simple_blits": 1685,
+        "render_single_plain_blits": 2,
+        "render_uncapped": 1,
+        "scale_configured_moving_units": 0,
+        "scale_execution_density": 0.0,
+        "scale_gc_automatic_enabled": 1,
+        "scale_gc_defer_active": 0,
+        "scale_gc_policy": "auto",
+        "statistics_batch_units": 128,
+        "statistics_phase": "factions",
+        "unit_action_text_cache_misses": 0,
+        "unit_action_text_cache_size": 38,
+        "vision_audit_scanned": 0,
+        "vision_dirty_units": 0,
+        "vision_faction_tiles_added": 0,
+        "vision_faction_tiles_removed": 0,
+        "vision_fog_delta_tiles": 0,
+        "vision_fog_journal_revision": 1,
+        "vision_geometry_cache_capacity": 16384,
+        "vision_geometry_cache_evictions": 0,
+        "vision_geometry_cache_hits": 0,
+        "vision_geometry_cache_misses": 0,
+        "vision_geometry_cache_size": 5000,
+        "vision_mode": "dirty_refcount",
+        "vision_tile_updates": 0,
+        "vision_unit_tiles_added": 0,
+        "vision_unit_tiles_removed": 0,
+        "vision_units_changed": 0,
+        "vision_units_scanned": 0
+      },
+      "frame_ms": 58.206625,
+      "measured_self_ms": 58.175041,
+      "p99_reference_ms": 37.46841597999998,
+      "platform_input_ms": 45.376626,
+      "present_ms": 1.705292,
+      "threshold_ms": 56.202623969999976,
+      "top_sections": [
+        {
+          "category": "platform_input",
+          "inclusive_ms": 45.369459,
+          "name": "input_event_pump",
+          "self_ms": 45.369459
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 4.624209,
+          "name": "UnitRenderSystem",
+          "self_ms": 3.555167
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 2.044833,
+          "name": "MapRenderSystem",
+          "self_ms": 2.044833
+        },
+        {
+          "category": "present",
+          "inclusive_ms": 1.705292,
+          "name": "display_present",
+          "self_ms": 1.705292
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 1.411792,
+          "name": "render_scalar_execute",
+          "self_ms": 1.411792
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 1.19625,
+          "name": "UIRenderSystem",
+          "self_ms": 1.19625
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 1.069042,
+          "name": "unit_visible_cull",
+          "self_ms": 1.069042
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.720666,
+          "name": "render_batch_blits",
+          "self_ms": 0.720666
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.321916,
+          "name": "screen_fill",
+          "self_ms": 0.321916
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.153833,
+          "name": "render_batch_pack",
+          "self_ms": 0.153833
+        }
+      ],
+      "uninstrumented_ms": 0.03158400000000228
+    },
+    {
+      "active_ms": 88.239459,
+      "controlled_work_ms": 13.5985,
+      "fps_limiter_wait_ms": 0.0,
+      "frame_index": 189,
+      "frame_metrics": {
+        "effect_position_index_changes": 0,
+        "effect_position_index_units": 5000,
+        "effect_spatial_revision": 1,
+        "fog_enabled": 1,
+        "fog_toggle_this_frame": 0,
+        "input_events": 2,
+        "input_key_down": 0,
+        "input_key_up": 0,
+        "input_mouse_button": 0,
+        "input_mouse_motion": 0,
+        "input_mouse_wheel": 0,
+        "input_other": 2,
+        "input_quit": 0,
+        "input_window": 0,
+        "map_render_mode": "overscan_cached",
+        "map_visible_tiles": 8281,
+        "minimap_layout_rebuilds": 1,
+        "minimap_revision_changed": 0,
+        "minimap_spatial_revision": 1,
+        "minimap_unit_layer_enabled": 0,
+        "minimap_unit_refreshed": 0,
+        "minimap_unit_refreshes": 0,
+        "recovery_ap_active": 0,
+        "recovery_due_updates": 0,
+        "recovery_mp_active": 0,
+        "recovery_pending_detection": 0,
+        "recovery_skill_active": 0,
+        "recovery_units_scanned": 0,
+        "render_batch_runs": 6,
+        "render_blit_batches": 4,
+        "render_commands": 1692,
+        "render_draw_commands": 5,
+        "render_layers": 1,
+        "render_max_batch_size": 1672,
+        "render_nonbatch_blits": 2,
+        "render_other_commands": 0,
+        "render_scalar_commands": 7,
+        "render_simple_blits": 1685,
+        "render_single_plain_blits": 2,
+        "render_uncapped": 1,
+        "scale_configured_moving_units": 0,
+        "scale_execution_density": 0.0,
+        "scale_gc_automatic_enabled": 1,
+        "scale_gc_defer_active": 0,
+        "scale_gc_policy": "auto",
+        "statistics_batch_units": 128,
+        "statistics_phase": "visibility",
+        "statistics_visibility_changes": 0,
+        "statistics_visibility_fog_disabled": 0,
+        "statistics_visibility_history_records": 0,
+        "statistics_visibility_history_trimmed": 0,
+        "unit_action_text_cache_misses": 0,
+        "unit_action_text_cache_size": 38,
+        "vision_audit_scanned": 0,
+        "vision_dirty_units": 0,
+        "vision_faction_tiles_added": 0,
+        "vision_faction_tiles_removed": 0,
+        "vision_fog_delta_tiles": 0,
+        "vision_fog_journal_revision": 1,
+        "vision_geometry_cache_capacity": 16384,
+        "vision_geometry_cache_evictions": 0,
+        "vision_geometry_cache_hits": 0,
+        "vision_geometry_cache_misses": 0,
+        "vision_geometry_cache_size": 5000,
+        "vision_mode": "dirty_refcount",
+        "vision_tile_updates": 0,
+        "vision_unit_tiles_added": 0,
+        "vision_unit_tiles_removed": 0,
+        "vision_units_changed": 0,
+        "vision_units_scanned": 0
+      },
+      "frame_ms": 90.031584,
+      "measured_self_ms": 90.012667,
+      "p99_reference_ms": 36.30831966999994,
+      "platform_input_ms": 74.607625,
+      "present_ms": 1.792125,
+      "threshold_ms": 54.462479504999905,
+      "top_sections": [
+        {
+          "category": "platform_input",
+          "inclusive_ms": 74.5915,
+          "name": "input_event_pump",
+          "self_ms": 74.5915
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 4.991375,
+          "name": "UnitRenderSystem",
+          "self_ms": 3.892625
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 3.568083,
+          "name": "MapRenderSystem",
+          "self_ms": 3.568083
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 1.858833,
+          "name": "render_scalar_execute",
+          "self_ms": 1.858833
+        },
+        {
+          "category": "present",
+          "inclusive_ms": 1.792125,
+          "name": "display_present",
+          "self_ms": 1.792125
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 1.258833,
+          "name": "UIRenderSystem",
+          "self_ms": 1.258833
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 1.09875,
+          "name": "unit_visible_cull",
+          "self_ms": 1.09875
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.706083,
+          "name": "render_batch_blits",
+          "self_ms": 0.706083
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.318625,
+          "name": "screen_fill",
+          "self_ms": 0.318625
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.182583,
+          "name": "render_batch_pack",
+          "self_ms": 0.182583
+        }
+      ],
+      "uninstrumented_ms": 0.01891700000000185
+    },
+    {
+      "active_ms": 77.643249,
+      "controlled_work_ms": 9.580333,
+      "fps_limiter_wait_ms": 0.0,
+      "frame_index": 537,
+      "frame_metrics": {
+        "effect_position_index_changes": 0,
+        "effect_position_index_units": 5000,
+        "effect_spatial_revision": 1,
+        "fog_enabled": 1,
+        "fog_toggle_this_frame": 0,
+        "input_events": 0,
+        "input_key_down": 0,
+        "input_key_up": 0,
+        "input_mouse_button": 0,
+        "input_mouse_motion": 0,
+        "input_mouse_wheel": 0,
+        "input_other": 0,
+        "input_quit": 0,
+        "input_window": 0,
+        "map_render_mode": "overscan_cached",
+        "map_visible_tiles": 8281,
+        "minimap_layout_rebuilds": 1,
+        "minimap_revision_changed": 0,
+        "minimap_spatial_revision": 1,
+        "minimap_unit_layer_enabled": 0,
+        "minimap_unit_refreshed": 0,
+        "minimap_unit_refreshes": 0,
+        "recovery_ap_active": 0,
+        "recovery_due_updates": 0,
+        "recovery_mp_active": 0,
+        "recovery_pending_detection": 0,
+        "recovery_skill_active": 0,
+        "recovery_units_scanned": 0,
+        "render_batch_runs": 6,
+        "render_blit_batches": 4,
+        "render_commands": 1692,
+        "render_draw_commands": 5,
+        "render_layers": 1,
+        "render_max_batch_size": 1672,
+        "render_nonbatch_blits": 2,
+        "render_other_commands": 0,
+        "render_scalar_commands": 7,
+        "render_simple_blits": 1685,
+        "render_single_plain_blits": 2,
+        "render_uncapped": 1,
+        "scale_configured_moving_units": 0,
+        "scale_execution_density": 0.0,
+        "scale_gc_automatic_enabled": 1,
+        "scale_gc_defer_active": 0,
+        "scale_gc_policy": "auto",
+        "statistics_batch_units": 128,
+        "statistics_phase": "visibility",
+        "statistics_visibility_changes": 0,
+        "statistics_visibility_fog_disabled": 0,
+        "statistics_visibility_history_records": 0,
+        "statistics_visibility_history_trimmed": 0,
+        "unit_action_text_cache_misses": 0,
+        "unit_action_text_cache_size": 38,
+        "vision_audit_scanned": 0,
+        "vision_dirty_units": 0,
+        "vision_faction_tiles_added": 0,
+        "vision_faction_tiles_removed": 0,
+        "vision_fog_delta_tiles": 0,
+        "vision_fog_journal_revision": 1,
+        "vision_geometry_cache_capacity": 16384,
+        "vision_geometry_cache_evictions": 0,
+        "vision_geometry_cache_hits": 0,
+        "vision_geometry_cache_misses": 0,
+        "vision_geometry_cache_size": 5000,
+        "vision_mode": "dirty_refcount",
+        "vision_tile_updates": 0,
+        "vision_unit_tiles_added": 0,
+        "vision_unit_tiles_removed": 0,
+        "vision_units_changed": 0,
+        "vision_units_scanned": 0
+      },
+      "frame_ms": 79.126083,
+      "measured_self_ms": 79.116209,
+      "p99_reference_ms": 27.248722230000027,
+      "platform_input_ms": 0.020709,
+      "present_ms": 1.482834,
+      "threshold_ms": 40.87308334500004,
+      "top_sections": [
+        {
+          "category": "diagnostic",
+          "inclusive_ms": 68.032333,
+          "name": "scale_harness_control",
+          "self_ms": 68.032333
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 3.951375,
+          "name": "UnitRenderSystem",
+          "self_ms": 3.097375
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 1.5715,
+          "name": "MapRenderSystem",
+          "self_ms": 1.5715
+        },
+        {
+          "category": "present",
+          "inclusive_ms": 1.482834,
+          "name": "display_present",
+          "self_ms": 1.482834
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 1.265251,
+          "name": "render_scalar_execute",
+          "self_ms": 1.265251
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 1.105417,
+          "name": "UIRenderSystem",
+          "self_ms": 1.105417
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.854,
+          "name": "unit_visible_cull",
+          "self_ms": 0.854
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.651042,
+          "name": "render_batch_blits",
+          "self_ms": 0.651042
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.351585,
+          "name": "render_batch_pack",
+          "self_ms": 0.351585
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.228875,
+          "name": "screen_fill",
+          "self_ms": 0.228875
+        }
+      ],
+      "uninstrumented_ms": 0.009873999999996386
+    },
+    {
+      "active_ms": 44.506541999999996,
+      "controlled_work_ms": 15.297958,
+      "fps_limiter_wait_ms": 0.0,
+      "frame_index": 538,
+      "frame_metrics": {
+        "effect_position_index_changes": 0,
+        "effect_position_index_units": 5000,
+        "effect_spatial_revision": 1,
+        "fog_enabled": 1,
+        "fog_toggle_this_frame": 0,
+        "input_events": 0,
+        "input_key_down": 0,
+        "input_key_up": 0,
+        "input_mouse_button": 0,
+        "input_mouse_motion": 0,
+        "input_mouse_wheel": 0,
+        "input_other": 0,
+        "input_quit": 0,
+        "input_window": 0,
+        "map_render_mode": "overscan_cached",
+        "map_visible_tiles": 8281,
+        "minimap_layout_rebuilds": 1,
+        "minimap_revision_changed": 0,
+        "minimap_spatial_revision": 1,
+        "minimap_unit_layer_enabled": 0,
+        "minimap_unit_refreshed": 0,
+        "minimap_unit_refreshes": 0,
+        "recovery_ap_active": 0,
+        "recovery_due_updates": 0,
+        "recovery_mp_active": 0,
+        "recovery_pending_detection": 0,
+        "recovery_skill_active": 0,
+        "recovery_units_scanned": 0,
+        "render_batch_runs": 6,
+        "render_blit_batches": 4,
+        "render_commands": 1692,
+        "render_draw_commands": 5,
+        "render_layers": 1,
+        "render_max_batch_size": 1672,
+        "render_nonbatch_blits": 2,
+        "render_other_commands": 0,
+        "render_scalar_commands": 7,
+        "render_simple_blits": 1685,
+        "render_single_plain_blits": 2,
+        "render_uncapped": 1,
+        "scale_configured_moving_units": 2500,
+        "scale_execution_density": 0.5,
+        "scale_gc_automatic_enabled": 0,
+        "scale_gc_defer_active": 1,
+        "scale_gc_policy": "realtime_defer",
+        "scale_motion_phase": "staggered",
+        "statistics_batch_units": 128,
+        "statistics_phase": "visibility",
+        "statistics_visibility_changes": 0,
+        "statistics_visibility_fog_disabled": 0,
+        "statistics_visibility_history_records": 0,
+        "statistics_visibility_history_trimmed": 0,
+        "unit_action_text_cache_misses": 0,
+        "unit_action_text_cache_size": 38,
+        "vision_audit_scanned": 5000,
+        "vision_dirty_units": 0,
+        "vision_faction_tiles_added": 0,
+        "vision_faction_tiles_removed": 0,
+        "vision_fog_delta_tiles": 0,
+        "vision_fog_journal_revision": 1,
+        "vision_geometry_cache_capacity": 16384,
+        "vision_geometry_cache_evictions": 0,
+        "vision_geometry_cache_hits": 0,
+        "vision_geometry_cache_misses": 0,
+        "vision_geometry_cache_size": 5000,
+        "vision_mode": "dirty_refcount",
+        "vision_tile_updates": 0,
+        "vision_unit_tiles_added": 0,
+        "vision_unit_tiles_removed": 0,
+        "vision_units_changed": 0,
+        "vision_units_scanned": 0
+      },
+      "frame_ms": 45.962542,
+      "measured_self_ms": 45.950791,
+      "p99_reference_ms": 30.16645050000001,
+      "platform_input_ms": 0.022792,
+      "present_ms": 1.456,
+      "threshold_ms": 45.249675750000016,
+      "top_sections": [
+        {
+          "category": "diagnostic",
+          "inclusive_ms": 29.174041,
+          "name": "scale_harness_control",
+          "self_ms": 29.174041
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 3.642459,
+          "name": "AnimationSystem",
+          "self_ms": 3.642459
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 3.917917,
+          "name": "UnitRenderSystem",
+          "self_ms": 3.06425
+        },
+        {
+          "category": "vision",
+          "inclusive_ms": 2.115667,
+          "name": "vision_audit_scan",
+          "self_ms": 2.115667
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 1.699666,
+          "name": "MapRenderSystem",
+          "self_ms": 1.699666
+        },
+        {
+          "category": "present",
+          "inclusive_ms": 1.456,
+          "name": "display_present",
+          "self_ms": 1.456
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 1.290707,
+          "name": "render_scalar_execute",
+          "self_ms": 1.290707
+        },
+        {
+          "category": "work",
+          "inclusive_ms": 1.093542,
+          "name": "UIRenderSystem",
+          "self_ms": 1.093542
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.853667,
+          "name": "unit_visible_cull",
+          "self_ms": 0.853667
+        },
+        {
+          "category": "render",
+          "inclusive_ms": 0.672083,
+          "name": "render_batch_blits",
+          "self_ms": 0.672083
+        }
+      ],
+      "uninstrumented_ms": 0.011750999999996736
+    }
+  ],
+  "uninstrumented_frame_ms": {
+    "avg": 0.011935746031746032,
+    "max": 0.023041,
+    "p50": 0.011668,
+    "p95": 0.014042,
+    "p99": 0.015400220000000003
+  },
+  "uninstrumented_ms": 0.011935746031746032,
+  "window_capacity_limited": false,
+  "window_coverage_s": 5.001642042,
+  "window_sample_capacity": 4096,
+  "window_target_s": 5.0,
+  "window_throughput_fps": 62.979317063250164,
+  "worst_slow_frame": {
+    "active_ms": 88.239459,
+    "controlled_work_ms": 13.5985,
+    "fps_limiter_wait_ms": 0.0,
+    "frame_index": 189,
+    "frame_metrics": {
+      "effect_position_index_changes": 0,
+      "effect_position_index_units": 5000,
+      "effect_spatial_revision": 1,
+      "fog_enabled": 1,
+      "fog_toggle_this_frame": 0,
+      "input_events": 2,
+      "input_key_down": 0,
+      "input_key_up": 0,
+      "input_mouse_button": 0,
+      "input_mouse_motion": 0,
+      "input_mouse_wheel": 0,
+      "input_other": 2,
+      "input_quit": 0,
+      "input_window": 0,
+      "map_render_mode": "overscan_cached",
+      "map_visible_tiles": 8281,
+      "minimap_layout_rebuilds": 1,
+      "minimap_revision_changed": 0,
+      "minimap_spatial_revision": 1,
+      "minimap_unit_layer_enabled": 0,
+      "minimap_unit_refreshed": 0,
+      "minimap_unit_refreshes": 0,
+      "recovery_ap_active": 0,
+      "recovery_due_updates": 0,
+      "recovery_mp_active": 0,
+      "recovery_pending_detection": 0,
+      "recovery_skill_active": 0,
+      "recovery_units_scanned": 0,
+      "render_batch_runs": 6,
+      "render_blit_batches": 4,
+      "render_commands": 1692,
+      "render_draw_commands": 5,
+      "render_layers": 1,
+      "render_max_batch_size": 1672,
+      "render_nonbatch_blits": 2,
+      "render_other_commands": 0,
+      "render_scalar_commands": 7,
+      "render_simple_blits": 1685,
+      "render_single_plain_blits": 2,
+      "render_uncapped": 1,
+      "scale_configured_moving_units": 0,
+      "scale_execution_density": 0.0,
+      "scale_gc_automatic_enabled": 1,
+      "scale_gc_defer_active": 0,
+      "scale_gc_policy": "auto",
+      "statistics_batch_units": 128,
+      "statistics_phase": "visibility",
+      "statistics_visibility_changes": 0,
+      "statistics_visibility_fog_disabled": 0,
+      "statistics_visibility_history_records": 0,
+      "statistics_visibility_history_trimmed": 0,
+      "unit_action_text_cache_misses": 0,
+      "unit_action_text_cache_size": 38,
+      "vision_audit_scanned": 0,
+      "vision_dirty_units": 0,
+      "vision_faction_tiles_added": 0,
+      "vision_faction_tiles_removed": 0,
+      "vision_fog_delta_tiles": 0,
+      "vision_fog_journal_revision": 1,
+      "vision_geometry_cache_capacity": 16384,
+      "vision_geometry_cache_evictions": 0,
+      "vision_geometry_cache_hits": 0,
+      "vision_geometry_cache_misses": 0,
+      "vision_geometry_cache_size": 5000,
+      "vision_mode": "dirty_refcount",
+      "vision_tile_updates": 0,
+      "vision_unit_tiles_added": 0,
+      "vision_unit_tiles_removed": 0,
+      "vision_units_changed": 0,
+      "vision_units_scanned": 0
+    },
+    "frame_ms": 90.031584,
+    "measured_self_ms": 90.012667,
+    "p99_reference_ms": 36.30831966999994,
+    "platform_input_ms": 74.607625,
+    "present_ms": 1.792125,
+    "threshold_ms": 54.462479504999905,
+    "top_sections": [
+      {
+        "category": "platform_input",
+        "inclusive_ms": 74.5915,
+        "name": "input_event_pump",
+        "self_ms": 74.5915
+      },
+      {
+        "category": "work",
+        "inclusive_ms": 4.991375,
+        "name": "UnitRenderSystem",
+        "self_ms": 3.892625
+      },
+      {
+        "category": "work",
+        "inclusive_ms": 3.568083,
+        "name": "MapRenderSystem",
+        "self_ms": 3.568083
+      },
+      {
+        "category": "render",
+        "inclusive_ms": 1.858833,
+        "name": "render_scalar_execute",
+        "self_ms": 1.858833
+      },
+      {
+        "category": "present",
+        "inclusive_ms": 1.792125,
+        "name": "display_present",
+        "self_ms": 1.792125
+      },
+      {
+        "category": "work",
+        "inclusive_ms": 1.258833,
+        "name": "UIRenderSystem",
+        "self_ms": 1.258833
+      },
+      {
+        "category": "render",
+        "inclusive_ms": 1.09875,
+        "name": "unit_visible_cull",
+        "self_ms": 1.09875
+      },
+      {
+        "category": "render",
+        "inclusive_ms": 0.706083,
+        "name": "render_batch_blits",
+        "self_ms": 0.706083
+      },
+      {
+        "category": "render",
+        "inclusive_ms": 0.318625,
+        "name": "screen_fill",
+        "self_ms": 0.318625
+      },
+      {
+        "category": "render",
+        "inclusive_ms": 0.182583,
+        "name": "render_batch_pack",
+        "self_ms": 0.182583
+      }
+    ],
+    "uninstrumented_ms": 0.01891700000000185
+  }
+}

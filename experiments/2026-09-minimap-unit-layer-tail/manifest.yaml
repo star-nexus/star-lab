@@ -1,0 +1,153 @@
+experiment:
+  id: minimap-unit-layer-tail
+  title: MiniMap Unit-Layer Tail Latency and 5K 60Hz Core Stress Boundary
+  date: 2026-09-06
+  status: draft
+  archive_note: causal conclusion accepted; raw-artifact upload and SHA256 finalization pending
+
+source:
+  repository: star-nexus/star
+  problem_commit: def0afaf722a1cd1bf1926a8934c1974a47a9872
+  measurement_commit: c5dd895e242b46f193050d8212fcc45b625ad885
+  diagnostic_commit: def0afaf722a1cd1bf1926a8934c1974a47a9872
+  ablation_commit: 6b7a02c51a869e4c85e63144f2c00cb0128ce880
+  fix_commit: 6b7a02c51a869e4c85e63144f2c00cb0128ce880
+  validated_commit: c5dd895e242b46f193050d8212fcc45b625ad885
+  branch_at_time: perf/system-scale-frontier
+  validated_tag: null
+  fix_semantics: scale/profile isolation of auxiliary MiniMap unit layer; not an algorithmic incremental-MiniMap rewrite
+
+hardware:
+  machine: Mac mini M4
+  cpu: Apple M4
+  memory: pending exact host record
+  gpu: Apple integrated GPU; primary measured ECS/runtime path remained CPU-bound
+  display: 2480x1268 window
+
+software:
+  os: macOS; exact version pending host record
+  python: 3.13.12
+  dependency_lock: uv.lock at measurement source; exact lock hash pending archive finalization
+
+scenario:
+  name: TestMap-8K-scale-5000
+  map_size: 91x91
+  map_tiles: 8281
+  resident_units: 5000
+  moving_units:
+    density_025: 1250
+    density_050: 2500
+
+workload:
+  seed: 42
+  phase_seed: 42
+  route_steps: 12
+  densities:
+    - 0.25
+    - 0.50
+  phase: staggered
+  fog: true
+  camera: fixed window/camera during formal measurement; no gameplay input
+  zoom: not serialized in current Phase-4 profile summary
+  execution_mode: sustained_production_animation
+  pathfinding_during_execution: false
+  gameplay_input: blocked
+  minimap_unit_layer:
+    problem: default/on
+    ablation: off via STAR_SCALE_MINIMAP_UNITS=off
+
+measurement:
+  framework: Phase-3 Performance Measurement & Regression Infrastructure
+  rolling_window_seconds: 5.0
+  sample_window_hard_capacity_frames: 4096
+  warmup_seconds: 5
+  sustained_seconds: 20
+  sample_after_seconds: 7
+  gc_policy: realtime_defer
+  fps_cap: uncapped
+  primary_stress_criterion: controlled_work_frame_ms.p99 <= 16.67 ms
+  borderline_repeat_policy: three fresh-process runs; compare run-level P99 median
+  guards_required:
+    - active_matches_start
+    - controlled_work_present
+    - density_matches
+    - fog_fixed_on
+    - gc_automatic_disabled_during_defer
+    - gc_defer_active_during_window
+    - gc_policy_metadata_matches
+    - gc_policy_profile_matches
+    - gc_policy_start_matches
+    - input_policy_fixed
+    - no_key_input
+    - no_mouse_button_input
+    - no_mouse_wheel_input
+    - no_pathfinding_during_execution
+    - position_commits_present
+    - production_animation_path
+    - profile_configured_movers_match
+    - profile_density_matches
+    - profile_phase_matches
+    - resident_matches_prepare
+    - rolling_window_full
+    - vision_dirty_present
+    - window_not_capacity_limited
+
+variables:
+  independent:
+    minimap_unit_layer:
+      - on
+      - off
+    movement_density:
+      - 0.25
+      - 0.50
+  controlled:
+    - STAR source state for the formal ON/OFF A/B
+    - machine
+    - scenario and 5000 resident units
+    - map size
+    - seed and phase seed
+    - staggered movement phase
+    - Fog ON
+    - realtime_defer GC policy
+    - uncapped rendering
+    - blocked gameplay input
+    - production animation and position commits
+    - no execution pathfinding
+
+artifacts:
+  status: upload_pending
+  formal_pending:
+    - results/density-025-crossing-correlation.json
+    - results/density-025-crossing-correlation-profile.json
+    - results/density-025-minimap-units-on.json
+    - results/density-025-minimap-units-on-profile.json
+    - results/density-025-minimap-units-off.json
+    - results/density-025-minimap-units-off-profile.json
+    - results/density-050-core-60hz-run1.json
+    - results/density-050-core-60hz-run1-profile.json
+    - results/density-050-core-60hz-run2.json
+    - results/density-050-core-60hz-run2-profile.json
+    - results/density-050-core-60hz-run3.json
+    - results/density-050-core-60hz-run3-profile.json
+  sha256_status: pending raw upload; do not create empty artifacts/SHA256SUMS
+  external: []
+
+headline:
+  problem_signature: 25% moving could cross the 16.67 ms controlled-work P99 budget despite closed historical bottlenecks
+  root_cause: 15 Hz MiniMap dynamic-unit refresh cleared and rebuilt the unit layer by traversing all resident units, producing an approximately 4 ms O(N) periodic pulse
+  resolution: exclude the auxiliary dynamic MiniMap unit layer from the Core 60Hz stress profile through an explicit scale-only override; preserve normal interactive default behavior
+  result: 25% changes from approximately 16.81 ms P99 with MiniMap units ON to approximately 13.67 ms P99 with units OFF; 50% three-run median P99 is 16.68202856 ms and is retained as BORDERLINE ACCEPT
+
+classification:
+  strict_50pct: boundary_fail
+  strict_reason: median controlled-work P99 16.68202856 ms is greater than literal 16.67 ms stress criterion
+  engineering_disposition_50pct: BORDERLINE ACCEPT
+  disposition_reason: approximately 0.012 ms / 0.07% over literal budget, repeatable steady workload, and no reopened historical pathology; exact binary frontier search intentionally stopped
+  threshold_changed: false
+
+revisit_when:
+  - Full Interactive profile is required to sustain strict 60Hz at 5000+ resident units with dynamic MiniMap unit dots enabled
+  - MiniMap unit rendering is redesigned as dirty-cell incremental or asynchronous derived-view work
+  - resident population increases materially beyond 5000
+  - the Core 60Hz stress criterion changes
+  - raw artifacts or guard verification contradict the summarized measurements

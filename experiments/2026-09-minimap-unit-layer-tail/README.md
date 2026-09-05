@@ -1,12 +1,12 @@
 # MiniMap Unit-Layer Tail Latency and 5K 60Hz Core Stress Boundary
 
-**Status:** DRAFT — causal conclusion accepted; raw-artifact upload and integrity finalization pending  
+**Status:** CLOSED — formal raw evidence archived and integrity-verified  
 **STAR repository:** `star-nexus/star`  
 **Diagnostic correlation commit:** `def0afaf722a1cd1bf1926a8934c1974a47a9872`  
 **Ablation implementation:** `6b7a02c51a869e4c85e63144f2c00cb0128ce880`  
 **Measurement / regression-protected commit:** `c5dd895e242b46f193050d8212fcc45b625ad885`  
 **Branch at time:** `perf/system-scale-frontier`  
-**Validated tag:** N/A — archive finalization pending raw evidence
+**Validated tag:** N/A — exact source SHA is recorded; no separate annotated milestone tag was created for this profile-isolation decision
 
 ## 1. Problem
 
@@ -32,13 +32,13 @@ The literal 60 Hz stress criterion remains:
 controlled_work_frame_ms.p99 <= 16.67 ms
 ```
 
-The final 50%-moving point is recorded separately as a practical `BORDERLINE ACCEPT`: its three-run median P99 is 16.68202856 ms, approximately 0.012 ms / 0.07% above the literal budget. The threshold itself is not moved, and no further 37.5% binary search is required for this investigation.
+The final 50%-moving point is recorded separately as a practical `BORDERLINE ACCEPT`: its three-run median P99 is `16.68202856 ms`, approximately `0.012 ms / 0.07%` above the literal budget. The threshold itself is not moved, and no further 37.5% binary search is required for this investigation.
 
 ## 3. Measurement infrastructure
 
-This experiment reuses the production Performance Measurement & Regression Infrastructure introduced in Phase 3; it does not create a separate timing plane.
+This experiment directly reuses the production Performance Measurement & Regression Infrastructure introduced in Phase 3; it does not create a second timing plane.
 
-The reused measurement semantics include:
+The reused semantics include:
 
 ```text
 ~5 s wall-clock rolling window
@@ -46,6 +46,7 @@ The reused measurement semantics include:
 controlled_work = STAR-controlled work/update/render/vision/input self time
 platform_input separated
 present separated
+wait separated
 uninstrumented residual reported
 section inclusive/self timing
 frame metrics and tail thresholds
@@ -72,21 +73,25 @@ The controlled ON/OFF ablation intentionally uses the same source state. The ind
 ## 5. Environment
 
 ```text
-Machine:       Mac mini M4
-OS:            macOS (exact version to be completed from run host metadata)
-Python:        3.13.12
-Display mode:  window, 2480x1268
-Scenario:      TestMap-8K-scale-5000
-Map:           91x91 / 8281 terrain tiles
-Resident:      5000 units
-Fog:           ON
-Motion:        staggered
-GC policy:     realtime_defer
-Render:        uncapped
+Machine:        Mac mini M4
+CPU:            Apple M4
+Memory:         not captured in canonical raw artifacts
+OS:             macOS; exact minor version not captured in canonical raw artifacts
+Python:         3.13.12
+Display mode:   window, 2480x1268
+Scenario:       TestMap-8K-scale-5000
+Map:            91x91 / 8281 terrain tiles
+Resident:       5000 units
+Fog:            ON
+Motion:         staggered
+GC policy:      realtime_defer
+Render:         uncapped
 Gameplay input: blocked
 Execution pathfinding: disabled
 Production animation + position commits: enabled
 ```
+
+Missing host-detail fields are recorded explicitly rather than reconstructed after the fact.
 
 ## 6. Reproduce the problem — MiniMap Unit Layer ON
 
@@ -123,16 +128,17 @@ uv run python tools/scale_driver.py \
   --output results/phase4/density-025-minimap-units-on.json
 ```
 
-Expected problem signature from the controlled A/B cohort:
+Expected problem signature from the formal A/B artifact:
 
 ```text
-MiniMap unit layer enabled     true
-MiniMap refresh pulse P99      ~4.04 ms
-controlled-work P99            ~16.81 ms
+MiniMap dynamic unit layer     enabled
+controlled-work P99            16.80802934 ms
+controlled-work max            19.437584 ms
 frames >16.67 ms               6 / 343
+MiniMap refresh pulse P99      ~4.04 ms
 ```
 
-The earlier correlation diagnostic also showed that every controlled-work over-budget frame in that window coincided with MiniMap unit refresh, while frames without MiniMap refresh did not exceed 16.67 ms.
+The earlier correlation diagnostic showed that the apparent crossing-count explanation was weak and that the over-budget frames were instead explained by MiniMap refresh state.
 
 ## 7. Validate the ablation — MiniMap Unit Layer OFF
 
@@ -163,23 +169,33 @@ MiniMap clickable               true
 MiniMap dynamic unit layer      false
 minimap_unit_refreshed          0 throughout measurement window
 MiniMapSystem P99               ~0.057 ms
-controlled-work P99             ~13.67 ms
+controlled-work P99             13.66634692 ms
+controlled-work max             14.082585 ms
 frames >16.67 ms               0
 ```
 
 The regression test `rotk_env/tests/test_window_minimap_ablation.py` protects the rule that the scale override disables only the dynamic unit layer.
 
-## 8. 50% 60Hz core stress point
+## 8. 50% Core 60Hz stress point
 
 With MiniMap dynamic units OFF and all other formal conditions held fixed, 2500 of 5000 resident units move continuously.
 
 Three fresh-process run-level controlled-work P99 values are:
 
 ```text
-Run 1  16.68202856 ms
-Run 2  16.13298628 ms
-Run 3  16.80107026 ms
-Median 16.68202856 ms
+Run 1   16.68202856 ms
+Run 2   16.13298628 ms
+Run 3   16.80107026 ms
+Median  16.68202856 ms
+```
+
+The three controlled-work averages are:
+
+```text
+Run 1   14.09553649 ms
+Run 2   14.19096088 ms
+Run 3   14.24305623 ms
+Median  14.19096088 ms
 ```
 
 Literal strict classification:
@@ -200,11 +216,9 @@ no 37.5% binary-search follow-up required
 
 This disposition does not redefine the 16.67 ms stress threshold and must not be rewritten later as a clear strict PASS.
 
-## 9. Formal artifacts — upload pending
+## 9. Formal artifacts and integrity
 
-The raw JSON files are still local and will be added before this case is promoted from DRAFT to VALIDATED/CLOSED.
-
-Intended canonical evidence set:
+Canonical raw evidence:
 
 ```text
 results/density-025-crossing-correlation.json
@@ -221,21 +235,27 @@ results/density-050-core-60hz-run3.json
 results/density-050-core-60hz-run3-profile.json
 ```
 
-After upload:
+All 12 artifacts are covered by [`artifacts/SHA256SUMS`](artifacts/SHA256SUMS). Verification from the experiment root:
 
 ```bash
-cd experiments/2026-09-minimap-unit-layer-tail
-shasum -a 256 results/*.json > artifacts/SHA256SUMS
 shasum -a 256 -c artifacts/SHA256SUMS
 ```
 
-Do not create an empty checksum file before raw artifacts exist.
+All 12 entries were verified `OK` before final archive closure.
 
-## 10. Related records
+## 10. Result summary
+
+| Condition | Moving | Controlled avg | Controlled P99 | Tail result |
+|---|---:|---:|---:|---|
+| 25%, MiniMap units ON | 1250 | 12.997793 ms | 16.808029 ms | contaminated / over budget |
+| 25%, MiniMap units OFF | 1250 | 11.974983 ms | 13.666347 ms | CLEAR PASS |
+| 50%, MiniMap units OFF, 3-run median | 2500 | 14.190961 ms | 16.682029 ms | BORDERLINE ACCEPT; literal boundary fail |
+
+## 11. Related records
 
 - [`manifest.yaml`](manifest.yaml)
 - [`analysis.md`](analysis.md)
 - [`decision.md`](decision.md)
 - [`../2026-09-dynamic-world-scaling/`](../2026-09-dynamic-world-scaling/)
 - [`../../records/performance-measurement-regression-infra-2026-09.md`](../../records/performance-measurement-regression-infra-2026-09.md)
-- [`../../records/performance-frontier.md`](../../records/performance-frontier.md) — update only after raw evidence + SHA256 are finalized
+- [`../../records/performance-frontier.md`](../../records/performance-frontier.md)

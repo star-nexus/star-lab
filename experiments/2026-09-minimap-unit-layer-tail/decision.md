@@ -1,15 +1,15 @@
 # Decision — MiniMap Unit-Layer Tail Latency and 5K 60Hz Core Stress Boundary
 
-**Status:** accepted — archive finalization pending raw evidence  
+**Status:** accepted / CLOSED  
 **Decision date:** 2026-09-06  
 **Validated STAR commit:** `c5dd895e242b46f193050d8212fcc45b625ad885`  
-**Validated STAR tag:** N/A — raw-artifact and integrity finalization pending
+**Validated STAR tag:** N/A — exact source SHA is recorded; no separate annotated milestone tag was created
 
 ## 1. Decision
 
 For the 5000-unit Core 60Hz engineering stress profile, disable only the dynamic MiniMap unit-dot layer through the explicit scale-only `STAR_SCALE_MINIMAP_UNITS=off` override. Preserve normal interactive MiniMap behavior by default. Do not hide MiniMap cost by changing profiler accounting; remove this auxiliary O(Nresident) work from the Core stress execution path instead.
 
-Treat the 5000-resident / 2500-moving / Fog-ON / staggered 50% point as `BORDERLINE ACCEPT` for the current engineering milestone. Its three-run controlled-work P99 median is 16.68202856 ms, approximately 0.012 ms / 0.07% above the unchanged literal 16.67 ms stress threshold. Record the strict threshold result faithfully as a boundary fail, but stop binary searching at 37.5% because the practical conclusion is already sufficient: the current 5K Core runtime sits approximately at the 50%-moving 60Hz stress boundary.
+Treat the 5000-resident / 2500-moving / Fog-ON / staggered 50% point as `BORDERLINE ACCEPT` for the current engineering milestone. Its three-run controlled-work P99 median is `16.68202856 ms`, approximately `0.012 ms / 0.07%` above the unchanged literal `16.67 ms` stress threshold. Record the strict threshold result faithfully as a boundary fail, but stop binary searching at 37.5% because the practical conclusion is already sufficient: the current 5K Core runtime sits approximately at the 50%-moving 60Hz stress boundary.
 
 ## 2. Decision drivers
 
@@ -24,12 +24,12 @@ Treat the 5000-resident / 2500-moving / Fog-ON / staggered 50% point as `BORDERL
 
 | Option | Relevant causal metrics | System metrics | Decision |
 |---|---|---|---|
-| Full interactive MiniMap unit layer ON | 15 Hz refresh; full resident-unit redraw; ~4 ms refresh pulse | 25% P99 ~16.81 ms; over-budget frames present | Reject for Core 60Hz stress profile |
+| Full interactive MiniMap unit layer ON | 15 Hz refresh; full resident-unit redraw; ~4 ms refresh pulse | 25% controlled P99 16.808029 ms; over-budget frames present | Reject for Core 60Hz stress profile |
 | Hide MiniMap timing from `controlled_work` but still execute it | Accounting changes, wall-clock work unchanged | Main-thread pulse remains | Reject |
-| Dynamic MiniMap unit layer OFF in Core stress profile | `minimap_unit_refreshed=0`; terrain/camera/interaction remain | 25% P99 ~13.67 ms; 0 over-budget frames in A/B window | Accept |
-| Rewrite MiniMap now as dirty-cell incremental | Not yet measured | Likely removes O(N) redraw | Defer; not required to close current stress-measurement contamination |
+| Dynamic MiniMap unit layer OFF in Core stress profile | `minimap_unit_refreshed=0`; terrain/camera/interaction remain | 25% controlled P99 13.666347 ms; 0 over-budget frames | Accept |
+| Rewrite MiniMap now as dirty-cell incremental | Not yet measured | Likely removes O(N) redraw | Defer; not required to close current measurement contamination |
 | Move MiniMap to async worker now | Not yet measured | Could remove critical-path work | Defer; broader concurrency architecture work |
-| Continue exact density binary search at 37.5% | Would refine a boundary already within ~0.07% of 60Hz target | Additional test branch without changing current engineering decision | Reject for now |
+| Continue exact density binary search at 37.5% | Would refine a boundary already within ~0.07% of 60Hz target | Additional branch without changing current engineering decision | Reject for now |
 
 ## 4. Why this option
 
@@ -38,12 +38,14 @@ The chosen option follows the measured causal chain rather than aggregate FPS in
 The decisive evidence is:
 
 ```text
-MiniMap refresh OFF
-  -> ~4 ms periodic unit-layer pulse disappears
-  -> MiniMapSystem falls to ~0.05 ms
-  -> same authoritative movement/Vision/Fog workload continues
-  -> 25% controlled P99 falls from ~16.81 ms to ~13.67 ms
-  -> over-budget controlled frames in the A/B window fall to zero
+MiniMap units ON at 25%
+  controlled P99 = 16.80802934 ms
+  controlled max = 19.437584 ms
+
+MiniMap units OFF at 25%
+  controlled P99 = 13.66634692 ms
+  controlled max = 14.082585 ms
+  over-budget controlled frames = 0
 ```
 
 The alternative hypothesis that crossing count itself drives the 25% tail was instrumented and rejected. This prevents a future engineer from reopening movement-continuity or rewriting position-commit logic in response to the same signature.
@@ -64,7 +66,7 @@ Rejected because the current signature does not match the closed GC, Vision-cach
 
 ### Do not continue 37.5% binary search
 
-Rejected because the 50% three-run median differs from the literal 16.67 ms target by only ~0.012 ms / 0.07%, while steady-state subsystem behavior is repeatable and non-pathological. The engineering question is sufficiently answered without pretending that the literal threshold was met.
+Rejected because the 50% three-run median differs from the literal 16.67 ms target by only `0.01202856 ms`, about `0.07%`, while steady-state subsystem behavior is repeatable and non-pathological. The engineering question is sufficiently answered without pretending that the literal threshold was met.
 
 ## 6. Headroom and scaling rationale
 
@@ -73,11 +75,11 @@ Current 5K Core stress interpretation:
 ```text
 25% moving / 1250 units
   -> CLEAR PASS
-  -> controlled P99 ~13.67 ms
+  -> controlled P99 13.66634692 ms
 
 50% moving / 2500 units
   -> literal strict threshold: boundary FAIL
-  -> three-run median P99 16.68202856 ms
+  -> three-run median controlled P99 16.68202856 ms
   -> engineering disposition: BORDERLINE ACCEPT
 ```
 
@@ -89,7 +91,8 @@ This is distinct from canonical benchmark runtime semantics. A 30 Hz canonical c
 
 - Core stress runs do not display live MiniMap unit dots, so they are not a complete interactive-client workload.
 - Full Interactive performance with dynamic unit dots remains lower until MiniMap is redesigned.
-- `BORDERLINE ACCEPT` must not be rewritten later as `P99 <= 16.67`; the literal median is 16.68202856 ms.
+- `BORDERLINE ACCEPT` must not be rewritten later as `P99 <= 16.67`; the literal median is `16.68202856 ms`.
+- Exact host macOS minor version and memory capacity were not captured in the canonical raw artifacts.
 - The current conclusion is host/scenario specific until larger resident populations or other platforms are measured.
 
 ## 8. Revisit when
@@ -101,27 +104,36 @@ This decision must be revisited when any of the following occurs:
 - the resident population increases materially beyond 5000;
 - the render/simulation scheduling architecture becomes multi-core or otherwise changes the critical path;
 - the Core stress criterion is changed;
-- uploaded raw evidence or checksum verification contradicts this draft summary.
+- new evidence contradicts the archived raw artifacts.
 
-## 9. Archive finalization requirements
+## 9. Closure evidence
 
-Before changing this case from DRAFT to VALIDATED/CLOSED:
+The case is CLOSED because:
 
 ```text
-upload canonical raw JSONs under results/
-create artifacts/SHA256SUMS
-verify every checksum from experiment root
-confirm exact host OS/memory/dependency-lock metadata where available
-confirm all formal guards from raw results
-update README/manifest raw paths if filenames differ
-update records/performance-frontier.md only after protocol admission criteria are satisfied
+problem reproduced                         yes
+competing hypotheses recorded             yes
+crossing-count hypothesis instrumented     yes
+root cause demonstrated                    yes
+controlled ON/OFF ablation                 yes
+scale-only ablation protected by test      yes
+formal raw artifacts archived              yes
+all 12 formal artifacts SHA256-covered     yes
+checksum verification                      all OK
+exact STAR source SHAs recorded            yes
+engineering decision documented            yes
+Performance Frontier updated               yes
 ```
+
+No annotated milestone tag was created because this case records a scale/profile-isolation decision rather than a production-default algorithm rewrite; the immutable source identity is the exact validated STAR commit SHA.
 
 ## 10. Provenance
 
 - Reproduction: [`README.md`](README.md)
 - Experiment identity: [`manifest.yaml`](manifest.yaml)
 - Root-cause analysis: [`analysis.md`](analysis.md)
+- Raw evidence: [`results/`](results/)
+- Integrity: [`artifacts/SHA256SUMS`](artifacts/SHA256SUMS)
 - Phase-3 measurement foundation: [`../../records/performance-measurement-regression-infra-2026-09.md`](../../records/performance-measurement-regression-infra-2026-09.md)
 - Historical density methodology: [`../2026-09-dynamic-world-scaling/`](../2026-09-dynamic-world-scaling/)
 - Performance Frontier: [`../../records/performance-frontier.md`](../../records/performance-frontier.md)

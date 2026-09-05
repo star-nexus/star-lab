@@ -1,12 +1,13 @@
-# Artifact integrity — pending raw upload
+# Artifact integrity — verified
 
-Do not create an empty `SHA256SUMS` file.
+Canonical formal JSON artifacts are stored under `../results/` and covered by [`SHA256SUMS`](SHA256SUMS).
 
-After the canonical raw JSON artifacts are uploaded under `../results/`, generate experiment-relative checksums from the experiment root:
+Verify from the experiment root:
 
 ```bash
-shasum -a 256 results/*.json > artifacts/SHA256SUMS
 shasum -a 256 -c artifacts/SHA256SUMS
 ```
 
-Promote the case from `DRAFT` only after all listed artifacts verify `OK` and the manifest is updated with the final raw paths/checksums.
+All 12 listed artifacts were verified `OK` before this case was promoted to CLOSED.
+
+Checksum paths are experiment-relative, as required by [`../../../PROTOCOL.md`](../../../PROTOCOL.md).

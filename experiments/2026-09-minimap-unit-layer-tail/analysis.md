@@ -4,7 +4,7 @@
 
 The Phase 4 5000-unit stress workload showed a mismatch between average throughput and strict 60 Hz tail behavior.
 
-At 25% moving density, with Fog ON, staggered motion, `realtime_defer`, and the full interactive MiniMap unit layer enabled, controlled-work P99 could enter the ~17–18 ms range even though average throughput remained above 60 FPS.
+At 25% moving density, with Fog ON, staggered motion, `realtime_defer`, and the full interactive MiniMap unit layer enabled, controlled-work P99 entered the ~17–18 ms range even though average throughput remained above 60 FPS.
 
 The already-closed historical signatures were absent:
 
@@ -18,6 +18,8 @@ no platform-input event-pump tail inside controlled-work classification
 ```
 
 The initial 25% workload also showed roughly 35–40 position commits per frame, motivating a hypothesis that hex-boundary crossings themselves were driving the tail.
+
+All formal raw artifacts are now archived and covered by experiment-relative SHA256 metadata.
 
 ## 2. Competing hypotheses
 
@@ -105,17 +107,15 @@ The override changes only `MiniMap.show_units`; terrain, camera viewport, MiniMa
 
 The 25% correlation window did not show the expected monotonic relation between commit count and tail latency.
 
-Observed evidence:
+The formal diagnostic artifact preserves:
 
 ```text
-normal frames had more commits on average than over-budget frames in the diagnostic window
-maintenance-off controlled-work correlation with commit count was weak
-Pearson r approximately +0.14
-R^2 approximately 0.02
-slope approximately 0.0084 ms / commit
+controlled-work P99       18.51077221 ms
+position commits avg       38.8447 / frame
+Vision dirty avg           38.8882 / frame
 ```
 
-A frame bucket with more than 50 commits and no periodic MiniMap/Vision maintenance remained comfortably below the 16.67 ms budget.
+Conditioned correlation from the same profile showed that maintenance-off commit count explained very little frame-time variance; high-commit frames could remain comfortably within budget when periodic maintenance was absent.
 
 Interpretation:
 
@@ -125,7 +125,7 @@ This rejects reopening the historical movement-continuity case: the old issue wa
 
 ### Evidence against H2 as the primary 25% cause
 
-Vision audit increased Vision cost by roughly 2 ms, but audit-only frames in the decisive 25% diagnostic remained below 16.67 ms.
+Vision audit increased Vision cost, but audit-only frames in the decisive 25% diagnostic remained below 16.67 ms.
 
 Interpretation:
 
@@ -140,12 +140,12 @@ Conditioning the 25% correlation window by maintenance state produced a strong s
 ```text
 no MiniMap refresh:
   controlled-work average approximately 13.06 ms
-  zero over-budget frames in the main no-refresh group
+  no over-budget frames in the main no-refresh group
 
 MiniMap refresh:
   MiniMapSystem rises from approximately 0.08 ms to approximately 4.09 ms
   controlled-work rises by approximately the same ~4.0 ms
-  all observed over-budget frames in the decisive correlation window coincided with MiniMap unit refresh
+  all observed over-budget frames in the decisive correlation window coincide with MiniMap unit refresh
 ```
 
 The code path explains the fixed pulse:
@@ -164,19 +164,25 @@ This is O(Nresident) presentation work triggered by incremental invalidation.
 
 ### Controlled A/B — same source, same workload, only MiniMap unit layer changes
 
-The formal 25% A/B uses the same STAR measurement source and fresh processes.
+Formal 25% ON artifact:
 
-Representative result:
+```text
+controlled avg       12.997793137 ms
+controlled P95       16.416786800 ms
+controlled P99       16.808029340 ms
+controlled max       19.437584000 ms
+frames >16.67 ms      6 / 343
+```
 
-| Metric | MiniMap Units ON | MiniMap Units OFF |
-|---|---:|---:|
-| Controlled avg | ~12.998 ms | ~11.975 ms |
-| Controlled P95 | ~16.417 ms | ~12.632 ms |
-| Controlled P99 | ~16.808 ms | ~13.666 ms |
-| Controlled max | ~19.438 ms | ~14.083 ms |
-| Frames >16.67 ms | 6 / 343 | 0 / 369 |
-| MiniMapSystem P99 | ~4.042 ms | ~0.057 ms |
-| MiniMap unit refreshes in measured window | present | 0 |
+Formal 25% OFF artifact:
+
+```text
+controlled avg       11.974982583 ms
+controlled P95       12.631831800 ms
+controlled P99       13.666346920 ms
+controlled max       14.082585000 ms
+frames >16.67 ms      0 / 369
+```
 
 The observed position-commit rate per second remained effectively unchanged. The lower commits-per-frame in the faster OFF run is explained by the same world motion being distributed across more uncapped frames; it is not a reduced dynamic workload.
 
@@ -188,36 +194,29 @@ Interpretation:
 
 With MiniMap units OFF, 2500 of 5000 units move continuously.
 
-Three fresh-process P99 results:
+Three fresh-process controlled-work results:
+
+| Run | Avg | P50 | P95 | P99 | Max |
+|---|---:|---:|---:|---:|---:|
+| 1 | 14.095536 | 14.002666 | 14.990516 | 16.682029 | 17.534501 |
+| 2 | 14.190961 | 14.113835 | 15.009150 | 16.132986 | 16.468418 |
+| 3 | 14.243056 | 14.180208 | 15.228605 | 16.801070 | 16.991708 |
+| **Run-level median** | **14.190961** | — | — | **16.682029** | — |
+
+All preserved summary artifacts report `ok:true`, and the formal workload/GC/input/Fog/production-animation guards are true.
+
+Position-change and Vision-dirty work are internally consistent:
 
 ```text
-Run 1  16.68202856 ms
-Run 2  16.13298628 ms
-Run 3  16.80107026 ms
-Median 16.68202856 ms
+Run 1 position changes avg  78.5486/frame
+Run 1 Vision dirty avg      78.5737/frame
+Run 2 position changes avg  79.0221/frame
+Run 2 Vision dirty avg      79.0189/frame
+Run 3 position changes avg  79.3333/frame
+Run 3 Vision dirty avg      79.3714/frame
 ```
 
-All formal workload/GC/input/Fog/production-animation guards passed in the preserved run summaries.
-
-The steady shape is repeatable:
-
-```text
-controlled-work average  ~14.1–14.24 ms
-P50                      ~14.0–14.18 ms
-P95                      ~15.0–15.23 ms
-```
-
-Subsystem scale is also repeatable:
-
-```text
-AnimationSystem  ~2.64–2.68 ms
-VisionSystem     ~0.79 ms average
-UnitRenderSystem ~4.3–4.4 ms
-MapRenderSystem  ~2.1–2.2 ms
-MiniMapSystem    ~0.047 ms with unit layer OFF
-```
-
-The 50% workload produces approximately 5000 position commits per second, matching the expected 2500 movers × ~2 hex/s scale.
+At the observed frame rates this is approximately 5000 position commits/s, matching the expected 2500 movers × ~2 hex/s workload.
 
 ## 5. Root cause
 
@@ -244,7 +243,7 @@ STAR_SCALE_MINIMAP_UNITS=off
   -> dynamic MiniMap unit redraw does not execute
   -> MiniMapSystem remains ~0.05 ms
   -> same world motion / Vision / Fog / render workload continues
-  -> 25% controlled P99 drops to ~13.67 ms
+  -> 25% controlled P99 drops to 13.66634692 ms
   -> over-budget frames drop to zero in the A/B window
 ```
 
@@ -253,22 +252,29 @@ STAR_SCALE_MINIMAP_UNITS=off
 - **Hex crossing count as the primary 25% tail cause** — rejected by weak conditioned correlation and by high-commit frames that remain within budget when periodic maintenance is absent.
 - **Historical movement-continuity bug reopened** — rejected because the old issue was animation/render interpolation at segment boundaries; current evidence identifies an auxiliary MiniMap full redraw.
 - **Realtime GC reopened** — rejected because `realtime_defer` guards pass and the old 15–30 ms UnitRender GC-pause signature is absent.
-- **Vision geometry-cache thrashing** — rejected because the 16,384 cache remains bounded with zero evictions and normal low miss counts.
+- **Vision geometry-cache thrashing** — rejected because the 16,384 cache remains bounded without the old eviction signature.
 - **Vision audit as the primary 25% cause** — rejected because audit-only frames remained within budget in the decisive 25% diagnostic. At 50%, audit can consume remaining headroom but does not establish a new pathological case.
 - **MiniMap should simply be excluded from accounting while still executing** — rejected because removing a metric from `controlled_work` would not remove the real main-thread delay. The work must either not execute in the Core stress profile or be redesigned off the critical path.
 
 ## 8. Limits of the evidence
 
 - The measured host is one Mac mini M4 configuration.
+- Exact macOS minor version and installed memory were not captured in the canonical artifacts and are intentionally not reconstructed.
 - The formal scenario is the 91x91 / 5000-resident large-window map.
 - This case validates profile isolation of the dynamic MiniMap unit layer; it does not implement or validate a dirty-cell incremental MiniMap renderer.
 - It does not validate asynchronous MiniMap execution or ECS multi-core scheduling.
-- The 50% result is intentionally retained as `BORDERLINE ACCEPT`, not as a literal strict PASS; its median P99 remains 0.012 ms above the unchanged 16.67 ms stress criterion.
+- The 50% result is intentionally retained as `BORDERLINE ACCEPT`, not as a literal strict PASS; its median P99 remains 0.01202856 ms above the unchanged 16.67 ms stress criterion.
 - The exact maximum 60 Hz moving-density frontier is intentionally not binary-searched further.
-- The planned distinction between canonical 30 Hz benchmark semantics and 60 Hz engineering stress mode is an architectural/runtime policy discussion outside the causal proof of this case unless separately implemented and validated.
+- The planned distinction between canonical 30 Hz benchmark semantics and 60 Hz engineering stress mode is outside the causal proof of this case unless separately implemented and validated.
 
 ## 9. Raw evidence
 
-Raw evidence upload is pending. See [`manifest.yaml`](manifest.yaml) and [`README.md`](README.md) for the intended canonical filenames.
+Canonical evidence is preserved under [`results/`](results/) and all 12 formal JSON artifacts are listed in [`artifacts/SHA256SUMS`](artifacts/SHA256SUMS).
 
-Do not promote this package to `VALIDATED` / `CLOSED`, and do not add a new Performance Frontier row, until the raw JSON artifacts are committed and covered by experiment-relative `artifacts/SHA256SUMS`.
+Verify from the experiment root:
+
+```bash
+shasum -a 256 -c artifacts/SHA256SUMS
+```
+
+All 12 entries were verified `OK` before this case was marked CLOSED.

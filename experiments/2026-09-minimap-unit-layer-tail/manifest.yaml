@@ -2,8 +2,8 @@ experiment:
   id: minimap-unit-layer-tail
   title: MiniMap Unit-Layer Tail Latency and 5K 60Hz Core Stress Boundary
   date: 2026-09-06
-  status: draft
-  archive_note: causal conclusion accepted; raw-artifact upload and SHA256 finalization pending
+  status: closed
+  archive_note: causal conclusion accepted; canonical raw artifacts committed and SHA256 verification completed
 
 source:
   repository: star-nexus/star
@@ -15,19 +15,20 @@ source:
   validated_commit: c5dd895e242b46f193050d8212fcc45b625ad885
   branch_at_time: perf/system-scale-frontier
   validated_tag: null
+  validated_tag_note: no separate annotated tag created; exact validated source SHA is the immutable source identity for this profile-isolation case
   fix_semantics: scale/profile isolation of auxiliary MiniMap unit layer; not an algorithmic incremental-MiniMap rewrite
 
 hardware:
   machine: Mac mini M4
   cpu: Apple M4
-  memory: pending exact host record
+  memory: not captured in canonical raw artifacts
   gpu: Apple integrated GPU; primary measured ECS/runtime path remained CPU-bound
   display: 2480x1268 window
 
 software:
-  os: macOS; exact version pending host record
+  os: macOS; exact minor version not captured in canonical raw artifacts
   python: 3.13.12
-  dependency_lock: uv.lock at measurement source; exact lock hash pending archive finalization
+  dependency_lock: uv.lock from validated STAR source; exact lock hash not separately captured in canonical artifacts
 
 scenario:
   name: TestMap-8K-scale-5000
@@ -47,8 +48,8 @@ workload:
     - 0.50
   phase: staggered
   fog: true
-  camera: fixed window/camera during formal measurement; no gameplay input
-  zoom: not serialized in current Phase-4 profile summary
+  camera: fixed window/camera during formal measurement; gameplay input blocked
+  zoom: not serialized in current Phase-4 summary artifacts
   execution_mode: sustained_production_animation
   pathfinding_during_execution: false
   gameplay_input: blocked
@@ -91,6 +92,7 @@ measurement:
     - rolling_window_full
     - vision_dirty_present
     - window_not_capacity_limited
+  guard_verification: all required guards true in preserved formal summary artifacts
 
 variables:
   independent:
@@ -115,39 +117,65 @@ variables:
     - no execution pathfinding
 
 artifacts:
-  status: upload_pending
-  formal_pending:
-    - results/density-025-crossing-correlation.json
-    - results/density-025-crossing-correlation-profile.json
-    - results/density-025-minimap-units-on.json
-    - results/density-025-minimap-units-on-profile.json
-    - results/density-025-minimap-units-off.json
-    - results/density-025-minimap-units-off-profile.json
-    - results/density-050-core-60hz-run1.json
-    - results/density-050-core-60hz-run1-profile.json
-    - results/density-050-core-60hz-run2.json
-    - results/density-050-core-60hz-run2-profile.json
-    - results/density-050-core-60hz-run3.json
-    - results/density-050-core-60hz-run3-profile.json
-  sha256_status: pending raw upload; do not create empty artifacts/SHA256SUMS
+  status: verified
+  checksum_file: artifacts/SHA256SUMS
+  sha256_status: all 12 formal artifacts verified OK from experiment root
+  formal:
+    - path: results/density-025-crossing-correlation.json
+      sha256: a4c49ce311e26c92c5ecda527863667e2a5661b6f9b572be806dab11f56351c8
+    - path: results/density-025-crossing-correlation-profile.json
+      sha256: 690266a748f480f1a51f8ab0006a0328c64c08b6c07d98d0214c21c6f6be5678
+    - path: results/density-025-minimap-units-on.json
+      sha256: fb4603a0b24f575bacadf808005603f1fb7158431c9c0d2401c9b71eb59d68ff
+    - path: results/density-025-minimap-units-on-profile.json
+      sha256: e939175af2af5a78962f907636ca55aa4ea441b5269215e3333b7caf51c88c2b
+    - path: results/density-025-minimap-units-off.json
+      sha256: c2218860909d0afc06660f9e33b9aa2ade647939454414f7742f5ffa46c03a49
+    - path: results/density-025-minimap-units-off-profile.json
+      sha256: 180233f0f9bdee7904f5f8931f43ddddbeb46011da6feab6d14aa6f6835ed8eb
+    - path: results/density-050-core-60hz-run1.json
+      sha256: a12c098f907f7583b402d120b5570a3b5171ab87ade4f1289223bda693cd9fb7
+    - path: results/density-050-core-60hz-run1-profile.json
+      sha256: c59b8f161271bea4b35f3f8b5eb2ce5ab2a53bee153c578ebc8c52412951ceb1
+    - path: results/density-050-core-60hz-run2.json
+      sha256: 2ce8eeb0191870f4e0524f3a521ae32059e74e1f29ae9c4b9015daa966fa0452
+    - path: results/density-050-core-60hz-run2-profile.json
+      sha256: 5ba0f8db7712f5e6c9e44119ca7acd120e8f45c965c46bd524e7fed58920b660
+    - path: results/density-050-core-60hz-run3.json
+      sha256: faa7573059b3ec17cb5e3fcd0cfb8342cd99fa9028178add8e8827f2da7e08d8
+    - path: results/density-050-core-60hz-run3-profile.json
+      sha256: 712797137f9cdc886878ea9b9bb626ed585ff8499c71c8da0053e5cbb02f368e
   external: []
 
 headline:
   problem_signature: 25% moving could cross the 16.67 ms controlled-work P99 budget despite closed historical bottlenecks
   root_cause: 15 Hz MiniMap dynamic-unit refresh cleared and rebuilt the unit layer by traversing all resident units, producing an approximately 4 ms O(N) periodic pulse
   resolution: exclude the auxiliary dynamic MiniMap unit layer from the Core 60Hz stress profile through an explicit scale-only override; preserve normal interactive default behavior
-  result: 25% changes from approximately 16.81 ms P99 with MiniMap units ON to approximately 13.67 ms P99 with units OFF; 50% three-run median P99 is 16.68202856 ms and is retained as BORDERLINE ACCEPT
+  result: 25% changes from 16.80802934 ms P99 with MiniMap units ON to 13.66634692 ms P99 with units OFF; 50% three-run median P99 is 16.68202856 ms and is retained as BORDERLINE ACCEPT
 
 classification:
+  strict_25pct_minimap_on: fail
+  strict_25pct_minimap_off: pass
   strict_50pct: boundary_fail
   strict_reason: median controlled-work P99 16.68202856 ms is greater than literal 16.67 ms stress criterion
   engineering_disposition_50pct: BORDERLINE ACCEPT
   disposition_reason: approximately 0.012 ms / 0.07% over literal budget, repeatable steady workload, and no reopened historical pathology; exact binary frontier search intentionally stopped
   threshold_changed: false
 
+frontier:
+  admitted: true
+  record: records/performance-frontier.md
+  profile: Core 60Hz Stress Frontier
+  resident_units: 5000
+  moving_units: 2500
+  moving_density: 0.50
+  controlled_work_avg_run_median_ms: 14.190960876971609
+  controlled_work_p99_run_median_ms: 16.68202856
+  disposition: BORDERLINE ACCEPT
+
 revisit_when:
   - Full Interactive profile is required to sustain strict 60Hz at 5000+ resident units with dynamic MiniMap unit dots enabled
   - MiniMap unit rendering is redesigned as dirty-cell incremental or asynchronous derived-view work
   - resident population increases materially beyond 5000
   - the Core 60Hz stress criterion changes
-  - raw artifacts or guard verification contradict the summarized measurements
+  - new formal evidence contradicts the archived results

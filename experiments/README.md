@@ -12,7 +12,7 @@ Historical coverage of the 2026 performance campaign is tracked in [`../records/
 |---|---|---|---|---|
 | [`2026-09-10k-movement-system-lookup`](2026-09-10k-movement-system-lookup/) | **CLOSED — causal optimization retained; raw complete** | Why did 10K dynamic movement make `AnimationSystem` scale so sharply? | A stable `MovementSystem` dependency was re-discovered once per mover; hoisting the lookup once/frame cut 100%-moving Animation avg `13.541 -> 7.770 ms` and moved 50% moving from 30Hz FAIL to PASS. | Baseline + attribution + fixed production raw trees mirrored; 69 files covered by `RAW_SHA256SUMS`; exact source SHAs recorded. |
 | [`2026-09-10k-spatial-index-move-specialization`](2026-09-10k-spatial-index-move-specialization/) | **CLOSED — causally confirmed KEEP; raw complete** | Does position-only movement need the full generic spatial-index lifecycle reconciliation path? | No. Same-session ABBA shows the specialized transition saves `0.763 us/commit` at 50% and `0.509 us/commit` at 100%, with authoritative commits/s and Vision dirty/s preserved within 0.04%. The earlier negative result is superseded and B is retained. | Three B-owned valid generations mirrored (89 files) and covered by `RAW_SHA256SUMS`; invalid `162730` process-leak generation explicitly excluded; A control raw canonically cross-referenced. |
-| [`2026-09-10k-vision-geometry-hit-path`](2026-09-10k-vision-geometry-hit-path/) | **CANDIDATE IMPLEMENTED — production A/B pending** | Why does Vision geometry still cost material CPU when the geometry cache hits ~99.7%? | Cache hits still resolve terrain bonus before lookup. At 100% moving, terrain-bonus lookup is ~`0.849 ms/frame`, ~60.8% of measured `_visibility_for()` internals; C1 moves cache lookup before terrain-bonus resolution and has focused regressions. | 50%/100% attribution raw mirrored; 17 files covered by `RAW_SHA256SUMS`; production candidate implemented, uninstrumented controlled A/B pending. |
+| [`2026-09-10k-vision-geometry-hit-path`](2026-09-10k-vision-geometry-hit-path/) | **CLOSED — causally confirmed KEEP; raw complete** | Why does Vision geometry still cost material CPU when the geometry cache hits ~99.7%? | Cache hits still resolved terrain bonus before lookup. C1 moves cache lookup ahead of terrain resolution and saves `1.079 us/visibility call` at 50% and `1.025 us/visibility call` at 100%; 100%-moving Vision avg drops `5.629 -> 4.760 ms` with workload rates preserved. | Attribution + same-session ABBA closeout raw mirrored; 54 files covered by `RAW_SHA256SUMS`; exact control/treatment SHAs and uploaded ZIP SHA256 recorded. |
 | [`2026-09-dynamic-world-scaling`](2026-09-dynamic-world-scaling/) | **ARCHIVED — complete formal archive** | How did the controlled 5K Dynamic World workload evolve into the scale methodology used by later investigations? | V1/V2/V2.1 preserve the progression from formal density control through incremental Fog to rare-tail attribution. | 14 raw JSON runs + SHA256; exact source HEADs recovered for V1 `0f0d0a2`, V2 `571ea207`, V2.1 `916d88dc`. |
 | [`2026-09-realtime-gc`](2026-09-realtime-gc/) | **CLOSED — complete formal archive** | Why do rare UnitRender frames jump to ~50 ms? | Automatic CPython Gen2 GC ran inside the timed render section; bounded `realtime_defer` moved cyclic-GC maintenance outside the critical window. | AUTO/defer raw JSON recovered and SHA256-verified. |
 | [`2026-09-memory-retention`](2026-09-memory-retention/) | **CLOSED — raw evidence complete** | Why do RSS/tracked objects rise although full safe GC collects 0 and ECS/Vision caches are bounded? | Runtime retained historical visibility telemetry (up to 100 records/unit); scale/window now keeps the latest transition only. | Pre-fix 600s + post-fix 120s raw JSON recovered and SHA256-verified. Exact checkout SHA for the recovered post-fix run is not encoded and is documented rather than guessed. |
@@ -68,6 +68,9 @@ vision-cache/results/capacity-16384.json
 
 10k-spatial-index-move-specialization/.../20260906-172143
         -> canonical same-session Optimization-B closeout raw
+
+10k-vision-geometry-hit-path/.../20260906-183456
+        -> canonical same-session Optimization-C1 closeout raw
 ```
 
 ## Historical backfill rule
@@ -87,7 +90,7 @@ For source identity recovered from an external run-handoff record, archive the b
 
 ## Next performance work
 
-Phase-5 10K Core Runtime now retains both accepted movement-path optimizations:
+Phase-5 10K Core Runtime now retains three causally confirmed optimizations:
 
 ```text
 Optimization A
@@ -97,17 +100,20 @@ MovementSystem dependency lookup
 Optimization B
 position-specialized spatial-index transition
   -> CLOSED / KEEP
+
+Optimization C1
+Vision geometry cache-hit terrain bypass
+  -> CLOSED / KEEP
 ```
 
 The active causal line is now:
 
 ```text
-Optimization C1
-Vision geometry cache-hit path
-  -> attribution complete
-  -> isolated production candidate implemented
-  -> focused regressions present
-  -> uninstrumented controlled A/B next
+Optimization C2 attribution
+Vision residual dirty-unit work
+  -> set diff
+  -> faction union / refcount
+  -> explored update
 ```
 
-Keep A and B fixed while validating C1. Do not mix faction union/refcounts, set diff, explored tiles, audit scheduling, cache capacity, or LRU-policy changes into the same C1 treatment.
+Keep A, B, and C1 fixed while attributing C2. Do not mix state-writeback, audit scheduling, cache capacity, rendering, movement, or GC changes into a C2 candidate before attribution identifies the next removable cost.

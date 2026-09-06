@@ -1,38 +1,99 @@
-# Decision — Vision D Attribution
+# Decision — Vision D / D1
 
-## Status
+## Final status
 
 ```text
+Vision D attribution
 ATTRIBUTION COMPLETE
 NO OBSERVED SEMANTIC CONTRIBUTION
-D1 CANDIDATE JUSTIFIED
-PRODUCTION RETENTION NOT YET DECIDED
+
+Optimization D1
+INDEXED PERIODIC-AUDIT BOUNDARY
+CAUSALLY CONFIRMED
+KEEP
+CLOSED
 ```
 
-## Decision
+## Attribution basis
 
-Do not spend effort optimizing the internals of the periodic 10K safety scan first.
+Canonical indexed workloads produced:
 
-The canonical indexed workload produced `140,000` entity-scan opportunities across `14` periodic audits and discovered `0` unqueued Vision mismatches, while `4,623` already-prequeued changes demonstrated that the incremental path was active. Each scan still cost about `4.13 ms`.
+```text
+periodic audit invocations   14
+entity scans                 140000
+already-prequeued changes    4623
+audit-only discoveries       0
+average audit CPU            4.127 ms/invocation
+```
 
-Proceed with one isolated D1 candidate that removes the periodic full-world scan only from the indexed **window** runtime boundary while preserving:
+The audit repeatedly re-confirmed state already present in the incremental dirty queue and discovered no unqueued `new / dirty / position / range / faction / stale` mismatch.
+
+## D1 boundary
+
+D1 removes only the periodic full-world reconciliation from the indexed **window** runtime. It preserves:
 
 - force-all bootstrap reconciliation;
 - non-indexed direct-write safety auditing;
 - explicit movement invalidation;
 - unit-death lifecycle cleanup;
-- all Vision/Fog state semantics.
+- Vision/Fog state semantics.
 
-Do not change C2b refcount representation, set-diff, geometry, movement, rendering, GC, or parallelism in D1.
+Shared/headless Vision safety behavior is unchanged.
 
-## Retention gate
+## Controlled A/B
 
-D1 is not retained from attribution alone. It requires:
+Run: `20260906-223546`
 
-1. targeted semantic regressions;
-2. uninstrumented same-session controlled A/B against production `6896cdc0...`;
-3. unchanged authoritative movement/Vision/Fog workload rates;
-4. removal of the ~4ms periodic audit pulse from the indexed treatment;
-5. no whole-system regression outside the intended tail removal.
+```text
+control   6896cdc0f3103a1de5fc6f3c5cb04913d146bf5b
+D1        17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+order     A50 -> B50 -> B100 -> A100
+```
 
-If retained, run a new formal 10K / 100%-moving 30Hz frontier confirmation with three fresh-process full-motion repetitions. The frontier moves only if the preregistered 33.33ms P99 rule is then satisfied.
+50% moving:
+
+```text
+controlled avg    24.368 -> 24.741 ms   (+1.53%, within preregistered +2% bound)
+controlled p99    27.882 -> 26.429 ms
+Vision avg         1.549 ->  1.522 ms   (-1.73%)
+audit max          4.331 ->  0.001 ms
+audit scanned max 10000  ->  0
+```
+
+100% moving:
+
+```text
+controlled avg    31.019 -> 30.858 ms   (-0.52%)
+controlled p99    33.931 -> 32.497 ms
+Vision avg         3.395 ->  3.325 ms   (-2.06%)
+audit max          4.233 ->  0.001 ms
+audit scanned max 10000  ->  0
+```
+
+Authoritative movement/Vision/Fog workload rates remained within preregistered tolerances. Geometry evictions remained zero. Seventeen targeted regressions passed, and all driver/cleanup/guard checks passed.
+
+The 50% aggregate-average drift does not overturn D1: the modified path improved locally, the periodic pulse disappeared exactly as predicted, P99 improved materially, and authoritative workload rates were preserved.
+
+## Decision
+
+Retain D1 in production.
+
+Production branch after retention:
+
+```text
+perf/10k-online
+17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+= A + B + C1 + C2a + D1
+```
+
+The closeout's `100% P99 = 32.497 ms` is supporting evidence only. Capacity-frontier status remains separate. Run a new formal post-D1 frontier confirmation with one complete `0/50/100-r1` canonical sweep plus two additional fresh-process `100%` repetitions. All three 100% runs must independently satisfy `controlled_work_frame_ms.p99 <= 33.33 ms` before advancing the Performance Frontier.
+
+## Evidence identity
+
+```text
+D attribution run          20260906-215357
+D1 closeout run            20260906-223546
+D1 closeout ZIP SHA256     455f1173a3cb904f3deeb779ed80dd68ffad82464b697e4f0137fcc0d2234860
+```
+
+Raw STAR Lab mirrors remain a separate archive-completion step.

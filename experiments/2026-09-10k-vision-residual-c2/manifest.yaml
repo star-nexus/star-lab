@@ -2,29 +2,26 @@ experiment:
   id: 10k-vision-residual-c2
   title: 10K Vision Residual C2
   date: 2026-09-06
-  status: running_attribution_complete_c2a_selected_closeout_preregistered
+  status: running_c2a_closed_keep_c2b_c2c_deferred_frontier_confirmation_pending
 
 source:
   repository: star-nexus/star
   production_branch: perf/10k-online
-  frozen_runtime_commit: 4218b5368fbe2815b8512384e2c18b0af443ebfa
+  attribution_baseline_commit: 4218b5368fbe2815b8512384e2c18b0af443ebfa
+  current_production_commit: 6896cdc0f3103a1de5fc6f3c5cb04913d146bf5b
   optimization_a_retained: true
   optimization_b_retained: true
   optimization_c1_retained: true
+  optimization_c2a_retained: true
   attribution_branch: experiment/phase5-c2-attribution
   attribution_probe_commit: 59b7bf86c2f1392436226e552894d2bce7142655
   attribution_runner_commit: f1b16a949a9d4efab312d15a0bd10f42db079542
   c2a_implementation_commit: c95a5ce7b353a3d77c7cf6f8e2f5fb69933f94e1
   c2a_candidate_regression_commit: 6896cdc0f3103a1de5fc6f3c5cb04913d146bf5b
   c2a_closeout_branch: experiment/phase5-c2a-closeout
+  c2a_closeout_tooling_head: 9fc0a312e1a43c86caaf2c0525ee01aa4ccdbb0c
   c2a_control_commit: 4218b5368fbe2815b8512384e2c18b0af443ebfa
   c2a_treatment_commit: 6896cdc0f3103a1de5fc6f3c5cb04913d146bf5b
-
-runtime_source_guard:
-  rotk_env/systems/vision_system.py: 6e9190ceb209e257e8f3f10bebe6eb571b8415b4
-  rotk_env/systems/window_vision_system.py: b54c523be1288467815961038c3ee18e7333ef4a
-  rotk_env/systems/window_movement_system.py: d1abc9b403ea10be7868044752c575f05823d062
-  rotk_env/utils/unit_spatial_index.py: 2c2fb26c6ae5f422516a6c3927049d8a78a72b32
 
 scenario:
   name: chibi-144k-scale-10000
@@ -51,6 +48,7 @@ workload:
 attribution:
   run_id: 20260906-194311
   uploaded_zip_sha256: c3b8202308a0f0eb80e694136e6316cb5ed74e9920645915d863cd5c6cf2efee
+  raw_file_count_expected: 21
   raw_mirror_pending: true
   density_50:
     vision_ms_per_frame: 3.3053171166666666
@@ -91,21 +89,24 @@ attribution:
 
 interpretation:
   union_refcount:
-    status: necessary_bookkeeping_candidate_for_later_data_structure_work
+    status: necessary_bookkeeping_candidate_for_c2b
     note: only ~0.8-1.3 percent of refcount tile ops change faction visibility
   set_diff:
-    status: material_but_semantically_useful
+    status: material_but_semantically_useful_candidate_for_c2c
   explored:
-    status: wrong_complexity_selected_for_c2a
-    current_behavior: explored_update_full_visible_set_per_changed_unit
-    selected_trigger: faction_visibility_refcount_zero_to_one
+    status: wrong_complexity_closed_by_c2a
+    previous_behavior: explored_update_full_visible_set_per_changed_unit
+    retained_trigger: faction_visibility_refcount_zero_to_one
 
 c2a:
   name: explored_history_on_faction_visibility_zero_to_one
+  status: closed_causally_confirmed_keep
+  production_restored: true
+  production_commit: 6896cdc0f3103a1de5fc6f3c5cb04913d146bf5b
   implementation_scope:
     - rotk_env/systems/vision_system.py
-    - dedicated regression test only
-  forbidden_changes:
+    - rotk_env/tests/test_vision_explored_transition.py
+  forbidden_changes_preserved:
     - refcount_representation
     - set_diff_algorithm
     - geometry_cache
@@ -121,9 +122,14 @@ c2a:
     - observation_and_fog_presentation_consumers_unchanged
 
 closeout:
+  run_id: 20260906-200509
   execution_order: [A50, B50, B100, A100]
-  uninstrumented: true
-  process_cleanup: exec_launcher_plus_captured_process_tree
+  uploaded_zip_sha256: 53aed7a6889ab961fe940e5b5c5f15584140ab253ee41231e5c5d8ae448d03f7
+  raw_file_count_expected: 37
+  raw_mirror_pending: true
+  targeted_regressions: "88 passed"
+  all_driver_guards_passed: true
+  all_env_cleanup_exit_codes_zero: true
   criteria:
     rate_tolerance_pct: 2.0
     faction_transition_tolerance_pct: 5.0
@@ -133,15 +139,53 @@ closeout:
     vision_avg_must_improve_both_densities: true
     controlled_avg_100pct_must_improve: true
     p99_diagnostic_not_keep_revert_gate: true
-  local_metric: VisionSystem_inclusive_cpu_us_per_changed_unit
-  decision_values:
-    keep: CAUSALLY_CONFIRMED_KEEP
-    otherwise: INCONCLUSIVE
+  density_50:
+    controlled_avg_control_ms: 24.84023811578947
+    controlled_avg_treatment_ms: 24.695235821989527
+    controlled_p99_control_ms: 28.14979261999999
+    controlled_p99_treatment_ms: 28.640696199999997
+    vision_avg_control_ms: 1.8518806736842106
+    vision_avg_treatment_ms: 1.587455937172775
+    saved_us_per_changed_unit: 0.9734892809918518
+    position_rate_delta_pct: 0.008273807187433715
+    dirty_rate_delta_pct: 0.020266164625990034
+    faction_add_rate_delta_pct: -0.1756818418213386
+    faction_remove_rate_delta_pct: -0.24282401822308738
+  density_100:
+    controlled_avg_control_ms: 31.72193874834437
+    controlled_avg_treatment_ms: 30.941826400000004
+    controlled_p95_control_ms: 32.9551875
+    controlled_p95_treatment_ms: 32.1703617
+    controlled_p99_control_ms: 34.668855
+    controlled_p99_treatment_ms: 33.19879164000001
+    vision_avg_control_ms: 4.0113159205298015
+    vision_avg_treatment_ms: 3.367756148387097
+    saved_us_per_changed_unit: 0.8470464328746674
+    position_rate_delta_pct: 0.02153816774767108
+    dirty_rate_delta_pct: 0.01744847305570005
+    faction_add_rate_delta_pct: -0.29275822874384577
+    faction_remove_rate_delta_pct: -0.5399550196024051
+    fog_delta_rate_delta_pct: -0.3941577924066615
+  decision: CAUSALLY_CONFIRMED_KEEP
+
+frontier_candidate:
+  first_observed_100pct_p99_below_33_33_ms: true
+  observed_p99_ms: 33.19879164000001
+  formal_frontier_established: false
+  reason: c2a_closeout_preregistered_p99_as_diagnostic_and_margin_is_narrow
+  next_experiment: 10k-100pct-30hz-frontier-confirmation
+
+raw_archive:
+  attribution_expected_files: 21
+  c2a_closeout_expected_files: 37
+  total_expected_files_after_mirror: 58
+  checksum_manifest: artifacts/RAW_SHA256SUMS
+  mirror_pending: true
 
 methodology:
   rule: "先消灭错误复杂度，再重构必要复杂度"
-  next_if_c2a_closes:
+  next_after_frontier_confirmation:
     - C2b faction_refcount_representation
     - C2c visibility_set_diff_if_still_material
 
-next_action: run_c2a_same_session_closeout
+next_action: mirror_c2_and_c2a_raw_then_run_frontier_confirmation

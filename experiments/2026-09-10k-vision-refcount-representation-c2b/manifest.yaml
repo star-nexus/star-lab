@@ -1,30 +1,24 @@
 experiment:
   id: 10k-vision-refcount-representation-c2b
-  title: 10K Vision C2b Faction Refcount Representation Attribution
+  title: 10K Vision C2b Faction Refcount Representation
   date: 2026-09-06
-  status: running_attribution_prepared_no_candidate_selected
+  status: running_attribution_complete_c2b1_selected_closeout_preregistered
 
 source:
   repository: star-nexus/star
   production_branch: perf/10k-online
   frozen_production_commit: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
   retained_optimizations: [A, B, C1, C2a, D1]
-  experiment_branch: experiment/phase5-c2b-refcount-representation
-  probe_commit: 03616c220e02bb33ecdf5b5f5dcbd85ff06d8bf5
-  analyzer_commit: a92fb0829c9beac09d2486a19297dacfe1b5a606
-  runner_commit: a1a308e1742e374a85873b6d84e0fe03585272ab
-  detached_runtime_worktree: true
-  experiment_branch_runtime_diff_files: []
-  experiment_branch_tool_files:
-    - tools/phase5_vision_c2b_refcount_representation.py
-    - tools/phase5_vision_c2b_refcount_representation_analyze.py
-    - tools/run_phase5_vision_c2b_refcount_representation.sh
-
-runtime_source_guard:
-  rotk_env/systems/vision_system.py: b7d62aa2c70e0c8b1b9bd159156915ce2e6a6060
-  rotk_env/systems/window_vision_system.py: 7dda713caa48a26e72ef71ac7d14feb09cd22c6a
-  rotk_env/systems/window_movement_system.py: d1abc9b403ea10be7868044752c575f05823d062
-  rotk_env/utils/unit_spatial_index.py: 2c2fb26c6ae5f422516a6c3927049d8a78a72b32
+  attribution_branch: experiment/phase5-c2b-refcount-representation
+  attribution_probe_commit: 03616c220e02bb33ecdf5b5f5dcbd85ff06d8bf5
+  attribution_analyzer_commit: a92fb0829c9beac09d2486a19297dacfe1b5a606
+  attribution_runner_commit: a1a308e1742e374a85873b6d84e0fe03585272ab
+  candidate_branch: experiment/phase5-c2b1-dense-core-refcount
+  candidate_implementation_commit: 54d7059a0fdddcc8b8e23edb9c7453f7cf2cc044
+  candidate_commit: 9d70c48f9b7b63ca19314b07f84ee77f79a7952c
+  closeout_branch: experiment/phase5-c2b1-closeout
+  closeout_analyzer_commit: d7def731e5a7212474de7a6c1394ccfea549227b
+  closeout_runner_commit: dac76b95940a74463f1a8132bd9f57894886dee3
 
 trigger:
   frontier_case: 10k-100pct-30hz-frontier-confirmation-d1
@@ -45,72 +39,105 @@ scenario:
   resident_units: 10000
   test_only_untracked_map: true
 
-workload:
-  points: [00pct-moving, 50pct-moving, 100pct-moving]
-  seed: 42
-  phase_seed: 42
-  route_steps: 12
-  phase: staggered
-  fog: true
-  gc_policy: realtime_defer
-  minimap_dynamic_units: false
-  render: uncapped
-  hub: offline
-  mock_ai: false
-
-measurement:
-  aggregate_frame_latency: diagnostic_only
-  call_sample_every: 128
-  structural_snapshot_every_frames: 120
-  no_per_tile_timing: true
-  exact_counters:
-    - add_calls
-    - remove_calls
-    - add_tiles
-    - remove_tiles
-    - refcount_ops
-    - add_union_transitions
-    - remove_union_transitions
-    - transition_calls
-    - active_entries
-  structural_snapshots:
-    - refcount_mass
-    - refcount_histogram_1_2_3_4_7_8_15_16_plus
-    - max_refcount
-    - entries_inside_outside_real_map
-    - entries_inside_outside_bbox
-    - active_density_vs_dense_slots
-    - per_faction_entry_spread
-    - dict_table_shallow_bytes
-    - compact_dense_integer_footprint
-  call_timing_samples:
-    - add_us_per_tile
-    - remove_us_per_tile
-    - transition_call_samples
-    - no_transition_call_samples
-    - estimated_existing_add_remove_ms_per_frame
-
-semantics:
-  overlap_refcount_is_necessary: true
-  required_transition_semantics: [zero_to_one, one_to_zero]
-  preserve_explored_history: true
-  preserve_fog_journal: true
-  preserve_faction_change_cleanup: true
-  preserve_lifecycle_cleanup: true
+attribution:
+  run_id: 20260906-232805
+  guards_passed: true
+  raw_mirror_pending: true
+  points:
+    00pct-moving:
+      refcount_ops_per_s: 0
+      sampled_path_ms_per_frame: 0.0
+      active_entries: 11967.0
+      mean_refcount: 15.88
+      max_refcount: 19
+      outside_bbox_entries: 552.0
+    50pct-moving:
+      refcount_ops_per_s: 99996
+      sampled_path_ms_per_frame: 0.651
+      union_transition_rate_pct: 1.338
+      active_entries: 13498.5
+      mean_refcount: 14.08
+      max_refcount: 32
+      outside_bbox_entries: 561.5
+    100pct-moving:
+      refcount_ops_per_s: 199916
+      sampled_path_ms_per_frame: 1.371
+      union_transition_rate_pct: 0.786
+      active_entries: 13820.0
+      refcount_mass: 190000
+      mean_refcount: 13.75
+      max_refcount: 33
+      count_eq_1_pct: 6.9
+      count_le_3_pct: 14.3
+      count_ge_16_entries: 6711
+      active_bbox_slot_pct: 32.0
+      outside_real_map_entries: 539.0
+      outside_bbox_entries: 539.0
+      dict_table_shallow_kib: 576.2
+      no_transition_add_us_per_tile: 0.200
+      no_transition_remove_us_per_tile: 0.206
 
 interpretation:
-  automatic_candidate_retention: false
-  dense_candidate_favored_if:
-    - bounded_domain_compatible
-    - compact_integer_width_sufficient
-    - active_density_material
-    - nontransition_ops_dominate
-    - estimated_cpu_opportunity_material_vs_margin
-  if_out_of_bounds_keys_material: do_not_force_map_only_dense_array
-  if_sparse_domain: consider_tile_id_or_sparse_hybrid
+  overlap_refcount_is_necessary: true
+  nontransition_ops_dominate: true
+  map_only_dense_array_rejected: true
+  reason_map_only_dense_rejected: current_visibility_contains_real_off_bbox_keys
+  fixed_width_uint_candidate_rejected: true
+  reason_fixed_width_rejected: observed_max_is_not_semantic_upper_bound
+  selected_candidate: window_dense_bbox_list_int_plus_sparse_offbbox_overflow
 
-forbidden_during_attribution:
-  - production_refcount_rewrite
+candidate:
+  shared_headless_representation_unchanged: true
+  window_only_specialization: true
+  dense_core:
+    domain: rectangular_MapData_bbox
+    storage: per_faction_list_of_python_int
+  overflow:
+    domain: off_bbox_visibility_coordinates
+    storage: per_faction_dict_hex_to_python_int
+  candidate_diff_files:
+    - rotk_env/systems/window_vision_system.py
+    - rotk_env/tests/test_window_vision_dense_refcount.py
+  semantic_regressions:
+    - in_bbox_overlap_2_to_1_to_0
+    - bbox_internal_non_map_coordinate_preserved
+    - off_bbox_overlap_2_to_1_to_0
+    - explored_history_retained
+    - faction_isolation
+    - no_mapdata_shared_dict_fallback
+
+closeout:
+  control_sha: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+  treatment_sha: 9d70c48f9b7b63ca19314b07f84ee77f79a7952c
+  execution_order: [A50, B50, B100, A100]
+  workload:
+    seed: 42
+    phase_seed: 42
+    route_steps: 12
+    fog: true
+    gc_policy: realtime_defer
+    minimap_dynamic_units: false
+    render: uncapped
+    hub: offline
+  gates:
+    position_rate_tolerance_pct: 2.0
+    vision_dirty_rate_tolerance_pct: 2.0
+    vision_scan_rate_tolerance_pct: 2.0
+    geometry_call_rate_tolerance_pct: 2.0
+    faction_transition_rate_tolerance_pct: 5.0
+    fog_delta_rate_tolerance_pct: 5.0
+    max_geometry_hit_rate_drop_pp: 0.5
+    geometry_evictions_must_be_zero: true
+    min_vision_saving_us_per_changed_unit: 0.4
+    vision_avg_must_improve_both_densities: true
+    max_controlled_avg_regression_pct: 2.0
+    controlled_avg_100pct_must_improve: true
+    p99_is_diagnostic_not_keep_revert_gate: true
+  decision_values:
+    pass: CAUSALLY_CONFIRMED_KEEP
+    fail: DO_NOT_KEEP
+
+forbidden_during_c2b1:
   - set_diff_change
   - geometry_cache_change
   - movement_change
@@ -122,4 +149,4 @@ forbidden_during_attribution:
 methodology:
   rule: "先消灭错误复杂度，再重构必要复杂度"
 
-next_action: run_c2b_refcount_representation_attribution
+next_action: run_c2b1_uninstrumented_closeout

@@ -2,7 +2,7 @@ experiment:
   id: 10k-vision-delta-multiplicity-c2c
   title: 10K Vision C2c Visibility-Delta Multiplicity Attribution
   date: 2026-09-07
-  status: running_preregistered_attribution
+  status: closed_no_multiplicity_candidate
 
 source:
   repository: star-nexus/star
@@ -14,15 +14,11 @@ source:
   branch_head: 4d0c0cf83ee8d3b486615acad47bb55e0253bf3d
   probe_commit: 95040029300d49cdebb41999cd8af806eea6c6dc
   analyzer_commit_initial: 161d598761c3f4339f9a9687239d1a076c13079b
-  runner_commit_initial: 8410790eeb93cb7a72a227e51aac120f79fb4198
   analyzer_preregistered_gates_commit: f73077b465f070e0d0b6f3a3a5fbe1935e718b36
+  runner_commit_initial: 8410790eeb93cb7a72a227e51aac120f79fb4198
   runner_commit: 4d0c0cf83ee8d3b486615acad47bb55e0253bf3d
   runtime_from_detached_worktree: true
   runtime_diff_files: []
-  tool_files:
-    - tools/phase5_vision_c2c_delta_multiplicity.py
-    - tools/phase5_vision_c2c_delta_multiplicity_analyze.py
-    - tools/run_phase5_vision_c2c_delta_multiplicity.sh
 
 pre_measurement_tooling_fix:
   observed_after_targeted_regressions_before_any_measurement_point: true
@@ -45,9 +41,6 @@ trigger:
   c2b1_case: 10k-vision-refcount-representation-c2b
   c2b1_closeout_run_id: 20260907-000444
   c2b1_decision: DO_NOT_KEEP
-  c2b1_50_saved_us_per_changed: 0.281
-  c2b1_100_saved_us_per_changed: 0.064
-  c2b1_keep_floor_us_per_changed: 0.4
   production_unchanged_after_c2b1: true
   frontier_case: 10k-100pct-30hz-frontier-confirmation-d1
   frontier_decision: FRONTIER_NOT_ESTABLISHED
@@ -78,20 +71,6 @@ measurement:
   aggregate_frame_latency: diagnostic_only
   diff_sample_every_calls: 64
   exact_pair_identity: true
-  per_frame_metrics:
-    - diff_calls
-    - unique_old_visibility_objects
-    - unique_new_visibility_objects
-    - unique_old_new_pairs
-    - repeated_pair_observations
-    - repeated_pair_groups
-    - same_object_pairs
-    - max_pair_frequency
-    - top5_pair_observations
-  sampled_cpu_classes:
-    - first_pair_occurrence
-    - repeated_pair_occurrence
-    - old_is_new
   purpose: test_wrong_multiplicity_of_necessary_set_diff
 
 preregistered_attribution_decisions:
@@ -103,34 +82,52 @@ preregistered_attribution_decisions:
   identity_bypass:
     min_estimated_same_object_removable_ms_per_frame_50: 0.05
     min_estimated_same_object_removable_ms_per_frame_100: 0.15
-    same_object_timing_samples_required_both_densities: true
   delta_cache:
     min_repeated_pair_ratio_50: 0.25
     min_repeated_pair_ratio_100: 0.25
     min_estimated_repeated_removable_ms_per_frame_50: 0.15
     min_estimated_repeated_removable_ms_per_frame_100: 0.35
-  no_candidate_if_thresholds_miss: true
-  positive_attribution_is_not_production_keep: true
 
-semantics_if_candidate_selected:
-  preserve_exact_removed_set: true
-  preserve_exact_added_set: true
-  preserve_faction_change_handling: true
-  preserve_refcount_transitions: true
-  preserve_explored_history: true
-  preserve_fog_journal: true
-  preserve_lifecycle_cleanup: true
-  preserve_geometry_cache_semantics: true
+result:
+  run_id: 20260907-013612
+  zip_sha256: 66336a8333e78b83a59a4f578b5d96726debad987f48c73e68708974eec92bc1
+  targeted_regressions: "96 passed in 0.43s"
+  all_driver_exit_zero: true
+  all_cleanup_exit_zero: true
+  all_guards_passed: true
+  points:
+    00pct-moving:
+      diff_calls_per_frame: 0.0
+      reuse_ratio_pct: 0.0
+      same_object_pairs_per_frame: 0.0
+    50pct-moving:
+      diff_calls_per_frame: 262.8848
+      unique_pairs_per_frame: 262.4136
+      repeated_pair_observations_per_frame: 0.4712
+      reuse_ratio_pct: 0.18
+      same_object_pairs_per_frame: 0.0
+      estimated_diff_cpu_ms_per_frame: 0.353
+      estimated_repeated_removable_ms_per_frame: 0.0
+      geometry_hit_rate_pct: 99.526
+    100pct-moving:
+      diff_calls_per_frame: 658.6316
+      unique_pairs_per_frame: 655.6184
+      repeated_pair_observations_per_frame: 3.0132
+      reuse_ratio_pct: 0.46
+      same_object_pairs_per_frame: 0.0
+      max_pair_frequency: 3
+      estimated_diff_cpu_ms_per_frame: 0.847
+      estimated_repeated_removable_ms_per_frame: 0.003
+      geometry_hit_rate_pct: 99.710
+  decision: NO_MULTIPLICITY_CANDIDATE
 
-forbidden_during_attribution:
-  - production_set_diff_change
-  - refcount_representation_change
-  - geometry_change
-  - movement_change
-  - audit_change
-  - rendering_change
-  - gc_change
-  - native_parallel_rewrite
+interpretation:
+  geometry_cache_hit_does_not_imply_delta_pair_reuse: true
+  exact_old_new_pairs_almost_all_unique: true
+  identity_bypass_candidate_rejected: true
+  per_frame_delta_cache_candidate_rejected: true
+  handwritten_python_set_diff_not_justified: true
+  vision_subpath_further_microtuning_requires_new_evidence: true
 
 raw_mirror_pending: true
-next_action: run_c2c_delta_multiplicity_attribution
+next_action: rerank_remaining_post_d1_steady_state_blocks

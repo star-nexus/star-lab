@@ -1,0 +1,4 @@
+point	resident	moving	density	controlled_p99_ms	valid	30hz	60hz
+00pct-moving	10000	0	0.0	20.5949962	True	PASS	FAIL
+50pct-moving	10000	5000	0.5	36.58139496	True	FAIL	FAIL
+100pct-moving	10000	10000	1.0	46.19142049999999	True	FAIL	FAIL

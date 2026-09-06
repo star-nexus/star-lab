@@ -1,0 +1,32 @@
+[
+  {
+    "label": "00pct-moving",
+    "resident": 10000,
+    "moving": 0,
+    "density": 0.0,
+    "p99_ms": 20.54637375,
+    "valid_evidence": true,
+    "canonical": "PASS",
+    "stress60": "FAIL"
+  },
+  {
+    "label": "50pct-moving",
+    "resident": 10000,
+    "moving": 5000,
+    "density": 0.5,
+    "p99_ms": 29.446976559999996,
+    "valid_evidence": true,
+    "canonical": "PASS",
+    "stress60": "FAIL"
+  },
+  {
+    "label": "100pct-moving",
+    "resident": 10000,
+    "moving": 10000,
+    "density": 1.0,
+    "p99_ms": 38.53738525999998,
+    "valid_evidence": true,
+    "canonical": "FAIL",
+    "stress60": "FAIL"
+  }
+]

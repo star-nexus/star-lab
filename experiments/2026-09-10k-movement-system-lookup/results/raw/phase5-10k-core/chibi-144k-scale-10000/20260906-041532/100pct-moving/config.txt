@@ -1,0 +1,5 @@
+density=1.0
+label=100pct-moving
+git_sha=b9e0bb92b546b3283cb5c1d30a9a510d0c006ec2
+scenario=chibi-144k-scale-10000
+socket=/tmp/star-10k-79035-100pct-moving.sock

@@ -1,0 +1,53 @@
+{
+  "active_moving_units": 0,
+  "actual_density": 0.0,
+  "canonical_30hz": {
+    "classification": "PASS",
+    "criterion_ms": 33.33
+  },
+  "controlled_work_frame_ms": {
+    "avg": 16.870546468634686,
+    "max": 21.722875,
+    "p95": 17.4668545,
+    "p99": 20.5949962
+  },
+  "driver_exit_code": 0,
+  "driver_guards_ok": true,
+  "engineering_60hz": {
+    "classification": "FAIL",
+    "criterion_ms": 16.67
+  },
+  "guards": {
+    "active_matches_start": true,
+    "controlled_work_present": true,
+    "density_matches": true,
+    "fog_fixed_on": true,
+    "gc_automatic_disabled_during_defer": true,
+    "gc_defer_active_during_window": true,
+    "gc_policy_metadata_matches": true,
+    "gc_policy_profile_matches": true,
+    "gc_policy_start_matches": true,
+    "input_policy_fixed": true,
+    "no_key_input": true,
+    "no_mouse_button_input": true,
+    "no_mouse_wheel_input": true,
+    "no_pathfinding_during_execution": true,
+    "position_commits_present": true,
+    "production_animation_path": true,
+    "profile_configured_movers_match": true,
+    "profile_density_matches": true,
+    "profile_phase_matches": true,
+    "resident_matches_prepare": true,
+    "rolling_window_full": true,
+    "vision_dirty_present": true,
+    "window_not_capacity_limited": true,
+    "zero_density_no_position_commits": true,
+    "zero_density_no_vision_dirty": true
+  },
+  "label": "00pct-moving",
+  "minimap_unit_layer_enabled": false,
+  "minimap_unit_layer_override": "off",
+  "requested_density": 0.0,
+  "resident_units": 10000,
+  "valid_evidence": true
+}

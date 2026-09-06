@@ -1,0 +1,6 @@
+density=0.5
+label=50pct-moving
+git_sha=ebf2dc5cfb74c16b83272b6e9cf23f29017efe88
+scenario=chibi-144k-scale-10000
+socket=/tmp/star-phase5-c1-6749-50pct-moving.sock
+attribution_sample_every=16

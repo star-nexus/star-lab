@@ -1,0 +1,91 @@
+experiment:
+  id: 10k-vision-geometry-hit-path
+  title: 10K Vision Geometry Cache-Hit Path
+  date: 2026-09-06
+  status: attributed_open_production_ab_pending
+
+source:
+  repository: star-nexus/star
+  branch_at_time: perf/10k-online
+  current_best_runtime_commit: 7f72e352f95e20125c29502abd934f0f81a3e0f2
+  attribution_probe_commit: 4938a0c81f2155022f5836b12d88294081ae79b2
+  attribution_runner_commit: ebf2dc5cfb74c16b83272b6e9cf23f29017efe88
+  production_runtime_changed_by_attribution_commits: false
+
+scenario:
+  name: chibi-144k-scale-10000
+  file: rotk_env/maps/chibi-144k-scale-10000.json
+  test_only_untracked_map: true
+  sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
+  resident_units: 10000
+  map_size: 120x120
+  map_tiles: 14400
+
+workload:
+  moving_units: [5000, 10000]
+  density: [0.5, 1.0]
+  seed: 42
+  phase_seed: 42
+  route_steps: 12
+  phase: staggered
+  fog: true
+  gc_policy: realtime_defer
+  minimap_dynamic_units: false
+  render: uncapped
+  hub: offline
+  mock_ai: false
+
+measurement:
+  scope: VisionSystem._visibility_for cache-hit internals
+  attribution_sample_every: 16
+  warmup_seconds: 5
+  duration_seconds: 20
+  sample_after_seconds: 7
+  aggregate_controlled_work_interpretation: diagnostic_only_due_to_probe_overhead
+
+run:
+  run_id: 20260906-124920
+  source_commit: ebf2dc5cfb74c16b83272b6e9cf23f29017efe88
+  raw_path: results/raw/phase5-vision-hit-attribution/chibi-144k-scale-10000/20260906-124920
+
+attribution:
+  density_50:
+    visibility_calls_per_frame_avg: 269.8010752688172
+    geometry_hit_rate_avg: 0.9952948731712243
+    terrain_bonus_estimated_ms_avg: 0.3631369889918338
+    cache_get_estimated_ms_avg: 0.13135125822022312
+    lru_touch_estimated_ms_avg: 0.0712704216542866
+    miss_geometry_estimated_ms_avg: 0.04748437634408602
+    measured_internal_sum_ms_avg: 0.6132430452104295
+  density_100:
+    visibility_calls_per_frame_avg: 704.1258741258741
+    geometry_hit_rate_avg: 0.9970335685448937
+    terrain_bonus_estimated_ms_avg: 0.8490079783008211
+    cache_get_estimated_ms_avg: 0.3097622027555383
+    lru_touch_estimated_ms_avg: 0.15991510085876975
+    miss_geometry_estimated_ms_avg: 0.07854635664335664
+    measured_internal_sum_ms_avg: 1.3972316385584858
+    terrain_bonus_share_of_measured_internal_sum: 0.6076358098910047
+
+candidate:
+  name: cache_lookup_before_terrain_bonus
+  current_key: [center, effective_range, terrain_revision]
+  proposed_key: [center, base_range, terrain_revision]
+  proposed_hit_behavior: return_cached_geometry_without_terrain_bonus_lookup
+  proposed_miss_behavior: resolve_terrain_bonus_then_compute_effective_geometry
+  semantic_precondition: terrain_change_increments_revision_and_clears_geometry_cache
+  production_ab_required: true
+
+evidence:
+  guards_passed: true
+  raw_attribution_mirrored_in_star_lab: true
+  mirrored_raw_file_count: 17
+  file_checksum_manifest: artifacts/RAW_SHA256SUMS
+  exact_source_provenance_recorded: true
+  evidence_state: raw_attribution_evidence_complete_file_level_sha256_covered
+
+headline:
+  observation: "Geometry cache hits ~99.7% at 100% moving, yet every lookup resolves terrain bonus before consulting the cache."
+  attribution: "Terrain-bonus lookup is ~0.849 ms/frame at 100% moving, ~60.8% of measured _visibility_for internals."
+  candidate: "Move cache lookup ahead of terrain-bonus resolution by keying cached geometry on center/base-range/terrain-revision."
+  decision_state: "Candidate approved for isolated production implementation and controlled A/B; not yet retained."

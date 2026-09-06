@@ -1,0 +1,5 @@
+variant=opt-a
+density=0.5
+git_sha=b9e0bb92b546b3283cb5c1d30a9a510d0c006ec2
+scenario=chibi-144k-scale-10000
+socket=/tmp/star-phase5-optb-36615-opt-a-50.sock

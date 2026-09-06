@@ -1,0 +1,138 @@
+{
+  "comparisons": {
+    "100pct-moving": {
+      "a": {
+        "animation_cpu_ms_per_s": 221.2385387810899,
+        "animation_cpu_us_per_position_commit": 11.066122423479078,
+        "animation_ms_per_frame": 8.20024262962963,
+        "controlled_work_frame_ms": {
+          "avg": 35.49968588148148,
+          "max": 40.732915,
+          "p50": 35.456542,
+          "p95": 37.5184586,
+          "p99": 40.409518219999995
+        },
+        "failed_guards": [],
+        "guards_ok": true,
+        "point_path": "/Users/liyang/Developer/star-main/results/phase5-opt-b-closeout/chibi-144k-scale-10000/20260906-172143/opt-a/100pct-moving/point.json",
+        "position_commits_per_frame": 741.0222222222222,
+        "position_commits_per_s": 19992.417426332315,
+        "throughput_fps": 26.97951131125035,
+        "vision_dirty_per_frame": 741.1851851851852,
+        "vision_dirty_per_s": 19996.81408743489
+      },
+      "b": {
+        "animation_cpu_ms_per_s": 210.97864875526977,
+        "animation_cpu_us_per_position_commit": 10.557050764452939,
+        "animation_ms_per_frame": 7.685532956521739,
+        "controlled_work_frame_ms": {
+          "avg": 34.87300606521739,
+          "max": 41.945832,
+          "p50": 34.955041,
+          "p95": 36.8046963,
+          "p99": 39.315060659999986
+        },
+        "failed_guards": [],
+        "guards_ok": true,
+        "point_path": "/Users/liyang/Developer/star-main/results/phase5-opt-b-closeout/chibi-144k-scale-10000/20260906-172143/opt-b/100pct-moving/point.json",
+        "position_commits_per_frame": 728.0,
+        "position_commits_per_s": 19984.62008591114,
+        "throughput_fps": 27.45140121691091,
+        "vision_dirty_per_frame": 728.2536231884058,
+        "vision_dirty_per_s": 19991.58239781398
+      },
+      "checks": {
+        "animation_saving_meets_floor": true,
+        "controlled_avg_improves": true,
+        "controlled_avg_no_material_regression": true,
+        "guards_ok": true,
+        "position_rate_preserved": true,
+        "vision_dirty_rate_preserved": true
+      },
+      "deltas": {
+        "animation_cpu_ms_per_s": -10.259890025820113,
+        "animation_cpu_us_per_position_commit_total": -0.509071659026139,
+        "animation_ms_per_frame": -0.5147096731078902,
+        "controlled_avg_ms": -0.6266798162640939,
+        "controlled_avg_pct": -1.76531087727456,
+        "controlled_p95_ms": -0.7137622999999991,
+        "controlled_p99_ms": -1.0944575600000093,
+        "implied_saved_us_per_commit": 0.5132891611929922,
+        "position_commits_per_s_pct": -0.03900148868892381,
+        "vision_dirty_per_s_pct": -0.026162615694846833
+      },
+      "pass": true
+    },
+    "50pct-moving": {
+      "a": {
+        "animation_cpu_ms_per_s": 135.881432450544,
+        "animation_cpu_us_per_position_commit": 13.598120986718783,
+        "animation_ms_per_frame": 3.8743828125000004,
+        "controlled_work_frame_ms": {
+          "avg": 26.96032794886364,
+          "max": 31.951709,
+          "p50": 26.8299585,
+          "p95": 28.508759750000003,
+          "p99": 30.83454175
+        },
+        "failed_guards": [],
+        "guards_ok": true,
+        "point_path": "/Users/liyang/Developer/star-main/results/phase5-opt-b-closeout/chibi-144k-scale-10000/20260906-172143/opt-a/50pct-moving/point.json",
+        "position_commits_per_frame": 284.92045454545456,
+        "position_commits_per_s": 9992.662411465431,
+        "throughput_fps": 35.07176214290104,
+        "vision_dirty_per_frame": 284.9886363636364,
+        "vision_dirty_per_s": 9995.053667975173
+      },
+      "b": {
+        "animation_cpu_ms_per_s": 128.27806567946027,
+        "animation_cpu_us_per_position_commit": 12.834693240866578,
+        "animation_ms_per_frame": 3.628230005649718,
+        "controlled_work_frame_ms": {
+          "avg": 26.74087007909604,
+          "max": 31.342669,
+          "p50": 26.667375,
+          "p95": 28.246899999999997,
+          "p99": 30.697517240000003
+        },
+        "failed_guards": [],
+        "guards_ok": true,
+        "point_path": "/Users/liyang/Developer/star-main/results/phase5-opt-b-closeout/chibi-144k-scale-10000/20260906-172143/opt-b/50pct-moving/point.json",
+        "position_commits_per_frame": 282.68926553672316,
+        "position_commits_per_s": 9994.634329943607,
+        "throughput_fps": 35.355549532337086,
+        "vision_dirty_per_frame": 282.728813559322,
+        "vision_dirty_per_s": 9996.032572015507
+      },
+      "checks": {
+        "animation_saving_meets_floor": true,
+        "controlled_avg_no_material_regression": true,
+        "guards_ok": true,
+        "position_rate_preserved": true,
+        "vision_dirty_rate_preserved": true
+      },
+      "deltas": {
+        "animation_cpu_ms_per_s": -7.603366771083728,
+        "animation_cpu_us_per_position_commit_total": -0.763427745852205,
+        "animation_ms_per_frame": -0.2461528068502825,
+        "controlled_avg_ms": -0.21945786976759862,
+        "controlled_avg_pct": -0.81400296830161,
+        "controlled_p95_ms": -0.2618597500000064,
+        "controlled_p99_ms": -0.13702450999999627,
+        "implied_saved_us_per_commit": 0.7608199217187103,
+        "position_commits_per_s_pct": 0.019733664532814218,
+        "vision_dirty_per_s_pct": 0.009793884783934155
+      },
+      "pass": true
+    }
+  },
+  "criteria": {
+    "100pct_controlled_avg_must_improve": true,
+    "max_controlled_avg_regression_pct": 2.0,
+    "min_animation_saving_us_per_commit": 0.5,
+    "p99_is_diagnostic_not_keep_revert_gate": true,
+    "rate_tolerance_pct": 2.0
+  },
+  "decision": "CAUSALLY_CONFIRMED_KEEP",
+  "experiment": "Phase 5 Optimization B closeout"
+}

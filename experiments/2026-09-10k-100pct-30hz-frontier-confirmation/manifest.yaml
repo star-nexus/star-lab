@@ -2,7 +2,7 @@ experiment:
   id: 10k-100pct-30hz-frontier-confirmation
   title: 10K / 100%-Moving 30Hz Frontier Confirmation
   date: 2026-09-06
-  status: running_preregistered_measurement_pending
+  status: closed_frontier_not_established_audit_tail_identified
 
 source:
   repository: star-nexus/star
@@ -43,7 +43,8 @@ process_integrity:
   env_cleanup: exec_launcher_plus_captured_process_tree
   cleanup_failure_blocks_next_point: true
   fresh_env_each_point: true
-  targeted_regressions_before_measurement: true
+  all_point_guards_passed: true
+  all_cleanup_checks_passed: true
 
 frontier:
   target: 10k_resident_10k_moving_fog_on_30hz
@@ -55,17 +56,54 @@ frontier:
     all_three_100pct_runs_must_pass_gate: true
     median_only_reinterpretation_forbidden: true
     majority_only_reinterpretation_forbidden: true
-  decision_values:
-    pass: FRONTIER_ESTABLISHED_10K_100PCT_30HZ
-    fail: FRONTIER_NOT_ESTABLISHED
+  decision: FRONTIER_NOT_ESTABLISHED
+
+run:
+  run_id: 20260906-203345
+  uploaded_zip_sha256: 7176cbee865dd115cc19be05a2d61f7e78966ebcf477d0377863e8a06088648c
+  raw_mirror_pending: true
+  points:
+    00pct-moving:
+      controlled_avg_ms: 16.291773989361705
+      controlled_p95_ms: 16.6433459
+      controlled_p99_ms: 20.01502221
+      pass_30hz: true
+    50pct-moving:
+      controlled_avg_ms: 24.593776229166664
+      controlled_p95_ms: 25.586070650000003
+      controlled_p99_ms: 28.09279868
+      pass_30hz: true
+    100pct-moving-r1:
+      controlled_avg_ms: 30.834445361290324
+      controlled_p95_ms: 31.9664089
+      controlled_p99_ms: 33.94384032000002
+      pass_30hz: false
+      vision_audit_scan_max_ms: 4.282125
+    100pct-moving-r2:
+      controlled_avg_ms: 31.305426267973857
+      controlled_p95_ms: 32.4752314
+      controlled_p99_ms: 34.04850867999998
+      pass_30hz: false
+      vision_audit_scan_max_ms: 4.127375
+    100pct-moving-r3:
+      controlled_avg_ms: 30.937793567741938
+      controlled_p95_ms: 32.2443385
+      controlled_p99_ms: 34.04994710000002
+      pass_30hz: false
+      vision_audit_scan_max_ms: 4.239875
+  full_motion_p99_span_ms: 0.10610678000004259
+
+diagnostic:
+  full_motion_frames_over_33_33_each_run: [2, 2, 2]
+  periodic_audit_frames_each_run: [2, 2, 2]
+  interpretation: periodic_vision_safety_audit_is_current_repeatable_frontier_blocker
+  ordinary_steady_state_appears_below_gate_but_is_not_formal_frontier_evidence: true
 
 trigger:
   source_experiment: 10k-vision-residual-c2
   c2a_closeout_run_id: 20260906-200509
   first_observed_crossing_p99_ms: 33.19879164000001
-  gate_ms: 33.33
-  observed_headroom_ms: 0.1312083599999896
   previous_observation_was_formal_frontier_evidence: false
-  reason: c2a_closeout_preregistered_p99_as_diagnostic
+  dedicated_confirmation_overturned_frontier_candidate: true
 
-next_action: run_formal_frontier_confirmation
+next_action: run_vision_d_audit_effectiveness_attribution

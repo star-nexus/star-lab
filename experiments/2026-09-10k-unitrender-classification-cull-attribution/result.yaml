@@ -1,0 +1,61 @@
+experiment: 10k-unitrender-classification-cull-attribution
+run_id: 20260907-032059
+runtime_sha: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+scenario_sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
+zip_sha256: 05e431a613f5237efa6a6da61541f82636ea28e0cc67aaeee20f2355c1a2863
+targeted_regressions: '14 passed in 0.42s'
+all_driver_exit_codes_zero: true
+all_cleanup_exit_codes_zero: true
+all_guards_pass: true
+aggregate_frame_latency_valid: false
+aggregate_frame_latency_note: analyzer emitted 0 for controlled avg/p99; diagnostic-only field, no effect on attribution decision
+points:
+  00pct-moving:
+    unitrender_avg_ms: 7.8843910599
+    unitrender_p99_ms: 8.15561594
+    cull_ms: 1.7150574457
+    cull_candidates: 8920.0
+    cull_us_per_candidate: 0.1922710141
+    classification_ms: 3.0040185918
+    classification_calls: 2873.0
+    helper_est_ms: 3.0386627036
+    generic_est_ms: 1.6496622529
+    direct_redundant_est_ms: 1.3748728946
+    branch_static_ratio: 1.0
+    branch_move_ratio: 0.0
+  50pct-moving:
+    unitrender_avg_ms: 10.0642768077
+    unitrender_p99_ms: 10.74167929
+    cull_ms: 2.2026073626
+    cull_candidates: 8938.93956044
+    cull_us_per_candidate: 0.2464058905
+    classification_ms: 4.2415480989
+    classification_calls: 3399.67582418
+    helper_est_ms: 4.3210713181
+    generic_est_ms: 2.6550043858
+    direct_redundant_est_ms: 1.0366295799
+    branch_static_ratio: 0.4855345912
+    branch_move_ratio: 0.5144654088
+  100pct-moving:
+    unitrender_avg_ms: 10.8705343446
+    unitrender_p99_ms: 11.83045627
+    cull_ms: 2.5127510946
+    cull_candidates: 8930.37162162
+    cull_us_per_candidate: 0.2813713920
+    classification_ms: 4.9533755608
+    classification_calls: 3655.15540541
+    helper_est_ms: 5.2055116677
+    generic_est_ms: 3.3251981982
+    direct_redundant_est_ms: 0.3791496632
+    branch_static_ratio: 0.0
+    branch_move_ratio: 1.0
+delta_00_to_100:
+  cull_ms: 0.7976936489
+  classification_ms: 1.9493569691
+  cull_candidate_ratio: 1.00116273785
+  cull_volume_closure: 0.00249990985
+  cull_us_per_candidate_relative_change: 0.4634103501
+formal_decision: SPECIALIZED_ANIMATION_DISPLACEMENT_API_CANDIDATE_JUSTIFIED
+cull_decision: NOT_CLOSED
+production_changed: false
+raw_physical_mirror_pending: true

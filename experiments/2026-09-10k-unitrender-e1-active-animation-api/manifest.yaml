@@ -1,0 +1,83 @@
+experiment:
+  id: 10k-unitrender-e1-active-animation-api
+  title: Phase 5 10K UnitRender E1 Active-Animation API
+  date: 2026-09-07
+  status: running_candidate_implemented_ab_preregistered
+
+source:
+  repository: star-nexus/star
+  production_branch: perf/10k-online
+  control_sha: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+  treatment_branch: experiment/phase5-unitrender-e1-active-animation-api
+  treatment_sha: e186135dc25d34f51a77218e2105126be3180b3e
+  closeout_branch: experiment/phase5-unitrender-e1-closeout
+  closeout_head_at_preregistration: aaaeacd226529e9b52a3bf37e31bf4a9379537ac
+  retained_optimizations: [A, B, C1, C2a, D1]
+
+trigger:
+  attribution_case: 10k-unitrender-classification-cull-attribution
+  run_id: 20260907-032059
+  attribution_decision: SPECIALIZED_ANIMATION_DISPLACEMENT_API_CANDIDATE_JUSTIFIED
+  attribution_zip_sha256: 05e431a613f5237efa6a6da61541f82636ea28e0cc67aaeee20f2355c1a2863b
+  classification_growth_00_to_100_ms: 1.9493569691
+  helper_estimated_cost_100_ms: 5.2055116677
+  cull_status: NOT_CLOSED
+
+candidate:
+  scope: window_only
+  files:
+    - rotk_env/systems/window_animation_system.py
+    - rotk_env/systems/optimized_render_systems.py
+    - rotk_env/tests/test_window_active_animation_render_position.py
+  active_api:
+    attack_active: return_attack_world_pixel_position
+    movement_active: return_movement_interpolation
+    no_active_animation: return_none
+  generic_get_unit_render_position_unchanged: true
+  generic_only_fallback_preserved: true
+  renderer_epsilon_compare_preserved: true
+
+semantic_invariants:
+  - attack_precedence_over_movement
+  - movement_interpolation_formula
+  - zero_displacement_behavior
+  - static_committed_hex_grouping
+  - batch_render_positioning
+  - rich_render_positioning
+  - shared_headless_generic_api
+
+formal_ab:
+  order: [A50, B50, B100, A100]
+  scenario: chibi-144k-scale-10000
+  scenario_sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
+  seed: 42
+  phase_seed: 42
+  route_steps: 12
+  fog: true
+  gc_policy: realtime_defer
+  minimap_dynamic_units: false
+  render: uncapped
+  hub: offline
+  primary_local_metric: unitrender_inclusive_minus_unit_visible_cull_inclusive
+
+preregistered_keep_gates:
+  workload_rate_tolerance_pct: 2.0
+  cull_section_tolerance_pct: 10.0
+  min_non_cull_saving_ms_50: 0.30
+  min_non_cull_saving_ms_100: 0.50
+  unitrender_avg_must_improve_both_densities: true
+  max_controlled_avg_regression_pct_50: 2.0
+  controlled_avg_must_improve_100: true
+  p99_diagnostic_only: true
+
+out_of_scope:
+  - cull_or_fog_optimization
+  - animation_state_representation_rewrite
+  - movement_animation_algorithm_change
+  - attack_animation_algorithm_change
+  - render_draw_dedup
+  - render_engine_submit_change
+  - native_or_parallel_rewrite
+
+next_action: run_targeted_regression_then_uninstrumented_same_session_ab
+raw_mirror_pending: true

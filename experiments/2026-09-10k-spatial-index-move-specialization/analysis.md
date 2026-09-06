@@ -2,7 +2,7 @@
 
 ## Observation
 
-After Optimization A, 10K / 100%-moving still had:
+After Optimization A, the 10K / 100%-moving point still showed substantial dynamic Core cost:
 
 ```text
 controlled avg  34.180 ms
@@ -11,28 +11,19 @@ Animation avg    7.770 ms
 Vision avg       5.130 ms
 ```
 
-Phase-5.1 attribution had measured the full generic spatial-index update at roughly `3.19 ms/frame` under the instrumented 100% workload.
+Phase-5.1 attribution measured the full generic spatial-index update at roughly `3.19 ms/frame` under the instrumented 100% workload.
 
 ## Hypothesis
 
-`UnitSpatialIndex.upsert_from_world()` is a generic authoritative-cache reconciliation path. For ordinary movement, faction and liveness do not change, yet the generic path:
+`UnitSpatialIndex.upsert_from_world()` is a generic cache-reconciliation path. Ordinary movement changes position but cannot change faction or liveness. Yet the generic path re-read ECS components and performed lifecycle bookkeeping that had no semantic value for a position-only transition.
 
-```text
-re-reads Unit
-re-reads HexPosition
-re-reads UnitCount
-removes the old record
-re-indexes the new record
-decrements living_counts
-increments living_counts
-removes/adds bucket membership even for same-bucket moves
-```
+Hypothesis:
 
-Hypothesis: removing this unnecessary lifecycle work will materially reduce `AnimationSystem` cost.
+> Specializing the movement update will reduce per-position-commit Animation CPU cost while preserving authoritative transition rate and all spatial-index semantics.
 
 ## Candidate
 
-A specialized `move_entity()` path reused the cached faction/record and updated only position-derived index state. It preserved:
+A specialized `move_entity()` path reused the cached record/faction and updated only movement-dependent derived index state. It preserved:
 
 - cell faction counts;
 - cell entity membership;
@@ -41,96 +32,178 @@ A specialized `move_entity()` path reused the cached faction/record and updated 
 - global revision;
 - generic `upsert_from_world()` fallback if the cache entry is missing.
 
-Regression coverage included stacked cells, same-bucket movement, cross-bucket movement, no ECS component reads on the fast path, and fallback self-healing.
+Regression coverage included stacked cells, true same-bucket movement, cross-bucket movement, no ECS component reads on the indexed fast path, and fallback self-healing.
 
-## Controlled evidence
+## First controlled result — false negative
+
+Generation `20260906-120822` compared B against the earlier accepted A generation and showed almost no direct-path improvement:
+
+```text
+50% Animation avg   3.633 -> 3.664 ms
+100% Animation avg  7.770 -> 7.749 ms
+```
+
+Aggregate average/P95 also did not improve. Under the STAR rule "no measured win, no extra production complexity", B was reverted at `7f72e352...`.
+
+That decision was reasonable given the evidence then available, but the comparison was cross-generation rather than a same-session counterbalanced experiment. The 0%-moving point also showed broad machine drift.
+
+## Reopening evidence
+
+A later uninstrumented run at the exact B candidate SHA, `20260906-154003`, produced the opposite local signature:
+
+```text
+100% Animation avg   7.770 ms (prior A reference)
+                    -> 6.900 ms (B treatment)
+```
+
+Authoritative position/dirty throughput remained ~20K/s. Because the directly modified path now showed a substantial benefit, the prior rejection could no longer be considered closed.
+
+This triggered a dedicated closeout rather than simply restoring B from one cross-session result.
+
+## Final instrumentation / experiment design
+
+The closeout runner created detached worktrees at the exact historical source states:
+
+```text
+A = b9e0bb92b546b3283cb5c1d30a9a510d0c006ec2
+B = 73a2f7f33067dfd39e7aaf1c07a4c08eafc021ba
+```
+
+It ran one session in counterbalanced order:
+
+```text
+A50 -> B50 -> B100 -> A100
+```
+
+The runner also enforced full ENV process-tree cleanup between points. An earlier attempt, `20260906-162730`, failed this requirement because Pygame child processes survived between points; that generation is invalid and excluded from formal evidence.
+
+Pre-registered decision criteria were encoded before the valid run:
+
+```text
+rate tolerance                         2%
+minimum Animation saving               0.5 us / position commit
+maximum controlled-avg regression      2%
+100% controlled avg                    must improve
+P99                                    diagnostic only
+```
+
+## Final evidence — `20260906-172143`
 
 ### 50% moving
 
 ```text
-Optimization A control:
-controlled avg   25.964 ms
-P95              27.392 ms
-P99              29.447 ms
-Animation avg     3.633 ms
-Animation P99     4.106 ms
+Animation avg/frame
+A 3.874383 ms
+B 3.628230 ms
+Delta -0.246153 ms (-6.35%)
 
-Optimization B:
-controlled avg   26.495 ms
-P95              27.995 ms
-P99              30.878 ms
-Animation avg     3.664 ms
-Animation P99     4.149 ms
-```
+Animation CPU / position commit
+A 13.598121 us
+B 12.834693 us
+Saving 0.763428 us/commit
 
-Direct path delta:
+controlled avg
+26.960328 -> 26.740870 ms
 
-```text
-Animation avg +0.031 ms
+controlled P99
+30.834542 -> 30.697517 ms
 ```
 
 ### 100% moving
 
 ```text
-Optimization A control:
-controlled avg   34.180 ms
-P95              35.686 ms
-P99              38.537 ms
-Animation avg     7.770 ms
-Animation P99     8.481 ms
+Animation avg/frame
+A 8.200243 ms
+B 7.685533 ms
+Delta -0.514710 ms (-6.28%)
 
-Optimization B:
-controlled avg   34.967 ms
-P95              36.949 ms
-P99              37.629 ms
-Animation avg     7.749 ms
-Animation P99     8.333 ms
+Animation CPU / position commit
+A 11.066122 us
+B 10.557051 us
+Saving 0.509072 us/commit
+
+controlled avg
+35.499686 -> 34.873006 ms
+
+controlled P99
+40.409518 -> 39.315061 ms
 ```
 
-Direct path delta:
+### Independent normalization
+
+Using Animation CPU milliseconds per wall-clock second divided by authoritative commits/s gives:
 
 ```text
-Animation avg -0.021 ms
+50%  saved 0.760820 us/commit
+100% saved 0.513289 us/commit
 ```
 
-The isolated P99 improvement is contradicted by worse average/P95 and by the essentially unchanged direct causal metric. It is therefore treated as tail-distribution / run noise, not as candidate benefit.
+This independently reproduces the direct per-commit calculation.
 
 ## Workload preservation
 
-Transition throughput remained effectively equal. At 100%:
+The performance gain did not come from reducing world evolution:
 
 ```text
-A: 27.9768 fps * 713.914 index changes/frame ~= 19.97K/s
-B: 27.3597 fps * 730.263 index changes/frame ~= 19.98K/s
+50% position commits/s   +0.0197%
+50% Vision dirty/s       +0.0098%
+100% position commits/s  -0.0390%
+100% Vision dirty/s      -0.0262%
 ```
 
-Vision dirty throughput likewise remained approximately 20K/s.
+All are effectively unchanged and far inside the pre-registered +/-2% bound.
 
-The B run's 0%-moving point was globally slower than A (`controlled avg 16.670 -> 17.118 ms`) with unrelated rendering sections also somewhat higher, further supporting the use of local causal metrics rather than aggregate P99 alone.
+All semantic guards passed; 21 targeted regressions passed in `0.14s` before measurement.
 
-## Root conclusion
+## Root cause
 
-The earlier `~3.19 ms/frame` attribution represented the **entire spatial-index update**, not the subset removable by specialization.
+The earlier `~3.19 ms/frame` attribution represented the **entire** spatial-index update. Most of that work is mandatory:
 
-Most of that work is required even on a position-only movement:
+- render-space/bucket derivation;
+- old/new cell counts;
+- old/new cell entity sets;
+- entity record update;
+- cross-bucket maintenance;
+- revision invalidation.
 
-- derive render-space position / bucket;
-- maintain old/new cell faction counts;
-- maintain old/new cell entity sets;
-- update entity record;
-- maintain bucket membership when crossing buckets;
-- invalidate revisions.
+The initial mistake was not that the full 3.19 ms should disappear. The actual removable layer is the generic lifecycle/reconciliation overhead applied to a position-only transition.
 
-The apparently redundant lifecycle layer was too small to measure in production.
+That layer costs approximately:
 
-## Rejected interpretation
+```text
+0.5-0.8 us / authoritative position commit
+```
 
-Do not conclude that spatial indexing itself is free or that the 3.19 ms attribution was wrong. The experiment only rejects this specific optimization:
+and is therefore material at 10K / ~20K commits per second.
 
-> replacing generic upsert with a hand-specialized movement upsert while keeping the same index data model and required maintenance.
+## Why the first rejection was wrong
 
-A future spatial-index optimization would need to attack mandatory representation/data-structure work, not merely remove the generic wrapper bookkeeping.
+The first result was not fabricated or guard-invalid; it was simply insufficiently controlled for a small per-transition effect in the presence of machine drift.
+
+The decisive evidence is stronger because it combines:
+
+1. exact historical A/B source states;
+2. same-session counterbalancing;
+3. pre-registered acceptance criteria;
+4. direct modified-path metrics;
+5. per-authoritative-commit normalization;
+6. workload preservation;
+7. semantic/regression guards.
+
+## Rejected explanations
+
+- **Reduced movement workload:** rejected by unchanged commits/s.
+- **Reduced Vision workload:** rejected by unchanged dirty/s.
+- **P99 luck:** rejected because Animation avg/frame and CPU/commit both improve at both densities.
+- **Monotonic machine drift:** mitigated by ABBA order; B cannot be favored at both densities merely by always running later.
+- **Entire spatial index was removable:** rejected; most indexed movement maintenance remains necessary.
 
 ## Engineering lesson
 
-The visual complexity of code is not a performance measurement. Optimization A showed that a tiny lookup can be huge because of multiplicity; Optimization B showed that a large-looking generic function can contain mostly necessary work and almost no removable cost.
+Optimization A was a wrong-complexity bug: a stable dependency lookup was repeated per mover.
+
+Optimization B is a wrong-abstraction-granularity bug: a generic lifecycle reconciliation path was used for a high-frequency position-only transition.
+
+A visually large generic function may contain mostly mandatory work, but a sub-microsecond removable layer can still matter when multiplied by tens of thousands of authoritative transitions per second.
+
+The case also establishes a process lesson: when a candidate effect is small relative to machine drift, close the question with same-session counterbalanced A/B and a normalized local causal metric, not cross-session aggregate FPS alone.

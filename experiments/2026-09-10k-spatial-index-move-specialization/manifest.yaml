@@ -2,7 +2,7 @@ experiment:
   id: 10k-spatial-index-move-specialization
   title: 10K Spatial-Index Movement Specialization
   date: 2026-09-06
-  status: rejected_no_measurable_causal_win_reverted_raw_evidence_complete
+  status: closed_causally_confirmed_keep_final_raw_mirror_pending
 
 source:
   repository: star-nexus/star
@@ -10,8 +10,9 @@ source:
   control_commit: b9e0bb92b546b3283cb5c1d30a9a510d0c006ec2
   candidate_implementation_commit: 5af001817e65869fb3fa782edb9e8284d13e53e7
   measured_candidate_commit: 73a2f7f33067dfd39e7aaf1c07a4c08eafc021ba
-  rollback_commit: 7f72e352f95e20125c29502abd934f0f81a3e0f2
-  rollback_tree_equivalent_to_control: true
+  historical_false_negative_rollback_commit: 7f72e352f95e20125c29502abd934f0f81a3e0f2
+  closeout_runner_commit: aa612ecfa2c31c61d942689999e2e8d7352b2d4b
+  mainline_restore_commit: 4218b5368fbe2815b8512384e2c18b0af443ebfa
 
 scenario:
   name: chibi-144k-scale-10000
@@ -21,8 +22,8 @@ scenario:
   resident_units: 10000
 
 workload:
-  moving_units: [0, 5000, 10000]
-  density: [0.0, 0.5, 1.0]
+  moving_units: [5000, 10000]
+  density: [0.5, 1.0]
   seed: 42
   phase_seed: 42
   route_steps: 12
@@ -34,11 +35,19 @@ workload:
   hub: offline
   execution_pathfinding: false
   production_animation: true
+  production_position_commits: true
 
 measurement:
-  primary_metric: controlled_work_frame_ms.p99
-  direct_causal_metric: AnimationSystem.inclusive_ms
+  direct_causal_metric: AnimationSystem.inclusive_ms_per_authoritative_position_commit
+  supporting_metric: controlled_work_frame_ms.avg
+  diagnostic_tail_metric: controlled_work_frame_ms.p99
   canonical_30hz_gate_ms: 33.33
+  closeout_order: [A50, B50, B100, A100]
+  rate_tolerance_pct: 2.0
+  min_animation_saving_us_per_commit: 0.5
+  max_controlled_avg_regression_pct: 2.0
+  require_100pct_controlled_avg_improvement: true
+  p99_is_diagnostic_not_keep_revert_gate: true
   warmup_seconds: 5
   duration_seconds: 20
   sample_after_seconds: 7
@@ -49,31 +58,82 @@ hardware:
   kernel: Darwin 25.5.0
 
 runs:
-  control:
+  canonical_control_raw:
     run_id: 20260906-041532
     source_commit: b9e0bb92b546b3283cb5c1d30a9a510d0c006ec2
     canonical_raw_owner: ../2026-09-10k-movement-system-lookup
     canonical_raw_path: ../2026-09-10k-movement-system-lookup/results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-041532
-    source_package_zip_sha256: 45319fef0499383a8888e638d12cc8693ce591c32475b40626012f00abd0c825
-  candidate:
+  superseded_false_negative:
     run_id: 20260906-120822
     source_commit: 73a2f7f33067dfd39e7aaf1c07a4c08eafc021ba
     raw_path: results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-120822
-    source_package_zip_sha256: ded5cccecec5b157eaff73c2efcbd65d1db7af549f7ee07a69b2cd1edd264c7b
+    interpretation: superseded_false_negative_cross_generation_comparison
+  corroborating_treatment:
+    run_id: 20260906-154003
+    source_commit: 73a2f7f33067dfd39e7aaf1c07a4c08eafc021ba
+    source_path_in_star: results/phase5-10k-core/chibi-144k-scale-10000/20260906-154003
+    planned_raw_path: results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-154003
+    source_package_zip_sha256: ae5e923c242b69144693d58efc843912ca8dff57ab795630913a7f95619ed167
+    raw_mirror_state: pending
+  invalid_closeout_attempt:
+    run_id: 20260906-162730
+    archival_policy: excluded_from_formal_evidence
+    reason: env_process_tree_leak_contaminated_later_points
+  final_closeout:
+    run_id: 20260906-172143
+    runner_commit: aa612ecfa2c31c61d942689999e2e8d7352b2d4b
+    opt_a_commit: b9e0bb92b546b3283cb5c1d30a9a510d0c006ec2
+    opt_b_commit: 73a2f7f33067dfd39e7aaf1c07a4c08eafc021ba
+    execution_order: [A50, B50, B100, A100]
+    source_path_in_star: results/phase5-opt-b-closeout/chibi-144k-scale-10000/20260906-172143
+    planned_raw_path: results/raw/phase5-opt-b-closeout/chibi-144k-scale-10000/20260906-172143
+    source_package_zip_sha256: e6d4e7d3beebf5880a13e30b59ab6e795afe9e1c4e268de394778b6b2b1acc8c
+    raw_mirror_state: pending
+
+closeout:
+  decision: CAUSALLY_CONFIRMED_KEEP
+  targeted_regressions: 21
+  targeted_regressions_passed: true
+  env_process_cleanup_verified: true
+  points:
+    50pct:
+      animation_ms_per_frame_a: 3.8743828125000004
+      animation_ms_per_frame_b: 3.628230005649718
+      animation_cpu_us_per_position_commit_a: 13.598120986718783
+      animation_cpu_us_per_position_commit_b: 12.834693240866578
+      saved_us_per_position_commit: 0.763427745852205
+      controlled_avg_ms_a: 26.96032794886364
+      controlled_avg_ms_b: 26.74087007909604
+      controlled_p99_ms_a: 30.83454175
+      controlled_p99_ms_b: 30.697517240000003
+      position_commits_per_s_pct_delta: 0.019733664532814218
+      vision_dirty_per_s_pct_delta: 0.009793884783934155
+    100pct:
+      animation_ms_per_frame_a: 8.20024262962963
+      animation_ms_per_frame_b: 7.685532956521739
+      animation_cpu_us_per_position_commit_a: 11.066122423479078
+      animation_cpu_us_per_position_commit_b: 10.557050764452939
+      saved_us_per_position_commit: 0.509071659026139
+      controlled_avg_ms_a: 35.49968588148148
+      controlled_avg_ms_b: 34.87300606521739
+      controlled_p99_ms_a: 40.409518219999995
+      controlled_p99_ms_b: 39.315060659999986
+      position_commits_per_s_pct_delta: -0.03900148868892381
+      vision_dirty_per_s_pct_delta: -0.026162615694846833
 
 evidence:
   guards_passed: true
   workload_throughput_preserved: true
-  direct_metric_improved_materially: false
-  extracted_candidate_raw_mirrored_in_star_lab: true
-  candidate_raw_file_count: 26
-  file_checksum_manifest: artifacts/RAW_SHA256SUMS
-  control_raw_cross_referenced: true
-  exact_source_provenance_recorded: true
-  evidence_state: raw_evidence_complete_with_canonical_control_cross_reference
+  direct_metric_improved_materially: true
+  same_session_counterbalanced_abba: true
+  pre_registered_acceptance_criteria_passed: true
+  historical_120822_raw_mirrored_in_star_lab: true
+  final_closeout_raw_mirror_pending: true
+  file_checksum_update_pending: true
+  evidence_state: causal_decision_closed_final_raw_mirror_pending
 
 headline:
-  hypothesis: "Position-only movement can avoid generic UnitSpatialIndex lifecycle bookkeeping and materially reduce the ~3.19 ms full-update cost observed in attribution."
-  result: "AnimationSystem avg changed 7.770 -> 7.749 ms at 100% and 3.633 -> 3.664 ms at 50%; no measurable causal win."
-  conclusion: "The removable generic bookkeeping is negligible; most spatial-index update cost is mandatory cell/set/record/bucket maintenance."
-  decision: "Revert candidate and keep Optimization A as current best."
+  hypothesis: "Position-only movement can avoid generic UnitSpatialIndex lifecycle bookkeeping and reduce per-authoritative-commit Animation CPU cost."
+  result: "Same-session ABBA saves 0.763 us/commit at 50% and 0.509 us/commit at 100%, with commits/s and Vision dirty/s preserved within 0.04%."
+  conclusion: "Generic lifecycle reconciliation is the wrong abstraction granularity for high-frequency position-only movement; specialize the derived-cache transition."
+  decision: "CAUSALLY_CONFIRMED_KEEP"

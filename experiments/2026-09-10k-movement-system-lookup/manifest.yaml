@@ -2,7 +2,7 @@ experiment:
   id: 10k-movement-system-lookup
   title: 10K MovementSystem Lookup Elimination
   date: 2026-09-06
-  status: closed_causal_optimization_retained_raw_evidence_complete
+  status: closed_causally_confirmed_keep_raw_evidence_complete
 
 source:
   repository: star-nexus/star
@@ -10,8 +10,9 @@ source:
   problem_commit: 82054c554d359516fe3d9cf0fa80cfd81bc222a3
   attribution_commit: 497ca6ce7113cb4883359fb0821b4022538255a6
   fix_commit: b9e0bb92b546b3283cb5c1d30a9a510d0c006ec2
-  restored_current_best_commit: 7f72e352f95e20125c29502abd934f0f81a3e0f2
-  restored_tree_equivalent_to_fix: true
+  historical_b_rollback_commit: 7f72e352f95e20125c29502abd934f0f81a3e0f2
+  current_mainline_commit_after_b_restore: 4218b5368fbe2815b8512384e2c18b0af443ebfa
+  optimization_a_retained_in_current_mainline: true
 
 scenario:
   name: chibi-144k-scale-10000
@@ -38,6 +39,7 @@ workload:
 
 measurement:
   primary_metric: controlled_work_frame_ms.p99
+  direct_causal_metric: AnimationSystem.inclusive_ms
   canonical_30hz_gate_ms: 33.33
   engineering_60hz_gate_ms: 16.67
   warmup_seconds: 5
@@ -69,6 +71,7 @@ runs:
 evidence:
   guards_passed: true
   workload_throughput_preserved: true
+  attribution_prediction_matches_production_ab: true
   extracted_raw_mirrored_in_star_lab: true
   mirrored_raw_file_count: 69
   file_checksum_manifest: artifacts/RAW_SHA256SUMS
@@ -82,3 +85,4 @@ headline:
   fix: "Resolve MovementSystem once per synchronous animation update."
   result_50pct: "controlled P99 36.581 -> 29.447 ms; canonical 30 Hz FAIL -> PASS"
   result_100pct: "AnimationSystem avg 13.541 -> 7.770 ms; controlled P99 46.191 -> 38.537 ms"
+  decision: "CAUSALLY_CONFIRMED_KEEP"

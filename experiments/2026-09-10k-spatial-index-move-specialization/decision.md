@@ -2,65 +2,83 @@
 
 ## Decision
 
-**Reject and revert the specialized movement update.**
+**CAUSALLY CONFIRMED / KEEP / CLOSED.**
 
-The candidate was technically correct, but it did not produce a measurable causal performance improvement in the directly modified `AnimationSystem` path.
+Retain the specialized spatial-index movement update for ordinary indexed position-only commits.
 
-## Why rejected
+## Why retained
 
-The candidate introduced new production concepts and branches:
-
-```text
-move_entity()
-move_unit_spatial_index()
-same-bucket update path
-cross-bucket update path
-missing-entry fallback path
-additional specialized regression surface
-```
-
-The direct measured benefit was approximately zero:
+The final same-session ABBA closeout showed the expected causal signature at both dynamic densities:
 
 ```text
-50%  Animation avg 3.633 -> 3.664 ms
-100% Animation avg 7.770 -> 7.749 ms
+50% Animation CPU / commit   13.598121 -> 12.834693 us
+                              saving 0.763428 us/commit
+
+100% Animation CPU / commit  11.066122 -> 10.557051 us
+                              saving 0.509072 us/commit
 ```
 
-Carrying extra state-maintenance complexity without measured benefit violates the STAR performance-engineering rule:
+The directly modified `AnimationSystem` path improved by ~6.3% at both densities.
 
-> No measured win, no additional production complexity.
+The workload was preserved:
 
-## Rollback
+```text
+position commits/s delta   <= 0.04%
+Vision dirty/s delta       <= 0.03%
+```
 
-Production was restored with:
+All semantic guards passed and 21 targeted regressions passed before the measurement.
+
+The optimization therefore meets STAR's retention rule: measurable local causal win, preserved semantics, and bounded added complexity.
+
+## Superseded rollback
+
+The earlier rollback:
 
 ```text
 7f72e352f95e20125c29502abd934f0f81a3e0f2
 revert: drop non-beneficial spatial index movement specialization
 ```
 
-The rollback commit uses the exact Optimization-A tree. `b9e0bb92...` vs `7f72e352...` has zero file differences.
+was based on an earlier false-negative comparison and is now superseded by stronger evidence.
 
-The B commits remain in Git history as experimental provenance, but no B implementation or B-only tests remain in the current production tree.
+History was not rewritten. Mainline restored B with:
 
-## What this rules out
+```text
+4218b5368fbe2815b8512384e2c18b0af443ebfa
+Revert "revert: drop non-beneficial spatial index movement specialization"
+```
 
-Do not repeat this exact approach under the assumption that the Phase-5.1 `~3.19 ms/frame` spatial-index attribution is mostly generic-lifecycle overhead.
+This leaves the original rejection and later correction auditable.
 
-That interpretation is experimentally rejected.
+## Production invariants
 
-## What remains open
+The specialized path must continue to preserve:
 
-A future spatial-index investigation is still justified if new attribution targets the mandatory work itself, for example:
+- authoritative `HexPosition` as source of truth;
+- Vision dirty marking on actual movement;
+- cell faction/entity membership;
+- cross-bucket membership and revisions;
+- `living_counts` invariance for movement;
+- generic reconciliation fallback when an index entry is missing.
 
-- record / coordinate derivation;
-- cell set/dict maintenance;
-- bucket representation;
-- batched movement-index maintenance;
-- alternative data layout.
+## What this does not claim
 
-Such work must start with new instrumentation rather than reintroducing the rejected specialization.
+Do not interpret this result as removing the full spatial-index cost attributed in Phase-5.1.
+
+The optimization removes approximately `0.5-0.8 us/commit` of generic lifecycle overhead. Required cell/set/record/bucket maintenance remains.
+
+## Revisit conditions
+
+Revisit only if:
+
+1. spatial-index representation/data layout is redesigned;
+2. movement commits become batch-oriented rather than per-entity;
+3. faction/liveness can change atomically inside the same movement transition;
+4. profiling shows the specialized branches themselves becoming a maintenance or performance liability.
+
+Otherwise, do not route ordinary indexed movement back through the generic lifecycle upsert without new evidence.
 
 ## Next direction
 
-Return to the accepted Optimization-A baseline and proceed to Vision steady dirty-path work, beginning with the geometry cache-hit path.
+Optimization B is closed. Continue Phase-5 Core work on the Vision steady dirty path, keeping spatial-index movement specialization fixed as part of the accepted baseline.

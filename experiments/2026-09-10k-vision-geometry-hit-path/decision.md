@@ -48,7 +48,7 @@ miss geometry           0.079 ms/frame
 
 Terrain-bonus lookup is the largest measured `_visibility_for()` subcost and occurs before nearly every successful cache hit.
 
-This is materially different from rejected Optimization B: C1 has a direct micro-attribution identifying the specific removable work before implementation.
+Optimization B provides the relevant process precedent: its first cross-generation comparison produced a false negative, but a later same-session pre-registered ABBA closeout causally confirmed a `0.5-0.8 us/commit` benefit. C1 therefore also requires a direct local causal metric plus controlled production validation before retention.
 
 ## Semantic contract
 
@@ -103,10 +103,10 @@ The normal Phase-5 10K Core runner is the canonical production measurement. Inst
 
 If the direct Vision-path improvement is below noise or aggregate improvement has no supporting local causal reduction, revert the implementation rather than carrying extra cache semantics.
 
-Optimization B establishes the precedent:
+Optimization B refines the rule:
 
-> no measurable benefit -> no additional production complexity.
+> no measured causal benefit -> no added production complexity; if machine drift can plausibly mask a small per-transition effect, close the question with same-session counterbalanced A/B before making the decision durable.
 
 ## Next action
 
-Run focused Vision regressions at `b9c63e9d...`, then execute the standard 0% / 50% / 100% uninstrumented Phase-5 10K Core controlled run. Compare treatment against the retained Optimization-A production baseline `20260906-041532`.
+Run focused Vision regressions at `b9c63e9d...`, then execute the standard 0% / 50% / 100% uninstrumented Phase-5 10K Core controlled run. Compare treatment against the accepted A+B baseline, not against a state that has spatial-index specialization reverted.

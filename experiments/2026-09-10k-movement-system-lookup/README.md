@@ -15,9 +15,10 @@ The case is important because the code looked trivial, but the repeated lookup a
 - Problem / production baseline: `82054c554d359516fe3d9cf0fa80cfd81bc222a3`
 - Attribution harness: `497ca6ce7113cb4883359fb0821b4022538255a6`
 - Fix: `b9e0bb92b546b3283cb5c1d30a9a510d0c006ec2`
-- Later rollback-of-B state with production tree byte-equivalent to the fix: `7f72e352f95e20125c29502abd934f0f81a3e0f2`
+- Historical Optimization-B rollback state: `7f72e352f95e20125c29502abd934f0f81a3e0f2`
+- Current `perf/10k-online` state restoring confirmed Optimization B while retaining A: `4218b5368fbe2815b8512384e2c18b0af443ebfa`
 
-`b9e0bb92...` and `7f72e352...` have no file diff; the latter preserves the rejected Optimization-B history while restoring the Optimization-A production tree exactly.
+`b9e0bb92...` and `7f72e352...` have no production file diff; the latter is retained only as historical provenance for the temporary Optimization-B rollback. Optimization B was later re-evaluated with a same-session ABBA closeout, confirmed beneficial, and restored at `4218b536...`. Optimization A remained retained throughout.
 
 ## Workload
 
@@ -72,9 +73,21 @@ Phase-5.1 attribution predicted approximately `5.55 ms/frame` for the repeated l
 
 Authoritative movement throughput remained approximately 20K committed transitions/s; the improvement did not come from reducing world evolution.
 
+## Root cause
+
+A stable system dependency was resolved at the wrong complexity level:
+
+```text
+semantic requirement: one MovementSystem dependency per synchronous update
+implementation:       one world.systems scan per moving entity
+complexity:           O(Nmoving * Nsystems)
+```
+
+At 10K movers, a semantically worthless Python lookup became a first-class runtime bottleneck.
+
 ## Raw evidence
 
-The original extracted run trees are now mirrored in STAR Lab and are the canonical raw evidence for this case:
+Canonical raw evidence is mirrored in this case:
 
 ```text
 results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-030632/
@@ -82,20 +95,16 @@ results/raw/phase5-10k-attribution/chibi-144k-scale-10000/20260906-033723/
 results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-041532/
 ```
 
-Together they contain the problem baseline, causal attribution generation, and fixed production A/B. The archive includes per-point `point.json`, `profile.json`, logs/configuration, manifests, summaries, Git status/diff captures, and attribution summaries where applicable.
+Together they contain the problem baseline, causal attribution generation, and fixed production A/B. Every mirrored raw file is covered by `artifacts/RAW_SHA256SUMS`; source-package identities are retained in `artifacts/SHA256SUMS`.
 
-Every mirrored raw file is covered by:
+Evidence state: **raw evidence complete; exact source provenance recorded; file-level SHA256 covered**.
 
-```text
-artifacts/RAW_SHA256SUMS
-```
+## Engineering lesson
 
-The earlier ZIP-level identities remain preserved as source-package identities:
+A tiny operation can dominate scale when architectural multiplicity is wrong. Cost must be evaluated as:
 
 ```text
-20260906-030632.zip  fdf86142f53a149cc81c0f419343200bdf46d7f1d20849ee0387806df696a6ab
-20260906-033723.zip  1978fbeb07dac6cdafebd20e22c1d5d954e5ad71cb0fe966178f4e61851f2089
-20260906-041532.zip  45319fef0499383a8888e638d12cc8693ce591c32475b40626012f00abd0c825
+cost per call * calls at target scale
 ```
 
-The ZIP files themselves are not duplicated because the extracted raw files are now versioned directly. Evidence state is therefore **raw evidence complete; exact source provenance recorded; file-level SHA256 covered**.
+not by visual code size or intuition about one invocation.

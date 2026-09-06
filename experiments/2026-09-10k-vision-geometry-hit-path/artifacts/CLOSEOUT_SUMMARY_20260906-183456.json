@@ -1,0 +1,113 @@
+{
+  "caller_sha": "9ba2a766f2838570c7ecb77d4fd928ce9dbc5196",
+  "comparisons": {
+    "100pct-moving": {
+      "control": {
+        "controlled_avg_ms": 35.96854673880597,
+        "controlled_p95_ms": 37.85579435,
+        "controlled_p99_ms": 39.09742874999999,
+        "geometry_calls_per_s": 19993.79125730021,
+        "geometry_evictions_per_frame": 0.0,
+        "geometry_hit_rate_pct": 99.70176851271958,
+        "guards_ok": true,
+        "position_commits_per_s": 19977.890515692106,
+        "vision_cpu_us_per_visibility_call": 7.498555297088265,
+        "vision_dirty_per_s": 19993.79125730021,
+        "vision_ms_per_frame": 5.629120694029851,
+        "vision_scanned_per_s": 19993.79125730021
+      },
+      "deltas": {
+        "controlled_avg_ms": -0.7834094373353793,
+        "controlled_avg_pct": -2.178040283429549,
+        "controlled_p95_ms": -0.9685640999999947,
+        "controlled_p99_ms": 2.7071211000000233,
+        "dirty_rate_delta_pct": -0.03725468231039948,
+        "geometry_call_rate_delta_pct": -0.03725468231039948,
+        "geometry_hit_rate_delta_pp": 0.008202484380120723,
+        "position_rate_delta_pct": -0.0007151337512426185,
+        "saved_us_per_visibility_call": 1.0245620477633315,
+        "scan_rate_delta_pct": -0.03725468231039948,
+        "vision_avg_pct": -15.443043705774928,
+        "vision_ms_per_frame": -0.8693075690298508
+      },
+      "pass": true,
+      "treatment": {
+        "controlled_avg_ms": 35.18513730147059,
+        "controlled_p95_ms": 36.88723025,
+        "controlled_p99_ms": 41.804549850000015,
+        "geometry_calls_per_s": 19986.3426338855,
+        "geometry_evictions_per_frame": 0.0,
+        "geometry_hit_rate_pct": 99.7099709970997,
+        "guards_ok": true,
+        "position_commits_per_s": 19977.747647054242,
+        "vision_cpu_us_per_visibility_call": 6.473993249324933,
+        "vision_dirty_per_s": 19986.3426338855,
+        "vision_ms_per_frame": 4.759813125,
+        "vision_scanned_per_s": 19986.3426338855
+      }
+    },
+    "50pct-moving": {
+      "control": {
+        "controlled_avg_ms": 27.247804965517243,
+        "controlled_p95_ms": 28.50320615,
+        "controlled_p99_ms": 30.80316353,
+        "geometry_calls_per_s": 9999.736182351156,
+        "geometry_evictions_per_frame": 0.0,
+        "geometry_hit_rate_pct": 99.53120012767316,
+        "guards_ok": true,
+        "position_commits_per_s": 10001.332054707102,
+        "vision_cpu_us_per_visibility_call": 8.633956172199172,
+        "vision_dirty_per_s": 9999.736182351156,
+        "vision_ms_per_frame": 2.487373304597701,
+        "vision_scanned_per_s": 9999.736182351156
+      },
+      "deltas": {
+        "controlled_avg_ms": -0.2559851302899716,
+        "controlled_avg_pct": -0.9394706495217762,
+        "controlled_p95_ms": -0.04807015000000092,
+        "controlled_p99_ms": 0.342410220000005,
+        "dirty_rate_delta_pct": 0.025633695766228506,
+        "geometry_call_rate_delta_pct": 0.025633695766228506,
+        "geometry_hit_rate_delta_pp": -0.004634115459367649,
+        "position_rate_delta_pct": -0.040062263885951396,
+        "saved_us_per_visibility_call": 1.0789260753242322,
+        "scan_rate_delta_pct": 0.025633695766228506,
+        "vision_avg_pct": -13.243886885073266,
+        "vision_ms_per_frame": -0.32942490687042847
+      },
+      "pass": true,
+      "treatment": {
+        "controlled_avg_ms": 26.991819835227272,
+        "controlled_p95_ms": 28.455136,
+        "controlled_p99_ms": 31.145573750000004,
+        "geometry_calls_per_s": 10002.299484301566,
+        "geometry_evictions_per_frame": 0.0,
+        "geometry_hit_rate_pct": 99.52656601221379,
+        "guards_ok": true,
+        "position_commits_per_s": 9997.325294667235,
+        "vision_cpu_us_per_visibility_call": 7.5550300968749395,
+        "vision_dirty_per_s": 10002.299484301566,
+        "vision_ms_per_frame": 2.1579483977272726,
+        "vision_scanned_per_s": 10002.299484301566
+      }
+    }
+  },
+  "control_sha": "7b37f2d0823149042688059715342faf55c4fbb9",
+  "criteria": {
+    "100pct_controlled_avg_must_improve": true,
+    "max_controlled_avg_regression_pct": 2.0,
+    "max_geometry_hit_rate_drop_pp": 0.5,
+    "min_vision_saving_us_per_visibility_call": 0.5,
+    "p99_is_diagnostic_not_keep_revert_gate": true,
+    "rate_tolerance_pct": 2.0,
+    "vision_avg_must_improve_both_densities": true
+  },
+  "decision": "CAUSALLY_CONFIRMED_KEEP",
+  "execution_order": "A50,B50,B100,A100",
+  "experiment": "Phase 5 Vision C1 closeout",
+  "run_id": "20260906-183456",
+  "scenario_sha256": "e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25",
+  "targeted_regressions": "15 passed in 0.05s",
+  "treatment_sha": "4218b5368fbe2815b8512384e2c18b0af443ebfa",
+  "zip_sha256": "edb940801a95d78b3f059190bb8ae62d75c5a3f9ce3778547c39156e09513c46"
+}

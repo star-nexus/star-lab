@@ -1,6 +1,6 @@
 # 10K Spatial-Index Movement Specialization
 
-**Status:** REJECTED — no measurable causal performance win; implementation reverted  
+**Status:** REJECTED — no measurable causal performance win; implementation reverted; raw evidence complete  
 **STAR repository:** `star-nexus/star`  
 **Branch at time:** `perf/10k-online`
 
@@ -57,7 +57,30 @@ It did not.
 
 Most of the spatial-index cost is mandatory movement maintenance: cell/set membership, record reconstruction, pixel/bucket derivation, and revision invalidation. The visually obvious redundant lifecycle bookkeeping was a thin layer below the production noise floor.
 
-## Evidence identity
+## Raw evidence
+
+The Optimization-B treatment run is now mirrored directly in this case:
+
+```text
+results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-120822/
+```
+
+The accepted Optimization-A control run is **not duplicated** here. Its canonical raw ownership remains in:
+
+```text
+../2026-09-10k-movement-system-lookup/
+  results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-041532/
+```
+
+This preserves STAR Lab's one-artifact/one-canonical-location rule while keeping the A/B relationship explicit.
+
+Every locally owned B raw file is covered by:
+
+```text
+artifacts/RAW_SHA256SUMS
+```
+
+The original package identities remain preserved:
 
 ```text
 Optimization-A control:
@@ -67,4 +90,4 @@ Optimization-B treatment:
 20260906-120822.zip  ded5cccecec5b157eaff73c2efcbd65d1db7af549f7ee07a69b2cd1edd264c7b
 ```
 
-Evidence state: **checksum-bound uploaded raw evidence; binary ZIP not mirrored**.
+Evidence state is **raw evidence complete for the B-owned treatment generation, with canonical control raw cross-referenced to the A case; file-level SHA256 covered**.

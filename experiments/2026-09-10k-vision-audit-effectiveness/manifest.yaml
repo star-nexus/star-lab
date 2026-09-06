@@ -2,115 +2,85 @@ experiment:
   id: 10k-vision-audit-effectiveness
   title: 10K Vision D Periodic Safety-Audit Effectiveness
   date: 2026-09-06
-  status: running_attribution_prepared_no_candidate_selected
+  status: closed_d1_causally_confirmed_keep_raw_mirror_pending
 
 source:
   repository: star-nexus/star
   production_branch: perf/10k-online
-  frozen_production_commit: 6896cdc0f3103a1de5fc6f3c5cb04913d146bf5b
-  retained_optimizations: [A, B, C1, C2a]
-  experiment_branch: experiment/phase5-vision-d-audit-effectiveness
-  probe_commit: e8a7eccaf182cefc5431610370a363e3e2644c23
-  analyzer_commit: 2e46dfd9691ac9343d30342900476df1cf3b5763
-  runner_commit: 88e5aa3bd1ec814038c0a25512fd48297667041a
-  detached_runtime_worktree: true
-  experiment_branch_runtime_diff_files:
-    - tools/phase5_vision_d_audit_effectiveness.py
-    - tools/phase5_vision_d_audit_effectiveness_analyze.py
-    - tools/run_phase5_vision_d_audit_effectiveness.sh
-
-runtime_source_guard:
-  rotk_env/systems/vision_system.py: b7d62aa2c70e0c8b1b9bd159156915ce2e6a6060
-  rotk_env/systems/window_vision_system.py: b54c523be1288467815961038c3ee18e7333ef4a
-  rotk_env/systems/window_movement_system.py: d1abc9b403ea10be7868044752c575f05823d062
-  rotk_env/utils/unit_spatial_index.py: 2c2fb26c6ae5f422516a6c3927049d8a78a72b32
-
-trigger:
-  frontier_case: 10k-100pct-30hz-frontier-confirmation
-  frontier_run_id: 20260906-203345
-  frontier_decision: FRONTIER_NOT_ESTABLISHED
-  full_motion_p99_ms:
-    - 33.94384032000002
-    - 34.04850867999998
-    - 34.04994710000002
-  gate_ms: 33.33
-  periodic_vision_audit_identified_as_repeatable_tail_blocker: true
-  audit_scan_max_ms:
-    - 4.282125
-    - 4.127375
-    - 4.239875
+  attribution_baseline_commit: 6896cdc0f3103a1de5fc6f3c5cb04913d146bf5b
+  retained_before_d1: [A, B, C1, C2a]
+  attribution_branch: experiment/phase5-vision-d-audit-effectiveness
+  attribution_probe_commit: e8a7eccaf182cefc5431610370a363e3e2644c23
+  attribution_analyzer_commit: 2e46dfd9691ac9343d30342900476df1cf3b5763
+  attribution_runner_commit: 88e5aa3bd1ec814038c0a25512fd48297667041a
+  d1_candidate_branch: experiment/phase5-vision-d-indexed-audit-boundary
+  d1_implementation_commit: 5f271d7e9ead40882dcc00c6c89f30284bde9f1e
+  d1_candidate_commit: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+  d1_closeout_branch: experiment/phase5-vision-d1-closeout
+  d1_closeout_runner_commit: f383d8d3453c513d698eefa83a058841e8a4c911
+  production_after_keep: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+  retained_after_d1: [A, B, C1, C2a, D1]
 
 scenario:
   name: chibi-144k-scale-10000
   sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
   resident_units: 10000
-  map_size: 120x120
-  map_tiles: 14400
   test_only_untracked_map: true
 
-workload:
-  seed: 42
-  phase_seed: 42
-  route_steps: 12
-  phase: staggered
-  fog: true
-  gc_policy: realtime_defer
-  minimap_dynamic_units: false
-  render: uncapped
-  hub: offline
-  mock_ai: false
-  execution_order:
-    - 00pct-moving
-    - 50pct-moving
-    - 100pct-moving-r1
-    - 100pct-moving-r2
-    - 100pct-moving-r3
+attribution:
+  run_id: 20260906-215357
+  periodic_audits: 14
+  entity_scans: 140000
+  prequeued_changed: 4623
+  audit_only_discoveries: 0
+  average_audit_ms_per_periodic: 4.127
+  classification: no_observed_semantic_contribution_under_canonical_indexed_workload
+  raw_mirror: pending
 
-measurement:
-  aggregate_frame_latency: diagnostic_only
-  primary_question: audit_only_semantic_discoveries
-  metrics:
-    - audit_invocations
-    - scanned_entities
-    - prequeued_current_changed
-    - audit_only_current_changed
-    - audit_only_missing_visibility
-    - audit_only_vision_dirty_flag
-    - audit_only_position_mismatch
-    - audit_only_range_mismatch
-    - audit_only_faction_mismatch
-    - audit_only_stale
-    - audit_only_total
-    - audit_effectiveness_ratio
-    - vision_audit_scan_cpu
+d1:
+  scope: indexed_window_periodic_full_world_vision_audit_boundary_only
+  preserved_semantics:
+    - force_all_bootstrap_reconciliation
+    - nonindexed_direct_write_safety_audit
+    - explicit_movement_invalidation
+    - unit_death_lifecycle_cleanup
+    - vision_fog_state_semantics
+  closeout:
+    run_id: 20260906-223546
+    control_commit: 6896cdc0f3103a1de5fc6f3c5cb04913d146bf5b
+    treatment_commit: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+    order: A50_B50_B100_A100
+    targeted_regressions_passed: 17
+    all_driver_cleanup_guards_passed: true
+    results:
+      50pct:
+        controlled_avg_ms: [24.367861087628864, 24.741382921465966]
+        controlled_p99_ms: [27.881938379999994, 26.429073799999983]
+        vision_avg_ms: [1.549070613402062, 1.5222309581151832]
+        audit_max_ms: [4.33125, 0.000791]
+        audit_scanned_max: [10000, 0]
+      100pct:
+        controlled_avg_ms: [31.018963681818178, 30.8578105483871]
+        controlled_p99_ms: [33.931152749999995, 32.49708128]
+        vision_avg_ms: [3.3954461688311692, 3.325438709677419]
+        audit_max_ms: [4.233291, 0.000959]
+        audit_scanned_max: [10000, 0]
+        control_gt_33_33ms_frames: 2
+        treatment_gt_33_33ms_frames: 0
+    decision: CAUSALLY_CONFIRMED_KEEP
+    zip_sha256: 455f1173a3cb904f3deeb779ed80dd68ffad82464b697e4f0137fcc0d2234860
+    raw_mirror: pending
 
-semantics:
-  periodic_indexed_audit_interval_frames: 60
-  force_all_bootstrap_must_remain_distinct: true
-  nonindexed_direct_write_safety_must_remain_distinct: true
-  explicit_movement_invalidation_exists: true
-  unit_death_dirty_event_exists: true
-
-interpretation:
-  zero_audit_only_discoveries:
-    classification: no_observed_semantic_contribution_under_canonical_indexed_workload
-    next_step: design_one_isolated_periodic_audit_boundary_candidate_then_uninstrumented_ab
-  nonzero_audit_only_discoveries:
-    classification: audit_masks_real_invalidation_contract_gap
-    next_step: trace_each_reason_and_repair_authoritative_invalidation_path_before_any_removal
-
-forbidden_during_attribution:
-  - remove_periodic_audit
-  - change_audit_interval
-  - refcount_representation
-  - set_diff_algorithm
-  - geometry_cache_policy
-  - movement_semantics
-  - rendering
-  - gc_policy
-  - native_parallel_rewrite
+frontier:
+  closeout_p99_is_supporting_only: true
+  formal_frontier_status: pending_post_d1_confirmation
+  gate_ms: 33.33
+  required_confirmation:
+    full_canonical_00_50_100_r1: true
+    three_100pct_runs_all_must_pass: true
+    median_or_majority_reinterpretation_forbidden: true
 
 methodology:
   rule: "先消灭错误复杂度，再重构必要复杂度"
 
-next_action: run_vision_d_audit_effectiveness_attribution
+next_action: run_post_d1_formal_frontier_confirmation

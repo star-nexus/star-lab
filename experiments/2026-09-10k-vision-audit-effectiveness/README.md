@@ -110,7 +110,7 @@ Tool identities:
 
 ```text
 probe commit                  e8a7eccaf182cefc5431610370a363e3e2644c23
-analyzer final commit         e0fbe5ae9f30bd1f4e709bc7aadc667d650b9eda
+analyzer final commit         2e46dfd9691ac9343d30342900476df1cf3b5763
 runner commit                 88e5aa3bd1ec814038c0a25512fd48297667041a
 ```
 

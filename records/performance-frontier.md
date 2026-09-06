@@ -74,6 +74,30 @@ while preserving the authoritative movement/Vision/Fog workload.
 
 The Core stress frontier therefore measures authoritative runtime capacity without letting this auxiliary presentation layer define the 60 Hz result. Full Interactive performance remains a separate concern.
 
+## Core 30Hz Canonical Frontier
+
+Phase 5 uses the same controlled-work timing plane but evaluates authoritative 10K Core Runtime capacity against the canonical 30 Hz budget:
+
+```text
+primary metric = controlled_work_frame_ms.p99
+30 Hz canonical budget = 33.33 ms
+Fog = ON
+MiniMap dynamic units = OFF
+phase = staggered
+GC = realtime_defer
+```
+
+Optimization A (`MovementSystem` lookup elimination) established the first archived 10K canonical pass:
+
+| Date | STAR source | Scenario | Resident | Moving | Density | Map | Controlled avg | Controlled P99 | 30Hz disposition | Evidence |
+|---|---|---|---:|---:|---:|---|---:|---:|---|---|
+| 2026-09-06 | `b9e0bb92b546b3283cb5c1d30a9a510d0c006ec2` | `chibi-144k-scale-10000` | 10000 | 5000 | 50% | 120×120 | **25.964 ms** | **29.447 ms** | **PASS** | [`50% point`](../experiments/2026-09-10k-movement-system-lookup/results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-041532/50pct-moving/point.json) |
+| 2026-09-06 | `b9e0bb92b546b3283cb5c1d30a9a510d0c006ec2` | `chibi-144k-scale-10000` | 10000 | 10000 | 100% | 120×120 | **34.180 ms** | **38.537 ms** | **FAIL — current capacity boundary** | [`100% point`](../experiments/2026-09-10k-movement-system-lookup/results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-041532/100pct-moving/point.json) |
+
+The 50% point is the validated 10K frontier pass. The 100% point is retained beside it because it defines the current same-source capacity boundary and the remaining optimization target.
+
+The later Optimization-B candidate is not a new frontier point: its directly modified path showed no measurable causal improvement and the implementation was reverted. The restored runtime tree at `7f72e352f95e20125c29502abd934f0f81a3e0f2` is byte-equivalent to the retained Optimization-A production tree.
+
 ## Frontier rules
 
 A new row never replaces an older row. This is a progression record, not a single current-best leaderboard.

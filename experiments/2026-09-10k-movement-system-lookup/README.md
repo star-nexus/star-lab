@@ -1,6 +1,6 @@
 # 10K MovementSystem Lookup Elimination
 
-**Status:** CLOSED — causal optimization retained  
+**Status:** CLOSED — causal optimization retained; raw evidence complete  
 **STAR repository:** `star-nexus/star`  
 **Branch at time:** `perf/10k-online`
 
@@ -50,6 +50,8 @@ Checkout the problem or fix SHA, provide the local test-only `rotk_env/maps/chib
 
 The map is intentionally test-only and is not part of the STAR release tree.
 
+For the attribution generation, checkout `497ca6ce...` and use the archived Phase-5.1 attribution tooling represented by run `20260906-033723`.
+
 ## Canonical result
 
 | Density | Baseline controlled avg | Fixed avg | Baseline P99 | Fixed P99 | 30 Hz |
@@ -70,14 +72,30 @@ Phase-5.1 attribution predicted approximately `5.55 ms/frame` for the repeated l
 
 Authoritative movement throughput remained approximately 20K committed transitions/s; the improvement did not come from reducing world evolution.
 
-## Evidence identity
+## Raw evidence
 
-Original uploaded run ZIPs are checksum-bound but not mirrored as binary files in STAR Lab by the current connector:
+The original extracted run trees are now mirrored in STAR Lab and are the canonical raw evidence for this case:
 
 ```text
-20260906-030632.zip  fdf86142f53a149cc81c0f419343200bdf46d7f1d20849ee0387806df696a6ab  problem baseline
-20260906-033723.zip  1978fbeb07dac6cdafebd20e22c1d5d954e5ad71cb0fe966178f4e61851f2089  attribution
-20260906-041532.zip  45319fef0499383a8888e638d12cc8693ce591c32475b40626012f00abd0c825  optimized production A/B
+results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-030632/
+results/raw/phase5-10k-attribution/chibi-144k-scale-10000/20260906-033723/
+results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-041532/
 ```
 
-The manifest and analysis preserve the exact metrics used for the decision. Evidence state is therefore **checksum-bound uploaded raw evidence; binary ZIP not mirrored** rather than `raw evidence complete`.
+Together they contain the problem baseline, causal attribution generation, and fixed production A/B. The archive includes per-point `point.json`, `profile.json`, logs/configuration, manifests, summaries, Git status/diff captures, and attribution summaries where applicable.
+
+Every mirrored raw file is covered by:
+
+```text
+artifacts/RAW_SHA256SUMS
+```
+
+The earlier ZIP-level identities remain preserved as source-package identities:
+
+```text
+20260906-030632.zip  fdf86142f53a149cc81c0f419343200bdf46d7f1d20849ee0387806df696a6ab
+20260906-033723.zip  1978fbeb07dac6cdafebd20e22c1d5d954e5ad71cb0fe966178f4e61851f2089
+20260906-041532.zip  45319fef0499383a8888e638d12cc8693ce591c32475b40626012f00abd0c825
+```
+
+The ZIP files themselves are not duplicated because the extracted raw files are now versioned directly. Evidence state is therefore **raw evidence complete; exact source provenance recorded; file-level SHA256 covered**.

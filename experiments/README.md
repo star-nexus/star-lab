@@ -10,6 +10,8 @@ Historical coverage of the 2026 performance campaign is tracked in [`../records/
 
 | Experiment | Status | Problem / question | Main conclusion | Evidence state |
 |---|---|---|---|---|
+| [`2026-09-10k-movement-system-lookup`](2026-09-10k-movement-system-lookup/) | **CLOSED — causal optimization retained** | Why did 10K dynamic movement make `AnimationSystem` scale so sharply? | A stable `MovementSystem` dependency was re-discovered once per mover; hoisting the lookup once/frame cut 100%-moving Animation avg `13.541 -> 7.770 ms` and moved 50% moving from 30Hz FAIL to PASS. | Exact source/run identities + checksum-bound uploaded raw ZIPs; binary ZIPs not mirrored. |
+| [`2026-09-10k-spatial-index-move-specialization`](2026-09-10k-spatial-index-move-specialization/) | **REJECTED — reverted negative result** | Would a position-specialized spatial-index update materially reduce the attributed ~3.19 ms full update cost? | No. Direct Animation avg changed only `7.770 -> 7.749 ms` at 100%; removable generic bookkeeping was negligible, so the added production complexity was reverted. | Exact A/B/rollback SHAs + checksum-bound uploaded raw ZIPs; binary ZIPs not mirrored. |
 | [`2026-09-dynamic-world-scaling`](2026-09-dynamic-world-scaling/) | **ARCHIVED — complete formal archive** | How did the controlled 5K Dynamic World workload evolve into the scale methodology used by later investigations? | V1/V2/V2.1 preserve the progression from formal density control through incremental Fog to rare-tail attribution. | 14 raw JSON runs + SHA256; exact source HEADs recovered for V1 `0f0d0a2`, V2 `571ea207`, V2.1 `916d88dc`. |
 | [`2026-09-realtime-gc`](2026-09-realtime-gc/) | **CLOSED — complete formal archive** | Why do rare UnitRender frames jump to ~50 ms? | Automatic CPython Gen2 GC ran inside the timed render section; bounded `realtime_defer` moved cyclic-GC maintenance outside the critical window. | AUTO/defer raw JSON recovered and SHA256-verified. |
 | [`2026-09-memory-retention`](2026-09-memory-retention/) | **CLOSED — raw evidence complete** | Why do RSS/tracked objects rise although full safe GC collects 0 and ECS/Vision caches are bounded? | Runtime retained historical visibility telemetry (up to 100 records/unit); scale/window now keeps the latest transition only. | Pre-fix 600s + post-fix 120s raw JSON recovered and SHA256-verified. Exact checkout SHA for the recovered post-fix run is not encoded and is documented rather than guessed. |
@@ -77,16 +79,14 @@ For source identity recovered from an external run-handoff record, archive the b
 
 ## Next performance work
 
-The Camera->Fog full-rebuild case and the unit-driven Fog/movement-continuity investigation are closed.
+Phase-5 10K Core Runtime is now operating from the retained MovementSystem-lookup optimization. The position-specialized spatial-index candidate is explicitly rejected and reverted.
 
-For future interactive hitches, classify the slow frame before opening a case:
+The next active causal line is:
 
 ```text
-input_event_pump dominated
-  -> known macOS/SDL platform-tail case; do not reopen without new attribution
-
-movement / Fog / Vision / Terrain / RenderEngine dominated
-  -> open a new subsystem case only when the measured signature is materially different
+Optimization C1
+Vision steady dirty path
+  -> geometry cache-hit path
 ```
 
-The next planned engineering phase is performance measurement/regression infrastructure, followed by system-scale frontier work across ENV / Hub / Protocol / Agent / rendering resource trade-offs.
+The geometry cache is already ~99.7% hit with no meaningful eviction pressure under the 10K workload, so the next question is not cache capacity. It is why a cache **hit** still consumes material per-dirty-unit CPU time.

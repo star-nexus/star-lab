@@ -2,7 +2,7 @@ experiment:
   id: 10k-vision-geometry-hit-path
   title: 10K Vision Geometry Cache-Hit Path
   date: 2026-09-06
-  status: closed_causally_confirmed_keep_raw_closeout_mirror_pending
+  status: closed_causally_confirmed_keep_raw_evidence_complete
 
 source:
   repository: star-nexus/star
@@ -108,10 +108,13 @@ closeout:
 evidence:
   attribution_raw_mirrored: true
   attribution_raw_file_count: 17
-  attribution_checksum_manifest: artifacts/RAW_SHA256SUMS
+  closeout_raw_mirrored: true
+  closeout_raw_file_count: 37
+  total_raw_file_count: 54
+  checksum_manifest: artifacts/RAW_SHA256SUMS
   closeout_summary: artifacts/CLOSEOUT_SUMMARY_20260906-183456.json
   closeout_uploaded_zip_sha256: edb940801a95d78b3f059190bb8ae62d75c5a3f9ce3778547c39156e09513c46
-  closeout_raw_mirror_pending: true
+  evidence_state: raw_complete_exact_source_provenance_file_level_sha256_covered
 
 frontier:
   creates_new_30hz_10k_100pct_point: false
@@ -120,4 +123,4 @@ frontier:
 headline:
   observation: "A ~99.7% geometry-cache hit path still resolved terrain bonus before lookup."
   result: "C1 saves ~1.0 us/visibility call and 0.869 ms/frame of Vision at 10K/100% moving with workload rates preserved."
-  decision_state: "CAUSALLY CONFIRMED / KEEP / CLOSED; closeout raw mirror pending."
+  decision_state: "CAUSALLY CONFIRMED / KEEP / CLOSED; raw evidence complete."

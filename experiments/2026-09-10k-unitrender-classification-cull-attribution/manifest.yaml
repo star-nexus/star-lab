@@ -2,7 +2,9 @@ experiment:
   id: 10k-unitrender-classification-cull-attribution
   title: Phase 5 10K UnitRender E Cull + Animation Classification Attribution
   date: 2026-09-07
-  status: running_preregistered_attribution_no_candidate_selected
+  status: closed_attribution_complete
+  formal_decision: SPECIALIZED_ANIMATION_DISPLACEMENT_API_CANDIDATE_JUSTIFIED
+  cull_status: NOT_CLOSED
 
 source:
   repository: star-nexus/star
@@ -13,22 +15,16 @@ source:
   branch_head: 0f3159e4694035d5399cc7a8ee151c0253f2d882
   runtime_from_detached_worktree: true
   runtime_diff_files: []
-  tool_files:
-    - tools/phase5_unitrender_classification_cull_attribution.py
-    - tools/phase5_unitrender_classification_cull_analyze.py
-    - tools/run_phase5_unitrender_classification_cull_attribution.sh
+  production_changed: false
 
-prior_evidence:
-  run_id: 20260907-024432
-  zip_sha256: 98161316609716e74a8beef443a2d1d94df33894fbfedc5ad0b4e89539514aa6
-  formal_decision: ANIMATED_SINGLE_PATH_DOMINANT_NEEDS_DECOMPOSITION
-  delta_00_to_100:
-    unitrender_ms: 2.9124870844
-    cull_ms: 0.7272205495
-    classification_ms: 1.7425103621
-    render_stage_ms: 0.2411340884
-  exact_raster_dedup_candidate: rejected
-  committed_hex_collapse_candidate: rejected
+artifact:
+  run_id: 20260907-032059
+  zip_sha256: 05e431a613f5237efa6a6da61541f82636ea28e0cc67aaeee20f2355c1a2863b
+  targeted_regressions: '14 passed in 0.42s'
+  all_driver_exit_codes_zero: true
+  all_cleanup_exit_codes_zero: true
+  all_guards_pass: true
+  raw_physical_mirror_pending: true
 
 runtime_source_guard:
   rotk_env/systems/animation_system.py: a0fea5453419cbb409287c72d5156208d280219f
@@ -41,68 +37,86 @@ scenario:
   name: chibi-144k-scale-10000
   sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
   resident_units: 10000
-  test_only_untracked_map: true
 
-workload:
-  points: [00pct-moving, 50pct-moving, 100pct-moving]
-  seed: 42
-  phase_seed: 42
-  route_steps: 12
-  phase: staggered
-  fog: true
-  gc_policy: realtime_defer
-  minimap_dynamic_units: false
-  render: uncapped
-  hub: offline
-  mock_ai: false
+result:
+  00pct-moving:
+    unitrender_avg_ms: 7.8843910599
+    cull_ms: 1.7150574457
+    cull_candidates: 8920.0
+    cull_us_per_candidate: 0.1922710141
+    classification_ms: 3.0040185918
+    helper_est_ms: 3.0386627036
+    generic_est_ms: 1.6496622529
+    direct_redundant_est_ms: 1.3748728946
+  50pct-moving:
+    unitrender_avg_ms: 10.0642768077
+    cull_ms: 2.2026073626
+    cull_candidates: 8938.93956044
+    cull_us_per_candidate: 0.2464058905
+    classification_ms: 4.2415480989
+    helper_est_ms: 4.3210713181
+    generic_est_ms: 2.6550043858
+    direct_redundant_est_ms: 1.0366295799
+  100pct-moving:
+    unitrender_avg_ms: 10.8705343446
+    cull_ms: 2.5127510946
+    cull_candidates: 8930.37162162
+    cull_us_per_candidate: 0.2813713920
+    classification_ms: 4.9533755608
+    helper_est_ms: 5.2055116677
+    generic_est_ms: 3.3251981982
+    direct_redundant_est_ms: 0.3791496632
+  delta_00_to_100:
+    cull_ms: 0.7976936489
+    classification_ms: 1.9493569691
+    cull_candidate_ratio: 1.00116273785
+    cull_volume_closure: 0.00249990985
+    cull_us_per_candidate_relative_change: 0.4634103501
 
-measurement:
-  aggregate_frame_latency: diagnostic_only
-  sample_period_calls: 192
-  sample_cohorts: [helper_total, generic_total, stage_detail]
-  cull_metrics:
-    - buckets
-    - candidates
-    - record_misses
-    - bounds_rejects
-    - fog_rejects
-    - visible
-    - unit_visible_cull_section_ms
-  classification_metrics:
-    - classification_ms
-    - classification_calls
-    - branch_static_ratio
-    - branch_move_ratio
-    - branch_attack_ratio
-    - helper_total_us_per_call
-    - generic_total_us_per_call
-    - inner_position_get
-    - attack_animation_get
-    - movement_animation_get
-    - static_hex_to_pixel
-    - movement_interpolation
-    - outer_second_position_get
-    - outer_second_base_hex_to_pixel
-    - compare_projection
-
-preregistered_decisions:
-  specialized_animation_displacement_api:
-    classification_growth_00_to_100_min_ms: 1.00
-    helper_estimated_cost_100_min_ms: 1.50
-    direct_redundant_cost_any_point_min_ms: 0.25
-    result_if_pass: SPECIALIZED_ANIMATION_DISPLACEMENT_API_CANDIDATE_JUSTIFIED
+preregistered_decision_checks:
+  classification_growth_00_to_100_min_ms:
+    threshold: 1.00
+    observed: 1.9493569691
+    pass: true
+  helper_estimated_cost_100_min_ms:
+    threshold: 1.50
+    observed: 5.2055116677
+    pass: true
+  direct_redundant_cost_any_point_min_ms:
+    threshold: 0.25
+    observed_max: 1.3748728946
+    pass: true
   cull_volume_explains_growth:
-    cull_growth_min_ms: 0.40
-    per_candidate_relative_change_max: 0.15
-    volume_closure_min: 0.70
-    volume_closure_max: 1.30
-    result_if_pass: CULL_VOLUME_EXPLAINS_GROWTH
-  if_helper_material_but_direct_redundancy_below_threshold:
-    result: ANIMATION_LOOKUP_REPRESENTATION_NEEDS_FURTHER_ATTRIBUTION
+    pass: false
+    reason: candidate volume unchanged while us_per_candidate rose 46.3_percent
 
-positive_attribution_is_not_production_keep: true
-raw_mirror_pending: true
-next_action: run_unitrender_e_attribution
+selected_candidate:
+  name: window_active_animation_render_position_api
+  scope: window_only
+  semantics:
+    attack_active: return_attack_world_pixel_position
+    movement_active: return_interpolated_world_pixel_position
+    no_active_animation: return_none
+    retain_renderer_epsilon_compare: true
+    preserve_attack_precedence: true
+    preserve_movement_interpolation: true
+    preserve_zero_displacement_behavior: true
+
+excluded_from_candidate:
+  - cull_or_fog_changes
+  - movement_animation_algorithm_changes
+  - attack_animation_algorithm_changes
+  - committed_hex_animation_collapse
+  - raster_draw_dedup
+  - render_engine_submit_changes
+  - native_or_parallel_rewrite
+
+diagnostic_issue:
+  controlled_frame_fields_emitted_zero: true
+  affects_formal_decision: false
+  fix_required_before_uninstrumented_ab: true
+
+next_action: implement_E1_then_targeted_semantic_regression_and_uninstrumented_same_session_AB
 
 methodology:
-  rule: "先区分必要工作量增长与错误抽象成本，再选择 candidate"
+  rule: '先区分必要工作量增长与错误抽象成本，再选择 candidate'

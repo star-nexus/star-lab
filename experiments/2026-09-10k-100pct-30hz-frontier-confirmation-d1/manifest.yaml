@@ -2,7 +2,7 @@ experiment:
   id: 10k-100pct-30hz-frontier-confirmation-d1
   title: Post-D1 10K / 100%-Moving 30Hz Frontier Confirmation
   date: 2026-09-06
-  status: running_preregistered_measurement_pending
+  status: closed_frontier_not_established
 
 source:
   repository: star-nexus/star
@@ -44,6 +44,7 @@ process_integrity:
   env_cleanup: exec_launcher_plus_captured_process_tree
   cleanup_failure_blocks_next_point: true
   targeted_regressions_before_measurement: true
+  all_point_guards_passed: true
 
 frontier:
   target: 10k_resident_10k_moving_fog_on_30hz
@@ -55,16 +56,21 @@ frontier:
     all_three_100pct_runs_must_pass: true
     median_only_reinterpretation_forbidden: true
     majority_only_reinterpretation_forbidden: true
-  decision_values:
-    pass: FRONTIER_ESTABLISHED_10K_100PCT_30HZ
-    fail: FRONTIER_NOT_ESTABLISHED
+  result:
+    run_id: 20260906-225405
+    decision: FRONTIER_NOT_ESTABLISHED
+    full_motion_p99_ms: [32.926, 33.348, 33.764]
+    full_motion_over_gate_counts: [1, 2, 4]
+    worst_headroom_ms: -0.434
+    zip_sha256: 2cdf93cd09db273dd18fab6753bdccbbeb0bba755860f7e11e741090061ff770
+    raw_mirror: pending
 
-trigger:
-  d1_case: 10k-vision-audit-effectiveness
-  d1_closeout_run_id: 20260906-223546
-  d1_decision: CAUSALLY_CONFIRMED_KEEP
-  d1_treatment_p99_ms: 32.49708128
-  d1_closeout_p99_was_formal_frontier_evidence: false
-  previous_frontier_confirmation_decision: FRONTIER_NOT_ESTABLISHED
+interpretation:
+  d1_reopened: false
+  periodic_audit_pulse_present: false
+  failure_mode: distributed_steady_state_margin
+  classification: margin_limited_not_pathology_limited
+  minimum_additional_margin_ms: 0.5
+  desirable_engineering_margin_ms: 1.0
 
-next_action: run_post_d1_frontier_confirmation
+next_action: run_c2b_faction_refcount_representation_attribution

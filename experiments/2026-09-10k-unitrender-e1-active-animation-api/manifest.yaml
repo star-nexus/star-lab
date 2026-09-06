@@ -2,7 +2,7 @@ experiment:
   id: 10k-unitrender-e1-active-animation-api
   title: Phase 5 10K UnitRender E1 Active-Animation API
   date: 2026-09-07
-  status: running_candidate_implemented_ab_preregistered
+  status: closed_do_not_keep
 
 source:
   repository: star-nexus/star
@@ -11,8 +11,9 @@ source:
   treatment_branch: experiment/phase5-unitrender-e1-active-animation-api
   treatment_sha: e186135dc25d34f51a77218e2105126be3180b3e
   closeout_branch: experiment/phase5-unitrender-e1-closeout
-  closeout_head_at_preregistration: aaaeacd226529e9b52a3bf37e31bf4a9379537ac
+  closeout_head: aaaeacd226529e9b52a3bf37e31bf4a9379537ac
   retained_optimizations: [A, B, C1, C2a, D1]
+  production_changed: false
 
 trigger:
   attribution_case: 10k-unitrender-classification-cull-attribution
@@ -47,17 +48,15 @@ semantic_invariants:
   - shared_headless_generic_api
 
 formal_ab:
+  run_id: 20260907-034626
   order: [A50, B50, B100, A100]
   scenario: chibi-144k-scale-10000
   scenario_sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
-  seed: 42
-  phase_seed: 42
-  route_steps: 12
-  fog: true
-  gc_policy: realtime_defer
-  minimap_dynamic_units: false
-  render: uncapped
-  hub: offline
+  zip_sha256: df141f6e643b6d251e187bd711c1cb9cb079d7ee621b3dce06211bce9b08a8ea
+  targeted_regressions: "20 passed in 0.42s"
+  all_driver_exit_zero: true
+  all_cleanup_exit_zero: true
+  all_guards_pass: true
   primary_local_metric: unitrender_inclusive_minus_unit_visible_cull_inclusive
 
 preregistered_keep_gates:
@@ -70,14 +69,27 @@ preregistered_keep_gates:
   controlled_avg_must_improve_100: true
   p99_diagnostic_only: true
 
-out_of_scope:
-  - cull_or_fog_optimization
-  - animation_state_representation_rewrite
-  - movement_animation_algorithm_change
-  - attack_animation_algorithm_change
-  - render_draw_dedup
-  - render_engine_submit_change
-  - native_or_parallel_rewrite
+results:
+  50pct_moving:
+    controlled_avg_ms: [24.1963201684, 23.5857714527]
+    controlled_p99_ms: [25.36936795, 24.65171]
+    unitrender_ms: [8.7802815102, 8.1610731692]
+    cull_ms: [1.9743337602, 1.9704211891]
+    non_cull_ms: [6.80594775, 6.1906519801]
+    non_cull_saving_ms: 0.6152957699
+    pass: true
+  100pct_moving:
+    controlled_avg_ms: [30.5286916561, 30.4711320955]
+    controlled_p99_ms: [32.121857, 32.01978304]
+    unitrender_ms: [9.5295068471, 9.5111658089]
+    cull_ms: [2.2489694331, 2.2644246688]
+    non_cull_ms: [7.280537414, 7.2467411401]
+    non_cull_saving_ms: 0.0337962739
+    pass: false
 
-next_action: run_targeted_regression_then_uninstrumented_same_session_ab
+formal_decision: DO_NOT_KEEP
+reason: candidate_accelerates_static_fast_return_but_delivers_negligible_full_motion_margin
+measurement_correction: fine_grained_e_stage_timers_inflated_short_operation_costs_uninstrumented_ab_is_authoritative
+cull_followup_status: NOT_CLOSED
+next_action: unitrender_e2_cull_attribution
 raw_mirror_pending: true

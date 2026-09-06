@@ -1,0 +1,5 @@
+variant=treatment
+density=0.5
+git_sha=6896cdc0f3103a1de5fc6f3c5cb04913d146bf5b
+scenario=chibi-144k-scale-10000
+socket=/tmp/star-phase5-c2a-49928-treatment-50.sock

@@ -1,0 +1,36 @@
+[
+  {
+    "added_tiles": 1396.4444444444443,
+    "changed_units": 279.2888888888889,
+    "density": "50pct-moving",
+    "explored_container_ms": 0.05109171726575953,
+    "explored_new_tiles": 10.355555555555556,
+    "explored_update_ms": 0.32974334660427,
+    "refcount_tile_ops": 2792.8888888888887,
+    "removed_tiles": 1396.4444444444443,
+    "set_diff_ms": 0.3883218778494805,
+    "union_call_ms": 1.62993294658092,
+    "union_transition_rate": 0.013367933304821233,
+    "union_transitions": 37.51111111111111,
+    "visible_tiles": 5306.488888888889,
+    "visible_to_added_ratio": 3.8,
+    "vision_ms": 3.3053171166666666
+  },
+  {
+    "added_tiles": 3758.1954887218044,
+    "changed_units": 751.6390977443609,
+    "density": "100pct-moving",
+    "explored_container_ms": 0.1376023850551155,
+    "explored_new_tiles": 16.270676691729324,
+    "explored_update_ms": 0.7008356172705149,
+    "refcount_tile_ops": 7516.390977443609,
+    "removed_tiles": 3758.1954887218044,
+    "set_diff_ms": 1.0289395133420114,
+    "union_call_ms": 3.99806075979644,
+    "union_transition_rate": 0.007861578218468111,
+    "union_transitions": 59.18796992481203,
+    "visible_tiles": 14281.142857142857,
+    "visible_to_added_ratio": 3.8,
+    "vision_ms": 8.160187962406015
+  }
+]

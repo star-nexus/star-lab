@@ -1,0 +1,7 @@
+density=0.5
+label=50pct-moving
+runtime_sha=4218b5368fbe2815b8512384e2c18b0af443ebfa
+scenario=chibi-144k-scale-10000
+socket=/tmp/star-phase5-c2-48368-50pct-moving.sock
+entity_sample_every=16
+tile_sample_every=64

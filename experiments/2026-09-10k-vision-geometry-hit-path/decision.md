@@ -2,13 +2,13 @@
 
 ## Decision state
 
-**ATTRIBUTED / OPEN — proceed with isolated Optimization C1 production implementation and controlled A/B.**
+**CANDIDATE IMPLEMENTED — local regression and uninstrumented production A/B pending.**
 
 Do not mark this optimization retained yet.
 
 ## Accepted candidate
 
-Change only the geometry-cache lookup ordering/key semantics so cache hits can bypass terrain-bonus resolution:
+The isolated Optimization C1 treatment has now been implemented in the window Vision path:
 
 ```text
 before:
@@ -24,7 +24,17 @@ key(center, base_range, terrain_revision)
   -> miss: terrain bonus -> effective range -> geometry
 ```
 
-## Why this candidate is accepted for testing
+Source identity:
+
+```text
+attribution runtime HEAD   ebf2dc5cfb74c16b83272b6e9cf23f29017efe88
+candidate implementation  b39eb592833a3413a002aac294cf4e46481f640a
+candidate + regressions   b9c63e9d626c9e21a1924121b91cedb116c1f2e1
+```
+
+The production change is intentionally scoped to `window_vision_system.py`, the exact runtime path used by the Phase-5 10K window workload. Shared union/refcount, audit scheduling, cache capacity, LRU policy, Animation, movement, spatial-index, rendering and GC code are unchanged.
+
+## Why this candidate was accepted for implementation
 
 The attribution run shows, at 10K / 100% moving:
 
@@ -38,7 +48,27 @@ miss geometry           0.079 ms/frame
 
 Terrain-bonus lookup is the largest measured `_visibility_for()` subcost and occurs before nearly every successful cache hit.
 
-This is materially different from rejected Optimization B: C1 now has a direct micro-attribution identifying the specific removable work before implementation.
+This is materially different from rejected Optimization B: C1 has a direct micro-attribution identifying the specific removable work before implementation.
+
+## Semantic contract
+
+For one `_terrain_revision`, terrain bonus is a deterministic function of `center`. Therefore `(center, base_range, terrain_revision)` uniquely determines the effective visibility geometry.
+
+The treatment relies on the existing terrain invalidation contract:
+
+```text
+terrain changes
+  -> VisionSystem.invalidate_all()
+  -> _terrain_revision += 1
+  -> geometry cache cleared
+  -> affected observers dirty
+  -> next cache miss re-reads terrain bonus
+```
+
+Focused regression tests now require:
+
+1. a second same-key cache hit performs zero additional terrain-bonus lookups;
+2. `invalidate_all()` changes revision, clears the cache, and forces the next lookup to re-read terrain bonus and recompute geometry.
 
 ## Constraints
 
@@ -79,4 +109,4 @@ Optimization B establishes the precedent:
 
 ## Next action
 
-Implement the key/order change with focused regression tests, then run the standard 0% / 50% / 100% Phase-5 10K Core controlled A/B against the retained Optimization-A production baseline.
+Run focused Vision regressions at `b9c63e9d...`, then execute the standard 0% / 50% / 100% uninstrumented Phase-5 10K Core controlled run. Compare treatment against the retained Optimization-A production baseline `20260906-041532`.

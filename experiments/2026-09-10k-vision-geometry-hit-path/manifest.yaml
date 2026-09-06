@@ -2,16 +2,23 @@ experiment:
   id: 10k-vision-geometry-hit-path
   title: 10K Vision Geometry Cache-Hit Path
   date: 2026-09-06
-  status: candidate_implemented_validation_pending
+  status: closeout_pre_registered_abba_pending
 
 source:
   repository: star-nexus/star
   branch_at_time: perf/10k-online
-  current_best_runtime_commit: 7f72e352f95e20125c29502abd934f0f81a3e0f2
+  retained_b_plus_c1_treatment_commit: 4218b5368fbe2815b8512384e2c18b0af443ebfa
+  c1_off_control_commit: 7b37f2d0823149042688059715342faf55c4fbb9
   attribution_probe_commit: 4938a0c81f2155022f5836b12d88294081ae79b2
   attribution_runner_commit: ebf2dc5cfb74c16b83272b6e9cf23f29017efe88
   candidate_implementation_commit: b39eb592833a3413a002aac294cf4e46481f640a
   candidate_test_commit: b9c63e9d626c9e21a1924121b91cedb116c1f2e1
+  closeout_runner_branch: experiment/phase5-c1-closeout
+  closeout_runner_head: 9ba2a766f2838570c7ecb77d4fd928ce9dbc5196
+  control_branch: experiment/phase5-c1-control
+  control_runtime_diff_from_treatment:
+    files: [rotk_env/systems/window_vision_system.py]
+    meaning: remove_only_c1_visibility_override
   production_runtime_changed_by_attribution_commits: false
 
 scenario:
@@ -38,17 +45,35 @@ workload:
   mock_ai: false
 
 measurement:
-  scope: VisionSystem._visibility_for cache-hit internals
+  attribution_scope: VisionSystem._visibility_for cache-hit internals
   attribution_sample_every: 16
   warmup_seconds: 5
   duration_seconds: 20
   sample_after_seconds: 7
-  aggregate_controlled_work_interpretation: diagnostic_only_due_to_probe_overhead
+  attribution_aggregate_controlled_work_interpretation: diagnostic_only_due_to_probe_overhead
+  closeout_order: [A50, B50, B100, A100]
+  closeout_control: retained_optimization_b_plus_c1_off
+  closeout_treatment: retained_optimization_b_plus_c1_on
+  direct_causal_metric: VisionSystem.inclusive_cpu_us_per_geometry_visibility_call
+  supporting_metric: controlled_work_frame_ms.avg
+  diagnostic_tail_metric: controlled_work_frame_ms.p99
+  canonical_30hz_gate_ms: 33.33
+  rate_tolerance_pct: 2.0
+  max_geometry_hit_rate_drop_pp: 0.5
+  min_vision_saving_us_per_visibility_call: 0.5
+  max_controlled_avg_regression_pct: 2.0
+  require_vision_avg_improvement_both_densities: true
+  require_100pct_controlled_avg_improvement: true
+  p99_is_diagnostic_not_keep_revert_gate: true
 
 run:
-  run_id: 20260906-124920
-  source_commit: ebf2dc5cfb74c16b83272b6e9cf23f29017efe88
-  raw_path: results/raw/phase5-vision-hit-attribution/chibi-144k-scale-10000/20260906-124920
+  attribution:
+    run_id: 20260906-124920
+    source_commit: ebf2dc5cfb74c16b83272b6e9cf23f29017efe88
+    raw_path: results/raw/phase5-vision-hit-attribution/chibi-144k-scale-10000/20260906-124920
+  production_closeout:
+    state: pending
+    results_root_in_star: results/phase5-c1-closeout
 
 attribution:
   density_50:
@@ -59,6 +84,7 @@ attribution:
     lru_touch_estimated_ms_avg: 0.0712704216542866
     miss_geometry_estimated_ms_avg: 0.04748437634408602
     measured_internal_sum_ms_avg: 0.6132430452104295
+    estimated_terrain_bonus_us_per_visibility_call: 1.3459441832734725
   density_100:
     visibility_calls_per_frame_avg: 704.1258741258741
     geometry_hit_rate_avg: 0.9970335685448937
@@ -68,6 +94,7 @@ attribution:
     miss_geometry_estimated_ms_avg: 0.07854635664335664
     measured_internal_sum_ms_avg: 1.3972316385584858
     terrain_bonus_share_of_measured_internal_sum: 0.6076358098910047
+    estimated_terrain_bonus_us_per_visibility_call: 1.205765899988244
 
 candidate:
   name: cache_lookup_before_terrain_bonus
@@ -76,11 +103,27 @@ candidate:
   treatment_key: [center, base_range, terrain_revision]
   hit_behavior: return_cached_geometry_without_terrain_bonus_lookup
   miss_behavior: resolve_terrain_bonus_then_compute_effective_geometry
-  semantic_precondition: terrain_change_increments_revision_and_clears_geometry_cache
+  current_runtime_terrain_semantics: immutable_after_map_initialization
+  current_map_system_behavior: one_shot_loader_update_is_noop
+  future_live_terrain_mutation_contract: must_invalidate_vision_geometry_revision_before_cached_result_reuse
   regression_contracts:
     - cache_hit_does_not_requery_terrain_bonus
     - terrain_invalidation_forces_bonus_requery_and_geometry_recompute
   production_ab_required: true
+
+closeout_acceptance:
+  all_driver_and_semantic_guards: pass
+  position_commits_per_s_delta_pct_abs_max: 2.0
+  vision_dirty_per_s_delta_pct_abs_max: 2.0
+  vision_scanned_per_s_delta_pct_abs_max: 2.0
+  geometry_calls_per_s_delta_pct_abs_max: 2.0
+  geometry_hit_rate_drop_pp_max: 0.5
+  geometry_evictions_both_variants: 0
+  min_vision_cpu_saving_us_per_visibility_call: 0.5
+  vision_avg_below_control_at_both_densities: true
+  controlled_avg_regression_pct_max: 2.0
+  require_100pct_controlled_avg_below_control: true
+  p99_used_as_diagnostic_only: true
 
 evidence:
   guards_passed: true
@@ -88,11 +131,14 @@ evidence:
   mirrored_raw_file_count: 17
   file_checksum_manifest: artifacts/RAW_SHA256SUMS
   exact_source_provenance_recorded: true
-  evidence_state: raw_attribution_evidence_complete_file_level_sha256_covered
+  production_closeout_pre_registered_before_measurement: true
+  production_closeout_raw_pending: true
+  evidence_state: raw_attribution_complete_closeout_preregistered_pending
 
 headline:
-  observation: "Geometry cache hits ~99.7% at 100% moving, yet every lookup resolves terrain bonus before consulting the cache."
+  observation: "Geometry cache hits ~99.7% at 100% moving, yet every control lookup resolves terrain bonus before consulting the cache."
   attribution: "Terrain-bonus lookup is ~0.849 ms/frame at 100% moving, ~60.8% of measured _visibility_for internals."
   candidate: "Move cache lookup ahead of terrain-bonus resolution by keying cached geometry on center/base-range/terrain-revision."
-  implementation: "Candidate implemented at b39eb592 with focused regressions added at b9c63e9d."
-  decision_state: "Implementation complete; local regression and uninstrumented controlled A/B pending."
+  semantic_audit: "Current production terrain is immutable after one-shot map initialization; future live terrain mutation must explicitly invalidate Vision geometry."
+  closeout: "Same-session ABBA pre-registered with exact B-retained control/treatment source states."
+  decision_state: "Production closeout pending."

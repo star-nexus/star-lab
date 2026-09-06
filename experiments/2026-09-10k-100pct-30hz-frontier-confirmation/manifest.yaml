@@ -1,0 +1,71 @@
+experiment:
+  id: 10k-100pct-30hz-frontier-confirmation
+  title: 10K / 100%-Moving 30Hz Frontier Confirmation
+  date: 2026-09-06
+  status: running_preregistered_measurement_pending
+
+source:
+  repository: star-nexus/star
+  production_branch: perf/10k-online
+  frozen_production_commit: 6896cdc0f3103a1de5fc6f3c5cb04913d146bf5b
+  retained_optimizations: [A, B, C1, C2a]
+  experiment_branch: experiment/phase5-10k-frontier-confirmation
+  analyzer_commit: 67b11e37ca80a45f885be251367285221344a3df
+  runner_commit: 276a2c6dc78a3007c9bb1da59f357034947703a7
+  runtime_from_detached_worktree: true
+  runtime_optimization_changes_allowed: false
+
+scenario:
+  name: chibi-144k-scale-10000
+  sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
+  resident_units: 10000
+  test_only_untracked_map: true
+
+workload:
+  seed: 42
+  phase_seed: 42
+  route_steps: 12
+  phase: staggered
+  fog: true
+  gc_policy: realtime_defer
+  minimap_dynamic_units: false
+  render: uncapped
+  hub: offline
+  mock_ai: false
+  points:
+    - 00pct-moving
+    - 50pct-moving
+    - 100pct-moving-r1
+    - 100pct-moving-r2
+    - 100pct-moving-r3
+
+process_integrity:
+  env_cleanup: exec_launcher_plus_captured_process_tree
+  cleanup_failure_blocks_next_point: true
+  fresh_env_each_point: true
+  targeted_regressions_before_measurement: true
+
+frontier:
+  target: 10k_resident_10k_moving_fog_on_30hz
+  canonical_metric: controlled_work_frame_ms.p99
+  gate_ms: 33.33
+  preregistered_rule:
+    all_point_guards_must_pass: true
+    canonical_00_50_100_r1_all_must_pass_gate: true
+    all_three_100pct_runs_must_pass_gate: true
+    median_only_reinterpretation_forbidden: true
+    majority_only_reinterpretation_forbidden: true
+  decision_values:
+    pass: FRONTIER_ESTABLISHED_10K_100PCT_30HZ
+    fail: FRONTIER_NOT_ESTABLISHED
+
+trigger:
+  source_experiment: 10k-vision-residual-c2
+  c2a_closeout_run_id: 20260906-200509
+  first_observed_crossing_p99_ms: 33.19879164000001
+  gate_ms: 33.33
+  observed_headroom_ms: 0.1312083599999896
+  previous_observation_was_formal_frontier_evidence: false
+  reason: c2a_closeout_preregistered_p99_as_diagnostic
+
+next_action: run_formal_frontier_confirmation

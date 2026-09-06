@@ -11,7 +11,7 @@ source:
   retained_optimizations: [A, B, C1, C2a]
   experiment_branch: experiment/phase5-vision-d-audit-effectiveness
   probe_commit: e8a7eccaf182cefc5431610370a363e3e2644c23
-  analyzer_commit: e0fbe5ae9f30bd1f4e709bc7aadc667d650b9eda
+  analyzer_commit: 2e46dfd9691ac9343d30342900476df1cf3b5763
   runner_commit: 88e5aa3bd1ec814038c0a25512fd48297667041a
   detached_runtime_worktree: true
   experiment_branch_runtime_diff_files:

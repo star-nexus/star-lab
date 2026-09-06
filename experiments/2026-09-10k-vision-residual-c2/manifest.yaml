@@ -1,8 +1,8 @@
 experiment:
   id: 10k-vision-residual-c2
-  title: 10K Vision Residual C2 Attribution
+  title: 10K Vision Residual C2
   date: 2026-09-06
-  status: running_attribution_prepared_no_candidate_selected
+  status: running_attribution_complete_c2a_selected_closeout_preregistered
 
 source:
   repository: star-nexus/star
@@ -11,12 +11,14 @@ source:
   optimization_a_retained: true
   optimization_b_retained: true
   optimization_c1_retained: true
-  experiment_branch: experiment/phase5-c2-attribution
-  probe_commit: 59b7bf86c2f1392436226e552894d2bce7142655
-  runner_commit: f1b16a949a9d4efab312d15a0bd10f42db079542
-  experiment_branch_runtime_diff_files:
-    - tools/phase5_vision_c2_attribution.py
-    - tools/run_phase5_vision_c2_attribution.sh
+  attribution_branch: experiment/phase5-c2-attribution
+  attribution_probe_commit: 59b7bf86c2f1392436226e552894d2bce7142655
+  attribution_runner_commit: f1b16a949a9d4efab312d15a0bd10f42db079542
+  c2a_implementation_commit: c95a5ce7b353a3d77c7cf6f8e2f5fb69933f94e1
+  c2a_candidate_regression_commit: 6896cdc0f3103a1de5fc6f3c5cb04913d146bf5b
+  c2a_closeout_branch: experiment/phase5-c2a-closeout
+  c2a_control_commit: 4218b5368fbe2815b8512384e2c18b0af443ebfa
+  c2a_treatment_commit: 6896cdc0f3103a1de5fc6f3c5cb04913d146bf5b
 
 runtime_source_guard:
   rotk_env/systems/vision_system.py: 6e9190ceb209e257e8f3f10bebe6eb571b8415b4
@@ -46,34 +48,100 @@ workload:
   hub: offline
   mock_ai: false
 
-sampling:
-  entity_sample_every: 16
-  tile_sample_every: 64
-  aggregate_frame_latency: diagnostic_only
+attribution:
+  run_id: 20260906-194311
+  uploaded_zip_sha256: c3b8202308a0f0eb80e694136e6316cb5ed74e9920645915d863cd5c6cf2efee
+  raw_mirror_pending: true
+  density_50:
+    vision_ms_per_frame: 3.3053171166666666
+    changed_units_per_frame: 279.2888888888889
+    set_diff_estimated_ms: 0.3883218778494805
+    union_wrapper_estimated_ms_instrumentation_inflated: 1.62993294658092
+    explored_container_ms: 0.05109171726575953
+    explored_update_ms: 0.32974334660427
+    explored_total_ms: 0.3808350638700295
+    visible_tiles_per_frame: 5306.488888888889
+    added_tiles_per_frame: 1396.4444444444443
+    removed_tiles_per_frame: 1396.4444444444443
+    refcount_tile_ops_per_frame: 2792.8888888888887
+    total_union_transitions_per_frame: 37.51111111111111
+    add_zero_to_one_transitions_per_frame: 21.716666666666665
+    union_transition_rate: 0.013367933304821233
+    actually_new_explored_tiles_per_frame: 10.355555555555556
+    visible_to_added_ratio: 3.8
+    predicted_explored_removable_us_per_changed_unit: 1.3635849243498818
+  density_100:
+    vision_ms_per_frame: 8.160187962406015
+    changed_units_per_frame: 751.6390977443609
+    set_diff_estimated_ms: 1.0289395133420114
+    union_wrapper_estimated_ms_instrumentation_inflated: 3.99806075979644
+    explored_container_ms: 0.1376023850551155
+    explored_update_ms: 0.7008356172705149
+    explored_total_ms: 0.8384380023256304
+    visible_tiles_per_frame: 14281.142857142857
+    added_tiles_per_frame: 3758.1954887218044
+    removed_tiles_per_frame: 3758.1954887218044
+    refcount_tile_ops_per_frame: 7516.390977443609
+    total_union_transitions_per_frame: 59.18796992481203
+    add_zero_to_one_transitions_per_frame: 35.17293233082707
+    union_transition_rate: 0.007861578218468111
+    actually_new_explored_tiles_per_frame: 16.270676691729324
+    visible_to_added_ratio: 3.8
+    predicted_explored_removable_us_per_changed_unit: 1.115545869843286
 
-scope:
-  measured:
-    - visibility_set_diff
-    - faction_union_refcount
-    - union_transition_rate
-    - explored_container_lookup
-    - explored_update
-    - visible_vs_added_tile_multiplicity
-    - actually_new_explored_tiles
-  explicitly_not_a_candidate_yet:
-    - explored_update_added_tiles_only
-    - refcount_representation_change
-    - set_diff_algorithm_change
+interpretation:
+  union_refcount:
+    status: necessary_bookkeeping_candidate_for_later_data_structure_work
+    note: only ~0.8-1.3 percent of refcount tile ops change faction visibility
+  set_diff:
+    status: material_but_semantically_useful
+  explored:
+    status: wrong_complexity_selected_for_c2a
+    current_behavior: explored_update_full_visible_set_per_changed_unit
+    selected_trigger: faction_visibility_refcount_zero_to_one
 
-hypotheses:
-  h1: faction_union_refcount_is_largest_residual_block
-  h2: visibility_set_diff_remains_material
-  h3: explored_update_reprocesses_monotonic_history
+c2a:
+  name: explored_history_on_faction_visibility_zero_to_one
+  implementation_scope:
+    - rotk_env/systems/vision_system.py
+    - dedicated regression test only
+  forbidden_changes:
+    - refcount_representation
+    - set_diff_algorithm
+    - geometry_cache
+    - audit_scheduling
+    - movement
+    - rendering
+  semantic_contract:
+    - bootstrap_exploration_matches_initial_faction_visibility
+    - shared_refcount_increment_does_not_touch_explored
+    - explored_history_never_removed_on_visibility_loss
+    - reentry_preserves_history
+    - faction_visibility_and_fog_journal_semantics_unchanged
+    - observation_and_fog_presentation_consumers_unchanged
 
-process_integrity:
-  env_cleanup: exec_launcher_plus_captured_process_tree
-  cleanup_failure_blocks_next_point: true
-  detached_runtime_worktree: true
-  probe_copied_into_runtime_worktree: true
+closeout:
+  execution_order: [A50, B50, B100, A100]
+  uninstrumented: true
+  process_cleanup: exec_launcher_plus_captured_process_tree
+  criteria:
+    rate_tolerance_pct: 2.0
+    faction_transition_tolerance_pct: 5.0
+    min_vision_saving_us_per_changed_unit: 0.4
+    max_geometry_hit_rate_drop_pp: 0.5
+    max_controlled_avg_regression_pct: 2.0
+    vision_avg_must_improve_both_densities: true
+    controlled_avg_100pct_must_improve: true
+    p99_diagnostic_not_keep_revert_gate: true
+  local_metric: VisionSystem_inclusive_cpu_us_per_changed_unit
+  decision_values:
+    keep: CAUSALLY_CONFIRMED_KEEP
+    otherwise: INCONCLUSIVE
 
-next_action: run_attribution_then_select_one_isolated_C2_candidate
+methodology:
+  rule: "先消灭错误复杂度，再重构必要复杂度"
+  next_if_c2a_closes:
+    - C2b faction_refcount_representation
+    - C2c visibility_set_diff_if_still_material
+
+next_action: run_c2a_same_session_closeout

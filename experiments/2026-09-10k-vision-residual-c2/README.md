@@ -1,6 +1,6 @@
-# 10K Vision Residual C2 Attribution
+# 10K Vision Residual C2
 
-**Status:** RUNNING — attribution prepared, no production candidate selected  
+**Status:** RUNNING — attribution complete; C2a selected and closeout preregistered  
 **STAR repository:** `star-nexus/star`  
 **Frozen production baseline:** `4218b5368fbe2815b8512384e2c18b0af443ebfa`
 
@@ -8,7 +8,7 @@
 
 After Optimization C1 removed the redundant terrain-bonus lookup from the ~99.7% geometry-cache hit path, what now dominates residual `VisionSystem` dirty-unit CPU at 10K scale?
 
-The attribution is deliberately limited to three remaining areas already visible in the production update loop:
+The attribution was deliberately limited to three remaining areas already visible in the production update loop:
 
 ```text
 old/new visibility set diff
@@ -31,81 +31,189 @@ visibility geometry
   -> explored.update(visible_tiles)
 ```
 
-The C2 attribution does not change production source. It mounts a process-local measurement implementation over the exact retained runtime in a detached worktree.
+## Attribution run
 
-## Pre-measurement hypotheses
+Canonical local run pending raw mirror:
 
-### H1 — union/refcount maintenance remains the largest residual block
+```text
+run_id                    20260906-194311
+runtime                   4218b5368fbe2815b8512384e2c18b0af443ebfa
+scenario SHA256           e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
+Fog                       ON
+MiniMap dynamic units     OFF
+GC                        realtime_defer
+50% / 100% moving         PASS guards
+ENV cleanup               PASS
+uploaded ZIP SHA256       c3b8202308a0f0eb80e694136e6316cb5ed74e9920645915d863cd5c6cf2efee
+```
 
-Every removed/added tile performs Python dict lookup/mutation even when the faction-visible union does not change. The probe measures both total refcount tile operations and the fraction that actually cause 0<->1 union transitions.
+### 50% moving
 
-### H2 — set-diff remains material
+```text
+Vision avg                         3.305 ms/frame
+changed units                    279.289 / frame
+set diff                           0.388 ms/frame
+union/refcount wrapper             1.630 ms/frame   (instrumentation-inflated)
+explored container + update        0.381 ms/frame
+visible tiles                    5306.489 / frame
+added / removed                  1396.444 / 1396.444
+refcount tile ops                2792.889 / frame
+faction union transitions          37.511 / frame
+union transition rate               1.337%
+add 0->1 transitions               21.717 / frame
+actually new explored tiles        10.356 / frame
+visible / added ratio                3.8x
+```
 
-Every changed unit allocates `old_tiles.difference(visible_tiles)` and `visible_tiles.difference(old_tiles)`. The probe measures the paired set-diff cost directly.
+### 100% moving
 
-### H3 — explored update contains redundant monotonic work
+```text
+Vision avg                         8.160 ms/frame
+changed units                    751.639 / frame
+set diff                           1.029 ms/frame
+union/refcount wrapper             3.998 ms/frame   (instrumentation-inflated)
+explored container + update        0.838 ms/frame
+visible tiles                   14281.143 / frame
+added / removed                  3758.195 / 3758.195
+refcount tile ops                7516.391 / frame
+faction union transitions          59.188 / frame
+union transition rate               0.786%
+add 0->1 transitions               35.173 / frame
+actually new explored tiles        16.271 / frame
+visible / added ratio                3.8x
+```
 
-`FogOfWar.explored_tiles[faction]` is monotonic, but production currently executes:
+The union wrapper timing is not treated as direct production cost because the C2 probe adds per-tile counters and sampled sub-probes inside that wrapper. Exact operation multiplicity is trusted; production retention still requires uninstrumented A/B.
+
+## Interpretation
+
+### H1 — union/refcount is structurally expensive, but mostly necessary bookkeeping
+
+At 100% moving, only ~`0.786%` of `7516` refcount tile operations actually change the faction-visible union. Roughly 99.2% maintain overlap multiplicity so the system knows when the last observer leaves a tile. This is a real data-structure problem, not obviously removable work.
+
+### H2 — set diff remains material but semantically useful
+
+The paired old/new set difference costs ~`0.39 ms` at 50% and ~`1.03 ms` at 100%. It computes the exact observer-private visibility delta and is therefore retained for a later C2 subproblem.
+
+### H3 — explored history contains clear wrong complexity
+
+`explored_tiles[faction]` is monotonic history, but production re-inserts every changed observer's full visible set.
+
+At 100% moving:
+
+```text
+explored input                  14281 tiles/frame
+add visibility delta            3758 tiles/frame
+faction 0->1 add transitions      35 tiles/frame
+actually new explored             16 tiles/frame
+```
+
+So only ~`0.114%` of the current explored input actually creates new history. Even `explored.update(added_tiles)` would still process far more candidates than necessary.
+
+The correct semantic trigger is the faction-level visibility transition:
+
+```text
+refcount 0 -> 1
+    => faction newly becomes able to see tile now
+    => tile must be in explored history
+```
+
+If `old > 0`, another same-faction observer already sees the tile, therefore that tile must already have entered explored history earlier.
+
+## C2a selected candidate
+
+C2a moves explored maintenance into `_add_tiles()` only when the faction tile refcount transitions `0 -> 1`, and removes the per-unit:
 
 ```python
 explored.update(visible_tiles)
 ```
 
-for every changed unit. The probe records:
+Candidate source identities:
 
 ```text
-visible tiles supplied to explored.update
-added visibility delta tiles already computed by set-diff
-actually new faction explored tiles
+implementation commit          c95a5ce7b353a3d77c7cf6f8e2f5fb69933f94e1
+candidate + regression HEAD    6896cdc0f3103a1de5fc6f3c5cb04913d146bf5b
+control                        4218b5368fbe2815b8512384e2c18b0af443ebfa
+closeout branch                experiment/phase5-c2a-closeout
 ```
 
-A future candidate such as `explored.update(added_tiles)` is **not accepted in advance**. It is only a hypothesis until attribution shows material redundant work and a semantic review proves equivalence.
+The candidate changes only explored-history maintenance. Refcount representation, set-diff, geometry, movement, rendering, audit scheduling, and cache policy are unchanged.
 
-## Measurement contract
+## C2a semantic contract
+
+The treatment must preserve:
+
+1. bootstrap explored history equals the initial faction-visible union;
+2. overlap refcount increments (`old > 0`) do not touch explored history;
+3. leaving visibility never removes explored history;
+4. re-entry into historically explored tiles is harmless;
+5. faction visibility and fog-journal transitions are unchanged;
+6. observation and fog presentation consumers see identical explored semantics.
+
+Targeted regressions include dedicated operation-level coverage plus existing Vision, observation, fog-presentation, and C1 geometry-path tests.
+
+## C2a production closeout — preregistered before measurement
+
+Same-session ABBA:
 
 ```text
-scenario                  chibi-144k-scale-10000
-scenario SHA256           e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
-resident units            10000
-moving densities          50% / 100%
-phase                     staggered
-seed / phase seed         42 / 42
-route steps               12
-Fog                       ON
-GC                        realtime_defer
-MiniMap dynamic units     OFF
-render                    uncapped
-hub                       offline
-runtime source            4218b5368...
-entity micro-sample       1 / 16
-tile micro-sample         1 / 64
+A50 -> B50 -> B100 -> A100
+A = 4218b536... retained A+B+C1 baseline
+B = 6896cdc... A+B+C1+C2a candidate
 ```
 
-The experiment runner must terminate the complete `uv -> Python/Pygame` process tree between points. A cleanup failure invalidates the point and blocks the next launch.
+Workload remains the canonical 10K Core configuration.
 
-## Tooling
-
-Prepared on STAR branch:
+### Workload preservation gates
 
 ```text
-experiment/phase5-c2-attribution
+all driver/semantic guards                PASS
+position commits/s                         +/-2%
+Vision dirty/s                             +/-2%
+Vision scanned/s                           +/-2%
+geometry calls/s                           +/-2%
+faction visible add/remove rates           +/-5%
+fog delta rate                             +/-5%
+geometry hit-rate drop                     <=0.5 pp
+geometry evictions                         0
 ```
 
-Tooling HEAD:
+### Causal local gate
+
+Normalize the uninstrumented `VisionSystem` inclusive cost by changed units:
 
 ```text
-f1b16a949a9d4efab312d15a0bd10f42db079542
+Vision CPU / changed unit
 ```
 
-Files:
+Attribution predicts removable explored container+update work of roughly:
 
 ```text
-tools/phase5_vision_c2_attribution.py
-tools/run_phase5_vision_c2_attribution.sh
+50%   ~1.36 us / changed unit
+100%  ~1.12 us / changed unit
 ```
 
-The experiment branch differs from the frozen production runtime only by these two measurement files.
+The preregistered retention floor is intentionally conservative:
 
-## Interpretation boundary
+```text
+saving >= 0.4 us / changed unit
+Vision avg/frame improves at both densities
+```
 
-Instrumented aggregate `controlled_work_frame_ms` is diagnostic only. C2 attribution is used to rank removable residual work and quantify operation multiplicity. Any production optimization selected from this case must be implemented alone and validated with an uninstrumented controlled A/B before retention.
+### Whole-system supporting gate
+
+```text
+controlled avg regression <=2%
+100% controlled avg must improve
+P99 is diagnostic only, not a KEEP/REVERT gate
+```
+
+Decision is `CAUSALLY_CONFIRMED_KEEP` only if both densities pass all preregistered checks.
+
+## Methodological rule
+
+C2 follows the same rule used for A/B/C1:
+
+> **先消灭错误复杂度，再重构必要复杂度。**
+
+C2a removes redundant monotonic-history work first. Only after C2a is closed should C2b revisit the necessary faction-refcount representation, followed by C2c set-diff if evidence still warrants it.

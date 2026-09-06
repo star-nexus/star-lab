@@ -11,17 +11,29 @@ source:
   retained_optimizations: [A, B, C1, C2a, D1]
   c2b1_in_production: false
   experiment_branch: experiment/phase5-c2c-delta-multiplicity
-  branch_head: f73077b465f070e0d0b6f3a3a5fbe1935e718b36
+  branch_head: 4d0c0cf83ee8d3b486615acad47bb55e0253bf3d
   probe_commit: 95040029300d49cdebb41999cd8af806eea6c6dc
   analyzer_commit_initial: 161d598761c3f4339f9a9687239d1a076c13079b
-  runner_commit: 8410790eeb93cb7a72a227e51aac120f79fb4198
+  runner_commit_initial: 8410790eeb93cb7a72a227e51aac120f79fb4198
   analyzer_preregistered_gates_commit: f73077b465f070e0d0b6f3a3a5fbe1935e718b36
+  runner_commit: 4d0c0cf83ee8d3b486615acad47bb55e0253bf3d
   runtime_from_detached_worktree: true
   runtime_diff_files: []
   tool_files:
     - tools/phase5_vision_c2c_delta_multiplicity.py
     - tools/phase5_vision_c2c_delta_multiplicity_analyze.py
     - tools/run_phase5_vision_c2c_delta_multiplicity.sh
+
+pre_measurement_tooling_fix:
+  observed_after_targeted_regressions_before_any_measurement_point: true
+  original_error: "run_point local declaration expanded point_dir using label before label assignment under set -u"
+  fix: "split density, label, point_dir and cleanup_rc local declarations into sequential statements"
+  commit: 4d0c0cf83ee8d3b486615acad47bb55e0253bf3d
+  measurement_data_produced_before_fix: false
+  probe_changed: false
+  analyzer_changed: false
+  preregistered_thresholds_changed: false
+  production_runtime_changed: false
 
 runtime_source_guard:
   rotk_env/systems/vision_system.py: b7d62aa2c70e0c8b1b9bd159156915ce2e6a6060

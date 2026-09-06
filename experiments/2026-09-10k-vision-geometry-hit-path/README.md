@@ -1,54 +1,18 @@
 # 10K Vision Geometry Cache-Hit Path
 
-**Status:** ATTRIBUTED — C1 implemented; same-session ABBA closeout pre-registered and pending  
+**Status:** CLOSED — CAUSALLY CONFIRMED / KEEP; raw closeout mirror pending  
 **STAR repository:** `star-nexus/star`  
-**Branch at time:** `perf/10k-online`
+**Production treatment:** `4218b5368fbe2815b8512384e2c18b0af443ebfa`
 
-## Purpose
+## Question
 
-This case continues Phase-5 10K Core Runtime optimization after Optimization A and Optimization B were both causally confirmed and retained.
+Why does Vision still spend material CPU in `_visibility_for()` when the geometry cache already hits about 99.7% of lookups?
 
-The question is deliberately narrow:
+## Attribution
 
-> Why does the Vision geometry path still consume material CPU time when the geometry cache already hits about 99.7% of lookups?
+The measurement-only C1 probe isolated the geometry hit path.
 
-The investigation does **not** revisit geometry-cache capacity. The earlier Vision-cache case already established that the 16,384-entry window cache has sufficient headroom and does not evict under this workload.
-
-## Source state
-
-At closeout pre-registration:
-
-- Retained B+C1 production tree / treatment: `4218b5368fbe2815b8512384e2c18b0af443ebfa`
-- Exact C1-off control derived from that tree: `7b37f2d0823149042688059715342faf55c4fbb9`
-- C1 implementation origin: `b39eb592833a3413a002aac294cf4e46481f640a`
-- C1 focused regression origin: `b9c63e9d626c9e21a1924121b91cedb116c1f2e1`
-- C1 measurement-only probe source: `4938a0c81f2155022f5836b12d88294081ae79b2`
-- Attribution runner / measured HEAD: `ebf2dc5cfb74c16b83272b6e9cf23f29017efe88`
-- Closeout runner branch HEAD: `9ba2a766f2838570c7ecb77d4fd928ce9dbc5196`
-
-The control is intentionally based on the retained B runtime and differs from the treatment in one runtime file only: `rotk_env/systems/window_vision_system.py`, where the C1 `_visibility_for()` override is removed. This prevents Optimization B from confounding the C1 result.
-
-## Workload
-
-```text
-scenario              chibi-144k-scale-10000
-resident units        10000
-moving points         5000 / 10000
-phase                  staggered
-seed / phase seed      42 / 42
-route steps            12
-Fog                    ON
-GC                     realtime_defer
-MiniMap dynamic units  OFF
-render                  uncapped
-probe sampling          1 / 16 for attribution only
-```
-
-All recorded driver guards passed in the archived attribution run.
-
-## Attribution result
-
-### 50% moving
+At 50% moving:
 
 ```text
 visibility calls/frame       269.80
@@ -57,10 +21,9 @@ terrain bonus lookup         0.363 ms/frame
 cache dictionary get         0.131 ms/frame
 LRU touch                    0.071 ms/frame
 miss geometry                0.047 ms/frame
-measured hit/miss internals  0.613 ms/frame
 ```
 
-### 100% moving
+At 100% moving:
 
 ```text
 visibility calls/frame       704.13
@@ -69,105 +32,146 @@ terrain bonus lookup         0.849 ms/frame
 cache dictionary get         0.310 ms/frame
 LRU touch                    0.160 ms/frame
 miss geometry                0.079 ms/frame
-measured hit/miss internals  1.397 ms/frame
 ```
 
-At 100% moving, the terrain-bonus lookup alone is about **60.8%** of the measured `_visibility_for()` internals. Cache lookup is ~22.2%, LRU touch ~11.4%, and actual miss geometry only ~5.6%.
+Terrain-bonus resolution was ~60.8% of the measured `_visibility_for()` internals at 100% moving even though almost every call hit the geometry cache.
 
-This is the opposite of a cache-capacity problem: almost all calls hit, and the largest measured cost occurs **before the hit can be used**.
+## Optimization C1
 
-## Candidate Optimization C1
-
-Current control lookup shape:
+Before:
 
 ```text
-terrain bonus lookup
+terrain bonus
   -> effective range
   -> key(center, effective_range, terrain_revision)
-  -> cache get
+  -> cache lookup
   -> hit
 ```
 
-Treatment shape:
+After:
 
 ```text
 key(center, base_range, terrain_revision)
-  -> cache get
-  -> hit: return immediately
-  -> miss: resolve terrain bonus, compute effective range, generate geometry
+  -> cache lookup
+  -> hit: return cached geometry immediately
+  -> miss: terrain bonus -> effective range -> geometry
 ```
 
-### Terrain semantic invariant
-
-A source audit before closeout corrected an earlier assumption in this case. The current production runtime does **not** contain live terrain mutation that already calls `VisionSystem.invalidate_all()`; instead, `MapSystem` is a one-shot loader that creates terrain during `initialize()` and performs no terrain mutation during `update()`.
-
-Therefore the actual current invariant is:
+Implementation:
 
 ```text
-terrain type/effects are world-lifetime stable in the production runtime
+b39eb592833a3413a002aac294cf4e46481f640a
+test: b9c63e9d626c9e21a1924121b91cedb116c1f2e1
 ```
 
-Under that invariant, C1 is semantically safe. If future gameplay introduces live terrain or LOS-rule mutation, that feature must establish an explicit Vision invalidation contract (including `invalidate_all()` / terrain-revision change) before C1's cached result may remain valid across the mutation.
-
-## Pre-registered production closeout
-
-The production closeout is intentionally same-session and counterbalanced:
+The current retained production tree also includes Optimization B and resolves to:
 
 ```text
-A50 -> B50 -> B100 -> A100
-
-A = retained Optimization B + C1 OFF
-B = retained Optimization B + C1 ON
+4218b5368fbe2815b8512384e2c18b0af443ebfa
 ```
 
-Exact states:
+## Semantic contract
+
+A later source audit corrected the original wording around terrain invalidation.
+
+Current production STAR has no live terrain mutation after `MapSystem.initialize()`. Terrain is therefore world-lifetime immutable for this runtime. Under that current contract, `(center, base_range, terrain_revision)` safely identifies the already-computed geometry.
+
+If live LOS-affecting terrain mutation is introduced later, it must establish the explicit contract:
 
 ```text
-A/control    7b37f2d0823149042688059715342faf55c4fbb9
-B/treatment  4218b5368fbe2815b8512384e2c18b0af443ebfa
+terrain mutation
+  -> VisionSystem.invalidate_all()
+  -> terrain_revision++
+  -> geometry cache clear
+  -> dirty observers recompute
 ```
 
-Acceptance criteria were frozen before measurement:
+C1 must be revisited if that contract changes.
+
+## Same-session closeout
+
+Run:
 
 ```text
-all driver / semantic guards                         PASS
-position commits/s A<->B                             within 2%
-Vision dirty/s A<->B                                 within 2%
-Vision scanned/s A<->B                               within 2%
-geometry lookup calls/s A<->B                        within 2%
-geometry hit-rate drop                               <= 0.5 percentage points
-geometry evictions                                   zero in both variants
-Vision inclusive CPU saving                         >= 0.5 us / visibility call
-Vision avg/frame                                     B < A at both densities
-controlled avg                                       no >2% regression
-100% moving controlled avg                           B < A
-P99                                                  diagnostic, not sole keep/revert gate
+20260906-183456
+control SHA    7b37f2d0823149042688059715342faf55c4fbb9
+treatment SHA  4218b5368fbe2815b8512384e2c18b0af443ebfa
+order          A50 -> B50 -> B100 -> A100
+scenario SHA   e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
 ```
 
-The direct normalized metric is `VisionSystem` inclusive CPU per geometry visibility call. Attribution predicts roughly 1.2–1.35 us/call of terrain-bonus work before implementation overhead, so the 0.5 us/call floor deliberately requires a material but conservative causal win.
+All four driver guards passed, all four ENV cleanup exit codes were zero, and the treatment's focused regressions reported `15 passed in 0.05s`.
 
-The closeout runner reuses the process-tree cleanup discipline established during Optimization B, so no subsequent point may start while a captured ENV process remains alive.
-
-## Raw evidence
-
-Canonical raw attribution evidence is mirrored directly in:
+### 50% moving
 
 ```text
-results/raw/phase5-vision-hit-attribution/chibi-144k-scale-10000/20260906-124920/
+controlled avg              27.248 -> 26.992 ms   (-0.94%)
+controlled p95              28.503 -> 28.455 ms
+controlled p99              30.803 -> 31.146 ms   diagnostic tail only
+
+Vision avg                   2.487 -> 2.158 ms     (-13.24%)
+Vision CPU / visibility      8.634 -> 7.555 us
+saved / visibility call                        1.079 us
+
+position commits/s delta                        -0.040%
+Vision dirty/s delta                            +0.026%
+Vision scan/s delta                             +0.026%
+geometry-call/s delta                           +0.026%
+hit-rate delta                                  -0.005 pp
+evictions                                       0 -> 0
 ```
 
-It contains both 50% and 100% moving points, including `point.json`, `profile.json`, `attribution-summary.json`, logs/configuration, manifest, Git status, and Git diff capture.
-
-Every mirrored attribution file is covered by:
+### 100% moving
 
 ```text
-artifacts/RAW_SHA256SUMS
+controlled avg              35.969 -> 35.185 ms   (-2.18%)
+controlled p95              37.856 -> 36.887 ms
+controlled p99              39.097 -> 41.805 ms   diagnostic tail only
+
+Vision avg                   5.629 -> 4.760 ms     (-15.44%)
+Vision CPU / visibility      7.499 -> 6.474 us
+saved / visibility call                        1.025 us
+
+position commits/s delta                        -0.001%
+Vision dirty/s delta                            -0.037%
+Vision scan/s delta                             -0.037%
+geometry-call/s delta                           -0.037%
+hit-rate delta                                  +0.008 pp
+evictions                                       0 -> 0
 ```
 
-Evidence state: **raw attribution evidence complete; production closeout pre-registered; closeout raw pending**.
+The direct local saving is almost exactly the expected scale from attribution. The 100% Vision reduction (`0.869 ms/frame`) matches the attributed terrain-bonus cost (`~0.849 ms/frame`) particularly closely.
 
-## Interpretation boundary
+The 100% controlled-work P99 worsened in this one ABBA sample, but P99 was preregistered as diagnostic rather than a KEEP/REVERT gate. The treatment improves controlled average and P95, and Vision's own average and P99 both improve; workload rates and cache semantics remain unchanged. The isolated whole-frame tail therefore does not contradict the local causal result.
 
-The attribution runner adds timing probes, so its aggregate `controlled_work_frame_ms` values are diagnostic and must **not** be used as the C1 production speedup.
+## Decision
 
-The production decision will come only from the uninstrumented same-session ABBA above. Until that run passes the pre-registered criteria, C1 remains a candidate rather than a causally closed optimization.
+```text
+Optimization C1
+Vision geometry cache-hit terrain bypass
+
+CAUSALLY CONFIRMED
+KEEP
+CLOSED
+```
+
+This optimization does not establish a new 10K / 100%-moving 30Hz frontier point because the canonical P99 gate remains above 33.33 ms.
+
+## Evidence
+
+Canonical attribution evidence is already mirrored under this case.
+
+The final same-session closeout generation `20260906-183456` has been independently inspected from the uploaded ZIP:
+
+```text
+ZIP SHA256
+edb940801a95d78b3f059190bb8ae62d75c5a3f9ce3778547c39156e09513c46
+```
+
+A machine-readable independently recomputed summary is archived at:
+
+```text
+artifacts/CLOSEOUT_SUMMARY_20260906-183456.json
+```
+
+Formal raw closeout mirroring into `results/raw/phase5-c1-closeout/.../20260906-183456/` is pending. Once mirrored, extend `artifacts/RAW_SHA256SUMS` to cover it.

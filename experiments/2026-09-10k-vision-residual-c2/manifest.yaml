@@ -1,0 +1,79 @@
+experiment:
+  id: 10k-vision-residual-c2
+  title: 10K Vision Residual C2 Attribution
+  date: 2026-09-06
+  status: running_attribution_prepared_no_candidate_selected
+
+source:
+  repository: star-nexus/star
+  production_branch: perf/10k-online
+  frozen_runtime_commit: 4218b5368fbe2815b8512384e2c18b0af443ebfa
+  optimization_a_retained: true
+  optimization_b_retained: true
+  optimization_c1_retained: true
+  experiment_branch: experiment/phase5-c2-attribution
+  probe_commit: 59b7bf86c2f1392436226e552894d2bce7142655
+  runner_commit: f1b16a949a9d4efab312d15a0bd10f42db079542
+  experiment_branch_runtime_diff_files:
+    - tools/phase5_vision_c2_attribution.py
+    - tools/run_phase5_vision_c2_attribution.sh
+
+runtime_source_guard:
+  rotk_env/systems/vision_system.py: 6e9190ceb209e257e8f3f10bebe6eb571b8415b4
+  rotk_env/systems/window_vision_system.py: b54c523be1288467815961038c3ee18e7333ef4a
+  rotk_env/systems/window_movement_system.py: d1abc9b403ea10be7868044752c575f05823d062
+  rotk_env/utils/unit_spatial_index.py: 2c2fb26c6ae5f422516a6c3927049d8a78a72b32
+
+scenario:
+  name: chibi-144k-scale-10000
+  sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
+  test_only_untracked_map: true
+  resident_units: 10000
+  map_size: 120x120
+  map_tiles: 14400
+
+workload:
+  moving_units: [5000, 10000]
+  densities: [0.5, 1.0]
+  seed: 42
+  phase_seed: 42
+  route_steps: 12
+  phase: staggered
+  fog: true
+  gc_policy: realtime_defer
+  minimap_dynamic_units: false
+  render: uncapped
+  hub: offline
+  mock_ai: false
+
+sampling:
+  entity_sample_every: 16
+  tile_sample_every: 64
+  aggregate_frame_latency: diagnostic_only
+
+scope:
+  measured:
+    - visibility_set_diff
+    - faction_union_refcount
+    - union_transition_rate
+    - explored_container_lookup
+    - explored_update
+    - visible_vs_added_tile_multiplicity
+    - actually_new_explored_tiles
+  explicitly_not_a_candidate_yet:
+    - explored_update_added_tiles_only
+    - refcount_representation_change
+    - set_diff_algorithm_change
+
+hypotheses:
+  h1: faction_union_refcount_is_largest_residual_block
+  h2: visibility_set_diff_remains_material
+  h3: explored_update_reprocesses_monotonic_history
+
+process_integrity:
+  env_cleanup: exec_launcher_plus_captured_process_tree
+  cleanup_failure_blocks_next_point: true
+  detached_runtime_worktree: true
+  probe_copied_into_runtime_worktree: true
+
+next_action: run_attribution_then_select_one_isolated_C2_candidate

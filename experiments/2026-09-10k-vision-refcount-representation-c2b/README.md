@@ -1,6 +1,6 @@
-# 10K Vision C2b — Faction Refcount Representation Attribution
+# 10K Vision C2b — Faction Refcount Representation
 
-**Status:** RUNNING — attribution prepared; no production candidate selected  
+**Status:** RUNNING — attribution complete; C2b-1 selected; closeout preregistered  
 **STAR repository:** `star-nexus/star`  
 **Frozen production runtime:** `17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a`
 
@@ -13,143 +13,141 @@ FRONTIER_NOT_ESTABLISHED
 100% P99 = 32.926 / 33.348 / 33.764 ms
 ```
 
-D1 remains `CAUSALLY CONFIRMED / KEEP / CLOSED`; the periodic ~4ms audit pulse is gone. The remaining failure is distributed steady-state margin, not a new isolated pathology. The system needs roughly `0.5 ms` minimum and preferably about `1 ms` of engineering margin.
+D1 remains `CAUSALLY CONFIRMED / KEEP / CLOSED`; the periodic ~4ms audit pulse is gone. The remaining failure is distributed steady-state margin, so C2b is the first explicit necessary-complexity representation case.
 
-This marks the transition from removing clearly wrong complexity to optimizing **necessary complexity**.
-
-## Question
-
-Vision faction visibility must know when observer overlap changes:
+## Attribution run
 
 ```text
-3 -> 2 -> 1 -> 0
+run_id: 20260906-232805
+runtime: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+points: 0% / 50% / 100% moving
+all guards: PASS
 ```
 
-so the overlap refcount bookkeeping itself cannot simply be deleted. Current production represents it as:
+The low-overhead probe avoided per-tile timers. Whole `_add_tiles/_remove_tiles` calls were sampled 1/128 and structural refcount snapshots were taken every 120 frames.
+
+### 100%-moving result
+
+```text
+refcount ops/frame:                 6588.9
+refcount ops/s:                   199916
+sampled add/remove path:             1.371 ms/frame
+union transition rate:               0.786%
+no-transition add/remove:             0.200 / 0.206 us/tile
+active entries:                     13820
+refcount mass:                      190000
+mean refcount:                       13.75
+max refcount:                        33
+count == 1:                           6.9%
+count <= 3:                          14.3%
+count >= 16:                       6711 entries
+active / faction×bbox slots:         32.0%
+outside real map:                   539
+outside rectangular bbox:           539
+dict-table shallow bytes:            576.2 KiB
+```
+
+50% moving independently showed ~100k refcount ops/s and ~0.651 ms/frame sampled path cost, consistent with an approximately linear high-frequency bookkeeping path.
+
+## Interpretation
+
+The overlap refcount itself is necessary: Vision must distinguish `3 -> 2 -> 1 -> 0`. However, ~99.2% of full-motion refcount operations do not create a faction-union transition and therefore primarily maintain overlap multiplicity.
+
+The current representation is:
 
 ```python
 Dict[Faction, Dict[(col, row), int]]
 ```
 
-C2b asks:
+The domain is not strictly map-bounded. Current Vision geometry deliberately emits off-map visibility coordinates, and the attribution observed ~4% of active refcount keys outside the 120x120 map bounding box. Therefore a pure map-only dense array would change semantics and is rejected.
 
-> Is Python tuple-keyed sparse-dict representation unnecessarily expensive for this bounded 120x120 world, and what representation constraints must a safer candidate satisfy?
+The observed max refcount of 33 is not a semantic upper bound, so fixed-width `uint8/uint16` storage is also not selected.
 
-## Frozen runtime
+## Selected candidate — C2b-1
 
-```text
-perf/10k-online
-17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
-= A + B + C1 + C2a + D1
-```
-
-STAR experiment branch:
+One candidate only:
 
 ```text
-experiment/phase5-c2b-refcount-representation
+Window VisionSystem
+
+inside rectangular MapData bbox
+    -> per-faction dense list[int]
+
+off-bbox visibility coordinates
+    -> per-faction sparse Dict[(col,row), int]
 ```
 
-The branch is based on exact production and adds measurement tooling only:
+Shared/headless `VisionSystem` keeps the original dict representation unchanged. The window specialization overrides only the refcount aggregation path while preserving shared visibility transitions, explored history and fog-journal semantics.
+
+STAR candidate branch:
 
 ```text
-tools/phase5_vision_c2b_refcount_representation.py
-tools/phase5_vision_c2b_refcount_representation_analyze.py
-tools/run_phase5_vision_c2b_refcount_representation.sh
+experiment/phase5-c2b1-dense-core-refcount
+implementation commit: 54d7059a0fdddcc8b8e23edb9c7453f7cf2cc044
+candidate + tests:     9d70c48f9b7b63ca19314b07f84ee77f79a7952c
 ```
 
-Tool commits:
+Candidate diff from production is limited to:
 
 ```text
-probe     03616c220e02bb33ecdf5b5f5dcbd85ff06d8bf5
-analyzer  a92fb0829c9beac09d2486a19297dacfe1b5a606
-runner    a1a308e1742e374a85873b6d84e0fe03585272ab
+rotk_env/systems/window_vision_system.py
+rotk_env/tests/test_window_vision_dense_refcount.py
 ```
 
-No production source file is modified on the experiment branch.
-
-## Why this probe is different from the old C2 probe
-
-The previous C2 attribution used per-tile microtiming to decompose dict/set work. That instrumentation was intentionally useful for ranking sub-operations, but it inflated the enclosing union-call time and cannot be treated as production CPU.
-
-C2b therefore avoids per-tile timers. It uses:
+Targeted tests explicitly protect:
 
 ```text
-whole _add_tiles/_remove_tiles timing sample: 1 / 128 calls
-structural refcount snapshot:                1 / 120 frames
+in-bbox 2 -> 1 -> 0 overlap
+bbox-internal coordinates absent from real MapData.tiles
+off-bbox overflow 2 -> 1 -> 0 overlap
+explored-history retention
+Wei/Shu/Wu separation
+no-MapData fallback to shared dict semantics
 ```
 
-All exact operation counts remain cheap counters. Aggregate instrumented frame latency is diagnostic only.
+## Preregistered uninstrumented closeout
 
-## Canonical workload
+Branch:
 
 ```text
-scenario                  chibi-144k-scale-10000
-scenario SHA256           e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
-map                       120x120 / 14,400 real tiles
-resident units            10,000
-points                     0% / 50% / 100% moving
-seed / phase seed         42 / 42
-route steps               12
-phase                     staggered
-Fog                       ON
-GC                        realtime_defer
-MiniMap dynamic units     OFF
-render                    uncapped
-hub                       offline
+experiment/phase5-c2b1-closeout
 ```
 
-## Measurements
-
-Exact per-frame counters:
+Formal A/B:
 
 ```text
-add/remove calls
-add/remove tiles
-refcount ops
-0<->1 union transitions
-transition-call counts
-active refcount entries
-faction containers
+A control   = 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+B treatment = 9d70c48f9b7b63ca19314b07f84ee77f79a7952c
+order       = A50 -> B50 -> B100 -> A100
 ```
 
-Low-rate whole-call samples estimate existing `_add_tiles/_remove_tiles` cost per tile, split into calls with and without faction-union transitions.
+Canonical workload remains the same 10K scenario, seed 42, route 12, Fog ON, MiniMap dynamic units OFF, realtime_defer, uncapped render and offline hub.
 
-Structural snapshots measure:
+### KEEP gates
+
+Both densities must satisfy:
 
 ```text
-active refcount entries
-sum of observer multiplicities
-refcount histogram: 1 / 2 / 3 / 4-7 / 8-15 / 16+
-max refcount
-entries inside/outside real map
-entries inside/outside rectangular map bounding box
-active density vs per-faction dense map/bbox slots
-per-faction entry spread
-Python dict-table shallow bytes
-candidate dense u8/u16 footprint
+position commits/s       within ±2%
+Vision dirty/s           within ±2%
+Vision scanned/s         within ±2%
+geometry calls/s         within ±2%
+faction add/remove       within ±5%
+fog delta                within ±5%
+geometry hit-rate drop   <= 0.5 pp
+geometry evictions       0
+Vision avg/frame         improves
+Vision CPU/changed unit  saves >= 0.4 us
+controlled avg regression <= 2%
 ```
 
-The outside-map/bounding-box measurements are semantic constraints, not just memory statistics: a dense candidate must not silently drop currently represented visibility coordinates.
+Additionally, 100%-moving controlled avg must improve.
 
-## Interpretation — frozen before measurement
-
-This attribution does **not** retain a representation candidate automatically.
-
-Evidence favoring a bounded dense/tile-indexed candidate includes:
-
-- essentially all active refcount keys lie inside a stable bounded domain;
-- maximum refcount fits a compact integer width;
-- active entry density is high enough that sparse tuple hashing buys little;
-- non-transition refcount calls dominate operation volume;
-- low-rate whole-call sampling shows a material CPU opportunity relative to the `~0.5-1.0 ms` margin requirement.
-
-If the domain is sparse or contains meaningful out-of-bounds semantic keys, do not force a dense array. Consider a map-tile-id indexed representation or another bounded/sparse hybrid instead.
-
-Any selected candidate must preserve exact `0->1` and `1->0` faction-union transitions, explored history, fog journal deltas, faction changes, lifecycle cleanup and current observation semantics.
+Whole-frame P99 is diagnostic for C2b-1 retention; a later dedicated frontier confirmation is required before moving the 10K / 100%-moving / 30Hz frontier.
 
 ## Out of scope
 
-Do not mix into C2b attribution:
+Do not mix into C2b-1:
 
 ```text
 set-diff algorithm (C2c)
@@ -165,4 +163,4 @@ native/parallel rewrite
 
 > **先消灭错误复杂度，再重构必要复杂度。**
 
-C2b is the first explicit necessary-complexity representation case in this campaign.
+C2b-1 optimizes the representation of necessary overlap information without weakening that information.

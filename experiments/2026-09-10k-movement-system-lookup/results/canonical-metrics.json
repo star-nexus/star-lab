@@ -1,0 +1,19 @@
+{
+  "baseline_run": "20260906-030632",
+  "fixed_run": "20260906-041532",
+  "scenario_sha256": "e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25",
+  "points": {
+    "00pct-moving": {
+      "baseline": {"controlled_avg_ms": 16.870546468634686, "controlled_p95_ms": 17.4668545, "controlled_p99_ms": 20.5949962, "animation_avg_ms": 0.011122084870848708, "animation_p99_ms": 0.0151248, "throughput_fps": 54.146633078437894},
+      "fixed": {"controlled_avg_ms": 16.66969518115942, "controlled_p95_ms": 17.229103, "controlled_p99_ms": 20.54637375, "animation_avg_ms": 0.013312032608695653, "animation_p99_ms": 0.0169685, "throughput_fps": 55.04014004126066}
+    },
+    "50pct-moving": {
+      "baseline": {"controlled_avg_ms": 30.23913141401274, "controlled_p95_ms": 34.7590932, "controlled_p99_ms": 36.58139496, "animation_avg_ms": 6.530393840764331, "animation_p99_ms": 8.59069304, "vision_avg_ms": 2.719233579617834, "throughput_fps": 31.2983149047061, "position_index_changes_per_frame": 319.35668789808915, "vision_dirty_per_frame": 319.4012738853503},
+      "fixed": {"controlled_avg_ms": 25.96412798351648, "controlled_p95_ms": 27.39173015, "controlled_p99_ms": 29.44697656, "animation_avg_ms": 3.6333946648351647, "animation_p99_ms": 4.10587071, "vision_avg_ms": 2.2882595934065937, "throughput_fps": 36.307976228823236, "position_index_changes_per_frame": 275.52197802197804, "vision_dirty_per_frame": 275.42857142857144}
+    },
+    "100pct-moving": {
+      "baseline": {"controlled_avg_ms": 41.58860164655172, "controlled_p95_ms": 43.744292, "controlled_p99_ms": 46.1914205, "animation_avg_ms": 13.540863120689654, "animation_p99_ms": 14.8902544, "vision_avg_ms": 6.251225215517241, "throughput_fps": 23.131827035950998, "position_index_changes_per_frame": 863.8965517241379, "vision_dirty_per_frame": 864.3189655172414},
+      "fixed": {"controlled_avg_ms": 34.179959835714286, "controlled_p95_ms": 35.68623475, "controlled_p99_ms": 38.53738526, "animation_avg_ms": 7.77009285, "animation_p99_ms": 8.48097014, "vision_avg_ms": 5.130474121428572, "throughput_fps": 27.976787195249432, "position_index_changes_per_frame": 713.9142857142857, "vision_dirty_per_frame": 714.4571428571429}
+    }
+  }
+}

@@ -1,0 +1,5 @@
+variant=control
+density=0.5
+git_sha=7b37f2d0823149042688059715342faf55c4fbb9
+scenario=chibi-144k-scale-10000
+socket=/tmp/star-phase5-c1-43918-control-50.sock

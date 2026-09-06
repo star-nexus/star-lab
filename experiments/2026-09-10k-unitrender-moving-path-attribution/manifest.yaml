@@ -11,16 +11,26 @@ source:
   retained_optimizations: [A, B, C1, C2a, D1]
   vision_campaign_status: closed
   experiment_branch: experiment/phase5-unitrender-moving-path-attribution
-  branch_head: 2fa577d61add149137ed16787b755deb67667c52
+  branch_head: 3a256f8fbaacbdf1bb41a706ef589fd4019c8d4a
   probe_commit: a731db54d2b80de5bf894db9bbcfc8b687795b98
-  analyzer_commit: 72100a4ae707a876d67b7df5df51cbb723aae641
+  analyzer_commit_initial: 72100a4ae707a876d67b7df5df51cbb723aae641
   runner_commit: 2fa577d61add149137ed16787b755deb67667c52
+  analyzer_commit: 3a256f8fbaacbdf1bb41a706ef589fd4019c8d4a
   runtime_from_detached_worktree: true
   runtime_diff_files: []
   tool_files:
     - tools/phase5_unitrender_moving_path_attribution.py
     - tools/phase5_unitrender_moving_path_analyze.py
     - tools/run_phase5_unitrender_moving_path_attribution.sh
+
+pre_measurement_tooling_qa:
+  measurement_data_produced_before_fix: false
+  issue: structural_duplicate_metrics_are_sampled_every_16_frames_but_initial_analyzer_used_all_frame_animated_average_as_denominator
+  fix: derive_sampled_animated_denominator_from_raster_unique_plus_duplicate_observations
+  thresholds_changed: false
+  probe_semantics_changed: false
+  production_runtime_changed: false
+  analyzer_fix_commit: 3a256f8fbaacbdf1bb41a706ef589fd4019c8d4a
 
 runtime_source_guard:
   rotk_env/systems/unit_render_system.py: 7b49027882bd7ba4184a769bae19f7f490cf0a35
@@ -107,6 +117,7 @@ measurement:
     - animated_raster_duplicate_observations
     - animated_raster_duplicate_groups
     - animated_raster_group_max
+  structural_ratios_use_sample_aligned_denominator: true
 
 preregistered_attribution_decisions:
   candidate_priority:

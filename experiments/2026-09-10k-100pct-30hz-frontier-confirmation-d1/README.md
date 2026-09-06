@@ -1,115 +1,67 @@
 # Post-D1 10K / 100%-Moving 30Hz Frontier Confirmation
 
-**Status:** RUNNING — preregistered, measurement pending  
+**Status:** CLOSED — `FRONTIER_NOT_ESTABLISHED`  
 **STAR repository:** `star-nexus/star`  
 **Frozen production runtime:** `17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a`
 
-## Trigger
+## Question
 
-Vision D1 is already:
+After D1 removed the periodic ~4ms Vision audit pulse, does the retained production runtime establish a repeatable canonical 10K / 100%-moving / Fog ON / 30Hz frontier?
 
-```text
-CAUSALLY CONFIRMED / KEEP / CLOSED
-```
-
-Its controlled A/B removed the periodic 10K Vision audit pulse:
-
-```text
-100% control P99      33.931 ms
-100% treatment P99    32.497 ms
-audit max             4.233 -> 0.001 ms
->33.33ms frames       2 -> 0
-```
-
-That P99 is supporting evidence only because the D1 optimization closeout preregistered P99 as diagnostic. This separate case decides whether the production capacity frontier can formally move.
-
-## Frozen runtime
-
-```text
-perf/10k-online
-17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
-= A + B + C1 + C2a + D1
-```
-
-No runtime optimization change is allowed during confirmation.
-
-## Canonical workload
-
-```text
-scenario                  chibi-144k-scale-10000
-scenario SHA256           e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
-resident units            10000
-seed / phase seed         42 / 42
-route steps               12
-phase                     staggered
-Fog                       ON
-GC                        realtime_defer
-MiniMap dynamic units     OFF
-render                    uncapped
-hub                       offline
-mock_ai                    off
-```
-
-## Execution sequence
-
-```text
-00pct-moving
-50pct-moving
-100pct-moving-r1
-100pct-moving-r2
-100pct-moving-r3
-```
-
-The first three points are a complete canonical sweep. The final two are fresh-process full-motion replications with full process-tree cleanup between points.
-
-## Preregistered frontier rule
-
-Canonical gate:
+## Preregistered rule
 
 ```text
 controlled_work_frame_ms.p99 <= 33.33 ms
 ```
 
-Formal establishment requires:
+Formal establishment required all five guards to pass and all three independent 100%-moving fresh-process runs to pass the gate. No majority/median reinterpretation was permitted.
 
-1. all five points pass all runtime/workload guards;
-2. `00 / 50 / 100-r1` all pass the P99 gate;
-3. **all three** 100%-moving runs independently pass the gate.
-
-No median-only or majority-only reinterpretation is permitted.
-
-Decision values:
+## Result — run `20260906-225405`
 
 ```text
-FRONTIER_ESTABLISHED_10K_100PCT_30HZ
+00pct-moving       avg=16.382  p99=18.804  PASS
+50pct-moving       avg=24.696  p99=26.249  PASS
+100pct-moving-r1   avg=30.860  p99=32.926  PASS
+100pct-moving-r2   avg=31.229  p99=33.348  FAIL
+100pct-moving-r3   avg=31.299  p99=33.764  FAIL
+```
+
+All runtime/workload guards passed. Full-motion P99s were:
+
+```text
+32.926 / 33.348 / 33.764 ms
+```
+
+Worst headroom to the canonical gate was `-0.434 ms`; therefore the preregistered decision is:
+
+```text
 FRONTIER_NOT_ESTABLISHED
 ```
 
-## Tooling
-
-STAR branch:
+Raw ZIP SHA256 supplied from the run:
 
 ```text
-experiment/phase5-10k-frontier-confirmation-d1
+2cdf93cd09db273dd18fab6753bdccbbeb0bba755860f7e11e741090061ff770
 ```
 
-The branch is based on exact production `17ced8d...` and adds only:
-
-```text
-tools/phase5_10k_frontier_confirmation_d1.py
-tools/run_phase5_10k_frontier_confirmation_d1.sh
-```
-
-The runner executes exact production from a detached worktree, copies only the intentionally untracked 10K map, runs targeted semantic regressions, launches a fresh ENV process for each point and verifies process-tree cleanup before the next point.
+Raw STAR Lab mirror remains pending.
 
 ## Interpretation
 
-D1 validity and capacity-frontier status remain separate:
+D1 remains independently `CAUSALLY CONFIRMED / KEEP / CLOSED`. The periodic Vision audit pulse is absent in the retained runtime and is not reopened by this frontier result.
+
+The post-D1 failure signature is different from the pre-D1 audit-tail failure. There is no replacement low-frequency maintenance pulse. The three 100%-moving runs show a mild distributed steady-state drift:
 
 ```text
-D1 KEEP
-    !=
-10K / 100%-moving / Fog ON / 30Hz frontier established
+controlled avg   30.860 -> 31.229 -> 31.299 ms
 ```
 
-The frontier moves only from this dedicated confirmation evidence.
+while authoritative position commits stay at approximately `20,000/s`. Animation per-position-commit cost is essentially stable; Vision and UI show small per-unit/system-state drift. The runtime is therefore **margin-limited rather than pathology-limited**.
+
+The remaining gap is small (`~0.5 ms` minimum, preferably `~1 ms` engineering margin). With the clearly identified wrong-complexity cases A/C1/C2a/D1 already removed, the next step is to begin necessary-complexity optimization rather than repeat frontier runs.
+
+## Next step
+
+Proceed to **C2b — faction refcount representation attribution** on exact production `17ced8d...`.
+
+C2b must not delete overlap bookkeeping: the refcount is semantically necessary to distinguish `3 -> 2 -> 1 -> 0` observers. The attribution instead asks whether the current Python `Dict[(col,row), int]` representation is unnecessarily expensive for a bounded 120x120 world.

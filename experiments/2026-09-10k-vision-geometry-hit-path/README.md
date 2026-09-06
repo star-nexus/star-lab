@@ -1,6 +1,6 @@
 # 10K Vision Geometry Cache-Hit Path
 
-**Status:** CLOSED — CAUSALLY CONFIRMED / KEEP; raw closeout mirror pending  
+**Status:** CLOSED — CAUSALLY CONFIRMED / KEEP; raw evidence complete  
 **STAR repository:** `star-nexus/star`  
 **Production treatment:** `4218b5368fbe2815b8512384e2c18b0af443ebfa`
 
@@ -159,12 +159,16 @@ This optimization does not establish a new 10K / 100%-moving 30Hz frontier point
 
 ## Evidence
 
-Canonical attribution evidence is already mirrored under this case.
-
-The final same-session closeout generation `20260906-183456` has been independently inspected from the uploaded ZIP:
+Canonical attribution evidence and the final closeout generation are mirrored under this case:
 
 ```text
-ZIP SHA256
+results/raw/phase5-vision-hit-attribution/chibi-144k-scale-10000/20260906-124920/
+results/raw/phase5-c1-closeout/chibi-144k-scale-10000/20260906-183456/
+```
+
+The final same-session closeout ZIP independently inspected before mirroring had SHA256:
+
+```text
 edb940801a95d78b3f059190bb8ae62d75c5a3f9ce3778547c39156e09513c46
 ```
 
@@ -174,4 +178,4 @@ A machine-readable independently recomputed summary is archived at:
 artifacts/CLOSEOUT_SUMMARY_20260906-183456.json
 ```
 
-Formal raw closeout mirroring into `results/raw/phase5-c1-closeout/.../20260906-183456/` is pending. Once mirrored, extend `artifacts/RAW_SHA256SUMS` to cover it.
+`artifacts/RAW_SHA256SUMS` covers all **54** case-owned raw files: 17 attribution files plus 37 closeout files. Evidence state: **raw complete, exact source provenance recorded, file-level SHA256 covered**.

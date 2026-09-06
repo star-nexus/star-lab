@@ -11,8 +11,8 @@ Historical coverage of the 2026 performance campaign is tracked in [`../records/
 | Experiment | Status | Problem / question | Main conclusion | Evidence state |
 |---|---|---|---|---|
 | [`2026-09-10k-movement-system-lookup`](2026-09-10k-movement-system-lookup/) | **CLOSED — causal optimization retained; raw complete** | Why did 10K dynamic movement make `AnimationSystem` scale so sharply? | A stable `MovementSystem` dependency was re-discovered once per mover; hoisting the lookup once/frame cut 100%-moving Animation avg `13.541 -> 7.770 ms` and moved 50% moving from 30Hz FAIL to PASS. | Baseline + attribution + fixed production raw trees mirrored; 69 files covered by `RAW_SHA256SUMS`; exact source SHAs recorded. |
-| [`2026-09-10k-spatial-index-move-specialization`](2026-09-10k-spatial-index-move-specialization/) | **REJECTED — reverted negative result; raw complete** | Would a position-specialized spatial-index update materially reduce the attributed ~3.19 ms full update cost? | No. Direct Animation avg changed only `7.770 -> 7.749 ms` at 100%; removable generic bookkeeping was negligible, so the added production complexity was reverted. | B treatment raw mirrored and file-checksummed; A control raw canonically cross-referenced from the MovementSystem-lookup case. |
-| [`2026-09-10k-vision-geometry-hit-path`](2026-09-10k-vision-geometry-hit-path/) | **ATTRIBUTED — production A/B pending** | Why does Vision geometry still cost material CPU when the geometry cache hits ~99.7%? | Cache hits still resolve terrain bonus before lookup. At 100% moving, terrain-bonus lookup is ~`0.849 ms/frame`, ~60.8% of measured `_visibility_for()` internals; candidate C1 moves cache lookup before terrain-bonus resolution. | 50%/100% attribution raw mirrored; 17 files covered by `RAW_SHA256SUMS`; all workload guards pass. |
+| [`2026-09-10k-spatial-index-move-specialization`](2026-09-10k-spatial-index-move-specialization/) | **CLOSED — causally confirmed KEEP; raw complete** | Does position-only movement need the full generic spatial-index lifecycle reconciliation path? | No. Same-session ABBA shows the specialized transition saves `0.763 us/commit` at 50% and `0.509 us/commit` at 100%, with authoritative commits/s and Vision dirty/s preserved within 0.04%. The earlier negative result is superseded and B is retained. | Three B-owned valid generations mirrored (89 files) and covered by `RAW_SHA256SUMS`; invalid `162730` process-leak generation explicitly excluded; A control raw canonically cross-referenced. |
+| [`2026-09-10k-vision-geometry-hit-path`](2026-09-10k-vision-geometry-hit-path/) | **CANDIDATE IMPLEMENTED — production A/B pending** | Why does Vision geometry still cost material CPU when the geometry cache hits ~99.7%? | Cache hits still resolve terrain bonus before lookup. At 100% moving, terrain-bonus lookup is ~`0.849 ms/frame`, ~60.8% of measured `_visibility_for()` internals; C1 moves cache lookup before terrain-bonus resolution and has focused regressions. | 50%/100% attribution raw mirrored; 17 files covered by `RAW_SHA256SUMS`; production candidate implemented, uninstrumented controlled A/B pending. |
 | [`2026-09-dynamic-world-scaling`](2026-09-dynamic-world-scaling/) | **ARCHIVED — complete formal archive** | How did the controlled 5K Dynamic World workload evolve into the scale methodology used by later investigations? | V1/V2/V2.1 preserve the progression from formal density control through incremental Fog to rare-tail attribution. | 14 raw JSON runs + SHA256; exact source HEADs recovered for V1 `0f0d0a2`, V2 `571ea207`, V2.1 `916d88dc`. |
 | [`2026-09-realtime-gc`](2026-09-realtime-gc/) | **CLOSED — complete formal archive** | Why do rare UnitRender frames jump to ~50 ms? | Automatic CPython Gen2 GC ran inside the timed render section; bounded `realtime_defer` moved cyclic-GC maintenance outside the critical window. | AUTO/defer raw JSON recovered and SHA256-verified. |
 | [`2026-09-memory-retention`](2026-09-memory-retention/) | **CLOSED — raw evidence complete** | Why do RSS/tracked objects rise although full safe GC collects 0 and ECS/Vision caches are bounded? | Runtime retained historical visibility telemetry (up to 100 records/unit); scale/window now keeps the latest transition only. | Pre-fix 600s + post-fix 120s raw JSON recovered and SHA256-verified. Exact checkout SHA for the recovered post-fix run is not encoded and is documented rather than guessed. |
@@ -64,7 +64,10 @@ vision-cache/results/capacity-16384.json
 
 10k-movement-system-lookup/.../20260906-041532
         -> canonical Optimization-A production raw
-        -> cross-referenced by rejected Optimization B
+        -> cross-referenced by Optimization B as its canonical control
+
+10k-spatial-index-move-specialization/.../20260906-172143
+        -> canonical same-session Optimization-B closeout raw
 ```
 
 ## Historical backfill rule
@@ -84,7 +87,17 @@ For source identity recovered from an external run-handoff record, archive the b
 
 ## Next performance work
 
-Phase-5 10K Core Runtime is operating from the retained MovementSystem-lookup optimization. The position-specialized spatial-index candidate is explicitly rejected and reverted.
+Phase-5 10K Core Runtime now retains both accepted movement-path optimizations:
+
+```text
+Optimization A
+MovementSystem dependency lookup
+  -> CLOSED / KEEP
+
+Optimization B
+position-specialized spatial-index transition
+  -> CLOSED / KEEP
+```
 
 The active causal line is now:
 
@@ -92,8 +105,9 @@ The active causal line is now:
 Optimization C1
 Vision geometry cache-hit path
   -> attribution complete
-  -> terrain-bonus lookup dominates measured hit-path internals
-  -> isolated production implementation + controlled A/B next
+  -> isolated production candidate implemented
+  -> focused regressions present
+  -> uninstrumented controlled A/B next
 ```
 
-Do not optimize cache capacity, faction union/refcounts, set diff, explored tiles, audit scheduling, or LRU policy in the same C1 change. Production retention still depends on an uninstrumented controlled A/B against the retained Optimization-A runtime baseline.
+Keep A and B fixed while validating C1. Do not mix faction union/refcounts, set diff, explored tiles, audit scheduling, cache capacity, or LRU-policy changes into the same C1 treatment.

@@ -2,7 +2,7 @@ experiment:
   id: 10k-spatial-index-move-specialization
   title: 10K Spatial-Index Movement Specialization
   date: 2026-09-06
-  status: closed_causally_confirmed_keep_final_raw_mirror_pending
+  status: closed_causally_confirmed_keep_raw_evidence_complete
 
 source:
   repository: star-nexus/star
@@ -67,17 +67,20 @@ runs:
     run_id: 20260906-120822
     source_commit: 73a2f7f33067dfd39e7aaf1c07a4c08eafc021ba
     raw_path: results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-120822
+    raw_file_count: 26
     interpretation: superseded_false_negative_cross_generation_comparison
   corroborating_treatment:
     run_id: 20260906-154003
     source_commit: 73a2f7f33067dfd39e7aaf1c07a4c08eafc021ba
     source_path_in_star: results/phase5-10k-core/chibi-144k-scale-10000/20260906-154003
-    planned_raw_path: results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-154003
+    raw_path: results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-154003
     source_package_zip_sha256: ae5e923c242b69144693d58efc843912ca8dff57ab795630913a7f95619ed167
-    raw_mirror_state: pending
+    raw_file_count: 26
+    raw_mirror_state: complete
   invalid_closeout_attempt:
     run_id: 20260906-162730
     archival_policy: excluded_from_formal_evidence
+    repository_tree_verified_absent: true
     reason: env_process_tree_leak_contaminated_later_points
   final_closeout:
     run_id: 20260906-172143
@@ -86,9 +89,10 @@ runs:
     opt_b_commit: 73a2f7f33067dfd39e7aaf1c07a4c08eafc021ba
     execution_order: [A50, B50, B100, A100]
     source_path_in_star: results/phase5-opt-b-closeout/chibi-144k-scale-10000/20260906-172143
-    planned_raw_path: results/raw/phase5-opt-b-closeout/chibi-144k-scale-10000/20260906-172143
+    raw_path: results/raw/phase5-opt-b-closeout/chibi-144k-scale-10000/20260906-172143
     source_package_zip_sha256: e6d4e7d3beebf5880a13e30b59ab6e795afe9e1c4e268de394778b6b2b1acc8c
-    raw_mirror_state: pending
+    raw_file_count: 37
+    raw_mirror_state: complete
 
 closeout:
   decision: CAUSALLY_CONFIRMED_KEEP
@@ -128,9 +132,14 @@ evidence:
   same_session_counterbalanced_abba: true
   pre_registered_acceptance_criteria_passed: true
   historical_120822_raw_mirrored_in_star_lab: true
-  final_closeout_raw_mirror_pending: true
-  file_checksum_update_pending: true
-  evidence_state: causal_decision_closed_final_raw_mirror_pending
+  corroborating_154003_raw_mirrored_in_star_lab: true
+  final_172143_raw_mirrored_in_star_lab: true
+  invalid_162730_excluded: true
+  mirrored_b_owned_raw_file_count: 89
+  file_checksum_manifest: artifacts/RAW_SHA256SUMS
+  file_checksum_coverage_complete: true
+  exact_source_provenance_recorded: true
+  evidence_state: raw_evidence_complete_file_level_sha256_covered
 
 headline:
   hypothesis: "Position-only movement can avoid generic UnitSpatialIndex lifecycle bookkeeping and reduce per-authoritative-commit Animation CPU cost."

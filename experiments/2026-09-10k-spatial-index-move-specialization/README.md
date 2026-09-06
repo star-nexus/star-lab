@@ -1,6 +1,6 @@
 # 10K Spatial-Index Movement Specialization
 
-**Status:** CLOSED — causal optimization retained; final closeout raw mirror pending  
+**Status:** CLOSED — causally confirmed KEEP; raw evidence complete  
 **STAR repository:** `star-nexus/star`  
 **Branch at time:** `perf/10k-online`
 
@@ -146,35 +146,44 @@ Revert "revert: drop non-beneficial spatial index movement specialization"
 
 This keeps the false-negative decision and its later correction auditable.
 
-## Raw evidence state
+## Raw evidence
 
-Already mirrored historical evidence:
+STAR Lab now mirrors all three B-owned valid evidence generations:
 
 ```text
 results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-120822/
+results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-154003/
+results/raw/phase5-opt-b-closeout/chibi-144k-scale-10000/20260906-172143/
 ```
 
-Canonical Optimization-A raw control remains owned by the A case:
+Canonical Optimization-A raw control remains owned by the A case and is cross-referenced rather than duplicated:
 
 ```text
 ../2026-09-10k-movement-system-lookup/
   results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-041532/
 ```
 
-The following valid final generations are **pending mirror** into this B case:
+The B case owns **89 mirrored raw files** in total:
 
 ```text
-source STAR results/phase5-10k-core/chibi-144k-scale-10000/20260906-154003/
-source STAR results/phase5-opt-b-closeout/chibi-144k-scale-10000/20260906-172143/
+20260906-120822   26 files   superseded false-negative generation
+20260906-154003   26 files   corroborating treatment generation
+20260906-172143   37 files   final same-session ABBA closeout
 ```
 
-Source ZIP identities:
+Every mirrored B-owned raw file is covered by:
+
+```text
+artifacts/RAW_SHA256SUMS
+```
+
+Source ZIP identities are preserved for the later generations:
 
 ```text
 20260906-154003.zip  ae5e923c242b69144693d58efc843912ca8dff57ab795630913a7f95619ed167
 20260906-172143.zip  e6d4e7d3beebf5880a13e30b59ab6e795afe9e1c4e268de394778b6b2b1acc8c
 ```
 
-The interrupted closeout generation `20260906-162730` is explicitly **excluded from formal evidence** because ENV child processes leaked between points and contaminated later measurements.
+The interrupted closeout generation `20260906-162730` is explicitly **excluded from formal evidence** because ENV child processes leaked between points and contaminated later measurements. Independent repository-tree verification confirmed that this generation is absent from the STAR Lab archive.
 
-Evidence state: **causal decision CLOSED; final raw mirror and file-level checksum update pending**.
+Evidence state: **raw evidence complete; exact source provenance recorded; 89 B-owned raw files covered by file-level SHA256**.

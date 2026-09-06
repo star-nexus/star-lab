@@ -94,9 +94,9 @@ Optimization A (`MovementSystem` lookup elimination) established the first archi
 | 2026-09-06 | `b9e0bb92b546b3283cb5c1d30a9a510d0c006ec2` | `chibi-144k-scale-10000` | 10000 | 5000 | 50% | 120×120 | **25.964 ms** | **29.447 ms** | **PASS** | [`50% point`](../experiments/2026-09-10k-movement-system-lookup/results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-041532/50pct-moving/point.json) |
 | 2026-09-06 | `b9e0bb92b546b3283cb5c1d30a9a510d0c006ec2` | `chibi-144k-scale-10000` | 10000 | 10000 | 100% | 120×120 | **34.180 ms** | **38.537 ms** | **FAIL — current capacity boundary** | [`100% point`](../experiments/2026-09-10k-movement-system-lookup/results/raw/phase5-10k-core/chibi-144k-scale-10000/20260906-041532/100pct-moving/point.json) |
 
-The 50% point is the validated 10K frontier pass. The 100% point is retained beside it because it defines the current same-source capacity boundary and the remaining optimization target.
+The 50% point is the validated 10K frontier pass. The 100% point is retained beside it because it defines the archived same-source capacity boundary and the remaining optimization target.
 
-The later Optimization-B candidate is not a new frontier point: its directly modified path showed no measurable causal improvement and the implementation was reverted. The restored runtime tree at `7f72e352f95e20125c29502abd934f0f81a3e0f2` is byte-equivalent to the retained Optimization-A production tree.
+Optimization B (`position-specialized spatial-index movement update`) is now **CAUSALLY CONFIRMED / KEEP / CLOSED** and is part of the retained production baseline. Its same-session ABBA closeout saves approximately `0.5-0.8 us` of Animation CPU per authoritative position commit while preserving position-commit and Vision-dirty rates. However, B does **not** add a new frontier row here: the formal closeout still leaves the 10K / 100%-moving point above the 33.33 ms P99 gate, so it improves the runtime without moving the canonical pass/fail capacity boundary. The accepted implementation was restored to mainline at `4218b5368fbe2815b8512384e2c18b0af443ebfa`; canonical B evidence is archived in [`2026-09-10k-spatial-index-move-specialization`](../experiments/2026-09-10k-spatial-index-move-specialization/).
 
 ## Frontier rules
 

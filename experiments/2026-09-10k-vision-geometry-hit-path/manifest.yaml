@@ -2,7 +2,7 @@ experiment:
   id: 10k-vision-geometry-hit-path
   title: 10K Vision Geometry Cache-Hit Path
   date: 2026-09-06
-  status: attributed_open_production_ab_pending
+  status: candidate_implemented_validation_pending
 
 source:
   repository: star-nexus/star
@@ -10,6 +10,8 @@ source:
   current_best_runtime_commit: 7f72e352f95e20125c29502abd934f0f81a3e0f2
   attribution_probe_commit: 4938a0c81f2155022f5836b12d88294081ae79b2
   attribution_runner_commit: ebf2dc5cfb74c16b83272b6e9cf23f29017efe88
+  candidate_implementation_commit: b39eb592833a3413a002aac294cf4e46481f640a
+  candidate_test_commit: b9c63e9d626c9e21a1924121b91cedb116c1f2e1
   production_runtime_changed_by_attribution_commits: false
 
 scenario:
@@ -69,11 +71,15 @@ attribution:
 
 candidate:
   name: cache_lookup_before_terrain_bonus
-  current_key: [center, effective_range, terrain_revision]
-  proposed_key: [center, base_range, terrain_revision]
-  proposed_hit_behavior: return_cached_geometry_without_terrain_bonus_lookup
-  proposed_miss_behavior: resolve_terrain_bonus_then_compute_effective_geometry
+  implementation_scope: window_vision_system_only
+  previous_key: [center, effective_range, terrain_revision]
+  treatment_key: [center, base_range, terrain_revision]
+  hit_behavior: return_cached_geometry_without_terrain_bonus_lookup
+  miss_behavior: resolve_terrain_bonus_then_compute_effective_geometry
   semantic_precondition: terrain_change_increments_revision_and_clears_geometry_cache
+  regression_contracts:
+    - cache_hit_does_not_requery_terrain_bonus
+    - terrain_invalidation_forces_bonus_requery_and_geometry_recompute
   production_ab_required: true
 
 evidence:
@@ -88,4 +94,5 @@ headline:
   observation: "Geometry cache hits ~99.7% at 100% moving, yet every lookup resolves terrain bonus before consulting the cache."
   attribution: "Terrain-bonus lookup is ~0.849 ms/frame at 100% moving, ~60.8% of measured _visibility_for internals."
   candidate: "Move cache lookup ahead of terrain-bonus resolution by keying cached geometry on center/base-range/terrain-revision."
-  decision_state: "Candidate approved for isolated production implementation and controlled A/B; not yet retained."
+  implementation: "Candidate implemented at b39eb592 with focused regressions added at b9c63e9d."
+  decision_state: "Implementation complete; local regression and uninstrumented controlled A/B pending."

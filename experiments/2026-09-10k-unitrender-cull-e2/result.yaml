@@ -1,0 +1,72 @@
+run:
+  id: 20260907-125240
+  zip_sha256: c430277f2f98c39367d10d886654fb07a1181d07bf2fc84ffc88b0d543126b6e
+  runtime_sha: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+  caller_sha: 5f3f18da6941d6d5bce79cd17e9bfa90b38739ad
+  scenario_sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
+  targeted_regressions: "9 passed in 0.39s"
+  guards: pass_all
+
+decision: CULL_REQUIRES_FURTHER_ATTRIBUTION
+production_changed: false
+
+points:
+  00pct:
+    cull_section_ms: 2.3810098097
+    candidates: 8920.0
+    fog_hit_rate_pct: 7.3
+    index_revision_delta_per_frame: 0.0
+    candidate_share_in_changed_buckets_pct: 0.0
+    bulk_record_bounds_us_per_candidate: 0.0817825112
+    bulk_fog_hit_us_per_check: 0.0410367171
+    bulk_fog_miss_us_per_check: 0.0434160559
+    bulk_warm_full_us_per_candidate: 0.1343687967
+  50pct:
+    cull_section_ms: 2.8882662
+    candidates: 8939.0324324
+    fog_hit_rate_pct: 15.5
+    index_revision_delta_per_frame: 270.3945946
+    candidate_share_in_changed_buckets_pct: 39.8
+    bulk_record_bounds_us_per_candidate: 0.08623349
+    bulk_fog_hit_us_per_check: 0.0401567576
+    bulk_fog_miss_us_per_check: 0.0324509693
+    bulk_warm_full_us_per_candidate: 0.1360034066
+  100pct:
+    cull_section_ms: 3.1317965960
+    candidates: 8930.3443709
+    fog_hit_rate_pct: 19.4
+    index_revision_delta_per_frame: 665.6953642
+    candidate_share_in_changed_buckets_pct: 71.4
+    bulk_record_bounds_us_per_candidate: 0.0876625657
+    bulk_fog_hit_us_per_check: 0.0430973017
+    bulk_fog_miss_us_per_check: 0.0320809328
+    bulk_warm_full_us_per_candidate: 0.1378341349
+
+growth_00_to_100:
+  candidates_pct: 0.12
+  prior_cull_growth_ms: 0.798
+  branch_mix_modeled_delta_ms: 0.0033889534
+  branch_mix_closure_pct: 0.4247
+  record_bounds_unit_cost_pct: 7.19
+  fog_hit_unit_cost_50_to_100_pct: 7.32
+  fog_miss_unit_cost_pct: -26.11
+  append_unit_cost_pct: 2.56
+  warm_full_replay_unit_cost_pct: 2.58
+
+interpretation:
+  candidate_volume_explains_growth: false
+  branch_mix_explains_growth: false
+  warm_spatial_unit_cost_inflation: false
+  warm_fog_membership_cost_inflation: false
+  substantial_index_churn_observed: true
+  first_touch_locality_not_measured: true
+  note: >-
+    The sparse bulk replay occurs after the production cull has already touched
+    the same spatial and Fog structures. It therefore measures warm repeated
+    access and cannot rule out a first-touch locality penalty caused by
+    per-frame Movement/Vision mutation.
+
+next:
+  experiment: 10k-unitrender-cull-e3-first-touch-locality
+  goal: distinguish baseline first-touch cost from read-only context/spatial/Fog prewarming
+raw_mirror_pending: true

@@ -2,7 +2,7 @@
 
 ## 1. Observation
 
-Upstream CLOSED evidence only:
+Upstream CLOSED evidence:
 
 ```text
 E5-3 @ 50% moving:
@@ -14,153 +14,190 @@ E5-3 @ 100% moving:
   world_x/world_y contribution        = 0.375 ms (~78.8%)
 ```
 
-Production source semantics also establish that:
+Production source semantics establish that:
 
 ```text
 HexPosition is authoritative.
 UnitSpatialIndex is explicitly a derived cache.
 _record_for_hex(col,row,faction) recomputes hex_to_pixel(col,row)
 and creates fresh world_x/world_y/bucket payload on each refreshed record.
-Cull first exact bounds test reads record.world_x / record.world_y.
+Cull's first exact bounds test reads record.world_x / record.world_y.
 ```
 
-No E6 treatment measurement has been observed yet.
+Formal E6 run `20260907-203733` then measured the effect of reusing only pure per-hex derived geometry while preserving fresh record identity.
 
 ## 2. Competing hypotheses
 
 ### H1 — Long-lived per-hex derived geometry materially reduces Cull first-touch cost
 
-Why it is plausible:
+Why it was plausible:
 
 - E5-3 isolated ~79% of the residual record-field signal to `world_x/world_y` at both 50% and 100% movement.
 - `hex_to_pixel(col,row)` is pure for fixed geometry configuration.
 - The scale harness uses sustained out-and-back routes, so the same hex geometry is revisited repeatedly.
-- Reusing the same derived float payload objects may improve Cull locality without changing authoritative state or Cull semantics.
+- Reusing the same derived float/bucket payload objects could improve Cull locality without changing authoritative state or Cull semantics.
 
-Expected H1 signature:
+Preregistered H1 signature:
 
 ```text
 Cull avg saving >= 0.10 ms @50%
 Cull avg saving >= 0.20 ms @100%
 UnitRender avg improves at both densities
 workload rates remain within ±2%
+controlled-work avg regression <= 2%
 ```
 
-### H2 — Payload identity/reuse is not the material mechanism
+### H2 — Payload reuse is not the material mechanism
 
-Why it is plausible:
+Why it was plausible:
 
-- E5-3 is a first-touch attribution experiment, not direct evidence that stable object payload identity will recover the cost.
-- The observed signal may arise from unavoidable access to movement-refreshed spatial state rather than from allocation/reuse of the referenced float objects themselves.
-- A cache lookup may offset some or all theoretical locality benefit.
+- E5-3 was a first-touch attribution experiment, not direct evidence that stable payload identity would recover the cost.
+- The observed signal could have arisen from unavoidable access to movement-refreshed spatial state rather than reuse of the referenced geometry objects.
+- A geometry-cache lookup could offset theoretical locality benefit.
 
-Expected H2 signature:
-
-```text
-Cull saving fails one or both preregistered floors,
-or UnitRender does not improve consistently despite preserved workload rates.
-```
+H2 would remain viable if one or both preregistered Cull floors failed or UnitRender did not improve consistently under preserved workload rates.
 
 ## 3. Instrumentation / diagnostic changes
 
-E6 uses exact retained production as both A and B runtime source:
+Exact retained production was both A and B runtime source:
 
 ```text
 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
 ```
 
-Treatment is delivered only through:
+Formal measurement tooling SHA:
+
+```text
+ac68b4e5c50837feb8f978ffe2c2a9dc2caca1df
+```
+
+Treatment was delivered only through:
 
 ```text
 tools/phase5_unitrender_e6_geometry_reuse.py
 ```
 
-It monkeypatches `UnitSpatialIndex._record_for_hex()` so each `(col,row)` has one long-lived derived geometry tuple:
+It monkeypatched `UnitSpatialIndex._record_for_hex()` so each `(col,row)` had one long-lived derived geometry tuple:
 
 ```text
 (world_x, world_y, bucket)
 ```
 
-Every refresh still creates a fresh ordinary production `UnitSpatialRecord`.
+Every refresh still created a fresh ordinary production `UnitSpatialRecord`.
 
-Isolation contract test:
-
-```text
-tools/test_phase5_unitrender_e6_geometry_reuse.py
-```
-
-The test requires:
+Isolation validation before measurement:
 
 ```text
-fresh record identity remains true
-same-hex world_x object identity is reused
-same-hex world_y object identity is reused
-same-hex bucket tuple identity is reused
-faction remains record-specific
-move_entity/upsert methods are unchanged
-movement occupancy/living-count semantics remain intact
+E6 identity/isolation contract: 2 passed
+control targeted regressions: 25 passed
+treatment targeted regressions with patch installed: 25 passed
 ```
 
-Formal runner:
-
-```text
-tools/run_phase5_unitrender_e6_attribution.sh
-```
-
-Counterbalanced order:
+Formal runner order:
 
 ```text
 A50 -> B50 -> B100 -> A100
 ```
 
-The retained window is deliberately late (`sample_after=19s`) so first-fill route geometry ages out before measurement.
+The retained window was deliberately late (`sample_after=19s`) so first-fill route geometry aged out before measurement.
 
 ## 4. Evidence
 
-### Evidence for / against H1
+### Evidence for H1
 
-**PENDING FORMAL RUN.**
-
-Required evidence fields after execution:
+Formal result:
 
 ```text
-control/treatment Cull avg + p95
-control/treatment UnitRender avg
-control/treatment Animation avg
-controlled-work avg + diagnostic p99
-position commits/s
-Vision changed/s
-Fog delta tiles/s
-all scale-driver guards
-source/treatment metadata guards
+50% moving
+  controlled avg: 25.412 -> 25.267 ms  (-0.57%)
+  Cull avg:        2.076 -> 1.875 ms   saving 0.201 ms
+  UnitRender avg:  9.268 -> 9.134 ms   saving 0.134 ms
+  Animation avg:   3.525 -> 3.518 ms   saving 0.007 ms
+  position rate:   +0.733%
+  vision changed:  +0.447%
+  fog delta:       +0.693%
+  all checks:      PASS
+
+100% moving
+  controlled avg: 32.880 -> 32.386 ms  (-1.50%)
+  Cull avg:        2.404 -> 1.971 ms   saving 0.433 ms
+  UnitRender avg: 10.242 -> 10.026 ms   saving 0.217 ms
+  Animation avg:   7.320 -> 7.279 ms   saving 0.041 ms
+  position rate:   -0.109%
+  vision changed:  -0.054%
+  fog delta:       +0.319%
+  all checks:      PASS
 ```
 
-### Evidence for / against H2
+Cull relative savings:
 
-**PENDING FORMAL RUN.**
+```text
+50%  ≈ 9.7%
+100% ≈ 18.0%
+```
 
-Do not infer H2 merely from aggregate frame noise. The local Cull metric and workload-equivalence guards decide this experiment.
+Both density points exceeded the preregistered materiality floors and preserved workload-equivalence rates within ±2%.
 
-## 5. Root cause
+A strong causal consistency check is the 50% result:
 
-**PENDING E6 EVIDENCE.**
+```text
+E5-3 world_x/world_y attribution = 0.201 ms
+E6 geometry-reuse Cull recovery  = 0.201 ms
+```
 
-E5-3 already established `WORLD_COORD_PAYLOAD_FIRST_TOUCH_DOMINANT`; E6 does not reopen that CLOSED attribution. E6 tests whether *reuse* of that isolated payload is an effective treatment.
+At 100%:
 
-## 6. Causal chain under test
+```text
+E5-3 world_x/world_y attribution = 0.375 ms
+E6 geometry-reuse Cull recovery  = 0.433 ms
+```
+
+The `0.058 ms` excess must not be interpreted as >100% recovery of the earlier world-coordinate estimate. E6 jointly canonicalized `(world_x, world_y, bucket)`, and normal run-level measurement variation is comparable to this small excess. The preregistered conclusion only requires material recovery, which is clearly established.
+
+### Evidence against H2
+
+H2 predicted that stable per-hex payload reuse would fail the local Cull floors or fail to improve UnitRender consistently.
+
+Observed evidence contradicts that prediction:
+
+```text
+Cull floor @50% required >= 0.10 ms; observed 0.201 ms
+Cull floor @100% required >= 0.20 ms; observed 0.433 ms
+UnitRender improved at both densities
+controlled-work avg improved at both densities
+all workload-rate guards passed
+```
+
+Therefore H2 is rejected for this workload.
+
+## 5. Root cause / treatment conclusion
+
+E5-3 already established the root attribution:
+
+> **Movement-dependent Cull growth is dominated by first-touch of regenerated derived world-coordinate payload.**
+
+E6 adds the treatment conclusion:
+
+> **Long-lived reuse of pure per-hex derived world geometry materially recovers that Cull cost even when `UnitSpatialRecord` identity remains fresh.**
+
+This demonstrates that the material mechanism is not stable record identity; it is the lifecycle/locality of the derived geometry payload referenced by those records.
+
+## 6. Causal chain
 
 ```text
 movement commit
   -> fresh UnitSpatialRecord refresh
-  -> derived world_x/world_y payload regenerated
-  -> Cull first touches movement-refreshed world geometry
+  -> world_x/world_y/bucket payload regenerated
+  -> Cull first touches movement-refreshed derived geometry
   -> movement-dependent Cull cost
 
-E6 treatment:
+E6 treatment
 (col,row) stable semantic key
   -> long-lived derived geometry payload
-  -> fresh record references reused geometry
-  -> test whether Cull first-touch cost falls materially
+  -> fresh records reference reused geometry
+  -> Cull avg -0.201 ms @50%
+  -> Cull avg -0.433 ms @100%
+  -> UnitRender improves with workload rates preserved
 ```
 
 ## 7. Rejected explanations preserved from upstream cases
@@ -177,19 +214,41 @@ Do not reopen these without a new matching signature:
 - stable `UnitSpatialRecord` identity — E5-2 additional saving was not material;
 - `slots=True` as full answer — E5-1 recovered only a small fraction and was not kept.
 
+E6 also rejects:
+
+- **geometry reuse is not material** — rejected because both preregistered Cull floors passed with preserved workload rates.
+
 ## 8. Limits of the evidence
 
-Before execution:
+- The treatment uses an attribution-only visited-hex cache and does **not** establish acceptable production ownership/lifetime.
+- A positive E6 result justifies a bounded production candidate; it is not production KEEP.
+- Only the existing Mac 10K formal workload was used for this causal test.
+- P99 remains diagnostic for this mechanism experiment; local Cull/UnitRender metrics and workload-equivalence guards are the causal evidence.
+- E6 does not prove that a particular bounded representation will preserve the full attribution-treatment benefit; that requires a new production controlled A/B.
 
-- no E6 performance result exists;
-- the treatment uses an attribution-only visited-hex cache and does not establish acceptable production ownership/lifetime;
-- a positive result will justify a production candidate, not production KEEP;
-- only the existing Mac 10K workload is planned for this causal test;
-- P99 remains diagnostic for this mechanism experiment because run-level tail noise can exceed the local causal signal.
+## 9. Raw evidence and integrity
 
-## 9. Raw evidence
+Raw forensic package from formal run:
 
-Pending formal execution. No empty checksum file is created before artifacts exist.
+```text
+file: 20260907-203733.zip
+sha256: d4f7bab293ced78ab11231fe0e370fe51a257e1cb95b12666340a7a628819bc4
+```
+
+Raw profile SHA256 values:
+
+```text
+control/50pct-moving/profile.json
+  5adf77262ee556fe872cd3d1665b340a4a6d18fd9b2d54492a87560fcec51be8
+control/100pct-moving/profile.json
+  ec108d107702e961a76717462ddc3daeb59d66e8059f49aa744a13bc51b7647b
+treatment/50pct-moving/profile.json
+  5fea892fc789b86142de8413904e8530bc8c3f2a4a02c98b53def817d17abdb3
+treatment/100pct-moving/profile.json
+  95f89a0f8560cbdf632a46ce1b0a5f59732f75529049855291f387394bd521ba
+```
+
+The raw package checksum is frozen, but its durable STAR Lab storage/mirror locator is still pending. Per `PROTOCOL.md` v1.2, the scientific attribution is validated while the case remains not fully CLOSED until that raw forensic artifact has stable canonical storage.
 
 - [`manifest.yaml`](manifest.yaml)
 - [`decision.md`](decision.md)

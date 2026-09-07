@@ -1,6 +1,6 @@
 # Phase 5 E7 — 10K / 100% Moving P99 Tail Composition Attribution
 
-**Status:** DRAFT / PREREGISTERED — measurement pending  
+**Status:** VALIDATED ATTRIBUTION — stable contributors found / Raw mirror pending  
 **STAR repository:** `star-nexus/star`  
 **Retained production runtime:** `e7ba18b31870577110b591104ef8fa7b4713e43c`  
 **Experiment branch:** `experiment/phase5-tail-composition-attribution`  
@@ -8,112 +8,115 @@
 
 ## Question
 
-After E6-1, 10K / 100%-moving production remains very close to the canonical 30 Hz threshold. Repeated formal runs have shown controlled-work p99 around 33.5–33.7 ms while controlled average is around 31.9–32.1 ms.
+Which controlled-work subsystems rise together in current retained 10K / 100%-moving production tail frames, and which stable contributor should become the next causal target?
 
-E7 asks:
+## Method
 
-> Which controlled-work subsystems rise together in the same tail frames, and which stable per-frame contributor actually creates the p95/p99 uplift above ordinary frames?
-
-This is a diagnostic attribution stage, not an optimization and not a frontier run.
-
-## Measurement principle
-
-The existing `PerformanceProfiler` already stores aligned per-frame controlled-work, section self/inclusive samples and frame metrics. E7 does not add timers to production hot paths. The experiment launcher only:
-
-1. extends the profiler rolling retention horizon from 5 s to 10 s; and
-2. augments `get_stats()` at snapshot time with correlation / conditional-tail analysis of the already-recorded aligned deques.
-
-No gameplay, movement, Vision, Fog, render or spatial-index semantics change.
-
-## Formal workload
-
-Three independent repeats of exact retained production:
+Three identical independent repeats of exact retained production. Primary attribution is conditional on aligned per-frame profiler data:
 
 ```text
-resident units       10000
-moving density       100%
-Fog                  ON
-motion phase          staggered
-seed / phase seed    42 / 42
-route steps           12
-GC                    realtime_defer
-render                uncapped
-MiniMap dynamic units OFF
-input                 blocked
-execution pathfinding OFF
-production animation/commits ON
-run duration          20 s
-sample_after          19 s
-profiler horizon      10 s
-minimum aligned frames per repeat 250
+tail      = controlled_work >= per-run p95
+reference = per-run p25 <= controlled_work <= p75
+uplift_s  = mean(section self_ms | tail) - mean(section self_ms | reference)
 ```
 
-## Tail attribution sets
+Self time is used for additive accounting. A section is actionable only when it is positive top-3 in at least 2/3 repeats and median uplift is at least 0.15 ms.
 
-Primary attribution does **not** use only the top 1% frames because that set is too small.
+Formal workload remained 10K resident / 100% moving / Fog ON / staggered / seed 42 / realtime_defer / production animation+commits / pathfinding OFF / MiniMap dynamic units OFF / blocked gameplay input. The experiment-only profiler horizon was 10 s and each repeat required >=250 aligned frames.
 
-Per repeat:
+## Formal run
 
 ```text
-tail set      = controlled_work >= per-run p95
-reference set = per-run p25 <= controlled_work <= p75
+run_id: 20260908-001411
+samples: 312 / 311 / 311
+source + workload guards: PASS all repeats
+tail contract: 2 passed
+targeted regressions: 20 passed
 ```
 
-For each controlled-category section `s`:
+Controlled-work results:
 
 ```text
-uplift_s = mean(self_ms_s | tail) - mean(self_ms_s | reference)
+repeat-1: avg 30.649 ms, p95 32.697, p99 33.209, tail uplift 2.519 ms
+repeat-2: avg 30.743 ms, p95 32.832, p99 33.169, tail uplift 2.295 ms
+repeat-3: avg 30.770 ms, p95 32.839, p99 33.190, tail uplift 2.307 ms
 ```
 
-Contribution uses **section self time**, matching the definition of controlled work and avoiding parent/child inclusive double counting.
+The section self-time algebra closes the controlled tail uplift in all three repeats: positive and negative section uplifts sum back to the measured controlled-work tail uplift.
 
-P99 and frames above 33.33 ms remain diagnostics. They do not define the primary contributor set.
-
-## Stability rule
-
-A section is an actionable stable contributor only if:
+## Stable contributors
 
 ```text
-appears in positive top-3 uplift in at least 2 of 3 repeats
-median tail uplift >= 0.15 ms
+UnitRenderSystem  top3=3/3  median self uplift +1.067 ms  share 46.3%  r=0.954
+VisionSystem      top3=3/3  median self uplift +0.401 ms  share 17.5%  r=0.884
+AnimationSystem   top3=3/3  median self uplift +0.350 ms  share 15.2%  r=0.741
 ```
 
-Possible formal decisions:
+Stable p90 co-occurrence includes:
+
+```text
+UnitRender + render_batch_blits  3/3
+UnitRender + Animation           3/3
+UnitRender + Vision              2/3
+Vision + Animation               2/3
+```
+
+## UnitRender refinement
+
+The next target is **not Cull**.
+
+Median UnitRender inclusive tail uplift is about `+1.164 ms`, decomposing to:
+
+```text
+UnitRender self       +1.067 ms  (~91.6% of UnitRender inclusive uplift)
+unit_visible_cull     +0.097 ms  (~8.4%)
+```
+
+`render_commands` is strongly associated with controlled tail frames:
+
+```text
+median Pearson r = 0.920
+median tail delta = +438 commands
+median tail ratio = 1.128
+```
+
+So the next causal question is why tail frames generate more UnitRender batch/render work and commands, not whether the previous Cull first-touch problem returned.
+
+## Decision
 
 ```text
 STABLE_TAIL_CONTRIBUTORS_FOUND
-NO_ACTIONABLE_STABLE_TAIL_CONTRIBUTOR
-INVALID_GUARDS
+NEXT CAUSAL TARGET: UnitRender self / render-volume path
 ```
 
-When contributors are found, the highest stable median uplift becomes the next causal target. E7 itself authorizes no optimization KEEP.
+Retained production remains `e7ba18b31870577110b591104ef8fa7b4713e43c`. E7 authorizes no production KEEP.
 
-## Pre-measurement runner correction
-
-An initial invocation reached and passed the tail-math contract (`2 passed`) and targeted regressions (`20 passed`) but stopped before `repeat-1` began because Bash `set -u` expanded a dependent `local` initializer before its sibling local variable had been assigned:
-
-```bash
-local repeat="$1" point_dir="$RUN_DIR/repeat-${repeat}" cleanup_rc
-```
-
-The runner now splits dependent locals into separate assignments. No formal performance point was produced by the failed invocation, so it is not part of E7 evidence and does not change the preregistered workload, attribution sets, thresholds, or possible decisions.
-
-## 30 Hz rule
-
-The analyzer reports each repeat's 100%-moving controlled p99 and their median against 33.33 ms, but:
+## 30 Hz diagnostic
 
 ```text
-frontier_update_authorized = false
+p99 repeats: 33.209 / 33.169 / 33.190 ms
+median p99: 33.190 ms
+<=33.33 ms: 3/3
+frontier_update_authorized: false
 ```
 
-E7 is attribution-only.
+This is encouraging but is not a canonical frontier validation: E7 is attribution-only and uses a 10 s profiler horizon; aggregate machine state also differs from prior runs.
 
 ## Artifacts
 
-Canonical command:
+Compact:
 
-```bash
-bash tools/run_phase5_tail_composition.sh
+```text
+20260908-001411-compact.zip
+SHA256 e69471082847263f65035015e83da211982612befb187691b65d377d159f5b29
 ```
 
-The runner emits Compact + Raw two-tier evidence. Compact is the default review package; Raw remains the forensic substrate.
+Raw:
+
+```text
+20260908-001411-raw.zip
+SHA256 cdb7a6232d13c0f7d55c26f4f23fabd21782f305eb9b58444bf847612214126a
+size 142953 bytes
+```
+
+Compact integrity was independently verified. Raw remains the authoritative forensic substrate and still needs its stable archival mirror/locator before archival closure.

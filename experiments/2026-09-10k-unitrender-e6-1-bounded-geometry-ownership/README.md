@@ -1,20 +1,21 @@
 # Phase 5 10K UnitRender E6-1 — Bounded Geometry Ownership
 
-**Status:** DRAFT / PREREGISTERED — measurement pending  
+**Status:** VALIDATED / KEEP — raw forensic mirror pending  
 **STAR repository:** `star-nexus/star`  
 **Problem/control commit:** `17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a`  
-**Candidate commit:** `e7ba18b31870577110b591104ef8fa7b4713e43c`  
-**E6-1 tooling commit:** `1855f34c14463a6c165d85b11403e4cc2e7938b4`  
-**Validated commit:** N/A  
+**Candidate / validated commit:** `e7ba18b31870577110b591104ef8fa7b4713e43c`  
+**Formal runner branch HEAD at run:** `8cd4215e1d11d0778ee9db737cc757213f13630d`  
 **Validated tag:** N/A
 
 ## 1. Problem
 
 E6 attribution validated that long-lived per-hex `(world_x, world_y, bucket)` payloads materially recover the movement-dependent Cull first-touch cost while keeping fresh `UnitSpatialRecord` identity. The attribution treatment used an unbounded visited-coordinate dictionary and therefore was intentionally not eligible for production KEEP.
 
-E6-1 asks the production question:
+E6-1 asked the production question:
 
 > Can the same reuse mechanism be implemented with hard board-bounded ownership, preserve semantics/regressions, and retain material Cull/UnitRender benefit against exact production?
+
+The answer is **yes**.
 
 ## 2. Candidate design
 
@@ -49,19 +50,15 @@ HexPosition authority unchanged
 
 `rebuild()` clears cached geometry and rebinds the current board snapshot.
 
-## 3. Source checkout
+## 3. Formal run
 
-```bash
-git clone https://github.com/star-nexus/star.git
-cd star
-git fetch --all --tags
-git checkout experiment/phase5-unitrender-e6-bounded-geometry-ownership
-uv sync
+Run ID:
+
+```text
+20260907-213322
 ```
 
-Formal A/B does not compare moving branch names. The runner creates detached worktrees from the two frozen SHAs above.
-
-## 4. Formal run
+Command:
 
 ```bash
 bash tools/run_phase5_unitrender_e6_1.sh
@@ -73,11 +70,20 @@ Counterbalanced order:
 A50 -> B50 -> B100 -> A100
 ```
 
-Formal workload remains the existing 10K Phase-5 workload:
+Frozen A/B source:
+
+```text
+A control   = 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+B treatment = e7ba18b31870577110b591104ef8fa7b4713e43c
+runtime diff = rotk_env/utils/unit_spatial_index.py only
+```
+
+Formal workload:
 
 ```text
 scenario: chibi-144k-scale-10000
 scenario SHA256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
+resident units: 10000
 Fog: ON
 motion: staggered
 seed / phase seed: 42 / 42
@@ -91,95 +97,104 @@ production animation / commits: ON
 sample_after: 19 s
 ```
 
-The late retained window measures steady geometry reuse rather than initial cache fill.
+## 4. Pre-measurement validation
 
-## 5. Pre-measurement validation
-
-No density point executes unless all of the following pass:
+All premeasurement guards passed before any formal density result was admitted:
 
 ```text
-candidate runtime diff guard:
-  only rotk_env/utils/unit_spatial_index.py
-
-candidate bounded-geometry contract tests
-control targeted regressions
-treatment targeted regressions
-scenario SHA256 guard
-exact control/treatment SHA guard
+bounded geometry contract:       5 passed
+control targeted regressions:   25 passed
+treatment targeted regressions: 30 passed
+source diff guard:              PASS
+scenario/workload guards:       PASS
 ```
 
-## 6. Preregistered KEEP gates
+## 5. Formal result
 
-Workload equivalence:
+### 50% moving
 
 ```text
-all scale-driver guards PASS
-position commits/s within ±2%
-Vision changed/s within ±2%
-Fog delta tiles/s within ±2%
+controlled avg: 25.633 -> 25.417 ms (-0.84%)
+controlled p99: 26.767 -> 26.564 ms
+Cull avg:       2.140 -> 1.909 ms  saving 0.231 ms
+Cull p95 save:  0.261 ms
+UnitRender avg: 9.394 -> 9.224 ms  saving 0.170 ms
+Animation avg:  3.474 -> 3.513 ms  +1.12%
+position rate:  +0.013%
+Vision rate:    +0.021%
+Fog delta:      +0.121%
+checks:         PASS
 ```
 
-Candidate materiality / no-tradeoff gates:
+### 100% moving
 
 ```text
-50% moving:  Cull avg saving >= 0.10 ms
-100% moving: Cull avg saving >= 0.20 ms
-UnitRender avg improves at both densities
-Animation avg regression <= 2% at both densities
-controlled-work avg regression <= 2% at both densities
+controlled avg: 32.567 -> 32.115 ms (-1.39%)
+controlled p99: 37.262 -> 33.677 ms
+Cull avg:       2.406 -> 1.983 ms  saving 0.423 ms
+Cull p95 save:  0.462 ms
+UnitRender avg: 10.277 -> 9.910 ms saving 0.367 ms
+Animation avg:  7.217 -> 7.258 ms  +0.57%
+position rate:  -0.015%
+Vision rate:    -0.008%
+Fog delta:      -0.035%
+checks:         PASS
 ```
 
-Possible production decisions:
+Preregistered production decision:
 
 ```text
 KEEP_BOUNDED_DERIVED_WORLD_GEOMETRY_REUSE
-DO_NOT_KEEP_BOUNDED_DERIVED_WORLD_GEOMETRY_REUSE
 ```
 
-## 7. Canonical 30 Hz gate is separate
+## 6. Canonical 30 Hz gate
 
-Production KEEP does not move the Phase-5 release threshold.
+The KEEP gate is deliberately separate from the Phase-5 capacity gate.
 
 At 10K / 100% moving:
 
 ```text
-controlled_work_frame_ms.p99 <= 33.33 ms
+treatment controlled_work_frame_ms.p99 = 33.677126 ms
+gate                                      = 33.33 ms
+result                                    = FAIL
+margin                                    = +0.347126 ms
 ```
 
-is reported separately as the canonical 30 Hz capacity result.
-
-A candidate may be a valid KEEP while the 30 Hz frontier remains FAIL. `records/performance-frontier.md` changes only after the ordinary STAR Lab frontier admission requirements are met.
-
-## 8. Two-tier artifacts
-
-The canonical runner emits:
+Therefore:
 
 ```text
-<run-id>-compact.zip  # default review / Agent / LLM input
-<run-id>-raw.zip      # authoritative forensic substrate
+production candidate = KEEP
+Performance Frontier = unchanged
+frontier update candidate = false
 ```
 
-Compact never replaces Raw. Both SHA256 values are printed and recorded.
+The human-readable analyzer originally printed the operator as `<=` even on a FAIL line. The machine-readable summary correctly recorded `pass: false`; this was a presentation-only formatter bug and did not affect the decision. The formatter was corrected after the formal run.
 
-## 9. Formal artifacts
+## 7. Two-tier artifacts
 
-Pending formal run. Do not create an empty STAR Lab `SHA256SUMS`.
-
-Expected compact evidence includes:
+Compact Evidence Package:
 
 ```text
-evidence.json
-raw-artifact.json
-manifest.txt
-source-guards.json (via point/raw provenance; raw package authoritative)
-unitrender-e6-1-summary.json
-treatment-contract-test.log
-control-targeted-regressions.log
-treatment-targeted-regressions.log
-SHA256SUMS
+20260907-213322-compact.zip
+size:   10616 bytes
+SHA256: 0c9db01f29a04dcefc7ba896ab7ab533ec313c31a9e3d974d790b22893cb45a9
 ```
 
-## 10. Related records
+Raw Forensic Package:
+
+```text
+20260907-213322-raw.zip
+size:   128760 bytes
+SHA256: 4322905154b69ec25688fa0775b0efdd62a7a60bf1366aead9d5e8f73d661c07
+```
+
+The Compact package was independently inspected after the run: package-local `SHA256SUMS` verified, all four point payloads were present, all workload guards were true, raw profile hashes/sizes were present, and the Raw package hash/size reference matched the runner output.
+
+Compact is sufficient for normal decision review. Raw remains the authoritative forensic substrate.
+
+A stable canonical mirror/storage locator for the Raw package is still pending; therefore this case is **validated but not yet marked CLOSED**.
+
+## 8. Related records
 
 - [`manifest.yaml`](manifest.yaml)
 - [`analysis.md`](analysis.md)

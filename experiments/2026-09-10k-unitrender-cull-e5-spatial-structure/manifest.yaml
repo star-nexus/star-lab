@@ -2,7 +2,7 @@ experiment:
   id: 10k-unitrender-cull-e5-spatial-structure
   title: Phase 5 10K UnitRender E5 Spatial First-Touch Structure Decomposition
   date: 2026-09-07
-  status: running_retry_preregistered_after_inconclusive_sample_guard
+  status: running_measurement_window_correction_preregistered
 
 source:
   repository: star-nexus/star
@@ -10,7 +10,8 @@ source:
   frozen_production_commit: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
   retained_optimizations: [A, B, C1, C2a, D1]
   experiment_branch: experiment/phase5-unitrender-cull-e5-spatial-structure
-  branch_head: ec32568e2f38826a989978f83799cefaf45efb52
+  branch_head_after_window_fix: 7123e15cfea8c7a349bb110b9a776e1153a7d415
+  original_tooling_head: ec32568e2f38826a989978f83799cefaf45efb52
   runtime_from_detached_worktree: true
   runtime_diff_files: []
   tool_files:
@@ -21,16 +22,6 @@ source:
 runtime_source_guard:
   rotk_env/systems/window_unit_render_system.py: b995df231c5e10d901b129f95716bfb0f30043eb
   rotk_env/utils/unit_spatial_index.py: 2c2fb26c6ae5f422516a6c3927049d8a78a72b32
-
-trigger:
-  prior_case: 10k-unitrender-cull-e4-pre-map-scheduling
-  prior_run_id: 20260907-140419
-  prior_zip_sha256: 8f47582ec589acb4dd354d2ec98f1cfb7c7eacb3a3139e8d955b63ac46682d20
-  prior_decision: MAP_RENDER_LOCALITY_GAP_NOT_CONFIRMED
-  e3_decision: SPATIAL_FIRST_TOUCH_LOCALITY_CANDIDATE_JUSTIFIED
-  e4_baseline_growth_00_to_100_ms: 0.735259
-  e4_early_pre_map_was_faster: false
-  e4_late_after_early_self_warming: true
 
 scenario:
   name: chibi-144k-scale-10000
@@ -76,7 +67,6 @@ preregistered_reproduction_gate:
 preregistered_full_spatial_gate_100pct:
   min_abs_improvement_context_to_record_ms: 0.25
   min_relative_improvement_context_to_record: 0.12
-  fail_result: E5_SPATIAL_STRUCTURE_EFFECT_NOT_REPRODUCED
 
 preregistered_dominance_rule_100pct:
   min_stage_abs_saving_ms: 0.12
@@ -85,12 +75,9 @@ preregistered_dominance_rule_100pct:
 attempt_20260907_143507:
   decision: E5_INCONCLUSIVE_MEASUREMENT_GUARD
   zip_sha256: 66839700b528f8e3aef44a4154b1a16f7a620089f5b1648f7114a09f2ad064d0
-  targeted_regressions: "9 passed in 0.39s"
   all_guards_pass: true
   baseline_growth_00_to_100_ms: 0.7265356572
-  candidate_change_pct: 0.1272421525
   full_spatial_effect_100_ms: 0.6655220476
-  full_spatial_effect_100_relative: 0.2966959498
   stage_contributions_100_ms:
     bucket_container: 0.1625903333
     by_entity_lookup: 0.0226400000
@@ -103,17 +90,59 @@ attempt_20260907_143507:
     lookup: 7
     record: 7
   formal_dominance_allowed: false
-  reason: context_and_bucket_below_preregistered_minimum_7_samples
 
-retry_preregistration:
-  tooling_branch_unchanged: true
-  tooling_head_unchanged: ec32568e2f38826a989978f83799cefaf45efb52
+attempt_20260907_154710:
+  decision: E5_INCONCLUSIVE_MEASUREMENT_GUARD
+  zip_sha256: be6614da8923dc9e29a6c16c75abb99790e11e7f0e1400215da088f19ace853c
+  duration_seconds: 25
+  all_guards_pass: true
+  baseline_growth_00_to_100_ms: 0.7274897770
+  candidate_change_pct: 0.12
+  full_spatial_effect_100_ms: 0.6783328571
+  full_spatial_effect_100_relative: 0.3039782728
+  stage_contributions_100_ms:
+    bucket_container: 0.1771009048
+    by_entity_lookup: 0.0193751667
+    record_fields: 0.4818567857
+  directional_dominant_stage: record_fields
+  sample_counts_100pct:
+    baseline: 129
+    context: 7
+    bucket: 6
+    lookup: 6
+    record: 7
+  profiler_window_100pct:
+    window_target_seconds: 5.0
+    window_coverage_seconds: 5.004796833
+    window_throughput_fps: 30.97028814
+    retained_frames: 155
+  formal_dominance_allowed: false
+  reason: bucket_and_lookup_below_preregistered_minimum_7_samples
+
+sample_budget_diagnosis:
+  issue: profiler_rolling_horizon_too_short_for_frozen_sampling_cadence_and_sample_gate
+  expected_samples_per_mode_at_100pct_with_5s_window: 6.45
+  duration_only_retry_can_fix: false
+  performance_profiler_default_window_seconds: 5.0
+
+measurement_window_correction_preregistration:
+  classification: measurement_window_correction_not_runtime_candidate
   production_unchanged: true
-  thresholds_unchanged: true
+  analyzer_thresholds_unchanged: true
   prewarm_period_frames_unchanged: 6
-  allowed_measurement_change_only:
-    duration_seconds: 25
-  rationale: collect adequate samples without changing probe cadence or semantics
+  instrumentation_density_unchanged: true
+  duration_seconds: 25
+  profiler_window_seconds_old: 5.0
+  profiler_window_seconds_new: 8.0
+  expected_samples_per_mode_at_31fps: 10.3
+  probe_commit: 7123e15cfea8c7a349bb110b9a776e1153a7d415
+  rationale: satisfy frozen sample budget by retaining more observed frames rather than increasing probe frequency
+
+replicated_directional_signal:
+  record_fields_attempt1_ms: 0.4802917143
+  record_fields_attempt2_ms: 0.4818567857
+  absolute_difference_ms: 0.0015650714
+  formal_decision_deferred_until_sample_gate_passes: true
 
 possible_decisions:
   - E5_INCONCLUSIVE_MEASUREMENT_GUARD
@@ -129,11 +158,11 @@ positive_attribution_is_not_production_keep: true
 representation_change_forbidden_during_attribution: true
 prewarm_as_optimization_forbidden: true
 raw_mirror_pending: true
-next_action: rerun_exact_E5_with_DURATION_25_only
+next_action: rerun_E5_with_DURATION_25_and_8s_profiler_window
 
 host_caveat:
   isolated_benchmark_host_required_for_formal_local_decision: false
   aggregate_latency: diagnostic_only
 
 methodology:
-  rule: "先把 first-touch 拆到 container / indirection / record 层，再决定是否值得改 spatial representation"
+  rule: "测量窗口必须覆盖预注册样本预算；不能靠提高 probe 密度来制造证据"

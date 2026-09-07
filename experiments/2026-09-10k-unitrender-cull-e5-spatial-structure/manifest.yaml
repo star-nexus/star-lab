@@ -2,7 +2,8 @@ experiment:
   id: 10k-unitrender-cull-e5-spatial-structure
   title: Phase 5 10K UnitRender E5 Spatial First-Touch Structure Decomposition
   date: 2026-09-07
-  status: running_window_and_aging_margin_correction_preregistered
+  status: closed_record_object_first_touch_dominant
+  decision: RECORD_OBJECT_FIRST_TOUCH_DOMINANT
 
 source:
   repository: star-nexus/star
@@ -10,15 +11,9 @@ source:
   frozen_production_commit: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
   retained_optimizations: [A, B, C1, C2a, D1]
   experiment_branch: experiment/phase5-unitrender-cull-e5-spatial-structure
-  original_tooling_head: ec32568e2f38826a989978f83799cefaf45efb52
-  branch_head_after_window_fix: 7123e15cfea8c7a349bb110b9a776e1153a7d415
-  branch_head_after_aging_margin_fix: 11eb6d81203fdf6a6410208d1db52a9611fc29dd
+  final_measurement_head: 11eb6d81203fdf6a6410208d1db52a9611fc29dd
   runtime_from_detached_worktree: true
   runtime_diff_files: []
-  tool_files:
-    - tools/phase5_unitrender_cull_e5_spatial_structure.py
-    - tools/phase5_unitrender_cull_e5_analyze.py
-    - tools/run_phase5_unitrender_cull_e5_attribution.sh
 
 runtime_source_guard:
   rotk_env/systems/window_unit_render_system.py: b995df231c5e10d901b129f95716bfb0f30043eb
@@ -43,140 +38,109 @@ workload:
   hub: offline
   mock_ai: false
 
-measurement:
-  aggregate_frame_latency: diagnostic_only
-  core_function: exact_production_get_visible_units
-  core_timer: one_whole_call_timer
-  prewarm_period_frames: 6
-  prewarm_read_only: true
-  prewarm_time_excluded_from_core_metric: true
-  cumulative_modes:
-    context: resolve_index_viewport_and_fog_view_refs
-    bucket: context_plus_candidate_bucket_sets_and_entity_ids
-    lookup: bucket_plus_by_entity_get
-    record: lookup_plus_cull_consumed_record_fields
-  inferred_stage_savings:
-    bucket_container: context_core_minus_bucket_core
-    by_entity_indirection: bucket_core_minus_lookup_core
-    record_object_fields: lookup_core_minus_record_core
-
-preregistered_reproduction_gate:
+frozen_gates:
   min_baseline_core_growth_00_to_100_ms: 0.40
   max_candidate_change_pct: 2.0
   min_samples_per_mode_per_density: 7
+  full_spatial_100:
+    min_abs_ms: 0.25
+    min_relative: 0.12
+  stage_dominance_100:
+    min_abs_ms: 0.12
+    min_share: 0.35
 
-preregistered_full_spatial_gate_100pct:
-  min_abs_improvement_context_to_record_ms: 0.25
-  min_relative_improvement_context_to_record: 0.12
+prior_attempts:
+  attempt_20260907_143507:
+    decision: E5_INCONCLUSIVE_MEASUREMENT_GUARD
+    zip_sha256: 66839700b528f8e3aef44a4154b1a16f7a620089f5b1648f7114a09f2ad064d0
+    record_fields_100_ms: 0.4802917143
+    sample_counts_100pct: {context: 6, bucket: 6, lookup: 7, record: 7}
+  attempt_20260907_154710:
+    decision: E5_INCONCLUSIVE_MEASUREMENT_GUARD
+    zip_sha256: be6614da8923dc9e29a6c16c75abb99790e11e7f0e1400215da088f19ace853c
+    record_fields_100_ms: 0.4818567857
+    sample_counts_100pct: {context: 7, bucket: 6, lookup: 6, record: 7}
+  measurement_design_bug:
+    issue: 5s_rolling_window_insufficient_for_period6_four_modes_min7_samples
+    duration_only_retry_can_fix: false
+    correction: profiler_window_5s_to_8s_without_changing_probe_cadence
+  aborted_corrected_attempt:
+    valid_attribution_data: false
+    issue: sample_after_7s_shorter_than_8s_profile_horizon
+    fix: sample_after_10s_restores_2s_aging_margin
 
-preregistered_dominance_rule_100pct:
-  min_stage_abs_saving_ms: 0.12
-  min_stage_share_of_total: 0.35
-
-attempt_20260907_143507:
-  decision: E5_INCONCLUSIVE_MEASUREMENT_GUARD
-  zip_sha256: 66839700b528f8e3aef44a4154b1a16f7a620089f5b1648f7114a09f2ad064d0
+formal_run_20260907_163736:
+  decision: RECORD_OBJECT_FIRST_TOUCH_DOMINANT
+  zip_sha256: 02755e116f83653dd2c845735c7f94ed2a7318b3dc5b517d1ec376f28f0f50a7
+  targeted_regressions: "9 passed in 0.37s"
+  driver_exit_codes: [0, 0, 0]
+  cleanup_exit_codes: [0, 0, 0]
   all_guards_pass: true
-  baseline_growth_00_to_100_ms: 0.7265356572
-  full_spatial_effect_100_ms: 0.6655220476
-  stage_contributions_100_ms:
-    bucket_container: 0.1625903333
-    by_entity_lookup: 0.0226400000
-    record_fields: 0.4802917143
-  directional_dominant_stage: record_fields
-  sample_counts_100pct:
-    baseline: 127
-    context: 6
-    bucket: 6
-    lookup: 7
-    record: 7
-  formal_dominance_allowed: false
-
-attempt_20260907_154710:
-  decision: E5_INCONCLUSIVE_MEASUREMENT_GUARD
-  zip_sha256: be6614da8923dc9e29a6c16c75abb99790e11e7f0e1400215da088f19ace853c
   duration_seconds: 25
-  all_guards_pass: true
-  baseline_growth_00_to_100_ms: 0.7274897770
-  candidate_change_pct: 0.12
-  full_spatial_effect_100_ms: 0.6783328571
-  full_spatial_effect_100_relative: 0.3039782728
+  sample_after_seconds: 10
+  profiler_window_seconds: 8
+  profiler_window_aging_margin_seconds: 2
+  profile_windows:
+    00pct: {coverage_s: 8.010095042, retained_frames: 440, throughput_fps: 54.9306840547}
+    50pct: {coverage_s: 8.008205667, retained_frames: 292, throughput_fps: 36.4626000058}
+    100pct: {coverage_s: 8.028333625, retained_frames: 238, throughput_fps: 29.6450061889}
+  sample_counts:
+    00pct: {baseline: 367, context: 18, bucket: 19, lookup: 18, record: 18}
+    50pct: {baseline: 243, context: 12, bucket: 12, lookup: 12, record: 13}
+    100pct: {baseline: 198, context: 10, bucket: 10, lookup: 10, record: 10}
+  baseline_growth_00_to_100_ms: 0.7277640843
+  candidate_change_pct: 0.1248131540
+  full_spatial_effect_100_ms: 0.756767
+  full_spatial_effect_100_relative: 0.3169
   stage_contributions_100_ms:
-    bucket_container: 0.1771009048
-    by_entity_lookup: 0.0193751667
-    record_fields: 0.4818567857
-  directional_dominant_stage: record_fields
-  sample_counts_100pct:
-    baseline: 129
-    context: 7
-    bucket: 6
-    lookup: 6
-    record: 7
-  profiler_window_100pct:
-    window_target_seconds: 5.0
-    window_coverage_seconds: 5.004796833
-    window_throughput_fps: 30.97028814
-    retained_frames: 155
-  formal_dominance_allowed: false
-  reason: bucket_and_lookup_below_preregistered_minimum_7_samples
+    bucket_container: 0.2382334
+    by_entity_lookup: 0.0209417
+    record_fields: 0.4975919
+  stage_shares_100:
+    bucket_container: 0.3148
+    by_entity_lookup: 0.0277
+    record_fields: 0.6575
+  100pct_distribution:
+    lookup: {min_ms: 2.0347, p50_ms: 2.1265, max_ms: 2.2594}
+    record: {min_ms: 1.5364, p50_ms: 1.6363, max_ms: 1.7539}
+    nonoverlap: true
 
-sample_budget_diagnosis:
-  issue: profiler_rolling_horizon_too_short_for_frozen_sampling_cadence_and_sample_gate
-  expected_samples_per_mode_at_100pct_with_5s_window: 6.45
-  duration_only_retry_can_fix: false
-  performance_profiler_default_window_seconds: 5.0
+replication:
+  record_fields_100_ms: [0.4802917143, 0.4818567857, 0.4975919]
+  mean_ms: 0.4865801333
+  range_ms: 0.0173001857
+  interpretation: stable_record_field_first_touch_signal
 
-aborted_window_only_retry:
-  formal_performance_result: false
-  stopped_at_point: 00pct-moving
-  driver_rc: 1
-  env_process_alive_until_runner_cleanup: true
-  classification: measurement_scheduling_guard_failure
-  cause: profile_window_8s_exceeded_sample_after_7s
-  historical_aging_margin_seconds: 2.0
-  erroneous_aging_margin_seconds: -1.0
-  attribution_decision_allowed: false
+interpretation:
+  prewarm_is_not_candidate: true
+  by_entity_hash_lookup_is_not_dominant: true
+  evidence_points_to: python_record_field_storage_and_first_access_locality
+  production_record_layout: frozen_dataclass_without_slots
+  movement_replaces_record_on_position_commit: true
 
-measurement_window_and_aging_margin_correction_preregistration:
-  classification: measurement_scheduling_correction_not_runtime_candidate
-  production_unchanged: true
-  analyzer_thresholds_unchanged: true
-  prewarm_period_frames_unchanged: 6
-  instrumentation_density_unchanged: true
-  duration_seconds: 25
-  profiler_window_seconds: 8.0
-  sample_after_seconds: 10.0
-  aging_margin_seconds: 2.0
-  expected_samples_per_mode_at_31fps: 10.3
-  profile_window_probe_commit: 7123e15cfea8c7a349bb110b9a776e1153a7d415
-  runner_aging_margin_commit: 11eb6d81203fdf6a6410208d1db52a9611fc29dd
-  rationale: retain enough frames for frozen sample budget while aging planning/kickoff/realtime-defer transition frames out of the profile
+next_candidate:
+  id: E5-1
+  concept: slotted_unit_spatial_record
+  proposed_change: "@dataclass(frozen=True, slots=True)"
+  preserve:
+    - fields
+    - immutability
+    - dataclass_equality
+    - by_entity_semantics
+    - by_bucket_semantics
+    - movement_semantics
+    - fog_semantics
+    - cull_algorithm
+  forbidden_before_e5_1_result:
+    - structure_of_arrays_rewrite
+    - custom_hash_table
+    - bucket_direct_record_rewrite
+    - native_or_parallel_rewrite
 
-replicated_directional_signal:
-  record_fields_attempt1_ms: 0.4802917143
-  record_fields_attempt2_ms: 0.4818567857
-  absolute_difference_ms: 0.0015650714
-  formal_decision_deferred_until_sample_gate_passes: true
-
-possible_decisions:
-  - E5_INCONCLUSIVE_MEASUREMENT_GUARD
-  - ORIGINAL_CULL_GROWTH_NOT_REPRODUCED
-  - E5_INCONCLUSIVE_WORKLOAD_SHIFT
-  - E5_SPATIAL_STRUCTURE_EFFECT_NOT_REPRODUCED
-  - BUCKET_CONTAINER_FIRST_TOUCH_DOMINANT
-  - BY_ENTITY_INDIRECTION_FIRST_TOUCH_DOMINANT
-  - RECORD_OBJECT_FIRST_TOUCH_DOMINANT
-  - MIXED_SPATIAL_FIRST_TOUCH_STRUCTURE
-
+production_unchanged: true
 positive_attribution_is_not_production_keep: true
-representation_change_forbidden_during_attribution: true
-prewarm_as_optimization_forbidden: true
 raw_mirror_pending: true
-next_action: rerun_E5_with_DURATION_25_PROFILE_WINDOW_8_SAMPLE_AFTER_10
-
-host_caveat:
-  isolated_benchmark_host_required_for_formal_local_decision: false
-  aggregate_latency: diagnostic_only
+next_action: implement_E5_1_slots_candidate_then_semantic_regressions_and_uninstrumented_AB
 
 methodology:
-  rule: "测量窗口必须覆盖预注册样本预算，同时保留 steady-state aging margin；不能靠提高 probe 密度来制造证据"
+  rule: "先用最低 blast-radius 的 record-layout treatment 验证 attribution 能否转成 production saving；不要直接重写 spatial index"

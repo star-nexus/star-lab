@@ -1,6 +1,6 @@
 # STAR Engineering Experiment & Reproducibility Protocol
 
-**Version:** 1.1  
+**Version:** 1.2  
 **Status:** Normative  
 **Applies to:** STAR / StarBench performance work, scalability experiments, runtime debugging, architecture optimization, and engineering investigations.
 
@@ -512,3 +512,148 @@ checkout -> reproduce -> measure -> interpret -> validate -> archive -> verify
 - [ ] large artifacts kept out of normal Git history
 - [ ] Performance Frontier updated when applicable
 - [ ] annotated milestone tag created when appropriate
+
+---
+
+## 21. Two-tier artifact standard — Compact Evidence + Raw Forensic
+
+Formal experiments that produce profiler dumps, traces, verbose JSON, large scenarios, or otherwise context-heavy evidence SHOULD emit **two complementary artifacts**:
+
+```text
+Compact Evidence Package
+        +
+Raw Forensic Package
+```
+
+This is a presentation and access-layer separation, **not** an evidence deletion policy.
+
+### 21.1 Compact Evidence Package
+
+The Compact Evidence Package is the default artifact for ordinary engineering review, STAR Lab reading, future Agent/LLM analysis, and routine handoff.
+
+It SHOULD contain only decision-grade evidence needed to reconstruct the formal conclusion without opening full profiler state, for example:
+
+```text
+manifest / provenance
+experiment guards
+controlled independent variable
+complete decision-grade point payloads
+primary causal local metrics
+workload-equivalence metrics
+relevant tail diagnostics
+formal analyzer summary
+regression / contract-test result
+SHA256 references to raw profiler artifacts
+SHA256 + size reference to the Raw Forensic Package
+package-local SHA256SUMS
+```
+
+A compact package MUST NOT silently replace a causal metric with a prose summary. If a metric is used in a gate, causal chain, or formal decision, its machine-readable value belongs in compact evidence.
+
+The compact package SHOULD omit or deduplicate material that is expensive to read but unnecessary for the normal decision path, including:
+
+```text
+full profiler sample histories
+slow-frame forensic payloads
+large fixed scenarios already represented by raw artifact + checksum
+byte-identical console/log copies of JSON already preserved elsewhere
+PID bookkeeping
+separate one-line exit-code files when equivalent validation status is preserved
+```
+
+### 21.2 Raw Forensic Package
+
+The Raw Forensic Package is the authoritative low-level audit substrate.
+
+It preserves enough original output to support:
+
+```text
+profiler re-analysis
+analyzer verification
+unexpected tail investigation
+new attribution questions
+alternative metric extraction
+source/result provenance audit
+```
+
+Raw forensic evidence MUST NOT be deleted merely because a compact package exists.
+
+> **Raw artifact is never replaced by compact evidence. Compact is the default decision-grade index; Raw is the final forensic audit substrate.**
+
+### 21.3 Provenance chain
+
+Every compact package MUST point unambiguously to its corresponding raw package using at least:
+
+```text
+raw artifact name / locator
+raw artifact byte size
+raw artifact SHA256
+```
+
+When practical, compact evidence SHOULD also record SHA256 values for the individual raw files from which formal metrics were extracted, such as each `profile.json`.
+
+The intended trace is:
+
+```text
+analysis / decision
+      -> compact summary / evidence
+      -> machine-readable point + causal metrics
+      -> raw-file SHA256
+      -> Raw Forensic Package SHA256
+      -> exact source SHA + machine + workload
+```
+
+### 21.4 Naming convention
+
+New automated experiment runners SHOULD emit explicit names:
+
+```text
+<run-id>-compact.zip
+<run-id>-raw.zip
+```
+
+and SHOULD print both paths and both SHA256 values at the end of the run.
+
+If an older runner historically emitted `<run-id>.zip`, it may be treated as the raw package during migration, but new canonical entrypoints should adopt the explicit suffixes.
+
+### 21.5 Packaging must not change scientific gates
+
+Artifact compaction occurs **after** the formal workload and analyzer have produced their evidence.
+
+Changing compact-package layout MUST NOT alter:
+
+```text
+measurement window
+workload
+independent variable
+guards
+preregistered thresholds
+causal metrics
+formal decision rule
+```
+
+Packaging is downstream of measurement and decision logic.
+
+### 21.6 Archive checklist additions
+
+For experiments using the two-tier standard:
+
+- [ ] compact package contains all machine-readable values used in the formal decision;
+- [ ] compact package contains raw artifact SHA256 + size + locator/name;
+- [ ] raw forensic artifact is preserved independently of compact evidence;
+- [ ] redundant byte-identical artifacts are removed from compact evidence;
+- [ ] raw profiler files referenced by compact evidence have recorded SHA256 values when practical;
+- [ ] both compact and raw package SHA256 values are recorded in `manifest.yaml` or the canonical artifact index;
+- [ ] normal review can proceed from compact evidence without loading the full raw forensic artifact;
+- [ ] forensic re-audit can still reach the original raw artifact without ambiguity.
+
+### 21.7 Training expectation
+
+A new engineer should understand the distinction:
+
+```text
+Compact Evidence Package = what normally needs to be read
+Raw Forensic Package      = what must remain available if the conclusion needs to be re-audited
+```
+
+Reducing context volume is desirable only when provenance and causal evidence remain intact. A smaller artifact is not better if it makes the scientific decision harder to verify.

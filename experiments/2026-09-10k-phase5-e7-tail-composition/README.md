@@ -4,7 +4,7 @@
 **STAR repository:** `star-nexus/star`  
 **Retained production runtime:** `e7ba18b31870577110b591104ef8fa7b4713e43c`  
 **Experiment branch:** `experiment/phase5-tail-composition-attribution`  
-**Frozen tooling commit:** `073eb97f4ed43ae40952da9436e3fc89316e95cf`
+**Frozen tooling commit:** `33d3715c1310a33bc3b9ff44a8deb7f633bf21d4`
 
 ## Question
 
@@ -87,6 +87,16 @@ INVALID_GUARDS
 ```
 
 When contributors are found, the highest stable median uplift becomes the next causal target. E7 itself authorizes no optimization KEEP.
+
+## Pre-measurement runner correction
+
+An initial invocation reached and passed the tail-math contract (`2 passed`) and targeted regressions (`20 passed`) but stopped before `repeat-1` began because Bash `set -u` expanded a dependent `local` initializer before its sibling local variable had been assigned:
+
+```bash
+local repeat="$1" point_dir="$RUN_DIR/repeat-${repeat}" cleanup_rc
+```
+
+The runner now splits dependent locals into separate assignments. No formal performance point was produced by the failed invocation, so it is not part of E7 evidence and does not change the preregistered workload, attribution sets, thresholds, or possible decisions.
 
 ## 30 Hz rule
 

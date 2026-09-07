@@ -2,7 +2,7 @@ experiment:
   id: 10k-unitrender-cull-e5-spatial-structure
   title: Phase 5 10K UnitRender E5 Spatial First-Touch Structure Decomposition
   date: 2026-09-07
-  status: running_preregistered_attribution_no_candidate_selected
+  status: running_retry_preregistered_after_inconclusive_sample_guard
 
 source:
   repository: star-nexus/star
@@ -82,6 +82,39 @@ preregistered_dominance_rule_100pct:
   min_stage_abs_saving_ms: 0.12
   min_stage_share_of_total: 0.35
 
+attempt_20260907_143507:
+  decision: E5_INCONCLUSIVE_MEASUREMENT_GUARD
+  zip_sha256: 66839700b528f8e3aef44a4154b1a16f7a620089f5b1648f7114a09f2ad064d0
+  targeted_regressions: "9 passed in 0.39s"
+  all_guards_pass: true
+  baseline_growth_00_to_100_ms: 0.7265356572
+  candidate_change_pct: 0.1272421525
+  full_spatial_effect_100_ms: 0.6655220476
+  full_spatial_effect_100_relative: 0.2966959498
+  stage_contributions_100_ms:
+    bucket_container: 0.1625903333
+    by_entity_lookup: 0.0226400000
+    record_fields: 0.4802917143
+  directional_dominant_stage: record_fields
+  sample_counts_100pct:
+    baseline: 127
+    context: 6
+    bucket: 6
+    lookup: 7
+    record: 7
+  formal_dominance_allowed: false
+  reason: context_and_bucket_below_preregistered_minimum_7_samples
+
+retry_preregistration:
+  tooling_branch_unchanged: true
+  tooling_head_unchanged: ec32568e2f38826a989978f83799cefaf45efb52
+  production_unchanged: true
+  thresholds_unchanged: true
+  prewarm_period_frames_unchanged: 6
+  allowed_measurement_change_only:
+    duration_seconds: 25
+  rationale: collect adequate samples without changing probe cadence or semantics
+
 possible_decisions:
   - E5_INCONCLUSIVE_MEASUREMENT_GUARD
   - ORIGINAL_CULL_GROWTH_NOT_REPRODUCED
@@ -96,7 +129,7 @@ positive_attribution_is_not_production_keep: true
 representation_change_forbidden_during_attribution: true
 prewarm_as_optimization_forbidden: true
 raw_mirror_pending: true
-next_action: run_unitrender_e5_spatial_structure_attribution
+next_action: rerun_exact_E5_with_DURATION_25_only
 
 host_caveat:
   isolated_benchmark_host_required_for_formal_local_decision: false

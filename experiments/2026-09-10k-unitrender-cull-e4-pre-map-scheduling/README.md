@@ -1,11 +1,12 @@
 # Phase 5 10K UnitRender E4 — Pre-Map Cull Scheduling Attribution
 
-**Status:** RUNNING — preregistered attribution; no production candidate selected  
-**STAR production:** `17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a`
+**Status:** CLOSED — `MAP_RENDER_LOCALITY_GAP_NOT_CONFIRMED`  
+**STAR production:** `17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a`  
+**Run:** `20260907-140419`
 
 ## Trigger
 
-E3 reproduced the Cull growth and isolated a strong spatial first-touch locality effect:
+E3 reproduced the movement-dependent Cull growth and isolated a spatial first-touch locality effect:
 
 ```text
 baseline Cull core 00% -> 100%: +0.732 ms
@@ -15,95 +16,75 @@ spatial prewarm saving vs context:
 100%  0.468 ms
 ```
 
-However, the prewarm itself costs more than the saving and is not a production candidate.
+Because MapRender executes immediately before UnitRender, E4 tested whether Map/Fog presentation was the locality gap.
 
-The window system order provides a lower-blast-radius hypothesis:
+## Measurement
 
-```text
-... -> MapRenderSystem -> UnitRenderSystem -> ...
-```
-
-UnitRender performs its visibility Cull at the start of `UnitRenderSystem.update()`. Therefore MapRender/Fog presentation may evict the spatial working set between Movement/index updates and Cull.
-
-## Question
-
-Is exact production Cull materially faster when executed immediately **before MapRender** than at its normal **post-MapRender** position?
-
-If yes, the preferred candidate class is not a prewarm pass and not a spatial-index rewrite. It is:
+Most frames ran normal production:
 
 ```text
-compute visible units once before MapRender
--> keep a frame-local immutable/result cache
--> UnitRender consumes that same result after MapRender
+MapRender -> exact production UnitRender Cull
 ```
 
-## Measurement design
+Every fourth frame additionally ran the same exact Cull before MapRender. The early result was read-only and never consumed by rendering. The normal late Cull still supplied the render result. Early and late ordered visible lists were compared exactly.
 
-E4 is measurement-only and runs exact production `UnitRenderSystem._get_visible_units()`.
-
-Most frames:
+## Result
 
 ```text
-baseline:
-MapRender -> time normal UnitRender Cull
+                    00%       50%       100%
+baseline-late       1.543     1.995      2.278 ms
+early-pre-map       1.669     2.190      2.508 ms
+late-after-early    1.317     1.493      1.659 ms
 ```
 
-Every 4th frame:
+The original baseline growth reproduced:
 
 ```text
-time exact Cull before MapRender   [early probe, read-only]
--> run normal MapRender unchanged
--> time normal UnitRender Cull again
--> compare early and late visible-unit lists
+00% -> 100% = +0.735 ms
 ```
 
-The early result is **not consumed by rendering**. Production rendering still uses the normal late Cull result.
-
-Exact early/late list equality is mandatory, including order, not only set membership.
-
-Aggregate frame latency is diagnostic only because sampled frames intentionally do one extra Cull.
-
-## Preregistered gates
-
-The original baseline signature must reproduce again:
+But pre-Map scheduling regressed local Cull time at every density:
 
 ```text
-baseline late 100% - baseline late 0% >= 0.40 ms
+00%   -0.127 ms saving (-8.2%)
+50%   -0.195 ms saving (-9.8%)
+100%  -0.230 ms saving (-10.1%)
 ```
 
-At least 10 early samples per density are required.
+Every sampled early/late visible list matched exactly, including order.
 
-Semantic gate:
+Formal decision:
+
+`MAP_RENDER_LOCALITY_GAP_NOT_CONFIRMED`
+
+## Interpretation
+
+MapRender is not the causal eviction boundary. Do not implement an early frame-local Cull cache merely to move Cull before MapRender.
+
+However, the much faster `late-after-early` call shows strong self-warming by the first complete Cull traversal. E3's spatial first-touch signal therefore remains open at a deeper representation/access level.
+
+Next case: **E5 spatial first-touch structure decomposition**:
 
 ```text
-early visible list == late visible list
-for every sampled frame
+context
+-> bucket container touch
+-> by_entity lookup touch
+-> UnitSpatialRecord field touch
 ```
 
-Scheduling locality is material only if both hold:
+Only after this decomposition may a representation candidate be selected.
+
+## Artifact integrity
 
 ```text
-50% moving:
-  early saving >= 0.15 ms
-  early saving >= 8%
-
-100% moving:
-  early saving >= 0.25 ms
-  early saving >= 12%
+ZIP SHA256: 8f47582ec589acb4dd354d2ec98f1cfb7c7eacb3a3139e8d955b63ac46682d20
+scenario SHA256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
+targeted regressions: 65 passed in 0.56s
+all driver exits: 0
+all cleanup exits: 0
+all guards: PASS
 ```
 
-Possible decisions:
+The host was not isolated; desktop applications may have been running. Aggregate latency is therefore diagnostic only. The formal decision rests on same-session interleaved local core timing and semantic guards.
 
-```text
-PRE_MAP_CULL_SCHEDULING_CANDIDATE_JUSTIFIED
-MAP_RENDER_LOCALITY_GAP_NOT_CONFIRMED
-ORIGINAL_CULL_GROWTH_NOT_REPRODUCED
-E4_INCONCLUSIVE_EARLY_LATE_SEMANTIC_MISMATCH
-E4_INCONCLUSIVE_MEASUREMENT_GUARD
-```
-
-Positive attribution is not KEEP. Any frame-local early-cull cache still requires semantic regressions and an uninstrumented controlled A/B.
-
-## Methodology
-
-> **先测试执行时机能否自然保住 locality；只有调度解释不成立，才升级到 spatial representation 重构。**
+Raw physical mirror remains pending.

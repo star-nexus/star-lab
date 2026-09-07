@@ -1,212 +1,170 @@
 # Phase 5 10K UnitRender E5 — Spatial First-Touch Structure Decomposition
 
-**Status:** RUNNING — two sample-guard-inconclusive attempts; profiler-window + aging-margin correction preregistered  
+**Status:** CLOSED — `RECORD_OBJECT_FIRST_TOUCH_DOMINANT`  
 **STAR production:** `17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a`
 
-## Trigger
+## Question
 
-E3 established a spatial first-touch locality effect in UnitRender Cull. E4 rejected MapRender as the causal eviction boundary. E5 asks which spatial-access layer accounts for the first-touch benefit.
-
-Production Cull currently traverses:
+E3 established a spatial first-touch locality effect in UnitRender Cull. E4 rejected MapRender as the causal eviction boundary. E5 decomposed the spatial working set cumulatively:
 
 ```text
-by_bucket: Bucket -> Set[entity_id]
-                  ↓
-by_entity: entity_id -> UnitSpatialRecord
-                  ↓
-record fields: world_x/world_y/col/row/faction
+context -> bucket containers -> by_entity lookup -> record fields
 ```
 
-## Measurement design
+The exact production `_get_visible_units()` remained the timed operation. All prewarm work was read-only, excluded from the local core metric, and never considered a production optimization.
 
-Exact production `_get_visible_units()` remains the timed operation. Every sixth Cull rotates one read-only cumulative prewarm mode:
+## Frozen attribution rules
 
-```text
-context -> bucket -> lookup -> record
-```
-
-The inferred incremental effects are:
+The original Cull growth had to reproduce:
 
 ```text
-bucket container      = context_core - bucket_core
-by_entity indirection = bucket_core - lookup_core
-record object fields  = lookup_core - record_core
-```
-
-Prewarm cost is excluded and prewarm itself is not an optimization candidate.
-
-## Frozen gates
-
-```text
-baseline 100% - baseline 0% >= 0.40 ms
+baseline 100% - baseline 0% >= 0.40 ms/frame
 candidate count change <= ±2%
 >= 7 samples for every mode at every density
-100% context -> record >= 0.25 ms and >= 12%
 ```
 
-A stage is dominant only if at 100% it contributes both:
+The full spatial first-touch effect at 100% had to satisfy:
+
+```text
+context_core - record_core >= 0.25 ms
+and >= 12%
+```
+
+A stage was dominant only if it contributed both:
 
 ```text
 >= 0.12 ms
->= 35% of full context -> record effect
+>= 35% of the full context -> record effect
 ```
 
-Thresholds and sampling cadence remain unchanged throughout E5.
+## Earlier attempts
 
-## Attempt 1 — `20260907-143507`
+Attempt 1 (`20260907-143507`) and Attempt 2 (`20260907-154710`) both returned `E5_INCONCLUSIVE_MEASUREMENT_GUARD` because the original 5-second rolling profiler window retained only ~6–7 samples/mode at the 100% point.
 
-Formal result:
+Despite being formally inconclusive, both attempts independently pointed to record fields:
 
 ```text
-E5_INCONCLUSIVE_MEASUREMENT_GUARD
+Attempt 1 record_fields @100% = 0.480292 ms
+Attempt 2 record_fields @100% = 0.481857 ms
 ```
 
-The Cull signature and spatial effect reproduced. Directional 100% decomposition:
+A duration-only retry could not fix the sample budget because only the final 5-second rolling window was retained. The measurement design was therefore corrected without changing probe cadence: profiler horizon `5s -> 8s`, `PREWARM_PERIOD=6` unchanged. The first corrected attempt was aborted because `sample_after=7s` no longer aged startup work outside an 8-second rolling window. The runner was fixed to restore the original 2-second aging margin:
 
 ```text
-full spatial           0.666 ms
-bucket container       0.163 ms   ~24%
-by_entity lookup       0.023 ms    ~3%
-record fields          0.480 ms   ~72%
+profile window = 8s
+sample_after   = 10s
 ```
 
-100% samples were `context=6 bucket=6 lookup=7 record=7`, below the frozen minimum of 7 for every mode.
+That aborted attempt produced no valid attribution result.
+
+## Formal run — `20260907-163736`
 
 Artifact SHA256:
 
 ```text
-66839700b528f8e3aef44a4154b1a16f7a620089f5b1648f7114a09f2ad064d0
+02755e116f83653dd2c845735c7f94ed2a7318b3dc5b517d1ec376f28f0f50a7
 ```
 
-## Attempt 2 — `20260907-154710`
-
-The duration-only retry used `DURATION=25` exactly as preregistered. Formal result again:
+Validation:
 
 ```text
-E5_INCONCLUSIVE_MEASUREMENT_GUARD
+runtime SHA exact:       PASS
+scenario SHA exact:      PASS
+9 targeted regressions:  PASS
+3/3 driver exit:         0
+3/3 cleanup exit:        0
+all workload guards:     PASS
+profile horizon:         8s at all three densities
+sample guard:            PASS
 ```
 
-All workload/semantic guards passed. The main signal reproduced almost identically:
+Retained profile windows:
 
 ```text
-baseline 0% -> 100% growth     0.727490 ms
-full spatial effect @100%      0.678333 ms  (30.40%)
-
-bucket container               0.177101 ms
-by_entity lookup               0.019375 ms
-record fields                  0.481857 ms
+00%:  coverage 8.010s, 440 frames
+50%:  coverage 8.008s, 292 frames
+100%: coverage 8.028s, 238 frames
 ```
 
-`record_fields` again directionally exceeds both dominance thresholds. However 100% samples were:
+Mode samples:
 
 ```text
-baseline 129
-context    7
-bucket     6
-lookup     6
-record     7
+             baseline context bucket lookup record
+00%             367      18     19     18     18
+50%             243      12     12     12     13
+100%            198      10     10     10     10
 ```
 
-so no formal dominance decision is permitted.
-
-Artifact SHA256:
+### Formal 100% decomposition
 
 ```text
-be6614da8923dc9e29a6c16c75abb99790e11e7f0e1400215da088f19ace853c
+baseline core          2.339 ms
+context core           2.388 ms
+bucket core            2.150 ms
+lookup core            2.129 ms
+record core            1.631 ms
+
+full spatial effect    0.757 ms
+bucket container       0.238 ms   31.5%
+by_entity lookup       0.021 ms    2.8%
+record fields          0.498 ms   65.8%
 ```
 
-## Measurement-design diagnosis
-
-Attempt 2 exposed that extending run duration cannot solve the sample guard because the profiler retains a wall-clock rolling window of only 5 seconds.
-
-At 100% moving the raw profile reported:
+The original movement-dependent Cull signature reproduced:
 
 ```text
-window_target_s       5.0
-window_coverage_s     5.0048
-window_throughput_fps 30.9703
-sample_count          155
+baseline 00% -> 100% growth = +0.728 ms
+candidate change              = +0.12%
 ```
 
-With `PREWARM_PERIOD=6` and four rotating modes, the retained budget is only:
+The record-mode distribution was also strongly separated from lookup at 100%:
 
 ```text
-155 / 6 / 4 ~= 6.46 samples per mode
+lookup: min 2.035 / p50 2.127 / max 2.259 ms
+record: min 1.536 / p50 1.636 / max 1.754 ms
 ```
 
-Therefore 6/7 mode counts are structurally expected. The previous duration-only retry was valid but incapable of reliably satisfying the frozen >=7-sample gate.
+`record max < lookup min`, so the dominant result is not caused by a few lucky samples.
 
-## Profiler-window correction and aborted first retry
-
-The first correction widened only the E5 profiler horizon:
+## Replication across three attempts
 
 ```text
-5.0s -> 8.0s
+                           Attempt 1   Attempt 2   Formal
+full spatial @100%           0.666       0.678       0.757 ms
+by_entity lookup             0.023       0.019       0.021 ms
+record fields                0.480       0.482       0.498 ms
 ```
 
-while leaving the runner's generic scale-driver setting at:
+The three record-field estimates span only ~0.017 ms. This is the most stable component of the decomposition.
+
+## Decision
 
 ```text
-SAMPLE_AFTER=7s
+RECORD_OBJECT_FIRST_TOUCH_DOMINANT
 ```
 
-The next run aborted at `00pct-moving` with `driver rc=1`. The ENV process tree was still alive and was then explicitly cleaned up by the runner, so this was not an ENV crash. It was a generic density-point guard failure.
+Interpretation boundary:
 
-The cause is a measurement-scheduling contract violation. `scale_driver.py` intentionally waits after `start_sustained` so planning, kickoff and realtime-defer transition frames age out of the final rolling profile. Historically the margin was:
+- This does **not** mean prewarming records is an optimization. Record prewarm itself costs far more than the Cull time it saves.
+- This does **not** establish that `by_entity` hashing is expensive; E5 measured only ~0.021 ms attributable to that indirection at 100%.
+- The evidence points to the storage/access layout after obtaining `UnitSpatialRecord`: repeated first access to Python record fields is the dominant locality penalty.
 
-```text
-5s profiler horizon + 7s sample_after = 2s aging margin
+Current production `UnitSpatialRecord` is a frozen dataclass without slots. Movement creates a new record on every committed position update, while Cull reads `world_x`, `world_y`, `faction`, `col`, and `row` for thousands of candidates per frame.
+
+## Next candidate
+
+The lowest-blast-radius candidate is **E5-1: slotted UnitSpatialRecord**:
+
+```python
+@dataclass(frozen=True, slots=True)
+class UnitSpatialRecord:
+    ...
 ```
 
-After widening the profiler without changing the wait, the configuration became:
+Rationale: remove the per-instance `__dict__` and store fields directly in slots while preserving the same fields, equality semantics, immutability, `by_entity`, `by_bucket`, movement semantics, Fog semantics, and Cull algorithm.
 
-```text
-8s profiler horizon + 7s sample_after = -1s aging margin
-```
-
-so the snapshot necessarily retained pre-steady-state frames. This run is classified as an **aborted measurement-scheduling attempt**, not a performance result, and supplies no attribution decision.
-
-## Preregistered corrected retry
-
-Preserve both the frozen sampling cadence and the historical 2-second aging margin:
-
-```text
-profiler rolling horizon: 8.0s
-SAMPLE_AFTER:              10.0s
-PREWARM_PERIOD:             6 unchanged
-DURATION:                  25.0s
-thresholds:                unchanged
-production runtime:        unchanged
-```
-
-The E5 runner now passes the 8-second window explicitly to the probe instead of relying on a probe default.
-
-At ~31 FPS, 8 seconds retains roughly 248 frames, giving approximately `248 / 6 / 4 ~= 10.3` samples per mode while keeping probe density unchanged.
-
-This is a **measurement-window / aging-margin correction**, not a candidate/runtime change.
-
-## Interpretation boundary
-
-The two completed inconclusive attempts provide strong replicated directional evidence:
-
-```text
-record_fields @100%
-attempt 1: 0.480292 ms
-attempt 2: 0.481857 ms
-```
-
-But E5 remains formally open until the frozen sample-count guard passes. Do not select a spatial representation candidate before that.
-
-## Forbidden during E5
-
-- production Cull changes
-- changing `UnitSpatialIndex` representation
-- prewarm as an optimization
-- lowering prewarm period to manufacture sample count
-- changing the dominance thresholds
-- native/parallel rewrites
-- changing Fog/Vision semantics
+Do not jump directly to SoA arrays, custom hash tables, bucket-direct records, native code, or parallelism until this minimal representation treatment receives semantic regressions and an uninstrumented controlled A/B.
 
 ## Methodology
 
-> **先把 first-touch 拆到 container / indirection / record 层；测量窗口必须覆盖预注册样本预算，同时保留足够 aging margin，不能靠提高 probe 密度来制造证据。**
+> **先验证最小 representation treatment 是否能把稳定的 record-field first-touch signal 转成真实 production saving；不要因为 attribution 指向 memory locality 就直接重写整个 spatial index。**

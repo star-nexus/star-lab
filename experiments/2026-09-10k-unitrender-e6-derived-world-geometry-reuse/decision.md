@@ -3,10 +3,13 @@
 ## Status
 
 ```text
-PENDING FORMAL CONTROLLED A/B
+VALIDATED ATTRIBUTION
+DERIVED_WORLD_GEOMETRY_REUSE_CANDIDATE_JUSTIFIED
 ```
 
-No production decision has been made.
+The scientific treatment decision is complete. The case is **not yet fully CLOSED** only because the raw forensic ZIP still needs a stable canonical STAR Lab storage/mirror locator under `PROTOCOL.md` v1.2.
+
+No production KEEP has been made.
 
 ## Decision question
 
@@ -51,19 +54,103 @@ Otherwise declare:
 DERIVED_WORLD_GEOMETRY_REUSE_NOT_MATERIAL
 ```
 
-Do not change these thresholds after observing the formal A/B result.
+These thresholds were frozen before the formal A/B result.
+
+## Formal result
+
+Run:
+
+```text
+20260907-203733
+```
+
+Observed:
+
+```text
+50% moving
+  Cull:       2.076 -> 1.875 ms  saving 0.201 ms
+  UnitRender: 9.268 -> 9.134 ms  saving 0.134 ms
+  controlled avg: -0.57%
+  position rate drift: +0.733%
+  Vision rate drift:   +0.447%
+  Fog delta drift:     +0.693%
+  checks: PASS
+
+100% moving
+  Cull:       2.404 -> 1.971 ms  saving 0.433 ms
+  UnitRender: 10.242 -> 10.026 ms saving 0.217 ms
+  controlled avg: -1.50%
+  position rate drift: -0.109%
+  Vision rate drift:   -0.054%
+  Fog delta drift:     +0.319%
+  checks: PASS
+```
+
+All preregistered gates passed.
+
+Decision:
+
+```text
+DERIVED_WORLD_GEOMETRY_REUSE_CANDIDATE_JUSTIFIED
+```
+
+## Engineering interpretation
+
+E5-2 already showed that stable `UnitSpatialRecord` identity is not material. E6 kept record identity fresh and changed only the lifetime/reuse of pure per-hex derived geometry.
+
+Therefore the next production hypothesis is not:
+
+```text
+reuse records
+```
+
+but:
+
+```text
+provide bounded, long-lived derived world geometry
+```
+
+The preferred design space should stay as narrow as possible around that conclusion.
 
 ## Production KEEP boundary
 
-Even a positive attribution result is **not** `KEEP`.
+This positive attribution result is **not** `KEEP`.
 
-The measurement treatment uses an index-local visited-hex geometry cache specifically to isolate reuse. A production candidate must first provide bounded geometry ownership tied to authoritative map/board lifetime (or another demonstrably bounded representation), then pass exact-production controlled A/B and regression validation.
+The measurement treatment uses an index-local visited-hex geometry cache specifically to isolate reuse. A production candidate must provide bounded geometry ownership tied to authoritative map/board lifetime, or another demonstrably bounded representation, then pass exact-production controlled A/B and regression validation.
 
 An unbounded visited-coordinate cache must not be retained merely because the attribution experiment is positive.
 
+Required next validation:
+
+```text
+bounded production geometry owner
+  -> exact production-derived experiment branch
+  -> semantic/regression tests
+  -> controlled A/B vs 17ced8d2...
+  -> verify Cull / UnitRender recovery
+  -> re-check 10K canonical 30 Hz gate
+```
+
+## Artifact policy
+
+This case adopts the `PROTOCOL.md` v1.2 two-tier artifact rule:
+
+```text
+Compact Evidence Package = default review / Agent / LLM artifact
+Raw Forensic Package      = authoritative low-level audit substrate
+```
+
+Formal raw artifact checksum:
+
+```text
+d4f7bab293ced78ab11231fe0e370fe51a257e1cb95b12666340a7a628819bc4
+```
+
+The raw artifact must remain available independently of compact evidence.
+
 ## Performance Frontier
 
-Do **not** update `records/performance-frontier.md` from this attribution result alone.
+Do **not** update `records/performance-frontier.md` from E6 attribution alone.
 
 A frontier update requires a validated production source state that actually moves or confirms the canonical 10K capability boundary under STAR Lab protocol.
 
@@ -71,6 +158,7 @@ A frontier update requires a validated production source state that actually mov
 
 Revisit this decision only if:
 
-- the formal A/B fails source/workload guards and must be rerun;
 - new evidence invalidates E5-3 `WORLD_COORD_PAYLOAD_FIRST_TOUCH_DOMINANT`;
-- a bounded production representation materially differs from the attribution treatment and requires a new controlled experiment.
+- a bounded production representation materially differs from the E6 treatment and fails to reproduce its benefit;
+- workload structure changes so per-hex derived geometry reuse behavior is materially different;
+- raw forensic re-audit finds a source/workload guard violation in the formal run.

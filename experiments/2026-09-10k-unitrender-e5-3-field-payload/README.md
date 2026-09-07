@@ -1,36 +1,20 @@
 # Phase 5 10K UnitRender E5-3 — Cull Field-Payload Attribution
 
-**Status:** RUNNING — preregistered attribution  
+**Status:** CLOSED — `WORLD_COORD_PAYLOAD_FIRST_TOUCH_DOMINANT`  
 **Experimental base:** `682fdb3a4c64002b402eb74bdda2331ca7123ab4` (E5-1 slotted record; not production-retained)  
 **Production remains:** `17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a`
 
 ## Trigger
 
-The sequence so far is:
+The UnitRender Cull chain had narrowed to record-field first-touch:
 
 ```text
 E5   record-field first-touch dominant (~0.498 ms @100%)
-E5-1 slots=True causally beneficial but insufficient (0.113 ms @100%)
+E5-1 slots=True beneficial but insufficient (0.113 ms @100%)
 E5-2 stable record identity not material (0.044 ms additional @100%)
 ```
 
-This weakens both per-instance attribute-dictionary layout and record-container replacement as explanations for the majority of the remaining first-touch signal.
-
-Pure movement still refreshes the field payload consumed by Cull. In particular, `_record_for_hex()` creates new `world_x/world_y` Python float values on every movement commit. Cull reads fields in this order:
-
-```text
-world_x/world_y  -> exact bounds
-faction          -> Fog faction branch
-col/row          -> Fog membership tile
-```
-
-E5-3 decomposes these payload groups before considering a wider spatial-index representation change.
-
-## Measurement design
-
-No runtime source is modified. The runner creates a detached worktree at the exact slotted experimental base and copies in only the measurement probe.
-
-Most frames are baseline. Every sixth Cull call rotates through four cumulative read-only prewarm modes:
+E5-3 decomposed the fields actually consumed by Cull:
 
 ```text
 lookup   = bucket traversal + by_entity.get only
@@ -39,70 +23,94 @@ faction  = world + faction
 hex      = faction + col/row
 ```
 
-Prewarm time is excluded. The exact runtime `_get_visible_units()` is the timed core after prewarm.
+Prewarm work was read-only and excluded from the timed core. The exact runtime `_get_visible_units()` remained the timed operation.
 
-Profiler horizon remains 8 seconds and `sample_after=10s`, preserving the 2-second aging margin discovered during E5 measurement correction. Sampling cadence remains 1/6 frames.
+## Formal result
 
-## Derived stage contributions
+Run: `20260907-182654`  
+ZIP SHA256: `c34be3a60c970bba514c7d39b44be82447aae93f83d08022f4a5982368502156`
 
-At each density:
-
-```text
-world-coordinate payload = lookup_core - world_core
-faction payload          = world_core - faction_core
-hex col/row payload      = faction_core - hex_core
-full field payload       = lookup_core - hex_core
-```
-
-## Frozen decisions
-
-Measurement guards:
+Validation:
 
 ```text
-all driver guards PASS
-runtime/source guard PASS
->= 8 samples for baseline and every mode
->= 7.5s profile target/coverage
-candidate count 0%->100% within ±2%
+10 targeted regressions PASS
+3/3 driver exit = 0
+3/3 cleanup exit = 0
+all guards PASS
+8s rolling-window target/coverage satisfied at all densities
+100% samples: lookup=10 world=10 faction=10 hex=10
 ```
 
-The slotted baseline Cull growth must reproduce:
+Results:
 
 ```text
-baseline 100% - baseline 0% >= 0.40 ms
+00%:
+  baseline 1.505 ms
+  lookup   1.350 ms
+  world    1.284 ms
+  faction  1.279 ms
+  hex      1.297 ms
+  field effect 0.053 ms
+  world_xy    0.066 ms
+
+50%:
+  baseline 1.933 ms
+  lookup   1.714 ms
+  world    1.513 ms
+  faction  1.518 ms
+  hex      1.461 ms
+  field effect 0.253 ms
+  world_xy    0.201 ms
+  faction    -0.005 ms
+  col_row     0.057 ms
+
+100%:
+  baseline 2.204 ms
+  lookup   2.044 ms
+  world    1.669 ms
+  faction  1.679 ms
+  hex      1.568 ms
+  field effect 0.476 ms
+  world_xy    0.375 ms
+  faction    -0.011 ms
+  col_row     0.111 ms
 ```
 
-The cumulative field-payload effect at 100% must be material:
+At 100% moving, `world_x/world_y` account for approximately `78.8%` of the full field-payload first-touch effect. At 50%, the share is approximately `79.4%`. The same dominant ratio at both movement densities is strong evidence that the signal is structural rather than a sample artifact.
+
+Baseline Cull growth also reproduced:
 
 ```text
-lookup_core - hex_core >= 0.20 ms
-and >= 10% of lookup_core
+0% -> 100% = +0.699 ms
+candidate count change = +0.14%
 ```
 
-A field group is dominant only if at 100% it contributes:
-
-```text
->= 0.10 ms
-and >= 35% of the full field-payload effect
-```
-
-Possible positive decisions:
+## Decision
 
 ```text
 WORLD_COORD_PAYLOAD_FIRST_TOUCH_DOMINANT
-FACTION_PAYLOAD_FIRST_TOUCH_DOMINANT
-HEX_COORD_PAYLOAD_FIRST_TOUCH_DOMINANT
-MIXED_CULL_FIELD_PAYLOAD
 ```
 
-Negative/inconclusive decisions are also preregistered. None of these is a production KEEP decision.
+This is an attribution decision, not a production KEEP decision.
 
-## Candidate boundary after attribution
+The result rejects `faction` as a meaningful source of the residual record-field effect and places `col/row` as a secondary component. The dominant remaining target is the movement-refreshed derived world-coordinate payload consumed first by Cull's exact bounds test.
 
-If `world_x/world_y` dominates, the next candidate should first explore reuse/compact storage of derived per-hex render geometry rather than immediately introducing SoA. The key question would be whether movement can reference long-lived derived geometry instead of allocating fresh Python float payloads every commit.
+## Candidate boundary
 
-If no payload group dominates, only then should a broader compact Cull read representation be considered.
+The next candidate should **not** introduce SoA or rewrite the spatial index.
 
-## Methodology
+The smallest evidence-aligned treatment is reuse of long-lived per-hex derived geometry:
 
-> **先把“record fields”拆成真正被 Cull 消费的 payload，再决定是否值得重构 spatial representation。**
+```text
+(col,row)
+   -> cached/stable (world_x, world_y, bucket)
+   -> UnitSpatialRecord references those stable payload objects
+```
+
+This keeps authoritative `HexPosition` semantics unchanged while testing whether repeated movement can stop regenerating the world-coordinate payload that Cull first-touches.
+
+A candidate must be tested against exact production, because the slotted experimental base was rejected for production.
+
+## Methodology lesson
+
+> **连续 negative results 的价值，是把一个“UnitRender moving 时变慢”的模糊问题，收敛成一个具体、可验证、低侵入的 data-representation target。**

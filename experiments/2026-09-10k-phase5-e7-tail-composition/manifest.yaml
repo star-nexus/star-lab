@@ -1,0 +1,64 @@
+experiment:
+  id: 10k-phase5-e7-tail-composition
+  title: Phase 5 E7 100% Moving P99 Tail Composition Attribution
+  date: 2026-09-07
+  status: draft
+  preregistered: true
+  decision: pending
+
+source:
+  repository: star-nexus/star
+  retained_production_commit: e7ba18b31870577110b591104ef8fa7b4713e43c
+  experiment_branch: experiment/phase5-tail-composition-attribution
+  tooling_commit: 86bd5ead19243f7731e8af40f16cb2cb0cbd5bc7
+  production_runtime_changes: none
+
+scenario:
+  name: chibi-144k-scale-10000
+  sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
+  resident_units: 10000
+
+workload:
+  moving_density: 1.0
+  repeats: 3
+  seed: 42
+  phase_seed: 42
+  route_steps: 12
+  phase: staggered
+  fog: true
+  minimap_dynamic_units: false
+  gc_policy: realtime_defer
+  render: uncapped
+  gameplay_input: blocked
+  execution_pathfinding: false
+  production_animation_and_commits: true
+  duration_seconds: 20
+  sample_after_seconds: 19
+
+measurement:
+  profiler_window_seconds: 10.0
+  minimum_aligned_samples_per_repeat: 250
+  tail_set: controlled_work_gte_p95
+  reference_set: controlled_work_p25_to_p75
+  contribution_basis: controlled_category_section_self_time
+  p99_primary_attribution_set: false
+  canonical_breach_threshold_ms: 33.33
+
+stability_rule:
+  positive_top3_repeat_count_min: 2
+  actionable_median_tail_uplift_ms_min: 0.15
+
+possible_decisions:
+  positive: STABLE_TAIL_CONTRIBUTORS_FOUND
+  negative: NO_ACTIONABLE_STABLE_TAIL_CONTRIBUTOR
+  invalid: INVALID_GUARDS
+
+frontier:
+  diagnostic_only: true
+  update_authorized: false
+
+artifacts:
+  compact: pending
+  raw: pending
+  compact_is_default_review_artifact: true
+  raw_is_authoritative_forensic_substrate: true

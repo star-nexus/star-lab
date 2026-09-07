@@ -12,7 +12,7 @@ source:
   control_runtime_commit: e7ba18b31870577110b591104ef8fa7b4713e43c
   treatment_runtime_commit: e7ba18b31870577110b591104ef8fa7b4713e43c
   experiment_branch: experiment/phase5-unitrender-e6-2-slotted-composition
-  tooling_commit: a524e610bdfce7eab37fee3fcf4cff69dac89ab5
+  tooling_commit: f1bf1c4f8e921287a9fc3c1b76c685f6f551a5e2
   production_candidate_commit: null
   validated_commit: null
 

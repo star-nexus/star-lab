@@ -2,21 +2,25 @@ experiment:
   id: 10k-unitrender-e6-1-bounded-geometry-ownership
   title: Phase 5 10K UnitRender E6-1 Bounded Geometry Ownership
   date: 2026-09-07
-  status: draft
+  status: validated_keep_raw_mirror_pending
   preregistered: true
-  decision: pending
+  decision: KEEP_BOUNDED_DERIVED_WORLD_GEOMETRY_REUSE
+  formal_run_id: 20260907-213322
 
 source:
   repository: star-nexus/star
   production_commit: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
   problem_commit: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
   candidate_commit: e7ba18b31870577110b591104ef8fa7b4713e43c
+  validated_commit: e7ba18b31870577110b591104ef8fa7b4713e43c
+  formal_runner_branch_head: 8cd4215e1d11d0778ee9db737cc757213f13630d
   tooling_commit: 1855f34c14463a6c165d85b11403e4cc2e7938b4
-  validated_commit: null
+  postrun_formatter_fix_commit: 2db4fa41753012df5c8f61f0184ef5c96e4f1546
   validated_tag: null
   branch_at_time: experiment/phase5-unitrender-e6-bounded-geometry-ownership
   runtime_diff:
     - rotk_env/utils/unit_spatial_index.py
+  source_guard_passed: true
 
 upstream_evidence:
   predecessor_case: 2026-09-10k-unitrender-e6-derived-world-geometry-reuse
@@ -47,14 +51,15 @@ candidate_design:
   authoritative_hexposition_unchanged: true
 
 hardware:
-  machine: pending_formal_run_capture
-  cpu: pending_formal_run_capture
-  memory: pending_formal_run_capture
-  gpu: null_or_pending
-  display: pending_formal_run_capture
+  machine: Mac mini (Darwin arm64; exact model not captured by runner)
+  cpu: not_captured
+  memory: not_captured
+  gpu: not_captured
+  display: 2480x1261
 
 software:
-  os: pending_formal_run_capture
+  os: macOS 26.5.2 build 25F84
+  kernel: Darwin 25.5.0 arm64
   python: resolved_from_uv_lock_on_formal_run
   dependency_lock: uv.lock from each frozen worktree
 
@@ -63,6 +68,7 @@ scenario:
   sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
   resident_units: 10000
   map_size: 120x120
+  map_tiles: 14400
 
 workload:
   densities: [0.5, 1.0]
@@ -97,6 +103,15 @@ premeasurement_validation:
   control_targeted_regressions_required: true
   treatment_targeted_regressions_required: true
   density_points_run_only_after_all_validation_passes: true
+  bounded_geometry_contract:
+    passed: 5
+    failed: 0
+  control_targeted_regressions:
+    passed: 25
+    failed: 0
+  treatment_targeted_regressions:
+    passed: 30
+    failed: 0
 
 preregistered_keep_gates:
   all_driver_guards_pass: true
@@ -108,32 +123,103 @@ preregistered_keep_gates:
   max_animation_avg_regression_pct: 2.0
   max_controlled_avg_regression_pct: 2.0
 
+results:
+  pct50:
+    controlled_avg_ms:
+      control: 25.633147670270272
+      treatment: 25.416665604278077
+      delta_pct: -0.8445395344219668
+    controlled_p99_ms:
+      control: 26.766761319999997
+      treatment: 26.56378436
+    cull_avg_ms:
+      control: 2.1400463567567565
+      treatment: 1.9091116310160428
+      saving_ms: 0.23093472574071372
+      saving_pct: 10.79110856695159
+    unitrender_avg_ms:
+      control: 9.394164443243243
+      treatment: 9.223776556149732
+      saving_ms: 0.17038788709351138
+    animation_avg_pct: 1.1219254135407268
+    position_rate_pct: 0.012889238749192894
+    vision_changed_rate_pct: 0.02078333590255569
+    fog_delta_rate_pct: 0.12077149716398841
+    checks_pass: true
+  pct100:
+    controlled_avg_ms:
+      control: 32.5667553445946
+      treatment: 32.115319793333335
+      delta_pct: -1.3861852262669188
+    controlled_p99_ms:
+      control: 37.261541390000005
+      treatment: 33.677126
+    cull_avg_ms:
+      control: 2.4062871283783784
+      treatment: 1.9830202733333333
+      saving_ms: 0.42326685504504513
+      saving_pct: 17.590039445138412
+    unitrender_avg_ms:
+      control: 10.276784628378378
+      treatment: 9.909536406666666
+      saving_ms: 0.3672482217117121
+    animation_avg_pct: 0.5711423880520181
+    position_rate_pct: -0.015449656295730122
+    vision_changed_rate_pct: -0.00848873684144658
+    fog_delta_rate_pct: -0.034815437628112116
+    checks_pass: true
+
 canonical_gate:
   workload: 10k_100pct_moving
   metric: controlled_work_frame_ms.p99
   threshold_ms: 33.33
+  measured_ms: 33.677126
+  margin_ms: 0.347126
+  pass: false
   separate_from_keep: true
-
-possible_decisions:
-  pass: KEEP_BOUNDED_DERIVED_WORLD_GEOMETRY_REUSE
-  fail: DO_NOT_KEEP_BOUNDED_DERIVED_WORLD_GEOMETRY_REUSE
+  frontier_update_candidate: false
 
 artifacts:
-  compact: pending
-  raw: pending
+  compact:
+    filename: 20260907-213322-compact.zip
+    size_bytes: 10616
+    sha256: 0c9db01f29a04dcefc7ba896ab7ab533ec313c31a9e3d974d790b22893cb45a9
+    review_verified: true
+    package_sha256sums_verified: true
+    stable_mirror_pending: true
+  raw:
+    filename: 20260907-213322-raw.zip
+    size_bytes: 128760
+    sha256: 4322905154b69ec25688fa0775b0efdd62a7a60bf1366aead9d5e8f73d661c07
+    stable_mirror_pending: true
   compact_is_default_review_artifact: true
   raw_is_authoritative_forensic_substrate: true
   compact_never_replaces_raw: true
+  raw_profiles:
+    control_50:
+      sha256: bf0e37afd3738b9c546bd146da0579130e0f4e3ae942c169f6f03f0134e8ac1f
+      size_bytes: 176839
+    control_100:
+      sha256: 51c86e150b867f046188a1180d0b5fcf815595844db8e229e3d933f61f3fbdfb
+      size_bytes: 176593
+    treatment_50:
+      sha256: 70d7a1c88e805d0abe7bb4c4936726ae9f3a434cc73fc8dfcba94476357e92e8
+      size_bytes: 176610
+    treatment_100:
+      sha256: 399e616dea0dde8fb7cafeee71ae2fa1e353b974dc834272db363e7029c25e89
+      size_bytes: 176399
 
 headline:
-  problem_signature: validated E6 reuse benefit is not yet production-safe because attribution cache ownership is unbounded
+  problem_signature: validated E6 reuse benefit required a production-safe bounded ownership model
   root_cause: inherited_world_coordinate_payload_first_touch
-  resolution: pending_bounded_candidate_validation
-  result: pending
+  resolution: board_bounded_lazy_per_hex_derived_geometry_reuse
+  result: KEEP_BOUNDED_DERIVED_WORLD_GEOMETRY_REUSE
+  canonical_30hz: FAIL
 
 revisit_when:
-  - source or workload guards fail
+  - board geometry/projection semantics change
+  - MapData lifetime or terrain editing invalidation semantics change
   - bounded contract fails
-  - candidate does not retain preregistered Cull benefit
-  - candidate shifts cost materially into Animation
-  - canonical 30Hz classification requires frontier handling
+  - UnitSpatialIndex stops owning the window spatial representation
+  - new profiling shows compensating cost in Animation or another hot path
+  - raw forensic artifact cannot be preserved with a stable locator

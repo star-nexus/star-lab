@@ -1,0 +1,84 @@
+experiment:
+  id: 10k-unitrender-e5-2-stable-record-identity
+  title: Phase 5 10K UnitRender E5-2 Stable Record Identity Attribution
+  date: 2026-09-07
+  status: running_preregistered_attribution
+
+production:
+  sha: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+  unchanged: true
+
+experimental_base:
+  sha: 682fdb3a4c64002b402eb74bdda2331ca7123ab4
+  description: rejected_E5_1_slotted_record_candidate
+  reason_for_use: isolate fresh-record replacement from slots layout effect
+
+source:
+  repository: star-nexus/star
+  branch: experiment/phase5-unitrender-e5-2-stable-record-identity
+  head: 9ef1fae5be1804ac0af2b14f903cc2a5a7075392
+  runtime_diff_files: []
+  tool_files:
+    - tools/phase5_unitrender_e5_2_stable_identity.py
+    - tools/test_phase5_unitrender_e5_2_stable_identity.py
+    - tools/phase5_unitrender_e5_2_analyze.py
+    - tools/run_phase5_unitrender_e5_2_attribution.sh
+
+trigger:
+  e5_decision: RECORD_OBJECT_FIRST_TOUCH_DOMINANT
+  e5_record_effect_ms_50pct: 0.343
+  e5_record_effect_ms_100pct: 0.498
+  e5_1_decision: DO_NOT_KEEP
+  e5_1_zip_sha256: 355f8877de1e0230b1e62b88f39e72b114df9cbd7d609a966e1b2bab1424d353
+  e5_1_cull_saving_ms_50pct: 0.0902764872
+  e5_1_cull_saving_ms_100pct: 0.1129382867
+
+hypothesis:
+  name: fresh_record_replacement_object_working_set_churn
+  control: slotted_fresh_record_replacement
+  treatment: slotted_stable_record_identity_for_pure_movement
+  external_frozen_semantics_preserved: true
+  generic_upsert_unchanged: true
+  remove_path_unchanged: true
+  production_keep_decision_in_this_experiment: false
+
+formal_ab:
+  execution_order: [A50, B50, B100, A100]
+  base_sha_both_variants: 682fdb3a4c64002b402eb74bdda2331ca7123ab4
+  duration_seconds: 20
+  warmup_seconds: 5
+  sample_after_seconds: 7
+  seed: 42
+  phase_seed: 42
+  route_steps: 12
+  phase: staggered
+  fog: true
+  gc_policy: realtime_defer
+  minimap_dynamic_units: false
+  render: uncapped
+  hub: offline
+
+preregistered_gates:
+  workload_rate_tolerance_pct: 2.0
+  min_incremental_cull_saving_ms_50pct: 0.08
+  min_incremental_cull_saving_ms_100pct: 0.15
+  unitrender_avg_must_improve_both: true
+  max_controlled_avg_regression_pct: 2.0
+  p99_diagnostic_only: true
+
+possible_decisions:
+  - FRESH_RECORD_REPLACEMENT_CANDIDATE_JUSTIFIED
+  - FRESH_RECORD_REPLACEMENT_NOT_MATERIAL
+
+next_if_positive:
+  implement_real_combined_slots_plus_stable_identity_candidate: true
+  compare_combined_candidate_against_frozen_production: true
+
+forbidden:
+  - merge_monkeypatch
+  - additive_interpretation_of_e5_1_and_e5_2
+  - jump_to_soa_before_e5_2_resolved
+
+raw_mirror_pending: true
+methodology:
+  rule: "先用同一 slotted baseline 隔离换对象这一件事；只有增量 locality 收益成立，才把 stable identity 做成真正 candidate"

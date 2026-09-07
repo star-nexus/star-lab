@@ -10,7 +10,7 @@ source:
   experimental_base_commit: 682fdb3a4c64002b402eb74bdda2331ca7123ab4
   experimental_base_note: E5-1 slotted UnitSpatialRecord, rejected for production but used to isolate residual payload cost
   branch: experiment/phase5-unitrender-e5-3-field-payload
-  branch_head: d144199e47ff6416e1c78a95f1378531b7fb0818
+  branch_head: 978062a414655889356359065996c3fee34f8a4a
   runtime_source_diff_from_experimental_base: none
 
 trigger:
@@ -78,6 +78,16 @@ possible_decisions:
   - SLOTTED_CULL_GROWTH_NOT_REPRODUCED
   - E5_3_INCONCLUSIVE_MEASUREMENT_GUARD
   - E5_3_INCONCLUSIVE_WORKLOAD_SHIFT
+
+aborted_attempts:
+  - stage: before_first_density_point
+    reason: bash_nounset_local_initialization_order
+    runner_line_pattern: 'local density="$1" label="$2" point_dir="$RUN_DIR/$label" cleanup_rc'
+    consequence: no_00_50_100_measurement_data_produced
+    regressions_before_abort: '10 passed in 0.37s'
+    fix: split_local_assignments_before_point_dir_expansion
+    fixed_branch_head: 978062a414655889356359065996c3fee34f8a4a
+    preregistration_changed: false
 
 production_unchanged: true
 raw_mirror_pending: true

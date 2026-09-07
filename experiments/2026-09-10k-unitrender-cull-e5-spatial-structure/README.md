@@ -1,6 +1,6 @@
 # Phase 5 10K UnitRender E5 — Spatial First-Touch Structure Decomposition
 
-**Status:** RUNNING — preregistered attribution; no production candidate selected  
+**Status:** RUNNING — attempt 1 inconclusive on sample-count guard; duration-only retry preregistered  
 **STAR production:** `17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a`
 
 ## Trigger
@@ -101,6 +101,54 @@ E5_INCONCLUSIVE_MEASUREMENT_GUARD
 ```
 
 Positive attribution is not KEEP. A later representation candidate must still receive semantic regressions and uninstrumented controlled A/B.
+
+## Attempt 1 — `20260907-143507`
+
+Formal result:
+
+```text
+E5_INCONCLUSIVE_MEASUREMENT_GUARD
+```
+
+The semantic/workload guards all passed, the baseline Cull growth reproduced at `+0.727 ms`, and the full spatial first-touch effect reproduced at `+0.666 ms` / `29.7%` at 100% moving.
+
+Directional 100% decomposition was:
+
+```text
+bucket container       +0.163 ms   ~24%
+by_entity lookup       +0.023 ms    ~3%
+record fields          +0.480 ms   ~72%
+```
+
+However the preregistered minimum is 7 samples for every mode. At 100% moving:
+
+```text
+context = 6
+bucket  = 6
+lookup  = 7
+record  = 7
+```
+
+Therefore no formal dominance decision is allowed from attempt 1 even though `record_fields` directionally exceeds both dominance thresholds.
+
+Artifact SHA256:
+
+```text
+66839700b528f8e3aef44a4154b1a16f7a620089f5b1648f7114a09f2ad064d0
+```
+
+## Preregistered retry
+
+Retry the exact same branch/tooling and exact same thresholds. Do not change the prewarm cadence or any runtime code. The only allowed measurement change is extending attribution duration from 20s to 25s so every 100% mode has adequate sample count.
+
+```text
+DURATION=25
+PREWARM_PERIOD=6 unchanged
+all thresholds unchanged
+production unchanged
+```
+
+If the retry passes the sample guard, the analyzer may then issue the formal stage decision from the preregistered rules.
 
 ## Forbidden during E5
 

@@ -95,11 +95,15 @@ This is an attribution decision, not a production KEEP decision.
 
 The result rejects `faction` as a meaningful source of the residual record-field effect and places `col/row` as a secondary component. The dominant remaining target is the movement-refreshed derived world-coordinate payload consumed first by Cull's exact bounds test.
 
-## Candidate boundary
+## Next stage — E6 Derived World-Geometry Reuse
 
-The next candidate should **not** introduce SoA or rewrite the spatial index.
+Do **not** continue this chain as E5-4. E5 is now considered complete: it decomposed spatial first-touch from structure to record fields and finally to the dominant `world_x/world_y` payload. E6 starts a separate treatment stage.
 
-The smallest evidence-aligned treatment is reuse of long-lived per-hex derived geometry:
+The E6 question is:
+
+> Can Cull reuse or avoid movement-refreshed derived world geometry without changing authoritative `HexPosition` semantics or broadening into a spatial-index rewrite?
+
+The smallest evidence-aligned first candidate is reuse of long-lived per-hex derived geometry:
 
 ```text
 (col,row)
@@ -107,9 +111,11 @@ The smallest evidence-aligned treatment is reuse of long-lived per-hex derived g
    -> UnitSpatialRecord references those stable payload objects
 ```
 
-This keeps authoritative `HexPosition` semantics unchanged while testing whether repeated movement can stop regenerating the world-coordinate payload that Cull first-touches.
+This deliberately preserves fresh `UnitSpatialRecord` creation so geometry reuse remains isolated from the E5-2 record-identity hypothesis.
 
 A candidate must be tested against exact production, because the slotted experimental base was rejected for production.
+
+Do not jump to SoA, native code, broad spatial-index redesign, or parallelism before this narrower candidate is tested.
 
 ## Methodology lesson
 

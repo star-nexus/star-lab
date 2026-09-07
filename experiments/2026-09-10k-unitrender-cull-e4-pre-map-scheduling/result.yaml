@@ -1,0 +1,57 @@
+experiment: 10k-unitrender-cull-e4-pre-map-scheduling
+run_id: 20260907-140419
+status: closed
+formal_decision: MAP_RENDER_LOCALITY_GAP_NOT_CONFIRMED
+production_commit: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+experiment_branch: experiment/phase5-unitrender-cull-e4-pre-map-scheduling
+experiment_head: 0a38051dd5d44468a2fdcf1ebf79d6fb667c93ad
+zip_sha256: 8f47582ec589acb4dd354d2ec98f1cfb7c7eacb3a3139e8d955b63ac46682d20
+scenario_sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
+targeted_regressions: "65 passed in 0.56s"
+driver_exit_codes: {00pct: 0, 50pct: 0, 100pct: 0}
+cleanup_exit_codes: {00pct: 0, 50pct: 0, 100pct: 0}
+guards: {00pct: pass, 50pct: pass, 100pct: pass}
+
+points:
+  00pct:
+    baseline_late_ms: 1.542612
+    early_pre_map_ms: 1.669362
+    late_after_early_ms: 1.317322
+    early_saving_ms: -0.126750
+    early_saving_pct: -8.2166
+    samples: {baseline: 207, early: 68, late_after_early: 68}
+    exact_list_match_min: 1
+  50pct:
+    baseline_late_ms: 1.994796
+    early_pre_map_ms: 2.190182
+    late_after_early_ms: 1.492632
+    early_saving_ms: -0.195385
+    early_saving_pct: -9.7948
+    samples: {baseline: 141, early: 47, late_after_early: 47}
+    exact_list_match_min: 1
+  100pct:
+    baseline_late_ms: 2.277871
+    early_pre_map_ms: 2.507707
+    late_after_early_ms: 1.658938
+    early_saving_ms: -0.229836
+    early_saving_pct: -10.0900
+    samples: {baseline: 114, early: 38, late_after_early: 38}
+    exact_list_match_min: 1
+
+reproduced_baseline_growth_00_to_100_ms: 0.735259
+candidate_count_change_pct: 0.12
+semantic_result: exact_ordered_early_late_lists_matched_on_every_sampled_frame
+
+interpretation:
+  map_render_eviction_hypothesis: rejected
+  first_complete_cull_self_warming: strong
+  key_signature: "early-pre-map > baseline-late > late-after-early"
+  production_candidate_selected: false
+  production_changed: false
+
+host_caveat:
+  isolated_benchmark_host: false
+  note: "Desktop applications may have been running. Aggregate latency remains diagnostic; the primary evidence is same-session local interleaved core timing plus exact semantic guards."
+
+raw_mirror_pending: true
+next_case: 10k-unitrender-cull-e5-spatial-structure

@@ -3,7 +3,7 @@
 **Status:** DRAFT / PREREGISTERED — measurement pending  
 **STAR repository:** `star-nexus/star`  
 **Production/control commit:** `17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a`  
-**E6 tooling commit:** `8350f7ed01014124bf0b249b859399af02a03ff5`  
+**E6 tooling commit:** `ac68b4e5c50837feb8f978ffe2c2a9dc2caca1df`  
 **Validated commit:** N/A  
 **Validated tag:** N/A
 
@@ -52,7 +52,7 @@ Render: uncapped
 Hub: offline
 ```
 
-The 10K scenario is the same local fixed fixture used by the preceding Phase-5 cases. The runner refuses to start if its SHA256 differs. For E6, the exact fixture is additionally copied into the formal result ZIP with its own checksum so the archive no longer depends only on the local pathname.
+The 10K scenario is the same local fixed fixture used by the preceding Phase-5 cases. The runner refuses to start if its SHA256 differs. For E6, the exact fixture is additionally copied into the formal result ZIP with an archive-relative checksum so the bundle can verify it from its own root.
 
 ## 5. Treatment contract
 

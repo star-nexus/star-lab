@@ -2,7 +2,7 @@ experiment:
   id: 10k-unitrender-cull-e2
   title: Phase 5 10K UnitRender E2 Cull Per-Candidate Growth Attribution
   date: 2026-09-07
-  status: running_preregistered_attribution_no_candidate_selected
+  status: closed_requires_further_attribution
 
 source:
   repository: star-nexus/star
@@ -12,9 +12,6 @@ source:
   e1_status: closed_do_not_keep
   experiment_branch: experiment/phase5-unitrender-cull-e2-attribution
   branch_head: 5f3f18da6941d6d5bce79cd17e9bfa90b38739ad
-  probe_commit: 53705646b46c9cb1df1eaa055deeee27f7e810b1
-  analyzer_commit: 78ab3c83f155333e5e91c3786b37552b6760142c
-  runner_commit: 5f3f18da6941d6d5bce79cd17e9bfa90b38739ad
   runtime_from_detached_worktree: true
   runtime_diff_files: []
   tool_files:
@@ -25,18 +22,6 @@ source:
 runtime_source_guard:
   rotk_env/systems/window_unit_render_system.py: b995df231c5e10d901b129f95716bfb0f30043eb
   rotk_env/utils/unit_spatial_index.py: 2c2fb26c6ae5f422516a6c3927049d8a78a72b32
-
-trigger:
-  prior_case: 10k-unitrender-classification-cull-attribution
-  prior_run_id: 20260907-032059
-  prior_cull_candidates_00: 8920.0
-  prior_cull_candidates_100: 8930.4
-  prior_cull_ms_00: 1.715
-  prior_cull_ms_100: 2.513
-  prior_cull_us_per_candidate_00: 0.192
-  prior_cull_us_per_candidate_100: 0.281
-  prior_candidate_volume_closure_pct: 0.2
-  cull_status: NOT_CLOSED
 
 scenario:
   name: chibi-144k-scale-10000
@@ -110,15 +95,35 @@ preregistered_interpretations:
     result: FOG_MEMBERSHIP_COST_CANDIDATE_JUSTIFIED
   fallback: CULL_REQUIRES_FURTHER_ATTRIBUTION
 
+result:
+  run_id: 20260907-125240
+  zip_sha256: c430277f2f98c39367d10d886654fb07a1181d07bf2fc84ffc88b0d543126b6e
+  targeted_regressions: "9 passed in 0.39s"
+  guards: pass_all
+  decision: CULL_REQUIRES_FURTHER_ATTRIBUTION
+  candidate_change_00_to_100_pct: 0.12
+  branch_mix_modeled_delta_ms: 0.0033889534
+  branch_mix_closure_pct: 0.4247
+  record_bounds_unit_cost_growth_pct: 7.19
+  warm_full_replay_unit_cost_growth_pct: 2.58
+  index_revision_delta_100_per_frame: 665.7
+  candidate_share_in_changed_buckets_100_pct: 71.4
+  first_touch_locality_measured: false
+
+interpretation:
+  candidate_volume_explanation: rejected
+  branch_mix_explanation: rejected
+  warm_spatial_unit_cost_inflation: rejected
+  warm_fog_membership_inflation: rejected
+  first_touch_locality: open
+  note: >-
+    E2 bulk replay runs after the production cull has already touched the same
+    structures, so it measures warm repeated access and cannot rule out a
+    first-touch locality penalty after same-frame Movement/Vision mutation.
+
 positive_attribution_is_not_production_keep: true
-pre_measurement_tooling_qa:
-  python_compile_probe: pass
-  python_compile_analyzer: pass
-  bash_n_runner: pass
-  production_runtime_changed: false
-  thresholds_changed_after_tooling: false
 raw_mirror_pending: true
-next_action: run_unitrender_e2_attribution
+next_action: run_unitrender_e3_first_touch_locality_attribution
 
 methodology:
   rule: "先用批量、低扰动测量把 branch mix 与同阶段成本变化分开，再决定是否存在可优化的错误复杂度"

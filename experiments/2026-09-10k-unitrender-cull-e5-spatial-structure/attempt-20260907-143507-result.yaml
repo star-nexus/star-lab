@@ -1,0 +1,61 @@
+attempt:
+  run_id: 20260907-143507
+  status: inconclusive_measurement_guard
+  decision: E5_INCONCLUSIVE_MEASUREMENT_GUARD
+  zip_sha256: 66839700b528f8e3aef44a4154b1a16f7a620089f5b1648f7114a09f2ad064d0
+  runtime_sha: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+  caller_sha: ec32568e2f38826a989978f83799cefaf45efb52
+  targeted_regressions: "9 passed in 0.39s"
+  guards_all_pass: true
+
+result:
+  baseline_growth_00_to_100_ms: 0.7265356572
+  candidate_change_pct: 0.1272421525
+  full_spatial_effect_reproduced: true
+  full_spatial_effect_100_ms: 0.6655220476
+  full_spatial_effect_100_relative: 0.2966959498
+  stage_contributions_100_ms:
+    bucket_container: 0.1625903333
+    by_entity_lookup: 0.0226400000
+    record_fields: 0.4802917143
+  stage_share_100:
+    bucket_container: 0.2443
+    by_entity_lookup: 0.0340
+    record_fields: 0.7217
+  directional_dominant_stage: record_fields
+
+measurement_guard:
+  preregistered_min_samples_per_mode: 7
+  00pct:
+    baseline: 233
+    context: 12
+    bucket: 11
+    lookup: 12
+    record: 12
+  50pct:
+    baseline: 159
+    context: 7
+    bucket: 8
+    lookup: 8
+    record: 8
+  100pct:
+    baseline: 127
+    context: 6
+    bucket: 6
+    lookup: 7
+    record: 7
+  failed_only_because:
+    - 100pct context had 6 samples (<7)
+    - 100pct bucket had 6 samples (<7)
+
+interpretation:
+  formal_stage_decision_allowed: false
+  note: "record_fields strongly exceed the preregistered dominance thresholds directionally, but the formal decision is blocked by insufficient 100% context/bucket samples."
+
+retry:
+  required: true
+  tooling_changes: false
+  threshold_changes: false
+  sampling_period_changes: false
+  production_changes: false
+  allowed_change: increase attribution duration only

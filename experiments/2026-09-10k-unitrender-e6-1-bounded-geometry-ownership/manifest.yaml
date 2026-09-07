@@ -1,0 +1,139 @@
+experiment:
+  id: 10k-unitrender-e6-1-bounded-geometry-ownership
+  title: Phase 5 10K UnitRender E6-1 Bounded Geometry Ownership
+  date: 2026-09-07
+  status: draft
+  preregistered: true
+  decision: pending
+
+source:
+  repository: star-nexus/star
+  production_commit: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+  problem_commit: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+  candidate_commit: e7ba18b31870577110b591104ef8fa7b4713e43c
+  tooling_commit: 1855f34c14463a6c165d85b11403e4cc2e7938b4
+  validated_commit: null
+  validated_tag: null
+  branch_at_time: experiment/phase5-unitrender-e6-bounded-geometry-ownership
+  runtime_diff:
+    - rotk_env/utils/unit_spatial_index.py
+
+upstream_evidence:
+  predecessor_case: 2026-09-10k-unitrender-e6-derived-world-geometry-reuse
+  predecessor_decision: DERIVED_WORLD_GEOMETRY_REUSE_CANDIDATE_JUSTIFIED
+  formal_run_id: 20260907-203733
+  cull_saving_ms:
+    pct50: 0.201
+    pct100: 0.433
+  unitrender_saving_ms:
+    pct50: 0.134
+    pct100: 0.217
+  production_keep_after_predecessor: false
+
+candidate_design:
+  owner: UnitSpatialIndex
+  cache_key: [col, row]
+  cache_value: [world_x, world_y, bucket]
+  allocation: lazy
+  growth_bound: board_hex_count_at_rebuild
+  board_source: map_query.board_hexes(world)
+  rebuild_clears_cache: true
+  unbounded_world_cache_disabled: true
+  offboard_geometry_retained: false
+  fresh_record_identity_preserved: true
+  record_layout_unchanged: true
+  cull_algorithm_unchanged: true
+  spatial_containers_unchanged: true
+  authoritative_hexposition_unchanged: true
+
+hardware:
+  machine: pending_formal_run_capture
+  cpu: pending_formal_run_capture
+  memory: pending_formal_run_capture
+  gpu: null_or_pending
+  display: pending_formal_run_capture
+
+software:
+  os: pending_formal_run_capture
+  python: resolved_from_uv_lock_on_formal_run
+  dependency_lock: uv.lock from each frozen worktree
+
+scenario:
+  name: chibi-144k-scale-10000
+  sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
+  resident_units: 10000
+  map_size: 120x120
+
+workload:
+  densities: [0.5, 1.0]
+  moving_units_expected: [5000, 10000]
+  seed: 42
+  phase_seed: 42
+  route_steps: 12
+  phase: staggered
+  fog: true
+  minimap_dynamic_units: false
+  gc_policy: realtime_defer
+  render: uncapped
+  hub: offline
+  gameplay_input: blocked
+  execution_pathfinding: false
+
+measurement:
+  execution_order: [A50, B50, B100, A100]
+  duration_seconds: 20
+  warmup_seconds: 5
+  sample_after_seconds: 19
+  steady_reuse_window: true
+  primary_local_metric: unit_visible_cull.inclusive_ms
+  secondary_local_metric: UnitRenderSystem.inclusive_ms
+  movement_side_metric: AnimationSystem.inclusive_ms
+  aggregate_frame_latency: diagnostic_for_keep_but_canonical_p99_reported_separately
+
+premeasurement_validation:
+  exact_sha_guard_required: true
+  runtime_diff_guard_required: true
+  bounded_geometry_contract_required: true
+  control_targeted_regressions_required: true
+  treatment_targeted_regressions_required: true
+  density_points_run_only_after_all_validation_passes: true
+
+preregistered_keep_gates:
+  all_driver_guards_pass: true
+  rate_tolerance_pct: 2.0
+  min_cull_saving_ms:
+    pct50: 0.10
+    pct100: 0.20
+  unitrender_avg_must_improve_both: true
+  max_animation_avg_regression_pct: 2.0
+  max_controlled_avg_regression_pct: 2.0
+
+canonical_gate:
+  workload: 10k_100pct_moving
+  metric: controlled_work_frame_ms.p99
+  threshold_ms: 33.33
+  separate_from_keep: true
+
+possible_decisions:
+  pass: KEEP_BOUNDED_DERIVED_WORLD_GEOMETRY_REUSE
+  fail: DO_NOT_KEEP_BOUNDED_DERIVED_WORLD_GEOMETRY_REUSE
+
+artifacts:
+  compact: pending
+  raw: pending
+  compact_is_default_review_artifact: true
+  raw_is_authoritative_forensic_substrate: true
+  compact_never_replaces_raw: true
+
+headline:
+  problem_signature: validated E6 reuse benefit is not yet production-safe because attribution cache ownership is unbounded
+  root_cause: inherited_world_coordinate_payload_first_touch
+  resolution: pending_bounded_candidate_validation
+  result: pending
+
+revisit_when:
+  - source or workload guards fail
+  - bounded contract fails
+  - candidate does not retain preregistered Cull benefit
+  - candidate shifts cost materially into Animation
+  - canonical 30Hz classification requires frontier handling

@@ -1,6 +1,6 @@
 # Phase 5 10K UnitRender E5 — Spatial First-Touch Structure Decomposition
 
-**Status:** RUNNING — two sample-guard-inconclusive attempts; profiler-window correction preregistered  
+**Status:** RUNNING — two sample-guard-inconclusive attempts; profiler-window + aging-margin correction preregistered  
 **STAR production:** `17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a`
 
 ## Trigger
@@ -136,24 +136,58 @@ With `PREWARM_PERIOD=6` and four rotating modes, the retained budget is only:
 
 Therefore 6/7 mode counts are structurally expected. The previous duration-only retry was valid but incapable of reliably satisfying the frozen >=7-sample gate.
 
-## Preregistered measurement-window correction
+## Profiler-window correction and aborted first retry
 
-Do **not** lower the prewarm period because that would increase instrumentation density and change locality perturbation. Instead retain the exact `1/6` cadence and widen only the profiler's rolling statistical horizon:
+The first correction widened only the E5 profiler horizon:
 
 ```text
-profiler rolling horizon: 5.0s -> 8.0s
-PREWARM_PERIOD:           6 unchanged
-thresholds:               unchanged
-production runtime:       unchanged
+5.0s -> 8.0s
 ```
 
-At ~31 FPS, 8 seconds retains roughly 248 frames, giving approximately `248 / 6 / 4 ~= 10.3` samples per mode.
+while leaving the runner's generic scale-driver setting at:
 
-This is classified as a **measurement-window correction**, not a candidate/runtime change. E5 tooling records the configured profile horizon in profiler metadata. The retry should keep `DURATION=25` so the only new change relative to attempt 2 is the retained measurement horizon.
+```text
+SAMPLE_AFTER=7s
+```
+
+The next run aborted at `00pct-moving` with `driver rc=1`. The ENV process tree was still alive and was then explicitly cleaned up by the runner, so this was not an ENV crash. It was a generic density-point guard failure.
+
+The cause is a measurement-scheduling contract violation. `scale_driver.py` intentionally waits after `start_sustained` so planning, kickoff and realtime-defer transition frames age out of the final rolling profile. Historically the margin was:
+
+```text
+5s profiler horizon + 7s sample_after = 2s aging margin
+```
+
+After widening the profiler without changing the wait, the configuration became:
+
+```text
+8s profiler horizon + 7s sample_after = -1s aging margin
+```
+
+so the snapshot necessarily retained pre-steady-state frames. This run is classified as an **aborted measurement-scheduling attempt**, not a performance result, and supplies no attribution decision.
+
+## Preregistered corrected retry
+
+Preserve both the frozen sampling cadence and the historical 2-second aging margin:
+
+```text
+profiler rolling horizon: 8.0s
+SAMPLE_AFTER:              10.0s
+PREWARM_PERIOD:             6 unchanged
+DURATION:                  25.0s
+thresholds:                unchanged
+production runtime:        unchanged
+```
+
+The E5 runner now passes the 8-second window explicitly to the probe instead of relying on a probe default.
+
+At ~31 FPS, 8 seconds retains roughly 248 frames, giving approximately `248 / 6 / 4 ~= 10.3` samples per mode while keeping probe density unchanged.
+
+This is a **measurement-window / aging-margin correction**, not a candidate/runtime change.
 
 ## Interpretation boundary
 
-The two inconclusive attempts provide strong replicated directional evidence:
+The two completed inconclusive attempts provide strong replicated directional evidence:
 
 ```text
 record_fields @100%
@@ -175,4 +209,4 @@ But E5 remains formally open until the frozen sample-count guard passes. Do not 
 
 ## Methodology
 
-> **先把 first-touch 拆到 container / indirection / record 层；测量窗口必须足以满足预注册样本预算，但不能靠提高 probe 密度来制造证据。**
+> **先把 first-touch 拆到 container / indirection / record 层；测量窗口必须覆盖预注册样本预算，同时保留足够 aging margin，不能靠提高 probe 密度来制造证据。**

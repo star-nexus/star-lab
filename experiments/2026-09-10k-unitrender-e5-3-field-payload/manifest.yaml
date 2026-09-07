@@ -2,7 +2,8 @@ experiment:
   id: 10k-unitrender-e5-3-field-payload
   title: Phase 5 10K UnitRender E5-3 Cull Field-Payload Attribution
   date: 2026-09-07
-  status: running_preregistered_attribution
+  status: closed
+  decision: WORLD_COORD_PAYLOAD_FIRST_TOUCH_DOMINANT
 
 source:
   repository: star-nexus/star
@@ -51,11 +52,44 @@ measurement:
   timed_core: exact_runtime_get_visible_units
   aggregate_frame_latency: diagnostic_only
 
-field_groups:
-  lookup: bucket_traversal_plus_by_entity_get_only
-  world: lookup_plus_world_x_world_y
-  faction: world_plus_faction
-  hex: faction_plus_col_row
+formal_result:
+  run_id: 20260907-182654
+  zip_sha256: c34be3a60c970bba514c7d39b44be82447aae93f83d08022f4a5982368502156
+  regressions: '10 passed'
+  drivers_passed: 3
+  cleanups_passed: 3
+  all_guards_pass: true
+  window_coverage_seconds:
+    pct00: 8.003
+    pct50: 8.009
+    pct100: 8.001
+  samples_100:
+    lookup: 10
+    world: 10
+    faction: 10
+    hex: 10
+  baseline_cull_ms:
+    pct00: 1.505
+    pct50: 1.933
+    pct100: 2.204
+  reproduced_baseline_growth_ms_00_to_100: 0.699
+  candidate_change_pct_00_to_100: 0.14
+  full_field_effect_ms:
+    pct00: 0.053
+    pct50: 0.253
+    pct100: 0.476
+  stage_contribution_ms:
+    pct50:
+      world_xy: 0.201
+      faction: -0.005
+      col_row: 0.057
+    pct100:
+      world_xy: 0.375
+      faction: -0.011
+      col_row: 0.111
+  world_xy_share_of_full_field_effect:
+    pct50: 0.794
+    pct100: 0.788
 
 preregistered_gates:
   all_driver_guards_pass: true
@@ -69,27 +103,23 @@ preregistered_gates:
   min_stage_dominant_abs_ms: 0.10
   min_stage_dominant_share: 0.35
 
-possible_decisions:
-  - WORLD_COORD_PAYLOAD_FIRST_TOUCH_DOMINANT
-  - FACTION_PAYLOAD_FIRST_TOUCH_DOMINANT
-  - HEX_COORD_PAYLOAD_FIRST_TOUCH_DOMINANT
-  - MIXED_CULL_FIELD_PAYLOAD
-  - CULL_FIELD_PAYLOAD_EFFECT_NOT_REPRODUCED
-  - SLOTTED_CULL_GROWTH_NOT_REPRODUCED
-  - E5_3_INCONCLUSIVE_MEASUREMENT_GUARD
-  - E5_3_INCONCLUSIVE_WORKLOAD_SHIFT
-
 aborted_attempts:
   - stage: before_first_density_point
     reason: bash_nounset_local_initialization_order
-    runner_line_pattern: 'local density="$1" label="$2" point_dir="$RUN_DIR/$label" cleanup_rc'
-    consequence: no_00_50_100_measurement_data_produced
+    consequence: no_measurement_data_produced
     regressions_before_abort: '10 passed in 0.37s'
     fix: split_local_assignments_before_point_dir_expansion
     fixed_branch_head: 978062a414655889356359065996c3fee34f8a4a
     preregistration_changed: false
 
+next_candidate:
+  id: E5-4
+  hypothesis: reuse_long_lived_per_hex_derived_geometry
+  target_payload: [world_x, world_y, bucket]
+  production_candidate_must_base_on: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+  do_not_jump_to_soa: true
+
 production_unchanged: true
 raw_mirror_pending: true
 methodology:
-  rule: "先把 record fields 拆成 Cull 真正消费的 payload，再决定是否重构 spatial representation"
+  rule: "连续 negative results 把模糊的 moving-dependent UnitRender cost 收敛到 world-coordinate payload；下一刀只动这个证据支持的最小表示层。"

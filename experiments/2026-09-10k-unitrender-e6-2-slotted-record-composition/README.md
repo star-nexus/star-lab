@@ -4,7 +4,7 @@
 **STAR repository:** `star-nexus/star`  
 **Retained E6-1 production:** `e7ba18b31870577110b591104ef8fa7b4713e43c`  
 **Experiment branch:** `experiment/phase5-unitrender-e6-2-slotted-composition`  
-**Frozen tooling commit:** `a524e610bdfce7eab37fee3fcf4cff69dac89ab5`
+**Frozen tooling commit:** `f1bf1c4f8e921287a9fc3c1b76c685f6f551a5e2`
 
 ## Question
 

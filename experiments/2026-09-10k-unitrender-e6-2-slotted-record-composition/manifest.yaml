@@ -2,9 +2,9 @@ experiment:
   id: 10k-unitrender-e6-2-slotted-record-composition
   title: Phase 5 10K UnitRender E6-2 Slotted Spatial Record Composition
   date: 2026-09-07
-  status: draft
+  status: validated_negative_raw_mirror_pending
   preregistered: true
-  decision: pending
+  decision: SLOTTED_RECORD_COMPOSITION_NOT_MATERIAL
 
 source:
   repository: star-nexus/star
@@ -13,8 +13,20 @@ source:
   treatment_runtime_commit: e7ba18b31870577110b591104ef8fa7b4713e43c
   experiment_branch: experiment/phase5-unitrender-e6-2-slotted-composition
   tooling_commit: f1bf1c4f8e921287a9fc3c1b76c685f6f551a5e2
+  formal_caller_commit: c9960ae4d65c64f67725961864ed72f01dca2891
   production_candidate_commit: null
   validated_commit: null
+
+formal_run:
+  run_id: 20260907-231532
+  created_at_utc: 2026-09-07T15:15:33Z
+  execution_order: [A50, B50, B100, A100]
+  contract_tests: 4
+  contract_tests_passed: true
+  control_targeted_regressions: 30
+  treatment_targeted_regressions: 30
+  regressions_passed: true
+  all_workload_guards_passed: true
 
 upstream_evidence:
   e5_1:
@@ -61,7 +73,6 @@ workload:
   execution_pathfinding: false
 
 measurement:
-  execution_order: [A50, B50, B100, A100]
   duration_seconds: 20
   warmup_seconds: 5
   sample_after_seconds: 19
@@ -81,18 +92,47 @@ preregistered_gates:
   max_controlled_avg_regression_pct: 1.0
   max_animation_avg_regression_pct: 2.0
 
+results:
+  pct50:
+    controlled_avg_ms: {control: 24.92329199473684, treatment: 25.244858074866308, delta_pct: 1.2902231382490512}
+    controlled_p99_ms: {control: 30.921443339999996, treatment: 26.46564414}
+    cull_avg_ms: {control: 1.8477815578947367, treatment: 1.7736323155080214, saving: 0.07414924238671539}
+    unitrender_avg_ms: {control: 9.004580042105264, treatment: 9.000411320855615}
+    animation_avg_ms: {control: 3.3967098631578945, treatment: 3.452314401069519, delta_pct: 1.6370117010797394}
+    failed_checks: [controlled_avg_no_material_regression]
+  pct100:
+    controlled_avg_ms: {control: 31.929931746666668, treatment: 32.19925765771812, delta_pct: 0.8434904063945252}
+    controlled_p99_ms: {control: 33.505686659999995, treatment: 34.36492864000001}
+    cull_avg_ms: {control: 1.94175084, treatment: 1.8885827919463087, saving: 0.05316804805369135}
+    unitrender_avg_ms: {control: 9.782683893333333, treatment: 9.713814033557046}
+    animation_avg_ms: {control: 7.210929153333333, treatment: 7.2980405234899335, delta_pct: 1.208046401569934}
+    failed_checks: [cull_saving_meets_floor]
+  signal_retention_vs_e5_1:
+    pct50: 0.8238804709635044
+    pct100: 0.4705136995901889
+
 canonical_gate:
   metric: controlled_work_frame_ms.p99
   workload: 10k_100pct_moving
   threshold_ms: 33.33
+  treatment_ms: 34.36492864000001
+  pass: false
   diagnostic_only_for_e6_2_attribution: true
 
-possible_decisions:
-  pass: SLOTTED_RECORD_COMPOSITION_CANDIDATE_JUSTIFIED
-  fail: SLOTTED_RECORD_COMPOSITION_NOT_MATERIAL
+production_disposition:
+  create_slots_source_candidate: false
+  retained_production_commit: e7ba18b31870577110b591104ef8fa7b4713e43c
+  performance_frontier_update: false
 
 artifacts:
-  compact: pending
-  raw: pending
+  compact:
+    file: 20260907-231532-compact.zip
+    sha256: 682a02741be2c4002fe815418254f5ac056c06c27e1e8f4dd10130aa40c74bbc
+    size_bytes: 11796
+  raw:
+    file: 20260907-231532-raw.zip
+    sha256: e6aeee218bd21332819b881f904524ca15c3b3942c5eb4dd0bf867b42023e2c4
+    size_bytes: 131085
+    canonical_mirror: pending
   compact_is_default_review_artifact: true
   raw_is_authoritative_forensic_substrate: true

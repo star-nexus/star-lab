@@ -1,10 +1,11 @@
 experiment:
   id: 10k-phase5-e7-tail-composition
   title: Phase 5 E7 100% Moving P99 Tail Composition Attribution
-  date: 2026-09-07
-  status: draft
+  date: 2026-09-08
+  status: validated_attribution_raw_mirror_pending
   preregistered: true
-  decision: pending
+  decision: STABLE_TAIL_CONTRIBUTORS_FOUND
+  next_causal_target: UnitRenderSystem_self_render_volume_path
 
 source:
   repository: star-nexus/star
@@ -38,20 +39,49 @@ workload:
 measurement:
   profiler_window_seconds: 10.0
   minimum_aligned_samples_per_repeat: 250
+  actual_aligned_samples: [312, 311, 311]
   tail_set: controlled_work_gte_p95
   reference_set: controlled_work_p25_to_p75
   contribution_basis: controlled_category_section_self_time
   p99_primary_attribution_set: false
   canonical_breach_threshold_ms: 33.33
+  all_guards_pass: true
+  tail_contract_tests_passed: 2
+  targeted_regressions_passed: 20
+
+results:
+  controlled_avg_ms: [30.64851296474359, 30.74343, 30.769844434083602]
+  controlled_p95_ms: [32.6968102, 32.831688, 32.839229]
+  controlled_p99_ms: [33.20893552, 33.16867, 33.190218599999994]
+  controlled_tail_uplift_ms: [2.518901905448722, 2.295366757258069, 2.306742295564515]
+  actionable_contributors:
+    - name: UnitRenderSystem
+      top3_repeat_count: 3
+      median_self_tail_uplift_ms: 1.0670546979838704
+      median_self_tail_uplift_share_pct: 46.32411892778568
+      median_pearson_r_controlled: 0.9535925813990356
+    - name: VisionSystem
+      top3_repeat_count: 3
+      median_self_tail_uplift_ms: 0.40087995362903195
+      median_self_tail_uplift_share_pct: 17.464745115848203
+      median_pearson_r_controlled: 0.8836908635499502
+    - name: AnimationSystem
+      top3_repeat_count: 3
+      median_self_tail_uplift_ms: 0.34963818991935547
+      median_self_tail_uplift_share_pct: 15.232345280499567
+      median_pearson_r_controlled: 0.7406877204281215
+  unitrender_refinement:
+    median_inclusive_tail_uplift_ms: 1.164365235483869
+    median_self_tail_uplift_ms: 1.0670546979838704
+    median_cull_tail_uplift_ms: 0.09731053749999985
+    cull_share_of_unitrender_inclusive_pct: 8.357389462900018
+    render_commands_median_pearson_r: 0.9197932147827085
+    render_commands_median_tail_delta: 438.3419354838711
+    render_commands_median_tail_ratio: 1.1276231657562756
 
 stability_rule:
   positive_top3_repeat_count_min: 2
   actionable_median_tail_uplift_ms_min: 0.15
-
-possible_decisions:
-  positive: STABLE_TAIL_CONTRIBUTORS_FOUND
-  negative: NO_ACTIONABLE_STABLE_TAIL_CONTRIBUTOR
-  invalid: INVALID_GUARDS
 
 pre_measurement_runner_fix:
   occurred_before_any_formal_performance_point: true
@@ -63,10 +93,24 @@ pre_measurement_runner_fix:
 
 frontier:
   diagnostic_only: true
+  repeat_p99_pass_count: 3
+  repeat_count: 3
+  median_p99_ms: 33.190218599999994
   update_authorized: false
 
 artifacts:
-  compact: pending
-  raw: pending
+  compact:
+    file: 20260908-001411-compact.zip
+    sha256: e69471082847263f65035015e83da211982612befb187691b65d377d159f5b29
+    size_bytes: 27889
+  raw:
+    file: 20260908-001411-raw.zip
+    sha256: cdb7a6232d13c0f7d55c26f4f23fabd21782f305eb9b58444bf847612214126a
+    size_bytes: 142953
+    stable_mirror_locator: pending
+  raw_profiles:
+    repeat_1_sha256: 443f2f2ece294e9dea4daefa5dd0656e9b07f422ab7168c34895a77787c063fc
+    repeat_2_sha256: d0d7dc83234bd060abffeec17e226936305f68a1a89345a63c81c4d277ea6ccd
+    repeat_3_sha256: 864086a58b29f32485ea99417097ac84d84a75474c9eba5ac88202242a8f2eae
   compact_is_default_review_artifact: true
   raw_is_authoritative_forensic_substrate: true

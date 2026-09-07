@@ -4,7 +4,7 @@
 **STAR repository:** `star-nexus/star`  
 **Retained production runtime:** `e7ba18b31870577110b591104ef8fa7b4713e43c`  
 **Experiment branch:** `experiment/phase5-tail-composition-attribution`  
-**Frozen tooling commit:** `86bd5ead19243f7731e8af40f16cb2cb0cbd5bc7`
+**Frozen tooling commit:** `073eb97f4ed43ae40952da9436e3fc89316e95cf`
 
 ## Question
 
@@ -55,8 +55,8 @@ Primary attribution does **not** use only the top 1% frames because that set is 
 Per repeat:
 
 ```text
-tail set      = controlled_work >= p95
-reference set = p25 <= controlled_work <= p75
+tail set      = controlled_work >= per-run p95
+reference set = per-run p25 <= controlled_work <= p75
 ```
 
 For each controlled-category section `s`:

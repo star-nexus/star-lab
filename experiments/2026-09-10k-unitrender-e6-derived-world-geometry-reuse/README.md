@@ -1,23 +1,37 @@
 # Phase 5 10K UnitRender E6 — Derived World-Geometry Reuse
 
-**Status:** DRAFT / PREREGISTERED — measurement pending  
+**Status:** VALIDATED ATTRIBUTION — production candidate justified; raw forensic mirror pending  
 **STAR repository:** `star-nexus/star`  
 **Production/control commit:** `17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a`  
-**E6 tooling commit:** `ac68b4e5c50837feb8f978ffe2c2a9dc2caca1df`  
-**Validated commit:** N/A  
+**Formal measurement tooling commit:** `ac68b4e5c50837feb8f978ffe2c2a9dc2caca1df`  
+**Validated production commit:** N/A — attribution treatment is measurement-only  
 **Validated tag:** N/A
 
 ## 1. Problem
 
 E5-3 closed the UnitRender Cull attribution chain with `WORLD_COORD_PAYLOAD_FIRST_TOUCH_DOMINANT`: on the 10K / 100%-moving workload, first-touch of `UnitSpatialRecord.world_x/world_y` accounted for approximately `0.375 ms` of a `0.476 ms` full record-field effect (~78.8%). The retained production spatial index regenerates these derived world-coordinate payloads whenever a unit's authoritative `HexPosition` commits movement.
 
-E6 asks a narrower treatment question:
+E6 asked the narrower treatment question:
 
 > Can Cull materially recover that movement-dependent first-touch cost if the pure per-hex derived geometry is long-lived and reused, while `UnitSpatialRecord` itself remains freshly created?
 
+Formal answer:
+
+```text
+YES — DERIVED_WORLD_GEOMETRY_REUSE_CANDIDATE_JUSTIFIED
+```
+
+This is an attribution result, **not** a production KEEP.
+
 ## 2. Why it matters
 
-The goal is not to optimize the spatial index generically. The remaining evidence-aligned target is specifically the derived world-geometry payload consumed by Cull's exact bounds test. A positive result would justify a bounded production representation candidate. A negative result would close this reuse direction before any SoA/native/parallel rewrite.
+The goal is not to optimize the spatial index generically. E6 tested exactly the evidence-aligned payload isolated by E5-3. Reuse recovered a material Cull cost at both 50% and 100% movement while the movement/Vision/Fog workload rates remained within the preregistered ±2% tolerance.
+
+The next engineering step is therefore narrow:
+
+> Design a **bounded** production representation for derived per-hex world geometry, tied to authoritative map/board lifetime or another demonstrably bounded owner, then validate it against exact production.
+
+Do not jump to SoA/native/parallelism from this result.
 
 ## 3. Source checkout
 
@@ -25,23 +39,27 @@ The goal is not to optimize the spatial index generically. The remaining evidenc
 git clone https://github.com/star-nexus/star.git
 cd star
 git fetch --all --tags
-git checkout experiment/phase5-unitrender-e6-derived-world-geometry-reuse
+git checkout ac68b4e5c50837feb8f978ffe2c2a9dc2caca1df
 uv sync
 ```
 
-The runtime under both A and B remains the exact retained production commit:
+The runtime under both formal A and B remained the exact retained production commit:
 
 ```text
 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
 ```
 
-The runner creates detached control/treatment worktrees from that SHA and copies only the E6 measurement probe into the treatment worktree.
+The formal runner created detached control/treatment worktrees from that SHA and copied only the E6 measurement probe into the treatment worktree.
 
 ## 4. Environment
 
+Formal run `20260907-203733`:
+
 ```text
-Machine: formal run machine captured by runner manifest (expected Mac mini M4)
-OS: captured by uname/sw_vers
+Machine class: Mac mini / Apple Silicon formal Phase-5 machine
+OS: macOS 26.5.2 (build 25F84)
+Kernel: Darwin 25.5.0 arm64
+Display: window 2480x1261
 Scenario: chibi-144k-scale-10000
 Scenario SHA256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
 Resident units: 10000
@@ -50,9 +68,10 @@ MiniMap dynamic units: OFF
 GC: realtime_defer
 Render: uncapped
 Hub: offline
+Input: blocked gameplay events
 ```
 
-The 10K scenario is the same local fixed fixture used by the preceding Phase-5 cases. The runner refuses to start if its SHA256 differs. For E6, the exact fixture is additionally copied into the formal result ZIP with an archive-relative checksum so the bundle can verify it from its own root.
+The exact 10K fixture is inside the raw forensic ZIP with an archive-relative checksum.
 
 ## 5. Treatment contract
 
@@ -69,7 +88,7 @@ exact production 17ced8d2...
   + measurement-only monkeypatch of UnitSpatialIndex._record_for_hex()
 ```
 
-For each `(col,row)`, treatment canonicalizes only:
+For each `(col,row)`, treatment canonicalized only:
 
 ```text
 (world_x, world_y, bucket)
@@ -85,35 +104,50 @@ existing by_entity / by_bucket / by_cell containers
 exact Cull implementation
 ```
 
-This is deliberately orthogonal to E5-2 stable record identity.
+This remains deliberately orthogonal to E5-2 stable record identity.
 
-The runner performs three pre-measurement validation layers:
+Pre-measurement validation passed:
 
 ```text
-E6 identity/isolation contract test
-exact-production targeted regressions
-same targeted regressions with E6 patch installed in-process
+E6 isolation / identity contract: 2 passed
+exact-production targeted regressions: 25 passed
+same targeted regressions with E6 patch installed: 25 passed
 ```
 
-No density point runs if any of these fail.
-
 ## 6. Formal run
+
+The executed formal command at tooling SHA `ac68b4e5...` was:
 
 ```bash
 bash tools/run_phase5_unitrender_e6_attribution.sh
 ```
 
-The counterbalanced execution order is frozen as:
+Counterbalanced order:
 
 ```text
 A50 -> B50 -> B100 -> A100
 ```
 
-The formal retained window is taken at `t=19 s` of a 20 s sustained run. With the production movement animation at 2 tiles/s and the 12-step out-and-back route, this ages first-fill geometry work out of the normal rolling window and measures steady reuse.
+The retained window was taken at `t=19 s` of a 20 s sustained run, after the 12-step out-and-back route had entered steady geometry reuse.
+
+For future reruns, the canonical entrypoint is now:
+
+```bash
+bash tools/run_phase5_unitrender_e6.sh
+```
+
+That wrapper preserves the same measurement/analyzer semantics and emits both:
+
+```text
+<run-id>-compact.zip
+<run-id>-raw.zip
+```
+
+according to STAR Lab `PROTOCOL.md` v1.2. Packaging is downstream of measurement and does not change the preregistered gates.
 
 ## 7. Preregistered gates
 
-Workload-equivalence guards:
+Frozen before the formal run:
 
 ```text
 all scale-driver guards PASS
@@ -122,56 +156,59 @@ Vision changed/s within ±2%
 Fog delta tiles/s within ±2%
 control contains no E6 treatment metadata
 treatment source guard resolves to production 17ced8d2...
-```
 
-Candidate-materiality gates, frozen before formal measurement:
-
-```text
 50% moving:  Cull avg saving >= 0.10 ms
 100% moving: Cull avg saving >= 0.20 ms
 UnitRender avg improves at both densities
 controlled-work avg regression <= 2%
 ```
 
-The thresholds intentionally require recovery of a material fraction of the E5-3 `world_x/world_y` signal (`0.201 ms @50%`, `0.375 ms @100%`). P99 is diagnostic for this mechanism experiment and is not used alone to declare causation.
+P99 was diagnostic and did not independently determine causation.
 
-## 8. Expected outcomes
+## 8. Formal result
 
-Positive attribution decision:
+| Metric | 50% control | 50% reuse | Change | 100% control | 100% reuse | Change |
+|---|---:|---:|---:|---:|---:|---:|
+| Controlled avg | 25.412 ms | 25.267 ms | -0.57% | 32.880 ms | 32.386 ms | -1.50% |
+| Controlled p99 | 30.373 ms | 26.484 ms | diagnostic | 35.366 ms | 34.409 ms | diagnostic |
+| Cull avg | 2.076 ms | 1.875 ms | **-0.201 ms** | 2.404 ms | 1.971 ms | **-0.433 ms** |
+| Cull relative | | | **-9.7%** | | | **-18.0%** |
+| UnitRender avg | 9.268 ms | 9.134 ms | **-0.134 ms** | 10.242 ms | 10.026 ms | **-0.217 ms** |
+| Animation avg | 3.525 ms | 3.518 ms | -0.007 ms | 7.320 ms | 7.279 ms | -0.041 ms |
+| Position rate drift | | | +0.733% | | | -0.109% |
+| Vision changed drift | | | +0.447% | | | -0.054% |
+| Fog delta drift | | | +0.693% | | | +0.319% |
+
+Both formal comparisons passed every preregistered check.
+
+Decision:
 
 ```text
 DERIVED_WORLD_GEOMETRY_REUSE_CANDIDATE_JUSTIFIED
 ```
 
-Negative attribution decision:
+A particularly strong consistency check is that the 50% Cull recovery (`0.201 ms`) exactly matches the E5-3 `world_x/world_y` first-touch contribution estimate (`0.201 ms`). At 100%, E6 recovered `0.433 ms` versus the earlier E5-3 `0.375 ms` world-coordinate estimate. The excess must not be over-interpreted as >100% causal recovery; run noise and the treatment's joint reuse of `bucket` are sufficient nearby explanations. The formal conclusion remains the preregistered materiality result, not an exact percentage decomposition.
+
+## 9. Artifact model
+
+This case is the first migration to the STAR Lab v1.2 two-tier artifact standard:
 
 ```text
-DERIVED_WORLD_GEOMETRY_REUSE_NOT_MATERIAL
+Compact Evidence Package
+        +
+Raw Forensic Package
 ```
 
-A positive result is **not** a production KEEP. Before production consideration, geometry ownership must be bounded by authoritative map/board lifetime rather than an unbounded visited-hex cache, then validated against exact production with regression and controlled A/B evidence.
-
-## 9. Formal artifacts
-
-Pending formal run. Do not create an empty STAR Lab `SHA256SUMS` before formal artifacts are mirrored.
-
-Expected local result shape:
+Formal raw package:
 
 ```text
-results/phase5-unitrender-e6/chibi-144k-scale-10000/<run-id>/
-  manifest.txt
-  fixtures/chibi-144k-scale-10000.json
-  fixtures/SHA256SUMS
-  treatment-contract-test.log
-  control-targeted-regressions.log
-  treatment-targeted-regressions.log
-  control/50pct-moving/{point.json,profile.json}
-  treatment/50pct-moving/{point.json,profile.json}
-  treatment/100pct-moving/{point.json,profile.json}
-  control/100pct-moving/{point.json,profile.json}
-  unitrender-e6-summary.json
-  zip-sha256.txt
+20260907-203733.zip
+SHA256: d4f7bab293ced78ab11231fe0e370fe51a257e1cb95b12666340a7a628819bc4
 ```
+
+A post-run compact sample was generated successfully and is suitable for normal review. Future canonical reruns generate `-compact.zip` and `-raw.zip` directly from `tools/run_phase5_unitrender_e6.sh`.
+
+The raw forensic package remains the authoritative low-level audit substrate. This case must not be marked fully CLOSED until the raw package has a stable canonical STAR Lab storage/mirror locator; its checksum is already frozen.
 
 ## 10. Related records
 
@@ -180,4 +217,4 @@ results/phase5-unitrender-e6/chibi-144k-scale-10000/<run-id>/
 - [`decision.md`](decision.md)
 - [`../2026-09-10k-unitrender-e5-3-field-payload/`](../2026-09-10k-unitrender-e5-3-field-payload/) — immediate causal predecessor
 
-`records/performance-frontier.md` is intentionally unchanged until a validated production result actually moves the capability frontier.
+`records/performance-frontier.md` remains unchanged: E6 justified a production candidate but did not itself create a validated production source state or move the capability frontier.

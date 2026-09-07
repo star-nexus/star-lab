@@ -10,7 +10,7 @@ source:
   repository: star-nexus/star
   retained_production_commit: e7ba18b31870577110b591104ef8fa7b4713e43c
   experiment_branch: experiment/phase5-tail-composition-attribution
-  tooling_commit: 86bd5ead19243f7731e8af40f16cb2cb0cbd5bc7
+  tooling_commit: 073eb97f4ed43ae40952da9436e3fc89316e95cf
   production_runtime_changes: none
 
 scenario:

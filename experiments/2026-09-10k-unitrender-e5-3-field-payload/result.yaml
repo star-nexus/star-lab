@@ -1,0 +1,49 @@
+run_id: 20260907-182654
+zip_sha256: c34be3a60c970bba514c7d39b44be82447aae93f83d08022f4a5982368502156
+decision: WORLD_COORD_PAYLOAD_FIRST_TOUCH_DOMINANT
+validation:
+  targeted_regressions: 10_passed
+  drivers: 3_of_3_pass
+  cleanup: 3_of_3_pass
+  guards: all_pass
+  window_seconds:
+    pct00: 8.003
+    pct50: 8.009
+    pct100: 8.001
+results:
+  pct00:
+    baseline_ms: 1.505
+    lookup_ms: 1.350
+    world_ms: 1.284
+    faction_ms: 1.279
+    hex_ms: 1.297
+    field_effect_ms: 0.053
+    world_xy_ms: 0.066
+  pct50:
+    baseline_ms: 1.933
+    lookup_ms: 1.714
+    world_ms: 1.513
+    faction_ms: 1.518
+    hex_ms: 1.461
+    field_effect_ms: 0.253
+    world_xy_ms: 0.201
+    faction_ms_contribution: -0.005
+    col_row_ms: 0.057
+  pct100:
+    baseline_ms: 2.204
+    lookup_ms: 2.044
+    world_ms: 1.669
+    faction_ms: 1.679
+    hex_ms: 1.568
+    field_effect_ms: 0.476
+    world_xy_ms: 0.375
+    faction_ms_contribution: -0.011
+    col_row_ms: 0.111
+  baseline_growth_ms_00_to_100: 0.699
+  candidate_change_pct: 0.14
+interpretation:
+  world_xy_share_pct50: 0.794
+  world_xy_share_pct100: 0.788
+  production_keep: false
+  next: E5-4 derived per-hex geometry reuse attribution
+raw_mirror_pending: true

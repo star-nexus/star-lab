@@ -10,7 +10,7 @@ source:
   repository: star-nexus/star
   retained_production_commit: e7ba18b31870577110b591104ef8fa7b4713e43c
   experiment_branch: experiment/phase5-tail-composition-attribution
-  tooling_commit: 073eb97f4ed43ae40952da9436e3fc89316e95cf
+  tooling_commit: 33d3715c1310a33bc3b9ff44a8deb7f633bf21d4
   production_runtime_changes: none
 
 scenario:
@@ -52,6 +52,14 @@ possible_decisions:
   positive: STABLE_TAIL_CONTRIBUTORS_FOUND
   negative: NO_ACTIONABLE_STABLE_TAIL_CONTRIBUTOR
   invalid: INVALID_GUARDS
+
+pre_measurement_runner_fix:
+  occurred_before_any_formal_performance_point: true
+  contract_tests_passed: 2
+  targeted_regressions_passed: 20
+  issue: bash_nounset_dependent_local_initializer
+  evidence_admitted: false
+  preregistration_changed: false
 
 frontier:
   diagnostic_only: true

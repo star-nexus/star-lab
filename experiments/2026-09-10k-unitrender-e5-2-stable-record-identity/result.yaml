@@ -1,0 +1,51 @@
+run:
+  id: 20260907-180445
+  date: 2026-09-07
+  decision: FRESH_RECORD_REPLACEMENT_NOT_MATERIAL
+  zip_sha256: 65fbb8b14650347293879f10f20aa97ead4e4dc0a6f4a4fbd989244744aeb686
+  caller_sha: 9ef1fae5be1804ac0af2b14f903cc2a5a7075392
+  experimental_base_sha: 682fdb3a4c64002b402eb74bdda2331ca7123ab4
+  scenario_sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
+
+validity:
+  targeted_regressions: "20 passed in 0.38s"
+  treatment_contract_test: "1 passed in 0.02s"
+  driver_exit_codes: [0, 0, 0, 0]
+  cleanup_exit_codes: [0, 0, 0, 0]
+  all_workload_guards_pass: true
+  treatment_source_guard_pass: true
+  external_frozen_semantics_preserved: true
+  generic_upsert_unchanged: true
+
+results:
+  moving_50pct:
+    controlled_avg_ms: {control: 24.0682188071, treatment: 24.2620299898, delta_pct: 0.8053}
+    controlled_p99_ms: {control: 25.401814, treatment: 25.33582835}
+    cull_avg_ms: {control: 1.8938625127, treatment: 1.8866167194, saving: 0.0072457933}
+    cull_p95_saving_ms: 0.01081695
+    unitrender_saving_ms: -0.0779598921
+    animation_saving_ms: 0.0752242065
+    position_rate_delta_pct: -0.0153075
+    vision_changed_rate_delta_pct: -0.0034545
+  moving_100pct:
+    controlled_avg_ms: {control: 30.7021480577, treatment: 30.2963203671, delta_pct: -1.3218}
+    controlled_p99_ms: {control: 32.21674305, treatment: 31.98542201}
+    cull_avg_ms: {control: 2.2024636346, treatment: 2.1583464937, saving: 0.0441171409}
+    cull_p95_saving_ms: 0.0580819
+    unitrender_saving_ms: 0.0332547410
+    animation_saving_ms: 0.2084436181
+    position_rate_delta_pct: -0.0339921
+    vision_changed_rate_delta_pct: -0.0210027
+
+frozen_gates:
+  min_cull_saving_ms_50pct: 0.08
+  min_cull_saving_ms_100pct: 0.15
+  workload_rate_tolerance_pct: 2.0
+
+interpretation:
+  stable_record_identity_is_not_material: true
+  cull_saving_below_gate_both_densities: true
+  positive_aggregate_100pct_is_diagnostic_only: true
+  next_direction: cull_field_payload_decomposition
+
+raw_mirror_pending: true

@@ -2,7 +2,7 @@ experiment:
   id: 10k-unitrender-cull-e3-first-touch-locality
   title: Phase 5 10K UnitRender E3 Cull First-Touch Locality Attribution
   date: 2026-09-07
-  status: running_preregistered_attribution_no_candidate_selected
+  status: closed_spatial_first_touch_locality_candidate_justified
 
 source:
   repository: star-nexus/star
@@ -78,20 +78,48 @@ preregistered_locality_thresholds:
   both_min_abs_improvement_ms: 0.25
   both_min_relative_improvement: 0.12
 
-possible_decisions:
-  - E3_INCONCLUSIVE_MEASUREMENT_GUARD
-  - ORIGINAL_CULL_GROWTH_NOT_REPRODUCED
-  - E3_INCONCLUSIVE_WORKLOAD_SHIFT
-  - CONTEXT_FIRST_TOUCH_LOCALITY_CANDIDATE_JUSTIFIED
-  - SPATIAL_FIRST_TOUCH_LOCALITY_CANDIDATE_JUSTIFIED
-  - FOG_FIRST_TOUCH_LOCALITY_CANDIDATE_JUSTIFIED
-  - MIXED_SPATIAL_FOG_FIRST_TOUCH_CANDIDATE_JUSTIFIED
-  - MIXED_FIRST_TOUCH_LOCALITY_CANDIDATE_JUSTIFIED
-  - CULL_FIRST_TOUCH_NOT_CONFIRMED
+result:
+  run_id: 20260907-132252
+  artifact_zip_sha256: ae9fdc8412c58cb597cb7c9a521656892df2bcd9cc4c398a63f55f1b1e1e0735
+  targeted_regressions: "9 passed in 0.43s"
+  all_guards_passed: true
+  candidate_change_pct: 0.1233183857
+  baseline_core_ms:
+    00: 1.5439456786
+    50: 1.9932847815
+    100: 2.2761125950
+  reproduced_baseline_growth_00_to_100_ms: 0.7321669165
+  spatial_vs_context_saving_ms:
+    00: 0.1414617143
+    50: 0.2747389667
+    100: 0.467635625
+  spatial_vs_context_relative:
+    00: 0.0923535340
+    50: 0.1382467766
+    100: 0.1971512632
+  both_vs_context_saving_100_ms: 0.5169519107
+  fog_vs_context_saving_100_ms: 0.19413575
+  spatial_prewarm_cost_100_ms: 1.779906125
+  decision: SPATIAL_FIRST_TOUCH_LOCALITY_CANDIDATE_JUSTIFIED
+
+host_environment:
+  isolated: false
+  operator_reported_background_apps: [Chrome]
+  aggregate_latency_reliability: diagnostic_only
+  local_interleaved_core_timing: primary
+
+interpretation:
+  original_signature_reproduced: true
+  spatial_effect_monotonic_with_movement_density: true
+  spatial_sample_separation_strong: true
+  fog_single_mode_not_material_by_preregistered_gate: true
+  production_prewarm_forbidden: true
+  reason: prewarm_cost_exceeds_following_cull_saving
+  preferred_next_hypothesis: pre_map_vs_post_map_cull_scheduling_locality
 
 positive_attribution_is_not_production_keep: true
 raw_mirror_pending: true
-next_action: run_unitrender_e3_first_touch_locality_attribution
+next_action: E4_pre_map_vs_post_map_cull_scheduling_attribution
 
 methodology:
-  rule: "先确认原始 signature 仍可复现，再用只读 prewarm 判断 first-touch locality；不为不稳定信号造 candidate"
+  rule: "先证明是不是调度把热数据变冷，再考虑改数据结构"

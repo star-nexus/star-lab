@@ -1,0 +1,98 @@
+experiment:
+  id: 10k-unitrender-e6-2-slotted-record-composition
+  title: Phase 5 10K UnitRender E6-2 Slotted Spatial Record Composition
+  date: 2026-09-07
+  status: draft
+  preregistered: true
+  decision: pending
+
+source:
+  repository: star-nexus/star
+  retained_production_commit: e7ba18b31870577110b591104ef8fa7b4713e43c
+  control_runtime_commit: e7ba18b31870577110b591104ef8fa7b4713e43c
+  treatment_runtime_commit: e7ba18b31870577110b591104ef8fa7b4713e43c
+  experiment_branch: experiment/phase5-unitrender-e6-2-slotted-composition
+  tooling_commit: a524e610bdfce7eab37fee3fcf4cff69dac89ab5
+  production_candidate_commit: null
+  validated_commit: null
+
+upstream_evidence:
+  e5_1:
+    disposition: DO_NOT_KEEP_partial_root_solution
+    cull_saving_ms:
+      pct50: 0.090
+      pct100: 0.113
+  e6_1:
+    decision: KEEP_BOUNDED_DERIVED_WORLD_GEOMETRY_REUSE
+    retained_production: true
+    formal_run_id: 20260907-213322
+    controlled_p99_ms_100: 33.677126
+    canonical_30hz_pass: false
+
+composition_treatment:
+  mechanism: slotted_frozen_UnitSpatialRecord
+  implementation: source_equivalent_pre_world_monkeypatch
+  slots: true
+  frozen: true
+  record_fields_unchanged: true
+  fresh_record_identity_preserved: true
+  e6_1_bounded_geometry_preserved: true
+  cull_algorithm_unchanged: true
+  spatial_containers_unchanged: true
+  authoritative_hexposition_unchanged: true
+
+scenario:
+  name: chibi-144k-scale-10000
+  sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
+  resident_units: 10000
+
+workload:
+  densities: [0.5, 1.0]
+  seed: 42
+  phase_seed: 42
+  route_steps: 12
+  phase: staggered
+  fog: true
+  minimap_dynamic_units: false
+  gc_policy: realtime_defer
+  render: uncapped
+  hub: offline
+  gameplay_input: blocked
+  execution_pathfinding: false
+
+measurement:
+  execution_order: [A50, B50, B100, A100]
+  duration_seconds: 20
+  warmup_seconds: 5
+  sample_after_seconds: 19
+  primary_local_metric: unit_visible_cull.inclusive_ms
+  secondary_metrics:
+    - UnitRenderSystem.inclusive_ms
+    - AnimationSystem.inclusive_ms
+    - controlled_work_frame_ms
+
+preregistered_gates:
+  all_driver_guards_pass: true
+  rate_tolerance_pct: 2.0
+  min_cull_saving_ms:
+    pct50: 0.05
+    pct100: 0.07
+  max_unitrender_avg_regression_pct: 1.0
+  max_controlled_avg_regression_pct: 1.0
+  max_animation_avg_regression_pct: 2.0
+
+canonical_gate:
+  metric: controlled_work_frame_ms.p99
+  workload: 10k_100pct_moving
+  threshold_ms: 33.33
+  diagnostic_only_for_e6_2_attribution: true
+
+possible_decisions:
+  pass: SLOTTED_RECORD_COMPOSITION_CANDIDATE_JUSTIFIED
+  fail: SLOTTED_RECORD_COMPOSITION_NOT_MATERIAL
+
+artifacts:
+  compact: pending
+  raw: pending
+  compact_is_default_review_artifact: true
+  raw_is_authoritative_forensic_substrate: true

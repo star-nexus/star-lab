@@ -3,7 +3,7 @@
 **Status:** DRAFT / PREREGISTERED — measurement pending  
 **STAR repository:** `star-nexus/star`  
 **Production/control commit:** `17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a`  
-**E6 tooling commit:** `efcc6422ca9e7eab583ffd11b1d77a0cb97153b7`  
+**E6 tooling commit:** `8350f7ed01014124bf0b249b859399af02a03ff5`  
 **Validated commit:** N/A  
 **Validated tag:** N/A
 
@@ -52,7 +52,7 @@ Render: uncapped
 Hub: offline
 ```
 
-The 10K scenario is the same local fixed fixture used by the preceding Phase-5 cases. The runner refuses to start if its SHA256 differs. Scenario raw-mirror provenance remains a separate archive hygiene item and must not be silently replaced by a regenerated fixture.
+The 10K scenario is the same local fixed fixture used by the preceding Phase-5 cases. The runner refuses to start if its SHA256 differs. For E6, the exact fixture is additionally copied into the formal result ZIP with its own checksum so the archive no longer depends only on the local pathname.
 
 ## 5. Treatment contract
 
@@ -86,6 +86,16 @@ exact Cull implementation
 ```
 
 This is deliberately orthogonal to E5-2 stable record identity.
+
+The runner performs three pre-measurement validation layers:
+
+```text
+E6 identity/isolation contract test
+exact-production targeted regressions
+same targeted regressions with E6 patch installed in-process
+```
+
+No density point runs if any of these fail.
 
 ## 6. Formal run
 
@@ -143,15 +153,18 @@ A positive result is **not** a production KEEP. Before production consideration,
 
 ## 9. Formal artifacts
 
-Pending formal run. Do not create an empty `SHA256SUMS`.
+Pending formal run. Do not create an empty STAR Lab `SHA256SUMS` before formal artifacts are mirrored.
 
 Expected local result shape:
 
 ```text
 results/phase5-unitrender-e6/chibi-144k-scale-10000/<run-id>/
   manifest.txt
+  fixtures/chibi-144k-scale-10000.json
+  fixtures/SHA256SUMS
   treatment-contract-test.log
-  base-targeted-regressions.log
+  control-targeted-regressions.log
+  treatment-targeted-regressions.log
   control/50pct-moving/{point.json,profile.json}
   treatment/50pct-moving/{point.json,profile.json}
   treatment/100pct-moving/{point.json,profile.json}

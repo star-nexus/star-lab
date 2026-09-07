@@ -1,0 +1,97 @@
+experiment:
+  id: 10k-unitrender-cull-e3-first-touch-locality
+  title: Phase 5 10K UnitRender E3 Cull First-Touch Locality Attribution
+  date: 2026-09-07
+  status: running_preregistered_attribution_no_candidate_selected
+
+source:
+  repository: star-nexus/star
+  production_branch: perf/10k-online
+  frozen_production_commit: 17ced8d2ba1725b4d0c1a5458e6c61c06c1e206a
+  retained_optimizations: [A, B, C1, C2a, D1]
+  experiment_branch: experiment/phase5-unitrender-cull-e3-first-touch-locality
+  branch_head: 61fd81529824320a1206f88c15e697858cff41bb
+  runtime_from_detached_worktree: true
+  runtime_diff_files: []
+  tool_files:
+    - tools/phase5_unitrender_cull_e3_first_touch.py
+    - tools/phase5_unitrender_cull_e3_analyze.py
+    - tools/run_phase5_unitrender_cull_e3_attribution.sh
+
+runtime_source_guard:
+  rotk_env/systems/window_unit_render_system.py: b995df231c5e10d901b129f95716bfb0f30043eb
+  rotk_env/utils/unit_spatial_index.py: 2c2fb26c6ae5f422516a6c3927049d8a78a72b32
+
+trigger:
+  prior_case: 10k-unitrender-cull-e2
+  prior_run_id: 20260907-125240
+  prior_zip_sha256: c430277f2f98c39367d10d886654fb07a1181d07bf2fc84ffc88b0d543126b6e
+  prior_decision: CULL_REQUIRES_FURTHER_ATTRIBUTION
+  prior_candidate_change_00_to_100_pct: 0.12
+  prior_branch_mix_closure_pct: 0.4247
+  prior_warm_full_replay_unit_cost_growth_pct: 2.58
+  prior_index_revision_delta_100_per_frame: 665.7
+  prior_candidate_share_changed_buckets_100_pct: 71.4
+
+scenario:
+  name: chibi-144k-scale-10000
+  sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
+  resident_units: 10000
+  test_only_untracked_map: true
+
+workload:
+  points: [00pct-moving, 50pct-moving, 100pct-moving]
+  seed: 42
+  phase_seed: 42
+  route_steps: 12
+  phase: staggered
+  fog: true
+  gc_policy: realtime_defer
+  minimap_dynamic_units: false
+  render: uncapped
+  hub: offline
+  mock_ai: false
+
+measurement:
+  aggregate_frame_latency: diagnostic_only
+  outer_unit_visible_cull_section: diagnostic_only
+  core_function: exact_production_get_visible_units
+  core_timer: one_whole_call_timer
+  prewarm_period_frames: 5
+  prewarm_read_only: true
+  modes:
+    baseline: no_prewarm
+    context: resolve_index_viewport_singletons_current_vision
+    spatial: context_plus_bucket_and_by_entity_touch
+    fog: context_plus_current_vision_touch_and_hash
+    both: spatial_plus_fog
+  prewarm_time_excluded_from_core_metric: true
+
+preregistered_reproduction_gate:
+  min_baseline_core_growth_00_to_100_ms: 0.40
+  max_candidate_change_pct: 2.0
+  fail_result: ORIGINAL_CULL_GROWTH_NOT_REPRODUCED
+
+preregistered_locality_thresholds:
+  single_mode_min_abs_improvement_ms: 0.20
+  single_mode_min_relative_improvement: 0.10
+  both_min_abs_improvement_ms: 0.25
+  both_min_relative_improvement: 0.12
+
+possible_decisions:
+  - E3_INCONCLUSIVE_MEASUREMENT_GUARD
+  - ORIGINAL_CULL_GROWTH_NOT_REPRODUCED
+  - E3_INCONCLUSIVE_WORKLOAD_SHIFT
+  - CONTEXT_FIRST_TOUCH_LOCALITY_CANDIDATE_JUSTIFIED
+  - SPATIAL_FIRST_TOUCH_LOCALITY_CANDIDATE_JUSTIFIED
+  - FOG_FIRST_TOUCH_LOCALITY_CANDIDATE_JUSTIFIED
+  - MIXED_SPATIAL_FOG_FIRST_TOUCH_CANDIDATE_JUSTIFIED
+  - MIXED_FIRST_TOUCH_LOCALITY_CANDIDATE_JUSTIFIED
+  - CULL_FIRST_TOUCH_NOT_CONFIRMED
+
+positive_attribution_is_not_production_keep: true
+raw_mirror_pending: true
+next_action: run_unitrender_e3_first_touch_locality_attribution
+
+methodology:
+  rule: "先确认原始 signature 仍可复现，再用只读 prewarm 判断 first-touch locality；不为不稳定信号造 candidate"

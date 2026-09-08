@@ -1,6 +1,6 @@
 # 10K / 100% moving / 30 Hz — 恢复入口
 
-更新：2026-09-08。当前阶段：P0 已完成；P1 尚未开始。
+更新：2026-09-08。当前阶段：P0 已完成；按用户指令跳过 P1/P2，P3 本地合成 Agent 交互进行中。
 本文件是唯一活动恢复入口，已从 STAR 的 `docs/dev/` 迁至 STAR Lab。
 先读本文件即可恢复目标、边界和下一步；执行时再按下方链接读取对应证据。
 
@@ -53,15 +53,18 @@ P0 只移除实验代码/材料、snapshot 的离线专用 correlation 字段，
 - 活动恢复和后续计划归 Lab；冻结历史记录保留旧路径/旧发布状态，勿作为当前指令。
 - 清理结果和生产 SHA 见 closeout；Lab 当前收尾提交可用 `git log -1 -- records/10k-online-resume.md` 定位，避免自引用提交 SHA。
 
-## 下一项工作：P1 采样能力，然后长测
+## 当前工作：P3 本地合成 Agent + ENV
 
-先设计并验证有界、低开销、可完整保存的 30–60 分钟 recorder，做采样开销对照。
-旧 E8 recorder 容量 20000 帧，不能只把 duration 改成一小时；生产 profiler
-仍是约 5 秒/4096 样本，不能靠扩大生产窗口获取长测结果。
-记录存活状态/队列/缓存、GC 安全点、分段成本趋势及正常世界进度；RSS 不等于泄漏。
-所有新实验工具、夹具、结果和进度记录放 Lab；STAR 只保留必要生产改动与契约测试。
+用户于 2026-09-08 授权直接执行 P3，跳过 P1/P2；Protocol/Hub 与 P4 全链路暂缓。
+世界目标 30Hz；LLM response/think latency 档为 1/5/15/60 秒，不进行高频 5/10/30Hz Agent 常规扫点。
+活动契约、阶段检查点、复现与下一步见 [P3 工作记录](10k-online-p3-progress.md)。
 
-开始前检查两仓库状态与远端同步，并按 exact SHA 使用 Lab 工作目录下的 detached
-worktree。不要并发性能任务，不因怀疑 Chrome 或 OS 干扰删除准入慢帧。先
-Instrument → Attribute → Optimize → Controlled A/B → Regression；无新证据
-不重开 Cull/slots 或架构重写。P2/P3/P4 的范围和验收条件见优先级文档。
+生产起点 `02d0fc1b598c54a172e1122ac9ea4c1e2f46ec15`；Lab 起点
+`85d142e897194264810ab94ddeab0c6f63fd9e9a`。开始时两仓库 clean main，远端一致。
+开发分支 `codex/p3-agent-observation` 位于 Lab `runs/star-p3-dev`；
+对照 detached worktree 为 `runs/star-p3-base`。正式测量使用固定 SHA detached worktree。
+
+star-main 集成只允许 `git merge --squash`：合并前创建 annotated tag 固定开发 tip，
+同时记录 main 前置 SHA、开发 tip/tag、squash 后 main SHA。已发布 tag 不移动。
+所有实验工具、夹具、raw、分析和记录留 Lab；STAR 留生产代码、必要契约测试和用户文档。
+Chrome 保持开启；性能任务不并发，不因怀疑系统干扰删慢帧。

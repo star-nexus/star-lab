@@ -48,9 +48,10 @@ def test_stall_is_retained_as_queue_latency_and_queue_stays_session_bounded():
     agents.pump()
     actions = [r for r in agents.records if r['event']=='act']
     assert all(r['queue_ms']==7000 for r in actions)
-    # Re-observation retains the original next-cycle due time, not 'now'.
+    # Closed-loop ready time and nominal demand lag are separate, both retained.
     observations = [r for r in agents.records if r['event']=='observe']
-    assert observations[-1]['queue_ms']==7000
+    assert observations[-1]['queue_ms']==0
+    assert observations[-1]['nominal_cycle_lag_ms']==7000
     assert len(agents.heap)==len(agents.sessions)
     assert all(s.completed == 1 for s in agents.sessions)
 

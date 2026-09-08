@@ -183,6 +183,13 @@ def main():
     work = stats([f['work_ms'] for f in admitted])
     ob = stats([r['response_ms'] for r in events if r['event']=='observe'])
     ac = stats([r['queue_ms'] for r in events if r['event']=='act'])
+    nominal_observations = 0
+    for i, session in enumerate(agents.sessions):
+        offset = 0 if args.synchronized else i/len(agents.sessions)*session.delay
+        def offered_until(t):
+            return max(0, math_floor((t-offset)/session.delay)+1)
+        nominal_observations += offered_until(args.warmup+args.seconds)-offered_until(args.warmup)
+    completed_observations = sum(r['event']=='observe' for r in events)
     blocks = []
     for i in range(int(args.seconds//30)):
         rows = [r['work_ms'] for r in admitted if args.warmup+i*30 <= r['t'] < args.warmup+(i+1)*30]
@@ -203,6 +210,7 @@ def main():
         'observation_p99':args.no_agents or ob.get('p99',float('inf')) <=100,
         'action_queue_p99':args.no_agents or ac.get('p99',float('inf')) <=100,
         'queue_bounded':args.no_agents or agents.summary()['oldest_overdue_ms']<=100,
+        'offered_load_met':args.no_agents or completed_observations >= .95*nominal_observations,
         'duration_formal':args.seconds>=60, 'not_diagnostic':not args.attribute}
     raw = {'frames':frames, 'events':agents.records, 'censuses':censuses}
     raw_path = out.with_suffix('.raw.json')
@@ -213,6 +221,8 @@ def main():
         'fixture_sha256':fixture_hash, 'guards':guards, 'pass':all(guards.values()),
         'frame_work_ms':work,'frame_count':len(admitted),'world_hz':len(admitted)/args.seconds,
         'observation_response_ms':ob,'action_queue_ms':ac, 'blocks30':blocks,
+        'nominal_observations':nominal_observations, 'completed_observations':completed_observations,
+        'nominal_load_fraction':completed_observations/max(1,nominal_observations),
         'worst_rolling5_p99_ms':worst5,'longest_miss_streak':longest,
         'miss_fraction':sum(f['work_ms']>1000/30 for f in admitted)/max(1,len(admitted)),
         'agents':agents.summary(), 'censuses':censuses,

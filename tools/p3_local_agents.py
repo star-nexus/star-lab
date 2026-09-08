@@ -63,7 +63,7 @@ def stats(values):
     ordered = sorted(values)
     def p(q):
         return ordered[max(0, math.ceil(q * len(ordered)) - 1)]
-    return {'count': len(values), 'avg': sum(values) / len(values),
+    return {'count': len(values), 'min': ordered[0], 'avg': sum(values) / len(values),
             'p50': p(.5), 'p95': p(.95), 'p99': p(.99), 'max': ordered[-1]}
 
 
@@ -174,6 +174,7 @@ class LocalAgents:
             begin = self.clock()
             row = {'t': begin - self.epoch, 'event': event, 'agent': index,
                    'queue_ms': max(0, begin - due) * 1000}
+            row['nominal_cycle_lag_ms'] = max(0, begin-session.cycle_due)*1000
             if event == 'observe':
                 params = {'faction': session.faction}
                 if self.scope == 'selected':
@@ -224,7 +225,10 @@ class LocalAgents:
                 session.actions = []
                 session.completed += 1
                 session.cycle_due += session.delay
-                self._push(session.cycle_due, 'observe', index)
+                # A real sequential LLM session cannot offer its next pull until
+                # its previous response/action completes. Separate this actual
+                # ready time from nominal cycle lag; report achieved/ideal load.
+                self._push(self.clock(), 'observe', index)
                 self.counts['cycles'] += 1
             row['service_ms'] = (self.clock() - begin) * 1000
             row['response_ms'] = row['queue_ms'] + row['service_ms']

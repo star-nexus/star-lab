@@ -40,8 +40,9 @@ def fixture(source, units, layout='canonical'):
             data['formations'][name] = data['formations'][name][:units // 3 + (i < units % 3)]
     else:
         # A separate actionable fixture: gaps for movement, nearby opposing units.
-        cells = [(c, r) for r in range(-59, 61) for c in range(-59, 61)
-                 if (c + r) % 4 != 0]
+        from rotk_env.maps.ascii_map import parse_ascii_map
+        board = parse_ascii_map('\n'.join(data['terrain']), width=data['width'], height=data['height'])
+        cells = [cell for cell in sorted(board) if sum(cell) % 4 != 0]
         random.Random(42).shuffle(cells)
         data['formations'] = {name: [] for name in names}
         for i, cell in enumerate(cells[:units]):

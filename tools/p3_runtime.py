@@ -46,6 +46,7 @@ def main():
     source_id = identity(args.source)
     tooling_id = identity(Path(__file__).resolve().parents[1])
     scenario, fixture_hash = fixture(args.source, args.units, args.layout)
+    os.chdir(args.source)  # Production assets include repository-relative font paths.
     os.environ['STAR_SCALE_MINIMAP_UNITS'] = 'off'
     from rotk_env import main as entry
     from rotk_env.scenes.game_scene import GameScene
@@ -100,7 +101,7 @@ def main():
                 return
             agents = holder['agents']
             if agents.epoch is None:
-                agents.start(start, args.synchronized)
+                agents.start(holder['start'], args.synchronized)
             if not args.no_agents:
                 agents.pump(args.budget_ms)
         agent_end = time.perf_counter()

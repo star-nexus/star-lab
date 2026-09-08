@@ -1,6 +1,6 @@
 # P3 — local synthetic Agent / ENV interaction
 
-Updated: 2026-09-08. Status: P3.0/P3.1 complete; P3.2 reproduced; P3.3 candidates under validation. No new capacity claim.
+Updated: 2026-09-09. Status: P3.0/P3.1 complete; P3.2 reproduced; P3.3 candidates under validation. No new capacity claim.
 
 ## Scope and identity
 
@@ -63,3 +63,9 @@ Lab driver `1a68ed8` and subsequent source-pinned runner revisions are saved in 
 Source checkpoints: selection `0c1ec5b454a703ed3d90d19db98a6683758996a8`, local occupancy `7f72703`, attack candidates `39f937f`, tested spatial candidate `32a0eb9`. All remain development checkpoints, not accepted milestones.
 Evidence and causal interpretation: [active experiment](../experiments/2026-09-p3-local-agents/README.md). Interleaved layout setup bounds mistakes were corrected using the authoritative parser; no invalid pre-workload run is capacity evidence.
 Current next action: runtime candidate smoke, then controlled scale/delay points; complete helper A/B and preserve equivalent-payload results. Formal world throughput gate allows 1% pacing tolerance (>=29.7Hz) in addition to P99 frame work <=33.33ms; no formal results preceded this definition.
+
+## Measurement correction before acceptance (2026-09-09)
+
+Runtime clock pacing carries oversleep forward rather than slowing each frame. Full-frame timing includes profiler bookkeeping. Actual queue wait is measured from request eligibility; nominal cycle lag is retained separately. A sequential LLM session cannot offer the next observation until its prior think/action completes. Require >=95% of ideal phase-scheduled observation load to prevent closed-loop throttling from hiding overload. This threshold was fixed before formal capacity validation.
+The first 5000-unit / 1000-Agent / 60-second-think 65s trial met frame/service/load gates, but its end-queue measurement was taken after shutdown/analysis. That result remains failed as recorded; tool `1e08a17` freezes queue health at the actual end boundary. Fresh repeats are required. No retrospective deletion/relabeling of samples.
+Current full production regression: 879 passed, 4.75s. Runtime candidate hot path `32a0eb9`; client array schema/docs finalization `46dbc77`.

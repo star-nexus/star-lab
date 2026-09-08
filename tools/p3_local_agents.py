@@ -250,6 +250,9 @@ def probe(args):
     world = build_skirmish_world(players={f: PlayerType.AI for f in Faction},
         mode='real_time', scenario=scenario, seed=42, display='none', hub_url=None)
     world.update(1/30)
+    if args.index:
+        from rotk_env.utils.unit_spatial_index import rebuild_unit_spatial_index
+        rebuild_unit_spatial_index(world)
     agents = LocalAgents(world, args.agents, args.delay, scope=args.scope, encode=True)
     attribution = Attribution(agents.gate.action_handler) if args.attribute else None
     samples = []
@@ -283,6 +286,7 @@ if __name__ == '__main__':
     parser.add_argument('--scope', choices=['faction', 'selected'], default='faction')
     parser.add_argument('--layout', choices=['canonical', 'interleaved'], default='canonical')
     parser.add_argument('--attribute', action='store_true')
+    parser.add_argument('--index', action='store_true', help='Build the production window index for this static diagnostic')
     parser.add_argument('--output', required=True)
     args = parser.parse_args()
     sys.path.insert(0, args.source)

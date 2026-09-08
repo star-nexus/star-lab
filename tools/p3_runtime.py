@@ -138,10 +138,14 @@ def main():
             'agent_ms':(agent_end-start)*1000, 'dt':engine.delta_time})
 
     def wait(engine, prof):
-        remaining = max(0., 1/30-(time.perf_counter()-engine._p3_start))
+        now = time.perf_counter()
+        deadline = getattr(engine, '_p3_next_tick', engine._p3_start + 1/30)
+        # Carry sleep overshoot forward instead of adding it to every period.
+        remaining = max(0., deadline-now)
         if remaining:
             with prof.time_system('fps_cap_wait', category='wait'):
                 time.sleep(remaining)
+        engine._p3_next_tick = max(deadline+1/30, now)
 
     GameScene._initialize_game = initialize
     GameEngine._update = update
@@ -176,6 +180,7 @@ def main():
         'resident_retained':all(r['alive']==args.units for r in cens),
         'position_progress':sum(r['position_changes'] for r in cens)>0,
         'frame_p99':work.get('p99',float('inf')) <= 1000/30,
+        'world_hz':len(admitted)/args.seconds >= 29.7,
         'observation_p99':args.no_agents or ob.get('p99',float('inf')) <=100,
         'action_queue_p99':args.no_agents or ac.get('p99',float('inf')) <=100,
         'queue_bounded':args.no_agents or agents.summary()['oldest_overdue_ms']<=100,

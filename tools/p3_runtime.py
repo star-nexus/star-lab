@@ -25,6 +25,7 @@ def main():
     p.add_argument('--units', type=int, default=100)
     p.add_argument('--agents', type=int, default=100)
     p.add_argument('--delay', default='1')
+    p.add_argument('--observation-hz', type=float, help='Independent periodic observation rate per Agent; omitted retains legacy sequential loop')
     p.add_argument('--scope', choices=['faction', 'selected'], default='faction')
     p.add_argument('--layout', choices=['canonical', 'interleaved'], default='canonical')
     p.add_argument('--policy', choices=['mixed', 'move', 'observe'], default='mixed')
@@ -81,7 +82,7 @@ def main():
         holder['world'] = scene.world
         holder['agents'] = LocalAgents(scene.world, args.agents,
             args.delay if args.delay == 'mixed' else float(args.delay), scope=args.scope,
-            encode=not args.no_encode, policy=args.policy)
+            encode=not args.no_encode, policy=args.policy, observation_hz=args.observation_hz)
         if args.attribute:
             holder['attribution'] = Attribution(holder['agents'].gate.action_handler)
         if args.movement_overlay:
@@ -188,9 +189,10 @@ def main():
     ac = stats([r['queue_ms'] for r in events if r['event']=='act'])
     nominal_observations = 0
     for i, session in enumerate(agents.sessions):
-        offset = 0 if args.synchronized else i/len(agents.sessions)*session.delay
+        period = 1/args.observation_hz if args.observation_hz else session.delay
+        offset = 0 if args.synchronized else i/len(agents.sessions)*period
         def offered_until(t):
-            return max(0, math_floor((t-offset)/session.delay)+1)
+            return max(0, math_floor((t-offset)/period)+1)
         nominal_observations += offered_until(args.warmup+args.seconds)-offered_until(args.warmup)
     completed_observations = sum(r['event']=='observe' for r in events)
     blocks = []

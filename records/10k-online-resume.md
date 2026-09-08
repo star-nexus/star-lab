@@ -56,7 +56,7 @@ P0 只移除实验代码/材料、snapshot 的离线专用 correlation 字段，
 ## 当前工作：P3 本地合成 Agent + ENV
 
 用户于 2026-09-08 授权直接执行 P3，跳过 P1/P2；Protocol/Hub 与 P4 全链路暂缓。
-世界目标 30Hz；LLM response/think latency 档为 1/5/15/60 秒，不进行高频 5/10/30Hz Agent 常规扫点。
+世界目标 30Hz；观测独立以 1Hz/Agent 建立基线，再测 5/10/30Hz。LLM 决策延迟独立为 1–60 秒。早期工具错误地将观测与决策周期绑定；既有结果只代表低频闭环，不能替代用户要求的观测扫点。
 活动契约、阶段检查点、复现与下一步见 [P3 工作记录](10k-online-p3-progress.md)。
 
 生产起点 `02d0fc1b598c54a172e1122ac9ea4c1e2f46ec15`；Lab 起点

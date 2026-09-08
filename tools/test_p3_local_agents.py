@@ -11,7 +11,7 @@ class Clock:
     def __call__(self): return self.now
 
 
-def setup(delay=1):
+def setup(delay=1, **kwargs):
     world = _world()
     for f, col, row in [(Faction.WEI,0,0),(Faction.WEI,-1,0),(Faction.SHU,2,0),(Faction.SHU,2,1)]:
         _spawn(world,faction=f,col=col,row=row)
@@ -19,7 +19,7 @@ def setup(delay=1):
     fog.faction_vision = {f:{(c,r) for c in range(-3,4) for r in range(-3,4)} for f in Faction}
     world.add_system(LLMSystem(server_url=None))
     clock = Clock()
-    agents = LocalAgents(world,2,delay,scope='selected',clock=clock,policy='move')
+    agents = LocalAgents(world,2,delay,scope='selected',clock=clock,policy='move',**kwargs)
     agents.start(synchronized=True)
     return agents, clock
 
@@ -61,3 +61,32 @@ def test_selected_probe_really_observes_all_owned_units_and_serializes():
     agents.pump()
     assert all(r['returned_units']==2 and r['bytes']>0 for r in agents.records)
     assert all(r['reachable']>0 for r in agents.records)
+
+
+def test_periodic_observation_continues_during_slow_thinking_without_replacing_snapshot():
+    agents, clock = setup(60, observation_hz=5)
+    agents.pump()
+    actions = [list(s.actions) for s in agents.sessions]
+    for i in range(1, 6):
+        clock.now = i / 5
+        agents.pump()
+    assert agents.counts['observations'] == 12
+    assert agents.counts['cycles'] == 0
+    assert [s.actions for s in agents.sessions] == actions
+    assert all(s.observed_at == 0 for s in agents.sessions)
+    assert len(agents.heap) == 2 * len(agents.sessions)
+    clock.now = 60
+    agents.pump()
+    assert all(r['snapshot_age_ms'] >= 60000 for r in agents.records if r['event'] == 'act')
+    assert agents.counts['cycles'] == 2
+
+
+def test_periodic_stall_retains_all_due_pulls_and_original_queue_age():
+    agents, clock = setup(60, observation_hz=1)
+    agents.pump()
+    clock.now = 8
+    agents.pump()
+    pulls = [r for r in agents.records if r['event'] == 'observe']
+    assert len(pulls) == 18
+    assert pulls[2]['queue_ms'] == 7000
+    assert len(agents.heap) == 4

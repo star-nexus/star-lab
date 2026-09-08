@@ -111,15 +111,20 @@ class Session:
     observed_at: float = 0.0
     cycle_due: float = 0.0
     completed: int = 0
+    thinking: bool = False
 
 
 class LocalAgents:
     def __init__(self, world, count, delay=1.0, *, scope='faction', encode=True,
-                 policy='mixed', seed=42, clock=time.perf_counter, max_records=2_000_000):
+                 policy='mixed', seed=42, clock=time.perf_counter, max_records=2_000_000,
+                 observation_hz=None):
         from rotk_env.components import Unit, UnitCount
         self.world, self.clock = world, clock
         self.gate = next(s for s in world.systems if s.__class__.__name__ == 'LLMSystem')
         self.scope, self.encode, self.policy = scope, encode, policy
+        if observation_hz is not None and observation_hz <= 0:
+            raise ValueError("observation_hz must be positive")
+        self.observation_hz = observation_hz
         self.rng = random.Random(seed)
         self.sessions = []
         self.heap = []
@@ -169,7 +174,8 @@ class LocalAgents:
     def start(self, now=None, synchronized=False):
         self.epoch = self.clock() if now is None else now
         for i, session in enumerate(self.sessions):
-            offset = 0 if synchronized else (i / len(self.sessions)) * session.delay
+            period = 1/self.observation_hz if self.observation_hz else session.delay
+            offset = 0 if synchronized else (i / len(self.sessions)) * period
             session.cycle_due = self.epoch + offset
             self._push(session.cycle_due, 'observe', i)
 
@@ -219,9 +225,17 @@ class LocalAgents:
                         actions.append(('attack', {'unit_id': uid, 'target_id': self.rng.choice(targets)}))
                     elif self.policy != 'observe' and cells:
                         actions.append(('move', {'unit_id': uid, 'target_position': self.rng.choice(cells)}))
-                session.actions = actions
-                session.observed_at = self.clock()
-                self._push(session.observed_at + session.delay, 'act', index)
+                # Telemetry may arrive while a slow decision is in flight. Keep
+                # that decision's original snapshot/action set until it completes.
+                if not session.thinking:
+                    session.actions = actions
+                    session.observed_at = self.clock()
+                    session.thinking = True
+                    self._push(session.observed_at + session.delay, 'act', index)
+                if self.observation_hz:
+                    # Retain scheduled deadlines under overload; no coalescing,
+                    # drop, or completion-relative throttling hides offered load.
+                    self._push(due + 1/self.observation_hz, 'observe', index)
                 self.counts['observations'] += 1
             else:
                 row['snapshot_age_ms'] = (begin - session.observed_at) * 1000
@@ -241,7 +255,9 @@ class LocalAgents:
                 # A real sequential LLM session cannot offer its next pull until
                 # its previous response/action completes. Separate this actual
                 # ready time from nominal cycle lag; report achieved/ideal load.
-                self._push(self.clock(), 'observe', index)
+                session.thinking = False
+                if not self.observation_hz:
+                    self._push(self.clock(), 'observe', index)
                 self.counts['cycles'] += 1
             row['service_ms'] = (self.clock() - begin) * 1000
             row['response_ms'] = row['queue_ms'] + row['service_ms']

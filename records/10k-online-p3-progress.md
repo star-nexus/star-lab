@@ -73,3 +73,9 @@ Current full production regression: 879 passed, 4.75s. Runtime candidate hot pat
 ## Adaptive delay bracket (before collection)
 
 5000/1000 at 15s still misses the 100ms service SLO after selected panels, spatial queries and one live census (source `e8b48c0`). 60s discovery met timing/load but needs fresh end-boundary validation. Add a 30s midpoint with unchanged gates, GC policy `realtime_defer`, 12ms per-frame local pump budget, move policy, canonical fixture, selected panels, JSON encoding. Warmup 30s; one 60s fresh process first, then >=300s + remaining independent repeats if it passes. Report the adaptive choice and all failed 15s points. This is capacity bracketing, not changing a threshold.
+
+## Frequency correction and failed long candidate (2026-09-09)
+
+The user explicitly requested observation 1/5/10/30 Hz per Agent, independently of slow LLM decisions. The initial plan incorrectly coupled these. Preserve all previous evidence as sequential-loop diagnostics. New `--observation-hz` schedules every periodic pull at its original deadline, retains overdue work without drops, and does not replace an in-flight decision snapshot. One pending periodic pull and one pending action per Agent bound heap storage; nominal offered counts and oldest queue age expose logical backlog. Test the requested frequency matrix with decision delay 1s first, then slow/mixed decision checks. No capacity threshold changes.
+
+`gate5000-d30-r1` passed a 60s trace, but `gate5000-d30-300` FAILED full-frame P99 (34.591ms), despite world 30Hz, observation 35.670ms, action queue 28.431ms, 99.9% offered load. No formal capacity claim and no selective short-repeat continuation. Ten 30s block P99s rise from 29.017 to 35.308ms; preserve complete raw data. Current production regression 881 passed; performance contracts 81 passed.

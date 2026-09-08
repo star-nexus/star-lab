@@ -100,6 +100,45 @@ Optimization B (`position-specialized spatial-index movement update`) is **CAUSA
 
 Optimization C1 (`Vision geometry cache-hit terrain bypass`) is also **CAUSALLY CONFIRMED / KEEP / CLOSED** and remains in the same retained `4218b536...` runtime. Same-session ABBA shows Vision avg `2.487 -> 2.158 ms` at 50% moving and `5.629 -> 4.760 ms` at 100% moving, corresponding to `1.079 us` and `1.025 us` saved per visibility call while authoritative movement/Vision rates and geometry hit rate remain effectively unchanged. C1 likewise does **not** add a new frontier row: the 100%-moving closeout P99 remains above 33.33 ms. Canonical attribution + closeout evidence is archived in [`2026-09-10k-vision-geometry-hit-path`](../experiments/2026-09-10k-vision-geometry-hit-path/).
 
+## Sustained Core 30Hz — 10K / 100% moving — 2026-09-08
+
+Runtime `9581084835633e10d80aac849925939bc59b9138`, local annotated tag
+`scale-10k-100pct-30hz-sustained-e8`. E8-1/2/3/4 reduce repeated texture,
+UI roster, component-row and movement-reference work. Single-thread Python Core;
+production animation, position commits and Vision remain immediate.
+
+This row uses **complete admitted sustained traces** with fixed initial10s
+excluded, while the production profiler itself remains5s/4096. It is distinct
+from a last-5s snapshot and is not an every-short-window guarantee. Same
+controlled-work33.33ms threshold; every other admitted sample, including slow
+clusters, is retained. Mac mini M4/16GB, macOS26.5.2, Python3.13.12, pygame2.6.1,
+visible2480x1261, board120x120, 10000 residents/movers, seeds42, staggered12-step
+preplanned routes, Fog ON, execution pathfinding OFF, MiniMap units OFF,
+realtime_defer, uncapped and input blocked. Chrome remains open.
+
+| Complete trace | Seconds | Frames | Controlled avg ms | Controlled P99 ms | Gate |
+| --- | ---: | ---: | ---: | ---: | --- |
+| Continuous | 305.447501 | 10240 | 28.220838 | **32.430227** | PASS |
+| Repeat 1 | 65.285074 | 2389 | 25.784004 | **28.984507** | PASS |
+| Repeat 2 | 65.301032 | 2342 | 26.310417 | **30.026299** | PASS |
+| Repeat 3 | 65.271297 | 2336 | 26.370550 | **29.162605** | PASS |
+
+All workload/trace guards and all16 full30s blocks pass (worst33.248388ms).
+Position/Vision rates remain~20000/s. 505 tests pass. Integrity verified:23 raw
+archives plus fixture,50 checksummed evidence files;8 gate replays match exactly,
+including the rejected E8-3 300s result. Evidence:
+[`E8 case`](../experiments/2026-09-10k-e8-volume/),
+[`long trace compact`](../experiments/2026-09-10k-e8-volume/results/20260908-083745-e8-4-gate300-compact.json),
+[`repeat compact`](../experiments/2026-09-10k-e8-volume/results/20260908-143157-e8-4-gate60-compact.json).
+
+Limits: the long trace has64 individual misses (.625%), longest3; its final
+rolling5s P99 is34.745ms and frame-body P99 is34.033ms. Repeat2's final5s P99 is
+37.231ms. Those counterexamples remain archived. Do not infer every-frame,
+every-5s-window, full interactive,60Hz or10K online-Agent passage. Long-run drift
+and occasional shared subsystem slow clusters remain revisit conditions; no
+specific cluster has been causally assigned to Chrome. Source/tag and case are
+local until explicitly published; no push or merge was performed.
+
 ## Frontier rules
 
 A new row never replaces an older row. This is a progression record, not a single current-best leaderboard.

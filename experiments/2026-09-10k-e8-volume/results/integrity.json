@@ -1,0 +1,171 @@
+{
+  "raw_archives_verified": [
+    {
+      "compact": "20260908-005838-volume-compact.json",
+      "raw": "artifacts/20260908-005838-volume-raw.zip",
+      "sha256": "d84ebe2ff3bcb7b18f2d9d50b06f522daae661d1f47af3f7725c9a9da1239e47"
+    },
+    {
+      "compact": "20260908-011343-A1-compact.json",
+      "raw": "artifacts/20260908-011343-A1-raw.zip",
+      "sha256": "8695045482de4a6c1c55406d52860c40a8a0a4b53f665c6820f4c633265a12a0"
+    },
+    {
+      "compact": "20260908-011448-B1-compact.json",
+      "raw": "artifacts/20260908-011448-B1-raw.zip",
+      "sha256": "fb5c250012690b87221a240697ad4e26128ca348dbfb2af42ffb855ee8d93338"
+    },
+    {
+      "compact": "20260908-011552-B2-compact.json",
+      "raw": "artifacts/20260908-011552-B2-raw.zip",
+      "sha256": "aca3b5eb0a6be8cdcb553f8e22dac997c025042ee169a630298119ef32d30b16"
+    },
+    {
+      "compact": "20260908-011656-A2-compact.json",
+      "raw": "artifacts/20260908-011656-A2-raw.zip",
+      "sha256": "8daa420f9efbbad03cb4dced162081c132f9a6a50e298c7e0ae2f8d59289ecac"
+    },
+    {
+      "compact": "20260908-012059-ui-attribution-compact.json",
+      "raw": "artifacts/20260908-012059-ui-attribution-raw.zip",
+      "sha256": "0d04a0d2a0f48c60b1dba03e88d28ef6bae71dba6f4f24b5feac1b13e73a78ec"
+    },
+    {
+      "compact": "20260908-012630-U-A1-compact.json",
+      "raw": "artifacts/20260908-012630-U-A1-raw.zip",
+      "sha256": "b24456e6333bcec85bf0efacac45edcfeaa30726bb073ddd772098e6add0161c"
+    },
+    {
+      "compact": "20260908-012734-U-B1-compact.json",
+      "raw": "artifacts/20260908-012734-U-B1-raw.zip",
+      "sha256": "26aac7d80e8eccf6c8b8c47f712b65a77367ba391a42651a84bffa518b13d32d"
+    },
+    {
+      "compact": "20260908-012837-U-B2-compact.json",
+      "raw": "artifacts/20260908-012837-U-B2-raw.zip",
+      "sha256": "87bc7a115a0d35e434a95cc34cedb71e01e8a922be824adad71af73abd18b127"
+    },
+    {
+      "compact": "20260908-012942-U-A2-compact.json",
+      "raw": "artifacts/20260908-012942-U-A2-raw.zip",
+      "sha256": "22372903168ad4ac8b2dad8fd564883d24aa9acb9bc9c6b35f3acafc7efa44c5"
+    },
+    {
+      "compact": "20260908-013438-R-A1-compact.json",
+      "raw": "artifacts/20260908-013438-R-A1-raw.zip",
+      "sha256": "9f6d1d31bce06823dd23db90d5c1112acd96d280a2c87bc78771c679d03be709"
+    },
+    {
+      "compact": "20260908-013542-R-B1-compact.json",
+      "raw": "artifacts/20260908-013542-R-B1-raw.zip",
+      "sha256": "8b253d1027b9ae20c1fa47100d6a0515c78b6fc8967a640437895c21d0522baf"
+    },
+    {
+      "compact": "20260908-013645-R-B2-compact.json",
+      "raw": "artifacts/20260908-013645-R-B2-raw.zip",
+      "sha256": "64acfb5d4f3d0ce8ac8cd985895f56cd4ade8c105f5234b9e5b8ba1729e385a1"
+    },
+    {
+      "compact": "20260908-013747-R-A2-compact.json",
+      "raw": "artifacts/20260908-013747-R-A2-raw.zip",
+      "sha256": "9615742ba963720c01331934d8a45c5735ab9e27caa8577f85fa84a35a266214"
+    },
+    {
+      "compact": "20260908-081025-gate60-compact.json",
+      "raw": "artifacts/20260908-081025-gate60-raw.zip",
+      "sha256": "07572104c1c70a8942f3f095021665c99ab5723e726e277bd29151ea28877711"
+    },
+    {
+      "compact": "20260908-081510-gate300-compact.json",
+      "raw": "artifacts/20260908-081510-gate300-raw.zip",
+      "sha256": "f6405dd7d6319efecd538f76c053b401a4349ee8666ccf34b807d5a6b42a632d"
+    },
+    {
+      "compact": "20260908-082342-long-no-trace-control-compact.json",
+      "raw": "artifacts/20260908-082342-long-no-trace-control-raw.zip",
+      "sha256": "137ecc3ba6a7e1d8e678e308083d0be0df50624bd76ada6c8bc5fdbd29058e0a"
+    },
+    {
+      "compact": "20260908-083203-M-A1-compact.json",
+      "raw": "artifacts/20260908-083203-M-A1-raw.zip",
+      "sha256": "04cf5226f8cbdddeeb641d406086f94d1d86ba96cff942f78a82a5acd0e0d1dd"
+    },
+    {
+      "compact": "20260908-083307-M-B1-compact.json",
+      "raw": "artifacts/20260908-083307-M-B1-raw.zip",
+      "sha256": "b2ed26df6c5ac792fda515f5456809d7617d6e83d74e2c3ec5cfe1e3cdcc7b65"
+    },
+    {
+      "compact": "20260908-083411-M-B2-compact.json",
+      "raw": "artifacts/20260908-083411-M-B2-raw.zip",
+      "sha256": "9ca5be31117aa7a5216051b0b85cb0f05a19cd5c0eedf6f3f281742f8efb252a"
+    },
+    {
+      "compact": "20260908-083515-M-A2-compact.json",
+      "raw": "artifacts/20260908-083515-M-A2-raw.zip",
+      "sha256": "58f904d2dbb1484647ab0f38977b33a442eafaa5cfa0dd8d9dbb355d93ccca13"
+    },
+    {
+      "compact": "20260908-083745-e8-4-gate300-compact.json",
+      "raw": "artifacts/20260908-083745-e8-4-gate300-raw.zip",
+      "sha256": "25a2cf0eee84f90c9abcaee30515274d01dd92212fa12bc47285081b959f8da4"
+    },
+    {
+      "compact": "20260908-143157-e8-4-gate60-compact.json",
+      "raw": "artifacts/20260908-143157-e8-4-gate60-raw.zip",
+      "sha256": "317f55b1bb4b030059729f99ed0aa8af6d42fd01b8a1d86032921875a0e168d2"
+    }
+  ],
+  "gate_replays": [
+    {
+      "run": "20260908-081025-gate60-compact.json",
+      "repeat": "repeat-1",
+      "pass": true,
+      "replay_exact": true
+    },
+    {
+      "run": "20260908-081025-gate60-compact.json",
+      "repeat": "repeat-2",
+      "pass": true,
+      "replay_exact": true
+    },
+    {
+      "run": "20260908-081025-gate60-compact.json",
+      "repeat": "repeat-3",
+      "pass": true,
+      "replay_exact": true
+    },
+    {
+      "run": "20260908-081510-gate300-compact.json",
+      "repeat": "repeat-1",
+      "pass": false,
+      "replay_exact": true
+    },
+    {
+      "run": "20260908-083745-e8-4-gate300-compact.json",
+      "repeat": "repeat-1",
+      "pass": true,
+      "replay_exact": true
+    },
+    {
+      "run": "20260908-143157-e8-4-gate60-compact.json",
+      "repeat": "repeat-1",
+      "pass": true,
+      "replay_exact": true
+    },
+    {
+      "run": "20260908-143157-e8-4-gate60-compact.json",
+      "repeat": "repeat-2",
+      "pass": true,
+      "replay_exact": true
+    },
+    {
+      "run": "20260908-143157-e8-4-gate60-compact.json",
+      "repeat": "repeat-3",
+      "pass": true,
+      "replay_exact": true
+    }
+  ],
+  "fixture_sha256": "e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25",
+  "zip_crc_checks": "all pass"
+}

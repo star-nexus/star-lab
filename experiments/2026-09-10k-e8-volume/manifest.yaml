@@ -1,0 +1,106 @@
+experiment:
+  id: 2026-09-10k-e8-volume
+  title: 10K render volume attribution and sustained 30Hz Core gate
+  date: 2026-09-08
+  status: closed
+source:
+  repository: star-nexus/star
+  problem_commit: e7ba18b31870577110b591104ef8fa7b4713e43c
+  measurement_commit: bed4e479859c65e23bf9ce403e381fa03e596d30
+  repeat_measurement_commit: 4ccdc4972ded1bbc2d2125f214770d27865792d0
+  archive_and_closeout_commit: c3882c8ab940a8ce191d07eb90ee291906640415
+  fix_commit: 9581084835633e10d80aac849925939bc59b9138
+  validated_commit: 9581084835633e10d80aac849925939bc59b9138
+  branch_at_time: codex/10k-30hz-volume
+  validated_tag: scale-10k-100pct-30hz-sustained-e8
+  publication: local commits only; not pushed
+  prior_combined_candidate: 88b19fe92957ee660f50cc366c5a737cb2dc8ca8
+  historical_measurement_identity: each compact JSON embeds its original exact runtime and tooling SHAs
+hardware:
+  machine: Mac mini Mac16,10
+  cpu: Apple M4, 4 Performance and 6 Efficiency cores
+  memory: 16 GB
+  display: visible SDL window 2480x1261
+  background_load: Chrome open; occasional CPU load reported by user; no frames excluded
+software:
+  os: macOS 26.5.2 (25F84), Darwin 25.5.0, arm64
+  python: CPython 3.13.12
+  pygame: 2.6.1
+  sdl: 2.28.4
+  uv: 0.12.5
+  dependency_lock_sha256: e8a64dba4f65993ce7a1bd720f7c7b6d399422692e4202dfb25b9c1596ce5f95
+scenario:
+  name: chibi-144k-scale-10000
+  map_size: 120x120
+  map_hexes: 14400
+  fixture_sha256: e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25
+  fixture_path: artifacts/scenario.zip
+  resident_units: 10000
+  moving_units: 10000
+workload:
+  seed: 42
+  phase_seed: 42
+  route_steps: 12
+  density: 1.0
+  phase: staggered
+  fog: true
+  camera: fixed default scenario camera and zoom; input blocked
+  route_planning: outside admitted window
+  execution_pathfinding: false
+  production_animation: true
+  position_commits: true
+  vision_updates: true
+  minimap_dynamic_units: false
+  render: uncapped
+  gc_policy: realtime_defer
+measurement:
+  primary: controlled_work_frame_ms.p99
+  threshold_ms: 33.33
+  diagnostic_modes: volume and ui; not release evidence
+  gate_mode: off
+  sustained_recorder: completed-frame copies after profiler finalization, capacity 20000
+  production_profiler_window_seconds: 5
+  production_profiler_capacity: 4096
+  fixed_trace_warmup_exclusion_seconds: 10
+  gate_minimum_seconds: [60, 300]
+  actual_coverage: all admitted samples, including coverage beyond the required minimum
+  sampling_arguments: see README and each compact run manifest for expanded commands and environment
+  guards_required:
+    - exact runtime and scenario SHA
+    - resident and configured active movers 10000, density 1
+    - production animation, no execution pathfinding, real position and Vision work
+    - Fog ON, MiniMap dynamic OFF, gameplay input blocked
+    - realtime_defer active, automatic GC disabled
+    - full window, contiguous trace, no capacity truncation
+  frame_body_timing: separate; never substituted for controlled-work timing
+  acceptance_scope: complete sustained traces; not every rolling5s estimate or every frame
+variables:
+  independent:
+    E8-1: frame-scoped texture preparation reuse
+    E8-2: exact all-Unit faction roster references
+    E8-3: coalesced component row reads
+    E8-4: versioned movement references with callback invalidation
+  controlled: [machine, scenario, camera, seeds, movement density, routes, Fog, MiniMap policy, GC policy]
+artifacts:
+  formal:
+    - path: results/*-compact.json
+      role: complete point identities, guards, subsystem and causal summaries, raw hashes and sizes
+    - path: artifacts/*-raw.zip
+      role: original profiles, aligned traces, commands, point payloads, analyses and logs
+    - path: results/regression.log
+    - path: results/e8-4-regression.log
+  integrity_index: artifacts/SHA256SUMS
+  raw_identity: compact files record per-profile SHA256 and ZIP SHA256/size/path
+  external: []
+headline:
+  problem_signature: E6-1 100% moving off-mode P99 36.932..37.419ms in interleaved control
+  root_cause: repeated render, UI roster and movement reference work; visible count explains command volume
+  unresolved: mechanism of long-run cost drift and sporadic multi-system slow clusters
+  result: E8-4 305.45s P99 32.430227ms; three >=60s P99 28.984507/30.026299/29.162605ms; all16 full30s blocks pass
+  limitation: short rolling5s counterexamples retained; 300s frame-body P99 34.033324ms
+  integrity: 23 raw ZIPs, fixture and50 checksummed files; all8 gate analyses replayed exactly
+revisit_when:
+  - sustained P99 fails or chronological blocks expose drift
+  - different map, camera, viewport, density, runtime or hardware
+  - sustained component membership churn
+  - MiniMap units enabled or full online-Agent data plane added

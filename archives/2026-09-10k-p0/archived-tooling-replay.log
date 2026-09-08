@@ -1,0 +1,24 @@
+COMMAND ["uv", "run", "--frozen", "python", "tools/run_phase5_e8.py", "--help"]
+Using CPython 3.13.12 interpreter at: /Users/liyang/miniconda3/bin/python3
+Creating virtual environment at: .venv
+Installed 42 packages in 99ms
+usage: run_phase5_e8.py [-h] [--sha SHA] [--mode {off,volume,ui}]
+                        [--window WINDOW] [--repeats REPEATS]
+                        [--sample-after SAMPLE_AFTER] [--trace]
+                        [--density DENSITY] [--phase-seed PHASE_SEED]
+                        [--label LABEL]
+
+options:
+  -h, --help            show this help message and exit
+  --sha SHA
+  --mode {off,volume,ui}
+  --window WINDOW
+  --repeats REPEATS
+  --sample-after SAMPLE_AFTER
+  --trace
+  --density DENSITY
+  --phase-seed PHASE_SEED
+  --label LABEL
+COMMAND ["uv", "run", "--frozen", "pytest", "-q", "tools/test_phase5_e8_snapshot.py", "tools/test_phase5_e8_trace.py", "tools/test_phase5_e8_gate_analyze.py"]
+.........                                                                [100%]
+9 passed in 12.63s

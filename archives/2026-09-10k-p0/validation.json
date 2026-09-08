@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "production_regression": "869 passed in 4.97s",
+  "structural_contracts": "81 passed in 1.11s",
+  "compileall": "PASS: framework protocol rotk_env rotk_agent tools",
+  "validated_runtime": "9581084835633e10d80aac849925939bc59b9138",
+  "runtime_non_test_diff": [
+    "rotk_env/testing/crossing_cost_correlation.py",
+    "rotk_env/testing/scale_harness.py"
+  ],
+  "runtime_diff_scope": "Remove standalone experiment correlation helper and its snapshot-only call/reply fields. All measured runtime systems and profiler are byte-identical to validated runtime.",
+  "new_performance_acceptance_run": false,
+  "P1_started": false
+}

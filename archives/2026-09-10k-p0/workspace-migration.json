@@ -1,0 +1,463 @@
+{
+  "source_sha": "1e67bc04d97cb24056b09119df799a43929cd44b",
+  "status": "archived and byte-verified; removed from STAR",
+  "files": [
+    {
+      "source": "docs/dev/10k-online-e6-1-progress.md",
+      "sha256": "ce5f831cb80392580be8592e930ba15cffbf3589eb64649c8613e097e9b7b2ad",
+      "size": 6010,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/docs/dev/10k-online-e6-1-progress.md"
+      }
+    },
+    {
+      "source": "docs/dev/10k-online-e6-2-progress.md",
+      "sha256": "bbb1fbef11f80e44001d66bdcda8f9a2df99da8814d09594df05bc13aaae82bd",
+      "size": 3359,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/docs/dev/10k-online-e6-2-progress.md"
+      }
+    },
+    {
+      "source": "docs/dev/10k-online-e7-tail-progress.md",
+      "sha256": "1cabf5ec1c396affa033db7b27348ac6bfc166a729382c31ea1e8364aa0d8b21",
+      "size": 2724,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/docs/dev/10k-online-e7-tail-progress.md"
+      }
+    },
+    {
+      "source": "docs/dev/10k-online-e8-volume-progress.md",
+      "sha256": "5783b6966bb2612e23f4e71290d89aced5ab0ef854792563542d772c3d6681ab",
+      "size": 17929,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/docs/dev/10k-online-e8-volume-progress.md"
+      }
+    },
+    {
+      "source": "docs/dev/10k-online-next-steps.md",
+      "sha256": "565716d65cc48352ee80f6456a193f3ca6d73c9e02de48a226eb746edd6afc38",
+      "size": 3772,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/docs/dev/10k-online-next-steps.md"
+      }
+    },
+    {
+      "source": "docs/dev/10k-online-resume.md",
+      "sha256": "29afdac006cec2e55ef53d3895dcf3d63602667767880b87ec1b169a0f5d5062",
+      "size": 4473,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/docs/dev/10k-online-resume.md"
+      }
+    },
+    {
+      "source": "docs/dev/10k-online-roadmap.md",
+      "sha256": "26bc7096d28405e3a632fcedd76612d666fc2503b708d5d4b468e85ef96d75b1",
+      "size": 18297,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/docs/dev/10k-online-roadmap.md"
+      }
+    },
+    {
+      "source": "docs/performance-scale-frontier.md",
+      "sha256": "e04364290c739f87cafcbb353a29bfc75d5b26d52c258231eacde61f2a8c2bb1",
+      "size": 6789,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/docs/performance-scale-frontier.md"
+      }
+    },
+    {
+      "source": "framework/tests/test_crossing_cost_correlation.py",
+      "sha256": "ed01db592ebf7d0c7cdcd4d4fae22a9d0854f989323d69432eeaa12dcb5e802b",
+      "size": 2552,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/framework/tests/test_crossing_cost_correlation.py"
+      }
+    },
+    {
+      "source": "rotk_agent/adapters/adapter.zip",
+      "sha256": "df673bcda816112d46142015d4d8fa5ebf15c2a7bdad6039a0b61e40fe876659",
+      "size": 10607,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/rotk_agent/adapters/adapter.zip"
+      }
+    },
+    {
+      "source": "rotk_env/maps/TestMap-2K-scale-1000.json",
+      "sha256": "f2bc1b218d9a0371987848357b1d5258fff7bead3bb804dc5d0df22ce61802a2",
+      "size": 43923,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/rotk_env/maps/TestMap-2K-scale-1000.json"
+      }
+    },
+    {
+      "source": "rotk_env/maps/TestMap-8K-scale-5000.json",
+      "sha256": "bfe0c1c2702214194c64068734f1c3b3e8d096324c57597b4928dcc02f6cd4c7",
+      "size": 212275,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/rotk_env/maps/TestMap-8K-scale-5000.json"
+      }
+    },
+    {
+      "source": "rotk_env/maps/chibi-144k-scale-10000.json",
+      "sha256": "e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25",
+      "size": 419727,
+      "archive": {
+        "path": "experiments/2026-09-10k-e8-volume/artifacts/scenario.zip",
+        "member": "chibi-144k-scale-10000.json"
+      }
+    },
+    {
+      "source": "rotk_env/maps/chibi-origin.json",
+      "sha256": "d85c94dfcfc9797a67e567e581d3b3449ee1bd0aebad38f8da255a49692f5480",
+      "size": 2395,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/rotk_env/maps/chibi-origin.json"
+      }
+    },
+    {
+      "source": "rotk_env/maps/chibi-scale-500.json",
+      "sha256": "f84814df21928939835f9fdfc252b57efe7b93b7b8c8084d4c69b4c33d61f67e",
+      "size": 21616,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/rotk_env/maps/chibi-scale-500.json"
+      }
+    },
+    {
+      "source": "rotk_env/testing/crossing_cost_correlation.py",
+      "sha256": "cf00d57ad4b9e78aa5c03f9cd30e7451f46dc8ec9937f51144a3ed6bca6413a2",
+      "size": 8895,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/rotk_env/testing/crossing_cost_correlation.py"
+      }
+    },
+    {
+      "source": "tools/archive_minimap_case.sh",
+      "sha256": "4c95ceaf61672a3c774e80024c95c79ba43f4e3979986726ab3d4ccab10e23e2",
+      "size": 4627,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/archive_minimap_case.sh"
+      }
+    },
+    {
+      "source": "tools/archive_phase5_10k_evidence.sh",
+      "sha256": "45fd4240c69964d4b97c18a9e1023578c70ac087455efa38fb81813229d0562e",
+      "size": 5054,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/archive_phase5_10k_evidence.sh"
+      }
+    },
+    {
+      "source": "tools/archive_phase5_e8.py",
+      "sha256": "05118b95b491deb38119235f8f9ae3e217dbe9f2a8014f5f7c144b985a086ddb",
+      "size": 2533,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/archive_phase5_e8.py"
+      }
+    },
+    {
+      "source": "tools/build_compact_evidence_package.py",
+      "sha256": "31f7373625ee0e6d028df72b656c9f326da0d8f934863b596b60e3726b89b748",
+      "size": 5571,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/build_compact_evidence_package.py"
+      }
+    },
+    {
+      "source": "tools/build_phase5_tail_compact.py",
+      "sha256": "f861592df5ba1356b6313da6707ac8209817d56af5e648dd746b9e47f9ac9642",
+      "size": 4029,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/build_phase5_tail_compact.py"
+      }
+    },
+    {
+      "source": "tools/generate_scale_map.py",
+      "sha256": "4458f45658488a005a4512cf52c13e893bb41a38520343d3d6a82fa5725495a7",
+      "size": 8829,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/generate_scale_map.py"
+      }
+    },
+    {
+      "source": "tools/phase5_core_attribution.py",
+      "sha256": "2647006463544902732011a30ec84ba3b315fdf61d9e977465e2b3ded270ead1",
+      "size": 23209,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/phase5_core_attribution.py"
+      }
+    },
+    {
+      "source": "tools/phase5_e8_ab_analyze.py",
+      "sha256": "59e7756f65a8eec1b57178c1a7c6c0375c44405ecc5568f3701617a2559f28be",
+      "size": 2457,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/phase5_e8_ab_analyze.py"
+      }
+    },
+    {
+      "source": "tools/phase5_e8_analyze.py",
+      "sha256": "23974dd8d5b92183821fe8a819cab89dd1f260d151bbda57987f9beee1595533",
+      "size": 5212,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/phase5_e8_analyze.py"
+      }
+    },
+    {
+      "source": "tools/phase5_e8_gate_analyze.py",
+      "sha256": "ff73c5b58f100e82bd15734d25e2293ddd44af3777d26add436dae67b9bef279",
+      "size": 4465,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/phase5_e8_gate_analyze.py"
+      }
+    },
+    {
+      "source": "tools/phase5_e8_snapshot.py",
+      "sha256": "488e58abd48a3d50cf396255d7b4010aa7d87f29f52e3d6704b9e76cfe3d63a1",
+      "size": 9480,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/phase5_e8_snapshot.py"
+      }
+    },
+    {
+      "source": "tools/phase5_e8_trace.py",
+      "sha256": "c79b2deae5fad615da9a6d7d730f4a89a963257186cb30ec746a1c65fa0b6967",
+      "size": 2032,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/phase5_e8_trace.py"
+      }
+    },
+    {
+      "source": "tools/phase5_tail_composition_analyze.py",
+      "sha256": "0aa1335fd6ee7023bb153eb3a1408b09d95d7e6bba0a81e2096d45dc53b52f6b",
+      "size": 8480,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/phase5_tail_composition_analyze.py"
+      }
+    },
+    {
+      "source": "tools/phase5_tail_composition_snapshot.py",
+      "sha256": "4820acbee76e7a24794f5b5f2f11ebba01396c7f01114c974f6de175a0a17dbb",
+      "size": 10689,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/phase5_tail_composition_snapshot.py"
+      }
+    },
+    {
+      "source": "tools/phase5_unitrender_e6_1_analyze.py",
+      "sha256": "5463d7c9f1bb09057d0d5060e06aa7be032b432d55cab04538888afa435a16b3",
+      "size": 10167,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/phase5_unitrender_e6_1_analyze.py"
+      }
+    },
+    {
+      "source": "tools/phase5_unitrender_e6_2_analyze.py",
+      "sha256": "c94c43ceb346c2f44998f0d36006bb76cedb731296743c31f21cdcd4d157565e",
+      "size": 10393,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/phase5_unitrender_e6_2_analyze.py"
+      }
+    },
+    {
+      "source": "tools/phase5_unitrender_e6_2_slotted_composition.py",
+      "sha256": "e62b5c4562ee9a9ccb76b37766616e32ccc193183d70ba14ee8d062e0dc1ec1c",
+      "size": 4097,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/phase5_unitrender_e6_2_slotted_composition.py"
+      }
+    },
+    {
+      "source": "tools/phase5_unitrender_e6_analyze.py",
+      "sha256": "cdc1f2961d7503420f74c6cb562e94eb96d09fc00b31475872f126f62e3830cc",
+      "size": 9527,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/phase5_unitrender_e6_analyze.py"
+      }
+    },
+    {
+      "source": "tools/phase5_unitrender_e6_geometry_reuse.py",
+      "sha256": "ef0170366df5bc165922ae1f186dc4c72531efe9a7afc351969dfbeda244c709",
+      "size": 4688,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/phase5_unitrender_e6_geometry_reuse.py"
+      }
+    },
+    {
+      "source": "tools/phase5_vision_hit_attribution.py",
+      "sha256": "0a03a1dbbfe3d98d6d78d6bc938725a461344d6189030b71929c470e94d26ded",
+      "size": 8837,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/phase5_vision_hit_attribution.py"
+      }
+    },
+    {
+      "source": "tools/phase5_vision_union_attribution.py",
+      "sha256": "bd54a53764190d67505e49425d72cd92bb5c3a6b11564d55d85c6da186a48688",
+      "size": 13532,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/phase5_vision_union_attribution.py"
+      }
+    },
+    {
+      "source": "tools/run_phase5_10k_core.sh",
+      "sha256": "07509fb5c9c25531780241bfb743a481e9e3be9d59d0c552ac94282c2134f057",
+      "size": 13048,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/run_phase5_10k_core.sh"
+      }
+    },
+    {
+      "source": "tools/run_phase5_core_attribution.sh",
+      "sha256": "159427af7b22b1e1e9ec520761c901670ae86654f6ba579528924c75985e4afd",
+      "size": 6621,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/run_phase5_core_attribution.sh"
+      }
+    },
+    {
+      "source": "tools/run_phase5_e8.py",
+      "sha256": "5b922d3c074ede4f9f78cf941f8b0615eedde27e04dd567a13a01796af2df75f",
+      "size": 7299,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/run_phase5_e8.py"
+      }
+    },
+    {
+      "source": "tools/run_phase5_tail_composition.sh",
+      "sha256": "e7d7723e61b384d80fc43226ac68b2a17eb5b9d8a91cf853ed953d5be1566c3a",
+      "size": 1808,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/run_phase5_tail_composition.sh"
+      }
+    },
+    {
+      "source": "tools/run_phase5_tail_composition_attribution.sh",
+      "sha256": "ea103373835839592186987513ec57f1df6a12855196b076855425ed05454f7a",
+      "size": 9737,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/run_phase5_tail_composition_attribution.sh"
+      }
+    },
+    {
+      "source": "tools/run_phase5_unitrender_e6.sh",
+      "sha256": "5e42a159b2192e62e41a571273337ef394a39c5a26ff1aba9c3a2f7fde37b219",
+      "size": 2257,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/run_phase5_unitrender_e6.sh"
+      }
+    },
+    {
+      "source": "tools/run_phase5_unitrender_e6_1.sh",
+      "sha256": "3b0442ea9355409f905eccac162cc6ef336e5534898fce4ccd5e907236427c55",
+      "size": 2021,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/run_phase5_unitrender_e6_1.sh"
+      }
+    },
+    {
+      "source": "tools/run_phase5_unitrender_e6_1_production_ab.sh",
+      "sha256": "abc304c6c40f653832cffd2ddcbe6909ce650f171b318430e1a1cd9f2828cfd0",
+      "size": 11920,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/run_phase5_unitrender_e6_1_production_ab.sh"
+      }
+    },
+    {
+      "source": "tools/run_phase5_unitrender_e6_2.sh",
+      "sha256": "bedb31b342aba3903acb26a3bd3a5c45a6184c450fae5cb739f776361f872884",
+      "size": 2012,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/run_phase5_unitrender_e6_2.sh"
+      }
+    },
+    {
+      "source": "tools/run_phase5_unitrender_e6_2_attribution.sh",
+      "sha256": "44af51c35e82638893e5ab34dc7eba62a56669cfe9bd0532d35395c1466259e8",
+      "size": 12315,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/run_phase5_unitrender_e6_2_attribution.sh"
+      }
+    },
+    {
+      "source": "tools/run_phase5_unitrender_e6_attribution.sh",
+      "sha256": "a02acc7959e2efa8e418b52efc7f7f62b661af01245b34c65622e626016ae372",
+      "size": 12892,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/run_phase5_unitrender_e6_attribution.sh"
+      }
+    },
+    {
+      "source": "tools/run_phase5_vision_hit_attribution.sh",
+      "sha256": "28c1aafce7d3e9890be84781ca3de9309b3ef5ea5b611e1e6153bf4bcea64616",
+      "size": 6197,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/run_phase5_vision_hit_attribution.sh"
+      }
+    },
+    {
+      "source": "tools/run_phase5_vision_union_attribution.sh",
+      "sha256": "ebd8d830718782cf74026c869fdca069c563f2b33a3e03d1b68ea2b4aeaeba76",
+      "size": 6284,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/run_phase5_vision_union_attribution.sh"
+      }
+    },
+    {
+      "source": "tools/test_build_compact_evidence_package.py",
+      "sha256": "59cfc203949bb2f851b9ff30ce3affeabf12aa25f35f8697ed6c77594c6c96bb",
+      "size": 3485,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/test_build_compact_evidence_package.py"
+      }
+    },
+    {
+      "source": "tools/test_phase5_e8_gate_analyze.py",
+      "sha256": "e92b88ce5588bf9b51514968e97d37e12005037e7f4219b3934f6a0fe4082373",
+      "size": 1719,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/test_phase5_e8_gate_analyze.py"
+      }
+    },
+    {
+      "source": "tools/test_phase5_e8_snapshot.py",
+      "sha256": "429154e12e07c858111364187a9b041a45bfe1a766a88384df012b1c3e1047de",
+      "size": 4072,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/test_phase5_e8_snapshot.py"
+      }
+    },
+    {
+      "source": "tools/test_phase5_e8_trace.py",
+      "sha256": "40c3221b00e3829a245ad646876d0e0dcc5710550b5c04a5c07538fff342355a",
+      "size": 946,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/test_phase5_e8_trace.py"
+      }
+    },
+    {
+      "source": "tools/test_phase5_tail_composition_snapshot.py",
+      "sha256": "935267212e43d967869b91790578ac74fcb8179366a328fb00f40c7480a8d6bd",
+      "size": 2848,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/test_phase5_tail_composition_snapshot.py"
+      }
+    },
+    {
+      "source": "tools/test_phase5_unitrender_e6_2_slotted_composition.py",
+      "sha256": "57131dccdee3e1b152f2a9f8fed848b4600c893f823b7f10417c1d7de5e86407",
+      "size": 3295,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/test_phase5_unitrender_e6_2_slotted_composition.py"
+      }
+    },
+    {
+      "source": "tools/test_phase5_unitrender_e6_geometry_reuse.py",
+      "sha256": "97d40fab6317f8fca8cc81ca6b524914abf9ca2c1d5d2624c21c2aee42d40373",
+      "size": 3444,
+      "archive": {
+        "path": "archives/2026-09-10k-p0/workspace/tools/test_phase5_unitrender_e6_geometry_reuse.py"
+      }
+    }
+  ]
+}

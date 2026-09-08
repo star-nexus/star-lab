@@ -13,6 +13,9 @@ The core rule is simple:
 
 ## Start here
 
+For the active 10K work, read [the recovery entry](records/10k-online-resume.md).
+[P0 archive and exact-source recovery](archives/2026-09-10k-p0/README.md) preserve retired experiments.
+
 1. Read [`PROTOCOL.md`](PROTOCOL.md) before adding a formal experiment.
 2. Create new experiment packages from [`templates/`](templates/).
 3. Preserve only evidence that supports a durable engineering conclusion.
@@ -46,4 +49,4 @@ star annotated tag= validated immutable engineering milestone
 star-lab          = reproducible evidence and decision history
 ```
 
-STAR Lab is not a fork of STAR source history. It has its own Git history and references STAR source states through exact commit SHAs and tags.
+STAR Lab does not maintain a production source fork. The P0 archival bundle preserves retired experiment refs for recovery. It has its own Git history and references STAR source states through exact commit SHAs and tags.

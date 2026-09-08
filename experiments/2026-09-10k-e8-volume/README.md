@@ -4,7 +4,7 @@
 **STAR repository:** `star-nexus/star`  
 **Problem:** `e7ba18b31870577110b591104ef8fa7b4713e43c`  
 **Validated runtime:** `9581084835633e10d80aac849925939bc59b9138`  
-**Local tag:** `scale-10k-100pct-30hz-sustained-e8`  
+**Milestone tag:** `scale-10k-100pct-30hz-sustained-e8`
 **Initial sustained tooling:** `94f8986280ca7c391fa45a854a62c7975cab1658`  
 **E8-4 300s tooling:** `bed4e479859c65e23bf9ce403e381fa03e596d30`
 
@@ -58,8 +58,7 @@ shasum -a 256 rotk_env/maps/chibi-144k-scale-10000.json
 
 Expected fixture SHA256:
 `e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25`.
-These source commits and the Lab case are local until explicitly published; a
-fresh clone requires access to those commits. No push is implied by this record.
+P0 is integrating and publishing this milestone; see the [active recovery entry](../../records/10k-online-resume.md) for confirmed repository status. Production `main` no longer carries experimental tools or fixtures. Use an exact historical tooling worktree in Lab, following the [P0 recovery recipe](../../archives/2026-09-10k-p0/README.md).
 
 ## 4. Reproduce the problem and attribution
 
@@ -129,4 +128,4 @@ shasum -a 256 -c artifacts/SHA256SUMS
 ```
 
 See [analysis](analysis.md), [decision](decision.md), [manifest](manifest.yaml),
-and STAR `docs/dev/10k-online-resume.md` for the current recovery state.
+and [the Lab recovery entry](../../records/10k-online-resume.md) for the current recovery state.

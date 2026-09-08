@@ -1,0 +1,90 @@
+{
+  "kind": "static diagnostic, NOT runtime capacity",
+  "source": {
+    "path": "runs/star-p3-spatial",
+    "sha": "32a0eb95c3c921f390bb463da99b9a6b18dc29a5",
+    "dirty": ""
+  },
+  "tooling": {
+    "path": "/Users/liyang/Developer/star-lab",
+    "sha": "0c799b017790c852ed8c9ca7699c4dd1d7ee89d6",
+    "dirty": ""
+  },
+  "workload": {
+    "source": "runs/star-p3-spatial",
+    "units": 1000,
+    "agents": 1000,
+    "queries": 3,
+    "delay": 1,
+    "scope": "selected",
+    "layout": "interleaved",
+    "attribute": true,
+    "index": true,
+    "output": "runs/p3-discovery/spatial-interleaved1000.json"
+  },
+  "fixture_sha256": "bf06382d8a0d21eb5ef8691c4b0d28d6868a6c9c2f1f76ec1288361ed94bde69",
+  "setup_ms": 538.321709012962,
+  "samples": [
+    {
+      "build_ms": 8.911291995900683,
+      "encode_ms": 1.8215830059489235,
+      "bytes": 385495,
+      "success": true,
+      "units": 1,
+      "reachable": 49,
+      "attackable": 2
+    },
+    {
+      "build_ms": 5.540250000194646,
+      "encode_ms": 1.8018749979091808,
+      "bytes": 385656,
+      "success": true,
+      "units": 1,
+      "reachable": 58,
+      "attackable": 0
+    },
+    {
+      "build_ms": 5.090667007607408,
+      "encode_ms": 1.7947080050362274,
+      "bytes": 385713,
+      "success": true,
+      "units": 1,
+      "reachable": 56,
+      "attackable": 0
+    }
+  ],
+  "attribution": {
+    "_get_faction_units": [
+      9,
+      0.7237089885165915
+    ],
+    "_get_faction_status": [
+      3,
+      0.6145420047687367
+    ],
+    "_get_detailed_unit_info": [
+      3,
+      0.025542001822032034
+    ],
+    "_unit_command_fields": [
+      3,
+      0.005916008376516402
+    ],
+    "_visible_enemy_units": [
+      3,
+      1.3109989959048107
+    ],
+    "_visible_terrain": [
+      3,
+      14.083375979680568
+    ],
+    "_unit_reachable": [
+      3,
+      2.542791989981197
+    ],
+    "_unit_attackable": [
+      3,
+      0.05154297105036676
+    ]
+  }
+}

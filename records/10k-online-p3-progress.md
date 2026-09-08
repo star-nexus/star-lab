@@ -1,6 +1,6 @@
 # P3 — local synthetic Agent / ENV interaction
 
-Updated: 2026-09-08. Status: P3.0 contract recorded; P3.1 building. No new capacity claim.
+Updated: 2026-09-08. Status: P3.0/P3.1 complete; P3.2 reproduced; P3.3 candidates under validation. No new capacity claim.
 
 ## Scope and identity
 
@@ -39,9 +39,9 @@ Chrome remains open. One performance process at a time. No slow-frame deletion.
 | Stage | State | Deliverable |
 |---|---|---|
 | P3.0 | complete | This contract; resume/priorities updated; baseline/dev isolated worktrees |
-| P3.1 | in progress | Local deterministic registration/claim/observe/think/act driver + meaningful tests |
-| P3.2 | pending | Source-pinned baseline, causal counts/timing, negative evidence |
-| P3.3 | pending | Evidence-led production optimization, A/B, correctness regression |
+| P3.1 | complete | Local deterministic registration/claim/observe/think/act driver + meaningful tests |
+| P3.2 | reproduced | Source-pinned baseline, causal counts/timing, negative evidence |
+| P3.3 | in progress | Evidence-led production optimization, A/B, correctness regression |
 | P3.4 | pending | Size/delay frontier and formal candidate repeats |
 | P3.5 | pending | Protocol-standard archive, source tags, squash integration and final receipt |
 
@@ -56,3 +56,10 @@ Before main integration, annotated tag pins developer tip. Integrate exclusively
 ## Next action
 
 Build the local driver and deterministic smoke workload, then establish observation cost on baseline before production changes.
+
+## Checkpoint — driver and attribution
+
+Lab driver `1a68ed8` and subsequent source-pinned runner revisions are saved in Git. Real registration/claim/think/action scheduling has three passing Lab tests; source contracts have 54 passing focused tests (including 10 new selected-observation tests).
+Source checkpoints: selection `0c1ec5b454a703ed3d90d19db98a6683758996a8`, local occupancy `7f72703`, attack candidates `39f937f`, tested spatial candidate `32a0eb9`. All remain development checkpoints, not accepted milestones.
+Evidence and causal interpretation: [active experiment](../experiments/2026-09-p3-local-agents/README.md). Interleaved layout setup bounds mistakes were corrected using the authoritative parser; no invalid pre-workload run is capacity evidence.
+Current next action: runtime candidate smoke, then controlled scale/delay points; complete helper A/B and preserve equivalent-payload results. Formal world throughput gate allows 1% pacing tolerance (>=29.7Hz) in addition to P99 frame work <=33.33ms; no formal results preceded this definition.

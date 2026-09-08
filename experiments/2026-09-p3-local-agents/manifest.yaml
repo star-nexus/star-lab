@@ -1,0 +1,34 @@
+experiment:
+  id: 2026-09-p3-local-agents
+  title: Local synthetic Agent observation and action scalability
+  date: 2026-09-08
+  status: reproduced
+source:
+  repository: star-nexus/star
+  problem_commit: 02d0fc1b598c54a172e1122ac9ea4c1e2f46ec15
+  measurement_commit: per-result source.sha and tooling.sha
+  fix_commit: null
+  validated_commit: null
+  validated_tag: null
+hardware:
+  machine: current host; per-runtime metadata
+  chrome: kept open
+scenario:
+  canonical: E8 120x120 fixture with deterministic per-faction prefix selection
+  interleaved: seeded permutation of parsed legal cells with one-in-four gaps
+workload:
+  seed: 42
+  agent_delays_seconds: [1, 5, 15, 60]
+  transport: local ENV business gate; no Hub or LLM
+  json_encoding: included unless explicitly disabled
+measurement:
+  discovery: short diagnostics only
+  formal: one >=300s and three >=60s fresh-process traces per accepted point
+  gates: records/10k-online-p3-progress.md
+artifacts:
+  formal: []
+  external: []
+headline:
+  problem_signature: repeated global occupancy and visible-enemy checks per own-unit panel
+  resolution: pending controlled validation
+  result: no formal capacity point yet

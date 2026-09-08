@@ -1,0 +1,89 @@
+{
+  "kind": "static diagnostic, NOT runtime capacity",
+  "source": {
+    "path": "runs/star-p3-base",
+    "sha": "02d0fc1b598c54a172e1122ac9ea4c1e2f46ec15",
+    "dirty": ""
+  },
+  "tooling": {
+    "path": "/Users/liyang/Developer/star-lab",
+    "sha": "1a68ed843027930409c85a793ea6907f5ca4b122",
+    "dirty": ""
+  },
+  "workload": {
+    "source": "runs/star-p3-base",
+    "units": 1000,
+    "agents": 1000,
+    "queries": 3,
+    "delay": 1,
+    "scope": "faction",
+    "layout": "canonical",
+    "attribute": true,
+    "output": "runs/p3-discovery/base1000.json"
+  },
+  "fixture_sha256": "bc4f263f00f656d4fcd3b45c42abef57c2d018ddfed3445bc327a60791b97f35",
+  "setup_ms": 549.874667005497,
+  "samples": [
+    {
+      "build_ms": 194.01779100007843,
+      "encode_ms": 1.4142919972073287,
+      "bytes": 267671,
+      "success": true,
+      "units": 333,
+      "reachable": 3716,
+      "attackable": 0
+    },
+    {
+      "build_ms": 149.93437500379514,
+      "encode_ms": 1.4456249919021502,
+      "bytes": 267671,
+      "success": true,
+      "units": 333,
+      "reachable": 3716,
+      "attackable": 0
+    },
+    {
+      "build_ms": 144.88616700691637,
+      "encode_ms": 1.6013329877750948,
+      "bytes": 267671,
+      "success": true,
+      "units": 333,
+      "reachable": 3716,
+      "attackable": 0
+    }
+  ],
+  "attribution": {
+    "_get_faction_units": [
+      9,
+      0.743458978831768
+    ],
+    "_get_faction_status": [
+      3,
+      0.6377509998856112
+    ],
+    "_get_detailed_unit_info": [
+      999,
+      1.918639987707138
+    ],
+    "_unit_command_fields": [
+      999,
+      0.34070314723066986
+    ],
+    "_visible_enemy_units": [
+      3,
+      0.6147090025478974
+    ],
+    "_visible_terrain": [
+      3,
+      1.458709011785686
+    ],
+    "_unit_reachable": [
+      999,
+      480.728629117948
+    ],
+    "_unit_attackable": [
+      999,
+      1.0594780615065247
+    ]
+  }
+}

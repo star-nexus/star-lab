@@ -1,0 +1,360 @@
+{
+  "source": {
+    "path": "/Users/liyang/Developer/star-lab/runs/star-p3-base",
+    "sha": "02d0fc1b598c54a172e1122ac9ea4c1e2f46ec15",
+    "dirty": ""
+  },
+  "tooling": {
+    "path": "/Users/liyang/Developer/star-lab",
+    "sha": "2e410b85d315183fea8c1dcb2b05990368fea968",
+    "dirty": ""
+  },
+  "workload": {
+    "source": "/Users/liyang/Developer/star-lab/runs/star-p3-base",
+    "units": 100,
+    "agents": 100,
+    "delay": "1",
+    "scope": "faction",
+    "layout": "canonical",
+    "policy": "mixed",
+    "seconds": 10.0,
+    "warmup": 3.0,
+    "budget_ms": 4,
+    "attribute": false,
+    "no_encode": false,
+    "synchronized": false,
+    "movement_overlay": false,
+    "no_agents": false,
+    "gc_policy": "auto",
+    "output": "runs/p3-discovery/runtime-base100.json"
+  },
+  "hardware": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+    "machine": "arm64",
+    "chrome": "kept open; no slow frames removed"
+  },
+  "fixture_sha256": "8a82fc2817877d3426918877e67c407356837f1e64528dd97f994559109e0394",
+  "guards": {
+    "complete": true,
+    "source_clean": true,
+    "tooling_clean": true,
+    "fog_on": true,
+    "world_alive": true,
+    "resident_retained": true,
+    "position_progress": true,
+    "frame_p99": true,
+    "observation_p99": false,
+    "action_queue_p99": false,
+    "queue_bounded": false,
+    "duration_formal": false,
+    "not_diagnostic": true
+  },
+  "pass": false,
+  "frame_work_ms": {
+    "count": 284,
+    "avg": 15.207475077467036,
+    "p50": 15.05229200120084,
+    "p95": 17.287124996073544,
+    "p99": 18.768541995086707,
+    "max": 22.24125000066124
+  },
+  "frame_count": 284,
+  "world_hz": 28.4,
+  "observation_response_ms": {
+    "count": 468,
+    "avg": 4792.452754328325,
+    "p50": 4409.617708995938,
+    "p95": 7207.941542001208,
+    "p99": 7594.990792000317,
+    "max": 7653.56870899268
+  },
+  "action_queue_ms": {
+    "count": 436,
+    "avg": 1107.2387412126889,
+    "p50": 895.4321250057546,
+    "p95": 2393.356542001129,
+    "p99": 2594.3162920011673,
+    "max": 3124.765792003018
+  },
+  "blocks30": [],
+  "worst_rolling5_p99_ms": 19.361707993084565,
+  "longest_miss_streak": 0,
+  "miss_fraction": 0.0,
+  "agents": {
+    "counts": {
+      "observations": 536,
+      "move_accepted": 174,
+      "cycles": 436,
+      "wait_cycles": 259,
+      "move_rejected": 3
+    },
+    "sessions": 100,
+    "setup_ms": 55.68916699849069,
+    "pending_events": 100,
+    "overdue_events": 72,
+    "oldest_overdue_ms": 2251.35937500454,
+    "cycles_per_session": {
+      "count": 100,
+      "avg": 4.36,
+      "p50": 4,
+      "p95": 5,
+      "p99": 5,
+      "max": 5
+    },
+    "observation_response_ms": {
+      "count": 536,
+      "avg": 4366.586972487868,
+      "p50": 4376.64595899696,
+      "p95": 7131.561417001649,
+      "p99": 7588.164834000054,
+      "max": 7653.56870899268
+    },
+    "action_queue_ms": {
+      "count": 436,
+      "avg": 1107.2387412126889,
+      "p50": 895.4321250057546,
+      "p95": 2393.356542001129,
+      "p99": 2594.3162920011673,
+      "max": 3124.765792003018
+    },
+    "response_bytes": {
+      "count": 536,
+      "avg": 40974.06156716418,
+      "p50": 42934,
+      "p95": 56546,
+      "p99": 57568,
+      "max": 64461
+    }
+  },
+  "censuses": [
+    {
+      "t": 0.0023871250014053658,
+      "alive": 100,
+      "moving": 0,
+      "position_changes": 0,
+      "oldest_due_ms": 555.8202920074109,
+      "game_over": false,
+      "fog": true,
+      "gc_enabled": true,
+      "sim_time": 1.607467291993089,
+      "maxrss": 291602432,
+      "counts": {
+        "observations": 1
+      }
+    },
+    {
+      "t": 1.0318305419932585,
+      "alive": 100,
+      "moving": 0,
+      "position_changes": 0,
+      "oldest_due_ms": 928.3407089969842,
+      "game_over": false,
+      "fog": true,
+      "gc_enabled": true,
+      "sim_time": 2.636920499993721,
+      "maxrss": 329351168,
+      "counts": {
+        "observations": 14
+      }
+    },
+    {
+      "t": 2.018918667003163,
+      "alive": 100,
+      "moving": 0,
+      "position_changes": 0,
+      "oldest_due_ms": 1624.235374998534,
+      "game_over": false,
+      "fog": true,
+      "gc_enabled": true,
+      "sim_time": 3.6240078749979148,
+      "maxrss": 338100224,
+      "counts": {
+        "observations": 41
+      }
+    },
+    {
+      "t": 3.004053041993757,
+      "alive": 100,
+      "moving": 0,
+      "position_changes": 0,
+      "oldest_due_ms": 2330.020583991427,
+      "game_over": false,
+      "fog": true,
+      "gc_enabled": true,
+      "sim_time": 4.609141249995446,
+      "maxrss": 338296832,
+      "counts": {
+        "observations": 69
+      }
+    },
+    {
+      "t": 4.028475958999479,
+      "alive": 100,
+      "moving": 0,
+      "position_changes": 0,
+      "oldest_due_ms": 3063.0011670000385,
+      "game_over": false,
+      "fog": true,
+      "gc_enabled": true,
+      "sim_time": 5.63356579199899,
+      "maxrss": 338296832,
+      "counts": {
+        "observations": 98
+      }
+    },
+    {
+      "t": 5.016043084004195,
+      "alive": 100,
+      "moving": 38,
+      "position_changes": 13,
+      "oldest_due_ms": 2076.2621670000954,
+      "game_over": false,
+      "fog": true,
+      "gc_enabled": true,
+      "sim_time": 6.6211323750030715,
+      "maxrss": 341049344,
+      "counts": {
+        "observations": 138,
+        "move_accepted": 38,
+        "cycles": 38
+      }
+    },
+    {
+      "t": 6.001047124998877,
+      "alive": 100,
+      "moving": 68,
+      "position_changes": 58,
+      "oldest_due_ms": 4225.722041999688,
+      "game_over": false,
+      "fog": true,
+      "gc_enabled": true,
+      "sim_time": 7.606136999995215,
+      "maxrss": 341377024,
+      "counts": {
+        "observations": 179,
+        "move_accepted": 80,
+        "cycles": 80
+      }
+    },
+    {
+      "t": 7.026251667004544,
+      "alive": 100,
+      "moving": 46,
+      "position_changes": 88,
+      "oldest_due_ms": 282.95212499506306,
+      "game_over": false,
+      "fog": true,
+      "gc_enabled": true,
+      "sim_time": 8.631339333995129,
+      "maxrss": 341524480,
+      "counts": {
+        "observations": 271,
+        "move_accepted": 100,
+        "cycles": 171,
+        "wait_cycles": 71
+      }
+    },
+    {
+      "t": 8.014148583999486,
+      "alive": 100,
+      "moving": 18,
+      "position_changes": 50,
+      "oldest_due_ms": 248.01383400335908,
+      "game_over": false,
+      "fog": true,
+      "gc_enabled": true,
+      "sim_time": 9.619237459002761,
+      "maxrss": 341671936,
+      "counts": {
+        "observations": 339,
+        "move_accepted": 114,
+        "cycles": 239,
+        "wait_cycles": 125
+      }
+    },
+    {
+      "t": 9.00434620899614,
+      "alive": 100,
+      "moving": 11,
+      "position_changes": 25,
+      "oldest_due_ms": 675.0430000101915,
+      "game_over": false,
+      "fog": true,
+      "gc_enabled": true,
+      "sim_time": 10.609435624995967,
+      "maxrss": 341671936,
+      "counts": {
+        "observations": 396,
+        "move_accepted": 127,
+        "cycles": 296,
+        "wait_cycles": 168,
+        "move_rejected": 1
+      }
+    },
+    {
+      "t": 10.032694291992811,
+      "alive": 100,
+      "moving": 13,
+      "position_changes": 20,
+      "oldest_due_ms": 993.7530000024708,
+      "game_over": false,
+      "fog": true,
+      "gc_enabled": true,
+      "sim_time": 11.637783541998942,
+      "maxrss": 341671936,
+      "counts": {
+        "observations": 440,
+        "move_accepted": 141,
+        "cycles": 340,
+        "wait_cycles": 198,
+        "move_rejected": 1
+      }
+    },
+    {
+      "t": 11.014504874998238,
+      "alive": 100,
+      "moving": 10,
+      "position_changes": 13,
+      "oldest_due_ms": 1484.8469170101453,
+      "game_over": false,
+      "fog": true,
+      "gc_enabled": true,
+      "sim_time": 12.61959425000532,
+      "maxrss": 341671936,
+      "counts": {
+        "observations": 468,
+        "move_accepted": 143,
+        "cycles": 368,
+        "wait_cycles": 223,
+        "move_rejected": 2
+      }
+    },
+    {
+      "t": 12.003738958999747,
+      "alive": 100,
+      "moving": 5,
+      "position_changes": 17,
+      "oldest_due_ms": 1760.6439579976723,
+      "game_over": false,
+      "fog": true,
+      "gc_enabled": true,
+      "sim_time": 13.608828666998306,
+      "maxrss": 341671936,
+      "counts": {
+        "observations": 504,
+        "move_accepted": 155,
+        "cycles": 404,
+        "wait_cycles": 247,
+        "move_rejected": 2
+      }
+    }
+  ],
+  "attribution": null,
+  "overlay": null,
+  "raw": {
+    "path": "runtime-base100.raw.json",
+    "size": 295488,
+    "sha256": "43f0d8944b473aca794ec5c1782f05077c17abd00781e8b2221c1783a5440bc6"
+  }
+}

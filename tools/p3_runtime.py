@@ -58,7 +58,20 @@ def main():
     holder = {}
     original_init = GameScene._initialize_game
     original_update = GameEngine._update
+    original_frame_start = profiler.start_frame
+    original_frame_end = profiler.end_frame
     frames, censuses = [], []
+
+    def frame_start():
+        holder['full_frame_start'] = time.perf_counter()
+        holder['wait_s'] = 0.
+        original_frame_start()
+
+    def frame_end():
+        original_frame_end()
+        row = holder.pop('pending_frame', None)
+        if row is not None:
+            row['work_ms'] = (time.perf_counter()-holder['full_frame_start']-holder['wait_s'])*1000
 
     def initialize(scene):
         original_init(scene)
@@ -134,8 +147,10 @@ def main():
         end = time.perf_counter()
         if len(frames) >= 20000:
             raise RuntimeError('frame recorder overflow')
-        frames.append({'t':elapsed,'work_ms':(end-start)*1000,
-            'agent_ms':(agent_end-start)*1000, 'dt':engine.delta_time})
+        row = {'t':elapsed,'update_work_ms':(end-start)*1000,
+            'agent_ms':(agent_end-start)*1000, 'dt':engine.delta_time}
+        frames.append(row)
+        holder['pending_frame'] = row
 
     def wait(engine, prof):
         now = time.perf_counter()
@@ -143,13 +158,17 @@ def main():
         # Carry sleep overshoot forward instead of adding it to every period.
         remaining = max(0., deadline-now)
         if remaining:
+            began = time.perf_counter()
             with prof.time_system('fps_cap_wait', category='wait'):
                 time.sleep(remaining)
+            holder['wait_s'] = time.perf_counter()-began
         engine._p3_next_tick = max(deadline+1/30, now)
 
     GameScene._initialize_game = initialize
     GameEngine._update = update
     GameEngine._wait_for_frame_cap = wait
+    profiler.start_frame = frame_start
+    profiler.end_frame = frame_end
     sys.argv = [str(Path(args.source)/'rotk_env/main.py'), '--skip-start',
         '--mode','real_time','--players','human_vs_two_ai','--scenario',scenario,
         '--seed','42','--no-hub','--uncapped','--scale-harness-socket',

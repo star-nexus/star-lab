@@ -40,7 +40,7 @@ def fixture(source, units, layout='canonical'):
             data['formations'][name] = data['formations'][name][:units // 3 + (i < units % 3)]
     else:
         # A separate actionable fixture: gaps for movement, nearby opposing units.
-        cells = [(c, r) for r in range(-60, 60) for c in range(-60, 60)
+        cells = [(c, r) for r in range(-59, 61) for c in range(-59, 61)
                  if (c + r) % 4 != 0]
         random.Random(42).shuffle(cells)
         data['formations'] = {name: [] for name in names}

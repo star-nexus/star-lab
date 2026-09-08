@@ -86,6 +86,19 @@ class Attribution:
                     row[1] += (time.perf_counter() - start) * 1000
             self.originals.append((handler, name, original))
             setattr(handler, name, wrapped)
+        from rotk_env.utils import map_query
+        for name in ('unit_cells', 'occupied_cells', 'path_blockers', 'plan_hex_path'):
+            original = getattr(map_query, name)
+            def wrapped(*args, _original=original, _name=name, **kwargs):
+                start = time.perf_counter()
+                try:
+                    return _original(*args, **kwargs)
+                finally:
+                    row = self.values['map_query.'+_name]
+                    row[0] += 1
+                    row[1] += (time.perf_counter()-start)*1000
+            self.originals.append((map_query, name, original))
+            setattr(map_query, name, wrapped)
 
 
 @dataclass

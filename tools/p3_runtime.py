@@ -111,6 +111,7 @@ def main():
                 engine.running = False
                 holder['finished'] = True
                 holder['end'] = start
+                holder['final_agents'] = holder['agents'].summary()
                 return
             agents = holder['agents']
             if agents.epoch is None:
@@ -209,7 +210,7 @@ def main():
         'world_hz':len(admitted)/args.seconds >= 29.7,
         'observation_p99':args.no_agents or ob.get('p99',float('inf')) <=100,
         'action_queue_p99':args.no_agents or ac.get('p99',float('inf')) <=100,
-        'queue_bounded':args.no_agents or agents.summary()['oldest_overdue_ms']<=100,
+        'queue_bounded':args.no_agents or holder['final_agents']['oldest_overdue_ms']<=100,
         'offered_load_met':args.no_agents or completed_observations >= .95*nominal_observations,
         'duration_formal':args.seconds>=60, 'not_diagnostic':not args.attribute}
     raw = {'frames':frames, 'events':agents.records, 'censuses':censuses}
@@ -225,7 +226,7 @@ def main():
         'nominal_load_fraction':completed_observations/max(1,nominal_observations),
         'worst_rolling5_p99_ms':worst5,'longest_miss_streak':longest,
         'miss_fraction':sum(f['work_ms']>1000/30 for f in admitted)/max(1,len(admitted)),
-        'agents':agents.summary(), 'censuses':censuses,
+        'agents':holder['final_agents'], 'censuses':censuses,
         'attribution':dict(holder['attribution'].values) if 'attribution' in holder else None,
         'overlay':holder.get('overlay'),
         'raw':{'path':raw_path.name,'size':raw_path.stat().st_size,

@@ -13,7 +13,8 @@ source:
   validated_commit: 9581084835633e10d80aac849925939bc59b9138
   branch_at_time: codex/10k-30hz-volume
   validated_tag: scale-10k-100pct-30hz-sustained-e8
-  publication: local commits only; not pushed
+  publication: published to STAR main and milestone tag during P0; Lab evidence pushed
+  production_integration_commit: 02d0fc1b598c54a172e1122ac9ea4c1e2f46ec15
   prior_combined_candidate: 88b19fe92957ee660f50cc366c5a737cb2dc8ca8
   historical_measurement_identity: each compact JSON embeds its original exact runtime and tooling SHAs
 hardware:

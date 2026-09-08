@@ -102,7 +102,7 @@ Optimization C1 (`Vision geometry cache-hit terrain bypass`) is also **CAUSALLY 
 
 ## Sustained Core 30Hz — 10K / 100% moving — 2026-09-08
 
-Runtime `9581084835633e10d80aac849925939bc59b9138`, local annotated tag
+Runtime `9581084835633e10d80aac849925939bc59b9138`, published annotated tag
 `scale-10k-100pct-30hz-sustained-e8`. E8-1/2/3/4 reduce repeated texture,
 UI roster, component-row and movement-reference work. Single-thread Python Core;
 production animation, position commits and Vision remain immediate.
@@ -136,8 +136,10 @@ rolling5s P99 is34.745ms and frame-body P99 is34.033ms. Repeat2's final5s P99 is
 37.231ms. Those counterexamples remain archived. Do not infer every-frame,
 every-5s-window, full interactive,60Hz or10K online-Agent passage. Long-run drift
 and occasional shared subsystem slow clusters remain revisit conditions; no
-specific cluster has been causally assigned to Chrome. Source/tag and case are
-local until explicitly published; no push or merge was performed.
+specific cluster has been causally assigned to Chrome. P0 publication update: the source is integrated on STAR main, the validated tag
+is published unchanged and the Lab case is pushed. See
+[P0 closeout](../archives/2026-09-10k-p0/closeout.md). This records publication
+and does not create a new timing frontier row.
 
 ## Frontier rules
 

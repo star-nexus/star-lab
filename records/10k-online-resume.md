@@ -1,6 +1,6 @@
 # 10K / 100% moving / 30 Hz — 恢复入口
 
-更新：2026-09-08。当前阶段：P0 收尾执行中；P1 尚未开始。
+更新：2026-09-08。当前阶段：P0 已完成；P1 尚未开始。
 本文件是唯一活动恢复入口，已从 STAR 的 `docs/dev/` 迁至 STAR Lab。
 先读本文件即可恢复目标、边界和下一步；执行时再按下方链接读取对应证据。
 
@@ -40,7 +40,18 @@ E8 Lab 初始归档：`2dfbb09b4c2fc556bcbe05dadaa1b1fe46c6de89`。
 保留优化消除重复 texture preparation、UI roster 查询、component-row 查询及
 movement reference 查询；组件引用版本与同步回调失效契约继续受生产测试保护。
 P0 只移除实验代码/材料、snapshot 的离线专用 correlation 字段，更新用户文档与
-回归集合；已验证 hot path 不变。当前提交及清理结果会写入 P0 closeout 记录。
+回归集合；已验证 hot path 不变。生产主分支已集成并推送：`02d0fc1b598c54a172e1122ac9ea4c1e2f46ec15`。
+详见 [P0 closeout](../archives/2026-09-10k-p0/closeout.md)。
+
+## P0 完成状态
+
+- STAR 与 Lab 均在 `main`；源码、原始证据、归档和里程碑 tag 已保存至远端。
+- STAR 已移走 57 个实验/生成文件和 1394 个结果文件（原目录约 387 MiB）。
+- 已删除 29 个本地、34 个远端 10K/phase5 工作分支；无关分支及里程碑保留。
+- 归档覆盖的 63 个引用 / 40 个不同提交在独立空仓库恢复通过；1451 个迁移文件定位均通过 SHA256 校验。
+- 当前生产回归 869 passed，结构契约 81 passed，历史 E8 工具 9 passed，compileall 通过。
+- 活动恢复和后续计划归 Lab；冻结历史记录保留旧路径/旧发布状态，勿作为当前指令。
+- 清理结果和生产 SHA 见 closeout；Lab 当前收尾提交可用 `git log -1 -- records/10k-online-resume.md` 定位，避免自引用提交 SHA。
 
 ## 下一项工作：P1 采样能力，然后长测
 

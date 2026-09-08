@@ -4,7 +4,7 @@ Date: 2026-09-08. Status: SUSTAINED COMPLETE-TRACE GATE VALIDATED. Inherited run
 Validated runtime: 9581084835633e10d80aac849925939bc59b9138 (E8-1/2/3/4).
 Read the latest entries at the end for current outcomes; earlier entries preserve
 the chronological investigation, including rejected drafts and failed gate runs.
-Recovery entrypoint: `docs/dev/10k-online-resume.md`.
+Recovery entrypoint: [STAR Lab resume](../../records/10k-online-resume.md).
 
 ## Preregistered questions
 
@@ -291,5 +291,13 @@ causes. No native rewrite, delayed world work, or 10K online-Agent claim.
 
 Durable source, raw+compact evidence, checksums, full reproduction and decision:
 /Users/liyang/Developer/star-lab/experiments/2026-09-10k-e8-volume/.
-Recovery: docs/dev/10k-online-resume.md. Lab frontier is a separately labeled
+Recovery: [STAR Lab resume](../../records/10k-online-resume.md). Lab frontier is a separately labeled
 sustained measurement row; do not replace historical short-window rows.
+
+## P0 publication update
+
+The retained runtime is now integrated and published on STAR main; the validated
+tag is published unchanged. Experimental sources and recovery notes have moved
+to Lab. Historical entries above retain their chronology. See
+[P0 closeout](../../archives/2026-09-10k-p0/closeout.md) for source SHA, archive
+verification and branch retirement. No new timing result is added by P0.

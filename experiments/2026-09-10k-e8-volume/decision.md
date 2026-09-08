@@ -1,6 +1,6 @@
 # Decision — sustained complete-trace gate CLOSED / KEEP E8-1 through E8-4
 
-Validated runtime `9581084835633e10d80aac849925939bc59b9138`, local annotated tag
+Validated runtime `9581084835633e10d80aac849925939bc59b9138`, published annotated tag
 `scale-10k-100pct-30hz-sustained-e8`. The fixed-workload 305.447501s trace has
 controlled avg28.220838/P99 **32.430227ms**. Three subsequent independent-process
 65s traces have P99 **28.984507/30.026299/29.162605ms**. All workload/trace guards
@@ -58,4 +58,7 @@ Revisit on failure of sustained gates, a new scenario/camera/display size, dense
 component membership churn, different runtime/hardware, MiniMap enabled, or the
 separate online-Agent data plane. A requirement that every5s rolling estimate or
 every frame meet33.33ms would reopen latency work; it is not validated here.
-All changes are local on codex/10k-30hz-volume; no merge or push was performed.
+P0 publication update: retained changes are integrated and pushed on STAR main
+`02d0fc1b598c54a172e1122ac9ea4c1e2f46ec15`; the milestone tag still points to the
+validated runtime above. The working branch was archived and retired. See
+[P0 closeout](../../archives/2026-09-10k-p0/closeout.md).

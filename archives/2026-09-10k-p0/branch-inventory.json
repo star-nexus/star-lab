@@ -446,5 +446,5 @@
   ],
   "bundle": "phase5-retired-refs.bundle",
   "bundle_exclusion": "origin/main as captured in production_remote_sha",
-  "status": "inventory; no branch deletion yet"
+  "status": "retired selected refs after remote archival and independent restoration; see branch-retirement.json"
 }

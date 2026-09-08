@@ -58,7 +58,7 @@ shasum -a 256 rotk_env/maps/chibi-144k-scale-10000.json
 
 Expected fixture SHA256:
 `e5bacb41c499fdfb9e91a917a1427515f2be1dae5ca4961692e921c05b816d25`.
-P0 is integrating and publishing this milestone; see the [active recovery entry](../../records/10k-online-resume.md) for confirmed repository status. Production `main` no longer carries experimental tools or fixtures. Use an exact historical tooling worktree in Lab, following the [P0 recovery recipe](../../archives/2026-09-10k-p0/README.md).
+P0 has integrated and pushed the retained runtime to STAR `main`, published the milestone tag, and pushed this Lab evidence. See the [P0 closeout](../../archives/2026-09-10k-p0/closeout.md) for exact integration SHA and cleanup verification. Production `main` no longer carries experimental tools or fixtures. Use an exact historical tooling worktree in Lab, following the [P0 recovery recipe](../../archives/2026-09-10k-p0/README.md).
 
 ## 4. Reproduce the problem and attribution
 

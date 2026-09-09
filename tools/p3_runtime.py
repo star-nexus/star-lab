@@ -25,6 +25,7 @@ def main():
     p.add_argument('--units', type=int, default=100)
     p.add_argument('--agents', type=int, default=100)
     p.add_argument('--delay', default='1')
+    p.add_argument('--observation-mode', choices=['single', 'batch-off', 'batch-on'], default='single')
     p.add_argument('--observation-hz', type=float, help='Independent periodic observation rate per Agent; omitted retains legacy sequential loop')
     p.add_argument('--scope', choices=['faction', 'selected'], default='faction')
     p.add_argument('--layout', choices=['canonical', 'interleaved'], default='canonical')
@@ -82,7 +83,7 @@ def main():
         holder['world'] = scene.world
         holder['agents'] = LocalAgents(scene.world, args.agents,
             args.delay if args.delay == 'mixed' else float(args.delay), scope=args.scope,
-            encode=not args.no_encode, policy=args.policy, observation_hz=args.observation_hz)
+            encode=not args.no_encode, policy=args.policy, observation_hz=args.observation_hz, observation_mode=args.observation_mode)
         if args.attribute:
             holder['attribution'] = Attribution(holder['agents'].gate.action_handler)
         if args.movement_overlay:

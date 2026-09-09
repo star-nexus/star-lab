@@ -90,3 +90,51 @@ def test_periodic_stall_retains_all_due_pulls_and_original_queue_age():
     assert len(pulls) == 18
     assert pulls[2]['queue_ms'] == 7000
     assert len(agents.heap) == 4
+
+
+def test_all_modes_preserve_observations_actions_and_rng_trajectory():
+    results = []
+    for mode in ('single', 'batch-off', 'batch-on'):
+        agents, clock = setup(1, observation_hz=1, observation_mode=mode)
+        for t in (0, 1, 2, 3):
+            clock.now = t
+            agents.pump(1000)
+        results.append((dict(agents.counts),
+            [(r['event'], r['agent'], r.get('actions')) for r in agents.records]))
+    assert results[0] == results[1] == results[2]
+
+
+def test_batch_never_crosses_action_and_keeps_unconsumed_heap_serials(monkeypatch):
+    agents, clock = setup(observation_hz=1, observation_mode='batch-on')
+    agents.heap.clear()
+    agents._push(0, 'observe', 0)
+    agents._push(0, 'act', 0)
+    agents._push(0, 'observe', 1)
+    seen = []
+    original = agents.gate.process_observation_batch
+    def call(requests, **kwargs):
+        seen.append(len(requests))
+        return original(requests, **kwargs)
+    monkeypatch.setattr(agents.gate, 'process_observation_batch', call)
+    agents.pump(1000)
+    assert seen == [1, 1]
+    assert [r['event'] for r in agents.records[:3]] == ['observe', 'act', 'observe']
+    agents, clock = setup(observation_hz=1, observation_mode='batch-on')
+    pending = sorted(agents.heap)
+    monkeypatch.setattr(agents.gate, 'process_observation_batch',
+        lambda *a, **kw: {'consumed':0, 'responses':[], 'cache_metrics':{}})
+    agents.pump(1000)
+    assert sorted(agents.heap) == pending
+
+
+def test_overdue_recurrent_reads_keep_heap_order_across_batch_collection():
+    traces = []
+    for mode in ('single', 'batch-off', 'batch-on'):
+        agents, clock = setup(60, observation_hz=1, observation_mode=mode)
+        agents.heap.clear()
+        agents._push(0, 'observe', 0)
+        agents._push(4, 'observe', 1)
+        clock.now = 5
+        agents.pump(1000)
+        traces.append([(r['agent'], r['queue_ms']) for r in agents.records])
+    assert traces[0] == traces[1] == traces[2]

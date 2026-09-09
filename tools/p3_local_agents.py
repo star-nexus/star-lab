@@ -117,13 +117,19 @@ class Session:
 class LocalAgents:
     def __init__(self, world, count, delay=1.0, *, scope='faction', encode=True,
                  policy='mixed', seed=42, clock=time.perf_counter, max_records=2_000_000,
-                 observation_hz=None):
+                 observation_hz=None, observation_mode="single"):
         from rotk_env.components import Unit, UnitCount
         self.world, self.clock = world, clock
         self.gate = next(s for s in world.systems if s.__class__.__name__ == 'LLMSystem')
         self.scope, self.encode, self.policy = scope, encode, policy
         if observation_hz is not None and observation_hz <= 0:
             raise ValueError("observation_hz must be positive")
+        if observation_mode not in ('single', 'batch-off', 'batch-on'):
+            raise ValueError('Unknown observation mode')
+        if observation_mode != 'single' and not encode:
+            raise ValueError('Batch boundary requires encoding')
+        self.observation_mode = observation_mode
+        self.batch_metrics = Counter()
         self.observation_hz = observation_hz
         self.rng = random.Random(seed)
         self.sessions = []
@@ -183,11 +189,102 @@ class LocalAgents:
         self.serial += 1
         heapq.heappush(self.heap, (due, self.serial, event, index))
 
+    def _consume_observation(self, response, row, session, index, due):
+        rows = response.get('units', [])
+        row['returned_units'] = len(rows)
+        row['reachable'] = sum(len(u.get('reachable', [])) for u in rows)
+        row['attackable'] = sum(len(u.get('attackable', [])) for u in rows)
+        row['terrain'] = len(response.get('visible_terrain', []))
+        row['enemies'] = len(response.get('visible_enemy_units', []))
+        owned = set(session.units)
+        actions = []
+        for unit in rows:
+            uid = unit['unit_id']
+            if uid not in owned or not unit.get('commandable', True):
+                continue
+            targets = unit.get('attackable', [])
+            cells = unit.get('reachable', [])
+            if self.policy == 'mixed' and targets:
+                actions.append(('attack', {'unit_id': uid, 'target_id': self.rng.choice(targets)}))
+            elif self.policy != 'observe' and cells:
+                actions.append(('move', {'unit_id': uid, 'target_position': self.rng.choice(cells)}))
+        # Telemetry may arrive while a slow decision is in flight. Keep
+        # that decision's original snapshot/action set until it completes.
+        if not session.thinking:
+            session.actions = actions
+            session.observed_at = self.clock()
+            session.thinking = True
+            self._push(session.observed_at + session.delay, 'act', index)
+        if self.observation_hz:
+            # Retain scheduled deadlines under overload; no coalescing,
+            # drop, or completion-relative throttling hides offered load.
+            self._push(due + 1/self.observation_hz, 'observe', index)
+        self.counts['observations'] += 1
+
+    def _pump_observation_batch(self, remaining_ms):
+        cutoff = self.clock()
+        entries = []
+        horizon = cutoff
+        # Never look past an action or include a future request. Original heap
+        # serials are retained for the unconsumed suffix.
+        while (self.heap and len(entries) < 32 and self.heap[0][0] <= horizon
+               and self.heap[0][2] == 'observe'):
+            entries.append(heapq.heappop(self.heap))
+            if self.observation_hz:
+                horizon = min(horizon, entries[-1][0] + 1/self.observation_hz)
+        requests = []
+        for due, serial, event, index in entries:
+            session = self.sessions[index]
+            params = {'faction': session.faction}
+            if self.scope == 'selected':
+                params['unit_ids'] = session.units
+            self.request_id += 1
+            requests.append({'agent_id': session.agent_id,
+                             'action_id': self.request_id, 'params': params})
+        before = self.clock()
+        result = self.gate.process_observation_batch(
+            requests, budget_ms=max(0, remaining_ms - (before-cutoff)*1000),
+            reuse=self.observation_mode == 'batch-on')
+        available = self.clock()
+        consumed = result['consumed']
+        for entry in entries[consumed:]:
+            heapq.heappush(self.heap, entry)
+        self.batch_metrics.update(result['cache_metrics'])
+        self.batch_metrics['batches'] += 1
+        self.batch_metrics['requests'] += consumed
+        for entry, item in zip(entries[:consumed], result['responses']):
+            due, serial, event, index = entry
+            session = self.sessions[index]
+            # Every response becomes available at batch return. Individual build
+            # completion times must not make queue latency look artificially low.
+            row = {'t': before-self.epoch, 'event': event, 'agent': index,
+                   'queue_ms': max(0, before-due)*1000,
+                   'nominal_cycle_lag_ms': max(0, before-session.cycle_due)*1000,
+                   'build_ms': item['build_ms'], 'encode_ms': item['encode_ms'],
+                   'bytes': len(item['payload']), 'batch_size': consumed,
+                   'batch_return_ms': max(0, available-due)*1000}
+            decode_start = self.clock()
+            response = json.loads(item['payload'])
+            row['decode_ms'] = (self.clock()-decode_start)*1000
+            if not response.get('success'):
+                raise RuntimeError(f'Observation failed: {response}')
+            self._consume_observation(response, row, session, index, due)
+            row['service_ms'] = (self.clock()-before)*1000
+            row['response_ms'] = row['queue_ms'] + row['service_ms']
+            if len(self.records) >= self.max_records:
+                raise RuntimeError('event recorder overflow; no capacity claim')
+            self.records.append(row)
+        return consumed
+
     def pump(self, budget_ms=4.0):
         start = self.clock()
         while self.heap and self.heap[0][0] <= self.clock():
             if (self.clock() - start) * 1000 >= budget_ms:
                 break
+            if self.observation_mode != 'single' and self.heap[0][2] == 'observe':
+                if not self._pump_observation_batch(budget_ms-(self.clock()-start)*1000):
+                    break
+                continue
             due, _, event, index = heapq.heappop(self.heap)
             session = self.sessions[index]
             begin = self.clock()
@@ -207,36 +304,12 @@ class LocalAgents:
                     row['bytes'] = len(payload)
                 row['build_ms'] = (constructed - begin) * 1000
                 row['encode_ms'] = (self.clock() - constructed) * 1000
-                rows = response.get('units', [])
-                row['returned_units'] = len(rows)
-                row['reachable'] = sum(len(u.get('reachable', [])) for u in rows)
-                row['attackable'] = sum(len(u.get('attackable', [])) for u in rows)
-                row['terrain'] = len(response.get('visible_terrain', []))
-                row['enemies'] = len(response.get('visible_enemy_units', []))
-                owned = set(session.units)
-                actions = []
-                for unit in rows:
-                    uid = unit['unit_id']
-                    if uid not in owned or not unit.get('commandable', True):
-                        continue
-                    targets = unit.get('attackable', [])
-                    cells = unit.get('reachable', [])
-                    if self.policy == 'mixed' and targets:
-                        actions.append(('attack', {'unit_id': uid, 'target_id': self.rng.choice(targets)}))
-                    elif self.policy != 'observe' and cells:
-                        actions.append(('move', {'unit_id': uid, 'target_position': self.rng.choice(cells)}))
-                # Telemetry may arrive while a slow decision is in flight. Keep
-                # that decision's original snapshot/action set until it completes.
-                if not session.thinking:
-                    session.actions = actions
-                    session.observed_at = self.clock()
-                    session.thinking = True
-                    self._push(session.observed_at + session.delay, 'act', index)
-                if self.observation_hz:
-                    # Retain scheduled deadlines under overload; no coalescing,
-                    # drop, or completion-relative throttling hides offered load.
-                    self._push(due + 1/self.observation_hz, 'observe', index)
-                self.counts['observations'] += 1
+                # All three modes include the same JSON client boundary.
+                if self.encode:
+                    decode_start = self.clock()
+                    response = json.loads(payload)
+                    row['decode_ms'] = (self.clock() - decode_start) * 1000
+                self._consume_observation(response, row, session, index, due)
             else:
                 row['snapshot_age_ms'] = (begin - session.observed_at) * 1000
                 row['actions'] = []
@@ -269,6 +342,7 @@ class LocalAgents:
         now = self.clock()
         due = [entry for entry in self.heap if entry[0] <= now]
         return {'counts': dict(self.counts), 'sessions': len(self.sessions),
+                'batch_metrics': dict(self.batch_metrics), 'observation_mode': self.observation_mode,
                 'setup_ms': self.setup_ms, 'pending_events': len(self.heap),
                 'overdue_events': len(due), 'oldest_overdue_ms': max([0] + [(now-e[0])*1000 for e in due]),
                 'cycles_per_session': stats([s.completed for s in self.sessions]),

@@ -105,3 +105,16 @@ Before main `08c857e5df39f671c5a13bf04b9af9aac0800e78`; pre-squash tag `p3-read-
 30diagnostics archived with raw reanalysis and SHA256,65archive artifacts including deduplicated fixtures/oracle.
 3K/1K/1Hz batch-off11.89%→on21.06%;5K/1K8.81%→14.03%;10K/1K3.48%→2.95%. No target capacity accepted; no formal long certification begun.
 All experimental tools/evidence remain Lab; source/rule-compatible API/contracts/docs in STAR. Next: review cold-snapshot and full-output cost before another optimization.
+
+
+## 最新用户确认：闭环Agent，24Hz可接受，30Hz为更高目标
+
+本节优先于下方历史计划中的独立轮询要求。用户原话是“观测从1Hz/Agent建立基线，再测5、10、30Hz”，没有明确要求LLM思考期间持续轮询；助手将其解释为独立周期观测，随后错误地归因为用户的明确要求。现予更正。
+
+- 主要交互方式：获取一次观测 → 模拟LLM思考（例如30秒）→ 提交动作 → 获取下一次观测。思考期间不额外轮询，不替换当前决策快照。
+- 独立1/5/10/30Hz结果保留为额外压力测试，不再作为真实LLM闭环必须达到的主要容量标准。不能据这些压力测试失败断言闭环千Agent不可用。
+- 用户接受5000 Units/1000 Agents、30秒闭环已有300秒测试的实际表现：平均世界30Hz、整帧P99=34.5907ms、观测P99=35.6697ms、动作排队P99=28.4315ms、名义闭环负载完成99.9%。旧33.333ms严格门槛失败的历史标签不改写；这组数据可作为用户接受的工程使用基线。
+- 大规模评测允许世界24Hz（每步约41.667ms），30Hz保留为更高目标。既有34.5907ms低于24Hz对应预算，支持可行性判断，但不是已运行24Hz的直接验证。旧证据源于第一轮版本，不能标为最新源码的24Hz认证。
+- 5000 Units为驻留/受控规模，不表示5000个单位始终同时移动。Protocol/Hub未计入，不能写成完整网络千人在线认证。
+- 后续恢复工作时优先核验最新版5000/1000、30秒闭环、24Hz，再视结果评估30Hz。保持世界每秒模拟时间、移动/恢复/冷却与30秒思考的墙钟语义；不能靠放慢游戏取得帧率。
+- 并行架构继续暂停；暂不因独立轮询压力测试失败扩大优化范围。本次仅更新活动记录，未改生产运行频率、未启动新性能实验。更强硬件改善30Hz是合理假设，尤其取决于单核性能，仍需实测。

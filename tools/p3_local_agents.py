@@ -86,6 +86,25 @@ class Attribution:
                     row[1] += (time.perf_counter() - start) * 1000
             self.originals.append((handler, name, original))
             setattr(handler, name, wrapped)
+        # Diagnostic only: distinguish cold construction from cache lookup.
+        try:
+            from rotk_env.utils.observation_batch import ObservationBatchContext
+        except ImportError:
+            ObservationBatchContext = None
+        if ObservationBatchContext is not None:
+            original_memo = ObservationBatchContext.memo
+            def timed_memo(context, kind, key, build):
+                cached = context._cache.get(kind, {})
+                hit = context.reuse and key in cached
+                start = time.perf_counter()
+                try:
+                    return original_memo(context, kind, key, build)
+                finally:
+                    row = self.values['batch.' + kind + ('.hit' if hit else '.build')]
+                    row[0] += 1
+                    row[1] += (time.perf_counter()-start)*1000
+            self.originals.append((ObservationBatchContext, 'memo', original_memo))
+            ObservationBatchContext.memo = timed_memo
         from rotk_env.utils import map_query
         for name in ('unit_cells', 'occupied_cells', 'path_blockers', 'plan_hex_path'):
             original = getattr(map_query, name)

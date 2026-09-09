@@ -38,6 +38,8 @@ def analyze(point_path, raw_path=None):
         'moving_units':stats([r['moving'] for r in admitted_census]),
         'observations_per_session':stats([counts[i] for i in range(session_count)]),
         'observation_build_ms':stats([r['build_ms'] for r in events if r['event']=='observe']),
+        'observation_decode_ms':stats([r['decode_ms'] for r in events if 'decode_ms' in r]),
+        'observed_batch_size':stats([r['batch_size'] for r in events if 'batch_size' in r]),
         'observation_encode_ms':stats([r['encode_ms'] for r in events if r['event']=='observe']),
         'observation_bytes':stats([r['bytes'] for r in events if 'bytes' in r]),
         'agent_frame_ms':stats([r['agent_ms'] for r in frames]),

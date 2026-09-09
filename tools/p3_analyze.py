@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+from collections import Counter
 from pathlib import Path
 from p3_local_agents import stats
 
@@ -29,10 +30,19 @@ def analyze(point_path, raw_path=None):
             raise ValueError(f'{name} differs from raw recomputation')
     admitted_census = [r for r in raw['censuses'] if r['t'] >= warmup]
     action_rows = [a for r in events for a in r.get('actions', [])]
+    counts = Counter(r['agent'] for r in events if r['event'] == 'observe')
+    session_count = point['workload']['agents']
     return {'verified':True, 'source':point['source']['sha'], 'metrics':metrics,
         'frame_count':len(frames), 'completed_observations':metrics['observation_response_ms']['count'],
         'alive_units':stats([r['alive'] for r in admitted_census]),
         'moving_units':stats([r['moving'] for r in admitted_census]),
+        'observations_per_session':stats([counts[i] for i in range(session_count)]),
+        'observation_build_ms':stats([r['build_ms'] for r in events if r['event']=='observe']),
+        'observation_encode_ms':stats([r['encode_ms'] for r in events if r['event']=='observe']),
+        'observation_bytes':stats([r['bytes'] for r in events if 'bytes' in r]),
+        'agent_frame_ms':stats([r['agent_ms'] for r in frames]),
+        'simulation_seconds':sum(r['dt'] for r in frames),
+        'maxrss_bytes':max([0]+[r['maxrss'] for r in admitted_census]),
         'sampled_position_changes':sum(r['position_changes'] for r in admitted_census),
         'accepted_moves':sum(a['verb']=='move' and a['accepted'] for a in action_rows),
         'accepted_attacks':sum(a['verb']=='attack' and a['accepted'] for a in action_rows),

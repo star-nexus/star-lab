@@ -22,6 +22,7 @@ def archive(point_path, case):
     artifacts.mkdir(parents=True,exist_ok=True)
     results.mkdir(parents=True,exist_ok=True)
     raw_zip = artifacts/(run+'-raw.zip')
+    fixture_artifact = None
     with zipfile.ZipFile(raw_zip,'w',zipfile.ZIP_DEFLATED) as z:
         for path in (point_path, point_path.with_suffix('.raw.json'), point_path.with_suffix('.log')):
             if path.exists():
@@ -32,8 +33,15 @@ def archive(point_path, case):
         if fixture.exists():
             if hashlib.sha256(fixture.read_bytes()).hexdigest() != original['fixture_sha256']:
                 raise ValueError('fixture differs from recorded source')
-            z.write(fixture,fixture.name)
+            # A generated scenario has one canonical archive, reused by every run.
+            fixture_zip = artifacts / ('fixture-'+original['fixture_sha256']+'.zip')
+            if not fixture_zip.exists():
+                with zipfile.ZipFile(fixture_zip,'w',zipfile.ZIP_DEFLATED) as fz:
+                    fz.write(fixture,fixture.name)
+            fixture_artifact = digest(fixture_zip)
+            fixture_artifact['path'] = 'artifacts/'+fixture_zip.name
     compact = {k:v for k,v in original.items() if k != 'censuses'}
+    compact['fixture_package'] = fixture_artifact
     compact['raw_package'] = digest(raw_zip)
     compact['raw_package']['path'] = 'artifacts/'+raw_zip.name
     compact['reanalysis'] = analysis

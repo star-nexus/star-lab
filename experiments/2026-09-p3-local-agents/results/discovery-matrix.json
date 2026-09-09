@@ -1,0 +1,412 @@
+[
+  {
+    "run": "poll100-a100-h1",
+    "source": "e8b48c0568fb8830055bf053a724acc2b4e5c04c",
+    "tooling": {
+      "path": "/Users/liyang/Developer/star-lab",
+      "sha": "921d5bfb2cba9b6250d45d9c08a21f5e3d6f758d",
+      "dirty": ""
+    },
+    "units": 100,
+    "agents": 100,
+    "observation_hz": 1.0,
+    "decision_delay_s": "1",
+    "frame_p99_ms": 15.641998994397,
+    "world_hz": 30.0,
+    "observation_p99_ms": 32.074292001198046,
+    "completed": 1500,
+    "offered": 1500,
+    "load_fraction": 1.0,
+    "guards": {
+      "complete": true,
+      "source_clean": true,
+      "tooling_clean": true,
+      "fog_on": true,
+      "world_alive": true,
+      "resident_retained": true,
+      "position_progress": true,
+      "frame_p99": true,
+      "world_hz": true,
+      "observation_p99": true,
+      "action_queue_p99": true,
+      "queue_bounded": true,
+      "offered_load_met": true,
+      "duration_formal": false,
+      "not_diagnostic": true
+    },
+    "raw_package": {
+      "path": "artifacts/poll100-a100-h1-raw.zip",
+      "size": 259506,
+      "sha256": "37151c3a601a2d1c6930276fad3f0722c34ab548c68b62069127cabd04c24ecf"
+    }
+  },
+  {
+    "run": "poll1000-a1000-h1",
+    "source": "e8b48c0568fb8830055bf053a724acc2b4e5c04c",
+    "tooling": {
+      "path": "/Users/liyang/Developer/star-lab",
+      "sha": "921d5bfb2cba9b6250d45d9c08a21f5e3d6f758d",
+      "dirty": ""
+    },
+    "units": 1000,
+    "agents": 1000,
+    "observation_hz": 1.0,
+    "decision_delay_s": "1",
+    "frame_p99_ms": 22.515874996315688,
+    "world_hz": 30.0,
+    "observation_p99_ms": 14079.071083004237,
+    "completed": 4426,
+    "offered": 15000,
+    "load_fraction": 0.29506666666666664,
+    "guards": {
+      "complete": true,
+      "source_clean": true,
+      "tooling_clean": true,
+      "fog_on": true,
+      "world_alive": true,
+      "resident_retained": true,
+      "position_progress": true,
+      "frame_p99": true,
+      "world_hz": true,
+      "observation_p99": false,
+      "action_queue_p99": false,
+      "queue_bounded": false,
+      "offered_load_met": false,
+      "duration_formal": false,
+      "not_diagnostic": true
+    },
+    "raw_package": {
+      "path": "artifacts/poll1000-a1000-h1-raw.zip",
+      "size": 532055,
+      "sha256": "8c3877bce235636656134adbb89c087df84e0a913a31b88fde868ed05ca15b0f"
+    }
+  },
+  {
+    "run": "poll3000-a1000-h1",
+    "source": "e8b48c0568fb8830055bf053a724acc2b4e5c04c",
+    "tooling": {
+      "path": "/Users/liyang/Developer/star-lab",
+      "sha": "921d5bfb2cba9b6250d45d9c08a21f5e3d6f758d",
+      "dirty": ""
+    },
+    "units": 3000,
+    "agents": 1000,
+    "observation_hz": 1.0,
+    "decision_delay_s": "1",
+    "frame_p99_ms": 23.887499992270023,
+    "world_hz": 30.0,
+    "observation_p99_ms": 17534.449500002665,
+    "completed": 1809,
+    "offered": 15000,
+    "load_fraction": 0.1206,
+    "guards": {
+      "complete": true,
+      "source_clean": true,
+      "tooling_clean": true,
+      "fog_on": true,
+      "world_alive": true,
+      "resident_retained": true,
+      "position_progress": true,
+      "frame_p99": true,
+      "world_hz": true,
+      "observation_p99": false,
+      "action_queue_p99": false,
+      "queue_bounded": false,
+      "offered_load_met": false,
+      "duration_formal": false,
+      "not_diagnostic": true
+    },
+    "raw_package": {
+      "path": "artifacts/poll3000-a1000-h1-raw.zip",
+      "size": 231846,
+      "sha256": "e5ed9964a6b5a5299e986265e76aa2d235d8ef02bb6f2e95b905d65f81d24a9c"
+    }
+  },
+  {
+    "run": "poll5000-a1000-h1",
+    "source": "e8b48c0568fb8830055bf053a724acc2b4e5c04c",
+    "tooling": {
+      "path": "/Users/liyang/Developer/star-lab",
+      "sha": "921d5bfb2cba9b6250d45d9c08a21f5e3d6f758d",
+      "dirty": ""
+    },
+    "units": 5000,
+    "agents": 1000,
+    "observation_hz": 1.0,
+    "decision_delay_s": "1",
+    "frame_p99_ms": 29.244833989650942,
+    "world_hz": 30.0,
+    "observation_p99_ms": 18148.628249997273,
+    "completed": 1349,
+    "offered": 15000,
+    "load_fraction": 0.08993333333333334,
+    "guards": {
+      "complete": true,
+      "source_clean": true,
+      "tooling_clean": true,
+      "fog_on": true,
+      "world_alive": true,
+      "resident_retained": true,
+      "position_progress": true,
+      "frame_p99": true,
+      "world_hz": true,
+      "observation_p99": false,
+      "action_queue_p99": false,
+      "queue_bounded": false,
+      "offered_load_met": false,
+      "duration_formal": false,
+      "not_diagnostic": true
+    },
+    "raw_package": {
+      "path": "artifacts/poll5000-a1000-h1-raw.zip",
+      "size": 186592,
+      "sha256": "07d4c0399e91579cf7e419dfb5c0f8c96fc4c05503bae51139b57e90e0d08c31"
+    }
+  },
+  {
+    "run": "poll10000-a1000-h1",
+    "source": "e8b48c0568fb8830055bf053a724acc2b4e5c04c",
+    "tooling": {
+      "path": "/Users/liyang/Developer/star-lab",
+      "sha": "921d5bfb2cba9b6250d45d9c08a21f5e3d6f758d",
+      "dirty": ""
+    },
+    "units": 10000,
+    "agents": 1000,
+    "observation_hz": 1.0,
+    "decision_delay_s": "1",
+    "frame_p99_ms": 42.274166000424884,
+    "world_hz": 26.733333333333334,
+    "observation_p99_ms": 18853.51712499687,
+    "completed": 798,
+    "offered": 15000,
+    "load_fraction": 0.0532,
+    "guards": {
+      "complete": true,
+      "source_clean": true,
+      "tooling_clean": true,
+      "fog_on": true,
+      "world_alive": true,
+      "resident_retained": true,
+      "position_progress": false,
+      "frame_p99": false,
+      "world_hz": false,
+      "observation_p99": false,
+      "action_queue_p99": false,
+      "queue_bounded": false,
+      "offered_load_met": false,
+      "duration_formal": false,
+      "not_diagnostic": true
+    },
+    "raw_package": {
+      "path": "artifacts/poll10000-a1000-h1-raw.zip",
+      "size": 132294,
+      "sha256": "8d96d44564ab8a1922e06285f81e89d613cedfe1220d999f2204ff4914786acf"
+    }
+  },
+  {
+    "run": "poll10000-a5000-h1",
+    "source": "e8b48c0568fb8830055bf053a724acc2b4e5c04c",
+    "tooling": {
+      "path": "/Users/liyang/Developer/star-lab",
+      "sha": "921d5bfb2cba9b6250d45d9c08a21f5e3d6f758d",
+      "dirty": ""
+    },
+    "units": 10000,
+    "agents": 5000,
+    "observation_hz": 1.0,
+    "decision_delay_s": "1",
+    "frame_p99_ms": 38.878250008565374,
+    "world_hz": 28.8,
+    "observation_p99_ms": 19652.293916005874,
+    "completed": 865,
+    "offered": 75000,
+    "load_fraction": 0.011533333333333333,
+    "guards": {
+      "complete": true,
+      "source_clean": true,
+      "tooling_clean": true,
+      "fog_on": true,
+      "world_alive": true,
+      "resident_retained": true,
+      "position_progress": false,
+      "frame_p99": false,
+      "world_hz": false,
+      "observation_p99": false,
+      "action_queue_p99": false,
+      "queue_bounded": false,
+      "offered_load_met": false,
+      "duration_formal": false,
+      "not_diagnostic": true
+    },
+    "raw_package": {
+      "path": "artifacts/poll10000-a5000-h1-raw.zip",
+      "size": 129160,
+      "sha256": "81af32ec1e0a441aed5c7414cf7f30b2102194232bdf3c047cf5b4a243bd86a1"
+    }
+  },
+  {
+    "run": "poll10000-a10000-h1",
+    "source": "e8b48c0568fb8830055bf053a724acc2b4e5c04c",
+    "tooling": {
+      "path": "/Users/liyang/Developer/star-lab",
+      "sha": "921d5bfb2cba9b6250d45d9c08a21f5e3d6f758d",
+      "dirty": ""
+    },
+    "units": 10000,
+    "agents": 10000,
+    "observation_hz": 1.0,
+    "decision_delay_s": "1",
+    "frame_p99_ms": 38.928666996071115,
+    "world_hz": 29.066666666666666,
+    "observation_p99_ms": 19740.366749989334,
+    "completed": 872,
+    "offered": 150000,
+    "load_fraction": 0.0058133333333333335,
+    "guards": {
+      "complete": true,
+      "source_clean": true,
+      "tooling_clean": true,
+      "fog_on": true,
+      "world_alive": true,
+      "resident_retained": true,
+      "position_progress": false,
+      "frame_p99": false,
+      "world_hz": false,
+      "observation_p99": false,
+      "action_queue_p99": false,
+      "queue_bounded": false,
+      "offered_load_met": false,
+      "duration_formal": false,
+      "not_diagnostic": true
+    },
+    "raw_package": {
+      "path": "artifacts/poll10000-a10000-h1-raw.zip",
+      "size": 140813,
+      "sha256": "710fc82372beb360aeb7d4702ef92406c20a125d9fd8b4767276217a7cca7382"
+    }
+  },
+  {
+    "run": "poll5000-a1000-h5",
+    "source": "e8b48c0568fb8830055bf053a724acc2b4e5c04c",
+    "tooling": {
+      "path": "/Users/liyang/Developer/star-lab",
+      "sha": "921d5bfb2cba9b6250d45d9c08a21f5e3d6f758d",
+      "dirty": ""
+    },
+    "units": 5000,
+    "agents": 1000,
+    "observation_hz": 5.0,
+    "decision_delay_s": "1",
+    "frame_p99_ms": 28.9819159952458,
+    "world_hz": 30.0,
+    "observation_p99_ms": 19520.605124998838,
+    "completed": 1350,
+    "offered": 75000,
+    "load_fraction": 0.018,
+    "guards": {
+      "complete": true,
+      "source_clean": true,
+      "tooling_clean": true,
+      "fog_on": true,
+      "world_alive": true,
+      "resident_retained": true,
+      "position_progress": false,
+      "frame_p99": true,
+      "world_hz": true,
+      "observation_p99": false,
+      "action_queue_p99": false,
+      "queue_bounded": false,
+      "offered_load_met": false,
+      "duration_formal": false,
+      "not_diagnostic": true
+    },
+    "raw_package": {
+      "path": "artifacts/poll5000-a1000-h5-raw.zip",
+      "size": 187001,
+      "sha256": "7af99726584a5853bd8a5e9e164608ec4e3410bc9380bacd636cd86c46a3ef1f"
+    }
+  },
+  {
+    "run": "poll5000-a1000-h10-clean",
+    "source": "e8b48c0568fb8830055bf053a724acc2b4e5c04c",
+    "tooling": {
+      "path": "/Users/liyang/Developer/star-lab",
+      "sha": "921d5bfb2cba9b6250d45d9c08a21f5e3d6f758d",
+      "dirty": ""
+    },
+    "units": 5000,
+    "agents": 1000,
+    "observation_hz": 10.0,
+    "decision_delay_s": "1",
+    "frame_p99_ms": 27.808041995740496,
+    "world_hz": 30.0,
+    "observation_p99_ms": 19705.091541982256,
+    "completed": 1351,
+    "offered": 150000,
+    "load_fraction": 0.009006666666666666,
+    "guards": {
+      "complete": true,
+      "source_clean": true,
+      "tooling_clean": true,
+      "fog_on": true,
+      "world_alive": true,
+      "resident_retained": true,
+      "position_progress": false,
+      "frame_p99": true,
+      "world_hz": true,
+      "observation_p99": false,
+      "action_queue_p99": false,
+      "queue_bounded": false,
+      "offered_load_met": false,
+      "duration_formal": false,
+      "not_diagnostic": true
+    },
+    "raw_package": {
+      "path": "artifacts/poll5000-a1000-h10-clean-raw.zip",
+      "size": 187347,
+      "sha256": "1997291f095bbebcf9e6f871800ab76471f4b2f6a03d93eeffd1bbba2d0349f1"
+    }
+  },
+  {
+    "run": "poll5000-a1000-h30",
+    "source": "e8b48c0568fb8830055bf053a724acc2b4e5c04c",
+    "tooling": {
+      "path": "/Users/liyang/Developer/star-lab",
+      "sha": "921d5bfb2cba9b6250d45d9c08a21f5e3d6f758d",
+      "dirty": ""
+    },
+    "units": 5000,
+    "agents": 1000,
+    "observation_hz": 30.0,
+    "decision_delay_s": "1",
+    "frame_p99_ms": 29.949874995509163,
+    "world_hz": 30.0,
+    "observation_p99_ms": 19819.82099999732,
+    "completed": 1350,
+    "offered": 450000,
+    "load_fraction": 0.003,
+    "guards": {
+      "complete": true,
+      "source_clean": true,
+      "tooling_clean": true,
+      "fog_on": true,
+      "world_alive": true,
+      "resident_retained": true,
+      "position_progress": false,
+      "frame_p99": true,
+      "world_hz": true,
+      "observation_p99": false,
+      "action_queue_p99": false,
+      "queue_bounded": false,
+      "offered_load_met": false,
+      "duration_formal": false,
+      "not_diagnostic": true
+    },
+    "raw_package": {
+      "path": "artifacts/poll5000-a1000-h30-raw.zip",
+      "size": 191443,
+      "sha256": "f8f373435fc8ea0bb0b668f7ecb5e574bfd1e4a52340242826147656da2a5ff1"
+    }
+  }
+]

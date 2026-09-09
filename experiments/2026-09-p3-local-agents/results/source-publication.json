@@ -1,0 +1,17 @@
+{
+  "production_repository": "https://github.com/star-nexus/star.git",
+  "main": "08c857e5df39f671c5a13bf04b9af9aac0800e78",
+  "main_parent": "02d0fc1b598c54a172e1122ac9ea4c1e2f46ec15",
+  "pre_squash_tag": "p3-observation-pre-squash-2026-09-09",
+  "annotated_tag_object": "83aab9c52cb9a6dd6295148e9b80370ced7a3ce5",
+  "peeled_development_commit": "c9737451de97f1b1903123377a1514227c3ffdf5",
+  "push": "atomic main and annotated tag; remote ls-remote verified",
+  "lab_archive": "this commit and its ancestors; locate with git log -1 -- experiments/2026-09-p3-local-agents",
+  "archive_checks": {
+    "runtime_raw_zip_reanalysis": 24,
+    "regression_tests": 881,
+    "performance_contracts": 81,
+    "lab_tests": 7
+  },
+  "capacity_accepted": false
+}

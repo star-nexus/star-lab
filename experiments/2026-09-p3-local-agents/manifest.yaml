@@ -1,34 +1,65 @@
 experiment:
   id: 2026-09-p3-local-agents
   title: Local synthetic Agent observation and action scalability
-  date: 2026-09-08
+  date: 2026-09-09
   status: reproduced
+  optimization_status: validated_and_integrated
+  capacity_goal: open_not_met
 source:
   repository: star-nexus/star
   problem_commit: 02d0fc1b598c54a172e1122ac9ea4c1e2f46ec15
-  measurement_commit: per-result source.sha and tooling.sha
-  fix_commit: null
-  validated_commit: null
-  validated_tag: null
+  timed_commit: e8b48c0568fb8830055bf053a724acc2b4e5c04c
+  development_commit: c9737451de97f1b1903123377a1514227c3ffdf5
+  pre_squash_tag: p3-observation-pre-squash-2026-09-09
+  integrated_main: 08c857e5df39f671c5a13bf04b9af9aac0800e78
+  integration_method: git merge --squash
+  capacity_validated_commit: null
+  capacity_validated_tag: null
+  measurement_tooling: per-result tooling.sha; corrected matrix 921d5bfb2cba9b6250d45d9c08a21f5e3d6f758d
+  archive_tooling: tools/p3_archive.py, tools/p3_analyze.py, tools/p3_report.py in this archive commit
 hardware:
-  machine: current host; per-runtime metadata
-  chrome: kept open
+  cpu: Apple M4
+  model: Mac16,10
+  memory_bytes: 17179869184
+  os: macOS 26.5.2 arm64
+  python: 3.13.12
+  window: [2480, 1261]
+  chrome: kept open; no slow frames removed
+  concurrency: one performance process at a time
 scenario:
   canonical: E8 120x120 fixture with deterministic per-faction prefix selection
   interleaved: seeded permutation of parsed legal cells with one-in-four gaps
+  fixture: per-result fixture_sha256 and fixture_package
 workload:
   seed: 42
-  agent_delays_seconds: [1, 5, 15, 60]
-  transport: local ENV business gate; no Hub or LLM
-  json_encoding: included unless explicitly disabled
+  world_target_hz: 30
+  observation_hz: [1, 5, 10, 30]
+  decision_latency: independent; 1s for corrected matrix; legacy sequential 1/5/15/30/60s separately labeled
+  agents_units: per-result workload
+  transport: local ENV business gate; no Hub, socket, ingress cooldown wrapper or LLM
+  serialization: observation JSON included except explicit ablation; action reply JSON excluded
+  gc_policy: realtime_defer finite epoch; legacy auto points explicitly labeled
+  minimap_units: off
+  gameplay_input: blocked
 measurement:
-  discovery: short diagnostics only
-  formal: one >=300s and three >=60s fresh-process traces per accepted point
+  discovery: 5s warmup plus 15s; diagnostic only
+  formal_rule: one >=300s and three >=60s independent-process traces per accepted point
+  candidate_long: 30s warmup plus 300s; FAILED full-frame P99
+  complete_frame_includes: Agent pump, ENV, render, census, profiler bookkeeping
+  excludes: deliberate FPS wait, setup, teardown
   gates: records/10k-online-p3-progress.md
 artifacts:
-  formal: []
+  index: artifacts/index.json
+  checksums: artifacts/SHA256SUMS
+  runtime_raw_packages: 24
+  compact: results/*.json plus artifacts/*-compact.zip
+  raw: artifacts/*-raw.zip
+  fixtures: artifacts/fixture-*.zip; one canonical copy per fixture hash
+  formal_accepted_points: []
   external: []
+validation:
+  integration: results/integration-validation.json
+  archive: all 24 runtime ZIPs unpacked and reanalyzed; global checksums verified
 headline:
-  problem_signature: repeated global occupancy and visible-enemy checks per own-unit panel
-  resolution: pending controlled validation
-  result: no formal capacity point yet
+  result: 3000 units /1000 agents /1Hz completes 12.06 percent of offered observations; goal not met
+  next: profile shared faction snapshot construction with explicit read-batch freshness boundaries

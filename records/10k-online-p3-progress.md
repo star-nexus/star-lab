@@ -1,6 +1,6 @@
 # P3 — local synthetic Agent / ENV interaction
 
-Updated: 2026-09-09. Status: P3.0/P3.1 complete; P3.2 reproduced; P3.3 candidates under validation. No new capacity claim.
+Updated: 2026-09-09. Status: P3.0/P3.1 complete; P3.2 reproduced; P3.3 first-round fixes integrated; corrected P3.4 discovery archived. Capacity goal OPEN.
 
 ## Scope and identity
 
@@ -41,9 +41,9 @@ Chrome remains open. One performance process at a time. No slow-frame deletion.
 | P3.0 | complete | This contract; resume/priorities updated; baseline/dev isolated worktrees |
 | P3.1 | complete | Local deterministic registration/claim/observe/think/act driver + meaningful tests |
 | P3.2 | reproduced | Source-pinned baseline, causal counts/timing, negative evidence |
-| P3.3 | in progress | Evidence-led production optimization, A/B, correctness regression |
-| P3.4 | pending | Size/delay frontier and formal candidate repeats |
-| P3.5 | pending | Protocol-standard archive, source tags, squash integration and final receipt |
+| P3.3 | first round integrated | Evidence-led production optimization, A/B, correctness regression |
+| P3.4 | discovery complete; capacity unmet | Size/delay frontier and formal candidate repeats |
+| P3.5 | first-round archive/integration complete | Protocol-standard archive, source tags, squash integration and final receipt |
 
 ## Source and archive policy
 
@@ -55,7 +55,7 @@ Before main integration, annotated tag pins developer tip. Integrate exclusively
 
 ## Next action
 
-Build the local driver and deterministic smoke workload, then establish observation cost on baseline before production changes.
+First-round integration and corrected discovery are complete. Next: explicit read-batch shared faction observation construction; see the checkpoint below.
 
 ## Checkpoint — driver and attribution
 
@@ -83,3 +83,15 @@ The user explicitly requested observation 1/5/10/30 Hz per Agent, independently 
 ## Corrected observation discovery matrix (preregistered)
 
 Run fresh serial processes at 1Hz for (Units,Agents)=(100,100),(1000,1000),(3000,1000),(5000,1000),(10000,1000),(10000,5000),(10000,10000), then 5/10/30Hz at 5000/1000. Each is 5s warmup +15s measurement, 1s decision latency, selected panels, JSON, canonical map, move, realtime_defer, 12ms pump. These short overload diagnostics cannot validate capacity. Run a separate 3000/1000/1Hz attribution trace and no-encode counterpart to distinguish construction and serialization. The attributable trace completed first (12.31% offered observation load; 17.503s service P99), and is explicitly not a formal point.
+
+
+## First-round integration and reproducibility checkpoint
+
+Main `08c857e5df39f671c5a13bf04b9af9aac0800e78` via squash; pre-merge tag
+`p3-observation-pre-squash-2026-09-09` pins `c9737451de97f1b1903123377a1514227c3ffdf5`.
+Timed source remains `e8b48c0568fb8830055bf053a724acc2b4e5c04c`; final developer change is docs/comments only.
+881 production /81 structural /7 Lab tests passed. All24 runtime raw ZIPs checksum-verified and reanalyzed.
+Corrected matrix is archived in the case; 3000/1000/1Hz completes12.06%, 5000/1000/1Hz8.99%, 10000/10000/1Hz0.58%.
+No accepted four-trace point; no Frontier addition. No 100%-moving plus observation capacity claim.
+Next: read-batch sharing of faction public observations with explicit freshness boundaries and per-Agent private panel construction.
+P3 overall remains OPEN; do not repeat P0 or the completed first-round implementation.

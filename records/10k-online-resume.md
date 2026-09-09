@@ -1,6 +1,6 @@
 # 10K / 100% moving / 30 Hz — 恢复入口
 
-更新：2026-09-08。当前阶段：P0 已完成；按用户指令跳过 P1/P2，P3 本地合成 Agent 交互进行中。
+更新：2026-09-09。当前阶段：P0 已完成；跳过 P1/P2；P3 第一轮观测优化已集成，千 Agent 容量目标未达成。
 本文件是唯一活动恢复入口，已从 STAR 的 `docs/dev/` 迁至 STAR Lab。
 先读本文件即可恢复目标、边界和下一步；执行时再按下方链接读取对应证据。
 
@@ -68,3 +68,27 @@ star-main 集成只允许 `git merge --squash`：合并前创建 annotated tag �
 同时记录 main 前置 SHA、开发 tip/tag、squash 后 main SHA。已发布 tag 不移动。
 所有实验工具、夹具、raw、分析和记录留 Lab；STAR 留生产代码、必要契约测试和用户文档。
 Chrome 保持开启；性能任务不并发，不因怀疑系统干扰删慢帧。
+
+
+## 最新检查点：P3 第一轮收尾（2026-09-09）
+
+优先阅读 [P3 第一轮报告](../experiments/2026-09-p3-local-agents/README.md)、
+[分析](../experiments/2026-09-p3-local-agents/analysis.md) 和
+[决策/下一步](../experiments/2026-09-p3-local-agents/decision.md)。
+
+- STAR main：`08c857e5df39f671c5a13bf04b9af9aac0800e78`。
+- 合并前 annotated tag：`p3-observation-pre-squash-2026-09-09` → `c9737451de97f1b1903123377a1514227c3ffdf5`。
+- 性能测量实现：`e8b48c0568fb8830055bf053a724acc2b4e5c04c`；tag tip 仅追加文档/注释。
+- 按 `git merge --squash` 集成，main 单 parent，树与 tag 一致；881 回归、81 性能契约、7 Lab 测试通过。
+- 独立1Hz观测：3000 Units/1000 Agents完成12.06%请求，5000/1000为8.99%，10000/10000为0.58%。
+- 5/10/30Hz已在5000/1000分别扫点。所有规模数据是15s诊断，不能发布容量。
+- 较早5000/1000/30s顺序闭环，60s通过但300s整帧P99=34.591ms失败；所有负证据保留。
+- 24组运行compact/raw ZIP已归档、SHA256核验、解包重算；fixture按hash单份保存。
+- 不新增Frontier，不移动E8里程碑；P3容量目标OPEN，Protocol/Hub继续暂缓。
+
+**下一项**：在保持共享视野和实时合法性的前提下，设计显式只读批次，复用同一快照的阵营共享观测构建。
+先做共享部分与Agent私有owner/commandable/affordance的成本拆分、失效契约与对照，
+再按独立1Hz验证3000/1000，不能改回低频决策闭环作为替代。
+目前未实现共享批次API；不要误把本轮“局部优化已合并”当成P3整体完成。
+
+生产 main 与 pre-squash annotated tag 已原子推送且远端 SHA 核验通过；本轮 Lab 归档提交及其祖先一并保存至 origin/main。

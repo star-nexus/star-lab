@@ -1,0 +1,70 @@
+{
+  "source_sha": "08c857e5df39f671c5a13bf04b9af9aac0800e78",
+  "commands": [
+    {
+      "command": [
+        "/Users/liyang/Developer/star-main/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "cwd": "/Users/liyang/Developer/star-main",
+      "returncode": 0,
+      "stdout": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................................................ [ 32%]\n........................................................................ [ 40%]\n........................................................................ [ 49%]\n........................................................................ [ 57%]\n........................................................................ [ 65%]\n........................................................................ [ 73%]\n........................................................................ [ 81%]\n........................................................................ [ 89%]\n........................................................................ [ 98%]\n.................                                                        [100%]\n881 passed in 4.99s\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/liyang/Developer/star-main/.venv/bin/python",
+        "tools/run_performance_contracts.py"
+      ],
+      "cwd": "/Users/liyang/Developer/star-main",
+      "returncode": 0,
+      "stdout": "........................................................................ [ 88%]\n.........                                                                [100%]\n81 passed in 1.00s\nSTAR structural performance contracts\n/Users/liyang/Developer/star-main/.venv/bin/python -m pytest -q framework/tests/test_performance_profiler.py framework/tests/test_performance_measurement_contract.py framework/tests/test_performance_gate.py framework/tests/test_static_window_benchmark_entrypoint.py framework/tests/test_realtime_gc_policy.py framework/tests/test_scale_harness_contract.py framework/tests/test_component_reference_version.py framework/tests/test_component_pair.py rotk_env/tests/test_animation_reference_roster.py rotk_env/tests/test_ui_faction_roster.py rotk_env/tests/test_unit_render_frame_styles.py rotk_env/tests/test_unit_spatial_index_geometry_reuse.py rotk_env/tests/test_unit_spatial_index_movement.py rotk_env/tests/test_vision_explored_transition.py rotk_env/tests/test_window_vision_geometry_hit_path.py rotk_env/tests/test_window_vision_audit_boundary.py framework/tests/test_render_blit_batching.py rotk_env/tests/test_vision_incremental_index.py::test_mark_dirty_updates_only_changed_unit_and_keeps_explored_history rotk_env/tests/test_window_vision_cache_config.py::test_window_vision_cache_keeps_validated_headroom_default rotk_env/tests/test_fog_surface_presenter.py::test_incremental_reveal_and_hide_match_fresh_canonical_surface rotk_env/tests/test_window_unit_render_spatial_cull.py::test_spatial_cull_filters_bounds_before_fog rotk_env/tests/test_window_map_overscan.py::test_pan_reuses_overscan_and_zoom_keeps_direct_fallback rotk_env/tests/test_terrain_presentation_cache.py::test_compact_cache_is_non_srcalpha_and_pixel_equivalent\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/liyang/Developer/star-main/.venv/bin/python",
+        "-m",
+        "compileall",
+        "-q",
+        "framework",
+        "protocol",
+        "rotk_env",
+        "rotk_agent",
+        "tools"
+      ],
+      "cwd": "/Users/liyang/Developer/star-main",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": "/Users/liyang/Developer/star-main",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "HEAD",
+        "p3-observation-pre-squash-2026-09-09"
+      ],
+      "cwd": "/Users/liyang/Developer/star-main",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "pass": true,
+  "lab_tests": "7 passed in 0.19s; periodic/snapshot scheduling + forensic tamper/round-trip checks"
+}

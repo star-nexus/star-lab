@@ -1,0 +1,312 @@
+{
+  "source": {
+    "path": "/Users/liyang/Developer/star-lab/runs/star-p3-batch-measured",
+    "sha": "3017547a87360a667b6b6cb13def21d63b528399",
+    "dirty": ""
+  },
+  "tooling": {
+    "path": "/Users/liyang/Developer/star-lab",
+    "sha": "64cc1697f1c90bbfa5baa0f06b2e44eecc38191d",
+    "dirty": ""
+  },
+  "workload": {
+    "source": "/Users/liyang/Developer/star-lab/runs/star-p3-batch-measured",
+    "units": 1000,
+    "agents": 100,
+    "delay": "1",
+    "observation_mode": "batch-on",
+    "observation_hz": 1.0,
+    "scope": "selected",
+    "layout": "interleaved",
+    "policy": "mixed",
+    "seconds": 15.0,
+    "warmup": 5.0,
+    "budget_ms": 12.0,
+    "attribute": false,
+    "no_encode": false,
+    "synchronized": false,
+    "movement_overlay": false,
+    "no_agents": false,
+    "gc_policy": "realtime_defer",
+    "output": "/Users/liyang/Developer/star-lab/runs/p3-read-batch/combat-batch-on.json"
+  },
+  "hardware": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+    "machine": "arm64",
+    "chrome": "kept open; no slow frames removed",
+    "window": [
+      2480,
+      1261
+    ]
+  },
+  "dependency_lock_sha256": "e8a64dba4f65993ce7a1bd720f7c7b6d399422692e4202dfb25b9c1596ce5f95",
+  "safe_environment": {
+    "STAR_SCALE_MINIMAP_UNITS": "off",
+    "HEADLESS": null,
+    "SDL_VIDEODRIVER": null
+  },
+  "fixture_sha256": "bf06382d8a0d21eb5ef8691c4b0d28d6868a6c9c2f1f76ec1288361ed94bde69",
+  "guards": {
+    "complete": true,
+    "source_clean": true,
+    "tooling_clean": true,
+    "fog_on": true,
+    "world_alive": true,
+    "resident_retained": true,
+    "position_progress": true,
+    "frame_p99": false,
+    "world_hz": true,
+    "observation_p99": false,
+    "action_queue_p99": false,
+    "queue_bounded": false,
+    "offered_load_met": false,
+    "duration_formal": false,
+    "not_diagnostic": true
+  },
+  "pass": false,
+  "frame_work_ms": {
+    "count": 450,
+    "min": 22.98258402151987,
+    "avg": 28.318195810166394,
+    "p50": 28.441000991733745,
+    "p95": 31.036750006023794,
+    "p99": 35.655667015817016,
+    "max": 38.01445898716338
+  },
+  "frame_count": 450,
+  "world_hz": 30.0,
+  "observation_response_ms": {
+    "count": 774,
+    "min": 2783.0809589650016,
+    "avg": 6429.067291105829,
+    "p50": 6531.722209008876,
+    "p95": 9686.744709004415,
+    "p99": 9990.696291963104,
+    "max": 10038.92399999313
+  },
+  "action_queue_ms": {
+    "count": 171,
+    "min": 2806.663833995117,
+    "avg": 6302.116945421674,
+    "p50": 6119.964500016067,
+    "p95": 9684.383124986198,
+    "p99": 9885.495167021872,
+    "max": 9886.61683301325
+  },
+  "blocks30": [],
+  "nominal_observations": 1500,
+  "completed_observations": 774,
+  "nominal_load_fraction": 0.516,
+  "worst_rolling5_p99_ms": 35.7955000072252,
+  "longest_miss_streak": 1,
+  "miss_fraction": 0.03333333333333333,
+  "agents": {
+    "counts": {
+      "observations": 999,
+      "attack_accepted": 388,
+      "move_accepted": 1030,
+      "cycles": 200,
+      "move_rejected": 33,
+      "attack_rejected": 98,
+      "wait_cycles": 2
+    },
+    "sessions": 100,
+    "batch_metrics": {
+      "faction_builds": 591,
+      "census_builds": 575,
+      "enemy_unit_builds": 139839,
+      "tile_builds": 3014699,
+      "unit_panel_builds": 9990,
+      "batches": 575,
+      "requests": 999,
+      "faction_hits": 408,
+      "census_hits": 16,
+      "enemy_unit_hits": 666,
+      "tile_hits": 29737
+    },
+    "observation_mode": "batch-on",
+    "setup_ms": 56.068125006277114,
+    "pending_events": 199,
+    "overdue_events": 149,
+    "oldest_overdue_ms": 10035.989791998873,
+    "cycles_per_session": {
+      "count": 100,
+      "min": 2,
+      "avg": 2.0,
+      "p50": 2,
+      "p95": 2,
+      "p99": 2,
+      "max": 2
+    },
+    "observation_response_ms": {
+      "count": 999,
+      "min": 18.76858397736214,
+      "avg": 5357.246859161374,
+      "p50": 5428.962708974723,
+      "p95": 9544.83254198567,
+      "p99": 9976.991250005085,
+      "max": 10038.92399999313
+    },
+    "action_queue_ms": {
+      "count": 200,
+      "min": 1575.0530829827767,
+      "avg": 5729.269241455768,
+      "p50": 4443.638958007796,
+      "p95": 9651.119874994038,
+      "p99": 9818.47074997495,
+      "max": 9886.61683301325
+    },
+    "response_bytes": {
+      "count": 999,
+      "min": 390576,
+      "avg": 402773.1981981982,
+      "p50": 402616,
+      "p95": 409115,
+      "p99": 409828,
+      "max": 410261
+    }
+  },
+  "attribution": null,
+  "overlay": null,
+  "raw": {
+    "path": "combat-batch-on.raw.json",
+    "size": 650023,
+    "sha256": "921ec29188ea6583c37a0d29d31f9ea6d9a7e5dc679f5fdd919b1eafa586cabe",
+    "locator": "artifacts/combat-batch-on-raw.zip#combat-batch-on.raw.json"
+  },
+  "fixture_package": {
+    "path": "artifacts/fixture-bf06382d8a0d21eb5ef8691c4b0d28d6868a6c9c2f1f76ec1288361ed94bde69.zip",
+    "size": 3388,
+    "sha256": "e053946b1afd7c334ec144b109951bd0d103088d9b0ba9b7b42441846c65b2ad"
+  },
+  "raw_package": {
+    "path": "artifacts/combat-batch-on-raw.zip",
+    "size": 209000,
+    "sha256": "cd4ed027394638e478fafc98ee93a0ee1d9c2d89ac5e7b06f35ba4b7a79a0219"
+  },
+  "reanalysis": {
+    "verified": true,
+    "source": "3017547a87360a667b6b6cb13def21d63b528399",
+    "metrics": {
+      "frame_work_ms": {
+        "count": 450,
+        "min": 22.98258402151987,
+        "avg": 28.318195810166394,
+        "p50": 28.441000991733745,
+        "p95": 31.036750006023794,
+        "p99": 35.655667015817016,
+        "max": 38.01445898716338
+      },
+      "observation_response_ms": {
+        "count": 774,
+        "min": 2783.0809589650016,
+        "avg": 6429.067291105829,
+        "p50": 6531.722209008876,
+        "p95": 9686.744709004415,
+        "p99": 9990.696291963104,
+        "max": 10038.92399999313
+      },
+      "action_queue_ms": {
+        "count": 171,
+        "min": 2806.663833995117,
+        "avg": 6302.116945421674,
+        "p50": 6119.964500016067,
+        "p95": 9684.383124986198,
+        "p99": 9885.495167021872,
+        "max": 9886.61683301325
+      }
+    },
+    "frame_count": 450,
+    "completed_observations": 774,
+    "alive_units": {
+      "count": 15,
+      "min": 1000,
+      "avg": 1000.0,
+      "p50": 1000,
+      "p95": 1000,
+      "p99": 1000,
+      "max": 1000
+    },
+    "moving_units": {
+      "count": 15,
+      "min": 0,
+      "avg": 84.66666666666667,
+      "p50": 44,
+      "p95": 277,
+      "p99": 277,
+      "max": 277
+    },
+    "observations_per_session": {
+      "count": 100,
+      "min": 7,
+      "avg": 7.74,
+      "p50": 8,
+      "p95": 8,
+      "p99": 8,
+      "max": 8
+    },
+    "observation_build_ms": {
+      "count": 774,
+      "min": 0.2347080153413117,
+      "avg": 5.827303795068457,
+      "p50": 8.701999991899356,
+      "p95": 9.423040988622233,
+      "p99": 9.670792001998052,
+      "max": 10.519541014218703
+    },
+    "observation_decode_ms": {
+      "count": 774,
+      "min": 1.6270829946734011,
+      "avg": 1.7937467800807063,
+      "p50": 1.7572919896338135,
+      "p95": 1.9379580044187605,
+      "p99": 2.0195419783703983,
+      "max": 2.2003750200383365
+    },
+    "observed_batch_size": {
+      "count": 774,
+      "min": 1,
+      "avg": 1.8372093023255813,
+      "p50": 2,
+      "p95": 2,
+      "p99": 2,
+      "max": 2
+    },
+    "observation_encode_ms": {
+      "count": 774,
+      "min": 1.7822919762693346,
+      "avg": 1.9516981516598342,
+      "p50": 1.943999988725409,
+      "p95": 2.0816249889321625,
+      "p99": 2.1474579989444464,
+      "max": 2.314209006726742
+    },
+    "observation_bytes": {
+      "count": 774,
+      "min": 393401,
+      "avg": 403505.8669250646,
+      "p50": 403198,
+      "p95": 409339,
+      "p99": 409863,
+      "max": 410261
+    },
+    "agent_frame_ms": {
+      "count": 450,
+      "min": 12.622209003893659,
+      "avg": 17.528356405996924,
+      "p50": 18.16987499478273,
+      "p95": 19.154292007442564,
+      "p99": 24.605082988273352,
+      "max": 25.240832997951657
+    },
+    "simulation_seconds": 14.99897770798998,
+    "maxrss_bytes": 375439360,
+    "sampled_position_changes": 1792,
+    "accepted_moves": 805,
+    "accepted_attacks": 320,
+    "rejected_actions": 131,
+    "frame_deadline_miss_fraction": 0.03333333333333333,
+    "guard_pass_as_recorded": false
+  }
+}

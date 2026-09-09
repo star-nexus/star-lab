@@ -1,0 +1,292 @@
+{
+  "source": {
+    "path": "/Users/liyang/Developer/star-lab/runs/star-p3-batch-lazy",
+    "sha": "72e36414de7129a1046ce36861de18eb25b2d180",
+    "dirty": ""
+  },
+  "tooling": {
+    "path": "/Users/liyang/Developer/star-lab",
+    "sha": "edbe9171dde4cc907db2561c8947a233c8cecd84",
+    "dirty": ""
+  },
+  "workload": {
+    "source": "/Users/liyang/Developer/star-lab/runs/star-p3-batch-lazy",
+    "units": 3000,
+    "agents": 1000,
+    "delay": "1",
+    "observation_mode": "single",
+    "observation_hz": 1.0,
+    "scope": "selected",
+    "layout": "canonical",
+    "policy": "move",
+    "seconds": 15.0,
+    "warmup": 5.0,
+    "budget_ms": 12.0,
+    "attribute": false,
+    "no_encode": false,
+    "synchronized": false,
+    "movement_overlay": false,
+    "no_agents": false,
+    "gc_policy": "realtime_defer",
+    "output": "/Users/liyang/Developer/star-lab/runs/p3-read-batch/lazy-3000-single.json"
+  },
+  "hardware": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+    "machine": "arm64",
+    "chrome": "kept open; no slow frames removed",
+    "window": [
+      2480,
+      1261
+    ]
+  },
+  "dependency_lock_sha256": "e8a64dba4f65993ce7a1bd720f7c7b6d399422692e4202dfb25b9c1596ce5f95",
+  "safe_environment": {
+    "STAR_SCALE_MINIMAP_UNITS": "off",
+    "HEADLESS": null,
+    "SDL_VIDEODRIVER": null
+  },
+  "fixture_sha256": "584e87557e824f75da19af12de61f3dc19a59f9db0700cb1d781ea5c158c441b",
+  "guards": {
+    "complete": true,
+    "source_clean": true,
+    "tooling_clean": true,
+    "fog_on": true,
+    "world_alive": true,
+    "resident_retained": true,
+    "position_progress": true,
+    "frame_p99": true,
+    "world_hz": true,
+    "observation_p99": false,
+    "action_queue_p99": false,
+    "queue_bounded": false,
+    "offered_load_met": false,
+    "duration_formal": false,
+    "not_diagnostic": true
+  },
+  "pass": false,
+  "frame_work_ms": {
+    "count": 450,
+    "min": 21.32141697802581,
+    "avg": 24.476909695982208,
+    "p50": 24.528790992917493,
+    "p95": 25.649791001342237,
+    "p99": 26.451874990016222,
+    "max": 26.985582982888445
+  },
+  "frame_count": 450,
+  "world_hz": 30.0,
+  "observation_response_ms": {
+    "count": 1765,
+    "min": 4500.566667004023,
+    "avg": 11033.024960351288,
+    "p50": 10982.103457994526,
+    "p95": 17023.835583007894,
+    "p99": 17613.63545799395,
+    "max": 17736.440250009764
+  },
+  "action_queue_ms": {
+    "count": 63,
+    "min": 8220.628208015114,
+    "avg": 14669.608658762641,
+    "p50": 14776.634249981726,
+    "p95": 17400.671417010017,
+    "p99": 17727.54187497776,
+    "max": 17727.54187497776
+  },
+  "blocks30": [],
+  "nominal_observations": 15000,
+  "completed_observations": 1765,
+  "nominal_load_fraction": 0.11766666666666667,
+  "worst_rolling5_p99_ms": 26.855750009417534,
+  "longest_miss_streak": 0,
+  "miss_fraction": 0.0,
+  "agents": {
+    "counts": {
+      "observations": 2268,
+      "move_accepted": 46,
+      "cycles": 63,
+      "wait_cycles": 11,
+      "move_rejected": 6
+    },
+    "sessions": 1000,
+    "batch_metrics": {},
+    "observation_mode": "single",
+    "setup_ms": 551.9408339750953,
+    "pending_events": 1981,
+    "overdue_events": 1981,
+    "oldest_overdue_ms": 17754.29675000487,
+    "cycles_per_session": {
+      "count": 1000,
+      "min": 0,
+      "avg": 0.063,
+      "p50": 0,
+      "p95": 1,
+      "p99": 1,
+      "max": 1
+    },
+    "observation_response_ms": {
+      "count": 2268,
+      "min": 9.339582989923656,
+      "avg": 9170.209737516827,
+      "p50": 9134.147292003036,
+      "p95": 16809.637041995302,
+      "p99": 17581.256750010652,
+      "max": 17736.440250009764
+    },
+    "action_queue_ms": {
+      "count": 63,
+      "min": 8220.628208015114,
+      "avg": 14669.608658762641,
+      "p50": 14776.634249981726,
+      "p95": 17400.671417010017,
+      "p99": 17727.54187497776,
+      "max": 17727.54187497776
+    },
+    "response_bytes": {
+      "count": 2268,
+      "min": 82778,
+      "avg": 86261.19973544973,
+      "p50": 86115,
+      "p95": 89058,
+      "p99": 89263,
+      "max": 89536
+    }
+  },
+  "attribution": null,
+  "overlay": null,
+  "raw": {
+    "path": "lazy-3000-single.raw.json",
+    "size": 947724,
+    "sha256": "ea7082ee75bdf2b3da51edab2b8047f70fed2ac93d1c18af08f87951773d4892",
+    "locator": "artifacts/lazy-3000-single-raw.zip#lazy-3000-single.raw.json"
+  },
+  "fixture_package": {
+    "path": "artifacts/fixture-584e87557e824f75da19af12de61f3dc19a59f9db0700cb1d781ea5c158c441b.zip",
+    "size": 6969,
+    "sha256": "42edeaa00e80006705993ceb3a01560e3dbda3f2a2bfc8d315bea5cc0bce83f6"
+  },
+  "raw_package": {
+    "path": "artifacts/lazy-3000-single-raw.zip",
+    "size": 249751,
+    "sha256": "72e841b49bb1f86afa259b6ca84266de25c10dc1ac3c0e2992b1fe6438a3f9cc"
+  },
+  "reanalysis": {
+    "verified": true,
+    "source": "72e36414de7129a1046ce36861de18eb25b2d180",
+    "metrics": {
+      "frame_work_ms": {
+        "count": 450,
+        "min": 21.32141697802581,
+        "avg": 24.476909695982208,
+        "p50": 24.528790992917493,
+        "p95": 25.649791001342237,
+        "p99": 26.451874990016222,
+        "max": 26.985582982888445
+      },
+      "observation_response_ms": {
+        "count": 1765,
+        "min": 4500.566667004023,
+        "avg": 11033.024960351288,
+        "p50": 10982.103457994526,
+        "p95": 17023.835583007894,
+        "p99": 17613.63545799395,
+        "max": 17736.440250009764
+      },
+      "action_queue_ms": {
+        "count": 63,
+        "min": 8220.628208015114,
+        "avg": 14669.608658762641,
+        "p50": 14776.634249981726,
+        "p95": 17400.671417010017,
+        "p99": 17727.54187497776,
+        "max": 17727.54187497776
+      }
+    },
+    "frame_count": 450,
+    "completed_observations": 1765,
+    "alive_units": {
+      "count": 15,
+      "min": 3000,
+      "avg": 3000.0,
+      "p50": 3000,
+      "p95": 3000,
+      "p99": 3000,
+      "max": 3000
+    },
+    "moving_units": {
+      "count": 15,
+      "min": 0,
+      "avg": 4.8,
+      "p50": 2,
+      "p95": 14,
+      "p99": 14,
+      "max": 14
+    },
+    "observations_per_session": {
+      "count": 1000,
+      "min": 1,
+      "avg": 1.765,
+      "p50": 2,
+      "p95": 2,
+      "p99": 2,
+      "max": 2
+    },
+    "observation_build_ms": {
+      "count": 1765,
+      "min": 2.670416986802593,
+      "avg": 2.9773723185999006,
+      "p50": 2.9643749876413494,
+      "p95": 3.205083979992196,
+      "p99": 3.332416992634535,
+      "max": 4.224624979542568
+    },
+    "observation_decode_ms": {
+      "count": 1765,
+      "min": 0.33312500454485416,
+      "avg": 0.38803357148817386,
+      "p50": 0.3859999997075647,
+      "p95": 0.43466599890962243,
+      "p99": 0.46270800521597266,
+      "max": 1.0266659955959767
+    },
+    "observed_batch_size": {
+      "count": 0
+    },
+    "observation_encode_ms": {
+      "count": 1765,
+      "min": 0.35762498737312853,
+      "avg": 0.4115780232251271,
+      "p50": 0.4100410151295364,
+      "p95": 0.4512499726843089,
+      "p99": 0.4738749994430691,
+      "max": 0.5147079937160015
+    },
+    "observation_bytes": {
+      "count": 1765,
+      "min": 82778,
+      "avg": 86635.87648725213,
+      "p50": 88177,
+      "p95": 89088,
+      "p99": 89284,
+      "max": 89536
+    },
+    "agent_frame_ms": {
+      "count": 450,
+      "min": 12.047416996210814,
+      "avg": 14.934212135073418,
+      "p50": 15.082291996804997,
+      "p95": 15.700582996942103,
+      "p99": 15.847665985347703,
+      "max": 16.546665981877595
+    },
+    "simulation_seconds": 14.999055041000247,
+    "maxrss_bytes": 381124608,
+    "sampled_position_changes": 81,
+    "accepted_moves": 46,
+    "accepted_attacks": 0,
+    "rejected_actions": 6,
+    "frame_deadline_miss_fraction": 0.0,
+    "guard_pass_as_recorded": false
+  }
+}

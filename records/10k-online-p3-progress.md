@@ -95,3 +95,13 @@ Corrected matrix is archived in the case; 3000/1000/1Hz completes12.06%, 5000/10
 No accepted four-trace point; no Frontier addition. No 100%-moving plus observation capacity claim.
 Next: read-batch sharing of faction public observations with explicit freshness boundaries and per-Agent private panel construction.
 P3 overall remains OPEN; do not repeat P0 or the completed first-round implementation.
+
+
+## Second-round read-batch closeout (2026-09-09)
+
+Branch codex/p3-shared-observation; eager measured3017547, lazy measured72e3641; exact SHAs in case manifest.
+Before main `08c857e5df39f671c5a13bf04b9af9aac0800e78`; pre-squash tag `p3-read-batch-pre-squash-2026-09-09` pins `626d3a8db900fc18599bc96206bc76b960826999`; integrated main `906386312d70d77af25e4b4da883f6dd5b0fe5ef`.
+899 production and10Lab tests pass. Frozen-world oracle from pre-main and lazy source is byte-identical across30queries; each new-source state also verifies batch-on/off against standalone.
+30diagnostics archived with raw reanalysis and SHA256,65archive artifacts including deduplicated fixtures/oracle.
+3K/1K/1Hz batch-off11.89%→on21.06%;5K/1K8.81%→14.03%;10K/1K3.48%→2.95%. No target capacity accepted; no formal long certification begun.
+All experimental tools/evidence remain Lab; source/rule-compatible API/contracts/docs in STAR. Next: review cold-snapshot and full-output cost before another optimization.

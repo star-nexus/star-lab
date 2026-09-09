@@ -1,8 +1,19 @@
 # 10K / 100% moving / 30 Hz — 恢复入口
 
-更新：2026-09-09。当前阶段：P0 已完成；跳过 P1/P2；P3 第一轮观测优化已集成，千 Agent 容量目标未达成。
+更新：2026-09-09。当前阶段：P0 已完成；跳过 P1/P2；P3 第二轮只读批次共享已集成，千 Agent 容量目标仍未达成。
 本文件是唯一活动恢复入口，已从 STAR 的 `docs/dev/` 迁至 STAR Lab。
 先读本文件即可恢复目标、边界和下一步；执行时再按下方链接读取对应证据。
+
+## 当前操作节点（第二轮收尾）
+
+- STAR main：`906386312d70d77af25e4b4da883f6dd5b0fe5ef`，仅以 squash 集成；前置 main `08c857e5df39f671c5a13bf04b9af9aac0800e78`。
+- 开发分支 `codex/p3-shared-observation` 保留于 `runs/star-p3-batch-dev`，tip `626d3a8db900fc18599bc96206bc76b960826999`。
+- 合并前 annotated tag `p3-read-batch-pre-squash-2026-09-09` → 开发 tip；实际测量 source `72e36414de7129a1046ce36861de18eb25b2d180`（之后仅测试/文档）。
+- [第二轮报告](../experiments/2026-09-p3-read-batch/README.md)、[分析](../experiments/2026-09-p3-read-batch/analysis.md)、[决策](../experiments/2026-09-p3-read-batch/decision.md)。30组诊断、65个archive artifacts，全部raw解包重算与SHA验证。
+- 899生产回归、10Lab测试、跨源冻结JSON oracle通过；规则未改变。
+- 同源batch-off→batch-on：3000/1000/1Hz完成11.89%→21.06%；5000/1000为8.81%→14.03%；10K不稳定获益。
+- 仅15s诊断，目标规模全部未达标；无300s+3×60s容量认证、无新增Frontier。
+- 下一项先评估每批首次快照成本与每请求完整公共载荷的编码/解码成本，再选择下一项优化；不要重新实现已完成批次、不要悄悄启用跨帧TTL。
 
 ## 读取顺序
 
@@ -70,7 +81,7 @@ star-main 集成只允许 `git merge --squash`：合并前创建 annotated tag �
 Chrome 保持开启；性能任务不并发，不因怀疑系统干扰删慢帧。
 
 
-## 最新检查点：P3 第一轮收尾（2026-09-09）
+## 历史检查点：P3 第一轮收尾（2026-09-09）
 
 优先阅读 [P3 第一轮报告](../experiments/2026-09-p3-local-agents/README.md)、
 [分析](../experiments/2026-09-p3-local-agents/analysis.md) 和
@@ -93,7 +104,7 @@ Chrome 保持开启；性能任务不并发，不因怀疑系统干扰删慢帧�
 
 生产 main 与 pre-squash annotated tag 已原子推送且远端 SHA 核验通过；本轮 Lab 归档提交及其祖先一并保存至 origin/main。
 
-## 第二轮实施中：只读批次共享
+## 第二轮：只读批次共享（已集成，以下保留阶段记录）
 
 已形成 [只读批次共享实施方案](10k-online-p3-read-batch-plan.md)。用户已授权实施；新分支 `codex/p3-shared-observation` 位于 `runs/star-p3-batch-dev`，起点为生产 main `08c857e5df39f671c5a13bf04b9af9aac0800e78`。
 采用保序短批次、按需构建、批次结束释放；跨阵营复用基础事实，阵营分别筛选情报，逐Agent判断权限。
@@ -123,3 +134,7 @@ Chrome 保持开启；性能任务不并发，不因怀疑系统干扰删慢帧�
 另以当前生产 main 和修正版独立进程生成冻结世界 JSON oracle，3状态×10请求，逐字节相同；
 修正版每个状态内部同时验证 single / batch-off / batch-on 解析后逐字段等价。
 下一步：补全冷构建/命中计时诊断，归档与重算，然后按预先 tag + squash 流程集成。
+
+第二轮最终状态：已归档、已 squash 集成；阶段记录中的“下一步/尚未”只描述当时检查点，以文件顶部当前操作节点为准。
+
+STAR main、`codex/p3-shared-observation` 和 `p3-read-batch-pre-squash-2026-09-09` 已原子推送，远端SHA已核验。Lab本轮归档与恢复记录由当前收尾提交发布；可用 `git log -1 -- records/10k-online-resume.md` 定位，避免自引用SHA。

@@ -1,0 +1,445 @@
+experiment:
+  id: 2026-09-p3-read-batch
+  title: Synchronous read-batch observation reuse
+  date: '2026-09-09'
+  status: validated implementation; capacity open
+source:
+  repository: star-nexus/star
+  problem_commit: 08c857e5df39f671c5a13bf04b9af9aac0800e78
+  measurement_commit: 72e36414de7129a1046ce36861de18eb25b2d180
+  fix_commit: 72e36414de7129a1046ce36861de18eb25b2d180
+  validated_commit: 626d3a8db900fc18599bc96206bc76b960826999
+  branch_at_time: codex/p3-shared-observation
+  validated_tag: p3-read-batch-pre-squash-2026-09-09
+  eager_commit: 3017547a87360a667b6b6cb13def21d63b528399
+  tooling_commits:
+  - 64cc1697f1c90bbfa5baa0f06b2e44eecc38191d
+  - eabf8e3b7e3c23848a27a95eb758c8294d80bc6d
+  - edbe9171dde4cc907db2561c8947a233c8cecd84
+  integration:
+    method: git merge --squash
+    main_before: 08c857e5df39f671c5a13bf04b9af9aac0800e78
+    development_tip: 626d3a8db900fc18599bc96206bc76b960826999
+    tag_object: 2f6f124132e20ccf515684ad36bf39f4c561ac3f
+    main_after: 906386312d70d77af25e4b4da883f6dd5b0fe5ef
+hardware:
+  machine: arm64
+  cpu: Apple M4
+  memory_bytes: 17179869184
+  display:
+  - 2480
+  - 1261
+software:
+  os: macOS-26.5.2-arm64-arm-64bit-Mach-O
+  python: 3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang
+    20.1.8 ]
+  dependency_lock: e8a64dba4f65993ce7a1bd720f7c7b6d399422692e4202dfb25b9c1596ce5f95
+scenario:
+  name: canonical and interleaved
+  resident_units:
+  - 1000
+  - 3000
+  - 5000
+  - 10000
+  moving_units: measured per raw census; not 100% moving
+workload:
+  seed: 42
+  phase: staggered
+  fog: true
+  observation_hz:
+  - 1
+  - 5
+  - 10
+  - 30
+  decision_seconds:
+  - 1
+  - 30
+  camera: fixed runtime harness; exact display in each point
+measurement:
+  warmup_seconds: 5
+  sustained_seconds: 15
+  gc_policy: realtime_defer
+  formal_capacity: false
+  guards_required:
+  - world>=29.7Hz
+  - frame P99<=33.333ms
+  - observation P99<=100ms
+  - action queue P99<=100ms
+  - oldest overdue<=100ms
+  - completed>=95% nominal
+  - resident/fog/progress/integrity
+  - 300s plus 3x60s independent runs for capacity
+variables:
+  independent:
+    mode:
+    - single
+    - batch-off
+    - batch-on
+    materialization:
+    - eager
+    - lazy
+  controlled:
+  - same fixture hash per scale/layout
+  - same stdlib JSON encode/decode
+  - owner-thread synchronous batch
+  - Chrome kept open
+  - no slow frame removal
+artifacts:
+  formal:
+  - path: artifacts/10000-batch-on-a1000-compact.zip
+    size: 2841
+    sha256: 96abaa5d0e6e55c13cc9fcf27cb8cba138e68057418420e9a4b4d8133d4b0b27
+  - path: artifacts/10000-batch-on-a1000-raw.zip
+    size: 92107
+    sha256: 4eaf9a68be20a73c32d802ab972cf30d7f1fda9079407e605499e205b1b2401c
+  - path: artifacts/10000-batch-on-a10000-compact.zip
+    size: 2807
+    sha256: f4f9e2b1c07020a011cc556f7ed9d3445fbc93598a7ab8a8cc6d58ff54438ed2
+  - path: artifacts/10000-batch-on-a10000-raw.zip
+    size: 108929
+    sha256: c92b8dd26d4f60dc79c612d72d89bff0dc8e0553f02db9acc6d466b2d4faf63b
+  - path: artifacts/10000-batch-on-a5000-compact.zip
+    size: 2830
+    sha256: 1ef4d78f54be951f0cf3e2fe13bc4a2553238750b7f85a75b50ab944c1682f3e
+  - path: artifacts/10000-batch-on-a5000-raw.zip
+    size: 95674
+    sha256: ae167546ba9f9f46f3f74ddc2484dad84a196bc04674d0abc6f4223432f5929b
+  - path: artifacts/3000-batch-off-compact.zip
+    size: 2967
+    sha256: cf684ff30bc8406e73655c1dc35c956f7e92c7a23b164f8bd8f951a66e585b64
+  - path: artifacts/3000-batch-off-raw.zip
+    size: 257468
+    sha256: 0c57db0bf8beb6d26606741f11516806871519bb3ed02f9ebd9eb3fb087e29fa
+  - path: artifacts/3000-batch-on-attribute-compact.zip
+    size: 3365
+    sha256: aa0aaee9a2d0662e28bb926b311a8540c7ca886bc338b31fa98a3cd23ebb4624
+  - path: artifacts/3000-batch-on-attribute-raw.zip
+    size: 489409
+    sha256: 3e3d77da974e204e76ce357a35498cd32817643e0a074613246930717c78a7db
+  - path: artifacts/3000-batch-on-compact.zip
+    size: 3095
+    sha256: df511a5ff3f0b9b95579dc49564f4f50f1bf84a971c1945c27408a00700fa480
+  - path: artifacts/3000-batch-on-d30-compact.zip
+    size: 2861
+    sha256: e3ba9befd4d48cf501776b0de63fe95ebb6677f2a77881f593ea7d61d3386283
+  - path: artifacts/3000-batch-on-d30-raw.zip
+    size: 512048
+    sha256: d898f676f691a876779fae19be3e599e0301c0008e29184c261168fb3382c407
+  - path: artifacts/3000-batch-on-raw.zip
+    size: 473887
+    sha256: c48c90c9ea22093050e5565777c8cb2bdf40e4c6f9b077d0284913e16cf5f89c
+  - path: artifacts/3000-single-compact.zip
+    size: 2930
+    sha256: 60ebc9cf06fc6eefae106604db9f99bfb84900320da1aef64d82fb5c4920e2ec
+  - path: artifacts/3000-single-log-compact.zip
+    size: 2932
+    sha256: db45a545f680dea7c8320124e8481cf03d67bf6fc8de2df6011c997989862658
+  - path: artifacts/3000-single-log-raw.zip
+    size: 248240
+    sha256: 0427d2d38ebc9ca692977297c074c36b0bd12ca540ce483b598ea12ad6a40142
+  - path: artifacts/3000-single-raw.zip
+    size: 216061
+    sha256: 3e2b2e7bcc423233615fe911290977f60a8dd690e1edd0d950467441f0a50016
+  - path: artifacts/5000-batch-on-compact.zip
+    size: 3010
+    sha256: 8b913c136455de8b64fa3c2e7f9d04780bc2b8311a5f8e1678ddddafc47fe721
+  - path: artifacts/5000-batch-on-hz10-compact.zip
+    size: 2884
+    sha256: 9ac6b74c16a6eecc0d9700862e585bd61b8ef4200a9e0c703852c8205f9cada9
+  - path: artifacts/5000-batch-on-hz10-raw.zip
+    size: 209241
+    sha256: 44ed7e038200f7cb8b40c93085572ef57946ea70e2ba59ba411abc84c0d6100c
+  - path: artifacts/5000-batch-on-hz30-compact.zip
+    size: 2899
+    sha256: d732e14c3b985fd2d63f081434b42cb166f2bcc83f38bf9e77cdb280174ccbac
+  - path: artifacts/5000-batch-on-hz30-raw.zip
+    size: 212626
+    sha256: c594fe410e51fdd736a761b49c2ea6af8dc9ff38488ccf1943ccc592e847a5db
+  - path: artifacts/5000-batch-on-hz5-compact.zip
+    size: 2886
+    sha256: f0acfc1c20f9e54e4f043a2e15df86de6029772e5c8e008efbb575e817150014
+  - path: artifacts/5000-batch-on-hz5-raw.zip
+    size: 209530
+    sha256: 454319b52b3076bc9a59c2888d1ad193a428a20d1b443eb578b83eb5c95361c4
+  - path: artifacts/5000-batch-on-raw.zip
+    size: 206966
+    sha256: 58c26ab4f9aa73a37568ee5103397c63401d309d3ebaf4fd5651a866f057631d
+  - path: artifacts/combat-batch-on-compact.zip
+    size: 3145
+    sha256: 350136f9c436f3e20d709577b57fda926e1b91f44365e9de15c411f3a099d367
+  - path: artifacts/combat-batch-on-raw.zip
+    size: 209000
+    sha256: cd4ed027394638e478fafc98ee93a0ee1d9c2d89ac5e7b06f35ba4b7a79a0219
+  - path: artifacts/fixture-1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52.zip
+    size: 11496
+    sha256: 62bde875b9e71b1643710e08f7e6f11b80028fac8f7885711a57e65a33348b5e
+  - path: artifacts/fixture-584e87557e824f75da19af12de61f3dc19a59f9db0700cb1d781ea5c158c441b.zip
+    size: 6969
+    sha256: 42edeaa00e80006705993ceb3a01560e3dbda3f2a2bfc8d315bea5cc0bce83f6
+  - path: artifacts/fixture-827470fa574129e4b268be7b276abfae8a52a31598aebb6a3d92ca2d3f65431d.zip
+    size: 23199
+    sha256: 99bc8bd96fa1362f9f2cf2df4a49ea835ad998cda9bd210bd5531ed6e0486e0d
+  - path: artifacts/fixture-bf06382d8a0d21eb5ef8691c4b0d28d6868a6c9c2f1f76ec1288361ed94bde69.zip
+    size: 3388
+    sha256: e053946b1afd7c334ec144b109951bd0d103088d9b0ba9b7b42441846c65b2ad
+  - path: artifacts/frozen-oracle.zip
+    size: 4159
+    sha256: 3ce7036c903bb3a98e85e919fac0c5e9a62e99beefb8be956a6dfd89b5530adc
+  - path: artifacts/lazy-10000-batch-off-a1000-compact.zip
+    size: 2846
+    sha256: 3a0c3daf8dccc015098a14994c8ce0939a97a35e8c29cbad6b4043a2eb9dd7c9
+  - path: artifacts/lazy-10000-batch-off-a1000-raw.zip
+    size: 117097
+    sha256: 7d262c3ad38b99f1854bc15a8c0e11a27f2eb2a2bfed79b3857a96525d926c21
+  - path: artifacts/lazy-10000-batch-on-a1000-compact.zip
+    size: 2881
+    sha256: 8303838ec5ed6d8c1806b3d110bf143d0beb1c8b032e4c02d74e3398c8cd1356
+  - path: artifacts/lazy-10000-batch-on-a1000-raw.zip
+    size: 103394
+    sha256: ae7886db3ec5f6e74a968dc4f3c84cbd359fea5bff535b6f79ea4f17662f9a63
+  - path: artifacts/lazy-10000-batch-on-a10000-compact.zip
+    size: 2824
+    sha256: 38f7aa00fa1edbbe63d1af8d3809994205febac82e6fb4010c93a0ccc60526f9
+  - path: artifacts/lazy-10000-batch-on-a10000-raw.zip
+    size: 116541
+    sha256: 20f20b8dc26cc7db6c6da6abd5f7f95b46fd0dc5ad63f2106915c51502beab79
+  - path: artifacts/lazy-10000-batch-on-a5000-compact.zip
+    size: 2827
+    sha256: e21c726b077ff12a9c4cc6df15d52c1c54fa71ae15ec3200ef6ce6ec667a4a69
+  - path: artifacts/lazy-10000-batch-on-a5000-raw.zip
+    size: 103787
+    sha256: 5409dff25553ff474943292b43ddc2be2454d879b8a1c5ddd6889938b977c05d
+  - path: artifacts/lazy-3000-batch-off-compact.zip
+    size: 2982
+    sha256: 800c4bda38b52f360f65efc3137b76f92f19b2afaeb093d236942fd8f01b69e2
+  - path: artifacts/lazy-3000-batch-off-raw.zip
+    size: 259108
+    sha256: 7373acb019b83c5c0aa37044f4016a5172e9e3ffe841342a07e5346e362a5b32
+  - path: artifacts/lazy-3000-batch-on-attribute-compact.zip
+    size: 3392
+    sha256: 851fbe42c9dba7dfae4f2a0ca8de618b9f95033236a724f900bc7a829f866102
+  - path: artifacts/lazy-3000-batch-on-attribute-raw.zip
+    size: 539009
+    sha256: 250fa74b14937e019404e5ecbb9f8d075b9d90cca2c621c70267ab10d01a405d
+  - path: artifacts/lazy-3000-batch-on-compact.zip
+    size: 3109
+    sha256: 7a771f4297ce006babee782e68292d8f1c554189cd72e21b1b36275389f3842c
+  - path: artifacts/lazy-3000-batch-on-d30-compact.zip
+    size: 2895
+    sha256: 639482853aae1c6e8cb27426b8d321000a636bafe01951882f79694bee64c864
+  - path: artifacts/lazy-3000-batch-on-d30-raw.zip
+    size: 635060
+    sha256: 653c7c456a8d69281ce5c0380380305936ff3a288ba9ebc1017c4212aa5d6d4b
+  - path: artifacts/lazy-3000-batch-on-raw.zip
+    size: 566508
+    sha256: 5284df33e8b39ddb14ef3303dca82dfcc3a4516a02f13cfd5b8bae9f379de2d9
+  - path: artifacts/lazy-3000-cache-attribution-compact.zip
+    size: 3549
+    sha256: 7d73d5897d8b01bfb142b1b420caf625a32475cc50106718b10f6c2267b87404
+  - path: artifacts/lazy-3000-cache-attribution-raw.zip
+    size: 542213
+    sha256: 9d9a0893793ef1074941e03375cd794c683f7ac466e1b24d7f3b4bc24fbfc5d9
+  - path: artifacts/lazy-3000-single-compact.zip
+    size: 2941
+    sha256: c53d14c28920eb997723071f6507e53f90e4add7a073a224fa29bcd63c29e5c7
+  - path: artifacts/lazy-3000-single-raw.zip
+    size: 249751
+    sha256: 72e841b49bb1f86afa259b6ca84266de25c10dc1ac3c0e2992b1fe6438a3f9cc
+  - path: artifacts/lazy-5000-batch-off-compact.zip
+    size: 2952
+    sha256: 6058c692b95c534325f22f5fcfe111a84160e7c012ddde0ebba7e33dfe96c729
+  - path: artifacts/lazy-5000-batch-off-raw.zip
+    size: 206322
+    sha256: 63b7a939c373a2094d942bf2760ac7155f52fc4397ba90a46849c4c111912037
+  - path: artifacts/lazy-5000-batch-on-compact.zip
+    size: 3065
+    sha256: 483718bef413573be370d01a682873dd02f7f035cff1673a997a44f4162728c7
+  - path: artifacts/lazy-5000-batch-on-hz10-compact.zip
+    size: 2911
+    sha256: 40642a522f5eb7f8c132eedf4132fc9b10fb2b2cf1f56ba6f2ecf39a828e23ab
+  - path: artifacts/lazy-5000-batch-on-hz10-raw.zip
+    size: 322642
+    sha256: 912fd11a8bef85e9fb34e76f7dc28993b9fc44603d004615451a14d5f1618325
+  - path: artifacts/lazy-5000-batch-on-hz30-compact.zip
+    size: 2923
+    sha256: 62db2810869c084d88397c99bbcb37c63042cc6aed98965c3473df668f1faee0
+  - path: artifacts/lazy-5000-batch-on-hz30-raw.zip
+    size: 327752
+    sha256: 3100d5acf80f2f6a7fbcd762f1c8f0fff9745c757b99a88327e57315b58c310d
+  - path: artifacts/lazy-5000-batch-on-hz5-compact.zip
+    size: 2900
+    sha256: 162849642d66d04c6ea10ea569a8d6144252e62e77ee43c1c954a25f7b354bbf
+  - path: artifacts/lazy-5000-batch-on-hz5-raw.zip
+    size: 323711
+    sha256: 5e0214519802cb17c974de89d98f587b296aa49593e71bd2207ee916253d4da4
+  - path: artifacts/lazy-5000-batch-on-raw.zip
+    size: 319125
+    sha256: 956b432a98947e1684ea519b0cf2898d6463be0188fc20707c82e9a15e74297d
+  - path: artifacts/lazy-combat-batch-on-compact.zip
+    size: 3169
+    sha256: 1ca58b79a21ef63f56635e50b4caa5149af63121924330f5cfab6ad70956b54c
+  - path: artifacts/lazy-combat-batch-on-raw.zip
+    size: 208903
+    sha256: 96c011b4644593f5a3ceed6b4ce47fd752c654056d2c590cc774b6d8d309e10f
+  external: []
+headline:
+  problem_signature: Thousands of Agents accumulate seconds of observation backlog
+  root_cause: Repeated public construction plus per-request full output and unique
+    unit masks
+  resolution: Lazy reuse within bounded synchronous read batches
+  result: 3K/5K throughput improved; 10K not improved consistently; capacity open
+revisit_when:
+- Protocol/Hub integration
+- concurrent writers
+- changed observation semantics
+runs:
+- name: 10000-batch-on-a1000
+  classification: short runtime diagnostic
+  source: 3017547a87360a667b6b6cb13def21d63b528399
+  tooling: 64cc1697f1c90bbfa5baa0f06b2e44eecc38191d
+  result: results/10000-batch-on-a1000.json
+- name: 10000-batch-on-a10000
+  classification: short runtime diagnostic
+  source: 3017547a87360a667b6b6cb13def21d63b528399
+  tooling: 64cc1697f1c90bbfa5baa0f06b2e44eecc38191d
+  result: results/10000-batch-on-a10000.json
+- name: 10000-batch-on-a5000
+  classification: short runtime diagnostic
+  source: 3017547a87360a667b6b6cb13def21d63b528399
+  tooling: 64cc1697f1c90bbfa5baa0f06b2e44eecc38191d
+  result: results/10000-batch-on-a5000.json
+- name: 3000-batch-off
+  classification: short runtime diagnostic
+  source: 3017547a87360a667b6b6cb13def21d63b528399
+  tooling: 64cc1697f1c90bbfa5baa0f06b2e44eecc38191d
+  result: results/3000-batch-off.json
+- name: 3000-batch-on-attribute
+  classification: attribution diagnostic
+  source: 3017547a87360a667b6b6cb13def21d63b528399
+  tooling: 64cc1697f1c90bbfa5baa0f06b2e44eecc38191d
+  result: results/3000-batch-on-attribute.json
+- name: 3000-batch-on-d30
+  classification: short runtime diagnostic
+  source: 3017547a87360a667b6b6cb13def21d63b528399
+  tooling: 64cc1697f1c90bbfa5baa0f06b2e44eecc38191d
+  result: results/3000-batch-on-d30.json
+- name: 3000-batch-on
+  classification: short runtime diagnostic
+  source: 3017547a87360a667b6b6cb13def21d63b528399
+  tooling: 64cc1697f1c90bbfa5baa0f06b2e44eecc38191d
+  result: results/3000-batch-on.json
+- name: 3000-single-log
+  classification: short runtime diagnostic
+  source: 3017547a87360a667b6b6cb13def21d63b528399
+  tooling: 64cc1697f1c90bbfa5baa0f06b2e44eecc38191d
+  result: results/3000-single-log.json
+- name: 3000-single
+  classification: excluded stdout trial
+  source: 3017547a87360a667b6b6cb13def21d63b528399
+  tooling: 64cc1697f1c90bbfa5baa0f06b2e44eecc38191d
+  result: results/3000-single.json
+- name: 5000-batch-on-hz10
+  classification: short runtime diagnostic
+  source: 3017547a87360a667b6b6cb13def21d63b528399
+  tooling: 64cc1697f1c90bbfa5baa0f06b2e44eecc38191d
+  result: results/5000-batch-on-hz10.json
+- name: 5000-batch-on-hz30
+  classification: short runtime diagnostic
+  source: 3017547a87360a667b6b6cb13def21d63b528399
+  tooling: 64cc1697f1c90bbfa5baa0f06b2e44eecc38191d
+  result: results/5000-batch-on-hz30.json
+- name: 5000-batch-on-hz5
+  classification: short runtime diagnostic
+  source: 3017547a87360a667b6b6cb13def21d63b528399
+  tooling: 64cc1697f1c90bbfa5baa0f06b2e44eecc38191d
+  result: results/5000-batch-on-hz5.json
+- name: 5000-batch-on
+  classification: short runtime diagnostic
+  source: 3017547a87360a667b6b6cb13def21d63b528399
+  tooling: 64cc1697f1c90bbfa5baa0f06b2e44eecc38191d
+  result: results/5000-batch-on.json
+- name: combat-batch-on
+  classification: short runtime diagnostic
+  source: 3017547a87360a667b6b6cb13def21d63b528399
+  tooling: 64cc1697f1c90bbfa5baa0f06b2e44eecc38191d
+  result: results/combat-batch-on.json
+- name: lazy-10000-batch-off-a1000
+  classification: short runtime diagnostic
+  source: 72e36414de7129a1046ce36861de18eb25b2d180
+  tooling: edbe9171dde4cc907db2561c8947a233c8cecd84
+  result: results/lazy-10000-batch-off-a1000.json
+- name: lazy-10000-batch-on-a1000
+  classification: short runtime diagnostic
+  source: 72e36414de7129a1046ce36861de18eb25b2d180
+  tooling: edbe9171dde4cc907db2561c8947a233c8cecd84
+  result: results/lazy-10000-batch-on-a1000.json
+- name: lazy-10000-batch-on-a10000
+  classification: short runtime diagnostic
+  source: 72e36414de7129a1046ce36861de18eb25b2d180
+  tooling: edbe9171dde4cc907db2561c8947a233c8cecd84
+  result: results/lazy-10000-batch-on-a10000.json
+- name: lazy-10000-batch-on-a5000
+  classification: short runtime diagnostic
+  source: 72e36414de7129a1046ce36861de18eb25b2d180
+  tooling: edbe9171dde4cc907db2561c8947a233c8cecd84
+  result: results/lazy-10000-batch-on-a5000.json
+- name: lazy-3000-batch-off
+  classification: short runtime diagnostic
+  source: 72e36414de7129a1046ce36861de18eb25b2d180
+  tooling: edbe9171dde4cc907db2561c8947a233c8cecd84
+  result: results/lazy-3000-batch-off.json
+- name: lazy-3000-batch-on-attribute
+  classification: attribution diagnostic
+  source: 72e36414de7129a1046ce36861de18eb25b2d180
+  tooling: edbe9171dde4cc907db2561c8947a233c8cecd84
+  result: results/lazy-3000-batch-on-attribute.json
+- name: lazy-3000-batch-on-d30
+  classification: short runtime diagnostic
+  source: 72e36414de7129a1046ce36861de18eb25b2d180
+  tooling: edbe9171dde4cc907db2561c8947a233c8cecd84
+  result: results/lazy-3000-batch-on-d30.json
+- name: lazy-3000-batch-on
+  classification: short runtime diagnostic
+  source: 72e36414de7129a1046ce36861de18eb25b2d180
+  tooling: edbe9171dde4cc907db2561c8947a233c8cecd84
+  result: results/lazy-3000-batch-on.json
+- name: lazy-3000-cache-attribution
+  classification: attribution diagnostic
+  source: 72e36414de7129a1046ce36861de18eb25b2d180
+  tooling: eabf8e3b7e3c23848a27a95eb758c8294d80bc6d
+  result: results/lazy-3000-cache-attribution.json
+- name: lazy-3000-single
+  classification: short runtime diagnostic
+  source: 72e36414de7129a1046ce36861de18eb25b2d180
+  tooling: edbe9171dde4cc907db2561c8947a233c8cecd84
+  result: results/lazy-3000-single.json
+- name: lazy-5000-batch-off
+  classification: short runtime diagnostic
+  source: 72e36414de7129a1046ce36861de18eb25b2d180
+  tooling: edbe9171dde4cc907db2561c8947a233c8cecd84
+  result: results/lazy-5000-batch-off.json
+- name: lazy-5000-batch-on-hz10
+  classification: short runtime diagnostic
+  source: 72e36414de7129a1046ce36861de18eb25b2d180
+  tooling: edbe9171dde4cc907db2561c8947a233c8cecd84
+  result: results/lazy-5000-batch-on-hz10.json
+- name: lazy-5000-batch-on-hz30
+  classification: short runtime diagnostic
+  source: 72e36414de7129a1046ce36861de18eb25b2d180
+  tooling: edbe9171dde4cc907db2561c8947a233c8cecd84
+  result: results/lazy-5000-batch-on-hz30.json
+- name: lazy-5000-batch-on-hz5
+  classification: short runtime diagnostic
+  source: 72e36414de7129a1046ce36861de18eb25b2d180
+  tooling: edbe9171dde4cc907db2561c8947a233c8cecd84
+  result: results/lazy-5000-batch-on-hz5.json
+- name: lazy-5000-batch-on
+  classification: short runtime diagnostic
+  source: 72e36414de7129a1046ce36861de18eb25b2d180
+  tooling: edbe9171dde4cc907db2561c8947a233c8cecd84
+  result: results/lazy-5000-batch-on.json
+- name: lazy-combat-batch-on
+  classification: short runtime diagnostic
+  source: 72e36414de7129a1046ce36861de18eb25b2d180
+  tooling: edbe9171dde4cc907db2561c8947a233c8cecd84
+  result: results/lazy-combat-batch-on.json

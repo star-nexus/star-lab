@@ -1,0 +1,284 @@
+{
+  "source": {
+    "path": "/Users/liyang/Developer/star-lab/runs/star-p3-batch-measured",
+    "sha": "3017547a87360a667b6b6cb13def21d63b528399",
+    "dirty": ""
+  },
+  "tooling": {
+    "path": "/Users/liyang/Developer/star-lab",
+    "sha": "64cc1697f1c90bbfa5baa0f06b2e44eecc38191d",
+    "dirty": ""
+  },
+  "workload": {
+    "source": "/Users/liyang/Developer/star-lab/runs/star-p3-batch-measured",
+    "units": 10000,
+    "agents": 10000,
+    "delay": "1",
+    "observation_mode": "batch-on",
+    "observation_hz": 1.0,
+    "scope": "selected",
+    "layout": "canonical",
+    "policy": "move",
+    "seconds": 15.0,
+    "warmup": 5.0,
+    "budget_ms": 12.0,
+    "attribute": false,
+    "no_encode": false,
+    "synchronized": false,
+    "movement_overlay": false,
+    "no_agents": false,
+    "gc_policy": "realtime_defer",
+    "output": "/Users/liyang/Developer/star-lab/runs/p3-read-batch/10000-batch-on-a10000.json"
+  },
+  "hardware": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+    "machine": "arm64",
+    "chrome": "kept open; no slow frames removed",
+    "window": [
+      2480,
+      1261
+    ]
+  },
+  "dependency_lock_sha256": "e8a64dba4f65993ce7a1bd720f7c7b6d399422692e4202dfb25b9c1596ce5f95",
+  "safe_environment": {
+    "STAR_SCALE_MINIMAP_UNITS": "off",
+    "HEADLESS": null,
+    "SDL_VIDEODRIVER": null
+  },
+  "fixture_sha256": "827470fa574129e4b268be7b276abfae8a52a31598aebb6a3d92ca2d3f65431d",
+  "guards": {
+    "complete": true,
+    "source_clean": true,
+    "tooling_clean": true,
+    "fog_on": true,
+    "world_alive": true,
+    "resident_retained": true,
+    "position_progress": false,
+    "frame_p99": false,
+    "world_hz": false,
+    "observation_p99": false,
+    "action_queue_p99": false,
+    "queue_bounded": false,
+    "offered_load_met": false,
+    "duration_formal": false,
+    "not_diagnostic": true
+  },
+  "pass": false,
+  "frame_work_ms": {
+    "count": 410,
+    "min": 35.404875001404434,
+    "avg": 36.63362561769091,
+    "p50": 36.430542008019984,
+    "p95": 38.41266699600965,
+    "p99": 40.522499999497086,
+    "max": 41.6301250224933
+  },
+  "frame_count": 410,
+  "world_hz": 27.333333333333332,
+  "observation_response_ms": {
+    "count": 410,
+    "min": 5028.8307089940645,
+    "avg": 12477.015485888965,
+    "p50": 12454.63770898641,
+    "p95": 19231.647249980597,
+    "p99": 19820.924958999967,
+    "max": 19969.757042010315
+  },
+  "action_queue_ms": {
+    "count": 0
+  },
+  "blocks30": [],
+  "nominal_observations": 150000,
+  "completed_observations": 410,
+  "nominal_load_fraction": 0.0027333333333333333,
+  "worst_rolling5_p99_ms": 41.19041599915363,
+  "longest_miss_streak": 410,
+  "miss_fraction": 1.0,
+  "agents": {
+    "counts": {
+      "observations": 519
+    },
+    "sessions": 10000,
+    "batch_metrics": {
+      "faction_builds": 519,
+      "census_builds": 519,
+      "enemy_unit_builds": 121965,
+      "tile_builds": 1877223,
+      "unit_panel_builds": 519,
+      "batches": 519,
+      "requests": 519
+    },
+    "observation_mode": "batch-on",
+    "setup_ms": 5981.4407090016175,
+    "pending_events": 10519,
+    "overdue_events": 10492,
+    "oldest_overdue_ms": 19987.215291999746,
+    "cycles_per_session": {
+      "count": 10000,
+      "min": 0,
+      "avg": 0.0,
+      "p50": 0,
+      "p95": 0,
+      "p99": 0,
+      "max": 0
+    },
+    "observation_response_ms": {
+      "count": 519,
+      "min": 29.260291979881003,
+      "avg": 10482.564031795722,
+      "p50": 10480.211374990176,
+      "p95": 19039.93733396055,
+      "p99": 19784.007000009296,
+      "max": 19969.757042010315
+    },
+    "action_queue_ms": {
+      "count": 0
+    },
+    "response_bytes": {
+      "count": 519,
+      "min": 282985,
+      "avg": 282986.7880539499,
+      "p50": 282987,
+      "p95": 282987,
+      "p99": 282987,
+      "max": 282987
+    }
+  },
+  "attribution": null,
+  "overlay": null,
+  "raw": {
+    "path": "10000-batch-on-a10000.raw.json",
+    "size": 298657,
+    "sha256": "57e442bd281445832e21ffc25665e289b2d5f4926bf72c24be7c3ab9c424ff7e",
+    "locator": "artifacts/10000-batch-on-a10000-raw.zip#10000-batch-on-a10000.raw.json"
+  },
+  "fixture_package": {
+    "path": "artifacts/fixture-827470fa574129e4b268be7b276abfae8a52a31598aebb6a3d92ca2d3f65431d.zip",
+    "size": 23199,
+    "sha256": "99bc8bd96fa1362f9f2cf2df4a49ea835ad998cda9bd210bd5531ed6e0486e0d"
+  },
+  "raw_package": {
+    "path": "artifacts/10000-batch-on-a10000-raw.zip",
+    "size": 108929,
+    "sha256": "c92b8dd26d4f60dc79c612d72d89bff0dc8e0553f02db9acc6d466b2d4faf63b"
+  },
+  "reanalysis": {
+    "verified": true,
+    "source": "3017547a87360a667b6b6cb13def21d63b528399",
+    "metrics": {
+      "frame_work_ms": {
+        "count": 410,
+        "min": 35.404875001404434,
+        "avg": 36.63362561769091,
+        "p50": 36.430542008019984,
+        "p95": 38.41266699600965,
+        "p99": 40.522499999497086,
+        "max": 41.6301250224933
+      },
+      "observation_response_ms": {
+        "count": 410,
+        "min": 5028.8307089940645,
+        "avg": 12477.015485888965,
+        "p50": 12454.63770898641,
+        "p95": 19231.647249980597,
+        "p99": 19820.924958999967,
+        "max": 19969.757042010315
+      },
+      "action_queue_ms": {
+        "count": 0
+      }
+    },
+    "frame_count": 410,
+    "completed_observations": 410,
+    "alive_units": {
+      "count": 15,
+      "min": 10000,
+      "avg": 10000.0,
+      "p50": 10000,
+      "p95": 10000,
+      "p99": 10000,
+      "max": 10000
+    },
+    "moving_units": {
+      "count": 15,
+      "min": 0,
+      "avg": 0.0,
+      "p50": 0,
+      "p95": 0,
+      "p99": 0,
+      "max": 0
+    },
+    "observations_per_session": {
+      "count": 10000,
+      "min": 0,
+      "avg": 0.041,
+      "p50": 0,
+      "p95": 0,
+      "p99": 1,
+      "max": 1
+    },
+    "observation_build_ms": {
+      "count": 410,
+      "min": 17.013916978612542,
+      "avg": 17.53824004603879,
+      "p50": 17.503999988548458,
+      "p95": 17.898417019750923,
+      "p99": 18.495041993446648,
+      "max": 19.617583020590246
+    },
+    "observation_decode_ms": {
+      "count": 410,
+      "min": 1.1493339843582362,
+      "avg": 1.190245104669707,
+      "p50": 1.18937500519678,
+      "p95": 1.2179589830338955,
+      "p99": 1.2417499965522438,
+      "max": 1.2563749914988875
+    },
+    "observed_batch_size": {
+      "count": 410,
+      "min": 1,
+      "avg": 1.0,
+      "p50": 1,
+      "p95": 1,
+      "p99": 1,
+      "max": 1
+    },
+    "observation_encode_ms": {
+      "count": 410,
+      "min": 1.2699170038104057,
+      "avg": 1.351736288406977,
+      "p50": 1.3539580104406923,
+      "p95": 1.40974999521859,
+      "p99": 1.4525000005960464,
+      "max": 1.500000013038516
+    },
+    "observation_bytes": {
+      "count": 410,
+      "min": 282987,
+      "avg": 282987.0,
+      "p50": 282987,
+      "p95": 282987,
+      "p99": 282987,
+      "max": 282987
+    },
+    "agent_frame_ms": {
+      "count": 410,
+      "min": 20.73145899339579,
+      "avg": 21.439552192559194,
+      "p50": 21.399999997811392,
+      "p95": 21.87749999575317,
+      "p99": 22.82612500130199,
+      "max": 23.548707977170125
+    },
+    "simulation_seconds": 15.015912292001303,
+    "maxrss_bytes": 471023616,
+    "sampled_position_changes": 0,
+    "accepted_moves": 0,
+    "accepted_attacks": 0,
+    "rejected_actions": 0,
+    "frame_deadline_miss_fraction": 1.0,
+    "guard_pass_as_recorded": false
+  }
+}

@@ -1,0 +1,185 @@
+experiment:
+  id: 2026-09-p3-clock24
+  date: '2026-09-10'
+  status: measured
+  title: Fixed simulation clock and stochastic closed-loop Agents
+source:
+  repository: star-nexus/star
+  measurement_commit: 906386312d70d77af25e4b4da883f6dd5b0fe5ef
+  production_changed: false
+  tooling_commits:
+  - 071ad8a435d27ff95d9a74f1fa085c69a0d1e88f
+  - 2081c373eff9302b5266e1d1cd987a8c64849eec
+  - 359d2670004d2fcf19badc6b3394f9f87ee5b5e6
+  - a99a4c4428c2e6350f2a0d1ba650a0d59902a1f4
+hardware:
+  platform: macOS-26.5.2-arm64-arm-64bit-Mach-O
+  python: 3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang
+    20.1.8 ]
+  machine: arm64
+  chrome: kept open; no slow frames removed
+  window:
+  - 2480
+  - 1261
+software:
+  dependency_lock: e8a64dba4f65993ce7a1bd720f7c7b6d399422692e4202dfb25b9c1596ce5f95
+scenario:
+  initial_units: 5000
+  agents: 1000
+  layouts:
+  - interleaved
+  - canonical
+workload:
+  world_hz: 24
+  world_clock: fixed dt=1/24
+  agent_clock: wall perf_counter
+  cycle: observe, act immediately, think, repeat
+  initial_offsets: uniform(0,30)
+  thinking: truncated normal mean30 sigma5 range15..45
+  unit_action_probabilities:
+    move: 0.5
+    attack: 0.25
+    wait: 0.25
+  fog: true
+  scope: selected
+  observation_mode: single
+  real_llm: false
+  hub: false
+measurement:
+  warmup: 30
+  windows:
+  - 60
+  - 60
+  - 60
+  - 300
+  agent_budget_ms:
+  - 12
+  - 18
+  gc_policy: realtime_defer
+  claim: engineering measurement; strict guard outcomes recorded unchanged
+runs:
+- name: discovery60
+  result: results/discovery60.json
+  guards:
+    complete: true
+    source_clean: true
+    tooling_clean: true
+    fog_on: true
+    world_alive: true
+    position_progress: true
+    frame_p99: false
+    world_hz: false
+    observation_p99: false
+    action_queue_p99: false
+    queue_bounded: false
+    offered_load_met: false
+    duration_formal: true
+    not_diagnostic: true
+    fixed_clock: true
+    board_clock: true
+    nonempty_move: true
+    nonempty_attack: true
+    initial_resident_units: true
+    live_workload_95pct: true
+- name: canonical60
+  result: results/canonical60.json
+  guards:
+    complete: true
+    source_clean: true
+    tooling_clean: true
+    fog_on: true
+    world_alive: true
+    position_progress: true
+    frame_p99: true
+    world_hz: true
+    observation_p99: false
+    action_queue_p99: false
+    queue_bounded: false
+    offered_load_met: true
+    duration_formal: true
+    not_diagnostic: true
+    fixed_clock: true
+    board_clock: true
+    nonempty_move: true
+    nonempty_attack: true
+    initial_resident_units: true
+    live_workload_95pct: true
+- name: canonical18-60
+  result: results/canonical18-60.json
+  guards:
+    complete: true
+    source_clean: true
+    tooling_clean: true
+    fog_on: true
+    world_alive: true
+    position_progress: true
+    frame_p99: true
+    world_hz: true
+    observation_p99: false
+    action_queue_p99: false
+    queue_bounded: true
+    offered_load_met: true
+    duration_formal: true
+    not_diagnostic: true
+    fixed_clock: true
+    board_clock: true
+    nonempty_move: true
+    nonempty_attack: true
+    initial_resident_units: true
+    live_workload_95pct: true
+- name: canonical18-300
+  result: results/canonical18-300.json
+  guards:
+    complete: true
+    source_clean: true
+    tooling_clean: true
+    fog_on: true
+    world_alive: true
+    position_progress: true
+    frame_p99: false
+    world_hz: true
+    observation_p99: false
+    action_queue_p99: false
+    queue_bounded: true
+    offered_load_met: true
+    duration_formal: true
+    not_diagnostic: true
+    fixed_clock: true
+    board_clock: true
+    nonempty_move: true
+    nonempty_attack: true
+    initial_resident_units: true
+    live_workload_95pct: true
+artifacts:
+  formal:
+  - path: artifacts/canonical18-300-compact.zip
+    size: 3899
+    sha256: 2d17f51b24986aec4ed953c8bc9c1dee47ce720006670b137a50e2765caab230
+  - path: artifacts/canonical18-300-raw.zip
+    size: 3374483
+    sha256: 441469f1f59c12d495b9e4d206c73469c3fa36163a3306fd9a1ad49e3edd3694
+  - path: artifacts/canonical18-60-compact.zip
+    size: 3300
+    sha256: 66104d3b181bdf1c5c67a0e91ba1377765990ae7bbe76f53a6d9a32f654bc5f5
+  - path: artifacts/canonical18-60-raw.zip
+    size: 914050
+    sha256: a53da05bd10be9bfe82bd804ffbc974f09c5af15cea7e2ec50b427ff0fc93fc0
+  - path: artifacts/canonical60-compact.zip
+    size: 3301
+    sha256: 51ff7f1e65e407cfffdc1208d8e7ac15ff0cde353b90b4e63b909c413a380067
+  - path: artifacts/canonical60-raw.zip
+    size: 912876
+    sha256: 641756e8d47db24b13622f69a87b2dcc1d745cbe2d4b523573e05d8e7f5b6e74
+  - path: artifacts/discovery60-compact.zip
+    size: 3310
+    sha256: b152b4be6095760b56699b8401dd925a1e49e55e7c4609dd0c7ef959134eeecd
+  - path: artifacts/discovery60-raw.zip
+    size: 531917
+    sha256: 636c71e15a998ff0644c345c851b2b38ee4d9a2e4a95cb8f8d568170393b5f95
+  - path: artifacts/fixture-1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52.zip
+    size: 11496
+    sha256: ce29b745ce9fd3e08e206b97e27203f3d86517822f89ab6066a8522c8c9684e1
+  - path: artifacts/fixture-d467619fd9c6031982fb508aa7557192d12b6c920628bff04e057a3542b8e741.zip
+    size: 14110
+    sha256: 9f209333e945143c762cf25ca055b1ed3f95397dabc931f8f809cf3dcfb475ab
+  external: []

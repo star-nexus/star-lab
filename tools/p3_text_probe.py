@@ -38,6 +38,9 @@ def main():
     parser.add_argument('--mode', choices=['replay', 'live'], default='replay')
     parser.add_argument('--samples', type=int, default=100)
     parser.add_argument('--repeats', type=int, default=2)
+    parser.add_argument('--settle-frames', type=int, default=0,
+                        help='Settle terrain with coordinates OFF before each condition; check cache completion')
+    parser.add_argument('--cases', help='Comma-separated replay conditions; optionally includes zoom05_pan')
     parser.add_argument('--seconds', type=float, default=60)
     parser.add_argument('--warmup', type=float, default=30)
     args = parser.parse_args()
@@ -109,6 +112,8 @@ def main():
         holder['driver'] = pygame.display.get_driver()
         holder['pygame'] = pygame.version.ver
         holder['animation'] = next(s for s in scene.world.systems if isinstance(s, AnimationSystem))
+        holder['map_renderer'] = next(s for s in scene.world.systems if isinstance(s, MapRenderSystem))
+        holder['view_checks'] = []
         holder['before'] = fingerprint(scene.world)
         holder['start'] = time.perf_counter()
         if args.mode == 'replay':
@@ -127,6 +132,10 @@ def main():
              dict(name='zoom1_coordinates', n=0, coords=True, zoom=1.),
              dict(name='zoom05_empty', n=0, zoom=.5),
              dict(name='zoom05_coordinates', n=0, coords=True, zoom=.5)]
+    if args.cases:
+        choices = {c['name']: c for c in cases}
+        choices['zoom05_pan'] = dict(name='zoom05_pan', n=0, coords=True, zoom=.5, pan=True)
+        cases = [choices[name] for name in args.cases.split(',')]
     blocks = []
     rng = random.Random(42)
     for repeat in range(args.repeats):
@@ -163,7 +172,7 @@ def main():
         if 'world' not in holder:
             return original_update(engine)
         if args.mode == 'replay':
-            block, within = divmod(holder['index']-60, args.samples+10)
+            block, within = divmod(holder['index']-60, args.settle_frames+args.samples+10)
             if block >= len(blocks):
                 world = holder['world']
                 holder['replay_guards'] = {
@@ -172,15 +181,30 @@ def main():
                 holder['finished'] = True
                 engine.running = False
                 return
-            repeat, case = blocks[block] if block >= 0 else (-1, cases[0])
+            repeat, case = blocks[block] if block >= 0 else (-1, dict(name='initial_warmup', n=0))
             if within == 0:
                 if block == 0:
                     holder['frozen_before'] = fingerprint(holder['world'])
                     holder['frozen_time'] = holder['world'].get_singleton_component(GameTime).game_elapsed_time
                 set_case(case)
                 print('TEXT_PROBE_BLOCK', repeat, case, flush=True)
+            if block >= 0 and args.settle_frames:
+                ui = holder['world'].get_singleton_component(UIState)
+                ui.show_coordinates = case.get('coords', False) if within >= args.settle_frames else False
+                if within == args.settle_frames:
+                    mr = holder['map_renderer']
+                    holder['view_checks'].append(dict(condition=case['name'], repeat=repeat,
+                        settled=(mr._overscan_build_job is None and mr._overscan_surface is not None
+                                 and mr._overscan_zoom_key == round(holder['camera'].zoom, 5))))
+                    # Simulate a cold first toggle; do not include terrain cache
+                    # construction in the text-cache startup comparison.
+                    reset = getattr(mr, '_reset_coordinate_cache', None)
+                    if reset:
+                        reset()
+            if block >= 0 and case.get('pan') and within >= args.settle_frames:
+                holder['camera'].offset_x = holder['camera_initial']['offset_x'] + (within-args.settle_frames)
             engine.delta_time = 0.
-            name, admitted = case['name'], block >= 0 and within >= 10
+            name, admitted = case['name'], block >= 0 and within >= args.settle_frames+10
         else:
             name = 'live'
             admitted = time.perf_counter()-holder['start'] >= args.warmup
@@ -196,6 +220,7 @@ def main():
         elapsed = (time.perf_counter()-start)*1000
         rows.append(dict(current, frame_ms=elapsed, condition=name, admitted=admitted,
                          repeat=repeat, within=within, effects=len(effects), onscreen_anchors=onscreen,
+                         cold_activation=args.mode == 'replay' and block >= 0 and within == args.settle_frames,
                          t=time.perf_counter()-holder['start']))
         holder['last_guards'] = {
             '5000_units': len(world.query().with_all(Unit).entities()) == 5000,
@@ -225,9 +250,12 @@ def main():
     if args.mode == 'replay':
         guards.update(**holder['replay_guards'],
                       complete_samples=len([r for r in rows if r['admitted']]) == len(cases)*args.samples*args.repeats)
+        if args.settle_frames:
+            guards['terrain_settled'] = all(c['settled'] for c in holder['view_checks'])
     result = {'provenance': provenance, 'guards': guards, 'cases': cases,
               'camera': holder['camera_initial'], 'display': holder['display'],
               'coordinates_initial': holder['coordinates_initial'],
+              'view_checks': holder['view_checks'],
               'pygame': holder['pygame'], 'driver': holder['driver'], 'summary': summarize(rows)}
     raw = dict(result, frames=rows)
     out.with_suffix('.raw.json').write_text(json.dumps(raw, indent=2)+'\n')

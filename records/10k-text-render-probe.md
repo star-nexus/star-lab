@@ -27,4 +27,9 @@ Macmini M4/16GB/macOS26.5.2，Chrome保留；实验串行，不删慢帧。
 
 ## 状态
 
-工具完成；下一步固定提交，串行运行replay和live，按PROTOCOL打包原始/compact证据、复算和更新恢复入口。
+已完成。测量工具f23266d83fd4dff099eb8cb3501aab37fc85b8e3，生产906386312d70d77af25e4b4da883f6dd5b0fe5ef。
+实际追加zoom1坐标ON/OFF，共13条件×2轮×100=2600测量帧；60初始预热+每条件10帧预热。所有源码/驻留/冻结时钟/位置兵力guard通过。
+自然live 30秒预热+60秒，完整1440帧。精确数据和局限见[正式案例](../experiments/2026-09-text-render-probe/README.md)。
+坐标是明确瓶颈（路径P99=171/727ms）；当前自然负载飘字准备P99=0.054ms、最大同时11条，非整帧43.08ms主因。
+部分replay慢帧发生在缩放后的绘制缓存过渡，未证明10帧足够稳定缓存；保留所有慢帧，禁止从飘字ON/OFF的整帧P99差推算净收益。
+按PROTOCOL归档2raw+2compact ZIP，解包重算、校验SHA；fixture复用上一轮canonical证据。仅完成诊断，生产未修复、无新Frontier。

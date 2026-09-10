@@ -4,6 +4,17 @@
 本文件是唯一活动恢复入口，已从 STAR 的 `docs/dev/` 迁至 STAR Lab。
 先读本文件即可恢复目标、边界和下一步；执行时再按下方链接读取对应证据。
 
+## 最新诊断：坐标与伤害/CRIT飘字（2026-09-10）
+
+- 用户要求分析两种视觉功能对P99的影响；本轮仅Lab诊断，生产仍906386312d70d77af25e4b4da883f6dd5b0fe5ef，未实施修复。
+- [报告/复现](../experiments/2026-09-text-render-probe/README.md)、[归因及限制](../experiments/2026-09-text-render-probe/analysis.md)、[决策](../experiments/2026-09-text-render-probe/decision.md)。工具测量SHA f23266d83fd4dff099eb8cb3501aab37fc85b8e3。
+- 冻结5000Unit世界/1000注册Agent，13条件×2轮×100帧：zoom1下577格，坐标OFF/ON的frameP99为18.14/181.02ms；zoom0.5下2379格为21.43/743.94ms，坐标路径P99分别171.49/726.78ms。逐格每帧创建Font、渲染文字5次是已确认重复开销。
+- 既有大规模实验zoom0.15低于0.3阈值，坐标直接跳过，不能据此解释历史44.54ms。
+- 1000条飘字的文字准备P99=2.61ms，屏幕外1000条仍2.98ms；字体已有预热，但surface每帧重建、没有提前裁剪。
+- 自然24Hz闭环30s预热+60s：5000Units全部存活，接受4906move/115attack；最多11条飘字，文字准备P99=0.054ms；整帧P99=43.08ms。最慢1%帧的文字准备平均0.039ms、占总work约0.086%，不是本canonical负载的主要瓶颈。该口径不含文字最终统一blit。
+- 诊断限制：replay每条件10帧预热未保证地图缓存稳定，保留全部早期慢帧，不从飘字ON/OFF的整帧P99差推算净收益；live不是密集混战或用户手动攻击现场的复现，也不是新的容量认证。
+- 2份raw+2份compact ZIP全部解包重算与SHA验证，fixture引用上一轮canonical ZIP，未重复存储。不新增Frontier。若用户安排修复，优先字体/坐标标签surface缓存；并行架构继续暂停。
+
 ## 最新结果：24Hz随机闭环实验已完成（2026-09-10）
 
 - 生产source仍为906386312d70d77af25e4b4da883f6dd5b0fe5ef，未修改生产代码或默认FPS；本轮仅扩展Lab运行参数与Agent调度。

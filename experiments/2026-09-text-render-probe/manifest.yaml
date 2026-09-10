@@ -1,0 +1,177 @@
+experiment:
+  id: 2026-09-text-render-probe
+  date: '2026-09-10'
+  status: reproduced
+  title: Coordinate and damage/CRIT text attribution; no production fix
+source:
+  repository: star-nexus/star
+  problem_commit: 906386312d70d77af25e4b4da883f6dd5b0fe5ef
+  measurement_commit: 906386312d70d77af25e4b4da883f6dd5b0fe5ef
+  fix_commit: null
+  validated_commit: null
+  validated_tag: null
+  tooling_commit: f23266d83fd4dff099eb8cb3501aab37fc85b8e3
+  production_changed: false
+hardware:
+  machine: Macmini M4
+  cpu: Apple M4
+  memory_bytes: 17179869184
+  display:
+  - 2480
+  - 1261
+  chrome: kept open, no slow-frame deletion
+software:
+  os: macOS-26.5.2-arm64-arm-64bit-Mach-O
+  python: 3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang
+    20.1.8 ]
+  pygame: 2.6.1
+  display_driver: cocoa
+  dependency_lock: e8a64dba4f65993ce7a1bd720f7c7b6d399422692e4202dfb25b9c1596ce5f95
+scenario:
+  name: lab-p3-canonical-5000
+  resident_units: 5000
+  agents: 1000
+  fixture_sha256: 1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52
+  canonical_fixture_zip: ../2026-09-p3-clock24/artifacts/fixture-1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52.zip
+  fixture_zip_sha256: ce29b745ce9fd3e08e206b97e27203f3d86517822f89ab6066a8522c8c9684e1
+  fixture_zip_size: 11496
+workload:
+  seed: 42
+  fog: true
+  camera:
+    offset_x: 1240
+    offset_y: 630
+    zoom: 0.15
+    speed: 200.0
+  coordinates_initial: false
+  minimap_units: 'off'
+  gc: realtime_defer
+  replay: delta=0, no Agent pump, 75pct numbers/25pct CRIT, fixed elapsed0.5; 13 cases
+  live: 24Hz fixed; single selected; post-action 30+/-5s truncated normal wall thinking;
+    action50/25/25; 18ms Agent budget
+measurement:
+  replay:
+    initial_warmup_frames: 60
+    condition_warmup_frames: 10
+    samples_per_condition: 100
+    repeats: 2
+    admitted_frames: 2600
+    guards:
+      finished: true
+      source_clean: true
+      tool_clean: true
+      5000_units: true
+      fog_on: true
+      world_unchanged: true
+      clock_frozen: true
+      complete_samples: true
+    cache_settled_guard: false
+  live:
+    warmup_seconds: 30
+    measurement_seconds: 60
+    admitted_frames: 1440
+    guards:
+      finished: true
+      source_clean: true
+      tool_clean: true
+      5000_units: true
+      fog_on: true
+    runtime_guards:
+      complete: true
+      source_clean: true
+      tooling_clean: true
+      fog_on: true
+      world_alive: true
+      position_progress: true
+      frame_p99: false
+      world_hz: true
+      observation_p99: false
+      action_queue_p99: false
+      queue_bounded: true
+      offered_load_met: true
+      duration_formal: true
+      not_diagnostic: true
+      fixed_clock: true
+      board_clock: true
+      nonempty_move: true
+      nonempty_attack: true
+      initial_resident_units: true
+      live_workload_95pct: true
+  capacity_certification: false
+variables:
+  independent:
+  - name: empty
+    n: 0
+  - name: coordinates
+    n: 0
+    coords: true
+  - name: damage10
+    n: 10
+  - name: damage100
+    n: 100
+  - name: damage500
+    n: 500
+  - name: damage1000
+    n: 1000
+  - name: hidden1000
+    n: 1000
+    draw: false
+  - name: offscreen1000
+    n: 1000
+    offscreen: true
+  - name: combined100
+    n: 100
+    coords: true
+  - name: zoom1_empty
+    n: 0
+    zoom: 1.0
+  - name: zoom1_coordinates
+    n: 0
+    coords: true
+    zoom: 1.0
+  - name: zoom05_empty
+    n: 0
+    zoom: 0.5
+  - name: zoom05_coordinates
+    n: 0
+    coords: true
+    zoom: 0.5
+  controlled:
+  - source
+  - seed
+  - fixed camera per condition
+  - unit state
+  - Fog
+  - window
+  - GC policy
+artifacts:
+  formal:
+  - path: artifacts/live-compact.zip
+    size: 4767
+    sha256: db1d8ec0703db6b28da39811aee44f5f26cf4063695e082d3fbf71fd9d49a8c8
+  - path: artifacts/live-raw.zip
+    size: 1068739
+    sha256: abf92879dfe626fbb91e372a61eea29d82c0c4eaa80fe1e58db712a3d8467174
+  - path: artifacts/replay-compact.zip
+    size: 18474
+    sha256: 26f849d60ebcfe971951d558c133d64de6778db7f62c1e656afe8ae15e017477
+  - path: artifacts/replay-raw.zip
+    size: 230155
+    sha256: e38072cc73ccbfa0fd0391c01bf19f22056edd8cdfc9ffe7b028312258ad3dce
+  - path: results/live.json
+    size: 16651
+    sha256: 07a2630436ed722acfa3bd20d3cb107b6af0a294755d8adb0184c11c9029d05b
+  - path: results/replay.json
+    size: 101049
+    sha256: bcc5de4a92c771d5dcacff79c1a94905b9f7d357e7fbc5f63cfd1a09765a4605
+  external: []
+headline:
+  problem_signature: Coordinates P99 171/727ms at zoom1/0.5; live text preparation
+    0.054ms vs full frame43.077ms
+  root_cause: Per-tile per-frame Font plus five text renders; live floating-text counts
+    too small to explain primary P99
+  resolution: Analysis only; propose coordinate font/label surface caching
+  result: No new Frontier, no production change
+revisit_when:
+- Dense combat or different UI/camera workload
+- Coordinate cache implementation with settled-view A/B

@@ -2,7 +2,7 @@
 
 更新：2026-09-11。用户已授权实现第一版并新开Git分支。
 生产分支`codex/parallel-observation-v1`，起点`6a970deaee7d9b8d3939edd102973f2377edd6ac`。
-本记录随验证结果更新；不表示已合并或获得容量认证。
+本阶段已完成：功能原型和冻结成本门槛验证，结论为性能负结果；未合并、无容量认证。
 
 ## 已实现的边界
 
@@ -22,4 +22,15 @@
 
 两次带dirty标记的冒烟只用于排除实现问题，不作为正式证据。第一种具名字段打包成本较高，已改为紧凑字段元组和worker按需还原。正式对照将使用固定干净source/tooling SHA，串行执行0/1/2/4 worker冻结探针，保留所有字段等价检查、导出/还原/IPC成本和负结果。
 
-下一步：固定版本并完成正式冻结对照。若复制/还原抵消并行收益，本阶段保留分支和证据，不合并main、不宣称24/30Hz提升；后续先讨论/验证更便宜的快照边界。
+## 完成结果
+
+- 功能source/开发tip：`3c4fba1a40fccee7bfc06575ade338c30a4b784e`，936项全量回归通过，其中24项新增并行契约。
+- annotated tag：`p3-parallel-observation-v1-prototype-2026-09-11`，对象7427d5bc4337f44af06eff701ff2a92ccdc74cd0；仅标记原型和负性能证据，不标记实时达标。
+- 主测量工具：`57343ce1b18f457b745391b5352081f547e40b45`；两轮0/1/2/4 worker，每组120查询，共960次输出等价且guard全通过。前一轮工具734f5c21dc29757501cf39859fa06a54077d0141的960次结果同样保留。
+- 5000存活Units、1000注册Agent、三个阵营轮转查询120个Agent，冻结世界且最多4个在途请求。串行141.12–141.65次/秒；2worker51.25–52.18；4worker62.31–62.65。不是动态闭环，不是1000Agent同时请求。
+- 2worker时owner每查询导出均值8.52–8.54ms，worker还原11.44–11.69ms，超过串行构建均值5.52–5.55ms。按需组件还原的一部分计在worker build，不能简单当作纯业务耗时。
+- 决策：保留分支，不合并main，不启动该实现的独立客户端/动态闭环，不宣称24/30Hz改善。下一候选为同一只读批次摊薄导出或覆盖完整写入的增量镜像；尚未实施。
+
+[报告与复现](../experiments/2026-09-parallel-observation-v1/README.md)、[分析](../experiments/2026-09-parallel-observation-v1/analysis.md)、[决策](../experiments/2026-09-parallel-observation-v1/decision.md)。Raw/compact均已归档、从raw重算和校验；fixture引用已有canonical归档。
+
+生产main仍6a970deaee7d9b8d3939edd102973f2377edd6ac。当前工作目录位于开发分支，普通运行入口仍同步；并行需要显式使用`docs/parallel-observation.md`中的本地API。本轮分支、tag与Lab提交均仅在本地，未推送。

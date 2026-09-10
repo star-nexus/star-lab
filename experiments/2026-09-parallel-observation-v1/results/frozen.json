@@ -1,0 +1,2259 @@
+{
+  "kind": "frozen equivalence and cost; NOT realtime capacity",
+  "primary_group": "guarded",
+  "groups": {
+    "guarded": [
+      {
+        "kind": "frozen diagnostic, NOT runtime capacity",
+        "source": {
+          "path": "/Users/liyang/Developer/star-main",
+          "sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+          "dirty": ""
+        },
+        "tooling": {
+          "path": "/Users/liyang/Developer/star-lab",
+          "sha": "57343ce1b18f457b745391b5352081f547e40b45",
+          "dirty": ""
+        },
+        "workload": {
+          "source": "/Users/liyang/Developer/star-main",
+          "units": 5000,
+          "agents": 1000,
+          "queries": 120,
+          "workers": 0,
+          "max_pending": 4,
+          "output": "/Users/liyang/Developer/star-lab/runs/parallel-v1-guarded/r1-w0.json"
+        },
+        "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+        "expected_sha256": "73a0ec9d00c3d0101036311dc5424a3741908b5339d375198adcafaaef7890bf",
+        "machine": {
+          "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+          "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+          "cpu_count": 10
+        },
+        "census_before": {
+          "units": 5000,
+          "alive": 5000,
+          "revision": 2001,
+          "fog_enabled": true,
+          "state_sha256": "14659409fe1d67d4582138ae86a2f060479315aa70cc35365e64b0b59fe113ee"
+        },
+        "census_after": {
+          "units": 5000,
+          "alive": 5000,
+          "revision": 2001,
+          "fog_enabled": true,
+          "state_sha256": "14659409fe1d67d4582138ae86a2f060479315aa70cc35365e64b0b59fe113ee"
+        },
+        "registered_sessions": 1000,
+        "warmed_worker_pids": [],
+        "guards": {
+          "source_clean": true,
+          "tooling_clean": true,
+          "world_unchanged": true,
+          "unit_count": true,
+          "alive_count": true,
+          "agents_registered": true,
+          "fog_on": true,
+          "complete": true,
+          "workers_warmed": true
+        },
+        "wall_seconds": 0.8503546250285581,
+        "requests_per_second": 141.11759549255106,
+        "rss_self_max": 206585856,
+        "rss_children_max": 9175040,
+        "summary": {
+          "export_ms": {
+            "count": 0
+          },
+          "admission_ms": {
+            "count": 0
+          },
+          "restore_ms": {
+            "count": 0
+          },
+          "build_ms": {
+            "count": 120,
+            "min": 5.12066698865965,
+            "avg": 5.550982990340951,
+            "p50": 5.551624984946102,
+            "p95": 5.84350002463907,
+            "p99": 6.076084042433649,
+            "max": 6.222500000149012
+          },
+          "encode_ms": {
+            "count": 120,
+            "min": 0.6465830374509096,
+            "avg": 0.733656217441118,
+            "p50": 0.7253329968079925,
+            "p95": 0.8086669840849936,
+            "p99": 0.8520000264979899,
+            "max": 0.8816249901428819
+          },
+          "decode_ms": {
+            "count": 120,
+            "min": 0.7447919924743474,
+            "avg": 0.7997211728555461,
+            "p50": 0.7886670064181089,
+            "p95": 0.8635419653728604,
+            "p99": 0.9562920313328505,
+            "max": 0.9587499662302434
+          },
+          "worker_queue_ipc_ms": {
+            "count": 0
+          },
+          "response_ms": {
+            "count": 120,
+            "min": 6.68574997689575,
+            "avg": 7.084360380637615,
+            "p50": 7.1001669857650995,
+            "p95": 7.399959024041891,
+            "p99": 7.638915965799242,
+            "max": 7.7629159786738455
+          },
+          "snapshot_bytes": {
+            "count": 0
+          },
+          "bytes": {
+            "count": 120,
+            "min": 161859,
+            "avg": 164073.15,
+            "p50": 164894,
+            "p95": 165233,
+            "p99": 166304,
+            "max": 166305
+          }
+        },
+        "all_equal": true,
+        "sample_count": 120,
+        "observed_worker_pids": [],
+        "raw_member": "guarded/r1-w0.json",
+        "raw_member_sha256": "b20e021cbc63be9385b8dfa947d80903f4f4f0554325c56ee06a27672d2a7703"
+      },
+      {
+        "kind": "frozen diagnostic, NOT runtime capacity",
+        "source": {
+          "path": "/Users/liyang/Developer/star-main",
+          "sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+          "dirty": ""
+        },
+        "tooling": {
+          "path": "/Users/liyang/Developer/star-lab",
+          "sha": "57343ce1b18f457b745391b5352081f547e40b45",
+          "dirty": ""
+        },
+        "workload": {
+          "source": "/Users/liyang/Developer/star-main",
+          "units": 5000,
+          "agents": 1000,
+          "queries": 120,
+          "workers": 1,
+          "max_pending": 4,
+          "output": "/Users/liyang/Developer/star-lab/runs/parallel-v1-guarded/r1-w1.json"
+        },
+        "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+        "expected_sha256": "73a0ec9d00c3d0101036311dc5424a3741908b5339d375198adcafaaef7890bf",
+        "machine": {
+          "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+          "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+          "cpu_count": 10
+        },
+        "census_before": {
+          "units": 5000,
+          "alive": 5000,
+          "revision": 2001,
+          "fog_enabled": true,
+          "state_sha256": "14659409fe1d67d4582138ae86a2f060479315aa70cc35365e64b0b59fe113ee"
+        },
+        "census_after": {
+          "units": 5000,
+          "alive": 5000,
+          "revision": 2001,
+          "fog_enabled": true,
+          "state_sha256": "14659409fe1d67d4582138ae86a2f060479315aa70cc35365e64b0b59fe113ee"
+        },
+        "registered_sessions": 1000,
+        "warmed_worker_pids": [
+          60532
+        ],
+        "guards": {
+          "source_clean": true,
+          "tooling_clean": true,
+          "world_unchanged": true,
+          "unit_count": true,
+          "alive_count": true,
+          "agents_registered": true,
+          "fog_on": true,
+          "complete": true,
+          "workers_warmed": true
+        },
+        "wall_seconds": 3.692413166980259,
+        "requests_per_second": 32.49907162966239,
+        "rss_self_max": 229720064,
+        "rss_children_max": 101498880,
+        "summary": {
+          "export_ms": {
+            "count": 120,
+            "min": 4.795417014975101,
+            "avg": 8.140254501874248,
+            "p50": 5.429207987617701,
+            "p95": 33.61908404622227,
+            "p99": 39.50933302985504,
+            "max": 39.533583039883524
+          },
+          "admission_ms": {
+            "count": 120,
+            "min": 5.172084027435631,
+            "avg": 8.562264183031706,
+            "p50": 5.83974999608472,
+            "p95": 34.19562504859641,
+            "p99": 39.94999994756654,
+            "max": 40.03529099281877
+          },
+          "restore_ms": {
+            "count": 120,
+            "min": 4.325249989051372,
+            "avg": 10.412926407298073,
+            "p50": 4.9969160463660955,
+            "p95": 45.5858749919571,
+            "p99": 51.574042008724064,
+            "max": 53.32624999573454
+          },
+          "build_ms": {
+            "count": 120,
+            "min": 12.280750030186027,
+            "avg": 17.865386815780465,
+            "p50": 12.975457997526973,
+            "p95": 51.7337920027785,
+            "p99": 55.49033294664696,
+            "max": 64.61649999255314
+          },
+          "encode_ms": {
+            "count": 120,
+            "min": 0.6599579937756062,
+            "avg": 0.7226483086318088,
+            "p50": 0.7166250143200159,
+            "p95": 0.7824589847587049,
+            "p99": 0.8224580087698996,
+            "max": 0.8619590080343187
+          },
+          "decode_ms": {
+            "count": 120,
+            "min": 0.630584021564573,
+            "avg": 0.9297343664608585,
+            "p50": 0.6542080081999302,
+            "p95": 0.8515830268152058,
+            "p99": 0.8988329791463912,
+            "max": 30.38491599727422
+          },
+          "worker_queue_ipc_ms": {
+            "count": 120,
+            "min": 16.478249977808446,
+            "avg": 81.56525517406408,
+            "p50": 89.30941601283848,
+            "p95": 107.6086669927463,
+            "p99": 109.82262500328943,
+            "max": 110.60054099652916
+          },
+          "response_ms": {
+            "count": 120,
+            "min": 41.35975003009662,
+            "avg": 121.36107424351697,
+            "p50": 117.64741700608283,
+            "p95": 149.67779099242762,
+            "p99": 161.06495802523568,
+            "max": 165.15750001417473
+          },
+          "snapshot_bytes": {
+            "count": 120,
+            "min": 319136,
+            "avg": 322622.64166666666,
+            "p50": 323317,
+            "p95": 325417,
+            "p99": 325417,
+            "max": 325417
+          },
+          "bytes": {
+            "count": 120,
+            "min": 161859,
+            "avg": 164073.15,
+            "p50": 164894,
+            "p95": 165233,
+            "p99": 166304,
+            "max": 166305
+          }
+        },
+        "all_equal": true,
+        "sample_count": 120,
+        "observed_worker_pids": [
+          60532
+        ],
+        "raw_member": "guarded/r1-w1.json",
+        "raw_member_sha256": "4f1849b883d18c59a627a065adf1cf5926f13a951a917f30f53654d2c6369db3"
+      },
+      {
+        "kind": "frozen diagnostic, NOT runtime capacity",
+        "source": {
+          "path": "/Users/liyang/Developer/star-main",
+          "sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+          "dirty": ""
+        },
+        "tooling": {
+          "path": "/Users/liyang/Developer/star-lab",
+          "sha": "57343ce1b18f457b745391b5352081f547e40b45",
+          "dirty": ""
+        },
+        "workload": {
+          "source": "/Users/liyang/Developer/star-main",
+          "units": 5000,
+          "agents": 1000,
+          "queries": 120,
+          "workers": 2,
+          "max_pending": 4,
+          "output": "/Users/liyang/Developer/star-lab/runs/parallel-v1-guarded/r1-w2.json"
+        },
+        "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+        "expected_sha256": "73a0ec9d00c3d0101036311dc5424a3741908b5339d375198adcafaaef7890bf",
+        "machine": {
+          "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+          "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+          "cpu_count": 10
+        },
+        "census_before": {
+          "units": 5000,
+          "alive": 5000,
+          "revision": 2001,
+          "fog_enabled": true,
+          "state_sha256": "14659409fe1d67d4582138ae86a2f060479315aa70cc35365e64b0b59fe113ee"
+        },
+        "census_after": {
+          "units": 5000,
+          "alive": 5000,
+          "revision": 2001,
+          "fog_enabled": true,
+          "state_sha256": "14659409fe1d67d4582138ae86a2f060479315aa70cc35365e64b0b59fe113ee"
+        },
+        "registered_sessions": 1000,
+        "warmed_worker_pids": [
+          60553,
+          60554
+        ],
+        "guards": {
+          "source_clean": true,
+          "tooling_clean": true,
+          "world_unchanged": true,
+          "unit_count": true,
+          "alive_count": true,
+          "agents_registered": true,
+          "fog_on": true,
+          "complete": true,
+          "workers_warmed": true
+        },
+        "wall_seconds": 2.3412587079801597,
+        "requests_per_second": 51.254481015268006,
+        "rss_self_max": 207831040,
+        "rss_children_max": 102776832,
+        "summary": {
+          "export_ms": {
+            "count": 120,
+            "min": 4.724750004243106,
+            "avg": 8.54205138408967,
+            "p50": 5.725791968870908,
+            "p95": 35.61741701560095,
+            "p99": 39.30258296895772,
+            "max": 42.500375013332814
+          },
+          "admission_ms": {
+            "count": 120,
+            "min": 5.04591700155288,
+            "avg": 8.973079152929131,
+            "p50": 6.186000013258308,
+            "p95": 36.01316700223833,
+            "p99": 39.76374998455867,
+            "max": 42.96233301283792
+          },
+          "restore_ms": {
+            "count": 120,
+            "min": 4.470666986890137,
+            "avg": 11.692660084130088,
+            "p50": 5.67745795706287,
+            "p95": 58.044791978318244,
+            "p99": 62.52579198917374,
+            "max": 63.82866599597037
+          },
+          "build_ms": {
+            "count": 120,
+            "min": 12.822583026718348,
+            "avg": 21.403903796939023,
+            "p50": 13.997834001202136,
+            "p95": 62.461874971631914,
+            "p99": 67.61266698595136,
+            "max": 69.60537499981001
+          },
+          "encode_ms": {
+            "count": 120,
+            "min": 0.673541973810643,
+            "avg": 0.7637194571240494,
+            "p50": 0.7426670053973794,
+            "p95": 0.911374983843416,
+            "p99": 1.0256670066155493,
+            "max": 1.264000020455569
+          },
+          "decode_ms": {
+            "count": 120,
+            "min": 0.6261670496314764,
+            "avg": 1.0052989916099857,
+            "p50": 0.6625829846598208,
+            "p95": 0.8978330297395587,
+            "p99": 1.051749975886196,
+            "max": 37.9683329956606
+          },
+          "worker_queue_ipc_ms": {
+            "count": 120,
+            "min": 0.8787079714238644,
+            "avg": 28.10589446113833,
+            "p50": 14.657541993074119,
+            "p95": 66.31308398209512,
+            "p99": 69.63533302769065,
+            "max": 93.96849997574463
+          },
+          "response_ms": {
+            "count": 120,
+            "min": 37.90629201103002,
+            "avg": 76.50960863296253,
+            "p50": 78.71558400802314,
+            "p95": 119.02183300117031,
+            "p99": 126.93416699767113,
+            "max": 127.88895796984434
+          },
+          "snapshot_bytes": {
+            "count": 120,
+            "min": 319136,
+            "avg": 322622.64166666666,
+            "p50": 323317,
+            "p95": 325417,
+            "p99": 325417,
+            "max": 325417
+          },
+          "bytes": {
+            "count": 120,
+            "min": 161859,
+            "avg": 164073.15,
+            "p50": 164894,
+            "p95": 165233,
+            "p99": 166304,
+            "max": 166305
+          }
+        },
+        "all_equal": true,
+        "sample_count": 120,
+        "observed_worker_pids": [
+          60553,
+          60554
+        ],
+        "raw_member": "guarded/r1-w2.json",
+        "raw_member_sha256": "fe8a3bd9c39154186d6305fb40f198b40048fb49f750a24d6e4b47a56d9dd6de"
+      },
+      {
+        "kind": "frozen diagnostic, NOT runtime capacity",
+        "source": {
+          "path": "/Users/liyang/Developer/star-main",
+          "sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+          "dirty": ""
+        },
+        "tooling": {
+          "path": "/Users/liyang/Developer/star-lab",
+          "sha": "57343ce1b18f457b745391b5352081f547e40b45",
+          "dirty": ""
+        },
+        "workload": {
+          "source": "/Users/liyang/Developer/star-main",
+          "units": 5000,
+          "agents": 1000,
+          "queries": 120,
+          "workers": 4,
+          "max_pending": 4,
+          "output": "/Users/liyang/Developer/star-lab/runs/parallel-v1-guarded/r1-w4.json"
+        },
+        "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+        "expected_sha256": "73a0ec9d00c3d0101036311dc5424a3741908b5339d375198adcafaaef7890bf",
+        "machine": {
+          "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+          "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+          "cpu_count": 10
+        },
+        "census_before": {
+          "units": 5000,
+          "alive": 5000,
+          "revision": 2001,
+          "fog_enabled": true,
+          "state_sha256": "14659409fe1d67d4582138ae86a2f060479315aa70cc35365e64b0b59fe113ee"
+        },
+        "census_after": {
+          "units": 5000,
+          "alive": 5000,
+          "revision": 2001,
+          "fog_enabled": true,
+          "state_sha256": "14659409fe1d67d4582138ae86a2f060479315aa70cc35365e64b0b59fe113ee"
+        },
+        "registered_sessions": 1000,
+        "warmed_worker_pids": [
+          60576,
+          60577,
+          60578,
+          60579
+        ],
+        "guards": {
+          "source_clean": true,
+          "tooling_clean": true,
+          "world_unchanged": true,
+          "unit_count": true,
+          "alive_count": true,
+          "agents_registered": true,
+          "fog_on": true,
+          "complete": true,
+          "workers_warmed": true
+        },
+        "wall_seconds": 1.915539000008721,
+        "requests_per_second": 62.64555302682622,
+        "rss_self_max": 233635840,
+        "rss_children_max": 104923136,
+        "summary": {
+          "export_ms": {
+            "count": 120,
+            "min": 4.70308301737532,
+            "avg": 9.608649688986285,
+            "p50": 5.930417042691261,
+            "p95": 39.45458302041516,
+            "p99": 41.57462500734255,
+            "max": 44.06887496588752
+          },
+          "admission_ms": {
+            "count": 120,
+            "min": 5.090791033580899,
+            "avg": 10.086140932980925,
+            "p50": 6.424124992918223,
+            "p95": 40.084541018586606,
+            "p99": 42.16408298816532,
+            "max": 44.55150000285357
+          },
+          "restore_ms": {
+            "count": 120,
+            "min": 4.487792029976845,
+            "avg": 11.245261826843489,
+            "p50": 6.257792003452778,
+            "p95": 63.83158400421962,
+            "p99": 69.07608394976705,
+            "max": 70.1837909873575
+          },
+          "build_ms": {
+            "count": 120,
+            "min": 12.660166947171092,
+            "avg": 26.119052400948323,
+            "p50": 15.312874980736524,
+            "p95": 77.0185409928672,
+            "p99": 83.07233301457018,
+            "max": 86.02462499402463
+          },
+          "encode_ms": {
+            "count": 120,
+            "min": 0.6972500123083591,
+            "avg": 0.8490906116397431,
+            "p50": 0.7783749606460333,
+            "p95": 1.2401670101098716,
+            "p99": 1.5054590185172856,
+            "max": 1.6247499734163284
+          },
+          "decode_ms": {
+            "count": 120,
+            "min": 0.6218749913387001,
+            "avg": 0.7448267259557421,
+            "p50": 0.6745000137016177,
+            "p95": 1.1026659631170332,
+            "p99": 1.4996250392869115,
+            "max": 1.7117499955929816
+          },
+          "worker_queue_ipc_ms": {
+            "count": 120,
+            "min": 0.6830000202171504,
+            "avg": 5.517324980367751,
+            "p50": 1.374292012769729,
+            "p95": 11.30358298541978,
+            "p99": 36.96549998130649,
+            "max": 37.709791969973594
+          },
+          "response_ms": {
+            "count": 120,
+            "min": 27.93516597012058,
+            "avg": 63.03295588343948,
+            "p50": 58.461790962610394,
+            "p95": 125.167790974956,
+            "p99": 139.29233298404142,
+            "max": 139.51037498191
+          },
+          "snapshot_bytes": {
+            "count": 120,
+            "min": 319136,
+            "avg": 322622.64166666666,
+            "p50": 323317,
+            "p95": 325417,
+            "p99": 325417,
+            "max": 325417
+          },
+          "bytes": {
+            "count": 120,
+            "min": 161859,
+            "avg": 164073.15,
+            "p50": 164894,
+            "p95": 165233,
+            "p99": 166304,
+            "max": 166305
+          }
+        },
+        "all_equal": true,
+        "sample_count": 120,
+        "observed_worker_pids": [
+          60576,
+          60577,
+          60578,
+          60579
+        ],
+        "raw_member": "guarded/r1-w4.json",
+        "raw_member_sha256": "497a4560b6d88042abe9956cd9ea7f61da8148f2d8fb770e334de4bdde283aaf"
+      },
+      {
+        "kind": "frozen diagnostic, NOT runtime capacity",
+        "source": {
+          "path": "/Users/liyang/Developer/star-main",
+          "sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+          "dirty": ""
+        },
+        "tooling": {
+          "path": "/Users/liyang/Developer/star-lab",
+          "sha": "57343ce1b18f457b745391b5352081f547e40b45",
+          "dirty": ""
+        },
+        "workload": {
+          "source": "/Users/liyang/Developer/star-main",
+          "units": 5000,
+          "agents": 1000,
+          "queries": 120,
+          "workers": 0,
+          "max_pending": 4,
+          "output": "/Users/liyang/Developer/star-lab/runs/parallel-v1-guarded/r2-w0.json"
+        },
+        "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+        "expected_sha256": "73a0ec9d00c3d0101036311dc5424a3741908b5339d375198adcafaaef7890bf",
+        "machine": {
+          "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+          "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+          "cpu_count": 10
+        },
+        "census_before": {
+          "units": 5000,
+          "alive": 5000,
+          "revision": 2001,
+          "fog_enabled": true,
+          "state_sha256": "14659409fe1d67d4582138ae86a2f060479315aa70cc35365e64b0b59fe113ee"
+        },
+        "census_after": {
+          "units": 5000,
+          "alive": 5000,
+          "revision": 2001,
+          "fog_enabled": true,
+          "state_sha256": "14659409fe1d67d4582138ae86a2f060479315aa70cc35365e64b0b59fe113ee"
+        },
+        "registered_sessions": 1000,
+        "warmed_worker_pids": [],
+        "guards": {
+          "source_clean": true,
+          "tooling_clean": true,
+          "world_unchanged": true,
+          "unit_count": true,
+          "alive_count": true,
+          "agents_registered": true,
+          "fog_on": true,
+          "complete": true,
+          "workers_warmed": true
+        },
+        "wall_seconds": 0.8471454160171561,
+        "requests_per_second": 141.65218595430588,
+        "rss_self_max": 205832192,
+        "rss_children_max": 8912896,
+        "summary": {
+          "export_ms": {
+            "count": 0
+          },
+          "admission_ms": {
+            "count": 0
+          },
+          "restore_ms": {
+            "count": 0
+          },
+          "build_ms": {
+            "count": 120,
+            "min": 4.902832966763526,
+            "avg": 5.523114588383275,
+            "p50": 5.549625027924776,
+            "p95": 5.804083019029349,
+            "p99": 5.871707980986685,
+            "max": 6.015291961375624
+          },
+          "encode_ms": {
+            "count": 120,
+            "min": 0.6909589865244925,
+            "avg": 0.7492688188600974,
+            "p50": 0.7391669787466526,
+            "p95": 0.8255830034613609,
+            "p99": 0.8760420023463666,
+            "max": 0.8972500218078494
+          },
+          "decode_ms": {
+            "count": 120,
+            "min": 0.7296249968931079,
+            "avg": 0.7853589646401815,
+            "p50": 0.777167035266757,
+            "p95": 0.8695839787833393,
+            "p99": 0.891542003955692,
+            "max": 0.8931250195018947
+          },
+          "worker_queue_ipc_ms": {
+            "count": 0
+          },
+          "response_ms": {
+            "count": 120,
+            "min": 6.389332993421704,
+            "avg": 7.0577423718835535,
+            "p50": 7.105750031769276,
+            "p95": 7.330499996896833,
+            "p99": 7.40574998781085,
+            "max": 7.553957984782755
+          },
+          "snapshot_bytes": {
+            "count": 0
+          },
+          "bytes": {
+            "count": 120,
+            "min": 161859,
+            "avg": 164073.15,
+            "p50": 164894,
+            "p95": 165233,
+            "p99": 166304,
+            "max": 166305
+          }
+        },
+        "all_equal": true,
+        "sample_count": 120,
+        "observed_worker_pids": [],
+        "raw_member": "guarded/r2-w0.json",
+        "raw_member_sha256": "23bc6a913b5a9a278646eacfd156373e35afd2ce5d28b8ef50899a652889dcc9"
+      },
+      {
+        "kind": "frozen diagnostic, NOT runtime capacity",
+        "source": {
+          "path": "/Users/liyang/Developer/star-main",
+          "sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+          "dirty": ""
+        },
+        "tooling": {
+          "path": "/Users/liyang/Developer/star-lab",
+          "sha": "57343ce1b18f457b745391b5352081f547e40b45",
+          "dirty": ""
+        },
+        "workload": {
+          "source": "/Users/liyang/Developer/star-main",
+          "units": 5000,
+          "agents": 1000,
+          "queries": 120,
+          "workers": 1,
+          "max_pending": 4,
+          "output": "/Users/liyang/Developer/star-lab/runs/parallel-v1-guarded/r2-w1.json"
+        },
+        "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+        "expected_sha256": "73a0ec9d00c3d0101036311dc5424a3741908b5339d375198adcafaaef7890bf",
+        "machine": {
+          "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+          "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+          "cpu_count": 10
+        },
+        "census_before": {
+          "units": 5000,
+          "alive": 5000,
+          "revision": 2001,
+          "fog_enabled": true,
+          "state_sha256": "14659409fe1d67d4582138ae86a2f060479315aa70cc35365e64b0b59fe113ee"
+        },
+        "census_after": {
+          "units": 5000,
+          "alive": 5000,
+          "revision": 2001,
+          "fog_enabled": true,
+          "state_sha256": "14659409fe1d67d4582138ae86a2f060479315aa70cc35365e64b0b59fe113ee"
+        },
+        "registered_sessions": 1000,
+        "warmed_worker_pids": [
+          60613
+        ],
+        "guards": {
+          "source_clean": true,
+          "tooling_clean": true,
+          "world_unchanged": true,
+          "unit_count": true,
+          "alive_count": true,
+          "agents_registered": true,
+          "fog_on": true,
+          "complete": true,
+          "workers_warmed": true
+        },
+        "wall_seconds": 3.7210851249983534,
+        "requests_per_second": 32.24865757405996,
+        "rss_self_max": 226394112,
+        "rss_children_max": 102957056,
+        "summary": {
+          "export_ms": {
+            "count": 120,
+            "min": 4.803874995559454,
+            "avg": 8.220374335845312,
+            "p50": 5.391332961153239,
+            "p95": 35.42012500111014,
+            "p99": 39.55245902761817,
+            "max": 39.84604199649766
+          },
+          "admission_ms": {
+            "count": 120,
+            "min": 5.1477919914759696,
+            "avg": 8.648156933486462,
+            "p50": 5.838166980538517,
+            "p95": 35.81716597545892,
+            "p99": 39.97008304577321,
+            "max": 40.295040991622955
+          },
+          "restore_ms": {
+            "count": 120,
+            "min": 4.0977500029839575,
+            "avg": 10.447166965847524,
+            "p50": 5.012915993575007,
+            "p95": 46.69695801567286,
+            "p99": 50.636374973692,
+            "max": 56.03979201987386
+          },
+          "build_ms": {
+            "count": 120,
+            "min": 12.006917037069798,
+            "avg": 18.02983332599979,
+            "p50": 12.961125001311302,
+            "p95": 53.083958046045154,
+            "p99": 57.55045800469816,
+            "max": 62.52041598781943
+          },
+          "encode_ms": {
+            "count": 120,
+            "min": 0.653750030323863,
+            "avg": 0.7320714891344929,
+            "p50": 0.7195419748313725,
+            "p95": 0.8282089838758111,
+            "p99": 0.8981659775599837,
+            "max": 0.930582988075912
+          },
+          "decode_ms": {
+            "count": 120,
+            "min": 0.6153750000521541,
+            "avg": 0.9092194668482989,
+            "p50": 0.6530419923365116,
+            "p95": 0.8014590130187571,
+            "p99": 0.8962499559856951,
+            "max": 28.871625021565706
+          },
+          "worker_queue_ipc_ms": {
+            "count": 120,
+            "min": 16.587792022619396,
+            "avg": 82.2499306445631,
+            "p50": 89.25687498413026,
+            "p95": 107.67895798198879,
+            "p99": 112.21508303424343,
+            "max": 112.70020803203806
+          },
+          "response_ms": {
+            "count": 120,
+            "min": 41.51658300543204,
+            "avg": 122.33859691623366,
+            "p50": 118.33616602234542,
+            "p95": 151.97175001958385,
+            "p99": 165.17749999184161,
+            "max": 169.8392920079641
+          },
+          "snapshot_bytes": {
+            "count": 120,
+            "min": 319136,
+            "avg": 322622.64166666666,
+            "p50": 323317,
+            "p95": 325417,
+            "p99": 325417,
+            "max": 325417
+          },
+          "bytes": {
+            "count": 120,
+            "min": 161859,
+            "avg": 164073.15,
+            "p50": 164894,
+            "p95": 165233,
+            "p99": 166304,
+            "max": 166305
+          }
+        },
+        "all_equal": true,
+        "sample_count": 120,
+        "observed_worker_pids": [
+          60613
+        ],
+        "raw_member": "guarded/r2-w1.json",
+        "raw_member_sha256": "9f4d078c20986a4d901bcff619b15d9c291eb1ef1a0f9b6e803819433af1b37e"
+      },
+      {
+        "kind": "frozen diagnostic, NOT runtime capacity",
+        "source": {
+          "path": "/Users/liyang/Developer/star-main",
+          "sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+          "dirty": ""
+        },
+        "tooling": {
+          "path": "/Users/liyang/Developer/star-lab",
+          "sha": "57343ce1b18f457b745391b5352081f547e40b45",
+          "dirty": ""
+        },
+        "workload": {
+          "source": "/Users/liyang/Developer/star-main",
+          "units": 5000,
+          "agents": 1000,
+          "queries": 120,
+          "workers": 2,
+          "max_pending": 4,
+          "output": "/Users/liyang/Developer/star-lab/runs/parallel-v1-guarded/r2-w2.json"
+        },
+        "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+        "expected_sha256": "73a0ec9d00c3d0101036311dc5424a3741908b5339d375198adcafaaef7890bf",
+        "machine": {
+          "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+          "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+          "cpu_count": 10
+        },
+        "census_before": {
+          "units": 5000,
+          "alive": 5000,
+          "revision": 2001,
+          "fog_enabled": true,
+          "state_sha256": "14659409fe1d67d4582138ae86a2f060479315aa70cc35365e64b0b59fe113ee"
+        },
+        "census_after": {
+          "units": 5000,
+          "alive": 5000,
+          "revision": 2001,
+          "fog_enabled": true,
+          "state_sha256": "14659409fe1d67d4582138ae86a2f060479315aa70cc35365e64b0b59fe113ee"
+        },
+        "registered_sessions": 1000,
+        "warmed_worker_pids": [
+          60634,
+          60635
+        ],
+        "guards": {
+          "source_clean": true,
+          "tooling_clean": true,
+          "world_unchanged": true,
+          "unit_count": true,
+          "alive_count": true,
+          "agents_registered": true,
+          "fog_on": true,
+          "complete": true,
+          "workers_warmed": true
+        },
+        "wall_seconds": 2.299828582967166,
+        "requests_per_second": 52.177801810420064,
+        "rss_self_max": 213958656,
+        "rss_children_max": 105365504,
+        "summary": {
+          "export_ms": {
+            "count": 120,
+            "min": 4.788000020198524,
+            "avg": 8.520449283726824,
+            "p50": 5.736874998547137,
+            "p95": 34.88070802995935,
+            "p99": 38.87566598132253,
+            "max": 43.61733398400247
+          },
+          "admission_ms": {
+            "count": 120,
+            "min": 5.14066603500396,
+            "avg": 8.955133639877507,
+            "p50": 6.193291977979243,
+            "p95": 35.28374998131767,
+            "p99": 39.52795802615583,
+            "max": 44.09154097083956
+          },
+          "restore_ms": {
+            "count": 120,
+            "min": 4.528374993242323,
+            "avg": 11.437983314196268,
+            "p50": 5.406790995039046,
+            "p95": 57.074416952673346,
+            "p99": 62.81008297810331,
+            "max": 63.35133296670392
+          },
+          "build_ms": {
+            "count": 120,
+            "min": 12.81391701195389,
+            "avg": 20.896739245411784,
+            "p50": 13.694374996703118,
+            "p95": 63.087291026022285,
+            "p99": 66.66783400578424,
+            "max": 66.90504099242389
+          },
+          "encode_ms": {
+            "count": 120,
+            "min": 0.6747079896740615,
+            "avg": 0.7412391840868319,
+            "p50": 0.7332920213229954,
+            "p95": 0.8004999835975468,
+            "p99": 0.8872920298017561,
+            "max": 0.8956249803304672
+          },
+          "decode_ms": {
+            "count": 120,
+            "min": 0.6234169704839587,
+            "avg": 1.017343733110465,
+            "p50": 0.6594160222448409,
+            "p95": 0.8896249928511679,
+            "p99": 0.9693749598227441,
+            "max": 39.15537497960031
+          },
+          "worker_queue_ipc_ms": {
+            "count": 120,
+            "min": 0.7232079515233636,
+            "avg": 27.473368147426907,
+            "p50": 14.347082993481308,
+            "p95": 65.0192920002155,
+            "p99": 71.6332090087235,
+            "max": 94.19379202881828
+          },
+          "response_ms": {
+            "count": 120,
+            "min": 38.945917040109634,
+            "avg": 75.1609111156237,
+            "p50": 78.21499998681247,
+            "p95": 115.78012496465817,
+            "p99": 121.83712498517707,
+            "max": 125.37120800698176
+          },
+          "snapshot_bytes": {
+            "count": 120,
+            "min": 319136,
+            "avg": 322622.64166666666,
+            "p50": 323317,
+            "p95": 325417,
+            "p99": 325417,
+            "max": 325417
+          },
+          "bytes": {
+            "count": 120,
+            "min": 161859,
+            "avg": 164073.15,
+            "p50": 164894,
+            "p95": 165233,
+            "p99": 166304,
+            "max": 166305
+          }
+        },
+        "all_equal": true,
+        "sample_count": 120,
+        "observed_worker_pids": [
+          60634,
+          60635
+        ],
+        "raw_member": "guarded/r2-w2.json",
+        "raw_member_sha256": "7cce9607f110edaf730d8b1aa94c7ff8a0a3177d541dca5d9e25e89b147b1e2f"
+      },
+      {
+        "kind": "frozen diagnostic, NOT runtime capacity",
+        "source": {
+          "path": "/Users/liyang/Developer/star-main",
+          "sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+          "dirty": ""
+        },
+        "tooling": {
+          "path": "/Users/liyang/Developer/star-lab",
+          "sha": "57343ce1b18f457b745391b5352081f547e40b45",
+          "dirty": ""
+        },
+        "workload": {
+          "source": "/Users/liyang/Developer/star-main",
+          "units": 5000,
+          "agents": 1000,
+          "queries": 120,
+          "workers": 4,
+          "max_pending": 4,
+          "output": "/Users/liyang/Developer/star-lab/runs/parallel-v1-guarded/r2-w4.json"
+        },
+        "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+        "expected_sha256": "73a0ec9d00c3d0101036311dc5424a3741908b5339d375198adcafaaef7890bf",
+        "machine": {
+          "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+          "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+          "cpu_count": 10
+        },
+        "census_before": {
+          "units": 5000,
+          "alive": 5000,
+          "revision": 2001,
+          "fog_enabled": true,
+          "state_sha256": "14659409fe1d67d4582138ae86a2f060479315aa70cc35365e64b0b59fe113ee"
+        },
+        "census_after": {
+          "units": 5000,
+          "alive": 5000,
+          "revision": 2001,
+          "fog_enabled": true,
+          "state_sha256": "14659409fe1d67d4582138ae86a2f060479315aa70cc35365e64b0b59fe113ee"
+        },
+        "registered_sessions": 1000,
+        "warmed_worker_pids": [
+          60652,
+          60653,
+          60654,
+          60655
+        ],
+        "guards": {
+          "source_clean": true,
+          "tooling_clean": true,
+          "world_unchanged": true,
+          "unit_count": true,
+          "alive_count": true,
+          "agents_registered": true,
+          "fog_on": true,
+          "complete": true,
+          "workers_warmed": true
+        },
+        "wall_seconds": 1.9257190829957835,
+        "requests_per_second": 62.3143848236263,
+        "rss_self_max": 231505920,
+        "rss_children_max": 103301120,
+        "summary": {
+          "export_ms": {
+            "count": 120,
+            "min": 4.6706669963896275,
+            "avg": 9.306580242506849,
+            "p50": 5.948457983322442,
+            "p95": 36.123250029049814,
+            "p99": 41.89016600139439,
+            "max": 41.94854205707088
+          },
+          "admission_ms": {
+            "count": 120,
+            "min": 4.999166005291045,
+            "avg": 9.768383007030934,
+            "p50": 6.477332965005189,
+            "p95": 36.56312497332692,
+            "p99": 42.32675000093877,
+            "max": 42.5323749659583
+          },
+          "restore_ms": {
+            "count": 120,
+            "min": 4.5155000407248735,
+            "avg": 11.119874692424977,
+            "p50": 6.040874985046685,
+            "p95": 66.48558296728879,
+            "p99": 71.99904200388119,
+            "max": 74.1899170097895
+          },
+          "build_ms": {
+            "count": 120,
+            "min": 12.526915990747511,
+            "avg": 26.24678540111442,
+            "p50": 15.21674997638911,
+            "p95": 79.04862496070564,
+            "p99": 83.19054200546816,
+            "max": 88.14550004899502
+          },
+          "encode_ms": {
+            "count": 120,
+            "min": 0.6863749586045742,
+            "avg": 0.8299010325572453,
+            "p50": 0.7681669667363167,
+            "p95": 1.3670409680344164,
+            "p99": 1.5967079671099782,
+            "max": 1.6079580527730286
+          },
+          "decode_ms": {
+            "count": 120,
+            "min": 0.6102080224081874,
+            "avg": 0.7393746287561953,
+            "p50": 0.6775410147383809,
+            "p95": 1.1004999978467822,
+            "p99": 1.5688329585827887,
+            "max": 1.5857089892961085
+          },
+          "worker_queue_ipc_ms": {
+            "count": 120,
+            "min": 0.5564590101130307,
+            "avg": 5.104654131476612,
+            "p50": 1.0612079640850425,
+            "p95": 16.757709032390267,
+            "p99": 38.00537501228973,
+            "max": 38.53545803576708
+          },
+          "response_ms": {
+            "count": 120,
+            "min": 26.906082988716662,
+            "avg": 63.4013833279217,
+            "p50": 60.999165987595916,
+            "p95": 114.62725000455976,
+            "p99": 140.4929580166936,
+            "max": 151.88912500161678
+          },
+          "snapshot_bytes": {
+            "count": 120,
+            "min": 319136,
+            "avg": 322622.64166666666,
+            "p50": 323317,
+            "p95": 325417,
+            "p99": 325417,
+            "max": 325417
+          },
+          "bytes": {
+            "count": 120,
+            "min": 161859,
+            "avg": 164073.15,
+            "p50": 164894,
+            "p95": 165233,
+            "p99": 166304,
+            "max": 166305
+          }
+        },
+        "all_equal": true,
+        "sample_count": 120,
+        "observed_worker_pids": [
+          60652,
+          60653,
+          60654,
+          60655
+        ],
+        "raw_member": "guarded/r2-w4.json",
+        "raw_member_sha256": "3d20a447838b56637458cb287c60cf659783284d1c3187c3059df5f34b2344ee"
+      }
+    ],
+    "pre-guard": [
+      {
+        "kind": "frozen diagnostic, NOT runtime capacity",
+        "source": {
+          "path": "/Users/liyang/Developer/star-main",
+          "sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+          "dirty": ""
+        },
+        "tooling": {
+          "path": "/Users/liyang/Developer/star-lab",
+          "sha": "734f5c21dc29757501cf39859fa06a54077d0141",
+          "dirty": ""
+        },
+        "workload": {
+          "source": "/Users/liyang/Developer/star-main",
+          "units": 5000,
+          "agents": 1000,
+          "queries": 120,
+          "workers": 0,
+          "max_pending": 4,
+          "output": "/Users/liyang/Developer/star-lab/runs/parallel-v1-formal/r1-w0.json"
+        },
+        "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+        "expected_sha256": "73a0ec9d00c3d0101036311dc5424a3741908b5339d375198adcafaaef7890bf",
+        "machine": {
+          "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+          "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+          "cpu_count": 10
+        },
+        "wall_seconds": 0.8249854579917155,
+        "requests_per_second": 145.45710937998743,
+        "rss_self_max": 215597056,
+        "rss_children_max": 8880128,
+        "summary": {
+          "export_ms": {
+            "count": 0
+          },
+          "admission_ms": {
+            "count": 0
+          },
+          "restore_ms": {
+            "count": 0
+          },
+          "build_ms": {
+            "count": 120,
+            "min": 4.900583007838577,
+            "avg": 5.354242696679042,
+            "p50": 5.342582997400314,
+            "p95": 5.606874998193234,
+            "p99": 5.73412497760728,
+            "max": 5.746833048760891
+          },
+          "encode_ms": {
+            "count": 120,
+            "min": 0.6509999511763453,
+            "avg": 0.7227739843074232,
+            "p50": 0.7143749971874058,
+            "p95": 0.8101659477688372,
+            "p99": 0.8728749817237258,
+            "max": 0.9137910092249513
+          },
+          "decode_ms": {
+            "count": 120,
+            "min": 0.7424579816870391,
+            "avg": 0.7962485581325988,
+            "p50": 0.7839160389266908,
+            "p95": 0.8841250091791153,
+            "p99": 0.9185000089928508,
+            "max": 0.9412500075995922
+          },
+          "worker_queue_ipc_ms": {
+            "count": 0
+          },
+          "response_ms": {
+            "count": 120,
+            "min": 6.434958020690829,
+            "avg": 6.873265239119064,
+            "p50": 6.855332991108298,
+            "p95": 7.157833024393767,
+            "p99": 7.336375012528151,
+            "max": 7.391125021968037
+          },
+          "snapshot_bytes": {
+            "count": 0
+          },
+          "bytes": {
+            "count": 120,
+            "min": 161859,
+            "avg": 164073.15,
+            "p50": 164894,
+            "p95": 165233,
+            "p99": 166304,
+            "max": 166305
+          }
+        },
+        "all_equal": true,
+        "sample_count": 120,
+        "observed_worker_pids": [],
+        "raw_member": "pre-guard/r1-w0.json",
+        "raw_member_sha256": "0247e3727a0fb26994ccb3f33e4badc61f078a21e0d62bf18e8859260b429035"
+      },
+      {
+        "kind": "frozen diagnostic, NOT runtime capacity",
+        "source": {
+          "path": "/Users/liyang/Developer/star-main",
+          "sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+          "dirty": ""
+        },
+        "tooling": {
+          "path": "/Users/liyang/Developer/star-lab",
+          "sha": "734f5c21dc29757501cf39859fa06a54077d0141",
+          "dirty": ""
+        },
+        "workload": {
+          "source": "/Users/liyang/Developer/star-main",
+          "units": 5000,
+          "agents": 1000,
+          "queries": 120,
+          "workers": 1,
+          "max_pending": 4,
+          "output": "/Users/liyang/Developer/star-lab/runs/parallel-v1-formal/r1-w1.json"
+        },
+        "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+        "expected_sha256": "73a0ec9d00c3d0101036311dc5424a3741908b5339d375198adcafaaef7890bf",
+        "machine": {
+          "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+          "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+          "cpu_count": 10
+        },
+        "wall_seconds": 3.612841166963335,
+        "requests_per_second": 33.21485624591197,
+        "rss_self_max": 225705984,
+        "rss_children_max": 106151936,
+        "summary": {
+          "export_ms": {
+            "count": 120,
+            "min": 4.563333990518004,
+            "avg": 8.036090302145263,
+            "p50": 5.329541047103703,
+            "p95": 32.550582953263074,
+            "p99": 35.99491703789681,
+            "max": 36.5661249961704
+          },
+          "admission_ms": {
+            "count": 120,
+            "min": 4.908124974463135,
+            "avg": 8.449208309563497,
+            "p50": 5.729541997425258,
+            "p95": 33.0020830151625,
+            "p99": 36.43516596639529,
+            "max": 36.95008304202929
+          },
+          "restore_ms": {
+            "count": 120,
+            "min": 3.9829579764045775,
+            "avg": 9.832290607058289,
+            "p50": 4.892290977295488,
+            "p95": 41.60045797470957,
+            "p99": 49.013541953172535,
+            "max": 50.057875050697476
+          },
+          "build_ms": {
+            "count": 120,
+            "min": 11.943457997404039,
+            "avg": 17.48564545850968,
+            "p50": 12.851583014708012,
+            "p95": 49.35845796717331,
+            "p99": 52.545041020493954,
+            "max": 54.29066700162366
+          },
+          "encode_ms": {
+            "count": 120,
+            "min": 0.6834580563008785,
+            "avg": 0.7488687760390652,
+            "p50": 0.725707970559597,
+            "p95": 0.8365419926121831,
+            "p99": 1.4674999983981252,
+            "max": 1.7291660187765956
+          },
+          "decode_ms": {
+            "count": 120,
+            "min": 0.6102920160628855,
+            "avg": 0.9333374783939993,
+            "p50": 0.6542910123243928,
+            "p95": 0.8449159795418382,
+            "p99": 1.4730829861946404,
+            "max": 30.915250012185425
+          },
+          "worker_queue_ipc_ms": {
+            "count": 120,
+            "min": 30.17479198751971,
+            "avg": 79.53459727577865,
+            "p50": 84.43345897831023,
+            "p95": 102.7969170245342,
+            "p99": 107.44483303278685,
+            "max": 119.98016596771777
+          },
+          "response_ms": {
+            "count": 120,
+            "min": 70.30783401569352,
+            "avg": 118.27813918498578,
+            "p50": 115.43070897459984,
+            "p95": 144.407624960877,
+            "p99": 153.87549996376038,
+            "max": 156.4067910076119
+          },
+          "snapshot_bytes": {
+            "count": 120,
+            "min": 319136,
+            "avg": 322622.64166666666,
+            "p50": 323317,
+            "p95": 325417,
+            "p99": 325417,
+            "max": 325417
+          },
+          "bytes": {
+            "count": 120,
+            "min": 161859,
+            "avg": 164073.15,
+            "p50": 164894,
+            "p95": 165233,
+            "p99": 166304,
+            "max": 166305
+          }
+        },
+        "all_equal": true,
+        "sample_count": 120,
+        "observed_worker_pids": [
+          44164
+        ],
+        "raw_member": "pre-guard/r1-w1.json",
+        "raw_member_sha256": "2d6741cdc8daa063e96c9bb65628818c37f6aba284b70347b4d51ff7de3ea30e"
+      },
+      {
+        "kind": "frozen diagnostic, NOT runtime capacity",
+        "source": {
+          "path": "/Users/liyang/Developer/star-main",
+          "sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+          "dirty": ""
+        },
+        "tooling": {
+          "path": "/Users/liyang/Developer/star-lab",
+          "sha": "734f5c21dc29757501cf39859fa06a54077d0141",
+          "dirty": ""
+        },
+        "workload": {
+          "source": "/Users/liyang/Developer/star-main",
+          "units": 5000,
+          "agents": 1000,
+          "queries": 120,
+          "workers": 2,
+          "max_pending": 4,
+          "output": "/Users/liyang/Developer/star-lab/runs/parallel-v1-formal/r1-w2.json"
+        },
+        "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+        "expected_sha256": "73a0ec9d00c3d0101036311dc5424a3741908b5339d375198adcafaaef7890bf",
+        "machine": {
+          "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+          "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+          "cpu_count": 10
+        },
+        "wall_seconds": 2.2172352080233395,
+        "requests_per_second": 54.121457013565895,
+        "rss_self_max": 228786176,
+        "rss_children_max": 101793792,
+        "summary": {
+          "export_ms": {
+            "count": 120,
+            "min": 4.669333982747048,
+            "avg": 8.44216628902359,
+            "p50": 5.5409170454367995,
+            "p95": 32.9251250368543,
+            "p99": 37.60758397402242,
+            "max": 38.49599999375641
+          },
+          "admission_ms": {
+            "count": 120,
+            "min": 4.994375049136579,
+            "avg": 8.893730491399765,
+            "p50": 5.999709013849497,
+            "p95": 33.25608297018334,
+            "p99": 38.026667025405914,
+            "max": 38.99287502281368
+          },
+          "restore_ms": {
+            "count": 120,
+            "min": 4.314249963499606,
+            "avg": 10.427420833245074,
+            "p50": 5.339124996680766,
+            "p95": 49.51295803766698,
+            "p99": 53.99445799412206,
+            "max": 56.407166994176805
+          },
+          "build_ms": {
+            "count": 120,
+            "min": 12.79408304253593,
+            "avg": 20.116061107061494,
+            "p50": 13.76079098554328,
+            "p95": 58.60670795664191,
+            "p99": 60.96141698071733,
+            "max": 63.160791993141174
+          },
+          "encode_ms": {
+            "count": 120,
+            "min": 0.6782090058550239,
+            "avg": 0.758716999553144,
+            "p50": 0.7451670244336128,
+            "p95": 0.885666988324374,
+            "p99": 0.9782079723663628,
+            "max": 1.0578749934211373
+          },
+          "decode_ms": {
+            "count": 120,
+            "min": 0.6270000012591481,
+            "avg": 0.9458642656682059,
+            "p50": 0.6631659925915301,
+            "p95": 0.9659170173108578,
+            "p99": 1.1603750172071159,
+            "max": 30.124291020911187
+          },
+          "worker_queue_ipc_ms": {
+            "count": 120,
+            "min": 0.8399169892072678,
+            "avg": 26.33555866535365,
+            "p50": 21.487833990249783,
+            "p95": 52.241708035580814,
+            "p99": 58.61945799551904,
+            "max": 61.24229199485853
+          },
+          "response_ms": {
+            "count": 120,
+            "min": 34.44958303589374,
+            "avg": 71.83968228346203,
+            "p50": 71.91320898709819,
+            "p95": 111.77783302264288,
+            "p99": 122.17204202897847,
+            "max": 123.63799999002367
+          },
+          "snapshot_bytes": {
+            "count": 120,
+            "min": 319136,
+            "avg": 322622.64166666666,
+            "p50": 323317,
+            "p95": 325417,
+            "p99": 325417,
+            "max": 325417
+          },
+          "bytes": {
+            "count": 120,
+            "min": 161859,
+            "avg": 164073.15,
+            "p50": 164894,
+            "p95": 165233,
+            "p99": 166304,
+            "max": 166305
+          }
+        },
+        "all_equal": true,
+        "sample_count": 120,
+        "observed_worker_pids": [
+          44187,
+          44188
+        ],
+        "raw_member": "pre-guard/r1-w2.json",
+        "raw_member_sha256": "3b6d2ced7c9d8697d3e3d23ace83d4a16e5338d6c98f51d897a0e74fc26d3632"
+      },
+      {
+        "kind": "frozen diagnostic, NOT runtime capacity",
+        "source": {
+          "path": "/Users/liyang/Developer/star-main",
+          "sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+          "dirty": ""
+        },
+        "tooling": {
+          "path": "/Users/liyang/Developer/star-lab",
+          "sha": "734f5c21dc29757501cf39859fa06a54077d0141",
+          "dirty": ""
+        },
+        "workload": {
+          "source": "/Users/liyang/Developer/star-main",
+          "units": 5000,
+          "agents": 1000,
+          "queries": 120,
+          "workers": 4,
+          "max_pending": 4,
+          "output": "/Users/liyang/Developer/star-lab/runs/parallel-v1-formal/r1-w4.json"
+        },
+        "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+        "expected_sha256": "73a0ec9d00c3d0101036311dc5424a3741908b5339d375198adcafaaef7890bf",
+        "machine": {
+          "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+          "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+          "cpu_count": 10
+        },
+        "wall_seconds": 1.872313458006829,
+        "requests_per_second": 64.09183221261785,
+        "rss_self_max": 239828992,
+        "rss_children_max": 103546880,
+        "summary": {
+          "export_ms": {
+            "count": 120,
+            "min": 4.665832966566086,
+            "avg": 9.055735338188242,
+            "p50": 5.529332964215428,
+            "p95": 35.2318329969421,
+            "p99": 43.76954201143235,
+            "max": 47.603458049707115
+          },
+          "admission_ms": {
+            "count": 120,
+            "min": 5.046959035098553,
+            "avg": 9.504232597343313,
+            "p50": 5.981584021355957,
+            "p95": 35.58554098708555,
+            "p99": 44.358290964737535,
+            "max": 48.13058295985684
+          },
+          "restore_ms": {
+            "count": 120,
+            "min": 4.441707977093756,
+            "avg": 10.165235410871295,
+            "p50": 5.760291998740286,
+            "p95": 59.222708048764616,
+            "p99": 68.47266701515764,
+            "max": 72.04929104773328
+          },
+          "build_ms": {
+            "count": 120,
+            "min": 12.969125004019588,
+            "avg": 25.699019773552816,
+            "p50": 15.188332996331155,
+            "p95": 77.09341699955985,
+            "p99": 82.27687497856095,
+            "max": 82.79454201692715
+          },
+          "encode_ms": {
+            "count": 120,
+            "min": 0.6900840089656413,
+            "avg": 0.81875242467504,
+            "p50": 0.756791967432946,
+            "p95": 1.1943750432692468,
+            "p99": 1.6046250239014626,
+            "max": 1.8100839806720614
+          },
+          "decode_ms": {
+            "count": 120,
+            "min": 0.6212909938767552,
+            "avg": 0.7358273845359994,
+            "p50": 0.6698750075884163,
+            "p95": 1.0226249578408897,
+            "p99": 1.3199159875512123,
+            "max": 1.452875032555312
+          },
+          "worker_queue_ipc_ms": {
+            "count": 120,
+            "min": 0.633792020380497,
+            "avg": 5.011146883286226,
+            "p50": 1.6161249950528145,
+            "p95": 8.834750042296946,
+            "p99": 36.801707989070565,
+            "max": 39.024290977977216
+          },
+          "response_ms": {
+            "count": 120,
+            "min": 27.243875025305897,
+            "avg": 60.94454410049366,
+            "p50": 56.382459006272256,
+            "p95": 120.7030409714207,
+            "p99": 131.66312500834465,
+            "max": 132.73974996991456
+          },
+          "snapshot_bytes": {
+            "count": 120,
+            "min": 319136,
+            "avg": 322622.64166666666,
+            "p50": 323317,
+            "p95": 325417,
+            "p99": 325417,
+            "max": 325417
+          },
+          "bytes": {
+            "count": 120,
+            "min": 161859,
+            "avg": 164073.15,
+            "p50": 164894,
+            "p95": 165233,
+            "p99": 166304,
+            "max": 166305
+          }
+        },
+        "all_equal": true,
+        "sample_count": 120,
+        "observed_worker_pids": [
+          44205,
+          44206,
+          44207,
+          44208
+        ],
+        "raw_member": "pre-guard/r1-w4.json",
+        "raw_member_sha256": "9cd7fd2b8187f799aacaaae23137ab17ecb2975db4b43c869081afee6c801304"
+      },
+      {
+        "kind": "frozen diagnostic, NOT runtime capacity",
+        "source": {
+          "path": "/Users/liyang/Developer/star-main",
+          "sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+          "dirty": ""
+        },
+        "tooling": {
+          "path": "/Users/liyang/Developer/star-lab",
+          "sha": "734f5c21dc29757501cf39859fa06a54077d0141",
+          "dirty": ""
+        },
+        "workload": {
+          "source": "/Users/liyang/Developer/star-main",
+          "units": 5000,
+          "agents": 1000,
+          "queries": 120,
+          "workers": 0,
+          "max_pending": 4,
+          "output": "/Users/liyang/Developer/star-lab/runs/parallel-v1-formal/r2-w0.json"
+        },
+        "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+        "expected_sha256": "73a0ec9d00c3d0101036311dc5424a3741908b5339d375198adcafaaef7890bf",
+        "machine": {
+          "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+          "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+          "cpu_count": 10
+        },
+        "wall_seconds": 0.8268071669735946,
+        "requests_per_second": 145.1366228950848,
+        "rss_self_max": 207093760,
+        "rss_children_max": 8929280,
+        "summary": {
+          "export_ms": {
+            "count": 0
+          },
+          "admission_ms": {
+            "count": 0
+          },
+          "restore_ms": {
+            "count": 0
+          },
+          "build_ms": {
+            "count": 120,
+            "min": 4.928790964186192,
+            "avg": 5.361720449582208,
+            "p50": 5.360874987673014,
+            "p95": 5.651417013723403,
+            "p99": 5.755374964792281,
+            "max": 5.949791986495256
+          },
+          "encode_ms": {
+            "count": 120,
+            "min": 0.6927500362507999,
+            "avg": 0.7348483040307959,
+            "p50": 0.7245420129038393,
+            "p95": 0.8170839864760637,
+            "p99": 0.8282079943455756,
+            "max": 0.8297080057673156
+          },
+          "decode_ms": {
+            "count": 120,
+            "min": 0.7329999934881926,
+            "avg": 0.7919475605982976,
+            "p50": 0.7815840071998537,
+            "p95": 0.8815000182949007,
+            "p99": 0.9229170391336083,
+            "max": 0.9269590373151004
+          },
+          "worker_queue_ipc_ms": {
+            "count": 0
+          },
+          "response_ms": {
+            "count": 120,
+            "min": 6.414417002815753,
+            "avg": 6.8885163142113015,
+            "p50": 6.923375010956079,
+            "p95": 7.18708400381729,
+            "p99": 7.239083992317319,
+            "max": 7.476042024791241
+          },
+          "snapshot_bytes": {
+            "count": 0
+          },
+          "bytes": {
+            "count": 120,
+            "min": 161859,
+            "avg": 164073.15,
+            "p50": 164894,
+            "p95": 165233,
+            "p99": 166304,
+            "max": 166305
+          }
+        },
+        "all_equal": true,
+        "sample_count": 120,
+        "observed_worker_pids": [],
+        "raw_member": "pre-guard/r2-w0.json",
+        "raw_member_sha256": "153c58e99bfcccade1da8a4f84f3d1f19fec1edd2b83d4a423a0c3482b04491f"
+      },
+      {
+        "kind": "frozen diagnostic, NOT runtime capacity",
+        "source": {
+          "path": "/Users/liyang/Developer/star-main",
+          "sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+          "dirty": ""
+        },
+        "tooling": {
+          "path": "/Users/liyang/Developer/star-lab",
+          "sha": "734f5c21dc29757501cf39859fa06a54077d0141",
+          "dirty": ""
+        },
+        "workload": {
+          "source": "/Users/liyang/Developer/star-main",
+          "units": 5000,
+          "agents": 1000,
+          "queries": 120,
+          "workers": 1,
+          "max_pending": 4,
+          "output": "/Users/liyang/Developer/star-lab/runs/parallel-v1-formal/r2-w1.json"
+        },
+        "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+        "expected_sha256": "73a0ec9d00c3d0101036311dc5424a3741908b5339d375198adcafaaef7890bf",
+        "machine": {
+          "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+          "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+          "cpu_count": 10
+        },
+        "wall_seconds": 3.579895166971255,
+        "requests_per_second": 33.52053465340024,
+        "rss_self_max": 228507648,
+        "rss_children_max": 104988672,
+        "summary": {
+          "export_ms": {
+            "count": 120,
+            "min": 4.627249960321933,
+            "avg": 7.930096816077518,
+            "p50": 5.19504101248458,
+            "p95": 31.61241702036932,
+            "p99": 35.99787497660145,
+            "max": 36.64520801976323
+          },
+          "admission_ms": {
+            "count": 120,
+            "min": 5.078874994069338,
+            "avg": 8.33516740046131,
+            "p50": 5.607332976069301,
+            "p95": 32.11949998512864,
+            "p99": 36.369499983265996,
+            "max": 37.09041600814089
+          },
+          "restore_ms": {
+            "count": 120,
+            "min": 4.085209046024829,
+            "avg": 9.887629866231388,
+            "p50": 4.784208023920655,
+            "p95": 42.60870796861127,
+            "p99": 47.620165976695716,
+            "max": 50.15662498772144
+          },
+          "build_ms": {
+            "count": 120,
+            "min": 11.974291002843529,
+            "avg": 17.217969058644183,
+            "p50": 12.726541957817972,
+            "p95": 48.28025004826486,
+            "p99": 53.13954100711271,
+            "max": 53.30612504621968
+          },
+          "encode_ms": {
+            "count": 120,
+            "min": 0.6745000137016177,
+            "avg": 0.7357520934116716,
+            "p50": 0.7249159971252084,
+            "p95": 0.8040419779717922,
+            "p99": 0.853791949339211,
+            "max": 0.8697910234332085
+          },
+          "decode_ms": {
+            "count": 120,
+            "min": 0.6249580183066428,
+            "avg": 0.9230763331288472,
+            "p50": 0.6563750212080777,
+            "p95": 0.8246249635703862,
+            "p99": 1.1999579728581011,
+            "max": 29.245916986837983
+          },
+          "worker_queue_ipc_ms": {
+            "count": 120,
+            "min": 29.6017499640584,
+            "avg": 78.87271809401379,
+            "p50": 84.62045900523663,
+            "p95": 100.82816699286923,
+            "p99": 105.9122090227902,
+            "max": 107.21774998819456
+          },
+          "response_ms": {
+            "count": 120,
+            "min": 66.29687501117587,
+            "avg": 117.23578471816533,
+            "p50": 114.75479102227837,
+            "p95": 143.50995898712426,
+            "p99": 153.43037497950718,
+            "max": 158.4777079988271
+          },
+          "snapshot_bytes": {
+            "count": 120,
+            "min": 319136,
+            "avg": 322622.64166666666,
+            "p50": 323317,
+            "p95": 325417,
+            "p99": 325417,
+            "max": 325417
+          },
+          "bytes": {
+            "count": 120,
+            "min": 161859,
+            "avg": 164073.15,
+            "p50": 164894,
+            "p95": 165233,
+            "p99": 166304,
+            "max": 166305
+          }
+        },
+        "all_equal": true,
+        "sample_count": 120,
+        "observed_worker_pids": [
+          44242
+        ],
+        "raw_member": "pre-guard/r2-w1.json",
+        "raw_member_sha256": "ef395f92958d3b63485995346aa46e2c45b42c6470792957e8717f2abd4f7556"
+      },
+      {
+        "kind": "frozen diagnostic, NOT runtime capacity",
+        "source": {
+          "path": "/Users/liyang/Developer/star-main",
+          "sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+          "dirty": ""
+        },
+        "tooling": {
+          "path": "/Users/liyang/Developer/star-lab",
+          "sha": "734f5c21dc29757501cf39859fa06a54077d0141",
+          "dirty": ""
+        },
+        "workload": {
+          "source": "/Users/liyang/Developer/star-main",
+          "units": 5000,
+          "agents": 1000,
+          "queries": 120,
+          "workers": 2,
+          "max_pending": 4,
+          "output": "/Users/liyang/Developer/star-lab/runs/parallel-v1-formal/r2-w2.json"
+        },
+        "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+        "expected_sha256": "73a0ec9d00c3d0101036311dc5424a3741908b5339d375198adcafaaef7890bf",
+        "machine": {
+          "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+          "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+          "cpu_count": 10
+        },
+        "wall_seconds": 2.228359917004127,
+        "requests_per_second": 53.85126481781791,
+        "rss_self_max": 230309888,
+        "rss_children_max": 103120896,
+        "summary": {
+          "export_ms": {
+            "count": 120,
+            "min": 4.774000030010939,
+            "avg": 8.581816974522857,
+            "p50": 5.601624958217144,
+            "p95": 33.24004099704325,
+            "p99": 38.37174997897819,
+            "max": 40.1022500009276
+          },
+          "admission_ms": {
+            "count": 120,
+            "min": 5.10929204756394,
+            "avg": 9.028976372792386,
+            "p50": 6.040541979018599,
+            "p95": 33.62583398120478,
+            "p99": 38.74762501800433,
+            "max": 40.55599996354431
+          },
+          "restore_ms": {
+            "count": 120,
+            "min": 4.1972910403274,
+            "avg": 10.743700283637736,
+            "p50": 5.296041024848819,
+            "p95": 51.034500007517636,
+            "p99": 58.42841701814905,
+            "max": 61.41387502430007
+          },
+          "build_ms": {
+            "count": 120,
+            "min": 12.647791998460889,
+            "avg": 20.071220569176756,
+            "p50": 13.725208991672844,
+            "p95": 58.107374992687255,
+            "p99": 61.37420795857906,
+            "max": 61.633083038032055
+          },
+          "encode_ms": {
+            "count": 120,
+            "min": 0.6650419672951102,
+            "avg": 0.7667419631616212,
+            "p50": 0.7430420373566449,
+            "p95": 0.9400419658049941,
+            "p99": 1.011582964565605,
+            "max": 1.1867920402437449
+          },
+          "decode_ms": {
+            "count": 120,
+            "min": 0.5970839993096888,
+            "avg": 0.9664235675397018,
+            "p50": 0.663833983708173,
+            "p95": 0.9343750425614417,
+            "p99": 1.3658750103786588,
+            "max": 31.617750006262213
+          },
+          "worker_queue_ipc_ms": {
+            "count": 120,
+            "min": 7.130125013645738,
+            "avg": 26.48304274092273,
+            "p50": 21.13520901184529,
+            "p95": 54.63829200016335,
+            "p99": 60.1454580319114,
+            "max": 60.54699997184798
+          },
+          "response_ms": {
+            "count": 120,
+            "min": 33.664833987131715,
+            "avg": 72.26297912954276,
+            "p50": 72.8914579958655,
+            "p95": 111.49083299096674,
+            "p99": 123.53054102277383,
+            "max": 125.06420799763873
+          },
+          "snapshot_bytes": {
+            "count": 120,
+            "min": 319136,
+            "avg": 322622.64166666666,
+            "p50": 323317,
+            "p95": 325417,
+            "p99": 325417,
+            "max": 325417
+          },
+          "bytes": {
+            "count": 120,
+            "min": 161859,
+            "avg": 164073.15,
+            "p50": 164894,
+            "p95": 165233,
+            "p99": 166304,
+            "max": 166305
+          }
+        },
+        "all_equal": true,
+        "sample_count": 120,
+        "observed_worker_pids": [
+          44273,
+          44274
+        ],
+        "raw_member": "pre-guard/r2-w2.json",
+        "raw_member_sha256": "6d9267dd055b6d1c90e69d4775b20e7b7905f4175271e946389834dd7e537da1"
+      },
+      {
+        "kind": "frozen diagnostic, NOT runtime capacity",
+        "source": {
+          "path": "/Users/liyang/Developer/star-main",
+          "sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+          "dirty": ""
+        },
+        "tooling": {
+          "path": "/Users/liyang/Developer/star-lab",
+          "sha": "734f5c21dc29757501cf39859fa06a54077d0141",
+          "dirty": ""
+        },
+        "workload": {
+          "source": "/Users/liyang/Developer/star-main",
+          "units": 5000,
+          "agents": 1000,
+          "queries": 120,
+          "workers": 4,
+          "max_pending": 4,
+          "output": "/Users/liyang/Developer/star-lab/runs/parallel-v1-formal/r2-w4.json"
+        },
+        "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+        "expected_sha256": "73a0ec9d00c3d0101036311dc5424a3741908b5339d375198adcafaaef7890bf",
+        "machine": {
+          "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+          "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+          "cpu_count": 10
+        },
+        "wall_seconds": 2.03847654099809,
+        "requests_per_second": 58.867491279171134,
+        "rss_self_max": 239222784,
+        "rss_children_max": 104087552,
+        "summary": {
+          "export_ms": {
+            "count": 120,
+            "min": 4.736417031381279,
+            "avg": 9.64647499252654,
+            "p50": 5.979250010568649,
+            "p95": 38.1685410393402,
+            "p99": 44.807458005379885,
+            "max": 52.94091597897932
+          },
+          "admission_ms": {
+            "count": 120,
+            "min": 5.142916983459145,
+            "avg": 10.1306683907751,
+            "p50": 6.3914170023053885,
+            "p95": 38.54195901658386,
+            "p99": 45.33804202219471,
+            "max": 54.08458301099017
+          },
+          "restore_ms": {
+            "count": 120,
+            "min": 4.41637501353398,
+            "avg": 12.656678418473652,
+            "p50": 6.103624997194856,
+            "p95": 65.63591602025554,
+            "p99": 91.34899999480695,
+            "max": 95.35216598305851
+          },
+          "build_ms": {
+            "count": 120,
+            "min": 13.276792014949024,
+            "avg": 26.264561158798944,
+            "p50": 15.6083750189282,
+            "p95": 77.14512501843274,
+            "p99": 82.14937499724329,
+            "max": 82.35779200913385
+          },
+          "encode_ms": {
+            "count": 120,
+            "min": 0.6865829927846789,
+            "avg": 0.8638860895492447,
+            "p50": 0.7691250066272914,
+            "p95": 1.3025419902987778,
+            "p99": 1.8866659956984222,
+            "max": 2.048333000857383
+          },
+          "decode_ms": {
+            "count": 120,
+            "min": 0.6036669947206974,
+            "avg": 1.3162235186124842,
+            "p50": 0.6761670229025185,
+            "p95": 1.1240830062888563,
+            "p99": 1.616082969121635,
+            "max": 66.8881669989787
+          },
+          "worker_queue_ipc_ms": {
+            "count": 120,
+            "min": 0.6257079658098519,
+            "avg": 5.4898669821947506,
+            "p50": 1.2592500424943864,
+            "p95": 13.519000029191375,
+            "p99": 38.8708749669604,
+            "max": 50.09108397644013
+          },
+          "response_ms": {
+            "count": 120,
+            "min": 27.722166036255658,
+            "avg": 67.2763891746096,
+            "p50": 57.56595800630748,
+            "p95": 130.76766696758568,
+            "p99": 147.83170801820233,
+            "max": 151.68137499131262
+          },
+          "snapshot_bytes": {
+            "count": 120,
+            "min": 319136,
+            "avg": 322622.64166666666,
+            "p50": 323317,
+            "p95": 325417,
+            "p99": 325417,
+            "max": 325417
+          },
+          "bytes": {
+            "count": 120,
+            "min": 161859,
+            "avg": 164073.15,
+            "p50": 164894,
+            "p95": 165233,
+            "p99": 166304,
+            "max": 166305
+          }
+        },
+        "all_equal": true,
+        "sample_count": 120,
+        "observed_worker_pids": [
+          44291,
+          44292,
+          44293,
+          44294
+        ],
+        "raw_member": "pre-guard/r2-w4.json",
+        "raw_member_sha256": "2d12858923dd288c94da82828e5dae4560a1ac3cefa1c88f50f77c6d1c85aae0"
+      }
+    ]
+  },
+  "validation": {
+    "source_sha": "3c4fba1a40fccee7bfc06575ade338c30a4b784e",
+    "command": ".venv/bin/python -m pytest -q",
+    "passed": 936,
+    "record_type": "summary of observed terminal result",
+    "new_parallel_contract_cases": 24,
+    "production_merge": false
+  },
+  "raw": {
+    "path": "artifacts/frozen-raw.zip",
+    "sha256": "7de5f4538cc90071a3f28b35477fb25bf3ed38fb1aef9ff6866eee324e718aca",
+    "size": 196981
+  }
+}

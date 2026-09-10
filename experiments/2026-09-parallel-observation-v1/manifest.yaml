@@ -1,0 +1,113 @@
+experiment:
+  id: 2026-09-parallel-observation-v1
+  title: 'Frozen observation process prototype: equivalent output, negative performance'
+  date: '2026-09-11'
+  status: closed
+  scope: v1 prototype and frozen cost gate only
+source:
+  repository: star-nexus/star
+  problem_commit: 6a970deaee7d9b8d3939edd102973f2377edd6ac
+  measurement_commit: 3c4fba1a40fccee7bfc06575ade338c30a4b784e
+  fix_commit: 3c4fba1a40fccee7bfc06575ade338c30a4b784e
+  validated_commit: 3c4fba1a40fccee7bfc06575ade338c30a4b784e
+  validation_scope: functional contracts; performance gate rejected
+  branch_at_time: codex/parallel-observation-v1
+  validated_tag: p3-parallel-observation-v1-prototype-2026-09-11
+  tag_object: 7427d5bc4337f44af06eff701ff2a92ccdc74cd0
+  tooling_commit: 57343ce1b18f457b745391b5352081f547e40b45
+  prior_tooling_commit: 734f5c21dc29757501cf39859fa06a54077d0141
+  merged: false
+hardware:
+  machine: Mac16,10 Mac mini M4
+  cpu: Apple M4
+  memory_bytes: 17179869184
+  display: none
+  chrome: left open, possible background CPU
+software:
+  os: macOS-26.5.2-arm64-arm-64bit-Mach-O
+  python: 3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang
+    20.1.8 ]
+  dependency_lock_sha256: e8a64dba4f65993ce7a1bd720f7c7b6d399422692e4202dfb25b9c1596ce5f95
+scenario:
+  name: lab-p3-canonical-5000
+  resident_units: 5000
+  alive_units: 5000
+  registered_agents: 1000
+  queried_agents_per_run: 120
+  moving_units: null
+  fixture_sha256: 1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52
+  canonical_fixture_zip: ../2026-09-p3-clock24/artifacts/fixture-1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52.zip
+  fixture_zip_sha256: ce29b745ce9fd3e08e206b97e27203f3d86517822f89ab6066a8522c8c9684e1
+  fixture_zip_size: 11496
+  movement_note: No world updates in timed interval; active animation count not measured
+workload:
+  seed: 42
+  scope: selected
+  fog: true
+  phase: frozen world, saturated bounded requests
+  max_pending: 4
+  gc_policy: default enabled
+  startup_world_update_dt: 0.041666666666666664
+  simulation_updates_during_measurement: 0
+  real_llm: false
+  hub: false
+measurement:
+  rounds: 2
+  queries_per_run: 120
+  primary_samples: 960
+  prior_samples: 960
+  warmup: 120 reference queries; all worker PIDs ready; max(4,workers*2) worker queries
+  guards_required:
+  - source_clean
+  - tooling_clean
+  - world_unchanged
+  - unit_count
+  - alive_count
+  - agents_registered
+  - fog_on
+  - complete
+  - workers_warmed
+  timing_scope: owner gate/export, IPC, worker restore/build/encode, owner polling/decode
+    and equivalence assertions in wall throughput
+  realtime_capacity_claim: false
+variables:
+  independent:
+    workers:
+    - 0
+    - 1
+    - 2
+    - 4
+  controlled:
+  - source
+  - tooling
+  - fixture
+  - seed
+  - query list
+  - world state
+  - GC
+  - max_pending
+validation:
+  pytest_passed: 936
+  new_parallel_contract_cases: 24
+  equivalent_primary_queries: 960
+  all_primary_guards: true
+artifacts:
+  formal:
+  - path: artifacts/frozen-raw.zip
+    sha256: 7de5f4538cc90071a3f28b35477fb25bf3ed38fb1aef9ff6866eee324e718aca
+    size: 196981
+  - path: artifacts/frozen-compact.zip
+    sha256: d3554cb8db346996595a1460616a1bb3a3572791ca2e41cbacbcfa1ddcffc1f2
+    size: 12238
+  - path: results/frozen.json
+    sha256: f03212e1affc8b512132a40b4bfe255e15c7a6f7be52000df8dc4415c1f7fdd9
+    size: 74344
+  external: []
+headline:
+  result: serial 141.12-141.65 rps; 2 workers 51.25-52.18; 4 workers 62.31-62.65
+  root_cause: per-request complete core snapshot export and reconstruction outweigh
+    removed construction work
+  resolution: retain branch and evidence; no main merge or capacity certification
+revisit_when:
+- snapshot export/restore cost is reduced with correctness evidence
+- workload changes

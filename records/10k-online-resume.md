@@ -4,10 +4,12 @@
 本文件是唯一活动恢复入口，已从 STAR 的 `docs/dev/` 迁至 STAR Lab。
 先读本文件即可恢复目标、边界和下一步；执行时再按下方链接读取对应证据。
 
-## 最新实施：并行观测v1（2026-09-11）
+## 最新完成：并行观测v1原型，性能负结果（2026-09-11）
 
 用户已授权实现并新建分支。生产`codex/parallel-observation-v1`从6a970deaee7d9b8d3939edd102973f2377edd6ac起步；见[实施记录](10k-parallel-env-v1.md)。
-已接通本地进程池与不可变输入，复用原观测规则。先测冻结等价和快照成本，再决定客户端隔离与动态闭环；未合并main，无新容量结论。
+开发tip3c4fba1a40fccee7bfc06575ade338c30a4b784e，已用annotated tag `p3-parallel-observation-v1-prototype-2026-09-11`固定。936项回归通过；主探针960次输出等价、所有guard通过。
+[报告/复现](../experiments/2026-09-parallel-observation-v1/README.md)：5000Units/1000注册Agent冻结探针，串行约141次/秒，2worker51–52、4worker约62。逐请求完整快照导出/还原抵消并行收益，保留开发分支，不合并main，不进入该实现的动态闭环，无24/30Hz容量结论。
+主工具57343ce1b18f457b745391b5352081f547e40b45；raw/compact与前轮辅助负结果均归档核验。下一候选先降低快照成本（同只读批次摊薄或完整写入覆盖的增量镜像），尚未实施；Lab客户端独立与动态验证仍待后续。main仍6a970deaee7d9b8d3939edd102973f2377edd6ac，当前代码checkout为开发分支。本轮未推送。
 
 ## 最新方向：已确认先做观测并行（2026-09-10）
 

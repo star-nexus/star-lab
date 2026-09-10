@@ -24,4 +24,9 @@
 
 ## 当前状态
 
-实现与回归完成，性能工具smoke进行中；下一步固定源码/工具提交进行上述对照，然后归档与tag+squash集成。
+已完成修复、性能验证与tag+squash集成。
+测量源码5f13218ea1b6cf563e94b61e30a1609f01c2a138、工具b93139777ef65d3abf5f7aae41a99e180930b81c；base/fixed各1600测量帧，所有冻结状态/地图稳定guard通过。
+zoom0.5坐标整帧P99 736.375→15.521ms，连续平移779.096→23.530ms；1000可见文字准备2.542→0.967ms，屏幕外2.927→0.357ms。6个坐标冷开启样本最大37.081ms，全部低于24Hz预算；4个超过30Hz预算，不删。
+自然24Hz/5000U/1000A，30秒预热+60秒，平均24Hz，整帧P99=41.331ms、max45.202ms；4930move/111attack、5000全部存活。100ms请求排队guard仍失败，无新增Frontier。
+3raw+3compact ZIP全部解包重算及SHA验证，唯一fixture引用上一轮canonical ZIP。[案例](../experiments/2026-09-text-render-cache/README.md)。
+合并前main906386312d70d77af25e4b4da883f6dd5b0fe5ef；annotated tag `p3-text-cache-pre-squash-2026-09-10`（object2500e42ec56a581b8bc5bfbb6f907e3adac34a8e）→5f13218；squash后main6a970deaee7d9b8d3939edd102973f2377edd6ac，仅一个parent，树与tag一致。

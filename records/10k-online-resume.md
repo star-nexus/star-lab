@@ -4,12 +4,16 @@
 本文件是唯一活动恢复入口，已从 STAR 的 `docs/dev/` 迁至 STAR Lab。
 先读本文件即可恢复目标、边界和下一步；执行时再按下方链接读取对应证据。
 
-## 当前工作：文字缓存修复（2026-09-10）
+## 最新完成：文字缓存修复（2026-09-10）
 
 用户已授权解决伤害数字/CRIT/坐标卡顿并尽量降低复杂度。
-分支`codex/cached-combat-coordinate-text`位于`runs/star-text-cache-dev`，起点生产9063863。
-已实现固定坐标视图O(1)提交、变更视图O(可见格)、飘字O(活动数)并缓存各实体文字；912回归/94结构契约通过。
-[工作记录与预定义测量](10k-text-render-fix.md)。当前等待固定源码/工具后的稳态与冷启动对照，尚未合并，生产main未改变。
+已实现固定坐标视图O(1)检查/提交、变更视图O(可见格)、飘字O(活动数)并缓存各实体文字，像素提交仍依赖视口面积；912回归/94结构契约通过。
+分支`codex/cached-combat-coordinate-text`位于`runs/star-text-cache-dev`，测量tip5f13218ea1b6cf563e94b61e30a1609f01c2a138；工具b93139777ef65d3abf5f7aae41a99e180930b81c。
+已先创建annotated tag `p3-text-cache-pre-squash-2026-09-10`→5f13218，再squash集成生产main **6a970deaee7d9b8d3939edd102973f2377edd6ac**，唯一parent9063863，树与tag相同。
+[工作记录](10k-text-render-fix.md)、[报告/复现](../experiments/2026-09-text-render-cache/README.md)、[分析](../experiments/2026-09-text-render-cache/analysis.md)。
+重新固定地图缓存后base/fixed各1600帧，guard全通过；zoom0.5坐标整帧P99 736.38→15.52ms，连续平移779.10→23.53ms。1000条可见飘字准备P99 2.54→0.97ms，屏幕外2.93→0.36ms；6个坐标冷打开样本最大37.08ms，4个zoom0.5冷样本仍超过30Hz预算，不宣称任意帧30Hz。
+修复版自然24Hz/5000U/1000A，30s预热+60s：平均24Hz，整帧P99=41.33ms，5000全部存活，接受4930move/111attack，同时移动平均120/最大167。100ms观测/动作排队guard仍失败，无新容量认证/Frontier。
+3raw+3compact ZIP已归档、解包重算和SHA核验；fixture引用上一轮唯一canonical副本。没有改变博弈规则、按键、移动弱化或启动并行/Protocol/Hub；生产运行方式不变。
 
 ## 最新诊断：坐标与伤害/CRIT飘字（2026-09-10）
 

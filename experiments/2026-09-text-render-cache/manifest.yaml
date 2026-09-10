@@ -1,0 +1,202 @@
+experiment:
+  id: 2026-09-text-render-cache
+  date: '2026-09-10'
+  status: validated
+  title: Bounded coordinate overlays and active combat text caches; integrated
+source:
+  repository: star-nexus/star
+  problem_commit: 906386312d70d77af25e4b4da883f6dd5b0fe5ef
+  measurement_commit: 5f13218ea1b6cf563e94b61e30a1609f01c2a138
+  fix_commit: 5f13218ea1b6cf563e94b61e30a1609f01c2a138
+  validated_commit: 6a970deaee7d9b8d3939edd102973f2377edd6ac
+  branch_at_time: codex/cached-combat-coordinate-text
+  validated_tag: p3-text-cache-pre-squash-2026-09-10
+  tag_object: 2500e42ec56a581b8bc5bfbb6f907e3adac34a8e
+  tag_target: 5f13218ea1b6cf563e94b61e30a1609f01c2a138
+  squash_parent: 906386312d70d77af25e4b4da883f6dd5b0fe5ef
+  squash_tree_equals_tag: true
+  tooling_commit: b93139777ef65d3abf5f7aae41a99e180930b81c
+hardware:
+  machine: Macmini M4
+  cpu: Apple M4
+  memory_bytes: 17179869184
+  display:
+  - 2480
+  - 1261
+  chrome: kept open; serial runs; all admitted slow frames preserved
+software:
+  os: macOS-26.5.2-arm64-arm-64bit-Mach-O
+  python: 3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang
+    20.1.8 ]
+  pygame: 2.6.1
+  display_driver: cocoa
+  dependency_lock: e8a64dba4f65993ce7a1bd720f7c7b6d399422692e4202dfb25b9c1596ce5f95
+scenario:
+  name: lab-p3-canonical-5000
+  resident_units: 5000
+  agents: 1000
+  fixture_sha256: 1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52
+  canonical_fixture_zip: ../2026-09-p3-clock24/artifacts/fixture-1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52.zip
+  fixture_zip_sha256: ce29b745ce9fd3e08e206b97e27203f3d86517822f89ab6066a8522c8c9684e1
+  fixture_zip_size: 11496
+workload:
+  seed: 42
+  fog: true
+  camera:
+    offset_x: 1240
+    offset_y: 630
+    zoom: 0.15
+    speed: 200.0
+  minimap_units: 'off'
+  gc: realtime_defer
+  replay: delta0; no Agent pumping; 1000 effects=75pct digits/25pct CRIT; all effect
+    motion/lifecycle state frozen
+  live: fixed24Hz; post-action mean30 sigma5 trunc15..45s wall-clock thinking; move/attack/wait50/25/25;
+    single selected; Agent budget18ms
+measurement:
+  initial_warmup_frames: 60
+  terrain_settle_frames_per_condition: 120
+  text_warmup_frames: 10
+  samples_per_condition: 100
+  repeats: 2
+  replay_frames_per_source: 1600
+  cold_samples_per_condition: 2
+  cold_metric: max; not P99
+  live_warmup_seconds: 30
+  live_seconds: 60
+  live_frames: 1440
+  capacity_certification: false
+variables:
+  independent:
+  - name: zoom1_empty
+    n: 0
+    zoom: 1.0
+  - name: zoom1_coordinates
+    n: 0
+    coords: true
+    zoom: 1.0
+  - name: zoom05_empty
+    n: 0
+    zoom: 0.5
+  - name: zoom05_coordinates
+    n: 0
+    coords: true
+    zoom: 0.5
+  - name: zoom05_pan
+    n: 0
+    coords: true
+    zoom: 0.5
+    pan: true
+  - name: damage1000
+    n: 1000
+  - name: offscreen1000
+    n: 1000
+    offscreen: true
+  - name: hidden1000
+    n: 1000
+    draw: false
+  controlled:
+  - machine
+  - window
+  - seed
+  - world/faction/unit state
+  - Fog
+  - GC
+  - settled terrain cache before activation
+guards:
+  baseline:
+    finished: true
+    source_clean: true
+    tool_clean: true
+    5000_units: true
+    fog_on: true
+    world_unchanged: true
+    clock_frozen: true
+    complete_samples: true
+    terrain_settled: true
+  fixed:
+    finished: true
+    source_clean: true
+    tool_clean: true
+    5000_units: true
+    fog_on: true
+    world_unchanged: true
+    clock_frozen: true
+    complete_samples: true
+    terrain_settled: true
+  live:
+    finished: true
+    source_clean: true
+    tool_clean: true
+    5000_units: true
+    fog_on: true
+  live_runtime:
+    complete: true
+    source_clean: true
+    tooling_clean: true
+    fog_on: true
+    world_alive: true
+    position_progress: true
+    frame_p99: true
+    world_hz: true
+    observation_p99: false
+    action_queue_p99: false
+    queue_bounded: true
+    offered_load_met: true
+    duration_formal: true
+    not_diagnostic: true
+    fixed_clock: true
+    board_clock: true
+    nonempty_move: true
+    nonempty_attack: true
+    initial_resident_units: true
+    live_workload_95pct: true
+validation:
+  pytest_passed: 912
+  structural_contracts_passed: 94
+  new_text_contracts: 13
+  coordinate_pixel_max_rgb_rounding: 4
+  damage_pixels: byte-identical to old rendering
+artifacts:
+  formal:
+  - path: artifacts/baseline-compact.zip
+    size: 12870
+    sha256: 2fbcffbbf63380c7b9c207e6781815bb427a0207d7b3f275b3ad1a2f5ef65124
+  - path: artifacts/baseline-raw.zip
+    size: 270352
+    sha256: add344c0b32c619b2d6ec3d6e36151a5219e162a9b376c3caddac948f2d1a9d0
+  - path: artifacts/fixed-compact.zip
+    size: 12948
+    sha256: e9cd0a648f29e9daa1cb2f520a838666a421f1acc9b6affe684519476d2adc4c
+  - path: artifacts/fixed-raw.zip
+    size: 278243
+    sha256: 32f398de6c9e09f17f35a65c161403130f677a6257889556b45c4ee66cb65a56
+  - path: artifacts/live-compact.zip
+    size: 4804
+    sha256: aa50353dd8ce1da4f044a5f4caf2c9f977b3a89ac76e5ecaf33593be09262811
+  - path: artifacts/live-raw.zip
+    size: 1075732
+    sha256: dcd5d0a8e13985dc007d741466c0eacf6710bd31e26da2beb7e99f67b68a4f30
+  - path: results/baseline.json
+    size: 71584
+    sha256: 68cd35a15b82041992e831d5b337a397cd0c730b8e0530a10facd15c9103d69c
+  - path: results/fixed.json
+    size: 71695
+    sha256: 3cfce3933e8826975110e12135c5abcc1e50f4a11273b4a9be4ab3efc7946827
+  - path: results/live.json
+    size: 16743
+    sha256: 9c00dcb6fb522f94199eb1fae0dd46ea3f6d5f3a9371f8dbc2f226ec64d9488e
+  external: []
+headline:
+  result: zoom0.5 coords frameP99 736.375->15.521ms; pan779.096->23.530ms; 1000 text
+    prep2.542->0.967ms
+  cold_max_frame_ms: 37.081
+  live_world_hz: 24.0
+  live_frame_p99_ms: 41.330707957968116
+  live_observation_p99_ms: 143.8980545499362
+  live_action_queue_p99_ms: 148.937041987665
+  resolution: Cache unchanged coordinate view/labels and active per-effect rasters;
+    no gameplay change; no new Frontier
+revisit_when:
+- Different dense combat or UI/camera workload
+- Cull mutability, label style, font lifecycle or same-frame repeated rendering changes

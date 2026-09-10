@@ -1,0 +1,654 @@
+{
+  "verified": true,
+  "probe": {
+    "provenance": {
+      "source": {
+        "path": "/Users/liyang/Developer/star-lab/runs/star-text-cache-dev",
+        "sha": "5f13218ea1b6cf563e94b61e30a1609f01c2a138",
+        "dirty": ""
+      },
+      "tool": {
+        "path": "/Users/liyang/Developer/star-lab",
+        "sha": "b93139777ef65d3abf5f7aae41a99e180930b81c",
+        "dirty": ""
+      },
+      "args": {
+        "source": "/Users/liyang/Developer/star-lab/runs/star-text-cache-dev",
+        "output": "runs/p3-text-cache/live/live.json",
+        "mode": "live",
+        "samples": 100,
+        "repeats": 2,
+        "settle_frames": 0,
+        "cases": null,
+        "seconds": 60.0,
+        "warmup": 30.0
+      },
+      "argv": [
+        "tools/p3_text_probe.py",
+        "--source",
+        "/Users/liyang/Developer/star-lab/runs/star-text-cache-dev",
+        "--mode",
+        "live",
+        "--seconds",
+        "60",
+        "--warmup",
+        "30",
+        "--output",
+        "runs/p3-text-cache/live/live.json"
+      ],
+      "os": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+      "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+      "environment": {
+        "HEADLESS": null,
+        "SDL_VIDEODRIVER": null,
+        "STAR_SCALE_MINIMAP_UNITS": null
+      }
+    },
+    "guards": {
+      "finished": true,
+      "source_clean": true,
+      "tool_clean": true,
+      "5000_units": true,
+      "fog_on": true
+    },
+    "cases": [
+      {
+        "name": "empty",
+        "n": 0
+      },
+      {
+        "name": "coordinates",
+        "n": 0,
+        "coords": true
+      },
+      {
+        "name": "damage10",
+        "n": 10
+      },
+      {
+        "name": "damage100",
+        "n": 100
+      },
+      {
+        "name": "damage500",
+        "n": 500
+      },
+      {
+        "name": "damage1000",
+        "n": 1000
+      },
+      {
+        "name": "hidden1000",
+        "n": 1000,
+        "draw": false
+      },
+      {
+        "name": "offscreen1000",
+        "n": 1000,
+        "offscreen": true
+      },
+      {
+        "name": "combined100",
+        "n": 100,
+        "coords": true
+      },
+      {
+        "name": "zoom1_empty",
+        "n": 0,
+        "zoom": 1.0
+      },
+      {
+        "name": "zoom1_coordinates",
+        "n": 0,
+        "coords": true,
+        "zoom": 1.0
+      },
+      {
+        "name": "zoom05_empty",
+        "n": 0,
+        "zoom": 0.5
+      },
+      {
+        "name": "zoom05_coordinates",
+        "n": 0,
+        "coords": true,
+        "zoom": 0.5
+      }
+    ],
+    "camera": {
+      "offset_x": 1240,
+      "offset_y": 630,
+      "zoom": 0.15,
+      "speed": 200.0
+    },
+    "display": [
+      2480,
+      1261
+    ],
+    "coordinates_initial": false,
+    "view_checks": [],
+    "pygame": "2.6.1",
+    "driver": "cocoa",
+    "summary": {
+      "live": {
+        "frame_ms": {
+          "count": 1454,
+          "min": 12.122833984903991,
+          "avg": 14.573500947051578,
+          "p50": 14.47266701143235,
+          "p95": 16.15566702093929,
+          "p99": 17.335041018668562,
+          "max": 21.133875008672476
+        },
+        "damage_render_ms": {
+          "count": 1454,
+          "min": 0.002874992787837982,
+          "avg": 0.014607201657351491,
+          "p50": 0.013750046491622925,
+          "p95": 0.024333014152944088,
+          "p99": 0.03270898014307022,
+          "max": 0.046916946303099394
+        },
+        "damage_update_ms": {
+          "count": 1454,
+          "min": 0.0017500133253633976,
+          "avg": 0.007103326142108403,
+          "p50": 0.006582995411008596,
+          "p95": 0.012082979083061218,
+          "p99": 0.014583987649530172,
+          "max": 0.0219999928958714
+        },
+        "coordinates_ms": {
+          "count": 1454,
+          "min": 0.00020797597244381905,
+          "avg": 0.0005935344308937555,
+          "p50": 0.0005830079317092896,
+          "p95": 0.0008749775588512421,
+          "p99": 0.001207983586937189,
+          "max": 0.006374961230903864
+        },
+        "flush_ms": {
+          "count": 1454,
+          "min": 2.9482499812729657,
+          "avg": 3.363045776335579,
+          "p50": 3.357333014719188,
+          "p95": 3.629749990068376,
+          "p99": 3.7189170252531767,
+          "max": 7.52724998164922
+        },
+        "present_ms": {
+          "count": 1454,
+          "min": 1.24729098752141,
+          "avg": 1.415716556968626,
+          "p50": 1.3933340087532997,
+          "p95": 1.6130000003613532,
+          "p99": 1.7130000051110983,
+          "max": 2.2736670216545463
+        },
+        "effects": {
+          "count": 1454,
+          "min": 0,
+          "avg": 4.286795048143054,
+          "p50": 4,
+          "p95": 9,
+          "p99": 10,
+          "max": 11
+        },
+        "effects_at_draw": {
+          "count": 1454,
+          "min": 0,
+          "avg": 4.286795048143054,
+          "p50": 4,
+          "p95": 9,
+          "p99": 10,
+          "max": 11
+        },
+        "onscreen_anchors": {
+          "count": 1454,
+          "min": 0,
+          "avg": 4.2166437414030264,
+          "p50": 4,
+          "p95": 9,
+          "p99": 10,
+          "max": 11
+        },
+        "tiles": {
+          "count": 1454,
+          "min": 13500,
+          "avg": 13500.0,
+          "p50": 13500,
+          "p95": 13500,
+          "p99": 13500,
+          "max": 13500
+        }
+      }
+    }
+  },
+  "runtime_reanalysis": {
+    "verified": true,
+    "source": "5f13218ea1b6cf563e94b61e30a1609f01c2a138",
+    "metrics": {
+      "frame_work_ms": {
+        "count": 1440,
+        "min": 12.662458990234882,
+        "avg": 29.05655612242602,
+        "p50": 32.805000024382025,
+        "p95": 39.47045799577609,
+        "p99": 41.330707957968116,
+        "max": 45.20175000652671
+      },
+      "observation_response_ms": {
+        "count": 1948,
+        "min": 7.473222736734897,
+        "avg": 38.99182480158957,
+        "p50": 32.722096948418766,
+        "p95": 100.35072080790997,
+        "p99": 143.8980545499362,
+        "max": 166.95127898128703
+      },
+      "action_queue_ms": {
+        "count": 1953,
+        "min": 0.003541994374245405,
+        "avg": 32.62439983815486,
+        "p50": 28.302374994382262,
+        "p95": 105.7782499701716,
+        "p99": 148.937041987665,
+        "max": 166.57829197356477
+      }
+    },
+    "frame_count": 1440,
+    "completed_observations": 1948,
+    "alive_units": {
+      "count": 60,
+      "min": 5000,
+      "avg": 5000.0,
+      "p50": 5000,
+      "p95": 5000,
+      "p99": 5000,
+      "max": 5000
+    },
+    "moving_units": {
+      "count": 60,
+      "min": 64,
+      "avg": 120.0,
+      "p50": 122,
+      "p95": 151,
+      "p99": 167,
+      "max": 167
+    },
+    "observations_per_session": {
+      "count": 1000,
+      "min": 1,
+      "avg": 1.948,
+      "p50": 2,
+      "p95": 3,
+      "p99": 3,
+      "max": 3
+    },
+    "observation_build_ms": {
+      "count": 1948,
+      "min": 5.332250031642616,
+      "avg": 6.244602481048369,
+      "p50": 6.247415964026004,
+      "p95": 6.731250032316893,
+      "p99": 6.9708749651908875,
+      "max": 7.620792021043599
+    },
+    "observation_decode_ms": {
+      "count": 1948,
+      "min": 0.776749977376312,
+      "avg": 0.9460831004232206,
+      "p50": 0.943291001021862,
+      "p95": 1.0745829786174,
+      "p99": 1.126707997173071,
+      "max": 1.2909999932162464
+    },
+    "observed_batch_size": {
+      "count": 0
+    },
+    "observation_encode_ms": {
+      "count": 1948,
+      "min": 0.7828749949112535,
+      "avg": 0.9375355621234244,
+      "p50": 0.9297910146415234,
+      "p95": 1.0535840410739183,
+      "p99": 1.1016670032404363,
+      "max": 2.4683750234544277
+    },
+    "observation_bytes": {
+      "count": 1948,
+      "min": 166654,
+      "avg": 183402.37628336754,
+      "p50": 183391,
+      "p95": 198672,
+      "p99": 201679,
+      "max": 204115
+    },
+    "agent_frame_ms": {
+      "count": 1440,
+      "min": 0.001249951310455799,
+      "avg": 14.096916034274424,
+      "p50": 18.276582995895296,
+      "p95": 24.870124994777143,
+      "p99": 25.83887497894466,
+      "max": 26.576375006698072
+    },
+    "simulation_seconds": 60.0,
+    "maxrss_bytes": 401047552,
+    "sampled_position_changes": 9894,
+    "accepted_moves": 4930,
+    "accepted_attacks": 111,
+    "rejected_actions": 22,
+    "frame_deadline_miss_fraction": 0.007638888888888889,
+    "guard_pass_as_recorded": false
+  },
+  "alignment": {
+    "rows": 1440,
+    "epoch_offset_seconds": {
+      "count": 1440,
+      "min": 0.5779707079636864,
+      "avg": 0.5779979385659924,
+      "p50": 0.5779797920258716,
+      "p95": 0.5781016249675304,
+      "p99": 0.5781165420194156,
+      "max": 0.5781462510349229
+    }
+  },
+  "runtime_window_probe": {
+    "frame_ms": {
+      "count": 1440,
+      "min": 12.122833984903991,
+      "avg": 14.584724016660605,
+      "p50": 14.490083034615964,
+      "p95": 16.15566702093929,
+      "p99": 17.335041018668562,
+      "max": 21.133875008672476
+    },
+    "damage_render_ms": {
+      "count": 1440,
+      "min": 0.002874992787837982,
+      "avg": 0.014592386368248198,
+      "p50": 0.013749988283962011,
+      "p95": 0.024333014152944088,
+      "p99": 0.03270898014307022,
+      "max": 0.046916946303099394
+    },
+    "damage_update_ms": {
+      "count": 1440,
+      "min": 0.0017500133253633976,
+      "avg": 0.007103057133564208,
+      "p50": 0.006582995411008596,
+      "p95": 0.012082979083061218,
+      "p99": 0.014583987649530172,
+      "max": 0.0219999928958714
+    },
+    "coordinates_ms": {
+      "count": 1440,
+      "min": 0.00020797597244381905,
+      "avg": 0.0005942693759506154,
+      "p50": 0.0005830079317092896,
+      "p95": 0.0008749775588512421,
+      "p99": 0.001207983586937189,
+      "max": 0.006374961230903864
+    },
+    "flush_ms": {
+      "count": 1440,
+      "min": 2.9482499812729657,
+      "avg": 3.365175936050946,
+      "p50": 3.358834015671164,
+      "p95": 3.629749990068376,
+      "p99": 3.7189170252531767,
+      "max": 7.52724998164922
+    },
+    "present_ms": {
+      "count": 1440,
+      "min": 1.24729098752141,
+      "avg": 1.4155137443190648,
+      "p50": 1.3930420391261578,
+      "p95": 1.6130000003613532,
+      "p99": 1.7130000051110983,
+      "max": 2.2736670216545463
+    },
+    "effects": {
+      "count": 1440,
+      "min": 0,
+      "avg": 4.26875,
+      "p50": 4,
+      "p95": 9,
+      "p99": 10,
+      "max": 11
+    },
+    "effects_at_draw": {
+      "count": 1440,
+      "min": 0,
+      "avg": 4.26875,
+      "p50": 4,
+      "p95": 9,
+      "p99": 10,
+      "max": 11
+    },
+    "onscreen_anchors": {
+      "count": 1440,
+      "min": 0,
+      "avg": 4.197916666666667,
+      "p50": 4,
+      "p95": 9,
+      "p99": 10,
+      "max": 11
+    },
+    "tiles": {
+      "count": 1440,
+      "min": 13500,
+      "avg": 13500.0,
+      "p50": 13500,
+      "p95": 13500,
+      "p99": 13500,
+      "max": 13500
+    }
+  },
+  "tail": {
+    "threshold_ms": 41.330707957968116,
+    "frames": 15,
+    "damage_render_ms": {
+      "count": 15,
+      "min": 0.01091696321964264,
+      "avg": 0.015805393923074007,
+      "p50": 0.014332996215671301,
+      "p95": 0.029999995604157448,
+      "p99": 0.029999995604157448,
+      "max": 0.029999995604157448
+    },
+    "effects": {
+      "count": 15,
+      "min": 3,
+      "avg": 4.866666666666666,
+      "p50": 4,
+      "p95": 10,
+      "p99": 10,
+      "max": 10
+    },
+    "zero_effect_frames": 0,
+    "agent_ms": {
+      "count": 15,
+      "min": 19.381207996048033,
+      "avg": 25.032708200160414,
+      "p50": 25.432541966438293,
+      "p95": 26.52479102835059,
+      "p99": 26.52479102835059,
+      "max": 26.52479102835059
+    },
+    "env_ms": {
+      "count": 15,
+      "min": 13.176499982364476,
+      "avg": 15.001308266073465,
+      "p50": 15.486041025724262,
+      "p95": 17.335041018668562,
+      "p99": 17.335041018668562,
+      "max": 17.335041018668562
+    },
+    "present_ms": {
+      "count": 15,
+      "min": 1.2864579912275076,
+      "avg": 1.4182915367806952,
+      "p50": 1.389833982102573,
+      "p95": 1.6487500397488475,
+      "p99": 1.6487500397488475,
+      "max": 1.6487500397488475
+    },
+    "flush_ms": {
+      "count": 15,
+      "min": 3.177125006914139,
+      "avg": 3.5400996644360325,
+      "p50": 3.550332970917225,
+      "p95": 3.7416659761220217,
+      "p99": 3.7416659761220217,
+      "max": 3.7416659761220217
+    },
+    "damage_share_of_tail_work": 0.00037237770751408206
+  },
+  "active_effect_frames": 1383,
+  "runtime": {
+    "source": {
+      "path": "/Users/liyang/Developer/star-lab/runs/star-text-cache-dev",
+      "sha": "5f13218ea1b6cf563e94b61e30a1609f01c2a138",
+      "dirty": ""
+    },
+    "tooling": {
+      "path": "/Users/liyang/Developer/star-lab",
+      "sha": "b93139777ef65d3abf5f7aae41a99e180930b81c",
+      "dirty": ""
+    },
+    "workload": {
+      "source": "/Users/liyang/Developer/star-lab/runs/star-text-cache-dev",
+      "fps": 24,
+      "clock_mode": "fixed",
+      "cycle_mode": "post-action",
+      "jitter_seconds": 5.0,
+      "units": 5000,
+      "agents": 1000,
+      "delay": "30",
+      "observation_mode": "single",
+      "observation_hz": null,
+      "scope": "selected",
+      "layout": "canonical",
+      "policy": "stochastic",
+      "seconds": 60.0,
+      "warmup": 30.0,
+      "budget_ms": 18.0,
+      "attribute": false,
+      "no_encode": false,
+      "synchronized": false,
+      "movement_overlay": false,
+      "no_agents": false,
+      "gc_policy": "realtime_defer",
+      "output": "/Users/liyang/Developer/star-lab/runs/p3-text-cache/live/live.runtime.json"
+    },
+    "hardware": {
+      "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+      "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+      "machine": "arm64",
+      "chrome": "kept open; no slow frames removed",
+      "window": [
+        2480,
+        1261
+      ]
+    },
+    "dependency_lock_sha256": "e8a64dba4f65993ce7a1bd720f7c7b6d399422692e4202dfb25b9c1596ce5f95",
+    "safe_environment": {
+      "STAR_SCALE_MINIMAP_UNITS": "off",
+      "HEADLESS": null,
+      "SDL_VIDEODRIVER": null
+    },
+    "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+    "guards": {
+      "complete": true,
+      "source_clean": true,
+      "tooling_clean": true,
+      "fog_on": true,
+      "world_alive": true,
+      "position_progress": true,
+      "frame_p99": true,
+      "world_hz": true,
+      "observation_p99": false,
+      "action_queue_p99": false,
+      "queue_bounded": true,
+      "offered_load_met": true,
+      "duration_formal": true,
+      "not_diagnostic": true,
+      "fixed_clock": true,
+      "board_clock": true,
+      "nonempty_move": true,
+      "nonempty_attack": true,
+      "initial_resident_units": true,
+      "live_workload_95pct": true
+    },
+    "pass": false,
+    "frame_work_ms": {
+      "count": 1440,
+      "min": 12.662458990234882,
+      "avg": 29.05655612242602,
+      "p50": 32.805000024382025,
+      "p95": 39.47045799577609,
+      "p99": 41.330707957968116,
+      "max": 45.20175000652671
+    },
+    "frame_count": 1440,
+    "world_hz": 24.0,
+    "observation_response_ms": {
+      "count": 1948,
+      "min": 7.473222736734897,
+      "avg": 38.99182480158957,
+      "p50": 32.722096948418766,
+      "p95": 100.35072080790997,
+      "p99": 143.8980545499362,
+      "max": 166.95127898128703
+    },
+    "action_queue_ms": {
+      "count": 1953,
+      "min": 0.003541994374245405,
+      "avg": 32.62439983815486,
+      "p50": 28.302374994382262,
+      "p95": 105.7782499701716,
+      "p99": 148.937041987665,
+      "max": 166.57829197356477
+    },
+    "blocks30": [
+      {
+        "count": 720,
+        "min": 12.662458990234882,
+        "avg": 27.9071213724415,
+        "p50": 31.954667007084936,
+        "p95": 38.44754205783829,
+        "p99": 40.26691598119214,
+        "max": 42.69404197111726
+      },
+      {
+        "count": 720,
+        "min": 13.510249031241983,
+        "avg": 30.20599087241054,
+        "p50": 33.39537500869483,
+        "p95": 40.09779199259356,
+        "p99": 41.95454198634252,
+        "max": 45.20175000652671
+      }
+    ],
+    "nominal_observations": 1940,
+    "completed_observations": 1948,
+    "nominal_load_fraction": 1.0041237113402062,
+    "worst_rolling5_p99_ms": 43.59125002520159,
+    "longest_miss_streak": 2,
+    "miss_fraction": 0.007638888888888889,
+    "attribution": null,
+    "overlay": null,
+    "raw": {
+      "path": "live.runtime.raw.json",
+      "size": 2694799,
+      "sha256": "a9960c1c4569295708961834c443dfecbb7371cd1f7fd0856bb4ef4d0a032017"
+    }
+  },
+  "raw_archive": {
+    "path": "artifacts/live-raw.zip",
+    "size": 1075732,
+    "sha256": "dcd5d0a8e13985dc007d741466c0eacf6710bd31e26da2beb7e99f67b68a4f30"
+  }
+}

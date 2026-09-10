@@ -37,6 +37,26 @@ def main():
     from rotk_env.prefabs.config import Faction, PlayerType
     from rotk_env.utils.unit_spatial_index import rebuild_unit_spatial_index
     from rotk_env.utils.parallel_observation import ParallelObservationService
+    from rotk_env.components import Unit, UnitCount, HexPosition, FogOfWar, MovementPoints, ActionPoints
+    def census(world):
+        ids = sorted(world.query().with_component(Unit).entities())
+        values = []
+        alive = 0
+        for uid in ids:
+            unit = world.get_component(uid, Unit)
+            count = world.get_component(uid, UnitCount)
+            pos = world.get_component(uid, HexPosition)
+            ap = world.get_component(uid, ActionPoints)
+            mp = world.get_component(uid, MovementPoints)
+            alive += bool(count and count.current_count > 0)
+            values.append((uid, unit.faction.value, count.current_count if count else None,
+                (pos.col, pos.row) if pos else None, ap.current_ap if ap else None,
+                mp.current_mp if mp else None))
+        fog = world.get_singleton_component(FogOfWar)
+        visible = sorted((f.value, sorted(cells)) for f, cells in fog.faction_vision.items()) if fog else None
+        return {'units':len(ids), 'alive':alive, 'revision':world.revision,
+            'fog_enabled':bool(fog and fog.enabled),
+            'state_sha256':hashlib.sha256(json.dumps((values,visible)).encode()).hexdigest()}
     source, tooling = identity(a.source), identity(Path(__file__).resolve().parents[1])
     with open(os.devnull, 'w') as sink, redirect_stdout(sink):
         scenario, fixture_sha = fixture(a.source, a.units)
@@ -55,6 +75,8 @@ def main():
                     for s in (ordered[i % len(ordered)] for i in range(a.queries))]
         expected = [agents.call(s, 'get_faction_state', params) for s, params in requests]
         expected_hash = hashlib.sha256(json.dumps(expected, sort_keys=True).encode()).hexdigest()
+        before = census(world)
+        worker_pids = ()
         service = ParallelObservationService(agents.gate, workers=a.workers,
                     max_pending=a.max_pending) if a.workers else None
         try:
@@ -104,9 +126,17 @@ def main():
         finally:
             if service:
                 service.close()
+        after = census(world)
     result = {'kind':'frozen diagnostic, NOT runtime capacity', 'source':source, 'tooling':tooling,
         'workload':vars(a), 'fixture_sha256':fixture_sha, 'expected_sha256':expected_hash,
         'machine':{'platform':platform.platform(), 'python':sys.version, 'cpu_count':os.cpu_count()},
+        'census_before':before, 'census_after':after, 'registered_sessions':len(agents.sessions),
+        'warmed_worker_pids':worker_pids,
+        'guards':{'source_clean':not source['dirty'], 'tooling_clean':not tooling['dirty'],
+            'world_unchanged':before == after, 'unit_count':before['units'] == a.units,
+            'alive_count':before['alive'] == a.units, 'agents_registered':len(agents.sessions) == a.agents,
+            'fog_on':before['fog_enabled'], 'complete':len(rows) == a.queries,
+            'workers_warmed':len(set(worker_pids)) == a.workers},
         'wall_seconds':wall, 'requests_per_second':len(rows)/wall, 'rows':rows,
         'rss_self_max':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
         'rss_children_max':resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss,

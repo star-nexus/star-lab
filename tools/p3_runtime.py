@@ -22,6 +22,10 @@ from p3_local_agents import Attribution, LocalAgents, fixture, identity, stats
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--source', required=True)
+    p.add_argument('--fps', type=int, default=30)
+    p.add_argument('--clock-mode', choices=['wall', 'fixed'], default='wall')
+    p.add_argument('--cycle-mode', choices=['legacy', 'post-action'], default='legacy')
+    p.add_argument('--jitter-seconds', type=float, default=5.)
     p.add_argument('--units', type=int, default=100)
     p.add_argument('--agents', type=int, default=100)
     p.add_argument('--delay', default='1')
@@ -29,7 +33,7 @@ def main():
     p.add_argument('--observation-hz', type=float, help='Independent periodic observation rate per Agent; omitted retains legacy sequential loop')
     p.add_argument('--scope', choices=['faction', 'selected'], default='faction')
     p.add_argument('--layout', choices=['canonical', 'interleaved'], default='canonical')
-    p.add_argument('--policy', choices=['mixed', 'move', 'observe'], default='mixed')
+    p.add_argument('--policy', choices=['mixed', 'move', 'observe', 'stochastic'], default='mixed')
     p.add_argument('--seconds', type=float, default=15)
     p.add_argument('--warmup', type=float, default=5)
     p.add_argument('--budget-ms', type=float, default=4)
@@ -41,6 +45,8 @@ def main():
     p.add_argument('--gc-policy', choices=['auto', 'realtime_defer'], default='auto')
     p.add_argument('--output', required=True)
     args = p.parse_args()
+    if args.fps <= 0 or args.jitter_seconds < 0:
+        p.error('FPS must be positive and jitter nonnegative')
     args.source = str(Path(args.source).resolve())
     out = Path(args.output).resolve()
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -53,10 +59,10 @@ def main():
     from rotk_env import main as entry
     from rotk_env.scenes.game_scene import GameScene
     from framework.engine.game_engine import GameEngine
-    from rotk_env.components import Unit, UnitCount, MovementAnimation, HexPosition, GameState, FogOfWar
+    from rotk_env.components import Unit, UnitCount, MovementAnimation, HexPosition, GameState, FogOfWar, GameTime
     from rotk_env.prefabs.config import GameConfig
     from performance_profiler import profiler
-    GameConfig.FPS = 30
+    GameConfig.FPS = args.fps
     holder = {}
     original_init = GameScene._initialize_game
     original_update = GameEngine._update
@@ -81,9 +87,10 @@ def main():
         holder['display'] = list(pygame.display.get_window_size())
         holder['scene'] = scene
         holder['world'] = scene.world
+        holder['initial_units'] = len(scene.world.query().with_component(Unit).entities())
         holder['agents'] = LocalAgents(scene.world, args.agents,
             args.delay if args.delay == 'mixed' else float(args.delay), scope=args.scope,
-            encode=not args.no_encode, policy=args.policy, observation_hz=args.observation_hz, observation_mode=args.observation_mode)
+            encode=not args.no_encode, policy=args.policy, observation_hz=args.observation_hz, observation_mode=args.observation_mode, cycle_mode=args.cycle_mode, jitter_seconds=args.jitter_seconds)
         if args.attribute:
             holder['attribution'] = Attribution(holder['agents'].gate.action_handler)
         if args.movement_overlay:
@@ -147,6 +154,7 @@ def main():
                 'game_over':world.get_singleton_component(GameState).game_over,
                 'fog':world.get_singleton_component(FogOfWar).enabled,
                 'gc_enabled':gc.isenabled(), 'sim_time':holder['sim_time'],
+                'board_time':world.get_singleton_component(GameTime).game_elapsed_time,
                 'maxrss':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
                 'counts':dict(agents.counts)})
         end = time.perf_counter()
@@ -159,7 +167,7 @@ def main():
 
     def wait(engine, prof):
         now = time.perf_counter()
-        deadline = getattr(engine, '_p3_next_tick', engine._p3_start + 1/30)
+        deadline = getattr(engine, '_p3_next_tick', engine._p3_start + 1/args.fps)
         # Carry sleep overshoot forward instead of adding it to every period.
         remaining = max(0., deadline-now)
         if remaining:
@@ -167,7 +175,7 @@ def main():
             with prof.time_system('fps_cap_wait', category='wait'):
                 time.sleep(remaining)
             holder['wait_s'] = time.perf_counter()-began
-        engine._p3_next_tick = max(deadline+1/30, now)
+        engine._p3_next_tick = max(deadline+1/args.fps, now)
 
     GameScene._initialize_game = initialize
     GameEngine._update = update
@@ -176,8 +184,10 @@ def main():
     profiler.end_frame = frame_end
     sys.argv = [str(Path(args.source)/'rotk_env/main.py'), '--skip-start',
         '--mode','real_time','--players','human_vs_two_ai','--scenario',scenario,
-        '--seed','42','--no-hub','--uncapped','--scale-harness-socket',
+        '--seed','42','--no-hub','--scale-harness-socket',
         f'/tmp/star-p3-{os.getpid()}.sock']
+    if args.clock_mode == 'wall':
+        sys.argv.append('--uncapped')
     entry.main()
     if not holder.get('finished'):
         raise RuntimeError('Runtime ended before complete measurement; inspect log')
@@ -195,6 +205,8 @@ def main():
         def offered_until(t):
             return max(0, math_floor((t-offset)/period)+1)
         nominal_observations += offered_until(args.warmup+args.seconds)-offered_until(args.warmup)
+    if args.cycle_mode == 'post-action':
+        nominal_observations = agents.nominal_closed_loop_observations(args.warmup, args.seconds)
     completed_observations = sum(r['event']=='observe' for r in events)
     blocks = []
     for i in range(int(args.seconds//30)):
@@ -204,20 +216,28 @@ def main():
         for t in range(math_floor(args.warmup), math_floor(args.warmup+args.seconds-5)+1)])
     streak = longest = 0
     for frame in admitted:
-        streak = streak+1 if frame['work_ms'] > 1000/30 else 0
+        streak = streak+1 if frame['work_ms'] > 1000/args.fps else 0
         longest = max(longest, streak)
     guards = {'complete':bool(admitted) and holder['end']-holder['start']>=args.seconds+args.warmup,
         'source_clean':not source_id['dirty'], 'tooling_clean':not tooling_id['dirty'],
         'fog_on':all(r['fog'] for r in cens), 'world_alive':all(not r['game_over'] for r in cens),
         'resident_retained':all(r['alive']==args.units for r in cens),
         'position_progress':sum(r['position_changes'] for r in cens)>0,
-        'frame_p99':work.get('p99',float('inf')) <= 1000/30,
-        'world_hz':len(admitted)/args.seconds >= 29.7,
+        'frame_p99':work.get('p99',float('inf')) <= 1000/args.fps,
+        'world_hz':len(admitted)/args.seconds >= args.fps*.99,
         'observation_p99':args.no_agents or ob.get('p99',float('inf')) <=100,
         'action_queue_p99':args.no_agents or ac.get('p99',float('inf')) <=100,
         'queue_bounded':args.no_agents or holder['final_agents']['oldest_overdue_ms']<=100,
         'offered_load_met':args.no_agents or completed_observations >= .95*nominal_observations,
-        'duration_formal':args.seconds>=60, 'not_diagnostic':not args.attribute}
+        'duration_formal':args.seconds>=60, 'not_diagnostic':not args.attribute,
+        'fixed_clock':args.clock_mode != 'fixed' or all(abs(f['dt']-1/args.fps)<1e-12 for f in frames),
+        'board_clock':args.clock_mode != 'fixed' or all(abs(c['board_time']-c['sim_time'])<1e-6 for c in censuses),
+        'nonempty_move':args.policy != 'stochastic' or any(a['verb']=='move' and a['accepted'] for r in events for a in r.get('actions',[])),
+        'nonempty_attack':args.policy != 'stochastic' or any(a['verb']=='attack' and a['accepted'] for r in events for a in r.get('actions',[]))}
+    if args.policy == 'stochastic':
+        guards.pop('resident_retained')  # Combat may legitimately kill Units.
+        guards['initial_resident_units'] = holder['initial_units'] == args.units
+        guards['live_workload_95pct'] = bool(cens) and min(c['alive'] for c in cens) >= .95*args.units
     raw = {'frames':frames, 'events':agents.records, 'censuses':censuses}
     raw_path = out.with_suffix('.raw.json')
     raw_path.write_text(json.dumps(raw,separators=(',',':'))+'\n')
@@ -232,7 +252,7 @@ def main():
         'nominal_observations':nominal_observations, 'completed_observations':completed_observations,
         'nominal_load_fraction':completed_observations/max(1,nominal_observations),
         'worst_rolling5_p99_ms':worst5,'longest_miss_streak':longest,
-        'miss_fraction':sum(f['work_ms']>1000/30 for f in admitted)/max(1,len(admitted)),
+        'miss_fraction':sum(f['work_ms']>1000/args.fps for f in admitted)/max(1,len(admitted)),
         'agents':holder['final_agents'], 'censuses':censuses,
         'attribution':dict(holder['attribution'].values) if 'attribution' in holder else None,
         'overlay':holder.get('overlay'),

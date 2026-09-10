@@ -136,7 +136,7 @@ class Session:
 class LocalAgents:
     def __init__(self, world, count, delay=1.0, *, scope='faction', encode=True,
                  policy='mixed', seed=42, clock=time.perf_counter, max_records=2_000_000,
-                 observation_hz=None, observation_mode="single"):
+                 observation_hz=None, observation_mode="single", cycle_mode="legacy", jitter_seconds=5.0):
         from rotk_env.components import Unit, UnitCount
         self.world, self.clock = world, clock
         self.gate = next(s for s in world.systems if s.__class__.__name__ == 'LLMSystem')
@@ -147,6 +147,13 @@ class LocalAgents:
             raise ValueError('Unknown observation mode')
         if observation_mode != 'single' and not encode:
             raise ValueError('Batch boundary requires encoding')
+        if cycle_mode == 'post-action' and (observation_hz is not None or observation_mode != 'single'):
+            raise ValueError('Post-action cycles require single observations and no independent polling')
+        self.cycle_mode = cycle_mode
+        self.jitter_seconds = jitter_seconds
+        self.timing_seed = seed + 100000
+        self.initial_offsets = []
+        self.delay_rngs = []
         self.observation_mode = observation_mode
         self.batch_metrics = Counter()
         self.observation_hz = observation_hz
@@ -190,6 +197,7 @@ class LocalAgents:
                 self.sessions.append(session)
         self.setup_ms = (clock() - start) * 1000
         self.epoch = None
+        self.delay_rngs = [random.Random(self.timing_seed+i) for i in range(len(self.sessions))]
 
     def call(self, session, verb, params):
         self.request_id += 1
@@ -198,9 +206,13 @@ class LocalAgents:
 
     def start(self, now=None, synchronized=False):
         self.epoch = self.clock() if now is None else now
+        phase_rng = random.Random(self.timing_seed - 1)
         for i, session in enumerate(self.sessions):
             period = 1/self.observation_hz if self.observation_hz else session.delay
             offset = 0 if synchronized else (i / len(self.sessions)) * period
+            if self.cycle_mode == 'post-action' and not synchronized:
+                offset = phase_rng.uniform(0, session.delay)
+            self.initial_offsets.append(offset)
             session.cycle_due = self.epoch + offset
             self._push(session.cycle_due, 'observe', i)
 
@@ -223,7 +235,19 @@ class LocalAgents:
                 continue
             targets = unit.get('attackable', [])
             cells = unit.get('reachable', [])
-            if self.policy == 'mixed' and targets:
+            if self.policy == 'stochastic':
+                choice = self.rng.random()
+                verb = 'move' if choice < .5 else 'attack' if choice < .75 else 'wait'
+                self.counts['chosen_'+verb] += 1
+                if verb == 'move' and cells:
+                    actions.append(('move', {'unit_id': uid, 'target_position': self.rng.choice(cells)}))
+                elif verb == 'attack' and targets:
+                    actions.append(('attack', {'unit_id': uid, 'target_id': self.rng.choice(targets)}))
+                else:
+                    self.counts['idle_units'] += 1
+                    if verb != 'wait':
+                        self.counts['unavailable_'+verb] += 1
+            elif self.policy == 'mixed' and targets:
                 actions.append(('attack', {'unit_id': uid, 'target_id': self.rng.choice(targets)}))
             elif self.policy != 'observe' and cells:
                 actions.append(('move', {'unit_id': uid, 'target_position': self.rng.choice(cells)}))
@@ -233,7 +257,7 @@ class LocalAgents:
             session.actions = actions
             session.observed_at = self.clock()
             session.thinking = True
-            self._push(session.observed_at + session.delay, 'act', index)
+            self._push(session.observed_at + (0 if self.cycle_mode == 'post-action' else session.delay), 'act', index)
         if self.observation_hz:
             # Retain scheduled deadlines under overload; no coalescing,
             # drop, or completion-relative throttling hides offered load.
@@ -349,13 +373,37 @@ class LocalAgents:
                 # ready time from nominal cycle lag; report achieved/ideal load.
                 session.thinking = False
                 if not self.observation_hz:
-                    self._push(self.clock(), 'observe', index)
+                    if self.cycle_mode == 'post-action':
+                        think = self._sample_delay(self.delay_rngs[index], session.delay)
+                        row['think_seconds'] = think
+                        session.cycle_due = self.clock() + think
+                        self._push(session.cycle_due, 'observe', index)
+                    else:
+                        self._push(self.clock(), 'observe', index)
                 self.counts['cycles'] += 1
             row['service_ms'] = (self.clock() - begin) * 1000
             row['response_ms'] = row['queue_ms'] + row['service_ms']
             if len(self.records) >= self.max_records:
                 raise RuntimeError('event recorder overflow; no capacity claim')
             self.records.append(row)
+
+    def _sample_delay(self, rng, mean):
+        # Rejection sampling gives a bounded normal, rather than point masses
+        # at the clipping limits. Timing RNG is independent of action choices.
+        while True:
+            value = rng.gauss(mean, self.jitter_seconds)
+            if mean/2 <= value <= mean*1.5:
+                return value
+
+    def nominal_closed_loop_observations(self, warmup, duration):
+        count = 0
+        for i, session in enumerate(self.sessions):
+            rng = random.Random(self.timing_seed+i)
+            due = self.initial_offsets[i]
+            while due < warmup+duration:
+                count += due >= warmup
+                due += self._sample_delay(rng, session.delay)
+        return count
 
     def summary(self):
         now = self.clock()

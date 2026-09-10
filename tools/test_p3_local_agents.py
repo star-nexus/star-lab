@@ -138,3 +138,27 @@ def test_overdue_recurrent_reads_keep_heap_order_across_batch_collection():
         agents.pump(1000)
         traces.append([(r['agent'], r['queue_ms']) for r in agents.records])
     assert traces[0] == traces[1] == traces[2]
+
+
+def test_post_action_thinking_is_wall_clock_and_no_intermediate_polls():
+    agents, clock = setup(30, cycle_mode='post-action')
+    agents.policy = 'stochastic'
+    agents.pump(1000)
+    assert agents.counts['observations'] == agents.counts['cycles'] == 2
+    assert len(agents.heap) == 2
+    deadlines = [entry[0] for entry in agents.heap]
+    assert all(15 <= t <= 45 for t in deadlines)
+    clock.now = min(deadlines)-.001
+    agents.pump(1000)
+    assert agents.counts['observations'] == 2
+    clock.now = min(deadlines)
+    agents.pump(1000)
+    assert agents.counts['observations'] == agents.counts['cycles'] == 3
+    assert sum(agents.counts['chosen_'+verb] for verb in ('move','attack','wait')) == 6
+
+
+def test_post_action_offsets_and_normal_delays_are_reproducible():
+    a, ca = setup(30, cycle_mode='post-action')
+    b, cb = setup(30, cycle_mode='post-action')
+    assert [a._sample_delay(a.delay_rngs[0], 30) for _ in range(100)] == [b._sample_delay(b.delay_rngs[0], 30) for _ in range(100)]
+    assert a.nominal_closed_loop_observations(30, 300) == b.nominal_closed_loop_observations(30, 300)

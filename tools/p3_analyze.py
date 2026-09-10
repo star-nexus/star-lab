@@ -49,7 +49,7 @@ def analyze(point_path, raw_path=None):
         'accepted_moves':sum(a['verb']=='move' and a['accepted'] for a in action_rows),
         'accepted_attacks':sum(a['verb']=='attack' and a['accepted'] for a in action_rows),
         'rejected_actions':sum(not a['accepted'] for a in action_rows),
-        'frame_deadline_miss_fraction':sum(r['work_ms']>1000/30 for r in frames)/max(1,len(frames)),
+        'frame_deadline_miss_fraction':sum(r['work_ms']>1000/point['workload'].get('fps',30) for r in frames)/max(1,len(frames)),
         'guard_pass_as_recorded':point['pass']}
 
 

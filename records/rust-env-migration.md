@@ -76,3 +76,9 @@ Fog保留各Unit贡献、阵营union/探索、LOS、LRU、dirty；统计保留�
 迁移完整观测时发现R0漏掉多技能set输出排序，已独立修正并归档旧版反例：新oracle `17b17766923ce4db05efb17aaf023818cf69cdf6` / `rust-python-oracle-r0b-2026-09-12`，1047完整回归通过。[证据/复现](../experiments/2026-09-rust-r0b-skill-order/README.md)。旧R0/早期重放保留，不能再描述成覆盖全部可选多技能状态。后续native规则标识改为`python-r0b-17b1776`，显式拒绝混用旧版扩展。
 
 活动R2c代码已加入typed TeamCoordination（认领反向索引/原队列maxlen）、只读批次 faction projection，并通过28项新增契约。尚未完成正式身份认证/注册分发与完整Agent闭环；私有probe不能接Agent。目前仍在开发，待完整回归和差分trace归档后固定检查点。
+
+## R2c检查点：team与只读批次观测（2026-09-12）
+
+生产`582dbdab6e7b060c2589096cd41bc45ee96a474f` / `rust-kernel-r2c-2026-09-12`；工具`f02fef40c5eb2b361ab2908f5b7eac8fca5c87af`。完整回归1075（155native）、3Rust/Clippy、252查询/60操作节点等价及复用guard通过。[报告](../experiments/2026-09-rust-r2-projection/README.md)。
+Typed Team维护认领反向索引，保留冲突/强转/FIFO/maxlen；ObservationBatch用Rust只读借用限制缓存生命周期，复用census/faction/panel/enemy/tile，按请求装配owner/commandable。保持unit_ids语义、Fog、reachable/attackable，reset/写后查询不沿用旧批次。当前仍会clone响应树、扫描部分候选，留给R4测量优化。
+**尚未接正式Agent**：注册/可信身份校验/ActionExecutor完整分发仍缺，私有probe不能用于容量测试。下一步迁移注册、认证和动作外层返回格式，并把已有投影接入；再补Realtime/Turn生命周期、窗口战斗实体/Fog展示日志，跑完整世界差分和合成闭环。R2、R3–R5仍未完成；默认Python/main不变。正式checkout `runs/star-rust-r2-projection`，无关49个删除继续保留未提交。

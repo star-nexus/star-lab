@@ -1,0 +1,51 @@
+{
+  "schema": "star-r2-projection-v1",
+  "source_sha": "582dbdab6e7b060c2589096cd41bc45ee96a474f",
+  "source_dirty": "",
+  "tool_sha": "f02fef40c5eb2b361ab2908f5b7eac8fca5c87af",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "extension_sha256": "fecaefef68f3a3f08b6a881fbe54aaa1b771a96b75ab4d363102c99aead6b626",
+  "cases": [
+    {
+      "display": "none",
+      "fog": false,
+      "operations": 10,
+      "all_passed": true
+    },
+    {
+      "display": "none",
+      "fog": true,
+      "operations": 10,
+      "all_passed": true
+    },
+    {
+      "display": "dummy",
+      "fog": false,
+      "operations": 10,
+      "all_passed": true
+    },
+    {
+      "display": "dummy",
+      "fog": true,
+      "operations": 10,
+      "all_passed": true
+    },
+    {
+      "display": "window",
+      "fog": false,
+      "operations": 10,
+      "all_passed": true
+    },
+    {
+      "display": "window",
+      "fog": true,
+      "operations": 10,
+      "all_passed": true
+    }
+  ],
+  "all_passed": true,
+  "raw_file": "probe.json.gz",
+  "raw_size": 94251,
+  "raw_sha256": "ce743ece6b09cd97b29bfa24abb77b49bef1b5d2e7d917480c4de7e0e1e53b22"
+}

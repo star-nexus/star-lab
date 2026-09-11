@@ -1,0 +1,65 @@
+experiment:
+  id: 2026-09-rust-r2-projection
+  title: Partial R2 team and faction projection equivalence
+  date: 2026-09-12
+  status: validated
+  scope: handler/component-level, authenticated dispatch and full R2 incomplete
+source:
+  repository: star-nexus/star
+  problem_commit: 17b17766923ce4db05efb17aaf023818cf69cdf6
+  measurement_commit: 582dbdab6e7b060c2589096cd41bc45ee96a474f
+  fix_commit: 582dbdab6e7b060c2589096cd41bc45ee96a474f
+  validated_commit: 582dbdab6e7b060c2589096cd41bc45ee96a474f
+  validated_tag: rust-kernel-r2c-2026-09-12
+  branch_at_time: codex/rust-env-migration
+  oracle_commit: 17b17766923ce4db05efb17aaf023818cf69cdf6
+tools:
+  exact_commit: f02fef40c5eb2b361ab2908f5b7eac8fca5c87af
+  entrypoint: tools/rust_migration/r2_projection_probe.py
+hardware:
+  machine: Mac mini M4
+  memory: 16GiB
+  gpu: unused
+software:
+  os: macOS26.5.2 ARM64
+  python: CPython3.13.12
+  rust: 1.98.1
+  bevy_ecs: 0.19.1
+  pyo3: 0.29.2
+  maturin: 1.15.0
+  dependency_lock: Cargo.lock and uv.lock at exact source SHA
+scenario:
+  name: production contract fixture
+  units: 3
+  tiles: 37
+  seed: 42
+workload:
+  mode: real_time
+  displays: [none, dummy, window]
+  fog: [false, true]
+  real_agents: 0
+  setup: preloaded agent/faction mappings; direct component claims
+  cases: 6
+  batch_operation_nodes: 60
+  faction_queries: 252
+  query_batches: 36
+  native_threads: 1
+measurement:
+  type: functional equivalence, no capacity claim
+  guards: [full_imported_state_equal, decoded_response_equal, complete_workload, batch_reuse, clean_checkout]
+  full_tests_passed: 1075
+  native_contracts_passed: 155
+  rust_tests_passed: 3
+  clippy_passed: true
+artifacts:
+  raw: results/probe.json.gz
+  compact: results/probe.summary.json
+  integrity: artifacts/SHA256SUMS
+  wheel: artifacts/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl
+  external: []
+headline:
+  result: subset equivalent; no authenticated Agent closure or performance acceptance
+revisit_when:
+  - trusted identity dispatch is connected
+  - native observation data/caches/scheduler change
+  - full game lifecycle or world mutation coverage changes

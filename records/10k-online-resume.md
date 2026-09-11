@@ -9,6 +9,8 @@
 用户已批准完整方案；[阶段记录与恢复说明](rust-env-migration.md)。已从生产main `6a970deaee7d9b8d3939edd102973f2377edd6ac` 创建 `codex/rust-env-migration` 并用起始annotated tag固定。R0已完成：生产oracle `78cc8da3a03ffedaea58642abae8fcb710db997d`，tag `rust-python-oracle-r0-2026-09-11`，919回归和六组跨hashseed重放通过。R1也已完成：`92a6812beeaee71f4dd3650f5e7cc30f808c7895` / `rust-runtime-r1-2026-09-11`，952回归、2 Rust测试、GIL/随机兼容及本机3.13 release wheel通过。当前R2：typed玩法组件与实时闭环；尚未提供可玩的Rust后端。旧并行观测v1及负结果保留。
 切换门槛为M4上5000Units/1000Agents/30Hz，30秒闭环；完整行为兼容及macOS ARM/Linux安装验收。Python在全部gate通过前保持默认。P1/P2仍跳过；Protocol/Hub性能仍暂缓。本轮进度以阶段记录为准，不将原型或编译成功视为迁移完成。
 
+R2中间检查点已固定：`d1f5838496b38b97907d31cd0439d3dae53b0eb4` / `rust-kernel-r2a-2026-09-11`，1032回归、3 Rust测试及360操作差分通过。[报告/raw/compact/复现](../experiments/2026-09-rust-r2-kernel/README.md)。范围为移动/恢复/规则模式战斗子集，**完整R2仍未完成**；下一步Fog/统计/权限/观测。活动目录的 `rotk_agent/*` 和字体删除不属于本轮，已保留并询问；正式验证在Lab干净checkout。不要把这些删除带入迁移提交。
+
 ## 最新调研：主流并行 ECS 与候选路线（2026-09-11）
 
 用户要求探索其他方案，尤其是主流游戏技术。已完成[Unity/Mass/Flecs/Bevy 调研与 STAR 候选比较](10k-parallel-ecs-alternatives.md)。主候选是局部紧凑观测数据＋原生 Job：先验证单线程数据维护与热点内核，再测按数据块并行；最小一致性方案为只读阶段屏障。常驻增量 worker、共享内存和 free-threaded Python 保留为各有前提的备选，尚未实施或验证收益。

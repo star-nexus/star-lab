@@ -54,3 +54,12 @@
 生产 `92a6812beeaee71f4dd3650f5e7cc30f808c7895`，tag `rust-runtime-r1-2026-09-11`；952项Python回归（33 native契约）、2项Rust测试和Clippy通过。release macOS ARM64 CPython3.13 wheel及全量差分raw已[归档](../experiments/2026-09-rust-r1/README.md)。20组种子/域×1400混合抽样与完整MT状态一致；时钟、reset/close/GIL通过。Linux/3.14未验收。Native只具备初始化、冷数据保留、时钟及随机兼容，gameplay_ready=false；没有容量结论。
 
 当前R2从typed组件、六边形路径/占用与移动开始，随后战斗/恢复/Fog/权限/完整观测。活动checkout检测到非本轮字体文件删除，未纳入提交或覆盖；已询问用户。正式R1验收用Lab干净detached checkout，资源完整。
+
+## R2 中间检查点：移动、恢复、规则模式战斗
+
+生产 `d1f5838496b38b97907d31cd0439d3dae53b0eb4`，annotated tag `rust-kernel-r2a-2026-09-11`；工具 `7af8e4cecb463d294c73fd05f1b7898c840bdd5b`。
+1032项完整回归（113 native契约）、3项Rust测试及Clippy通过。三种display×两种seed的360个低层操作节点，完整导入状态/结果/事件等价；见[检查点报告](../experiments/2026-09-rust-r2-kernel/README.md)。
+已迁移动态占用、A*平局、MP规则、即时/逐格移动、AP/MP/skill到期队列及规则模式伤害/暴击/死亡。枚举/字符串状态区别及正在计时的恢复队列被完整保留。
+**R2未完成**：正常统计订阅、Fog、注册/认领权限、完整观测/动作入口仍未接入；窗口战斗特效实体/ID仍待迁移。私有probe不是Agent接口；Rust尚不可运行完整游戏，无容量结论。
+下一步接入Fog和统计，再完成可信身份动作/观测边界、逐操作完整世界重放与小规模闭环。
+活动checkout又出现非本轮 `rotk_agent/*` 删除，已询问用户，全部保留、未提交。正式R2检查点验收使用干净Lab detached checkout `runs/star-rust-r2-kernel`，不用缺失文件的活动目录作完整回归证据。

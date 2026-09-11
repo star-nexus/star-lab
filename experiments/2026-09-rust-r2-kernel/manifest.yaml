@@ -1,0 +1,64 @@
+experiment:
+  id: 2026-09-rust-r2-kernel
+  title: Partial R2 deterministic kernel gate
+  date: 2026-09-11
+  status: validated
+  scope: intermediate kernel subset; full R2 remains in progress
+source:
+  repository: star-nexus/star
+  problem_commit: 92a6812beeaee71f4dd3650f5e7cc30f808c7895
+  validated_commit: d1f5838496b38b97907d31cd0439d3dae53b0eb4
+  validated_tag: rust-kernel-r2a-2026-09-11
+  branch_at_time: codex/rust-env-migration
+  oracle_commit: 78cc8da3a03ffedaea58642abae8fcb710db997d
+tools:
+  exact_commit: 7af8e4cecb463d294c73fd05f1b7898c840bdd5b
+  entrypoint: tools/rust_migration/r2_kernel_probe.py
+hardware:
+  machine: Mac mini M4
+  platform: see results/probe.summary.json
+software:
+  rust: 1.98.1
+  bevy_ecs: 0.19.1
+  pyo3: 0.29.2
+  maturin: 1.15.0
+  python: CPython 3.13.12
+scenario:
+  name: production contract fixture hex disc radius 3
+  initial_units: 3
+  initial_tiles: 37
+  seeds: [42, 17]
+workload:
+  type: low-level movement and combat plus clock/animation/recovery steps
+  modes: [real_time]
+  displays: [none, dummy, window]
+  combat_displays: [none]
+  steps_per_case: 48
+  step_dt: 0.25
+  cases: 6
+  operation_nodes: 360
+  agents: 0
+measurement:
+  kind: functional equality, not performance
+  guards:
+    complete_state_equal: true
+    decoded_response_equal: true
+    ordered_events_equal: true
+    clean_measurement_checkout: true
+  python_tests_passed: 1032
+  native_python_contracts_passed: 113
+  rust_tests_passed: 3
+artifacts:
+  compact: results/probe.summary.json
+  raw: results/probe.json.gz
+  raw_integrity: compact contains name, byte size and SHA256
+  wheel: artifacts/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl
+  integrity: artifacts/SHA256SUMS
+  classification: formal functional gate
+  external: []
+headline:
+  result: subset equivalent; not full R2, no capacity acceptance or default switch
+revisit_when:
+  - statistics/Fog/ownership/action dispatcher is connected
+  - display combat entities and their external IDs are migrated
+  - paths, occupancy, numerical rules or deadline behavior change

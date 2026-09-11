@@ -1,0 +1,9 @@
+{
+  "source_sha": "d1f5838496b38b97907d31cd0439d3dae53b0eb4",
+  "python_passed": 1032,
+  "native_contracts": 113,
+  "rust_passed": 3,
+  "clippy_passed": true,
+  "full_R2_complete": false,
+  "performance_measured": false
+}

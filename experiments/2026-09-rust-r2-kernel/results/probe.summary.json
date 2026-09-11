@@ -1,0 +1,53 @@
+{
+  "schema": "star-native-r2-kernel-v1",
+  "scope": "partial low-level functional gate, not full R2 or performance",
+  "source_sha": "d1f5838496b38b97907d31cd0439d3dae53b0eb4",
+  "source_dirty": "",
+  "tool_sha": "7af8e4cecb463d294c73fd05f1b7898c840bdd5b",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "extension_sha256": "b038916b2467c10d63d7e42af7dc21698d0bda9829854d418384160d54f860d1",
+  "cargo_lock_sha256": "8b2faed1cbbae1f3c75a3b68c1743c6a02da99f370bfd2ee05578aefe8732461",
+  "cases": [
+    {
+      "display": "none",
+      "seed": 42,
+      "operations": 76,
+      "all_passed": true
+    },
+    {
+      "display": "none",
+      "seed": 17,
+      "operations": 76,
+      "all_passed": true
+    },
+    {
+      "display": "dummy",
+      "seed": 42,
+      "operations": 52,
+      "all_passed": true
+    },
+    {
+      "display": "dummy",
+      "seed": 17,
+      "operations": 52,
+      "all_passed": true
+    },
+    {
+      "display": "window",
+      "seed": 42,
+      "operations": 52,
+      "all_passed": true
+    },
+    {
+      "display": "window",
+      "seed": 17,
+      "operations": 52,
+      "all_passed": true
+    }
+  ],
+  "all_passed": true,
+  "raw_file": "probe.json.gz",
+  "raw_size": 118681,
+  "raw_sha256": "03304dccbfefa414b277d13768f5533315540ca06133045ba0706b3e024a7a9d"
+}

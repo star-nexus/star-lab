@@ -68,7 +68,7 @@
 
 生产 `062141d97fd6c8122c93e3dd1bc0b94736442e1e`，tag `rust-kernel-r2b-2026-09-12`；工具 `6650a423be711878e480d50a0b9fd69b6d0f9ad9`。
 1046完整回归（127 native契约）、3Rust测试/Clippy、284操作节点的完整导入状态/响应/事件等价通过；[报告](../experiments/2026-09-rust-r2-vision-stats/README.md)。
-Fog保留各Unit贡献、阵营union/探索、LOS、LRU、dirty；统计保留战斗/移动记录、普通/窗口差异和采样中途reset。bootstrap同时保留GameStats动态注册字段。所有数据Rust持有，墙钟只是统计元数据，CD仍用模拟时间。
+Fog保留各Unit贡献、阵营union/探索、LOS、LRU、dirty；统计保留战斗/移动记录、普通/窗口差异和采样中途reset。bootstrap新增public附加字段支持；注册映射原本就是dataclass声明字段，并不存在旧codec丢失注册字段的问题（此前说明已更正）。所有数据Rust持有，墙钟只是统计元数据，CD仍用模拟时间。
 仍缺可信Agent接口、完整观测/权限、Realtime/Turn生命周期、战斗窗口实体与Fog展示增量。R2未完成、尚不可完整游戏、无性能结论。下一步完成注册/认领和观测/动作边界，再全世界重放及合成Agent闭环。现存无关Agent/font删除未提交；正式checkout在`runs/star-rust-r2-vision-stats`。没有main合并、推送或默认切换。
 
 ## R0b补充规范化（2026-09-12）

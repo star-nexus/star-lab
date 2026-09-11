@@ -24,8 +24,12 @@ clock ticks are aligned explicitly. No random duration or performance selection.
 Six mode/display combinations all pass. Tests separately cover LOS at map edges,
 ID-zero terrain behavior, geometry eviction, overlapping observers, death
 invalidation, mode-specific visibility histories and public dataclass attributes.
-The startup codec now retains Agent registration attributes attached dynamically
-to GameStats; the original declared-field-only codec omitted them.
+Correction after checking the GameStats declaration: agent_id_to_faction,
+registered_factions and expected_llm_stats_count were already declared fields.
+They were not lost by the previous codec. The new codec additionally supports
+public attributes attached after dataclass construction; the registration test
+in this checkpoint verifies field preservation, not that extra-attribute case.
+The earlier archive wording incorrectly attributed an existing-field loss.
 
 ## 5. Root cause / compatibility requirement
 

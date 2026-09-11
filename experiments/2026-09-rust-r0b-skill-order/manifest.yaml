@@ -1,0 +1,40 @@
+experiment:
+  id: 2026-09-rust-r0b-skill-order
+  title: Correct the R0 multi-skill list ordering omission
+  date: 2026-09-12
+  status: validated
+source:
+  repository: star-nexus/star
+  problem_commit: 062141d97fd6c8122c93e3dd1bc0b94736442e1e
+  fix_commit: 17b17766923ce4db05efb17aaf023818cf69cdf6
+  validated_commit: 17b17766923ce4db05efb17aaf023818cf69cdf6
+  validated_tag: rust-python-oracle-r0b-2026-09-12
+  branch_at_time: codex/rust-env-migration
+tools:
+  exact_commit: b45d8bb281f32cbdd76b2e9d83a55f96c144bc81
+  entrypoint: tools/rust_migration/oracle_skill_order_probe.py
+hardware:
+  machine: Mac mini M4
+  memory: 16 GiB
+software:
+  os: macOS26.5.2 ARM64
+  python: CPython3.13.12
+  extension: canonical R2b release wheel; Rust unchanged at this oracle commit
+workload:
+  type: four-skill UnitSkills set through detailed Unit observation
+  python_hash_seeds: [1, 99]
+  source_versions: 2
+measurement:
+  guards: [before_not_stable, after_sorted, clean_checkouts]
+  complete_regression_passed: 1047
+  performance: false
+artifacts:
+  raw_and_compact: results/probe.json
+  regression: results/pytest.log
+  integrity: artifacts/SHA256SUMS
+  canonical_wheel: ../2026-09-rust-r2-vision-stats/artifacts/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl
+  external: []
+headline:
+  result: skill list deterministic; old R0 ordering statement had an uncovered gap
+revisit_when:
+  - new set-derived response fields are introduced

@@ -70,3 +70,9 @@
 1046完整回归（127 native契约）、3Rust测试/Clippy、284操作节点的完整导入状态/响应/事件等价通过；[报告](../experiments/2026-09-rust-r2-vision-stats/README.md)。
 Fog保留各Unit贡献、阵营union/探索、LOS、LRU、dirty；统计保留战斗/移动记录、普通/窗口差异和采样中途reset。bootstrap同时保留GameStats动态注册字段。所有数据Rust持有，墙钟只是统计元数据，CD仍用模拟时间。
 仍缺可信Agent接口、完整观测/权限、Realtime/Turn生命周期、战斗窗口实体与Fog展示增量。R2未完成、尚不可完整游戏、无性能结论。下一步完成注册/认领和观测/动作边界，再全世界重放及合成Agent闭环。现存无关Agent/font删除未提交；正式checkout在`runs/star-rust-r2-vision-stats`。没有main合并、推送或默认切换。
+
+## R0b补充规范化（2026-09-12）
+
+迁移完整观测时发现R0漏掉多技能set输出排序，已独立修正并归档旧版反例：新oracle `17b17766923ce4db05efb17aaf023818cf69cdf6` / `rust-python-oracle-r0b-2026-09-12`，1047完整回归通过。[证据/复现](../experiments/2026-09-rust-r0b-skill-order/README.md)。旧R0/早期重放保留，不能再描述成覆盖全部可选多技能状态。后续native规则标识改为`python-r0b-17b1776`，显式拒绝混用旧版扩展。
+
+活动R2c代码已加入typed TeamCoordination（认领反向索引/原队列maxlen）、只读批次 faction projection，并通过28项新增契约。尚未完成正式身份认证/注册分发与完整Agent闭环；私有probe不能接Agent。目前仍在开发，待完整回归和差分trace归档后固定检查点。

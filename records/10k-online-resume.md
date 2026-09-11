@@ -13,6 +13,8 @@ R2中间检查点已固定：`d1f5838496b38b97907d31cd0439d3dae53b0eb4` / `rust-
 
 R2b已固定：`062141d97fd6c8122c93e3dd1bc0b94736442e1e` / `rust-kernel-r2b-2026-09-12`，1046回归（127 native契约）、3 Rust测试和284操作差分通过。[Fog/统计报告与证据](../experiments/2026-09-rust-r2-vision-stats/README.md)。共享视野、探索历史、LOS/LRU、统计记录和窗口分帧采样状态已迁移；**完整R2仍未完成**。下一步可信Agent注册/认领、完整观测及动作接口，随后完整世界重放。活动目录无关删除继续保留；生产main未变。
 
+R0b补充：已发现并修正多技能列表的hash顺序遗漏。新Python oracle `17b17766923ce4db05efb17aaf023818cf69cdf6` / `rust-python-oracle-r0b-2026-09-12`，1047完整回归；[旧版反例/新版证据](../experiments/2026-09-rust-r0b-skill-order/README.md)。后续Rust对照此基线；旧R0/R2a/R2b的tag与原始证据保持不动。活动代码正实现team认领和只读批次观测，未接正式Agent。
+
 ## 最新调研：主流并行 ECS 与候选路线（2026-09-11）
 
 用户要求探索其他方案，尤其是主流游戏技术。已完成[Unity/Mass/Flecs/Bevy 调研与 STAR 候选比较](10k-parallel-ecs-alternatives.md)。主候选是局部紧凑观测数据＋原生 Job：先验证单线程数据维护与热点内核，再测按数据块并行；最小一致性方案为只读阶段屏障。常驻增量 worker、共享内存和 free-threaded Python 保留为各有前提的备选，尚未实施或验证收益。

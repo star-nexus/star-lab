@@ -1,0 +1,62 @@
+{
+  "schema": "star-oracle-skill-order-v1",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "tool_sha": "b45d8bb281f32cbdd76b2e9d83a55f96c144bc81",
+  "cases": [
+    {
+      "label": "before",
+      "source_sha": "062141d97fd6c8122c93e3dd1bc0b94736442e1e",
+      "clean": true,
+      "records": [
+        {
+          "hash_seed": "1",
+          "skills": [
+            "arrow_evasion",
+            "rockslide",
+            "charge",
+            "hide"
+          ]
+        },
+        {
+          "hash_seed": "99",
+          "skills": [
+            "charge",
+            "arrow_evasion",
+            "hide",
+            "rockslide"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "after",
+      "source_sha": "17b17766923ce4db05efb17aaf023818cf69cdf6",
+      "clean": true,
+      "records": [
+        {
+          "hash_seed": "1",
+          "skills": [
+            "arrow_evasion",
+            "charge",
+            "hide",
+            "rockslide"
+          ]
+        },
+        {
+          "hash_seed": "99",
+          "skills": [
+            "arrow_evasion",
+            "charge",
+            "hide",
+            "rockslide"
+          ]
+        }
+      ]
+    }
+  ],
+  "guards": {
+    "before_not_stable": true,
+    "after_sorted": true,
+    "clean_checkouts": true
+  }
+}

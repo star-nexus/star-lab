@@ -1,0 +1,86 @@
+{
+  "schema": "star-native-r1-v1",
+  "source_sha": "92a6812beeaee71f4dd3650f5e7cc30f808c7895",
+  "source_dirty": "",
+  "tool_sha": "b2d0bf52c255a48e9d68fc4218b5ef0eb390b611",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "extension_sha256": "f50957ea5a26031c7e95b3f5e2934749bf32896e355ef331b06505a574b94cda",
+  "cargo_lock_sha256": "8b2faed1cbbae1f3c75a3b68c1743c6a02da99f370bfd2ee05578aefe8732461",
+  "cases": [
+    {
+      "mode": "real_time",
+      "threads_requested": 1,
+      "guards": {
+        "initial_equal": true,
+        "reset_equal": true,
+        "new_epoch": true,
+        "random_equal": true,
+        "random_state_equal": true
+      },
+      "epoch": 2
+    },
+    {
+      "mode": "real_time",
+      "threads_requested": 2,
+      "guards": {
+        "initial_equal": true,
+        "reset_equal": true,
+        "new_epoch": true,
+        "random_equal": true,
+        "random_state_equal": true
+      },
+      "epoch": 2
+    },
+    {
+      "mode": "real_time",
+      "threads_requested": 4,
+      "guards": {
+        "initial_equal": true,
+        "reset_equal": true,
+        "new_epoch": true,
+        "random_equal": true,
+        "random_state_equal": true
+      },
+      "epoch": 2
+    },
+    {
+      "mode": "turn_based",
+      "threads_requested": 1,
+      "guards": {
+        "initial_equal": true,
+        "reset_equal": true,
+        "new_epoch": true,
+        "random_equal": true,
+        "random_state_equal": true
+      },
+      "epoch": 2
+    },
+    {
+      "mode": "turn_based",
+      "threads_requested": 2,
+      "guards": {
+        "initial_equal": true,
+        "reset_equal": true,
+        "new_epoch": true,
+        "random_equal": true,
+        "random_state_equal": true
+      },
+      "epoch": 2
+    },
+    {
+      "mode": "turn_based",
+      "threads_requested": 4,
+      "guards": {
+        "initial_equal": true,
+        "reset_equal": true,
+        "new_epoch": true,
+        "random_equal": true,
+        "random_state_equal": true
+      },
+      "epoch": 2
+    }
+  ],
+  "all_passed": true,
+  "raw_sha256": "8a6b582eccf6f02bc389fd6cb9407ce1a0f6dece788daf7cf1ab46b08d635df8"
+}

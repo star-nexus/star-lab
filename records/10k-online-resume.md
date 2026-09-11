@@ -6,7 +6,7 @@
 
 ## 当前实施：Rust 内核＋Python 接口迁移（2026-09-11）
 
-用户已批准完整方案；[阶段记录与恢复说明](rust-env-migration.md)。已从生产main `6a970deaee7d9b8d3939edd102973f2377edd6ac` 创建 `codex/rust-env-migration` 并用起始annotated tag固定。R0已完成：生产oracle `78cc8da3a03ffedaea58642abae8fcb710db997d`，tag `rust-python-oracle-r0-2026-09-11`，919回归和六组跨hashseed重放通过。当前R1：三个Rust crate、绑定、初始化和随机兼容。旧并行观测v1及负结果保留。
+用户已批准完整方案；[阶段记录与恢复说明](rust-env-migration.md)。已从生产main `6a970deaee7d9b8d3939edd102973f2377edd6ac` 创建 `codex/rust-env-migration` 并用起始annotated tag固定。R0已完成：生产oracle `78cc8da3a03ffedaea58642abae8fcb710db997d`，tag `rust-python-oracle-r0-2026-09-11`，919回归和六组跨hashseed重放通过。R1也已完成：`92a6812beeaee71f4dd3650f5e7cc30f808c7895` / `rust-runtime-r1-2026-09-11`，952回归、2 Rust测试、GIL/随机兼容及本机3.13 release wheel通过。当前R2：typed玩法组件与实时闭环；尚未提供可玩的Rust后端。旧并行观测v1及负结果保留。
 切换门槛为M4上5000Units/1000Agents/30Hz，30秒闭环；完整行为兼容及macOS ARM/Linux安装验收。Python在全部gate通过前保持默认。P1/P2仍跳过；Protocol/Hub性能仍暂缓。本轮进度以阶段记录为准，不将原型或编译成功视为迁移完成。
 
 ## 最新调研：主流并行 ECS 与候选路线（2026-09-11）

@@ -1,6 +1,6 @@
 # Rust 内核＋Python 接口迁移
 
-更新：2026-09-11。用户已批准完整迁移方案。状态：R0 已完成；R1 实施中；尚未交付 Rust 运行后端。
+更新：2026-09-11。用户已批准完整迁移方案。状态：R0/R1 已完成；R2 实施中；Rust 尚不可运行完整游戏。
 
 ## 固定节点与边界
 
@@ -25,8 +25,8 @@
 | 阶段 | 交付 | 状态 |
 | --- | --- | --- |
 | R0 | 明确有序遍历、响应与事件顺序；Lab 重放/差分；完整回归；annotated oracle tag | 已完成 |
-| R1 | 工具链、三个 crate、稳定实体 ID、场景导入、生命周期、时钟和随机兼容 | 实施中 |
-| R2 | 实时 move/attack/观测、恢复/Fog/死亡/认领权限闭环 | 未开始 |
+| R1 | 工具链、三个 crate、稳定实体 ID、场景导入、生命周期、时钟和随机兼容 | 已完成 |
+| R2 | 实时 move/attack/观测、恢复/Fog/死亡/认领权限闭环 | 实施中 |
 | R3 | 回合、完整当前玩法、BOT/结算、Python 窗口增量展示 | 未开始 |
 | R4 | 等价基础上的并行、活动集合、数据维护与调度成本对照 | 未开始 |
 | R5 | 容量、平台安装、tag/squash、默认切换 | 未开始 |
@@ -48,3 +48,9 @@
 ## R0 已完成
 
 生产 `78cc8da3a03ffedaea58642abae8fcb710db997d`，annotated oracle tag `rust-python-oracle-r0-2026-09-11`；919项生产回归通过。Lab工具 `85c7dc8d9406e22761390eadbf80f3edbec0b873`；两种模式×三种display配置、150ticks，跨hashseed重放状态/事件/完整响应一致。窗口配置使用SDL dummy，不是视觉或容量验收。原版VisibilityTracker无序列表差异已归档。见[报告与复现](../experiments/2026-09-rust-r0/README.md)。Rust 1.98.1 已安装，下一步实现R1三个crate、初始化导入与CPython随机兼容。
+
+## R1 已完成
+
+生产 `92a6812beeaee71f4dd3650f5e7cc30f808c7895`，tag `rust-runtime-r1-2026-09-11`；952项Python回归（33 native契约）、2项Rust测试和Clippy通过。release macOS ARM64 CPython3.13 wheel及全量差分raw已[归档](../experiments/2026-09-rust-r1/README.md)。20组种子/域×1400混合抽样与完整MT状态一致；时钟、reset/close/GIL通过。Linux/3.14未验收。Native只具备初始化、冷数据保留、时钟及随机兼容，gameplay_ready=false；没有容量结论。
+
+当前R2从typed组件、六边形路径/占用与移动开始，随后战斗/恢复/Fog/权限/完整观测。活动checkout检测到非本轮字体文件删除，未纳入提交或覆盖；已询问用户。正式R1验收用Lab干净detached checkout，资源完整。

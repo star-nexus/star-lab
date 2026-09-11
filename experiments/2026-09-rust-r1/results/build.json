@@ -1,0 +1,15 @@
+{
+  "source": "92a6812beeaee71f4dd3650f5e7cc30f808c7895",
+  "rust": "1.98.1 (48a229cea 2026-09-01)",
+  "bevy_ecs": "0.19.1",
+  "pyo3": "0.29.2",
+  "maturin": "1.15.0",
+  "profile": "release",
+  "command": "PATH=/Users/liyang/.cargo/bin:$PATH uvx --from maturin==1.15.0 maturin build --release --locked --manifest-path native/python/Cargo.toml --interpreter .venv/bin/python --out /Users/liyang/Developer/star-lab/runs/rust-wheels",
+  "cargo_tests": 2,
+  "clippy": "--workspace --all-targets --locked -- -D warnings passed",
+  "clean_cp313_wheel_install": "passed; imports without STAR dependencies; create/step/close; stubs, py.typed, notice present; no pycache",
+  "linux_wheels": "not tested",
+  "cp314": "not tested",
+  "performance": "not measured"
+}

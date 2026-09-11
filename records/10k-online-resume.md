@@ -4,6 +4,11 @@
 本文件是唯一活动恢复入口，已从 STAR 的 `docs/dev/` 迁至 STAR Lab。
 先读本文件即可恢复目标、边界和下一步；执行时再按下方链接读取对应证据。
 
+## 当前实施：Rust 内核＋Python 接口迁移（2026-09-11）
+
+用户已批准完整方案；[阶段记录与恢复说明](rust-env-migration.md)。已从生产main `6a970deaee7d9b8d3939edd102973f2377edd6ac` 创建 `codex/rust-env-migration` 并用起始annotated tag固定。当前R0：先规范Python遍历顺序和重放基线，再实施Rust。旧并行观测v1及负结果保留。
+切换门槛为M4上5000Units/1000Agents/30Hz，30秒闭环；完整行为兼容及macOS ARM/Linux安装验收。Python在全部gate通过前保持默认。P1/P2仍跳过；Protocol/Hub性能仍暂缓。本轮进度以阶段记录为准，不将原型或编译成功视为迁移完成。
+
 ## 最新调研：主流并行 ECS 与候选路线（2026-09-11）
 
 用户要求探索其他方案，尤其是主流游戏技术。已完成[Unity/Mass/Flecs/Bevy 调研与 STAR 候选比较](10k-parallel-ecs-alternatives.md)。主候选是局部紧凑观测数据＋原生 Job：先验证单线程数据维护与热点内核，再测按数据块并行；最小一致性方案为只读阶段屏障。常驻增量 worker、共享内存和 free-threaded Python 保留为各有前提的备选，尚未实施或验证收益。

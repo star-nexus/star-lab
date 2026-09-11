@@ -63,3 +63,10 @@
 **R2未完成**：正常统计订阅、Fog、注册/认领权限、完整观测/动作入口仍未接入；窗口战斗特效实体/ID仍待迁移。私有probe不是Agent接口；Rust尚不可运行完整游戏，无容量结论。
 下一步接入Fog和统计，再完成可信身份动作/观测边界、逐操作完整世界重放与小规模闭环。
 活动checkout又出现非本轮 `rotk_agent/*` 删除，已询问用户，全部保留、未提交。正式R2检查点验收使用干净Lab detached checkout `runs/star-rust-r2-kernel`，不用缺失文件的活动目录作完整回归证据。
+
+## R2b 中间检查点：Fog与统计（2026-09-12）
+
+生产 `062141d97fd6c8122c93e3dd1bc0b94736442e1e`，tag `rust-kernel-r2b-2026-09-12`；工具 `6650a423be711878e480d50a0b9fd69b6d0f9ad9`。
+1046完整回归（127 native契约）、3Rust测试/Clippy、284操作节点的完整导入状态/响应/事件等价通过；[报告](../experiments/2026-09-rust-r2-vision-stats/README.md)。
+Fog保留各Unit贡献、阵营union/探索、LOS、LRU、dirty；统计保留战斗/移动记录、普通/窗口差异和采样中途reset。bootstrap同时保留GameStats动态注册字段。所有数据Rust持有，墙钟只是统计元数据，CD仍用模拟时间。
+仍缺可信Agent接口、完整观测/权限、Realtime/Turn生命周期、战斗窗口实体与Fog展示增量。R2未完成、尚不可完整游戏、无性能结论。下一步完成注册/认领和观测/动作边界，再全世界重放及合成Agent闭环。现存无关Agent/font删除未提交；正式checkout在`runs/star-rust-r2-vision-stats`。没有main合并、推送或默认切换。

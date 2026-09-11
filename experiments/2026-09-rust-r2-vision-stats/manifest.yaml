@@ -1,0 +1,69 @@
+experiment:
+  id: 2026-09-rust-r2-vision-stats
+  title: Partial R2 Fog and statistics equivalence
+  date: 2026-09-12
+  status: validated
+  scope: intermediate functional checkpoint; full R2 incomplete
+source:
+  repository: star-nexus/star
+  problem_commit: d1f5838496b38b97907d31cd0439d3dae53b0eb4
+  measurement_commit: 062141d97fd6c8122c93e3dd1bc0b94736442e1e
+  fix_commit: 062141d97fd6c8122c93e3dd1bc0b94736442e1e
+  validated_commit: 062141d97fd6c8122c93e3dd1bc0b94736442e1e
+  validated_tag: rust-kernel-r2b-2026-09-12
+  branch_at_time: codex/rust-env-migration
+  oracle_commit: 78cc8da3a03ffedaea58642abae8fcb710db997d
+tools:
+  exact_commit: 6650a423be711878e480d50a0b9fd69b6d0f9ad9
+  entrypoint: tools/rust_migration/r2_vision_stats_probe.py
+hardware:
+  machine: Mac mini M4
+  cpu: Apple M4; 10 cores
+  memory: 17179869184
+  gpu: unused
+software:
+  os: macOS 26.5.2 (25F84), ARM64
+  python: CPython 3.13.12
+  rust: 1.98.1
+  bevy_ecs: 0.19.1
+  pyo3: 0.29.2
+  maturin: 1.15.0
+  dependency_lock: Cargo.lock SHA256 in compact; uv.lock tracked at source SHA
+scenario:
+  name: production contract hex disc radius3 with forest/hill
+  resident_units: 3
+  initial_tiles: 37
+  seed: 42
+workload:
+  modes: [real_time, turn_based]
+  displays: [none, dummy, window]
+  ticks_per_case: 40
+  dt: 0.25
+  paused_ticks: [20, 21, 22, 23]
+  reset_after_ticks: [2, 8, 27]
+  window_statistics_batch_size: 1
+  geometry_cache_capacity: 4
+  agents: 0
+  cases: 6
+  operation_nodes: 284
+measurement:
+  type: functional equivalence, not performance
+  guards_required: [state_equal, response_equal, events_equal, complete_workload, clean_checkout]
+  python_tests_passed: 1046
+  native_contracts_passed: 127
+  rust_tests_passed: 3
+  clippy_passed: true
+artifacts:
+  compact: results/probe.summary.json
+  raw: results/probe.json.gz
+  raw_integrity: name, size and SHA256 in compact
+  wheel: artifacts/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl
+  integrity: artifacts/SHA256SUMS
+  classification: formal functional subset
+  external: []
+headline:
+  result: subset equivalent; no full R2, capacity or default switch
+revisit_when:
+  - Agent permissions, full observations or lifecycle joins the kernel
+  - Fog presentation or combat display entities are connected
+  - statistics ordering, cache or sampling rules change

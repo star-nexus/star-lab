@@ -1,0 +1,24 @@
+{
+  "schema": "star-replay-v1",
+  "source": {
+    "sha": "78cc8da3a03ffedaea58642abae8fcb710db997d",
+    "dirty": ""
+  },
+  "config": {
+    "mode": "turn_based",
+    "display": "none",
+    "seed": 42,
+    "ticks": 150
+  },
+  "operations": 344,
+  "events": 111,
+  "accepted": {
+    "move": 7,
+    "attack": 78,
+    "get_faction_state": 60,
+    "end_turn": 30
+  },
+  "sha256": "ee4ff4a3be9b6df8516737344a48f60b6fa7fbfe3074bf8613bcbdf203faec84",
+  "compared": false,
+  "difference": null
+}

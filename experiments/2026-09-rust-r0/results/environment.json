@@ -1,0 +1,7 @@
+{
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "Python 3.13.12",
+  "hardware": "Apple M4",
+  "memory_bytes": "17179869184",
+  "uv_lock_sha256": "e8a64dba4f65993ce7a1bd720f7c7b6d399422692e4202dfb25b9c1596ce5f95"
+}

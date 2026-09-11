@@ -1,0 +1,28 @@
+{
+  "schema": "star-replay-v1",
+  "source": {
+    "sha": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+    "dirty": ""
+  },
+  "config": {
+    "display": "dummy",
+    "mode": "real_time",
+    "seed": 42,
+    "ticks": 150
+  },
+  "operations": 276,
+  "events": 28,
+  "accepted": {
+    "move": 23,
+    "attack": 27,
+    "get_faction_state": 60,
+    "end_turn": 0
+  },
+  "sha256": "f8c13cc8f6e3c6950404c1cfd436166bf9c90eab47deda40aeec127d21d207d3",
+  "compared": true,
+  "difference": {
+    "path": "$.steps[21].state.singletons.VisibilityTracker.visibility_history.map[0][1][0].map[3][1][0].value",
+    "left": "shu",
+    "right": "wu"
+  }
+}

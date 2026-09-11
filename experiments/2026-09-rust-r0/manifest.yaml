@@ -1,0 +1,57 @@
+experiment:
+  id: 2026-09-rust-r0
+  title: Normalize and freeze the Python migration oracle
+  date: 2026-09-11
+  status: validated
+source:
+  repository: star-nexus/star
+  problem_commit: 6a970deaee7d9b8d3939edd102973f2377edd6ac
+  measurement_commit: 78cc8da3a03ffedaea58642abae8fcb710db997d
+  fix_commit: 78cc8da3a03ffedaea58642abae8fcb710db997d
+  validated_commit: 78cc8da3a03ffedaea58642abae8fcb710db997d
+  validated_tag: rust-python-oracle-r0-2026-09-11
+  branch_at_time: codex/rust-env-migration
+tools:
+  repository: star-nexus/star-lab
+  commit: 85c7dc8d9406e22761390eadbf80f3edbec0b873
+  entrypoint: tools/rust_migration/replay.py
+hardware:
+  machine: Mac mini M4
+  details: results/environment.json
+software:
+  python: CPython 3.13.12
+  dependency_lock: see results/environment.json
+scenario:
+  name: lab-rust-replay
+  map_size: 9x9
+  resident_units: 9
+  source: embedded in every raw trace
+workload:
+  seed: 42
+  modes: [real_time, turn_based]
+  display_configurations: [none, dummy, window]
+  SDL_VIDEODRIVER: dummy
+  SDL_AUDIODRIVER: dummy
+  PYTHONHASHSEED: [123, 981]
+  ticks: 150
+  dt: 0.03333333333333333
+  wall_time: injected, recorded per operation
+measurement:
+  kind: semantic replay, not performance
+  guards_required:
+    - 919 production tests pass
+    - six replays compare initial and every operation state, events and decoded response
+    - strict list order and numeric types
+    - source and tool identities recorded
+artifacts:
+  formal:
+    - path: results/
+      integrity: artifacts/SHA256SUMS
+  external: []
+headline:
+  problem_signature: faction visibility history list depends on process set order
+  root_cause: unordered entity and faction sets entering ordered behavior
+  resolution: normalized cached query order and explicit output/active ordering
+  result: six replay configurations equal; original-source mismatch preserved
+revisit_when:
+  - authoritative state schema or public ordering changes

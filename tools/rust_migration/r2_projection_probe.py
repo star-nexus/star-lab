@@ -59,6 +59,8 @@ def run_case(display,fog):
         record(op,expected,actual);guards.append(query())
         native.reset(native.export_state_json());guards.append(query())
         return dict(display=display,fog=fog,operations=records,all_passed=all(guards) and len(records)==10)
+    except AssertionError as exc:
+        return dict(display=display,fog=fog,operations=records,all_passed=False,error=str(exc))
     finally:native.close();world.reset()
 
 

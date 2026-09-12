@@ -64,7 +64,7 @@ def main():
         world=build_skirmish_world(players={f:PlayerType.AI for f in Faction},mode='real_time',
             scenario=scenario,seed=42,display='none',hub_url=None,enable_mock_ai=False)
         initial=export_initial_state(world,display='none')
-        initial_artifact=write_gzip(output.with_name(output.stem+'.initial.json.gz'),initial)
+        initial_artifact=write_gzip(output.with_name(output.name.removesuffix('.json.gz')+'.initial.json.gz'),initial)
         native=RustRuntime(initial,threads=args.threads)
         del initial
         agents=NativeAgents(world,args.agents,30.,scope='selected',encode=True,policy='stochastic',
@@ -129,7 +129,7 @@ def main():
         loop_work_ms=stats([f['work_ms'] for f in frames]),step_ms=stats([f['step_ms'] for f in frames]),
         alive_min=min((c['living'] for c in censuses),default=None),actual_world_hz=len(frames)/elapsed if frames and error is None else None,
         conclusion='Rule-mode integration diagnostic only. No rendered frame or 30Hz capacity acceptance.')
-    output.with_name(output.stem+'.summary.json').write_text(json.dumps(compact,indent=2)+'\n')
+    output.with_name(output.name.removesuffix('.json.gz')+'.summary.json').write_text(json.dumps(compact,indent=2)+'\n')
     print(json.dumps(compact,indent=2))
     if not raw['all_passed']:raise SystemExit(1)
 

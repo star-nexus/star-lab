@@ -17,6 +17,8 @@ R0b补充：已发现并修正多技能列表的hash顺序遗漏。新Python ora
 
 最新R2c检查点：`582dbdab6e7b060c2589096cd41bc45ee96a474f` / `rust-kernel-r2c-2026-09-12`；1075完整回归、3Rust/Clippy、252查询/60节点差分通过。[team/批次观测报告](../experiments/2026-09-rust-r2-projection/README.md)。已迁移组件级认领/FIFO与handler级Faction观测；正式注册/身份认证/动作分发未接，下一步从该边界继续。完整R2与容量验收仍未完成；Python默认、main不变。
 
+最新R2d：`02ac380d631b7391bdf0f583084aee8d13d5de0a` / `rust-kernel-r2d-2026-09-12`。1115完整回归、195native、3Rust/Clippy；18配置678请求差分通过。[可信动作/批次报告](../experiments/2026-09-rust-r2-actions/README.md)。公开本地注册/认领/动作/查询接口已接，连续查询共享借用、写入立即断开。仍缺完整World.update生命周期/窗口/余下动作，R2与容量未完成；下一步接Realtime/Turn和完整世界重放。Python默认/main不变，无关49个删除保留。正式checkout `runs/star-rust-r2-actions`。
+
 ## 最新调研：主流并行 ECS 与候选路线（2026-09-11）
 
 用户要求探索其他方案，尤其是主流游戏技术。已完成[Unity/Mass/Flecs/Bevy 调研与 STAR 候选比较](10k-parallel-ecs-alternatives.md)。主候选是局部紧凑观测数据＋原生 Job：先验证单线程数据维护与热点内核，再测按数据块并行；最小一致性方案为只读阶段屏障。常驻增量 worker、共享内存和 free-threaded Python 保留为各有前提的备选，尚未实施或验证收益。

@@ -1,0 +1,1665 @@
+{
+  "schema": "star-r2-trusted-actions-v1",
+  "source_sha": "02ac380d631b7391bdf0f583084aee8d13d5de0a",
+  "source_dirty": "",
+  "tool_sha": "d762bd1f06298a59776a554c93d3b49e3fe9a2f2",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "extension_sha256": "53edc6b054de9b1085324a1b135e072c5d0244e44fef34278fd0e01e058d42f7",
+  "cases": [
+    {
+      "display": "none",
+      "fog": false,
+      "threads": 1,
+      "operations": 39,
+      "queries": 17,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 36
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 36
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 29
+        },
+        {
+          "end": 36,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 0,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 36
+          },
+          "start": 35
+        },
+        {
+          "end": 39,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 2,
+            "faction_builds": 1,
+            "panel_builds": 0,
+            "tile_builds": 36
+          },
+          "start": 37
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "none",
+      "fog": false,
+      "threads": 2,
+      "operations": 39,
+      "queries": 17,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 36
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 36
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 29
+        },
+        {
+          "end": 36,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 0,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 36
+          },
+          "start": 35
+        },
+        {
+          "end": 39,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 2,
+            "faction_builds": 1,
+            "panel_builds": 0,
+            "tile_builds": 36
+          },
+          "start": 37
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "none",
+      "fog": false,
+      "threads": 4,
+      "operations": 39,
+      "queries": 17,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 36
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 36
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 29
+        },
+        {
+          "end": 36,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 0,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 36
+          },
+          "start": 35
+        },
+        {
+          "end": 39,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 2,
+            "faction_builds": 1,
+            "panel_builds": 0,
+            "tile_builds": 36
+          },
+          "start": 37
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "none",
+      "fog": true,
+      "threads": 1,
+      "operations": 39,
+      "queries": 17,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 29
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 24
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 29
+        },
+        {
+          "end": 36,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 0,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 24
+          },
+          "start": 35
+        },
+        {
+          "end": 39,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 0,
+            "tile_builds": 16
+          },
+          "start": 37
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "none",
+      "fog": true,
+      "threads": 2,
+      "operations": 39,
+      "queries": 17,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 29
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 24
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 29
+        },
+        {
+          "end": 36,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 0,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 24
+          },
+          "start": 35
+        },
+        {
+          "end": 39,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 0,
+            "tile_builds": 16
+          },
+          "start": 37
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "none",
+      "fog": true,
+      "threads": 4,
+      "operations": 39,
+      "queries": 17,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 29
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 24
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 29
+        },
+        {
+          "end": 36,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 0,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 24
+          },
+          "start": 35
+        },
+        {
+          "end": 39,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 0,
+            "tile_builds": 16
+          },
+          "start": 37
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "dummy",
+      "fog": false,
+      "threads": 1,
+      "operations": 37,
+      "queries": 16,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 36
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 36
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 29
+        },
+        {
+          "end": 37,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 2,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 35
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "dummy",
+      "fog": false,
+      "threads": 2,
+      "operations": 37,
+      "queries": 16,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 36
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 36
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 29
+        },
+        {
+          "end": 37,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 2,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 35
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "dummy",
+      "fog": false,
+      "threads": 4,
+      "operations": 37,
+      "queries": 16,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 36
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 36
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 29
+        },
+        {
+          "end": 37,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 2,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 35
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "dummy",
+      "fog": true,
+      "threads": 1,
+      "operations": 37,
+      "queries": 16,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 29
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 24
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 29
+        },
+        {
+          "end": 37,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 2,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 16
+          },
+          "start": 35
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "dummy",
+      "fog": true,
+      "threads": 2,
+      "operations": 37,
+      "queries": 16,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 29
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 24
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 29
+        },
+        {
+          "end": 37,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 2,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 16
+          },
+          "start": 35
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "dummy",
+      "fog": true,
+      "threads": 4,
+      "operations": 37,
+      "queries": 16,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 29
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 24
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 29
+        },
+        {
+          "end": 37,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 2,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 16
+          },
+          "start": 35
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "window",
+      "fog": false,
+      "threads": 1,
+      "operations": 37,
+      "queries": 16,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 36
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 36
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 29
+        },
+        {
+          "end": 37,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 2,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 35
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "window",
+      "fog": false,
+      "threads": 2,
+      "operations": 37,
+      "queries": 16,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 36
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 36
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 29
+        },
+        {
+          "end": 37,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 2,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 35
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "window",
+      "fog": false,
+      "threads": 4,
+      "operations": 37,
+      "queries": 16,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 36
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 36
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 29
+        },
+        {
+          "end": 37,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 2,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 36
+          },
+          "start": 35
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "window",
+      "fog": true,
+      "threads": 1,
+      "operations": 37,
+      "queries": 16,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 29
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 24
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 29
+        },
+        {
+          "end": 37,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 2,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 16
+          },
+          "start": 35
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "window",
+      "fog": true,
+      "threads": 2,
+      "operations": 37,
+      "queries": 16,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 29
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 24
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 29
+        },
+        {
+          "end": 37,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 2,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 16
+          },
+          "start": 35
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "display": "window",
+      "fog": true,
+      "threads": 4,
+      "operations": 37,
+      "queries": 16,
+      "guards": {
+        "response_equal": true,
+        "state_equal": true,
+        "complete_workload": true,
+        "census_shared": true,
+        "factions_shared": true,
+        "panels_shared": true,
+        "own_permission": true,
+        "ownership_changed": true,
+        "partial_release_visible": true,
+        "reset_invalidates_identity": true
+      },
+      "observation_segments": [
+        {
+          "end": 3,
+          "metrics": {
+            "census_builds": 0,
+            "enemy_builds": 0,
+            "faction_builds": 0,
+            "panel_builds": 0,
+            "tile_builds": 0
+          },
+          "start": 2
+        },
+        {
+          "end": 19,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 3,
+            "faction_builds": 2,
+            "panel_builds": 3,
+            "tile_builds": 29
+          },
+          "start": 12
+        },
+        {
+          "end": 24,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 2,
+            "tile_builds": 24
+          },
+          "start": 22
+        },
+        {
+          "end": 28,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 26
+        },
+        {
+          "end": 31,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 1,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 24
+          },
+          "start": 29
+        },
+        {
+          "end": 37,
+          "metrics": {
+            "census_builds": 1,
+            "enemy_builds": 2,
+            "faction_builds": 1,
+            "panel_builds": 1,
+            "tile_builds": 16
+          },
+          "start": 35
+        }
+      ],
+      "all_passed": true
+    }
+  ],
+  "all_passed": true,
+  "raw_file": "probe.json.gz",
+  "raw_size": 643951,
+  "raw_sha256": "37883506760e1462c7d8bb3bfc3bb15def099ed83edcdca04ab11d1b15f8b48c"
+}

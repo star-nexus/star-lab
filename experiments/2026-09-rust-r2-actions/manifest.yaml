@@ -1,0 +1,65 @@
+experiment:
+  id: 2026-09-rust-r2-actions
+  date: 2026-09-12
+  status: validated
+  scope: partial R2 trusted local requests; full lifecycle and capacity incomplete
+source:
+  repository: star-nexus/star
+  prior_commit: 3249a3a4844d7660982899e73bddd0e1d3e1fcdb
+  validated_commit: 02ac380d631b7391bdf0f583084aee8d13d5de0a
+  validated_tag: rust-kernel-r2d-2026-09-12
+  branch_at_time: codex/rust-env-migration
+  oracle_commit: 17b17766923ce4db05efb17aaf023818cf69cdf6
+tools:
+  exact_commit: d762bd1f06298a59776a554c93d3b49e3fe9a2f2
+  entrypoint: tools/rust_migration/r2_actions_probe.py
+hardware:
+  machine: Mac mini M4
+  memory: 16GiB
+  gpu: unused
+software:
+  os: macOS26.5.2 ARM64
+  python: CPython3.13.12
+  rust: 1.98.1
+  bevy_ecs: 0.19.1
+  pyo3: 0.29.2
+  maturin: 1.15.0
+  dependency_lock: Cargo.lock and uv.lock at source SHA
+workload:
+  fixture: production make_vision_world
+  units: 3
+  tiles: 37
+  seed: 42
+  mode: real_time
+  displays: [none, dummy, window]
+  fog: [false, true]
+  threads: [1, 2, 4]
+  agents: 3 registered synthetic identities plus invalid identity
+  real_llm: false
+  hub: false
+  world_ticks: 0
+  cases: 18
+  distinct_request_nodes: 678
+  faction_queries: 294
+  batch_read_segments: 114
+  replay: sequential Python, sequential native, same requests in native batch
+measurement:
+  type: functional equivalence, no capacity claim
+  full_tests_passed: 1115
+  native_contracts_passed: 195
+  rust_tests_passed: 3
+  clippy_passed: true
+  guards: [response_equal, state_equal, batch_equal, reuse_counts, permissions, partial_failure, reset, clean_checkout]
+artifacts:
+  raw: results/probe.json.gz
+  raw_size: 643951
+  raw_sha256: 37883506760e1462c7d8bb3bfc3bb15def099ed83edcdca04ab11d1b15f8b48c
+  compact: results/probe.summary.json
+  compact_sha256: 54ba22cd70ad5c0ee3702f9d543e7d72f35b1be654907965256e7055ed3b981b
+  wheel: artifacts/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl
+  extension_sha256: 53edc6b054de9b1085324a1b135e072c5d0244e44fef34278fd0e01e058d42f7
+  integrity: artifacts/SHA256SUMS
+revisit_when:
+  - complete world lifecycle is connected
+  - request ordering, telemetry or projection dependencies change
+  - native worker scheduling is introduced

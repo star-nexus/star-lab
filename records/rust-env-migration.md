@@ -1,6 +1,6 @@
 # Rust 内核＋Python 接口迁移
 
-更新：2026-09-11。用户已批准完整迁移方案。状态：R0/R1 已完成；R2 实施中；Rust 尚不可运行完整游戏。
+更新：2026-09-12。用户已批准完整迁移方案。状态：R0/R1 已完成；R2 实施中；Rust 尚不可运行完整游戏。
 
 ## 固定节点与边界
 
@@ -82,3 +82,11 @@ Fog保留各Unit贡献、阵营union/探索、LOS、LRU、dirty；统计保留�
 生产`582dbdab6e7b060c2589096cd41bc45ee96a474f` / `rust-kernel-r2c-2026-09-12`；工具`f02fef40c5eb2b361ab2908f5b7eac8fca5c87af`。完整回归1075（155native）、3Rust/Clippy、252查询/60操作节点等价及复用guard通过。[报告](../experiments/2026-09-rust-r2-projection/README.md)。
 Typed Team维护认领反向索引，保留冲突/强转/FIFO/maxlen；ObservationBatch用Rust只读借用限制缓存生命周期，复用census/faction/panel/enemy/tile，按请求装配owner/commandable。保持unit_ids语义、Fog、reachable/attackable，reset/写后查询不沿用旧批次。当前仍会clone响应树、扫描部分候选，留给R4测量优化。
 **尚未接正式Agent**：注册/可信身份校验/ActionExecutor完整分发仍缺，私有probe不能用于容量测试。下一步迁移注册、认证和动作外层返回格式，并把已有投影接入；再补Realtime/Turn生命周期、窗口战斗实体/Fog展示日志，跑完整世界差分和合成闭环。R2、R3–R5仍未完成；默认Python/main不变。正式checkout `runs/star-rust-r2-projection`，无关49个删除继续保留未提交。
+
+## R2d检查点：可信请求与批次入口（2026-09-12）
+
+生产 `02ac380d631b7391bdf0f583084aee8d13d5de0a` / `rust-kernel-r2d-2026-09-12`；工具 `d762bd1f06298a59776a554c93d3b49e3fe9a2f2`。1115完整回归（195native）、3Rust/Clippy、18配置/678请求节点差分通过；294查询、114只读段复用与权限guard通过。[报告/raw/compact/复现](../experiments/2026-09-rust-r2-actions/README.md)。
+
+公开 `RustRuntime.execute_action/execute_actions/get_faction_state` 已接本地可信身份、注册/认领/FIFO、move/attack/查询及计数；JSON入口元数据由Python准备，Rust不回调Python。连续Faction查询共享只读借用，遇到任何其他请求结束；计数在独占锁内按序提交。验证了写入中途失败后的查询和reset身份失效。1/2/4配置结果一致，但尚无worker并行。
+
+**完整R2仍未完成，Rust尚不可运行完整游戏**。本轮是3Unit小场景、无world ticks/真实窗口/Hub/LLM的可信本地请求验证，不能作5000/1000/30Hz容量结论；dummy/window不执行attack。下一步Realtime/Turn生命周期与完整World.update重放，再合成Agent闭环及R3展示。异常非字符串阵营、极大整数等历史边界仍待覆盖。Python默认/main未变，无merge/push；无关49个删除保留。正式checkout `runs/star-rust-r2-actions`。

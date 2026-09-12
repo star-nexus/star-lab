@@ -1,0 +1,4 @@
+    Checking star-core v0.1.0 (/Users/liyang/Developer/star-lab/runs/star-rust-r2-actions/native/core)
+    Checking star-rotk v0.1.0 (/Users/liyang/Developer/star-lab/runs/star-rust-r2-actions/native/rotk)
+    Checking star-python v0.1.0 (/Users/liyang/Developer/star-lab/runs/star-rust-r2-actions/native/python)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.10s

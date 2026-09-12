@@ -100,3 +100,8 @@ Typed Team维护认领反向索引，保留冲突/强转/FIFO/maxlen；Observati
 **无窗口规则模式诊断，不是完整实时性验收**：move即时完成、无绘制，带逐响应hash开销且无预热排除。循环P99=41.93ms、世界29.635Hz、观测119.21ms、动作排队120.65ms；严格数值门槛已越线，无容量认证。不能写成5000持续同时移动或窗口30Hz达标。60秒raw完整保留，未进入300秒性能验收。
 
 接下来补回合handoff/reset、R3余下动作/BOT/结算与真实窗口（攻击特效实体/Fog增量），继续扩展兼容覆盖；R4并行优化和R5平台/容量/切换仍未完成。Python默认、生产main未变；无merge/push，无关49个删除不动。正式checkout `runs/star-rust-r2-lifecycle`。工具probe/loop `db3400a09b1681559ac8aaf05652595d681d9d9c`，replay `d208e3ebffa2c38514cf1b683df66b0beec6cf65`。
+
+## R3活动开发：回合交接与接口版本（2026-09-12）
+
+已开始回合handoff/reset和统计顺序迁移：Agent只在round回到首阵营时重置，人工end-turn保持先重置再判胜负；TurnStartEvent/回合日志/时钟下一tick同步已接。14项新增契约和246项Native测试通过，**尚未做R3完整回归/tag/正式trace归档**。Player查找使用初始化/reset派生表，不逐动作扫描全部实体。API版本2/scene schema2显式拒绝旧R2扩展或旧scene被误用于新适配层；旧实验仍使用其固定source/wheel。补充了CPython3.13浮点sum补偿规则以保持回合时长统计一致（核对官方v3.13.12源码）。
+后续继续rest/occupy/fortify/skill、其他观测、BOT/结算与真实窗口，不宣称完整R3或容量完成。

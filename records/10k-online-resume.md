@@ -21,6 +21,8 @@ R0b补充：已发现并修正多技能列表的hash顺序遗漏。新Python ora
 
 最新R2e：`2c83c001780ddf103b94905df81e8a1bc469af6e` / `rust-kernel-r2e-2026-09-12`，1152回归、394节点/360ticks小场景差分。[世界生命周期/5000闭环报告](../experiments/2026-09-rust-r2-lifecycle/README.md)。5000U/1000合成Agent在无窗口规则模式跑60秒，2007轮、4017move/64attack，全部存活；8151请求/1779ticks可精确重放。**没有窗口容量通过**：诊断循环P99=41.93ms、29.635Hz、观测/动作P99=119.21/120.65ms，未达到主验收。下一步回合handoff/余下R3动作和窗口；完整迁移仍未完成、默认Python/main不变。
 
+活动R3：回合handoff/reset/统计与人工结束回合已实现，14新契约、246Native测试通过；仍在开发，未做完整R3归档。新适配层/API版本2、scene schema2会显式拒绝混入旧R2扩展/scene。旧R2e5000诊断重放务必用其原tag与归档wheel。接下来补其余动作和窗口。
+
 ## 最新调研：主流并行 ECS 与候选路线（2026-09-11）
 
 用户要求探索其他方案，尤其是主流游戏技术。已完成[Unity/Mass/Flecs/Bevy 调研与 STAR 候选比较](10k-parallel-ecs-alternatives.md)。主候选是局部紧凑观测数据＋原生 Job：先验证单线程数据维护与热点内核，再测按数据块并行；最小一致性方案为只读阶段屏障。常驻增量 worker、共享内存和 free-threaded Python 保留为各有前提的备选，尚未实施或验证收益。

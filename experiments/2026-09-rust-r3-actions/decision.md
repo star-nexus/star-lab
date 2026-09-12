@@ -1,8 +1,11 @@
 # Decision — 固定R3a功能检查点，继续窗口迁移
 
-**Status:** accepted intermediate checkpoint  
-**Decision date:** 2026-09-13  
-**Validated STAR commit:** `7f4ad57bbd6966748c0fb49deb82f6ad43fc7aee`  
+**Status:** accepted intermediate checkpoint
+
+**Decision date:** 2026-09-13
+
+**Validated STAR commit:** `7f4ad57bbd6966748c0fb49deb82f6ad43fc7aee`
+
 **Annotated tag:** `rust-kernel-r3a-2026-09-13`
 
 ## 1. 决策

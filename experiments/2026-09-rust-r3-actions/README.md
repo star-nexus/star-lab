@@ -1,10 +1,15 @@
 # Rust R3a：回合交接、休息、领地与技能接口
 
-**Status:** VALIDATED 中间检查点；完整R3/容量/窗口迁移仍未完成。  
-**Production:** `/Users/liyang/Developer/star-main`，分支 `codex/rust-env-migration`。  
-**Problem commit:** `2c83c001780ddf103b94905df81e8a1bc469af6e`（R2e）。  
-**Fix / validated commit:** `7f4ad57bbd6966748c0fb49deb82f6ad43fc7aee`。  
-**Annotated tag:** `rust-kernel-r3a-2026-09-13`。  
+**Status:** VALIDATED 中间检查点；完整R3/容量/窗口迁移仍未完成。
+
+**Production:** `/Users/liyang/Developer/star-main`，分支 `codex/rust-env-migration`。
+
+**Problem commit:** `2c83c001780ddf103b94905df81e8a1bc469af6e`（R2e）。
+
+**Fix / validated commit:** `7f4ad57bbd6966748c0fb49deb82f6ad43fc7aee`。
+
+**Annotated tag:** `rust-kernel-r3a-2026-09-13`。
+
 **Lab probe/replay tools:** `cb336f40a973050c2fb5eba7ec886f779042577d`。
 
 ## 1. 问题与影响

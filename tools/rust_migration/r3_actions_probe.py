@@ -67,7 +67,7 @@ def run_case(family,display,mode,threads):
                 def request(agent,verb,params):
                     expected=llm._process_action_request(agent_id=agent,action_id=0,action=verb,params=dict(params),send_response=False)
                     actual=native.execute_action(verb,params,agent_id=agent,wall_time=now[0])
-                    record(dict(kind='request',agent_id=agent,action=verb,parameters=params,wall_time=now[0]),expected,actual)
+                    record(dict(kind='request',agent_id=agent,action=verb,parameters=params,wall_time=now[0],registration_time='2026-09-12T12:00:00'),expected,actual)
                 def step(dt):
                     world.update(dt);native.step(dt,wall_time=now[0]);record(dict(kind='step',dt=dt,wall_time=now[0]),None,None)
                 reg=dict(provider='synthetic',model_id='fake',base_url='https://host')

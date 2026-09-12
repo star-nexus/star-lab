@@ -1,10 +1,14 @@
 # 10K / 100% moving / 30 Hz — 恢复入口
 
-更新：2026-09-12。当前阶段：P0 已完成；跳过 P1/P2；P3 第二轮只读批次共享已集成；主目标恢复闭环Agent，用户接受24Hz大规模运行，详见最新确认。
+更新：2026-09-13。当前阶段：P0 已完成；跳过 P1/P2；P3 第二轮只读批次共享已集成；主目标恢复闭环Agent，用户接受24Hz大规模运行，详见最新确认。
 本文件是唯一活动恢复入口，已从 STAR 的 `docs/dev/` 迁至 STAR Lab。
 先读本文件即可恢复目标、边界和下一步；执行时再按下方链接读取对应证据。
 
 ## 当前实施：Rust 内核＋Python 接口迁移（2026-09-11）
+
+**当前恢复节点：R3a已固定（2026-09-13）。** 生产 `7f4ad57bbd6966748c0fb49deb82f6ad43fc7aee` / `rust-kernel-r3a-2026-09-13`。[报告与复现](../experiments/2026-09-rust-r3-actions/README.md)：1298完整回归、378Native契约、3Rust/Clippy；27配置1524节点/762ticks差分和精确Rust重放通过。已接回合、rest/occupy/fortify/skill兼容、计时占领活动集合与领地战斗加成。API/scene=3，活动venv已装归档wheel；旧R2重放仍必须用原tag/wheel。
+
+接下来补其他观测、实际窗口战斗/展示增量与输入、BOT/结算。**没有完整R3完成或新容量结论，Python默认/main不变**。正式checkout `runs/star-rust-r3-actions`；无关49处Agent/font删除不动。下面为此前各检查点历史，当前状态以上段及阶段记录最新节为准。
 
 用户已批准完整方案；[阶段记录与恢复说明](rust-env-migration.md)。已从生产main `6a970deaee7d9b8d3939edd102973f2377edd6ac` 创建 `codex/rust-env-migration` 并用起始annotated tag固定。R0已完成：生产oracle `78cc8da3a03ffedaea58642abae8fcb710db997d`，tag `rust-python-oracle-r0-2026-09-11`，919回归和六组跨hashseed重放通过。R1也已完成：`92a6812beeaee71f4dd3650f5e7cc30f808c7895` / `rust-runtime-r1-2026-09-11`，952回归、2 Rust测试、GIL/随机兼容及本机3.13 release wheel通过。当前R2：typed玩法组件与实时闭环；尚未提供可玩的Rust后端。旧并行观测v1及负结果保留。
 切换门槛为M4上5000Units/1000Agents/30Hz，30秒闭环；完整行为兼容及macOS ARM/Linux安装验收。Python在全部gate通过前保持默认。P1/P2仍跳过；Protocol/Hub性能仍暂缓。本轮进度以阶段记录为准，不将原型或编译成功视为迁移完成。
@@ -21,7 +25,7 @@ R0b补充：已发现并修正多技能列表的hash顺序遗漏。新Python ora
 
 最新R2e：`2c83c001780ddf103b94905df81e8a1bc469af6e` / `rust-kernel-r2e-2026-09-12`，1152回归、394节点/360ticks小场景差分。[世界生命周期/5000闭环报告](../experiments/2026-09-rust-r2-lifecycle/README.md)。5000U/1000合成Agent在无窗口规则模式跑60秒，2007轮、4017move/64attack，全部存活；8151请求/1779ticks可精确重放。**没有窗口容量通过**：诊断循环P99=41.93ms、29.635Hz、观测/动作P99=119.21/120.65ms，未达到主验收。下一步回合handoff/余下R3动作和窗口；完整迁移仍未完成、默认Python/main不变。
 
-活动R3：回合handoff/reset/统计与人工结束回合已实现，14新契约、246Native测试通过；仍在开发，未做完整R3归档。新适配层/API版本2、scene schema2会显式拒绝混入旧R2扩展/scene。旧R2e5000诊断重放务必用其原tag与归档wheel。接下来补其余动作和窗口。
+早期R3活动记录（已由R3a检查点取代）：回合handoff/reset/统计与人工结束回合已实现，14新契约、246Native测试通过；仍在开发，未做完整R3归档。新适配层/API版本2、scene schema2会显式拒绝混入旧R2扩展/scene。旧R2e5000诊断重放务必用其原tag与归档wheel。接下来补其余动作和窗口。
 
 ## 最新调研：主流并行 ECS 与候选路线（2026-09-11）
 

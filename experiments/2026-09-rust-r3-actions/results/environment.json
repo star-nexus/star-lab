@@ -1,0 +1,22 @@
+{
+  "machine": "Mac16,10",
+  "cpu": "Apple M4",
+  "memory_bytes": 17179869184,
+  "physical_cores": 10,
+  "os": "ProductName:\t\tmacOS\nProductVersion:\t\t26.5.2\nBuildVersion:\t\t25F84\n",
+  "architecture": "arm64",
+  "environment": {
+    "HEADLESS": null,
+    "SDL_VIDEODRIVER": null,
+    "PYTHONHASHSEED": null,
+    "OMP_NUM_THREADS": null,
+    "RAYON_NUM_THREADS": null
+  },
+  "build_environment": {
+    "PATH_prefix": "/Users/liyang/.cargo/bin",
+    "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+    "MACOSX_DEPLOYMENT_TARGET": "11.0 (maturin default)"
+  },
+  "chrome": "kept open; no CPU isolation",
+  "ordering": "serial regression, then differential probe, then unpaced replay; no capacity measurement"
+}

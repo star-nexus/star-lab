@@ -1,6 +1,6 @@
 # Rust 内核＋Python 接口迁移
 
-更新：2026-09-12。用户已批准完整迁移方案。状态：R0/R1 已完成；R2 实施中；Rust 尚不可运行完整游戏。
+更新：2026-09-13。用户已批准完整迁移方案。状态：R0/R1 已完成；R2规则模式闭环已验证；R3a功能检查点已固定，窗口相关余项仍在迁移；Rust尚不可运行完整游戏。
 
 ## 固定节点与边界
 
@@ -26,8 +26,8 @@
 | --- | --- | --- |
 | R0 | 明确有序遍历、响应与事件顺序；Lab 重放/差分；完整回归；annotated oracle tag | 已完成 |
 | R1 | 工具链、三个 crate、稳定实体 ID、场景导入、生命周期、时钟和随机兼容 | 已完成 |
-| R2 | 实时 move/attack/观测、恢复/Fog/死亡/认领权限闭环 | 实施中 |
-| R3 | 回合、完整当前玩法、BOT/结算、Python 窗口增量展示 | 未开始 |
+| R2 | 实时 move/attack/观测、恢复/Fog/死亡/认领权限闭环 | 规则模式闭环已验证；窗口战斗仍待完成 |
+| R3 | 回合、完整当前玩法、BOT/结算、Python 窗口增量展示 | R3a回合/动作检查点已固定；其余进行中 |
 | R4 | 等价基础上的并行、活动集合、数据维护与调度成本对照 | 未开始 |
 | R5 | 容量、平台安装、tag/squash、默认切换 | 未开始 |
 
@@ -105,3 +105,15 @@ Typed Team维护认领反向索引，保留冲突/强转/FIFO/maxlen；Observati
 
 已开始回合handoff/reset和统计顺序迁移：Agent只在round回到首阵营时重置，人工end-turn保持先重置再判胜负；TurnStartEvent/回合日志/时钟下一tick同步已接。14项新增契约和246项Native测试通过，**尚未做R3完整回归/tag/正式trace归档**。Player查找使用初始化/reset派生表，不逐动作扫描全部实体。API版本2/scene schema2显式拒绝旧R2扩展或旧scene被误用于新适配层；旧实验仍使用其固定source/wheel。补充了CPython3.13浮点sum补偿规则以保持回合时长统计一致（核对官方v3.13.12源码）。
 后续继续rest/occupy/fortify/skill、其他观测、BOT/结算与真实窗口，不宣称完整R3或容量完成。
+
+## R3a检查点：回合、剩余Unit动作与领地（2026-09-13）
+
+生产 `7f4ad57bbd6966748c0fb49deb82f6ad43fc7aee` / annotated tag `rust-kernel-r3a-2026-09-13`；包含前期turn提交 `e3da7a072f35b76246d596660107abc37107cf11`。Lab probe/replay工具 `cb336f40a973050c2fb5eba7ec886f779042577d`。[报告/raw/compact/复现](../experiments/2026-09-rust-r3-actions/README.md)。
+
+1298完整回归（378Native契约；新增14turn+132unit/territory）、3Rust/Clippy通过。27配置1524不同节点（762ticks）完整状态/响应/事件差分通过；归档轨迹重新执行全部1524节点一致，1/2/4配置一致但尚无worker并行。正式完整checkout `runs/star-rust-r3-actions`。
+
+已接rest、occupy、fortify、skill既有验证与返回；Framework计时start_capture与Agent即时occupy分开，活动集合O(active)，领地攻防加成进入战斗。回合轮转、人机重置顺序、统计事件沿用oracle。保留原技能success/result字段不匹配导致技能失败、实时工事检查但不扣资源、响应AP额外减1、捕获Unit消失时tile标记残留等历史行为；不把修复这些规则问题混入迁移。
+
+API/scene现为3（e3中间版本为2，R2为1），显式拒绝旧扩展/旧scene混用。活动 `.venv` 已安装本检查点归档release wheel，extension SHA256 `987b450aa0d8df55170fe726d994a5372e76bb3e6978becc58dcea2e2049a7c3`。raw SHA256 `c465b36fc798d61368307f1f8ceb1c708e3038b73e529fcd714ad299a07c4358`，12项artifact校验通过。
+
+**完整R3与容量验收仍未完成**：无真正绘制，display是行为配置，攻击只在none测；未运行本版5000规模，不更新Frontier。下一步补其他观测变体、窗口战斗/特效实体ID与Fog展示增量、输入命令，再BOT/结算及各入口，之后R4并行和R5正式容量/平台验证。Python默认，main仍6a970dea，无merge/push；无关49个Agent/font删除原样保留。

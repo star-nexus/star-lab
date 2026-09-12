@@ -1,0 +1,288 @@
+{
+  "schema": "star-r3-actions-v1",
+  "source_sha": "7f4ad57bbd6966748c0fb49deb82f6ad43fc7aee",
+  "source_dirty": "",
+  "tool_sha": "cb336f40a973050c2fb5eba7ec886f779042577d",
+  "tool_dirty": "",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "native_api_version": 3,
+  "extension_sha256": "987b450aa0d8df55170fe726d994a5372e76bb3e6978becc58dcea2e2049a7c3",
+  "cases": [
+    {
+      "family": "actions",
+      "display": "none",
+      "mode": "real_time",
+      "threads": 1,
+      "operations": 48,
+      "ticks": 25,
+      "trace_digest": "b0606d8a48bea5fe292056dd06604fb4e6ddfb45a232c1b86c8522c69b555cb7",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "none",
+      "mode": "real_time",
+      "threads": 2,
+      "operations": 48,
+      "ticks": 25,
+      "trace_digest": "b0606d8a48bea5fe292056dd06604fb4e6ddfb45a232c1b86c8522c69b555cb7",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "none",
+      "mode": "real_time",
+      "threads": 4,
+      "operations": 48,
+      "ticks": 25,
+      "trace_digest": "b0606d8a48bea5fe292056dd06604fb4e6ddfb45a232c1b86c8522c69b555cb7",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "none",
+      "mode": "turn_based",
+      "threads": 1,
+      "operations": 48,
+      "ticks": 25,
+      "trace_digest": "6fe3d8c832ea995dff6ce43e339ae58255d71cbdbd1173db7d7b878a6f3ae19b",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "none",
+      "mode": "turn_based",
+      "threads": 2,
+      "operations": 48,
+      "ticks": 25,
+      "trace_digest": "6fe3d8c832ea995dff6ce43e339ae58255d71cbdbd1173db7d7b878a6f3ae19b",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "none",
+      "mode": "turn_based",
+      "threads": 4,
+      "operations": 48,
+      "ticks": 25,
+      "trace_digest": "6fe3d8c832ea995dff6ce43e339ae58255d71cbdbd1173db7d7b878a6f3ae19b",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "dummy",
+      "mode": "real_time",
+      "threads": 1,
+      "operations": 46,
+      "ticks": 24,
+      "trace_digest": "3a724e29a803f08278b660fdc96de7e73ac6292641c51024ef45ee69d35cb23e",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "dummy",
+      "mode": "real_time",
+      "threads": 2,
+      "operations": 46,
+      "ticks": 24,
+      "trace_digest": "3a724e29a803f08278b660fdc96de7e73ac6292641c51024ef45ee69d35cb23e",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "dummy",
+      "mode": "real_time",
+      "threads": 4,
+      "operations": 46,
+      "ticks": 24,
+      "trace_digest": "3a724e29a803f08278b660fdc96de7e73ac6292641c51024ef45ee69d35cb23e",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "dummy",
+      "mode": "turn_based",
+      "threads": 1,
+      "operations": 46,
+      "ticks": 24,
+      "trace_digest": "3df6e1aeca7235a81b0aa558c2b391c1a1eb00d1187a70d679cf3c93916832fc",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "dummy",
+      "mode": "turn_based",
+      "threads": 2,
+      "operations": 46,
+      "ticks": 24,
+      "trace_digest": "3df6e1aeca7235a81b0aa558c2b391c1a1eb00d1187a70d679cf3c93916832fc",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "dummy",
+      "mode": "turn_based",
+      "threads": 4,
+      "operations": 46,
+      "ticks": 24,
+      "trace_digest": "3df6e1aeca7235a81b0aa558c2b391c1a1eb00d1187a70d679cf3c93916832fc",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "window",
+      "mode": "real_time",
+      "threads": 1,
+      "operations": 46,
+      "ticks": 24,
+      "trace_digest": "f2b8d68c49e7f55f5e99967b9a831d2b3e0408c78a8fa4e5ad9d851ad154099d",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "window",
+      "mode": "real_time",
+      "threads": 2,
+      "operations": 46,
+      "ticks": 24,
+      "trace_digest": "f2b8d68c49e7f55f5e99967b9a831d2b3e0408c78a8fa4e5ad9d851ad154099d",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "window",
+      "mode": "real_time",
+      "threads": 4,
+      "operations": 46,
+      "ticks": 24,
+      "trace_digest": "f2b8d68c49e7f55f5e99967b9a831d2b3e0408c78a8fa4e5ad9d851ad154099d",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "window",
+      "mode": "turn_based",
+      "threads": 1,
+      "operations": 46,
+      "ticks": 24,
+      "trace_digest": "b244025a5826635e89516ad659daaffb06a55ae6667529cdd1cc3a40ef2c5e7a",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "window",
+      "mode": "turn_based",
+      "threads": 2,
+      "operations": 46,
+      "ticks": 24,
+      "trace_digest": "b244025a5826635e89516ad659daaffb06a55ae6667529cdd1cc3a40ef2c5e7a",
+      "all_passed": true
+    },
+    {
+      "family": "actions",
+      "display": "window",
+      "mode": "turn_based",
+      "threads": 4,
+      "operations": 46,
+      "ticks": 24,
+      "trace_digest": "b244025a5826635e89516ad659daaffb06a55ae6667529cdd1cc3a40ef2c5e7a",
+      "all_passed": true
+    },
+    {
+      "family": "turn",
+      "display": "none",
+      "mode": "turn_based",
+      "threads": 1,
+      "operations": 76,
+      "ticks": 36,
+      "trace_digest": "d1ffbabc939d5048c59b25c863d1115c6b6e9dd344ad846809eca658926bdfde",
+      "all_passed": true
+    },
+    {
+      "family": "turn",
+      "display": "none",
+      "mode": "turn_based",
+      "threads": 2,
+      "operations": 76,
+      "ticks": 36,
+      "trace_digest": "d1ffbabc939d5048c59b25c863d1115c6b6e9dd344ad846809eca658926bdfde",
+      "all_passed": true
+    },
+    {
+      "family": "turn",
+      "display": "none",
+      "mode": "turn_based",
+      "threads": 4,
+      "operations": 76,
+      "ticks": 36,
+      "trace_digest": "d1ffbabc939d5048c59b25c863d1115c6b6e9dd344ad846809eca658926bdfde",
+      "all_passed": true
+    },
+    {
+      "family": "turn",
+      "display": "dummy",
+      "mode": "turn_based",
+      "threads": 1,
+      "operations": 76,
+      "ticks": 36,
+      "trace_digest": "f3d9c48c19693fc17ae9c3d735598e70d904e84f9aee775a5d23530d5d1d6f23",
+      "all_passed": true
+    },
+    {
+      "family": "turn",
+      "display": "dummy",
+      "mode": "turn_based",
+      "threads": 2,
+      "operations": 76,
+      "ticks": 36,
+      "trace_digest": "f3d9c48c19693fc17ae9c3d735598e70d904e84f9aee775a5d23530d5d1d6f23",
+      "all_passed": true
+    },
+    {
+      "family": "turn",
+      "display": "dummy",
+      "mode": "turn_based",
+      "threads": 4,
+      "operations": 76,
+      "ticks": 36,
+      "trace_digest": "f3d9c48c19693fc17ae9c3d735598e70d904e84f9aee775a5d23530d5d1d6f23",
+      "all_passed": true
+    },
+    {
+      "family": "turn",
+      "display": "window",
+      "mode": "turn_based",
+      "threads": 1,
+      "operations": 76,
+      "ticks": 36,
+      "trace_digest": "910d1277a3f9185917559188b26e29d91f334c0f5e465e99495ce6209eb9586e",
+      "all_passed": true
+    },
+    {
+      "family": "turn",
+      "display": "window",
+      "mode": "turn_based",
+      "threads": 2,
+      "operations": 76,
+      "ticks": 36,
+      "trace_digest": "910d1277a3f9185917559188b26e29d91f334c0f5e465e99495ce6209eb9586e",
+      "all_passed": true
+    },
+    {
+      "family": "turn",
+      "display": "window",
+      "mode": "turn_based",
+      "threads": 4,
+      "operations": 76,
+      "ticks": 36,
+      "trace_digest": "910d1277a3f9185917559188b26e29d91f334c0f5e465e99495ce6209eb9586e",
+      "all_passed": true
+    }
+  ],
+  "thread_settings_equal": true,
+  "all_passed": true,
+  "raw_file": "probe.json.gz",
+  "raw_size": 3291591,
+  "raw_sha256": "c465b36fc798d61368307f1f8ceb1c708e3038b73e529fcd714ad299a07c4358"
+}

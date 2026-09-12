@@ -1,0 +1,195 @@
+{
+  "experiment": {
+    "id": "2026-09-rust-r3-actions",
+    "title": "R3a turn and unit action differential checkpoint",
+    "started": "2026-09-12",
+    "date": "2026-09-13",
+    "status": "validated intermediate functional checkpoint"
+  },
+  "source": {
+    "repository": "/Users/liyang/Developer/star-main",
+    "problem_commit": "2c83c001780ddf103b94905df81e8a1bc469af6e",
+    "measurement_commit": "7f4ad57bbd6966748c0fb49deb82f6ad43fc7aee",
+    "fix_commit": "7f4ad57bbd6966748c0fb49deb82f6ad43fc7aee",
+    "validated_commit": "7f4ad57bbd6966748c0fb49deb82f6ad43fc7aee",
+    "branch_at_time": "codex/rust-env-migration",
+    "validated_tag": "rust-kernel-r3a-2026-09-13",
+    "oracle_commit": "17b17766923ce4db05efb17aaf023818cf69cdf6",
+    "turn_intermediate_commit": "e3da7a072f35b76246d596660107abc37107cf11",
+    "main_unchanged": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+    "clean_formal_checkout": "runs/star-rust-r3-actions"
+  },
+  "tools": {
+    "probe_and_replay_sha": "cb336f40a973050c2fb5eba7ec886f779042577d",
+    "minimal_repro": "artifacts/rest-interface-repro.py"
+  },
+  "hardware": {
+    "machine": "Mac16,10 Mac mini",
+    "cpu": "Apple M4",
+    "physical_cores": 10,
+    "memory_bytes": 17179869184,
+    "display": "not rendered; three legacy behavior configurations",
+    "chrome": "kept open"
+  },
+  "software": {
+    "os": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+    "rust": "1.98.1",
+    "bevy_ecs": "0.19.1",
+    "pyo3": "0.29.2",
+    "maturin": "1.15.0",
+    "native_api": 3,
+    "scene_schema": 3,
+    "extension_sha256": "987b450aa0d8df55170fe726d994a5372e76bb3e6978becc58dcea2e2049a7c3",
+    "uv_lock_sha256": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+    "cargo_lock_sha256": "8b2faed1cbbae1f3c75a3b68c1743c6a02da99f370bfd2ee05578aefe8732461",
+    "environment": "results/environment.json"
+  },
+  "scenario": {
+    "name": "production contract fixtures: 3Unit unit-actions and 3Unit faction-turns",
+    "seed": 42,
+    "resident_units": 3,
+    "registered_synthetic_agents": 3,
+    "hub": false,
+    "real_llm": false
+  },
+  "workload": {
+    "configurations": 27,
+    "displays": [
+      "none",
+      "dummy",
+      "window"
+    ],
+    "thread_settings": [
+      1,
+      2,
+      4
+    ],
+    "workers_parallel": false,
+    "actions_modes": [
+      "real_time",
+      "turn_based"
+    ],
+    "turn_mode": "turn_based",
+    "fog": "actions OFF; turns original fixture ON",
+    "step_dt": {
+      "actions": ".5 and final1/30",
+      "turns": "1/30"
+    },
+    "external_wall_metadata": "frozen/injected; actions wall advances1000 per .5 simulation seconds"
+  },
+  "measurement": {
+    "kind": "exact deterministic differential and replay, not capacity",
+    "startup_cost_measured": false,
+    "warmup_seconds": null,
+    "sustained_seconds": null,
+    "guards_required": [
+      "clean source",
+      "clean recorder",
+      "decoded full response equality",
+      "full imported state equality",
+      "ordered event equality",
+      "thread settings equal",
+      "exact archived native replay"
+    ]
+  },
+  "validation": {
+    "full_regression": 1298,
+    "native_contracts": 378,
+    "rust_unit_tests": 3,
+    "clippy": true,
+    "differential_nodes": 1524,
+    "world_ticks": 762,
+    "trusted_requests": 609,
+    "framework_capture_starts": 18,
+    "framework_human_turns": 108,
+    "resets": 27,
+    "replayed_nodes": 1524,
+    "all_passed": true,
+    "rendered_capacity_evaluated": false
+  },
+  "commands": {
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "probe": "runs/star-rust-r3-actions/.venv/bin/python tools/rust_migration/r3_actions_probe.py --source runs/star-rust-r3-actions --output experiments/2026-09-rust-r3-actions/results/probe.json.gz",
+    "replay": "runs/star-rust-r3-actions/.venv/bin/python tools/rust_migration/replay_r3_actions_probe.py --source runs/star-rust-r3-actions --input experiments/2026-09-rust-r3-actions/results/probe.json.gz --output experiments/2026-09-rust-r3-actions/results/replay.json",
+    "regression_cwd": "runs/star-rust-r3-actions",
+    "regression": ".venv/bin/python -m pytest -q",
+    "build": "PATH=/Users/liyang/.cargo/bin:$PATH CARGO_TARGET_DIR=/Users/liyang/Developer/star-main/target uvx --from maturin==1.15.0 maturin build --release --locked --manifest-path native/python/Cargo.toml --interpreter .venv/bin/python --out /Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-actions/artifacts"
+  },
+  "artifacts": {
+    "formal": [
+      {
+        "path": "artifacts/rest-interface-repro.py",
+        "size": 1006,
+        "sha256": "ebbfc44f83c371dd902dc4f8eb01851fa1c6fbe7604646e5cf3893ff33419e21"
+      },
+      {
+        "path": "artifacts/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+        "size": 1104911,
+        "sha256": "6894f549e03d48e964a166e39e741d5ba51398715dc42373e5e687d104977fd6"
+      },
+      {
+        "path": "results/build.log",
+        "size": 903,
+        "sha256": "fc3c610eb6a4eee1b50f67d5ac4d20a4fd563bd5209fb409fa88a4d9876612d2"
+      },
+      {
+        "path": "results/clippy.log",
+        "size": 385,
+        "sha256": "017803c46d8c7eda2cc0de16dd310507e779f3600eb547db20854969ff6451d6"
+      },
+      {
+        "path": "results/current-interface.log",
+        "size": 365,
+        "sha256": "40e231e525c81c6424bba373d3e83216b3cc88c700e989c009fa01b357eda9fa"
+      },
+      {
+        "path": "results/environment.json",
+        "size": 730,
+        "sha256": "8d56d08630f7e4cefab2f3cc8f02c260b9074998195b7dc0954c4260c2d6e657"
+      },
+      {
+        "path": "results/full-regression.log",
+        "size": 1542,
+        "sha256": "5ed2cbadd9561d4a936087de2e8f5463aedc47bf550e5bd4eb62d088c925b032"
+      },
+      {
+        "path": "results/previous-interface.log",
+        "size": 291,
+        "sha256": "c9e2c8647320734c63910742ebc9debf88d039fef35477be19376479fc1a9c48"
+      },
+      {
+        "path": "results/probe.json.gz",
+        "size": 3291591,
+        "sha256": "c465b36fc798d61368307f1f8ceb1c708e3038b73e529fcd714ad299a07c4358"
+      },
+      {
+        "path": "results/probe.summary.json",
+        "size": 7985,
+        "sha256": "081adc39299fd11dcd9a4b44a32ac38211a989533bb8d00c96c271969fd05bee"
+      },
+      {
+        "path": "results/replay.json",
+        "size": 480,
+        "sha256": "66bfaeeeb20bde14a5ef5d14f42f7ac745df134b51437ee711a7d50b389c7399"
+      },
+      {
+        "path": "results/rust-tests.log",
+        "size": 1244,
+        "sha256": "7f0dfd31cb1cfa7c748244f5763976f68c93ee7bc7605e45aaad8de3165c14a0"
+      }
+    ],
+    "external": [],
+    "integrity": "artifacts/SHA256SUMS"
+  },
+  "headline": {
+    "problem_signature": "R2e native rest raises unimplemented action",
+    "resolution": "port actual Python turn and action semantics with ordered active capture tasks",
+    "result": "1298 regression and1524 full differential/replay nodes passed; complete R3 and capacity not accepted"
+  },
+  "revisit_when": [
+    "rules change",
+    "new capture/entity mutation commands",
+    "window/observation interface changes"
+  ]
+}

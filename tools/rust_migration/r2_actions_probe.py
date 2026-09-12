@@ -147,7 +147,8 @@ def main():
     summary = {k:v for k,v in raw.items() if k!='cases'}
     summary['cases'] = [dict(display=c['display'], fog=c['fog'], threads=c['threads'], operations=len(c['operations']),
                             queries=sum(o['request']['action']=='get_faction_state' for o in c['operations']),
-                            guards=c.get('guards',{}), all_passed=c['all_passed']) for c in cases]
+                            guards=c.get('guards',{}), observation_segments=c.get('batch',{}).get('report',{}).get('observation_segments',[]),
+                            all_passed=c['all_passed']) for c in cases]
     summary.update(all_passed=all(c['all_passed'] for c in cases) and not raw['source_dirty'],
         raw_file=output.name, raw_size=output.stat().st_size, raw_sha256=hashlib.sha256(output.read_bytes()).hexdigest())
     output.with_name(output.name.removesuffix('.json.gz')+'.summary.json').write_text(json.dumps(summary,indent=2)+'\n')

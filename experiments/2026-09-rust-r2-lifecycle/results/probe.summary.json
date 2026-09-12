@@ -1,0 +1,48 @@
+{
+  "schema": "star-r2-lifecycle-v1",
+  "source_sha": "2c83c001780ddf103b94905df81e8a1bc469af6e",
+  "source_dirty": "",
+  "tool_sha": "db3400a09b1681559ac8aaf05652595d681d9d9c",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "extension_sha256": "25a3e6317a22625c53916b5f6c94d7061feb7c7185208572d893f768d58fbdc4",
+  "cases": [
+    {
+      "display": "none",
+      "operations": 132,
+      "ticks": 120,
+      "event_counts": {
+        "BattleEvent": 1,
+        "UnitDeathEvent": 1,
+        "GameOverEvent": 1
+      },
+      "all_passed": true
+    },
+    {
+      "display": "dummy",
+      "operations": 131,
+      "ticks": 120,
+      "event_counts": {
+        "BattleEvent": 0,
+        "UnitDeathEvent": 0,
+        "GameOverEvent": 0
+      },
+      "all_passed": true
+    },
+    {
+      "display": "window",
+      "operations": 131,
+      "ticks": 120,
+      "event_counts": {
+        "BattleEvent": 0,
+        "UnitDeathEvent": 0,
+        "GameOverEvent": 0
+      },
+      "all_passed": true
+    }
+  ],
+  "all_passed": true,
+  "raw_file": "probe.json.gz",
+  "raw_size": 2593921,
+  "raw_sha256": "3e3fd590b67c9f58d464e4063fd8d231dfae07a3225438bc78aae9df49ca8eda"
+}

@@ -1,0 +1,151 @@
+[WorldBuilder] RngService initialized: seed=42 source=kwargs
+[MapSystem] Loaded lab-p3-canonical-5000.json 120x120 tiles=14400 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+[MapSystem] Map info saved: 120x120 id=lab-p3-canonical-5000 spawns={'wei': (-7, 46), 'shu': (-41, 23), 'wu': (31, 22)}
+World has been reset
+{"t": 0.0002668329980224371, "living": 5000, "moving": 0, "clock": {"elapsed": 0.03333333333333333, "paused": false, "realtime": true, "tick": 1, "time_scale": 1.0}, "counts": {}, "maxrss": 344260608}
+{"t": 10.006530040991493, "living": 5000, "moving": 0, "clock": {"elapsed": 9.966666666666642, "paused": false, "realtime": true, "tick": 299, "time_scale": 1.0}, "counts": {"chosen_attack": 395, "idle_units": 1210, "unavailable_attack": 391, "chosen_move": 798, "unavailable_move": 412, "observations": 320, "move_accepted": 376, "cycles": 319, "chosen_wait": 407, "wait_cycles": 75, "move_rejected": 8, "attack_accepted": 4}, "maxrss": 344260608}
+{"t": 20.000034041004255, "living": 5000, "moving": 0, "clock": {"elapsed": 19.866666666666813, "paused": false, "realtime": true, "tick": 596, "time_scale": 1.0}, "counts": {"chosen_attack": 809, "idle_units": 2256, "unavailable_attack": 792, "chosen_move": 1638, "unavailable_move": 636, "observations": 655, "move_accepted": 984, "cycles": 655, "chosen_wait": 828, "wait_cycles": 97, "move_rejected": 18, "attack_accepted": 17}, "maxrss": 344260608}
+{"t": 30.01339579100022, "living": 5000, "moving": 0, "clock": {"elapsed": 29.73333333333397, "paused": false, "realtime": true, "tick": 892, "time_scale": 1.0}, "counts": {"chosen_attack": 1353, "idle_units": 3448, "unavailable_attack": 1325, "chosen_move": 2653, "unavailable_move": 805, "observations": 1065, "move_accepted": 1797, "cycles": 1057, "chosen_wait": 1318, "wait_cycles": 125, "move_rejected": 36, "attack_accepted": 26}, "maxrss": 372113408}
+{"t": 40.012712833005935, "living": 5000, "moving": 0, "clock": {"elapsed": 39.53333333333365, "paused": false, "realtime": true, "tick": 1186, "time_scale": 1.0}, "counts": {"chosen_attack": 1661, "idle_units": 4149, "unavailable_attack": 1621, "chosen_move": 3344, "unavailable_move": 868, "observations": 1333, "move_accepted": 2433, "cycles": 1333, "chosen_wait": 1660, "wait_cycles": 136, "move_rejected": 43, "attack_accepted": 40}, "maxrss": 380059648}
+{"t": 50.012150250026025, "living": 5000, "moving": 0, "clock": {"elapsed": 49.39999999999976, "paused": false, "realtime": true, "tick": 1482, "time_scale": 1.0}, "counts": {"chosen_attack": 2072, "idle_units": 4995, "unavailable_attack": 2018, "chosen_move": 4165, "unavailable_move": 914, "observations": 1660, "move_accepted": 3199, "cycles": 1660, "chosen_wait": 2063, "wait_cycles": 145, "move_rejected": 52, "attack_accepted": 54}, "maxrss": 416268288}
+{
+  "schema": "star-r2-native-rule-loop-v1",
+  "source": {
+    "path": "/Users/liyang/Developer/star-lab/runs/star-rust-r2-lifecycle",
+    "sha": "2c83c001780ddf103b94905df81e8a1bc469af6e",
+    "dirty": ""
+  },
+  "tool": {
+    "path": "/Users/liyang/Developer/star-lab",
+    "sha": "db3400a09b1681559ac8aaf05652595d681d9d9c",
+    "dirty": ""
+  },
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "extension_sha256": "25a3e6317a22625c53916b5f6c94d7061feb7c7185208572d893f768d58fbdc4",
+  "initial": {
+    "file": "loop.initial.json.gz",
+    "size": 628973,
+    "sha256": "85993c4694b531f6b7274e3f626b19684431f8ae60baff74a2f9c3f39b90d548"
+  },
+  "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+  "configuration": {
+    "source": "/Users/liyang/Developer/star-lab/runs/star-rust-r2-lifecycle",
+    "output": "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-r2-lifecycle/results/loop.json.gz",
+    "units": 5000,
+    "agents": 1000,
+    "seconds": 60.0,
+    "fps": 30,
+    "threads": 1,
+    "budget_ms": 18.0
+  },
+  "initial_offset": "uniform(0,30)",
+  "thinking": "truncated normal(30,5), range15..45; wall clock, no polling",
+  "actions": "per-unit move/attack/wait=.5/.25/.25, illegal waits, no redraw",
+  "display": "none; instantaneous movement, no render or visual combat",
+  "timing_scope": "client scheduling/JSON + native step + presentation delta + trace digest; no rendering",
+  "agent_summary": {
+    "counts": {
+      "chosen_attack": 2511,
+      "idle_units": 5890,
+      "unavailable_attack": 2447,
+      "chosen_move": 5043,
+      "unavailable_move": 963,
+      "observations": 2007,
+      "move_accepted": 4017,
+      "cycles": 2007,
+      "chosen_wait": 2480,
+      "wait_cycles": 163,
+      "move_rejected": 63,
+      "attack_accepted": 64
+    },
+    "sessions": 1000,
+    "batch_metrics": {},
+    "observation_mode": "single",
+    "setup_ms": 70.23441704222932,
+    "pending_events": 1000,
+    "overdue_events": 0,
+    "oldest_overdue_ms": 0,
+    "cycles_per_session": {
+      "count": 1000,
+      "min": 1,
+      "avg": 2.007,
+      "p50": 2,
+      "p95": 3,
+      "p99": 3,
+      "max": 3
+    },
+    "observation_response_ms": {
+      "count": 2007,
+      "min": 9.685103606898338,
+      "avg": 40.238038985351935,
+      "p50": 36.10489337006584,
+      "p95": 80.87888150475919,
+      "p99": 119.2141188075766,
+      "max": 161.42694681184366
+    },
+    "action_queue_ms": {
+      "count": 2007,
+      "min": 0.004208006430417299,
+      "avg": 27.600697765331464,
+      "p50": 21.709874970838428,
+      "p95": 79.7759999986738,
+      "p99": 120.65083300694823,
+      "max": 156.72550001181662
+    },
+    "response_bytes": {
+      "count": 2007,
+      "min": 142067,
+      "avg": 169762.30991529647,
+      "p50": 170285,
+      "p95": 188346,
+      "p99": 191687,
+      "max": 192684
+    }
+  },
+  "setup_seconds": 2.1854963329969905,
+  "elapsed": 60.02949837502092,
+  "cpu_seconds": 28.046048,
+  "final_state_sha256": "0bd67e13000db8cfdcc39013b93d836ebe51c19b0b06cbc3835f52d77a8826ac",
+  "guards": {
+    "completed": true,
+    "initial_residents": true,
+    "survives": true,
+    "all_agents_interacted": true,
+    "accepted_moves": true,
+    "accepted_attacks": true,
+    "fixed_clock": true,
+    "clean_source": true
+  },
+  "all_passed": true,
+  "error": null,
+  "raw": {
+    "file": "loop.json.gz",
+    "size": 939984,
+    "sha256": "30fdb7548270d2d1bde829974a3ab9f4537fad8410f708d20f87c79236d1a3ff"
+  },
+  "frames": 1779,
+  "requests": 8151,
+  "loop_work_ms": {
+    "count": 1779,
+    "min": 0.9346249862574041,
+    "avg": 16.070738599925946,
+    "p50": 17.796874977648258,
+    "p95": 31.5547080244869,
+    "p99": 41.926125006284565,
+    "max": 88.10674998676404
+  },
+  "step_ms": {
+    "count": 1779,
+    "min": 0.8847079589031637,
+    "avg": 1.78116701447529,
+    "p50": 1.2091250391677022,
+    "p95": 2.4710840079933405,
+    "p99": 16.86129200970754,
+    "max": 26.181708031799644
+  },
+  "alive_min": 5000,
+  "actual_world_hz": 29.635430049508223,
+  "conclusion": "Rule-mode integration diagnostic only. No rendered frame or 30Hz capacity acceptance."
+}

@@ -1,0 +1,95 @@
+{
+  "experiment": {
+    "id": "2026-09-rust-r2-lifecycle",
+    "date": "2026-09-12",
+    "status": "validated functional checkpoint; diagnostic SLOs unmet"
+  },
+  "source": {
+    "validated_commit": "2c83c001780ddf103b94905df81e8a1bc469af6e",
+    "validated_tag": "rust-kernel-r2e-2026-09-12",
+    "oracle_commit": "17b17766923ce4db05efb17aaf023818cf69cdf6",
+    "branch": "codex/rust-env-migration"
+  },
+  "tools": {
+    "probe_loop": "db3400a09b1681559ac8aaf05652595d681d9d9c",
+    "replay": "d208e3ebffa2c38514cf1b683df66b0beec6cf65"
+  },
+  "environment": {
+    "machine": "Mac mini M4 16GiB",
+    "os": "macOS26.5.2 ARM64",
+    "python": "3.13.12",
+    "rust": "1.98.1",
+    "bevy_ecs": "0.19.1",
+    "pyo3": "0.29.2",
+    "maturin": "1.15.0",
+    "chrome": "kept open",
+    "experiments": "serial"
+  },
+  "validation": {
+    "full_tests": 1152,
+    "native_tests": 232,
+    "rust_tests": 3,
+    "clippy": true,
+    "small_operation_nodes": 394,
+    "small_world_ticks": 360,
+    "native_replay_requests": 8151,
+    "native_replay_ticks": 1779
+  },
+  "workload": {
+    "units": 5000,
+    "agents": 1000,
+    "world_target_hz": 30,
+    "seconds": 60,
+    "warmup": 0,
+    "display": "none",
+    "movement": "instantaneous",
+    "budget_ms": 18,
+    "scope": "selected",
+    "threads": 1,
+    "hub": false,
+    "real_llm": false,
+    "clock": "fixed1/30 simulation; Agent wall clock",
+    "thinking": "normal30 sigma5 truncated15..45, no polling"
+  },
+  "result": {
+    "functional_guards": {
+      "completed": true,
+      "initial_residents": true,
+      "survives": true,
+      "all_agents_interacted": true,
+      "accepted_moves": true,
+      "accepted_attacks": true,
+      "fixed_clock": true,
+      "clean_source": true
+    },
+    "rendered_capacity_evaluated": false,
+    "diagnostic_loop_p99_ms": 41.926125006284565,
+    "world_hz": 29.635430049508223,
+    "observation_p99_ms": 119.2141188075766,
+    "action_queue_p99_ms": 120.65083300694823,
+    "accepted_moves": 4017,
+    "accepted_attacks": 64,
+    "alive_min": 5000
+  },
+  "artifacts": {
+    "probe_raw": {
+      "file": "results/probe.json.gz",
+      "size": 2593921,
+      "sha256": "3e3fd590b67c9f58d464e4063fd8d231dfae07a3225438bc78aae9df49ca8eda"
+    },
+    "loop_raw": {
+      "file": "loop.json.gz",
+      "size": 939984,
+      "sha256": "30fdb7548270d2d1bde829974a3ab9f4537fad8410f708d20f87c79236d1a3ff"
+    },
+    "initial": {
+      "file": "loop.initial.json.gz",
+      "size": 628973,
+      "sha256": "85993c4694b531f6b7274e3f626b19684431f8ae60baff74a2f9c3f39b90d548"
+    },
+    "extension_sha256": "25a3e6317a22625c53916b5f6c94d7061feb7c7185208572d893f768d58fbdc4",
+    "replay": "results/loop-replay.json",
+    "integrity": "artifacts/SHA256SUMS",
+    "canonical_fixture": "../2026-09-p3-clock24/artifacts/fixture-1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52.zip"
+  }
+}

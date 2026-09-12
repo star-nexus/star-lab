@@ -1,0 +1,15 @@
+{
+  "schema": "star-native-loop-replay-v1",
+  "source_sha": "2c83c001780ddf103b94905df81e8a1bc469af6e",
+  "tool_sha": "d208e3ebffa2c38514cf1b683df66b0beec6cf65",
+  "trace_sha256": "30fdb7548270d2d1bde829974a3ab9f4537fad8410f708d20f87c79236d1a3ff",
+  "initial_sha256": "85993c4694b531f6b7274e3f626b19684431f8ae60baff74a2f9c3f39b90d548",
+  "extension_sha256": "25a3e6317a22625c53916b5f6c94d7061feb7c7185208572d893f768d58fbdc4",
+  "requests_checked": 8151,
+  "ticks_checked": 1779,
+  "expected_final_sha256": "0bd67e13000db8cfdcc39013b93d836ebe51c19b0b06cbc3835f52d77a8826ac",
+  "actual_final_sha256": "0bd67e13000db8cfdcc39013b93d836ebe51c19b0b06cbc3835f52d77a8826ac",
+  "failure": null,
+  "elapsed_seconds": 22.6075147499796,
+  "all_passed": true
+}

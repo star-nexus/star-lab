@@ -90,3 +90,13 @@ Typed Team维护认领反向索引，保留冲突/强转/FIFO/maxlen；Observati
 公开 `RustRuntime.execute_action/execute_actions/get_faction_state` 已接本地可信身份、注册/认领/FIFO、move/attack/查询及计数；JSON入口元数据由Python准备，Rust不回调Python。连续Faction查询共享只读借用，遇到任何其他请求结束；计数在独占锁内按序提交。验证了写入中途失败后的查询和reset身份失效。1/2/4配置结果一致，但尚无worker并行。
 
 **完整R2仍未完成，Rust尚不可运行完整游戏**。本轮是3Unit小场景、无world ticks/真实窗口/Hub/LLM的可信本地请求验证，不能作5000/1000/30Hz容量结论；dummy/window不执行attack。下一步Realtime/Turn生命周期与完整World.update重放，再合成Agent闭环及R3展示。异常非字符串阵营、极大整数等历史边界仍待覆盖。Python默认/main未变，无merge/push；无关49个删除保留。正式checkout `runs/star-rust-r2-actions`。
+
+## R2e检查点：世界生命周期与5000/1000规则模式闭环（2026-09-12）
+
+生产 `2c83c001780ddf103b94905df81e8a1bc469af6e` / `rust-kernel-r2e-2026-09-12`。1152完整回归（232native）、3Rust/Clippy；394小场景操作/360核心World.update ticks的状态、响应、有序事件差分通过。[报告/raw/compact/复现](../experiments/2026-09-rust-r2-lifecycle/README.md)。存活阵营计数随死亡维护，胜负检查O(阵营数)，保留全灭优先、模拟时间超时、窗口缺位置例外、enabled与回合时钟同步。
+
+5000Units/1000合成Agent真实注册认领后的60秒规则模式闭环跑通：2007轮，4017接受move、64attack、63拒绝move，5000全部存活、每Agent至少1轮。初始化Python世界已销毁，所有交互与tick走native。8151请求＋1779ticks逐响应digest/事件/最终状态重放一致；这不是5000规模Python差分。
+
+**无窗口规则模式诊断，不是完整实时性验收**：move即时完成、无绘制，带逐响应hash开销且无预热排除。循环P99=41.93ms、世界29.635Hz、观测119.21ms、动作排队120.65ms；严格数值门槛已越线，无容量认证。不能写成5000持续同时移动或窗口30Hz达标。60秒raw完整保留，未进入300秒性能验收。
+
+接下来补回合handoff/reset、R3余下动作/BOT/结算与真实窗口（攻击特效实体/Fog增量），继续扩展兼容覆盖；R4并行优化和R5平台/容量/切换仍未完成。Python默认、生产main未变；无merge/push，无关49个删除不动。正式checkout `runs/star-rust-r2-lifecycle`。工具probe/loop `db3400a09b1681559ac8aaf05652595d681d9d9c`，replay `d208e3ebffa2c38514cf1b683df66b0beec6cf65`。

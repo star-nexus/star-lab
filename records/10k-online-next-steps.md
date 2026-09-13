@@ -1,17 +1,19 @@
 # 10K 后续工作优先级
 
-更新：2026-09-13。当前执行已获授权的Rust内核＋Python接口完整迁移；P1/P2仍跳过。没有新增容量通过结论。
+更新：2026-09-14。当前执行已获授权的Rust内核＋Python接口完整迁移；P1/P2仍跳过。没有新增容量通过结论。
 恢复入口：[`10k-online-resume.md`](10k-online-resume.md)。
 
 ## 当前路线：Rust迁移（优先于下方历史候选）
 
-R3a已固定于生产 `7f4ad57bbd6966748c0fb49deb82f6ad43fc7aee` / `rust-kernel-r3a-2026-09-13`；[阶段记录](rust-env-migration.md)、[验证报告](../experiments/2026-09-rust-r3-actions/README.md)。1298回归、1524节点/762ticks差分与重放通过。完整游戏/窗口和容量仍未完成。
+R3c已固定于生产 `5bda51db6cd68455aa5724a6ef0eca1e66f89dda` / `rust-kernel-r3c-2026-09-14`；
+[阶段记录](rust-env-migration.md)、[验证报告](../experiments/2026-09-rust-r3-presentation/README.md)。
+1504全回归、5184节点/4032ticks差分与精确重放、真实窗口960帧通过；API/schema=5。
+移动/战斗临时ID和生命周期在Rust，Python已有资源/领地/Fog/特效增量消费者。完整可玩入口尚未接。
 
-1. R3余下观测变体和权限/输出，扩展逐操作差分。
-2. 实际窗口：Rust持有战斗/移动完成和展示实体生命周期；Python消费增量，保持Fog/飘字/坐标缓存及现有按键。
-3. BOT输入、结算数据/事件、入口后端选择；覆盖实时/回合制和none/dummy/window完整运行。
-4. 完成单线程等价后进入R4只读观测并行和成本优化。现有1/2/4只验证一致性，没有worker加速。
-5. R5按既定5000U/1000Agent/30Hz闭环门槛与平台wheel要求验收；通过后才tag+squash/default Rust。
+1. R3d：GameScene生命周期、后端选择和输入命令；不允许Python展示组件修改Rust权威状态。
+2. 完整HUD与VLM帧获取、BOT输入、结算数据/事件；覆盖实时/回合制和none/dummy/window完整运行与reset。
+3. 完成单线程等价后进入R4只读观测并行和成本优化。现有1/2/4只验证一致性，没有worker加速。
+4. R5按既定5000U/1000Agent/30Hz闭环门槛与平台wheel要求验收；通过后才tag+squash/default Rust。
 
 保留规则：休息/工事/技能中的历史行为暂不修正，MP弱化仍单独处理；ENV固定模拟dt，Agent按墙钟思考且不轮询；Chrome保持开启，性能实验串行。生产main6a970dea和旧实验负结果不变，无关49处删除不纳入迁移。
 

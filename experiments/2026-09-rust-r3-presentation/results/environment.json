@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-14T00:46:05+08:00",
+  "machine": "Mac16,10",
+  "cpu": "Apple M4",
+  "logical_cpus": "10",
+  "memory_bytes": "17179869184",
+  "os": "ProductName:\t\tmacOS\nProductVersion:\t\t26.5.2\nBuildVersion:\t\t25F84",
+  "chrome_running": true,
+  "source_sha": "5bda51db6cd68455aa5724a6ef0eca1e66f89dda",
+  "main_sha": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+  "environment": {
+    "HEADLESS": null,
+    "SDL_VIDEODRIVER": null,
+    "SDL_AUDIODRIVER": null,
+    "PYTHONHASHSEED": null,
+    "CARGO_TARGET_DIR": null,
+    "RUSTFLAGS": null
+  },
+  "toolchain": "rustc 1.98.1 (48a229cea 2026-09-01)",
+  "release_build": true,
+  "capacity_claim": false
+}

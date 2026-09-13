@@ -1,0 +1,19 @@
+{
+  "source_sha": "d5abc70e9cda8a6820546112e6172dd9e43c1515",
+  "result": {
+    "details": "Action execution failed: native combat display handoff is not implemented yet",
+    "error_code": 2012,
+    "message": "Action execution failed: native combat display handoff is not implemented yet",
+    "result": false,
+    "success": false
+  },
+  "display_keys": [
+    "epoch",
+    "events",
+    "removed",
+    "revision",
+    "tick",
+    "units"
+  ],
+  "visual_rows": 0
+}

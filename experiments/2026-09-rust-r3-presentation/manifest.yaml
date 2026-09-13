@@ -1,0 +1,454 @@
+{
+  "experiment": {
+    "id": "2026-09-rust-r3-presentation",
+    "title": "R3c native combat lifecycle and derived battlefield display",
+    "date": "2026-09-14",
+    "status": "validated checkpoint"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "d5abc70e9cda8a6820546112e6172dd9e43c1515",
+    "measurement_commit": "5bda51db6cd68455aa5724a6ef0eca1e66f89dda",
+    "fix_commit": "5bda51db6cd68455aa5724a6ef0eca1e66f89dda",
+    "validated_commit": "5bda51db6cd68455aa5724a6ef0eca1e66f89dda",
+    "branch_at_time": "codex/rust-env-migration",
+    "validated_tag": "rust-kernel-r3c-2026-09-14",
+    "main_unchanged": "6a970deaee7d9b8d3939edd102973f2377edd6ac"
+  },
+  "tools": {
+    "differential_and_selected_window": "1743d0effd96365fdfb5bf55c4486ef8e5cc82c2",
+    "unselected_window": "079c99a73f18a7a4cae1e0a37cb1a2ae51be5610",
+    "packaging_helpers": "artifacts/interface-repro.py and unpack-replay.py in this archive commit"
+  },
+  "hardware": {
+    "machine": "Mac16,10",
+    "cpu": "Apple M4",
+    "logical_cpus": "10",
+    "memory_bytes": "17179869184"
+  },
+  "software": {
+    "os": "ProductName:\t\tmacOS\nProductVersion:\t\t26.5.2\nBuildVersion:\t\t25F84",
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+    "rust": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "maturin": "1.15.0",
+    "release": true,
+    "api_schema": 5,
+    "oracle": "python-r0c-3cc4ffe",
+    "extension_sha256": "a60b227d02e47998762c735a047e10a90a225fb8b78727b41afcc0d68c1d3f89",
+    "uv_lock_sha256": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+    "cargo_lock_sha256": "8b2faed1cbbae1f3c75a3b68c1743c6a02da99f370bfd2ee05578aefe8732461"
+  },
+  "scenario": {
+    "name": "3-unit radius-3 hex fixture",
+    "resident_units": 3,
+    "synthetic_agents": {
+      "differential": 2,
+      "rendered": 1
+    }
+  },
+  "workload": {
+    "seed": 42,
+    "forced_critical_stream_seed": 1,
+    "phase": "sequential action/tick trace; no throughput gate",
+    "display": [
+      "none",
+      "dummy",
+      "window"
+    ],
+    "modes": [
+      "real_time",
+      "turn_based"
+    ],
+    "visuals": [
+      "melee",
+      "ranged",
+      "damage",
+      "crit",
+      "effect",
+      "projectile"
+    ],
+    "fog": "window: enabled, range4",
+    "camera": "(600,400) then (680,400)",
+    "zoom": [
+      1.0,
+      0.5,
+      1.25
+    ],
+    "frame_dt": 0.03333333333333333,
+    "chrome_open": true
+  },
+  "measurement": {
+    "warmup_seconds": null,
+    "sustained_seconds": null,
+    "sample_window_frames": 960,
+    "gc_policy": "unchanged CPython default",
+    "guards_required": [
+      "full responses/state/events equality",
+      "independent replay and presentation equality",
+      "1/2/4 thread settings equality",
+      "old epoch rejected",
+      "idle/sparse delta and multi-tick accumulation",
+      "render cannot mutate native authority",
+      "visual spawn and cleanup",
+      "source and tool clean"
+    ],
+    "performance_acceptance": false
+  },
+  "variables": {
+    "independent": {
+      "threads": [
+        1,
+        2,
+        4
+      ],
+      "mode": [
+        "real_time",
+        "turn_based"
+      ],
+      "display": [
+        "none",
+        "dummy",
+        "window"
+      ],
+      "ranged": [
+        false,
+        true
+      ],
+      "death": [
+        false,
+        true
+      ],
+      "critical": [
+        false,
+        true
+      ],
+      "selection": [
+        true,
+        false
+      ]
+    },
+    "controlled": [
+      "oracle rules",
+      "scene seed",
+      "ordered action/tick stream",
+      "release extension"
+    ]
+  },
+  "artifacts": {
+    "formal": [
+      {
+        "path": "artifacts/interface-repro.py",
+        "bytes": 1061,
+        "sha256": "47426754ed02523e3efc2e6ff9f922b2a869e0cf26bd21c05bd8a0f6ffe4674b"
+      },
+      {
+        "path": "artifacts/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+        "bytes": 1207719,
+        "sha256": "e75784e2d8d0ed249013c4096f0b0c4729f889c70aecc651af6ef01f77348a23"
+      },
+      {
+        "path": "artifacts/unpack-replay.py",
+        "bytes": 921,
+        "sha256": "8dcde37577858fbc22c6dc42ffa70ab6b387fcba003af1881c17017d9265afd1"
+      },
+      {
+        "path": "results/after.json",
+        "bytes": 2104,
+        "sha256": "311de33092cc29259f09f297ba82399530707416a6186812b42136dee90259d6"
+      },
+      {
+        "path": "results/before.json",
+        "bytes": 467,
+        "sha256": "beda1efbc3da9f2d8f69f50b18d55f9e0aef55d84ed9d2b0e60f0940a3a5fac7"
+      },
+      {
+        "path": "results/clippy.log",
+        "bytes": 400,
+        "sha256": "13b6b829f25cb7308eccddf00fe79dfcb74d07c2c6211e76548d11b9173c62e0"
+      },
+      {
+        "path": "results/compact.json",
+        "bytes": 2064,
+        "sha256": "dbabb12069b8da4945b89ca94739b06227bf54cfad395406d10dfad18d2a31c2"
+      },
+      {
+        "path": "results/environment.json",
+        "bytes": 663,
+        "sha256": "3682dc99667aefe5800874d22accdb9ff0e119db99ace0782db03fb78105df11"
+      },
+      {
+        "path": "results/full-regression.log",
+        "bytes": 1712,
+        "sha256": "3c9bb7af3bea17d34e1c159ff45b0cc5d2810b0537c661fe8fd2afdfe10b9ebb"
+      },
+      {
+        "path": "results/packing.json",
+        "bytes": 463,
+        "sha256": "746106831b7c7e62e3f5b86c58004ca1e59c062d7fb986301b474205c2f76ecd"
+      },
+      {
+        "path": "results/probe.json.xz",
+        "bytes": 189416,
+        "sha256": "52fdfb03ceb4506d30d5d161b5f5cb92421298c345ab256fcae905b80d5141a5"
+      },
+      {
+        "path": "results/probe.summary.json",
+        "bytes": 45755,
+        "sha256": "c5d4126fab7f26995b23d5d77e58e337e7c75d1907c2da27a1515534821be3c6"
+      },
+      {
+        "path": "results/release-build.log",
+        "bytes": 900,
+        "sha256": "4c6852f7062f9c74cf47105a1d8ee23a0202a9d0ac69abadfabf7a0784102961"
+      },
+      {
+        "path": "results/replay.json",
+        "bytes": 246,
+        "sha256": "66997ab46e4fc641ef4ec661adfc164dc7555927b04deed5f0ee12744d4002a3"
+      },
+      {
+        "path": "results/rust-tests.log",
+        "bytes": 1254,
+        "sha256": "56cc8629da848756893437db6a85803ee28ba9e74081677c108307761ce15279"
+      },
+      {
+        "path": "results/unpack.json",
+        "bytes": 197,
+        "sha256": "7e9157357bdf13ff2fdcca1d49e11a01f842cb969394e863fe6b5be52d427eb6"
+      },
+      {
+        "path": "results/uv-sync.log",
+        "bytes": 1022,
+        "sha256": "c8ed7c096694e44d97357541eb67eec6546dcaa96ed21669984632e68dcd5c62"
+      },
+      {
+        "path": "results/window/real_time-melee-002.png",
+        "bytes": 152461,
+        "sha256": "4347a241d0bee3fd3d229b51e6f5fec5d4f5bc534cc998f337bd11c5ca4090b5"
+      },
+      {
+        "path": "results/window/real_time-melee-014.png",
+        "bytes": 57537,
+        "sha256": "63d579c797e38717419f9a6bc1b83c2d3220d2c49a7632d4308184987536e347"
+      },
+      {
+        "path": "results/window/real_time-melee-061.png",
+        "bytes": 175640,
+        "sha256": "ecfe1f5585025f0fbbcac4b1766d8abd10d00a298f54abd285c816efee0d937c"
+      },
+      {
+        "path": "results/window/real_time-ranged-002.png",
+        "bytes": 151139,
+        "sha256": "a82e66523a3e9d07cfdd0be21714b506523d31b54599ba6db5b73b42eca30a6a"
+      },
+      {
+        "path": "results/window/real_time-ranged-014.png",
+        "bytes": 57207,
+        "sha256": "f6bd0f785eb5687762ab80cd0acdedbc7302d95f2bee850cdf87010786ff3382"
+      },
+      {
+        "path": "results/window/real_time-ranged-061.png",
+        "bytes": 175667,
+        "sha256": "aa9ec0debb7016cb971ef4d22835a488c5cab77d424fda21adf3e448f517f158"
+      },
+      {
+        "path": "results/window/render.json",
+        "bytes": 70365,
+        "sha256": "13d74cbc3ebd698dee182f336c49c3348a4c9c046ca40a45c8a4cb00e10c30e4"
+      },
+      {
+        "path": "results/window/turn_based-melee-002.png",
+        "bytes": 151281,
+        "sha256": "416a32fb6a75be1e334fc8e053c62b3e34db4a07ac746d1a087df2b891a4e404"
+      },
+      {
+        "path": "results/window/turn_based-melee-014.png",
+        "bytes": 57537,
+        "sha256": "63d579c797e38717419f9a6bc1b83c2d3220d2c49a7632d4308184987536e347"
+      },
+      {
+        "path": "results/window/turn_based-melee-061.png",
+        "bytes": 175640,
+        "sha256": "ecfe1f5585025f0fbbcac4b1766d8abd10d00a298f54abd285c816efee0d937c"
+      },
+      {
+        "path": "results/window/turn_based-ranged-002.png",
+        "bytes": 151139,
+        "sha256": "a82e66523a3e9d07cfdd0be21714b506523d31b54599ba6db5b73b42eca30a6a"
+      },
+      {
+        "path": "results/window/turn_based-ranged-014.png",
+        "bytes": 57207,
+        "sha256": "f6bd0f785eb5687762ab80cd0acdedbc7302d95f2bee850cdf87010786ff3382"
+      },
+      {
+        "path": "results/window/turn_based-ranged-061.png",
+        "bytes": 175667,
+        "sha256": "aa9ec0debb7016cb971ef4d22835a488c5cab77d424fda21adf3e448f517f158"
+      },
+      {
+        "path": "results/window-unselected/real_time-melee-002.png",
+        "bytes": 184786,
+        "sha256": "027bf42f76aeeff56a99c8ac433cccf8790629b3aa69b03c2715d40a7ffe2967"
+      },
+      {
+        "path": "results/window-unselected/real_time-melee-014.png",
+        "bytes": 70898,
+        "sha256": "10abc27cde139b878871e7abe958c188e7dc4eb4e17d05cf8b12678b4afc73a3"
+      },
+      {
+        "path": "results/window-unselected/real_time-melee-061.png",
+        "bytes": 218038,
+        "sha256": "410895b95be7df4df7ec5ac95f0684b8dbf793f2c3d61ad203150e7953ed6b45"
+      },
+      {
+        "path": "results/window-unselected/real_time-ranged-002.png",
+        "bytes": 184201,
+        "sha256": "0e712a7823bdeca55ad37403cbfcfd1be697c2c5929ad8801d29eb1488ae97f3"
+      },
+      {
+        "path": "results/window-unselected/real_time-ranged-014.png",
+        "bytes": 70388,
+        "sha256": "3b7ba799369467be1766e5fe6e2d1a2613f788a19b13786223e30b3d287bbc80"
+      },
+      {
+        "path": "results/window-unselected/real_time-ranged-061.png",
+        "bytes": 218153,
+        "sha256": "b6d59d3c586b010e62039fd68eebbf7335f7965f692170ebf8b5611348e9ed0e"
+      },
+      {
+        "path": "results/window-unselected/render.json",
+        "bytes": 70394,
+        "sha256": "997772fffd6bdd70643a9e95619b6c792d679ad688306f1782de35859ec8806c"
+      },
+      {
+        "path": "results/window-unselected/turn_based-melee-002.png",
+        "bytes": 184786,
+        "sha256": "027bf42f76aeeff56a99c8ac433cccf8790629b3aa69b03c2715d40a7ffe2967"
+      },
+      {
+        "path": "results/window-unselected/turn_based-melee-014.png",
+        "bytes": 70898,
+        "sha256": "10abc27cde139b878871e7abe958c188e7dc4eb4e17d05cf8b12678b4afc73a3"
+      },
+      {
+        "path": "results/window-unselected/turn_based-melee-061.png",
+        "bytes": 218038,
+        "sha256": "410895b95be7df4df7ec5ac95f0684b8dbf793f2c3d61ad203150e7953ed6b45"
+      },
+      {
+        "path": "results/window-unselected/turn_based-ranged-002.png",
+        "bytes": 184201,
+        "sha256": "0e712a7823bdeca55ad37403cbfcfd1be697c2c5929ad8801d29eb1488ae97f3"
+      },
+      {
+        "path": "results/window-unselected/turn_based-ranged-014.png",
+        "bytes": 70388,
+        "sha256": "3b7ba799369467be1766e5fe6e2d1a2613f788a19b13786223e30b3d287bbc80"
+      },
+      {
+        "path": "results/window-unselected/turn_based-ranged-061.png",
+        "bytes": 218153,
+        "sha256": "b6d59d3c586b010e62039fd68eebbf7335f7965f692170ebf8b5611348e9ed0e"
+      },
+      {
+        "path": "results/window-unselected.log",
+        "bytes": 1325,
+        "sha256": "35ef32df65780d9af6d488a7662d20c04549f4ca38ea13d609e35a2a5a1cc091"
+      },
+      {
+        "path": "results/window.log",
+        "bytes": 1325,
+        "sha256": "35ef32df65780d9af6d488a7662d20c04549f4ca38ea13d609e35a2a5a1cc091"
+      }
+    ],
+    "external": []
+  },
+  "headline": {
+    "problem_signature": "dummy/window attack denied with 2012 and no visual handoff",
+    "root_cause": "native presentation lifecycle and derived display consumers absent",
+    "resolution": "native stable visual lifetimes plus accumulated display deltas and Python render adapter",
+    "result": {
+      "status": "validated R3c checkpoint; full migration open",
+      "source_sha": "5bda51db6cd68455aa5724a6ef0eca1e66f89dda",
+      "tag": "rust-kernel-r3c-2026-09-14",
+      "tool_shas": [
+        "079c99a73f18a7a4cae1e0a37cb1a2ae51be5610",
+        "1743d0effd96365fdfb5bf55c4486ef8e5cc82c2"
+      ],
+      "native_api_schema": 5,
+      "oracle": "python-r0c-3cc4ffe",
+      "extension_sha256": "a60b227d02e47998762c735a047e10a90a225fb8b78727b41afcc0d68c1d3f89",
+      "functional": {
+        "full_regression_passed": 1504,
+        "native_contracts": 582,
+        "new_contracts": 61,
+        "rust_tests": 3,
+        "clippy_passed": true,
+        "fmt_passed": true
+      },
+      "differential": {
+        "configurations": 144,
+        "operations": 5184,
+        "ticks": 4032,
+        "requests": 864,
+        "resets": 288,
+        "all_passed": true,
+        "thread_settings_equal": true
+      },
+      "replay": {
+        "all_passed": true,
+        "cases": 144,
+        "operations": 5184,
+        "thread_settings_equal": true,
+        "source_sha": "5bda51db6cd68455aa5724a6ef0eca1e66f89dda",
+        "extension_sha256": "a60b227d02e47998762c735a047e10a90a225fb8b78727b41afcc0d68c1d3f89"
+      },
+      "rendering": {
+        "driver": "cocoa",
+        "window": [
+          1200,
+          800
+        ],
+        "frames": 960,
+        "cases": 8,
+        "screenshots": 24,
+        "units": 3,
+        "registered_synthetic_agents": 1,
+        "selection_variants": [
+          true,
+          false
+        ],
+        "all_passed": true,
+        "chrome_running": true,
+        "native_unmodified_by_render": true
+      },
+      "raw": {
+        "path": "results/probe.json.xz",
+        "bytes": 189416,
+        "sha256": "52fdfb03ceb4506d30d5d161b5f5cb92421298c345ab256fcae905b80d5141a5",
+        "content_bytes": 194433027,
+        "content_sha256": "aa4075267a1730f7441661c3733380f47f9b5d5209fbe13377d6d86be28961a5"
+      },
+      "packing_lossless_verified": true,
+      "capacity_claim": false,
+      "actual_parallel_jobs": false,
+      "main_sha": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+      "default_backend": "python",
+      "remaining": [
+        "GameScene/input/backend switch",
+        "complete HUD/VLM",
+        "BOT/settlement",
+        "R4 parallelism",
+        "R5 capacity/platform installation"
+      ]
+    }
+  },
+  "revisit_when": [
+    "GameScene/input/backend switch",
+    "complete HUD/VLM",
+    "BOT/settlement",
+    "R4 parallelism",
+    "R5 capacity/platform installation"
+  ]
+}

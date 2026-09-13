@@ -1,0 +1,75 @@
+{
+  "status": "validated R3c checkpoint; full migration open",
+  "source_sha": "5bda51db6cd68455aa5724a6ef0eca1e66f89dda",
+  "tag": "rust-kernel-r3c-2026-09-14",
+  "tool_shas": [
+    "079c99a73f18a7a4cae1e0a37cb1a2ae51be5610",
+    "1743d0effd96365fdfb5bf55c4486ef8e5cc82c2"
+  ],
+  "native_api_schema": 5,
+  "oracle": "python-r0c-3cc4ffe",
+  "extension_sha256": "a60b227d02e47998762c735a047e10a90a225fb8b78727b41afcc0d68c1d3f89",
+  "functional": {
+    "full_regression_passed": 1504,
+    "native_contracts": 582,
+    "new_contracts": 61,
+    "rust_tests": 3,
+    "clippy_passed": true,
+    "fmt_passed": true
+  },
+  "differential": {
+    "configurations": 144,
+    "operations": 5184,
+    "ticks": 4032,
+    "requests": 864,
+    "resets": 288,
+    "all_passed": true,
+    "thread_settings_equal": true
+  },
+  "replay": {
+    "all_passed": true,
+    "cases": 144,
+    "operations": 5184,
+    "thread_settings_equal": true,
+    "source_sha": "5bda51db6cd68455aa5724a6ef0eca1e66f89dda",
+    "extension_sha256": "a60b227d02e47998762c735a047e10a90a225fb8b78727b41afcc0d68c1d3f89"
+  },
+  "rendering": {
+    "driver": "cocoa",
+    "window": [
+      1200,
+      800
+    ],
+    "frames": 960,
+    "cases": 8,
+    "screenshots": 24,
+    "units": 3,
+    "registered_synthetic_agents": 1,
+    "selection_variants": [
+      true,
+      false
+    ],
+    "all_passed": true,
+    "chrome_running": true,
+    "native_unmodified_by_render": true
+  },
+  "raw": {
+    "path": "results/probe.json.xz",
+    "bytes": 189416,
+    "sha256": "52fdfb03ceb4506d30d5d161b5f5cb92421298c345ab256fcae905b80d5141a5",
+    "content_bytes": 194433027,
+    "content_sha256": "aa4075267a1730f7441661c3733380f47f9b5d5209fbe13377d6d86be28961a5"
+  },
+  "packing_lossless_verified": true,
+  "capacity_claim": false,
+  "actual_parallel_jobs": false,
+  "main_sha": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+  "default_backend": "python",
+  "remaining": [
+    "GameScene/input/backend switch",
+    "complete HUD/VLM",
+    "BOT/settlement",
+    "R4 parallelism",
+    "R5 capacity/platform installation"
+  ]
+}

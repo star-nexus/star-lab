@@ -1,0 +1,90 @@
+{
+  "source_sha": "5bda51db6cd68455aa5724a6ef0eca1e66f89dda",
+  "result": {
+    "battle_summary": {
+      "attacker_info": {
+        "faction": "wei",
+        "position": [
+          -1,
+          0
+        ],
+        "terrain": "mountain",
+        "unit_id": 37,
+        "unit_type": "infantry"
+      },
+      "battle_result": {
+        "action_points_consumed": 1,
+        "attacker_casualties": 0,
+        "battle_type": "melee",
+        "casualties_inflicted": 7,
+        "combat_log": [
+          "wei forces attacked shu! damage:7, count:100->93"
+        ],
+        "damage_dealt": 7,
+        "dice_rolls": {
+          "crit_roll": null,
+          "damage_roll": 7,
+          "hit_roll": 15
+        },
+        "hit_success": true,
+        "is_critical": false,
+        "post_battle_state": {
+          "attacker_ap": 5,
+          "attacker_count": 100,
+          "target_count": 93
+        },
+        "pre_battle_state": {
+          "attacker_ap": 6,
+          "attacker_count": 100,
+          "target_count": 100
+        },
+        "target_destroyed": false,
+        "terrain_effects": {
+          "attacker_terrain_bonus": 1.0,
+          "target_terrain_defense": 0.0
+        }
+      },
+      "casualties_inflicted": 7,
+      "distance": 2,
+      "target_destroyed": false,
+      "target_info": {
+        "faction": "shu",
+        "position": [
+          1,
+          1
+        ],
+        "terrain": "plain",
+        "unit_id": 39,
+        "unit_type": "infantry"
+      }
+    },
+    "details": "Unit 37 attacked unit 39 successfully",
+    "message": "Unit 37 attacked unit 39 successfully",
+    "remaining_resources": {
+      "action_points": 5
+    },
+    "resource_consumption": {
+      "action_points_used": 1
+    },
+    "result": true,
+    "success": true,
+    "tactical_info": {
+      "attack_was_effective": true,
+      "target_remaining_strength": "93/100",
+      "target_strength_percentage": 93.0
+    }
+  },
+  "display_keys": [
+    "epoch",
+    "events",
+    "fog",
+    "removed",
+    "revision",
+    "state",
+    "tick",
+    "tiles",
+    "units",
+    "visuals"
+  ],
+  "visual_rows": 3
+}

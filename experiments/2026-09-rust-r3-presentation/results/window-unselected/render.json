@@ -1,0 +1,3502 @@
+{
+  "source_sha": "5bda51db6cd68455aa5724a6ef0eca1e66f89dda",
+  "source_dirty": "",
+  "tool_sha": "079c99a73f18a7a4cae1e0a37cb1a2ae51be5610",
+  "tool_dirty": "",
+  "extension_sha256": "a60b227d02e47998762c735a047e10a90a225fb8b78727b41afcc0d68c1d3f89",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "driver": "cocoa",
+  "window": [
+    1200,
+    800
+  ],
+  "chrome_running": true,
+  "cases": [
+    {
+      "mode": "real_time",
+      "kind": "melee",
+      "frames": 120,
+      "counts": [
+        {
+          "frame": 0,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 1,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 2,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 3,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 4,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 5,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 6,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 7,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 8,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 9,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 10,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 11,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 12,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 13,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 14,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 15,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 16,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 17,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 18,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 19,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 20,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 21,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 22,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 23,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 24,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 25,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 26,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 27,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 28,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 29,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 30,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 31,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 32,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 33,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 34,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 35,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 36,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 37,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 38,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 39,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 40,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 41,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 42,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 43,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 44,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 45,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 46,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 47,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 48,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 49,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 50,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 51,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 52,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 53,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 54,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 55,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 56,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 57,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 58,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 59,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 60,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 61,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 62,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 63,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 64,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 65,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 66,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 67,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 68,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 69,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 70,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 71,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 72,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 73,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 74,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 75,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 76,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 77,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 78,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 79,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 80,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 81,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 82,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 83,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 84,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 85,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 86,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 87,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 88,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 89,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 90,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 91,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 92,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 93,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 94,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 95,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 96,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 97,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 98,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 99,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 100,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 101,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 102,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 103,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 104,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 105,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 106,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 107,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 108,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 109,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 110,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 111,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 112,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 113,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 114,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 115,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 116,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 117,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 118,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 119,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        }
+      ],
+      "events": [
+        {
+          "fields": {
+            "attacker_entity": 37,
+            "damage": 10,
+            "target_entity": 39
+          },
+          "type": "BattleEvent"
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "mode": "real_time",
+      "kind": "ranged",
+      "frames": 120,
+      "counts": [
+        {
+          "frame": 0,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 1,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 2,
+          "units": 3,
+          "damage": 2,
+          "projectile": 1,
+          "effects": 1
+        },
+        {
+          "frame": 3,
+          "units": 3,
+          "damage": 2,
+          "projectile": 1,
+          "effects": 1
+        },
+        {
+          "frame": 4,
+          "units": 3,
+          "damage": 2,
+          "projectile": 1,
+          "effects": 1
+        },
+        {
+          "frame": 5,
+          "units": 3,
+          "damage": 2,
+          "projectile": 1,
+          "effects": 1
+        },
+        {
+          "frame": 6,
+          "units": 3,
+          "damage": 2,
+          "projectile": 1,
+          "effects": 1
+        },
+        {
+          "frame": 7,
+          "units": 3,
+          "damage": 2,
+          "projectile": 1,
+          "effects": 1
+        },
+        {
+          "frame": 8,
+          "units": 3,
+          "damage": 2,
+          "projectile": 1,
+          "effects": 1
+        },
+        {
+          "frame": 9,
+          "units": 3,
+          "damage": 2,
+          "projectile": 1,
+          "effects": 1
+        },
+        {
+          "frame": 10,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 11,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 12,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 13,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 14,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 15,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 16,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 17,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 18,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 19,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 20,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 21,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 22,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 23,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 24,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 25,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 26,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 27,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 28,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 29,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 30,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 31,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 32,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 33,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 34,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 35,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 36,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 37,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 38,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 39,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 40,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 41,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 42,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 43,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 44,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 45,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 46,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 47,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 48,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 49,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 50,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 51,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 52,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 53,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 54,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 55,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 56,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 57,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 58,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 59,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 60,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 61,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 62,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 63,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 64,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 65,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 66,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 67,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 68,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 69,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 70,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 71,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 72,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 73,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 74,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 75,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 76,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 77,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 78,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 79,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 80,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 81,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 82,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 83,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 84,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 85,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 86,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 87,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 88,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 89,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 90,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 91,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 92,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 93,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 94,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 95,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 96,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 97,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 98,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 99,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 100,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 101,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 102,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 103,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 104,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 105,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 106,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 107,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 108,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 109,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 110,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 111,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 112,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 113,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 114,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 115,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 116,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 117,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 118,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 119,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        }
+      ],
+      "events": [
+        {
+          "fields": {
+            "attacker_entity": 37,
+            "damage": 7,
+            "target_entity": 39
+          },
+          "type": "BattleEvent"
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "mode": "turn_based",
+      "kind": "melee",
+      "frames": 120,
+      "counts": [
+        {
+          "frame": 0,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 1,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 2,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 3,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 4,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 5,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 6,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 7,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 8,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 9,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 10,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 11,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 12,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 13,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 14,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 15,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 16,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 17,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 18,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 19,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 20,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 21,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 22,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 23,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 24,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 25,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 26,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 27,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 28,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 29,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 30,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 31,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 32,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 33,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 34,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 35,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 36,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 37,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 38,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 39,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 40,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 41,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 42,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 43,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 44,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 45,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 46,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 47,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 48,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 49,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 50,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 51,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 52,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 53,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 54,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 55,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 56,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 57,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 58,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 59,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 60,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 61,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 62,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 63,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 64,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 65,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 66,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 67,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 68,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 69,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 70,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 71,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 72,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 73,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 74,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 75,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 76,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 77,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 78,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 79,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 80,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 81,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 82,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 83,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 84,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 85,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 86,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 87,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 88,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 89,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 90,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 91,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 92,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 93,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 94,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 95,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 96,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 97,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 98,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 99,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 100,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 101,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 102,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 103,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 104,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 105,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 106,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 107,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 108,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 109,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 110,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 111,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 112,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 113,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 114,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 115,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 116,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 117,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 118,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 119,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        }
+      ],
+      "events": [
+        {
+          "fields": {
+            "attacker_entity": 37,
+            "damage": 10,
+            "target_entity": 39
+          },
+          "type": "BattleEvent"
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "mode": "turn_based",
+      "kind": "ranged",
+      "frames": 120,
+      "counts": [
+        {
+          "frame": 0,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 1,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 2,
+          "units": 3,
+          "damage": 2,
+          "projectile": 1,
+          "effects": 1
+        },
+        {
+          "frame": 3,
+          "units": 3,
+          "damage": 2,
+          "projectile": 1,
+          "effects": 1
+        },
+        {
+          "frame": 4,
+          "units": 3,
+          "damage": 2,
+          "projectile": 1,
+          "effects": 1
+        },
+        {
+          "frame": 5,
+          "units": 3,
+          "damage": 2,
+          "projectile": 1,
+          "effects": 1
+        },
+        {
+          "frame": 6,
+          "units": 3,
+          "damage": 2,
+          "projectile": 1,
+          "effects": 1
+        },
+        {
+          "frame": 7,
+          "units": 3,
+          "damage": 2,
+          "projectile": 1,
+          "effects": 1
+        },
+        {
+          "frame": 8,
+          "units": 3,
+          "damage": 2,
+          "projectile": 1,
+          "effects": 1
+        },
+        {
+          "frame": 9,
+          "units": 3,
+          "damage": 2,
+          "projectile": 1,
+          "effects": 1
+        },
+        {
+          "frame": 10,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 11,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 12,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 13,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 14,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 1
+        },
+        {
+          "frame": 15,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 16,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 17,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 18,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 19,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 20,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 21,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 22,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 23,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 24,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 25,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 26,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 27,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 28,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 29,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 30,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 31,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 32,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 33,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 34,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 35,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 36,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 37,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 38,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 39,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 40,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 41,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 42,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 43,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 44,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 45,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 46,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 47,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 48,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 49,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 50,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 51,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 52,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 53,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 54,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 55,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 56,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 57,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 58,
+          "units": 3,
+          "damage": 2,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 59,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 60,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 61,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 62,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 63,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 64,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 65,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 66,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 67,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 68,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 69,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 70,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 71,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 72,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 73,
+          "units": 3,
+          "damage": 1,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 74,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 75,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 76,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 77,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 78,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 79,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 80,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 81,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 82,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 83,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 84,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 85,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 86,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 87,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 88,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 89,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 90,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 91,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 92,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 93,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 94,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 95,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 96,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 97,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 98,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 99,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 100,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 101,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 102,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 103,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 104,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 105,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 106,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 107,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 108,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 109,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 110,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 111,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 112,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 113,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 114,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 115,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 116,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 117,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 118,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        },
+        {
+          "frame": 119,
+          "units": 3,
+          "damage": 0,
+          "projectile": 0,
+          "effects": 0
+        }
+      ],
+      "events": [
+        {
+          "fields": {
+            "attacker_entity": 37,
+            "damage": 7,
+            "target_entity": 39
+          },
+          "type": "BattleEvent"
+        }
+      ],
+      "all_passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "real_time-melee-002.png",
+      "sha256": "027bf42f76aeeff56a99c8ac433cccf8790629b3aa69b03c2715d40a7ffe2967"
+    },
+    {
+      "file": "real_time-melee-014.png",
+      "sha256": "10abc27cde139b878871e7abe958c188e7dc4eb4e17d05cf8b12678b4afc73a3"
+    },
+    {
+      "file": "real_time-melee-061.png",
+      "sha256": "410895b95be7df4df7ec5ac95f0684b8dbf793f2c3d61ad203150e7953ed6b45"
+    },
+    {
+      "file": "real_time-ranged-002.png",
+      "sha256": "0e712a7823bdeca55ad37403cbfcfd1be697c2c5929ad8801d29eb1488ae97f3"
+    },
+    {
+      "file": "real_time-ranged-014.png",
+      "sha256": "3b7ba799369467be1766e5fe6e2d1a2613f788a19b13786223e30b3d287bbc80"
+    },
+    {
+      "file": "real_time-ranged-061.png",
+      "sha256": "b6d59d3c586b010e62039fd68eebbf7335f7965f692170ebf8b5611348e9ed0e"
+    },
+    {
+      "file": "turn_based-melee-002.png",
+      "sha256": "027bf42f76aeeff56a99c8ac433cccf8790629b3aa69b03c2715d40a7ffe2967"
+    },
+    {
+      "file": "turn_based-melee-014.png",
+      "sha256": "10abc27cde139b878871e7abe958c188e7dc4eb4e17d05cf8b12678b4afc73a3"
+    },
+    {
+      "file": "turn_based-melee-061.png",
+      "sha256": "410895b95be7df4df7ec5ac95f0684b8dbf793f2c3d61ad203150e7953ed6b45"
+    },
+    {
+      "file": "turn_based-ranged-002.png",
+      "sha256": "0e712a7823bdeca55ad37403cbfcfd1be697c2c5929ad8801d29eb1488ae97f3"
+    },
+    {
+      "file": "turn_based-ranged-014.png",
+      "sha256": "3b7ba799369467be1766e5fe6e2d1a2613f788a19b13786223e30b3d287bbc80"
+    },
+    {
+      "file": "turn_based-ranged-061.png",
+      "sha256": "b6d59d3c586b010e62039fd68eebbf7335f7965f692170ebf8b5611348e9ed0e"
+    }
+  ],
+  "all_passed": true,
+  "capacity_claim": false,
+  "selected_overlay": false
+}

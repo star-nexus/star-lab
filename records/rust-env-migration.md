@@ -1,6 +1,6 @@
 # Rust 内核＋Python 接口迁移
 
-更新：2026-09-13。用户已批准完整迁移方案。状态：R0/R1 已完成；R2规则模式闭环已验证；R3a功能检查点已固定，窗口相关余项仍在迁移；Rust尚不可运行完整游戏。
+更新：2026-09-14。用户已批准完整迁移方案。状态：R0/R1 已完成；R2规则模式闭环已验证；R3a/b/c检查点已固定，战场展示增量已接，完整GameScene/输入等仍待迁移；Rust尚不可运行完整游戏。
 
 ## 固定节点与边界
 
@@ -26,8 +26,8 @@
 | --- | --- | --- |
 | R0 | 明确有序遍历、响应与事件顺序；Lab 重放/差分；完整回归；annotated oracle tag | 已完成 |
 | R1 | 工具链、三个 crate、稳定实体 ID、场景导入、生命周期、时钟和随机兼容 | 已完成 |
-| R2 | 实时 move/attack/观测、恢复/Fog/死亡/认领权限闭环 | 规则模式闭环已验证；窗口战斗仍待完成 |
-| R3 | 回合、完整当前玩法、BOT/结算、Python 窗口增量展示 | R3a回合/动作检查点已固定；其余进行中 |
+| R2 | 实时 move/attack/观测、恢复/Fog/死亡/认领权限闭环 | 规则模式闭环和窗口战斗内核已验证；完整应用接入依赖R3 |
+| R3 | 回合、完整当前玩法、BOT/结算、Python 窗口增量展示 | R3a回合/动作、R3b观测、R3c战场展示已固定；输入/场景/HUD/VLM/BOT/结算待补 |
 | R4 | 等价基础上的并行、活动集合、数据维护与调度成本对照 | 未开始 |
 | R5 | 容量、平台安装、tag/squash、默认切换 | 未开始 |
 
@@ -131,3 +131,31 @@ API/scene现为3（e3中间版本为2，R2为1），显式拒绝旧扩展/旧sce
 下一步：真实窗口战斗与展示增量/输入、VLM、BOT/结算。R3 尚未全部完成，1/2/4 仍串行，R4/R5 和新容量结论均未完成。正式 checkout `runs/star-rust-r3-observations`；main仍 `6a970deaee7d9b8d3939edd102973f2377edd6ac`；无关49处Agent/font删除保持不动。未合并或切默认。
 
 [阶段地图](visuals/rust-migration-map-2026-09-13/map.html) 是此前 R3a 的冻结状态图；以本文最新节点恢复。
+
+### R3c 历史开发记录（2026-09-13，已由下节固定节点取代）
+
+R3b 归档提交 `36ca087` 后继续窗口接入。当前生产工作区正开发 `native/rotk/src/presentation.rs`：按旧顺序管理攻击动画、飞行箭矢、特效、飘字的生命周期/实体ID，并输出变更行；Python `visual_projection.py` 复用旧动画数学作派生展示。`presentation_state.py` 导入最小生命周期，API/schema 暂升5（活动venv已装对应开发wheel，旧R3b正式wheel保留）。61新增检查（含Framework ID契约）、582 native契约通过；尚未全回归/归档/真实窗口可玩。下一项为资源/场景/Fog展示增量与窗口消费者/输入。源码仍有49处无关删除，勿动。
+
+
+## R3c检查点：战斗展示生命周期与派生窗口（2026-09-14）
+
+生产 `5bda51db6cd68455aa5724a6ef0eca1e66f89dda` / `rust-kernel-r3c-2026-09-14`；
+[完整证据和可执行复现](../experiments/2026-09-rust-r3-presentation/README.md)。1504完整回归（582 native）、
+3Rust/Clippy/fmt；144配置5184节点 = 864请求+4032ticks+288reset，完整状态/响应/事件差分和
+含展示增量的独立精确重放通过。采集工具1743d0effd96365fdfb5bf55c4486ef8e5cc82c2。
+真实Cocoa1200×800、Chrome开启：两种mode×近远程×选中/普通视图960帧、24PNG；
+普通视图工具079c99a73f18a7a4cae1e0a37cb1a2ae51be5610。所有帧渲染前后Rust权威状态不变。
+
+权威临时视觉ID、弹道出生帧及计时移入Rust；Python只计算插值/旋转/相机、字体与Surface。
+单位资源、领地与Fog按变化累计，多个tick后消费不会漏状态；小场景状态随delta返回。
+WorldPresentation同步派生World/空间索引/Fog日志，拒绝旧epoch/revision；窗口AnimationSystem只投影相机。
+仍未接完整GameScene/输入/HUD/VLM/BOT/结算，尚无可玩Rust默认入口或新容量认证。
+
+API/schema=5、oracle=python-r0c-3cc4ffe。正式工作树 runs/star-rust-r3-presentation，
+活动star-main venv同步安装归档release wheel，扩展SHA a60b227d02e47998762c735a047e10a90a225fb8b78727b41afcc0d68c1d3f89。
+45个归档artifact校验通过；完整raw为194433027bytes JSON，无损XZ 189416bytes，
+SHA 52fdfb03ceb4506d30d5d161b5f5cb92421298c345ab256fcae905b80d5141a5；可恢复原gzip相同SHA。
+没有删节点/抽样；compact和packing记录完整身份。main仍6a970dea，49无关删除未触碰，无merge/default切换。
+
+下一步直接R3d：把应用场景与输入接到明确命令边界，完整HUD/VLM，再处理BOT/结算与场景reset。
+R4只读并行/热路径成本、R5容量和平台安装尚待；1/2/4线程设置仍为串行Mutex。

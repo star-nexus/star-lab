@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "deliver",
+  "type": "workflow",
+  "input": "/Users/liyang/Developer/star-lab/records/visuals/rust-migration-map-2026-09-13/map.json",
+  "output": "/Users/liyang/Developer/star-lab/records/visuals/rust-migration-map-2026-09-13/map.html",
+  "specification": {
+    "sha256": "ceaf847f3045ce4a6d4894141aa6d52b538db1376ef766c1b583d58e22ba159d",
+    "bytes": 3980
+  },
+  "artifact": {
+    "sha256": "9aa70f1f5a8a4d88df683124bcf2313c548e1f64f0f43ca1a20062cc1fadc4a1",
+    "bytes": 708097
+  },
+  "validation": {
+    "checksPassed": 9,
+    "checkCount": 9,
+    "compositionProfile": "showcase",
+    "compositionStatus": "pass",
+    "errors": 0,
+    "warnings": 0
+  }
+}

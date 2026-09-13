@@ -1,0 +1,179 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "STAR · Rust 迁移进度地图",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "hidden"
+    }
+  },
+  "lanes": [
+    {
+      "id": "validated",
+      "label": "已有验证"
+    },
+    {
+      "id": "remaining",
+      "label": "剩余主线"
+    },
+    {
+      "id": "release",
+      "label": "最终交付"
+    }
+  ],
+  "mainPath": [
+    "oracle",
+    "foundation",
+    "realtime",
+    "turns",
+    "complete_game",
+    "parallel",
+    "acceptance",
+    "default_rust"
+  ],
+  "nodes": [
+    {
+      "id": "oracle",
+      "lane": "validated",
+      "col": 0,
+      "type": "database",
+      "label": "确定性基线",
+      "sublabel": "有序遍历 / 重放对照",
+      "tag": "R0 · 完成"
+    },
+    {
+      "id": "foundation",
+      "lane": "validated",
+      "col": 1,
+      "type": "backend",
+      "label": "Rust 运行底座",
+      "sublabel": "ECS / Python 绑定 / 时钟",
+      "tag": "R1 · 完成",
+      "width": 150
+    },
+    {
+      "id": "realtime",
+      "lane": "validated",
+      "col": 2,
+      "type": "backend",
+      "label": "实时规则闭环",
+      "sublabel": "移动 / 战斗 / Fog / 观测",
+      "tag": "R2 · 部分完成",
+      "width": 150
+    },
+    {
+      "id": "turns",
+      "lane": "validated",
+      "col": 3,
+      "type": "backend",
+      "label": "回合与主要动作",
+      "sublabel": "已固定 R3a 检查点",
+      "tag": "当前位置 · 已验证"
+    },
+    {
+      "id": "complete_game",
+      "lane": "remaining",
+      "col": 3,
+      "type": "frontend",
+      "label": "完整游戏接入",
+      "sublabel": "观测 / 窗口 / BOT / 结算",
+      "tag": "R3 · 进行中",
+      "width": 150
+    },
+    {
+      "id": "parallel",
+      "lane": "remaining",
+      "col": 4,
+      "type": "backend",
+      "label": "并行与成本优化",
+      "sublabel": "只读任务 / 数据维护成本",
+      "tag": "R4 · 尚未开始",
+      "width": 150
+    },
+    {
+      "id": "acceptance",
+      "lane": "remaining",
+      "col": 5,
+      "type": "security",
+      "label": "容量与平台验收",
+      "sublabel": "5000 Units / 1000 Agents",
+      "tag": "R5 · 尚未开始",
+      "width": 150
+    },
+    {
+      "id": "default_rust",
+      "lane": "release",
+      "col": 5,
+      "type": "cloud",
+      "label": "默认切换 Rust",
+      "sublabel": "tag → squash / 保留回退",
+      "tag": "全部验收通过后",
+      "width": 150
+    }
+  ],
+  "edges": [
+    {
+      "from": "oracle",
+      "to": "foundation"
+    },
+    {
+      "from": "foundation",
+      "to": "realtime"
+    },
+    {
+      "from": "realtime",
+      "to": "turns"
+    },
+    {
+      "from": "turns",
+      "to": "complete_game",
+      "variant": "emphasis"
+    },
+    {
+      "from": "complete_game",
+      "to": "parallel",
+      "variant": "dashed"
+    },
+    {
+      "from": "parallel",
+      "to": "acceptance",
+      "variant": "dashed"
+    },
+    {
+      "from": "acceptance",
+      "to": "default_rust",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "已走到哪里",
+      "items": [
+        "1298 项回归、1524 节点差分与重放通过",
+        "主要规则在 Rust 运行；尚无完整可玩窗口",
+        "截至 2026-09-13 · 源码 7f4ad57"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "剩余最大接入工作：R3",
+      "items": [
+        "补观测变体、真实窗口输入与展示增量",
+        "补 BOT / 结算 / 后端启动入口",
+        "通过全部模式的功能测试，才算功能迁完"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "最终门槛：R4 → R5",
+      "items": [
+        "30Hz / 30秒 Agent 闭环；整帧 P99 ≤ 33.33ms",
+        "请求排队 P99 ≤ 100ms；300秒测量 × 3",
+        "macOS / Linux wheel、回退验证后再切默认"
+      ]
+    }
+  ]
+}

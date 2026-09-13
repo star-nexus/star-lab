@@ -1,0 +1,8 @@
+pygame 2.6.1 (SDL 2.28.4, Python 3.13.12)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+{"action": "observation", "exception": "RuntimeError", "message": "native action observation is not implemented yet"}
+{"action": "unit_observation", "exception": "RuntimeError", "message": "native action unit_observation is not implemented yet"}
+{"action": "faction_observation", "exception": "RuntimeError", "message": "native action faction_observation is not implemented yet"}
+{"action": "limited_observation", "exception": "RuntimeError", "message": "native action limited_observation is not implemented yet"}
+{"action": "godview_observation", "exception": "RuntimeError", "message": "native action godview_observation is not implemented yet"}
+World has been reset

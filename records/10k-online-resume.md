@@ -6,9 +6,11 @@
 
 ## 当前实施：Rust 内核＋Python 接口迁移（2026-09-11）
 
-**当前恢复节点：R3a已固定（2026-09-13）。** 生产 `7f4ad57bbd6966748c0fb49deb82f6ad43fc7aee` / `rust-kernel-r3a-2026-09-13`。[报告与复现](../experiments/2026-09-rust-r3-actions/README.md)：1298完整回归、378Native契约、3Rust/Clippy；27配置1524节点/762ticks差分和精确Rust重放通过。已接回合、rest/occupy/fortify/skill兼容、计时占领活动集合与领地战斗加成。API/scene=3，活动venv已装归档wheel；旧R2重放仍必须用原tag/wheel。
+**当前恢复节点：R3b 已固定（2026-09-13）。** 生产 `d5abc70e9cda8a6820546112e6172dd9e43c1515` / `rust-kernel-r3b-2026-09-13`。[报告与复现](../experiments/2026-09-rust-r3-observations/README.md)：1443 完整回归、522 Native契约、3 Rust/Clippy；54配置4203节点/702ticks差分和精确重放通过。已补五种非图像观测与同revision缓存；有效缓存随scene导入以保留时间/from_cache；单位事实共用。保留旧 godview 非空战报属性错误。API/schema=4，活动venv已装归档release wheel。
 
-接下来补其他观测、实际窗口战斗/展示增量与输入、BOT/结算。**没有完整R3完成或新容量结论，Python默认/main不变**。正式checkout `runs/star-rust-r3-actions`；无关49处Agent/font删除不动。下面为此前各检查点历史，当前状态以上段及阶段记录最新节为准。
+此前 R0c `3cc4ffea091dcf6afa8691c217ec4b09e25d4b5f` / `rust-python-oracle-r0c-2026-09-13` 补两种观测坐标列表排序，1299回归；当前oracle为 `python-r0c-3cc4ffe`。旧R2/R3a重放仍必须用原tag/wheel。R3a动作/回合检查点 `7f4ad57bbd6966748c0fb49deb82f6ad43fc7aee` 保持不动。
+
+接下来接真实窗口战斗/展示增量与输入、VLM、BOT/结算。**没有完整R3完成或新容量结论，Python默认/main不变，1/2/4线程设置仍为串行**。正式checkout `runs/star-rust-r3-observations`；无关49处Agent/font删除不动。[阶段地图](visuals/rust-migration-map-2026-09-13/map.html) 是R3a冻结视图，当前进度以本文和阶段记录最新节为准。
 
 用户已批准完整方案；[阶段记录与恢复说明](rust-env-migration.md)。已从生产main `6a970deaee7d9b8d3939edd102973f2377edd6ac` 创建 `codex/rust-env-migration` 并用起始annotated tag固定。R0已完成：生产oracle `78cc8da3a03ffedaea58642abae8fcb710db997d`，tag `rust-python-oracle-r0-2026-09-11`，919回归和六组跨hashseed重放通过。R1也已完成：`92a6812beeaee71f4dd3650f5e7cc30f808c7895` / `rust-runtime-r1-2026-09-11`，952回归、2 Rust测试、GIL/随机兼容及本机3.13 release wheel通过。当前R2：typed玩法组件与实时闭环；尚未提供可玩的Rust后端。旧并行观测v1及负结果保留。
 切换门槛为M4上5000Units/1000Agents/30Hz，30秒闭环；完整行为兼容及macOS ARM/Linux安装验收。Python在全部gate通过前保持默认。P1/P2仍跳过；Protocol/Hub性能仍暂缓。本轮进度以阶段记录为准，不将原型或编译成功视为迁移完成。

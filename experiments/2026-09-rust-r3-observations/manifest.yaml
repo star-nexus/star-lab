@@ -1,0 +1,252 @@
+{
+  "experiment": {
+    "id": "2026-09-rust-r3-observations",
+    "title": "R3b non-image observations and revision cache",
+    "date": "2026-09-13",
+    "status": "validated intermediate functional checkpoint"
+  },
+  "source": {
+    "repository": "https://github.com/star-nexus/star.git",
+    "problem_commit": "7f4ad57bbd6966748c0fb49deb82f6ad43fc7aee",
+    "measurement_commit": "d5abc70e9cda8a6820546112e6172dd9e43c1515",
+    "fix_commit": "d5abc70e9cda8a6820546112e6172dd9e43c1515",
+    "validated_commit": "d5abc70e9cda8a6820546112e6172dd9e43c1515",
+    "branch_at_time": "codex/rust-env-migration",
+    "validated_tag": "rust-kernel-r3b-2026-09-13",
+    "oracle_commit": "3cc4ffea091dcf6afa8691c217ec4b09e25d4b5f",
+    "oracle_tag": "rust-python-oracle-r0c-2026-09-13",
+    "main_unchanged": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+    "formal_checkout": "runs/star-rust-r3-observations"
+  },
+  "tools": {
+    "probe_and_replay_sha": "f10dd87452b771f70e15af19d38a2299f4a9532c",
+    "minimal_repros": [
+      "artifacts/order-repro.py",
+      "artifacts/interface-repro.py"
+    ]
+  },
+  "hardware": {
+    "cpu": "Apple M4",
+    "logical_cpus": 10,
+    "memory_bytes": 17179869184,
+    "machine": "arm64",
+    "chrome_running": true
+  },
+  "software": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+    "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+    "native_api": 4,
+    "native_rules": "python-r0c-3cc4ffe",
+    "extension_sha256": "58595dc6fd1950caa4e40ab49e925511b254b453e8a14cccfcfea7abe1647b83",
+    "environment": {
+      "HEADLESS": null,
+      "SDL_VIDEODRIVER": null,
+      "SDL_AUDIODRIVER": null,
+      "PYTHONHASHSEED": null,
+      "STAR_SEED": null,
+      "STAR_HUB_URL": null,
+      "CARGO_TARGET_DIR": null
+    }
+  },
+  "scenario": {
+    "fixture": "rotk_env.tests.test_native_observation_variants.make",
+    "seed": 42,
+    "resident_units": 3,
+    "registered_synthetic_agents": 3,
+    "families": [
+      "normal",
+      "fog",
+      "history"
+    ],
+    "rendered": false,
+    "hub": false,
+    "real_llm": false
+  },
+  "workload": {
+    "configurations": 54,
+    "modes": [
+      "real_time",
+      "turn_based"
+    ],
+    "display_behavior": [
+      "none",
+      "dummy",
+      "window"
+    ],
+    "thread_settings": [
+      1,
+      2,
+      4
+    ],
+    "actual_parallelism": false,
+    "world_dt_sequence": "12 * 0.25 + 1/30 per configuration",
+    "wall_metadata": "injected 1720000000; then +100 per tick; datetime 2026-09-12T12:00:00",
+    "commands": {
+      "build": "export PATH=/Users/liyang/.cargo/bin:$PATH; export CARGO_TARGET_DIR=/Users/liyang/Developer/star-main/target; cargo fmt --all --check; cargo clippy --workspace --all-targets --locked -- -D warnings; cargo test -p star-core -p star-rotk --locked; uvx --from maturin==1.15.0 maturin build --release --locked --manifest-path native/python/Cargo.toml --interpreter .venv/bin/python --out /Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-observations/artifacts",
+      "install": "uv pip install --python .venv/bin/python --reinstall /Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-observations/artifacts/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+      "regression": ".venv/bin/python -m pytest -q",
+      "probe": ".venv/bin/python /Users/liyang/Developer/star-lab/tools/rust_migration/r3_observations_probe.py --source . --output /Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-observations/results/probe.json.gz",
+      "replay": ".venv/bin/python /Users/liyang/Developer/star-lab/tools/rust_migration/replay_r3_observations_probe.py --source . --input /Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-observations/results/probe.json.gz --output /Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-observations/results/replay.json"
+    },
+    "working_directory": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-observations"
+  },
+  "measurement": {
+    "warmup_seconds": null,
+    "sustained_seconds": null,
+    "capacity_test": false,
+    "guards_required": [
+      "exact decoded response and list order",
+      "full exported state including valid query cache",
+      "ordered events",
+      "identical trace across thread settings",
+      "independent exact Rust replay",
+      "clean source and tool provenance"
+    ]
+  },
+  "headline": {
+    "source_sha": "d5abc70e9cda8a6820546112e6172dd9e43c1515",
+    "tool_sha": "f10dd87452b771f70e15af19d38a2299f4a9532c",
+    "configuration_count": 54,
+    "nodes": 4203,
+    "operation_counts": {
+      "request": 3447,
+      "step": 702,
+      "reset-current": 54
+    },
+    "action_counts": {
+      "register_agent_info": 162,
+      "claim_units": 54,
+      "observation": 270,
+      "unit_observation": 1080,
+      "faction_observation": 594,
+      "limited_observation": 270,
+      "godview_observation": 540,
+      "get_faction_state": 270,
+      "fortify": 54,
+      "move": 54,
+      "occupy": 54,
+      "attack": 18,
+      "end_turn": 27
+    },
+    "event_counts": {
+      "BattleEvent": 18,
+      "TurnStartEvent": 27
+    },
+    "all_responses_states_events_equal": true,
+    "thread_settings_equal": true,
+    "independent_rust_replay": true,
+    "python_regressions": 1443,
+    "new_contracts": 144,
+    "native_contracts": 522,
+    "rust_tests": 3,
+    "clippy": "passed",
+    "raw": {
+      "raw_file": "probe.json.gz",
+      "raw_size": 22833971,
+      "raw_sha256": "d62735a1aee16c785bac29e1e14f326d7cf06134028747d62c750408cc6781f3"
+    }
+  },
+  "artifacts": {
+    "formal": [
+      {
+        "path": "results/build.log",
+        "bytes": 928,
+        "sha256": "164fc27d5f790a67e004fe5bc3b3fa6043e5fd06a0806a70878e14c4ad99141f"
+      },
+      {
+        "path": "results/clippy.log",
+        "bytes": 400,
+        "sha256": "5af1b289d40350d85275ebb5c902d6bd47f61e6a3d715aa67fb6ce0bf4905d1d"
+      },
+      {
+        "path": "results/compact.json",
+        "bytes": 1077,
+        "sha256": "c0b8c1aeba39326d4c35b1997dbc15c79b3213327d28a7ab260a6d925f11c11c"
+      },
+      {
+        "path": "results/environment.json",
+        "bytes": 1016,
+        "sha256": "ccd78c8f483c9d65e25a3f7c27105c7de89309131733807d9364034ef4316695"
+      },
+      {
+        "path": "results/fmt.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "results/interface-after.log",
+        "bytes": 697,
+        "sha256": "fe3cefc8e0377bf1f52d97cfe3016be208e3c7e8fadde271f4b3890c2d51c719"
+      },
+      {
+        "path": "results/interface-before.log",
+        "bytes": 783,
+        "sha256": "b4c0e3e67a62705d931a26270c0925d7d5df162a75274b648eff74994fc2ce8c"
+      },
+      {
+        "path": "results/oracle-regression.log",
+        "bytes": 1542,
+        "sha256": "293f4b80d1321e1d7ca5e1e36d48d70241c07460bd7f28b043b3c73962ad4c50"
+      },
+      {
+        "path": "results/order-after.log",
+        "bytes": 212,
+        "sha256": "4832fa95abb0f556112f109095ffba6f0e2f4c364f2db3f04459a8f4ce3d9849"
+      },
+      {
+        "path": "results/order-before.log",
+        "bytes": 214,
+        "sha256": "50e3d7bd3f320b50d63f8f1d2d327d2181106c0bbdf1d3e85c9fbbbbbcc21484"
+      },
+      {
+        "path": "results/probe.json.gz",
+        "bytes": 22833971,
+        "sha256": "d62735a1aee16c785bac29e1e14f326d7cf06134028747d62c750408cc6781f3"
+      },
+      {
+        "path": "results/probe.summary.json",
+        "bytes": 15254,
+        "sha256": "78b77dab4b26329b313d768d529c5fb3bdc37f6fdc0f62d74c358a53011d532a"
+      },
+      {
+        "path": "results/regression.log",
+        "bytes": 1702,
+        "sha256": "da3b5c83418895047ef12881e3984679606b0a1d81a8b4f4ac22b3622dda45c3"
+      },
+      {
+        "path": "results/replay.json",
+        "bytes": 486,
+        "sha256": "1a0b8b5684c1e3ad7eeea646fa13d24778b38a4ea455e36c9fb5aa3f839c0a57"
+      },
+      {
+        "path": "results/rust-tests.log",
+        "bytes": 1253,
+        "sha256": "7171f6752bdeb3ddf6b1bab333498ad66d5258547a2e8016d82a0e32cf04518c"
+      },
+      {
+        "path": "artifacts/interface-repro.py",
+        "bytes": 1157,
+        "sha256": "7367a2925317b2a99cc96a30a143befa7885a03f165d368daf96e078c35bd730"
+      },
+      {
+        "path": "artifacts/order-repro.py",
+        "bytes": 771,
+        "sha256": "b7af750a035db9047baa01a5495f12d7ad0814769a3a8d108794f2e2048af4d8"
+      },
+      {
+        "path": "artifacts/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+        "bytes": 1165007,
+        "sha256": "f29b1344e4af16032bee8c3e26bb43257e5de7207d5723eb78a0d497e67de21b"
+      }
+    ],
+    "external": []
+  },
+  "revisit_when": [
+    "VLM/window handoff",
+    "observation cache semantics change",
+    "R4 parallel jobs",
+    "R5 capacity and platform acceptance"
+  ]
+}

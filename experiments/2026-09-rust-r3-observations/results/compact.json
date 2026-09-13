@@ -1,0 +1,43 @@
+{
+  "source_sha": "d5abc70e9cda8a6820546112e6172dd9e43c1515",
+  "tool_sha": "f10dd87452b771f70e15af19d38a2299f4a9532c",
+  "configuration_count": 54,
+  "nodes": 4203,
+  "operation_counts": {
+    "request": 3447,
+    "step": 702,
+    "reset-current": 54
+  },
+  "action_counts": {
+    "register_agent_info": 162,
+    "claim_units": 54,
+    "observation": 270,
+    "unit_observation": 1080,
+    "faction_observation": 594,
+    "limited_observation": 270,
+    "godview_observation": 540,
+    "get_faction_state": 270,
+    "fortify": 54,
+    "move": 54,
+    "occupy": 54,
+    "attack": 18,
+    "end_turn": 27
+  },
+  "event_counts": {
+    "BattleEvent": 18,
+    "TurnStartEvent": 27
+  },
+  "all_responses_states_events_equal": true,
+  "thread_settings_equal": true,
+  "independent_rust_replay": true,
+  "python_regressions": 1443,
+  "new_contracts": 144,
+  "native_contracts": 522,
+  "rust_tests": 3,
+  "clippy": "passed",
+  "raw": {
+    "raw_file": "probe.json.gz",
+    "raw_size": 22833971,
+    "raw_sha256": "d62735a1aee16c785bac29e1e14f326d7cf06134028747d62c750408cc6781f3"
+  }
+}

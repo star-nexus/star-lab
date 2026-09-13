@@ -1,0 +1,27 @@
+{
+  "source_sha": "d5abc70e9cda8a6820546112e6172dd9e43c1515",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "executable": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-observations/.venv/bin/python",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "cpu": "Apple M4",
+  "logical_cpus": 10,
+  "memory_bytes": 17179869184,
+  "macos": "ProductName:\t\tmacOS\nProductVersion:\t\t26.5.2\nBuildVersion:\t\t25F84\n",
+  "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+  "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+  "native_api": 4,
+  "native_rules": "python-r0c-3cc4ffe",
+  "extension_sha256": "58595dc6fd1950caa4e40ab49e925511b254b453e8a14cccfcfea7abe1647b83",
+  "environment": {
+    "HEADLESS": null,
+    "SDL_VIDEODRIVER": null,
+    "SDL_AUDIODRIVER": null,
+    "PYTHONHASHSEED": null,
+    "STAR_SEED": null,
+    "STAR_HUB_URL": null,
+    "CARGO_TARGET_DIR": null
+  },
+  "chrome_running": true,
+  "rendered_workload": false
+}

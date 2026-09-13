@@ -1,0 +1,11 @@
+{
+  "source_sha": "d5abc70e9cda8a6820546112e6172dd9e43c1515",
+  "extension_sha256": "58595dc6fd1950caa4e40ab49e925511b254b453e8a14cccfcfea7abe1647b83",
+  "input_file": "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-observations/results/probe.json.gz",
+  "input_sha256": "d62735a1aee16c785bac29e1e14f326d7cf06134028747d62c750408cc6781f3",
+  "cases": 54,
+  "operations": 4203,
+  "thread_settings_equal": true,
+  "all_passed": true,
+  "replay_seconds": 3.5974573330022395
+}

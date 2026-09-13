@@ -117,3 +117,17 @@ Typed Team维护认领反向索引，保留冲突/强转/FIFO/maxlen；Observati
 API/scene现为3（e3中间版本为2，R2为1），显式拒绝旧扩展/旧scene混用。活动 `.venv` 已安装本检查点归档release wheel，extension SHA256 `987b450aa0d8df55170fe726d994a5372e76bb3e6978becc58dcea2e2049a7c3`。raw SHA256 `c465b36fc798d61368307f1f8ceb1c708e3038b73e529fcd714ad299a07c4358`，12项artifact校验通过。
 
 **完整R3与容量验收仍未完成**：无真正绘制，display是行为配置，攻击只在none测；未运行本版5000规模，不更新Frontier。下一步补其他观测变体、窗口战斗/特效实体ID与Fog展示增量、输入命令，再BOT/结算及各入口，之后R4并行和R5正式容量/平台验证。Python默认，main仍6a970dea，无merge/push；无关49个Agent/font删除原样保留。
+
+### R0c 补充（2026-09-13，R3b 开发前）
+
+生产 `3cc4ffea091dcf6afa8691c217ec4b09e25d4b5f` / `rust-python-oracle-r0c-2026-09-13`，1299 完整回归。旧 `observation.visible_environment` 与 named `unit_observation.visible_terrain` 未按坐标排序；本次只补排序，不改变内容或 visible_area 的 Python set 类型。前后反例在 `experiments/2026-09-rust-r3-observations`，该实验仍在进行。后续 Rust 对照此规范化基线；旧 tag/wheel 不动。
+
+### R3b 已固定：非图像观测（2026-09-13）
+
+生产 `d5abc70e9cda8a6820546112e6172dd9e43c1515` / `rust-kernel-r3b-2026-09-13`；[完整报告](../experiments/2026-09-rust-r3-observations/README.md)。1443 全回归、522 Native（新增144）、3 Rust/Clippy；54 配置4203节点/702 ticks 差分及精确重放通过。工具 `f10dd87452b771f70e15af19d38a2299f4a9532c`。Raw SHA `d62735a1aee16c785bac29e1e14f326d7cf06134028747d62c750408cc6781f3`，22833971bytes。
+
+五个非图像观测已接：observation/unit/faction/limited/godview。缓存只在同 revision 共享，导入有效缓存以保留时间/from_cache；同一份 Unit 基础信息构造供 get_faction_state 和旧观测使用。保留 godview 非空 BattleLog 的旧属性错误及各查询历史语义。API/schema=4，oracle `python-r0c-3cc4ffe`；活动 venv 已安装归档 release wheel。旧 tag/wheel 原样保留。
+
+下一步：真实窗口战斗与展示增量/输入、VLM、BOT/结算。R3 尚未全部完成，1/2/4 仍串行，R4/R5 和新容量结论均未完成。正式 checkout `runs/star-rust-r3-observations`；main仍 `6a970deaee7d9b8d3939edd102973f2377edd6ac`；无关49处Agent/font删除保持不动。未合并或切默认。
+
+[阶段地图](visuals/rust-migration-map-2026-09-13/map.html) 是此前 R3a 的冻结状态图；以本文最新节点恢复。

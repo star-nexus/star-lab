@@ -1,0 +1,8 @@
+pygame 2.6.1 (SDL 2.28.4, Python 3.13.12)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+{"action": "observation", "success": true, "result_keys": ["result", "success", "unit_info", "visible_environment"]}
+{"action": "unit_observation", "success": true, "result_keys": ["data", "metadata", "operation", "success"]}
+{"action": "faction_observation", "success": true, "result_keys": ["data", "metadata", "operation", "success"]}
+{"action": "limited_observation", "success": true, "result_keys": ["data", "metadata", "operation", "success"]}
+{"action": "godview_observation", "success": true, "result_keys": ["data", "metadata", "operation", "success"]}
+World has been reset

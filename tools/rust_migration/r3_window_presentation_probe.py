@@ -61,7 +61,9 @@ def main():
                 vision.update(0.0)
                 source_world.add_singleton_component(
                     c.UIState(
-                        view_faction=Faction.WEI, show_coordinates=True, selected_unit=a
+                        view_faction=Faction.WEI,
+                        show_coordinates=True,
+                        selected_unit=a if args.selection else None,
                     )
                 )
                 camera = source_world.get_singleton_component(c.Camera)

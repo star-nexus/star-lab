@@ -16,6 +16,11 @@ def main():
     p.add_argument("--source", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--driver", choices=("cocoa", "dummy"), default="cocoa")
+    p.add_argument(
+        "--selection",
+        action="store_true",
+        help="Show the legacy selection/range overlays",
+    )
     args = p.parse_args()
     source = args.source.resolve()
     output = args.output.resolve()
@@ -209,6 +214,7 @@ def main():
             screenshots=screenshots,
             all_passed=True,
             capacity_claim=False,
+            selected_overlay=args.selection,
         )
         assert not raw["source_dirty"] and not raw["tool_dirty"]
         (output / "render.json").write_text(json.dumps(raw, indent=2) + "\n")

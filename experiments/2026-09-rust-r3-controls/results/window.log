@@ -1,0 +1,101 @@
+pygame 2.6.1 (SDL 2.28.4, Python 3.13.12)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+Creating UI buttons...
+✓ Created End Turn button (Entity ID: 42)
+✓ Created Settings button (Entity ID: 43)
+✓ Created Help button (Entity ID: 44)
+✓ Created Statistics button (Entity ID: 45)
+UI buttons creation completed!
+World has been reset
+[Integrated] Map Render System initialized - performance + features
+[Integrated] Unit Render System initialized - performance + features
+[Integrated] Loaded 6 terrain textures
+[DEBUG] Loaded 9 unit textures, pre-cached 54 variants
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+Coordinates: ON
+Clear selection
+Executing action: attack on unit 37
+Clear selection
+Fog off - whole map visible to human, BOT, and agents
+Switch to Shu view
+Switch to shu view - only that faction's vision is visible
+Switch to Wei view
+Switch to wei view - only that faction's vision is visible
+End current turn
+World has been reset
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+Creating UI buttons...
+✓ Created End Turn button (Entity ID: 42)
+✓ Created Settings button (Entity ID: 43)
+✓ Created Help button (Entity ID: 44)
+✓ Created Statistics button (Entity ID: 45)
+UI buttons creation completed!
+World has been reset
+[Integrated] Map Render System initialized - performance + features
+[Integrated] Unit Render System initialized - performance + features
+[Integrated] Loaded 6 terrain textures
+[DEBUG] Loaded 9 unit textures, pre-cached 54 variants
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+Coordinates: ON
+Clear selection
+Executing action: attack on unit 37
+Clear selection
+Fog off - whole map visible to human, BOT, and agents
+Switch to Shu view
+Switch to shu view - only that faction's vision is visible
+Switch to Wei view
+Switch to wei view - only that faction's vision is visible
+End current turn
+World has been reset
+🎮 Game start: shu acts first
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+Creating UI buttons...
+✓ Created End Turn button (Entity ID: 42)
+✓ Created Settings button (Entity ID: 43)
+✓ Created Help button (Entity ID: 44)
+✓ Created Statistics button (Entity ID: 45)
+UI buttons creation completed!
+World has been reset
+[Integrated] Map Render System initialized - performance + features
+[Integrated] Unit Render System initialized - performance + features
+[Integrated] Loaded 6 terrain textures
+[DEBUG] Loaded 9 unit textures, pre-cached 54 variants
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+Coordinates: ON
+Clear selection
+Executing action: attack on unit 37
+Clear selection
+Fog off - whole map visible to human, BOT, and agents
+Switch to Shu view
+Switch to shu view - only that faction's vision is visible
+Switch to Wei view
+Switch to wei view - only that faction's vision is visible
+End current turn
+World has been reset
+🎮 Game start: shu acts first
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+Creating UI buttons...
+✓ Created End Turn button (Entity ID: 42)
+✓ Created Settings button (Entity ID: 43)
+✓ Created Help button (Entity ID: 44)
+✓ Created Statistics button (Entity ID: 45)
+UI buttons creation completed!
+World has been reset
+[Integrated] Map Render System initialized - performance + features
+[Integrated] Unit Render System initialized - performance + features
+[Integrated] Loaded 6 terrain textures
+[DEBUG] Loaded 9 unit textures, pre-cached 54 variants
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+Coordinates: ON
+Clear selection
+Executing action: attack on unit 37
+Clear selection
+Fog off - whole map visible to human, BOT, and agents
+Switch to Shu view
+Switch to shu view - only that faction's vision is visible
+Switch to Wei view
+Switch to wei view - only that faction's vision is visible
+End current turn
+World has been reset
+{"all_passed": true, "frames": 480, "driver": "cocoa"}

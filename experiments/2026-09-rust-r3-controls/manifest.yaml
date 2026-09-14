@@ -1,0 +1,335 @@
+{
+  "experiment": {
+    "id": "2026-09-rust-r3-controls",
+    "title": "R3d1 local human command and input handoff",
+    "date": "2026-09-14",
+    "status": "validated checkpoint"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "5bda51db6cd68455aa5724a6ef0eca1e66f89dda",
+    "measurement_commit": "c5ae37f5fab2e3563af136f8868d8fc7227c1f23",
+    "fix_commit": "c5ae37f5fab2e3563af136f8868d8fc7227c1f23",
+    "validated_commit": "c5ae37f5fab2e3563af136f8868d8fc7227c1f23",
+    "branch_at_time": "codex/rust-env-migration",
+    "validated_tag": "rust-kernel-r3d1-2026-09-14",
+    "main_unchanged": "6a970deaee7d9b8d3939edd102973f2377edd6ac"
+  },
+  "tools": {
+    "differential": "b69ffd73ef044fb05b0e0c60380b889ed4632a81",
+    "replay_and_window": "99cfdd6692f7e99658c8111cbcd9b073934b3ca3",
+    "interface_repro": "artifacts/interface-repro.py in archive commit"
+  },
+  "hardware": {
+    "hw.model": "Mac16,10",
+    "machdep.cpu.brand_string": "Apple M4",
+    "hw.logicalcpu": "10",
+    "hw.memsize": "17179869184"
+  },
+  "software": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "os": "ProductName:\t\tmacOS\nProductVersion:\t\t26.5.2\nBuildVersion:\t\t25F84",
+    "api": 6,
+    "oracle": "python-r0c-3cc4ffe",
+    "extension_sha256": "527c60fcca55aec5b4d2481cd113c78663eb1c3f631c6e72d83964c37fe98842",
+    "locks": {
+      "uv.lock": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+      "Cargo.lock": "8b2faed1cbbae1f3c75a3b68c1743c6a02da99f370bfd2ee05578aefe8732461",
+      "rust-toolchain.toml": "887f9be066a15585a2c583578e84b0fcb541126d81546276bad3d2ff00d61167"
+    }
+  },
+  "scenario": {
+    "units": 3,
+    "agents_differential": 2,
+    "agents_window": 0,
+    "seed": 42,
+    "critical_rng_seed": 1
+  },
+  "workload": {
+    "displays": [
+      "none",
+      "dummy",
+      "window"
+    ],
+    "modes": [
+      "real_time",
+      "turn_based"
+    ],
+    "combat": [
+      "melee",
+      "ranged"
+    ],
+    "death": [
+      false,
+      true
+    ],
+    "critical": [
+      false,
+      true
+    ],
+    "threads": [
+      1,
+      2,
+      4
+    ],
+    "execution": "single writer; thread settings remain serial",
+    "window_dt": 0.03333333333333333,
+    "window_frames": 480,
+    "window_driver": "cocoa",
+    "window_size": [
+      1200,
+      800
+    ],
+    "initial_camera": [
+      500,
+      400
+    ],
+    "later_camera": [
+      580,
+      400
+    ],
+    "zoom": [
+      1.0,
+      0.5,
+      1.25
+    ],
+    "fog": "initial enabled range4; SDL keys1/3/2 toggle and change spectator view",
+    "coordinates": "SDL key V enables",
+    "chrome_open": true
+  },
+  "measurement": {
+    "regression_tests": 1618,
+    "new_contracts": 114,
+    "native_contracts": 696,
+    "rust_tests": 3,
+    "full_state_and_response": true,
+    "exact_events": true,
+    "independent_replay": true,
+    "display_deltas_equal_on_replay": true,
+    "stale_epoch_before_write_and_drain": true,
+    "capacity_acceptance": false,
+    "performance_frontier_update": false,
+    "all_passed": true,
+    "cases": 144,
+    "nodes": 7128,
+    "operation_counts": {
+      "request": 1008,
+      "control": 1440,
+      "capture": 144,
+      "step": 4176,
+      "reset-current": 288,
+      "keyboard-turn": 72
+    },
+    "thread_settings": [
+      1,
+      2,
+      4
+    ],
+    "thread_execution": "serial Mutex, not parallel jobs",
+    "raw_json_bytes": 265288799,
+    "raw_json_sha256": "72d729ab5e594711838969d4d84a2b2640612eecaa6998651be9858d886ac34d",
+    "window_cases": 4,
+    "window_frames": 480,
+    "screenshots": 16,
+    "input_events": {
+      "SDL_KEYDOWN": 28,
+      "SDL_MOUSEBUTTONDOWN": 20,
+      "toolbar_command": 4
+    },
+    "capacity_claim": false
+  },
+  "exclusions": [
+    "complete GameScene/CLI backend selection",
+    "full HUD and VLM",
+    "BOT and post-game LLM/report collection",
+    "manual play",
+    "Protocol/Hub and real LLM",
+    "5000/1000 capacity",
+    "parallel speedup",
+    "cross-platform wheel matrix"
+  ],
+  "decision": {
+    "status": "accept local command checkpoint; continue R3d scene integration",
+    "default_backend": "python",
+    "merge": "none",
+    "unrelated_deletions_preserved": 49
+  },
+  "artifacts": [
+    {
+      "path": "artifacts/interface-repro.py",
+      "bytes": 1224,
+      "sha256": "0f6136e450512bcf973ea50500744bef47f1721e17010039073664a4f7afe81c"
+    },
+    {
+      "path": "artifacts/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+      "bytes": 1230796,
+      "sha256": "5359f17ffd9c96765057f95ef97a164dcd9c08595ce0955536b7f1b179fd44c6"
+    },
+    {
+      "path": "results/after.json",
+      "bytes": 574,
+      "sha256": "b618dd2941dc7f1b3fe53b90073f03be3556a973d07d2cb238d742bd45914089"
+    },
+    {
+      "path": "results/before.json",
+      "bytes": 279,
+      "sha256": "f6a51f017ab082bb83ec7867097b308d1053bc4fa373ae8eba1a988457a490c5"
+    },
+    {
+      "path": "results/build.log",
+      "bytes": 674,
+      "sha256": "7ac9205cb8fddded175cb8a68faaf856ef6b120837c89b9da079f11b359d9d8c"
+    },
+    {
+      "path": "results/clippy.log",
+      "bytes": 388,
+      "sha256": "416d8ce1cafb622c4929a81d814b5b5f7f6141b946087fb7d202ab5bf3c4613d"
+    },
+    {
+      "path": "results/compact.json",
+      "bytes": 639,
+      "sha256": "4c96d591ed219b1c4a8752a4be01e579e3a4b77b3f527d4fe09eaa2c2f165435"
+    },
+    {
+      "path": "results/environment.json",
+      "bytes": 917,
+      "sha256": "73f1a6dd3147390d94e6ca4bc96b42ab6ca31db6661dd275178f83774adcfb83"
+    },
+    {
+      "path": "results/fmt.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/install.log",
+      "bytes": 1641,
+      "sha256": "93fcd450a4ec63f34d792526fadbc126960e62431edb8d4fc5fa2537e98b945d"
+    },
+    {
+      "path": "results/probe.json.xz",
+      "bytes": 246288,
+      "sha256": "76d263dc02592c76dcee7d6ab9612e0ba868303d33dd36865ae23ea2f9fc0813"
+    },
+    {
+      "path": "results/probe.log",
+      "bytes": 55,
+      "sha256": "29724a5a6c60fff0862ea542faefd970d3c05cc424e991b665f0fafaf562e939"
+    },
+    {
+      "path": "results/probe.summary.json",
+      "bytes": 45749,
+      "sha256": "03686af5886fdc570fb8c89ce9cd80b09d2a03e1dcee6ba39b316e325b615f54"
+    },
+    {
+      "path": "results/regression.log",
+      "bytes": 1862,
+      "sha256": "5f6b72d14bf3e7aa31adf6a154f467253d63f7024b4109910e4b1878481b273d"
+    },
+    {
+      "path": "results/replay.json",
+      "bytes": 246,
+      "sha256": "741d9da18cdbade057c2e547f611d943a6c2b9d69f6a847326043f4145ce9c28"
+    },
+    {
+      "path": "results/replay.log",
+      "bytes": 232,
+      "sha256": "d9c0199b309c18006d20d87b27970bc8950d89ff706f95d63a8aa90ba7479c2d"
+    },
+    {
+      "path": "results/rust-test.log",
+      "bytes": 1245,
+      "sha256": "fbf047b6a76b5edb02531dadbcab45c4d85b18e6ea52dffa4403902aaba9f3f8"
+    },
+    {
+      "path": "results/window/real_time-melee-000.png",
+      "bytes": 217775,
+      "sha256": "272a03c6b82f31e3024ea29611fd55e0ff2365b8cfa2cc1b878a23c90eac46b9"
+    },
+    {
+      "path": "results/window/real_time-melee-010.png",
+      "bytes": 183060,
+      "sha256": "8ae59a9c7b6def5201d8af88012c90ee968b7bdc83e9d1b31dc829b5c6b24857"
+    },
+    {
+      "path": "results/window/real_time-melee-016.png",
+      "bytes": 75947,
+      "sha256": "7f8f25282cec49b7974b4b072dfdf6bb0045f94c5b1e3404311a2b0729a1ce8b"
+    },
+    {
+      "path": "results/window/real_time-melee-055.png",
+      "bytes": 224264,
+      "sha256": "5932d1f13f7b92e2c71b2c751ebfb7700057f8b0a89bca72515e0bc38c63bbba"
+    },
+    {
+      "path": "results/window/real_time-ranged-000.png",
+      "bytes": 217585,
+      "sha256": "8685fdc0e6716591cfe5bd2f0c9f74f104f3d70a8482110d048c25cf804bef6e"
+    },
+    {
+      "path": "results/window/real_time-ranged-010.png",
+      "bytes": 183236,
+      "sha256": "d5a49a78657c2f671a147277922232c911716d847b13f79a65f5a3cc4f33804b"
+    },
+    {
+      "path": "results/window/real_time-ranged-016.png",
+      "bytes": 75620,
+      "sha256": "98ad737713fbb75b44ef08d1c51c20b63ab632799d8699480eefbe6032203a0b"
+    },
+    {
+      "path": "results/window/real_time-ranged-055.png",
+      "bytes": 224056,
+      "sha256": "454eea8f39a1398ef2542159c2466d99241a36c9e7fb94bb35a3f869a2c3f968"
+    },
+    {
+      "path": "results/window/render.json",
+      "bytes": 112372,
+      "sha256": "be62ec3828a3fcb537763833c50b63a8da3dc35f027f0248eaa1b294642f6abc"
+    },
+    {
+      "path": "results/window/turn_based-melee-000.png",
+      "bytes": 217775,
+      "sha256": "272a03c6b82f31e3024ea29611fd55e0ff2365b8cfa2cc1b878a23c90eac46b9"
+    },
+    {
+      "path": "results/window/turn_based-melee-010.png",
+      "bytes": 183060,
+      "sha256": "8ae59a9c7b6def5201d8af88012c90ee968b7bdc83e9d1b31dc829b5c6b24857"
+    },
+    {
+      "path": "results/window/turn_based-melee-016.png",
+      "bytes": 75947,
+      "sha256": "7f8f25282cec49b7974b4b072dfdf6bb0045f94c5b1e3404311a2b0729a1ce8b"
+    },
+    {
+      "path": "results/window/turn_based-melee-055.png",
+      "bytes": 224264,
+      "sha256": "5932d1f13f7b92e2c71b2c751ebfb7700057f8b0a89bca72515e0bc38c63bbba"
+    },
+    {
+      "path": "results/window/turn_based-ranged-000.png",
+      "bytes": 217585,
+      "sha256": "8685fdc0e6716591cfe5bd2f0c9f74f104f3d70a8482110d048c25cf804bef6e"
+    },
+    {
+      "path": "results/window/turn_based-ranged-010.png",
+      "bytes": 183236,
+      "sha256": "d5a49a78657c2f671a147277922232c911716d847b13f79a65f5a3cc4f33804b"
+    },
+    {
+      "path": "results/window/turn_based-ranged-016.png",
+      "bytes": 75620,
+      "sha256": "98ad737713fbb75b44ef08d1c51c20b63ab632799d8699480eefbe6032203a0b"
+    },
+    {
+      "path": "results/window/turn_based-ranged-055.png",
+      "bytes": 224056,
+      "sha256": "454eea8f39a1398ef2542159c2466d99241a36c9e7fb94bb35a3f869a2c3f968"
+    },
+    {
+      "path": "results/window.log",
+      "bytes": 4033,
+      "sha256": "946617e95efef5518233f2e20843ad2e5fa829602c3da8991dac11065d280162"
+    }
+  ]
+}

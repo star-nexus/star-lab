@@ -6,15 +6,17 @@
 
 ## 当前实施：Rust 内核＋Python 接口迁移（2026-09-11）
 
-**当前节点：R3c 已固定（2026-09-14）。** 生产 `5bda51db6cd68455aa5724a6ef0eca1e66f89dda` / annotated tag `rust-kernel-r3c-2026-09-14`。[报告与复现](../experiments/2026-09-rust-r3-presentation/README.md)：1504完整回归（582 native契约）、3Rust/Clippy；144配置5184节点/4032ticks差分和独立精确重放通过。Rust战斗/弹道/飘字生命周期与ID已接，资源/领地/Fog使用变化队列；Python消费展示增量，复用旧绘制缓存。真实Cocoa近战/远程、实时/回合制、选中/普通视图共960帧通过，24张截图归档；不是鼠标键盘或完整GameScene验收。API/schema=5、oracle=python-r0c-3cc4ffe；活动venv已安装本检查点归档release wheel。正式checkout `runs/star-rust-r3-presentation`，45个证据checksum通过。
+**当前节点：R3d1 已固定（2026-09-14）。** 生产 `c5ae37f5fab2e3563af136f8868d8fc7227c1f23` / annotated tag `rust-kernel-r3d1-2026-09-14`。[报告与复现](../experiments/2026-09-rust-r3-controls/README.md)。本地移动/攻击/等待/驻守/筑垒/Fog/工具栏命令、Python输入/面板适配已接；UI只操作派生数据，命令返回前刷新。旧controller的epoch在native锁内写前/取增量前检查，不能污染reset后的新世界。保留UI/Agent、键盘/工具栏的历史差异。1618完整回归（696 Native、114新契约）、3Rust/Clippy/fmt；144配置7128节点精确差分和重放通过；真实Cocoa4配置480帧、48个合成SDL事件与4次工具栏直接命令、16PNG归档。**不等于完整GameScene/物理鼠标/容量验收**。API6/schema5、oracle=python-r0c-3cc4ffe；活动venv安装本检查点归档release wheel，扩展SHA `527c60fcca55aec5b4d2481cd113c78663eb1c3f631c6e72d83964c37fe98842`。正式checkout `runs/star-rust-r3-controls`。
 
-**活动 R3d（尚未验收）**：在上述 R3c 分支节点继续实现可信本地 UI 命令与输入适配。当前源码 API=6/schema=5；活动 venv 暂为归档 API5 wheel，需构建匹配 API6 后才能运行新接口。中断后确认无残留编译/测试进程；已有 Clippy 通过，尚未新增 Python 契约或场景验收。键盘与工具栏结束回合、UI wait/garrison 与 Agent rest 的历史差异分别保留，不合并玩法。49处无关删除保持不动。
+下一步 **R3d2：GameScene/后端选择与输入生命周期**，再接完整HUD/VLM、BOT和结算。R3d1本地回放显式关闭LLMSystem帧更新；post-game通知/报告收集仍必须在后续host集成中验证。**R3/R4/R5仍未完成，Python默认/main不变，1/2/4线程仍串行，无新5000容量结论。**
+
+**此前 R3c 已固定（2026-09-14）。** 生产 `5bda51db6cd68455aa5724a6ef0eca1e66f89dda` / annotated tag `rust-kernel-r3c-2026-09-14`。[报告与复现](../experiments/2026-09-rust-r3-presentation/README.md)：1504完整回归（582 native契约）、3Rust/Clippy；144配置5184节点/4032ticks差分和独立精确重放通过。Rust战斗/弹道/飘字生命周期与ID已接，资源/领地/Fog使用变化队列；Python消费展示增量，复用旧绘制缓存。真实Cocoa近战/远程、实时/回合制、选中/普通视图共960帧通过，24张截图归档；不是鼠标键盘或完整GameScene验收。API/schema=5、oracle=python-r0c-3cc4ffe；活动venv已安装本检查点归档release wheel。正式checkout `runs/star-rust-r3-presentation`，45个证据checksum通过。
 
 **此前 R3b：** 生产 `d5abc70e9cda8a6820546112e6172dd9e43c1515` / `rust-kernel-r3b-2026-09-13`。[报告与复现](../experiments/2026-09-rust-r3-observations/README.md)：1443 完整回归、522 Native契约、3 Rust/Clippy；54配置4203节点/702ticks差分和精确重放通过。已补五种非图像观测与同revision缓存；有效缓存随scene导入以保留时间/from_cache；单位事实共用。保留旧 godview 非空战报属性错误。API/schema=4，活动venv已装归档release wheel。
 
 此前 R0c `3cc4ffea091dcf6afa8691c217ec4b09e25d4b5f` / `rust-python-oracle-r0c-2026-09-13` 补两种观测坐标列表排序，1299回归；当前oracle为 `python-r0c-3cc4ffe`。旧R2/R3a重放仍必须用原tag/wheel。R3a动作/回合检查点 `7f4ad57bbd6966748c0fb49deb82f6ad43fc7aee` 保持不动。
 
-下一步 R3d：GameScene/输入命令与后端选择、完整HUD/VLM，再补BOT/结算与场景生命周期。**没有完整R3完成或新容量结论，Python默认/main不变，1/2/4线程设置仍为串行**。R3b历史checkout `runs/star-rust-r3-observations` 保留原API4 wheel；无关49处Agent/font删除不动。[阶段地图](visuals/rust-migration-map-2026-09-13/map.html) 是R3a冻结视图，当前进度以本文和阶段记录最新节为准。
+后续R3d场景/HUD/VLM/BOT/结算范围见上方最新R3d1节点。**没有完整R3完成或新容量结论，Python默认/main不变，1/2/4线程设置仍为串行**。R3b历史checkout `runs/star-rust-r3-observations` 保留原API4 wheel；无关49处Agent/font删除不动。[阶段地图](visuals/rust-migration-map-2026-09-13/map.html) 是R3a冻结视图，当前进度以本文和阶段记录最新节为准。
 
 用户已批准完整方案；[阶段记录与恢复说明](rust-env-migration.md)。已从生产main `6a970deaee7d9b8d3939edd102973f2377edd6ac` 创建 `codex/rust-env-migration` 并用起始annotated tag固定。R0已完成：生产oracle `78cc8da3a03ffedaea58642abae8fcb710db997d`，tag `rust-python-oracle-r0-2026-09-11`，919回归和六组跨hashseed重放通过。R1也已完成：`92a6812beeaee71f4dd3650f5e7cc30f808c7895` / `rust-runtime-r1-2026-09-11`，952回归、2 Rust测试、GIL/随机兼容及本机3.13 release wheel通过。当前R2：typed玩法组件与实时闭环；尚未提供可玩的Rust后端。旧并行观测v1及负结果保留。
 切换门槛为M4上5000Units/1000Agents/30Hz，30秒闭环；完整行为兼容及macOS ARM/Linux安装验收。Python在全部gate通过前保持默认。P1/P2仍跳过；Protocol/Hub性能仍暂缓。本轮进度以阶段记录为准，不将原型或编译成功视为迁移完成。

@@ -1,0 +1,3876 @@
+{
+  "source_sha": "c5ae37f5fab2e3563af136f8868d8fc7227c1f23",
+  "source_dirty": "",
+  "tool_sha": "99cfdd6692f7e99658c8111cbcd9b073934b3ca3",
+  "tool_dirty": "",
+  "extension_sha256": "527c60fcca55aec5b4d2481cd113c78663eb1c3f631c6e72d83964c37fe98842",
+  "api": 6,
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "driver": "cocoa",
+  "window": [
+    1200,
+    800
+  ],
+  "chrome_running": true,
+  "cases": [
+    {
+      "mode": "real_time",
+      "kind": "melee",
+      "inputs": [
+        {
+          "frame": 0,
+          "kind": "SDL_KEYDOWN",
+          "key": 118
+        },
+        {
+          "frame": 0,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            500,
+            400
+          ],
+          "label": "select moving unit"
+        },
+        {
+          "frame": 1,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            425,
+            270
+          ],
+          "label": "move destination"
+        },
+        {
+          "frame": 6,
+          "kind": "SDL_KEYDOWN",
+          "key": 27
+        },
+        {
+          "frame": 6,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            425,
+            357
+          ],
+          "label": "select attacker"
+        },
+        {
+          "frame": 8,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            1010,
+            200
+          ],
+          "label": "attack panel button"
+        },
+        {
+          "frame": 9,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            575,
+            270
+          ],
+          "label": "attack target"
+        },
+        {
+          "frame": 14,
+          "kind": "SDL_KEYDOWN",
+          "key": 27
+        },
+        {
+          "frame": 20,
+          "kind": "SDL_KEYDOWN",
+          "key": 49
+        },
+        {
+          "frame": 21,
+          "kind": "SDL_KEYDOWN",
+          "key": 51
+        },
+        {
+          "frame": 22,
+          "kind": "SDL_KEYDOWN",
+          "key": 50
+        },
+        {
+          "frame": 80,
+          "kind": "toolbar_command",
+          "label": "separate local toolbar contract"
+        },
+        {
+          "frame": 81,
+          "kind": "SDL_KEYDOWN",
+          "key": 32
+        }
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "state_digest": "633e30c4300a73c9db7ef4094ca3653a2ebe8a851fe39d596579029c43714a13",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 1,
+          "state_digest": "062cfff84ad8d7bb9e9636fae37175e422f22fdcf38bc0e7da76e486296e4dd8",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 2,
+          "state_digest": "2458ccfe0934385e6a401e0090ea18b4de54b332f893e86e4189985bb657a884",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 3,
+          "state_digest": "d1f77dba444f024de5f90edfcd44925049953f2aa3d6cf5c4522b72f33e6dbe6",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 4,
+          "state_digest": "37514702b5c11ef9e4b389b9bc202ab413f89170b3a4b12d6b4ccfcb8e2a3172",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 5,
+          "state_digest": "9b953fe2f81f9d1a47743460fd72541a0abaa7f332a5331a0b23d0a9e4cff6fa",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 6,
+          "state_digest": "dacd6dca62ce5f4ecf3878d62d7e434c4482502a67c448c91f1bc4bc2edb9c28",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 7,
+          "state_digest": "f26fa975fabaede6e5d36639188db4c421c8edf4d65e02be2a6ce6806f44908b",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 8,
+          "state_digest": "b16f995b1c1bae8f2ac090e8e8383be094b9e444e0733b6fd84874120c6d0343",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 9,
+          "state_digest": "856f30527c80ae1b44729571d19752c62076a5a2371eedb43f872ab700723870",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 10,
+          "state_digest": "650ae58e477ced99468281e19b1bd5b316f65f80c0ffd7c88c0d94788d30cf96",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 11,
+          "state_digest": "ba3c13cd0bdad9577dfb15e075af630d8ae63855374ec6214f84c4f2c79b5b4f",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 12,
+          "state_digest": "17c90cb6a2a4f49b792ed5e7bc2ea69b00c7b5546a336cfea58e3cb5cb4001a4",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 13,
+          "state_digest": "c9e4fd7d4bfb63660a9c72ad4c04c904147037a7e94feadab57eb6999536abfa",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 14,
+          "state_digest": "0110db2e4e0fc3743723c2035780f7b07642f0192cc71c42dbb001c3d5b42603",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 15,
+          "state_digest": "a4a0ee03fb51c89bdbde4d999b99bf6ea7114c8f5a2c3a5839f89264e3683789",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 16,
+          "state_digest": "95d1ebcf5be51e63791c5f2fd26a79e795fb867ea32638a7f6076c5b05ae0424",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 17,
+          "state_digest": "1a5cfb330e06ba0128c75f61bf9c4e002f622e53e8bd80f0a5c34c52604b569e",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 18,
+          "state_digest": "07763804c627ecce98ca4f9ef012001ebc09cfea2b0c97d0bbf9038608577f31",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 19,
+          "state_digest": "7d714b6507089fd1c7eb94a479f1ce8e870a3399dc6c766f271ec2b8ddd71510",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 20,
+          "state_digest": "001c353bb1cc976afff7fd42d37a99aa56bc5f775e7cb09f07b2712cb2020025",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 21,
+          "state_digest": "51d8030f4efeaffab0ae653b02d9027518b79043d02be07b90d20114dfe1ceac",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 22,
+          "state_digest": "35738a4cf670e49bf1c51efa76f0329e1c2c82c1020d8e0eb5d29346f08b5bdb",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 23,
+          "state_digest": "de326fac59720237776433505dc20bda2047eff9c1612e3a6f20e2b78f72124c",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 24,
+          "state_digest": "9da0f8b562f529c204fda7133554dbd64db67aebfa3d7ef8ce74c734dec53764",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 25,
+          "state_digest": "39f3a122aa71874f2abbda59909603713b046bb1b30114ae0d0aead55883c15e",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 26,
+          "state_digest": "9fef2d18c2fb9c6b424020b9036c941a48603ffe50dd1b3f8f689bcf68a7063d",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 27,
+          "state_digest": "65afcee5bd2d922883e57c4ebd4465b66be6156eea1b9cd4af978402954c9396",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 28,
+          "state_digest": "52c66a3f5a9c87d3b48ad3a95fd624f75655edb74ddf8b2f4c7e44fc18240c44",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 29,
+          "state_digest": "b56bb9cbfa83088c7d3f18639433ae13196ae787a5b4e3e9c88ceddb33069e4a",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 30,
+          "state_digest": "44b439d16892fbfb17b67ebdb4fbe814e8b57aa336bc4307422df794d9519054",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 31,
+          "state_digest": "729bab570d66e95ca2bfe4a6a34a7db9b0750ea95e12c9e552ef9ceb04faefbb",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 32,
+          "state_digest": "7acdac0d2a560565948e85dda5d65a52dea98fa6bdb6787cbb69ad48f6860490",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 33,
+          "state_digest": "03de13aaee12c3c4bfad48791820958c3b1f47e3e9b1dc8e78afebe6d88af046",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 34,
+          "state_digest": "8e6f83bff72041a8ef1ffa5295923dfe6cf494bb3dd2ec6353b0dccdc194137c",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 35,
+          "state_digest": "c29825a26ebfa0f4b912c4acdc74ee48663b3abedf0ea7d96832c8f62994c106",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 36,
+          "state_digest": "5f59189f4cc4bdc0322c45cea4b8502bcabd825e937d5f643fb0b179ae7cebbe",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 37,
+          "state_digest": "7de27ad8a16c5866e5eab4c0ec0df7f5405ec303794bea798ff5981acc7cfca0",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 38,
+          "state_digest": "20838e690a922b9754e6e373824d4e91751e8b6253f06d6265916e3ff5dc5d61",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 39,
+          "state_digest": "d09f9c0dc4ae8a7a0d5a55939ce243738c6b1096ce403b95dc43f6f09d02b411",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 40,
+          "state_digest": "be15623d1f68ba6e0da29aeb8d70f9019daea056e68807dc68ebb4728c550217",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 41,
+          "state_digest": "89357ca83b525bfe0672ef62b32b5e4241271b8391c799fb989acbc01401b0b4",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 42,
+          "state_digest": "b8b65dc8b0c19783aa52b79ed60b8f3a8bba7141f74765eb2ba5e2663815bb07",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 43,
+          "state_digest": "e104fb06a59520c6cdfce58d0a59f7de53fc5e03e503c7007ea887297fa72f05",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 44,
+          "state_digest": "524f91d315e269c2f7dab72ca913f758313ef8bbfd5c4f4c1e56a5f994a0fcd0",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 45,
+          "state_digest": "568a6638a01cc8e65fe22b3998d3c9410669902fcbe5161384bb53443e3d4055",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 46,
+          "state_digest": "7a6739ad868dec3ed386ea5cb3d4c094d4346c5fdc6ec071904ed88bae01eda8",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 47,
+          "state_digest": "15966bf1d2d30bf1bcce8801cf6970f98a062a77d3cf5c0dfd2ec7de0cfbfce7",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 48,
+          "state_digest": "358573ecd6079acd6a05a3075627955c9a5e6240834a60e4c55a4001a5adb051",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 49,
+          "state_digest": "8c14c32115b5fa2178babc6ec7be02b5770e8c2f7f0d1bee6bb4f588de7fe31b",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 50,
+          "state_digest": "a8eae747d808a76e65d3dd91a65dc5bc93827808a8d2fbcb03bf7ba56934ab04",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 51,
+          "state_digest": "2a1e730b0016ad180272729ec13ca62bb512b621f20b484bfb089c3467e2824f",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 52,
+          "state_digest": "7a04f74b3689326818a692fc23bff3d88358b8c47ae0ba1066e267a4a93d3d07",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 53,
+          "state_digest": "738b3db5b0b18a769c294d8a9b8a85f79e021cf2e7030f50a0eaad7988e5c14f",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 54,
+          "state_digest": "28f3a135a8792dd1adadae9f9dc9a97f0fd4bfe7b616f4a437d5ffa3cf170ba9",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 55,
+          "state_digest": "e6caf17976a5dc8ead8bd3c45fb7fa25e9812d5b1e171d3fcb77744c11ec5c44",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 56,
+          "state_digest": "6334821888ac62473a7be93b31df30d63382f69f3dcaef089e467c334d7233e8",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 57,
+          "state_digest": "1308d79f43229ba99cbfa40155db22ba34b93859af4f32d6a46a31ab9114b8c0",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 58,
+          "state_digest": "5a1f9dd6c85870b7a6880c9b57c14a0e4c79ccd8692440933d923cef632a6f7b",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 59,
+          "state_digest": "4bd6ffa888b1831f69c0c01a50cb9a3ff722d0a25e12cc21f87d57d706b39fc7",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 60,
+          "state_digest": "d1ac506908d8a9587577d0165516a6072fb89db8311043f30c36bf008f85fc87",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 61,
+          "state_digest": "1cacf5292bd1988daefc494a73ee80a5b1d8825ed8f306d25f7606526e9a8877",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 62,
+          "state_digest": "25a5df5c22fba8cf115d19333ad3d68e3a742bf845ceefbdb8666b757ff1997c",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 63,
+          "state_digest": "4b51ad8f7b61cbc8020a34c2085b287663c17bffc7e89c7e32d8eafccc6d7e13",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 64,
+          "state_digest": "17d05ecb044991c46d654d15ae684f249193f28bc10a2ee2bda36ecc00823430",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 65,
+          "state_digest": "133247bf0d40c3adae03ccd9956fe5b179b26536e661c997274f366ed6b0a75a",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 66,
+          "state_digest": "83540eb0c78db427a1b58963971fc58360e112d997bbf413466cfbca7dcec39a",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 67,
+          "state_digest": "e6e9ccb2ec776e930651f18c053363d6b6d85bb85ed736bfeeedc95024728aa8",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 68,
+          "state_digest": "1eb4e13575a4108cb14e4be204412aa99a0187bb5a250c67f8a11c79f8192b99",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 69,
+          "state_digest": "5dcd76d8b491f7cf0aed8943b70083229bf67dd87097c1a1b2893343d44d3cc8",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 70,
+          "state_digest": "25f17494d7d6a24f98553d0d77038445e518d7fc6d65656142a37d68880a24c8",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 71,
+          "state_digest": "f1e660eb32207a4768b0c8150f184b100f3cd5def60b8a9381c37e0ded89cb3e",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 72,
+          "state_digest": "2e3548406076913a49718715a484f5fcf8c1ed6eac4d86b3f36ace3c5f18bc23",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 73,
+          "state_digest": "58fcebd753e74d716c05cded52d47a323499a9bd3b06e8fc5ebb7199b88e0043",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 74,
+          "state_digest": "39ca39bb1d7a60bfb6451b7c8df4898e4f10f811accbcd6aa9d35fb0b889b46b",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 75,
+          "state_digest": "df1a636f616d8113a415e3ed8457b2f7ef4e1672e3a59a8077c0bdd0ab7dd4ea",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 76,
+          "state_digest": "6e0474336add39c0d4343cb0b708caffd6ea63ec072f413200c67f132e0a8512",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 77,
+          "state_digest": "17cbdc7476f4a4c2addbc69c9d80fb8e098d079cf2021511e666199d595b8e1f",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 78,
+          "state_digest": "dbce48fb56dc2b61a27ca6fef5bce4d88564f44624a044d19c5c461e8557987b",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 79,
+          "state_digest": "c56fd0385dda63597ef949cd558d7845e5c2cf3eef37816f4b292c0cd8015ba2",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 80,
+          "state_digest": "7f1a0d6927f426ad5fface7f4bc86cd15ce39cd40c6c35f1a9f72f39b89519c7",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 81,
+          "state_digest": "e53fb9cc229b3a5a074a4ec2756255dd9db64a920e25be2f6d36559a2e69dc6c",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 82,
+          "state_digest": "c3097118ea422da39e78f9b8265aa7c2711d829a133e78a905ce37887472e815",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 83,
+          "state_digest": "b33857f499e41ec5bf55d34230d1d00fea5d2c88e55156756987cd7072dddaf8",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 84,
+          "state_digest": "ce521d6b116c99eae96909013e12e4002d87745cebe98519e81b6e0fefafbc82",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 85,
+          "state_digest": "c460ad9ffc5d85f1adb004391ba264852600366ea88ddcf27b126ef9bd3f71db",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 86,
+          "state_digest": "097ce471f383ef1c2780a26ddd04ec14ae7330f67c814809fe01823c14b3a1bb",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 87,
+          "state_digest": "22e321b19d7c4486544823f337550508c202c53d7c033262789f08a994b385f7",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 88,
+          "state_digest": "655b55d2b7bb40bcdcbf04e25dbadda0ce525db40321fdfc7c4692a0ca59f918",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 89,
+          "state_digest": "5bb7532ffaf788b00e5089fe95c41d42211983ec020f11a2041fa6d89b4d5226",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 90,
+          "state_digest": "af239de1322405c609830fee78c557772c2da63fe5200fcba0b1ba6c08a3ce9a",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 91,
+          "state_digest": "0b356decf85c75b92322978ad77900c79566f05c760bfd190a6aab24bbf42bdc",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 92,
+          "state_digest": "4f1359e7232985f5f4574a7b81e8d052f9fa794bcda7bee1faee177d0ac9e411",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 93,
+          "state_digest": "9c0847d407b8c3de79d5b30f5fc2507b1d353fed4b7c321234b0dd9ad9590afb",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 94,
+          "state_digest": "3a4f2e546f0672b3ec3b5c8b9ad3bef331b79b76e05827d8eef19c5a33a43a36",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 95,
+          "state_digest": "43c8e0368bedfeb5f7d683f0d01c01b0ac46ab4499709e86229acfb27af7416f",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 96,
+          "state_digest": "8a412fd17106f2df8697687885e07af27b9f34351c04b14d5046cf4ebb565073",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 97,
+          "state_digest": "17d349e771a5a35272cfbe29e79f8de1e2ac1b7971744f96c1838d82645cea32",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 98,
+          "state_digest": "7eb0b20dcb0d01c800709f8731d0e9e05e50b36c71b7e8e23d2ee1d89e0d5937",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 99,
+          "state_digest": "b631d9d72650c6d25efaba6c9aa9dec61254c6bd4b301796136cb3791fd1a365",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 100,
+          "state_digest": "f2813569a6df214771c76bc76441dc031f3458f43df000cd7fe8bdb61832dbaf",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 101,
+          "state_digest": "ca878df547906f4651220356a937dc3293fb3ec37fb7543c6c50d112e8e473c2",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 102,
+          "state_digest": "04baba55f3e1f275247041b62b82ca8b255f69104d6d3d90b1e1ff77817ba1e0",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 103,
+          "state_digest": "f720e7d03a39fd8455813d128024d3be961c51814c7e19b2e6fee234420f7169",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 104,
+          "state_digest": "4795f7dc37157b61a04e4fdd267b33117cf7c1d19a3ee21dc6d596959605c301",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 105,
+          "state_digest": "f4b4f6c46bd747999a169ff1533b72c3ea62c9b9ed4ed18e1ab048fa1cc436f9",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 106,
+          "state_digest": "41383096793e64f250a4767e186ed5c2eb92a1df2e0f1c85045c8158ee1a9230",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 107,
+          "state_digest": "50ee409639b3e7ff1cebea3d88448cf22cb5dd1603fc2cf81e249a89c7199b23",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 108,
+          "state_digest": "f72b96b3c078326f4e64d03e63c130e01b41c7ccf800b860f4af17e3a5d518b8",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 109,
+          "state_digest": "f1e1f83c40fef8646d1970c2505d648fe8308c74d86ad84d868bfa8ffb5eda56",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 110,
+          "state_digest": "1e2d8b93c6b0ee640e2f67899b9610ce3f6637a7329fb1d8016bfcd9e72df510",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 111,
+          "state_digest": "364385b25a06a3412d3c7879921fd06242387708eb55fc97d8b9c6aefc4b6a8b",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 112,
+          "state_digest": "3a7423685983313bd3a8fa12702b66c46a721c15b7e1a93081786b069b5d036d",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 113,
+          "state_digest": "53c96253e282cad76ec873bc075da9515eba69f2a07977e2c462a3477bdb2277",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 114,
+          "state_digest": "ab4210d96e626aad20f0e39346dfefe43f1719e01c80c09b7df2fd81f449eca9",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 115,
+          "state_digest": "c877991a6e443441558f14412cab0cb21f62ff6c3d4c69304199d608a8e99d7b",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 116,
+          "state_digest": "ed66d000158613ca60f67dbfa5ec7a173f67cae1c28b1ec4ebc87519d135612a",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 117,
+          "state_digest": "53d5fd85adf85ba89247f9ee1d14e20ae86e31fd9d4ac9269c2492f5c1c08d02",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 118,
+          "state_digest": "5f875885e77839141c062cf663eed396b6bf15c21a26fa52bd169f5179b12a24",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 119,
+          "state_digest": "d85d79ef0cfbcce41d48a8ded4d5a0f3438dc0490adeffc808748c99a3a585e3",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        }
+      ],
+      "events": [
+        {
+          "fields": {
+            "attacker_entity": 37,
+            "damage": 10,
+            "target_entity": 39
+          },
+          "type": "BattleEvent"
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "mode": "real_time",
+      "kind": "ranged",
+      "inputs": [
+        {
+          "frame": 0,
+          "kind": "SDL_KEYDOWN",
+          "key": 118
+        },
+        {
+          "frame": 0,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            500,
+            400
+          ],
+          "label": "select moving unit"
+        },
+        {
+          "frame": 1,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            425,
+            270
+          ],
+          "label": "move destination"
+        },
+        {
+          "frame": 6,
+          "kind": "SDL_KEYDOWN",
+          "key": 27
+        },
+        {
+          "frame": 6,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            425,
+            357
+          ],
+          "label": "select attacker"
+        },
+        {
+          "frame": 8,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            1010,
+            200
+          ],
+          "label": "attack panel button"
+        },
+        {
+          "frame": 9,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            575,
+            270
+          ],
+          "label": "attack target"
+        },
+        {
+          "frame": 14,
+          "kind": "SDL_KEYDOWN",
+          "key": 27
+        },
+        {
+          "frame": 20,
+          "kind": "SDL_KEYDOWN",
+          "key": 49
+        },
+        {
+          "frame": 21,
+          "kind": "SDL_KEYDOWN",
+          "key": 51
+        },
+        {
+          "frame": 22,
+          "kind": "SDL_KEYDOWN",
+          "key": 50
+        },
+        {
+          "frame": 80,
+          "kind": "toolbar_command",
+          "label": "separate local toolbar contract"
+        },
+        {
+          "frame": 81,
+          "kind": "SDL_KEYDOWN",
+          "key": 32
+        }
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "state_digest": "ea18bc5e881bdf6dfce863ea3f86c0a3b43497a260135571b4efd79c60d34823",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 1,
+          "state_digest": "8161adb46a34676dd8008c7d92656e28e72791b101af2f6f1129ef8a07ff7102",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 2,
+          "state_digest": "5dc46d8e766922f5f7cff4ae919c639f66e9e3832c794649b60653bcd7af7c57",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 3,
+          "state_digest": "3c71b7ddee10eeae6f7f41134c972828bad543d269b8b98488e771de71338539",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 4,
+          "state_digest": "b4c2442727c0891f85467047c89768fa275c531d330a9d69bffce12befdce847",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 5,
+          "state_digest": "2adb3b05ca7f31733b47a7b0d9c2970660c9a647b9be600d6f19a4c989daa7e5",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 6,
+          "state_digest": "c54cb3d730673e0d68e231843a708e1fe07aa8ed9a33a38964f5422f1eae6514",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 7,
+          "state_digest": "d14c8b4429a2d62bd6e5d7ad5b5b983b7697020b2ead97a741faf72dcbb8f247",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 8,
+          "state_digest": "5d9c9583074c56b81b1e27a31f582493b3f282650d7668751d51bdabc5118a3c",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 9,
+          "state_digest": "de86ae83e8ca9ba7bc99460baaf260b5fa10d650e8d6460a0ba720ee61e46d0d",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 10,
+          "state_digest": "7ae8fcca3e388b703235f4fe79b41e998c2671130278ea19a3c98485988e0b1a",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 11,
+          "state_digest": "42f55bf1e10d022540d9d731c94ef36b9b70ae56ece231de7eee526e04128fc9",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 1
+        },
+        {
+          "frame": 12,
+          "state_digest": "61294aa49a55b4e658a5cb306ac51ae95d89985af738bed3beb4f09243574af8",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 1
+        },
+        {
+          "frame": 13,
+          "state_digest": "9abd016fec483f5d382d2e1b98e3bb1305f153756c2d1e7277b772d0838b3b9f",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 1
+        },
+        {
+          "frame": 14,
+          "state_digest": "ad2d7896789f1ab184064d26b3d7b00dec995eff3188e03c8fd6ad5862be0d9c",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 1
+        },
+        {
+          "frame": 15,
+          "state_digest": "c0de9cf36bccb99f921e7687d002fce18192ea952845c18bed1b5323fbfd24a3",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 1
+        },
+        {
+          "frame": 16,
+          "state_digest": "8eb595d202612aabfb45eb5394380a368ac3b3e2d7b9b11c7a6f0661be567179",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 1
+        },
+        {
+          "frame": 17,
+          "state_digest": "6ad45fcc5ed5a29b937685f15255736d111f3195b66b4436b581e87702849c94",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 1
+        },
+        {
+          "frame": 18,
+          "state_digest": "b102d65a8d688a3c411ac25aebe3e85ab91b3317a172c8e2d593615c87e6e3fe",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 1
+        },
+        {
+          "frame": 19,
+          "state_digest": "dcb65fe0243802d05b7b4314293d6d9987689ba2d6250e9dd48a1d2bbcccc235",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 20,
+          "state_digest": "a11d66bfe2eb8d3b4311713d1aa2ed9d9aa3ba404718733dbef61f2ffeb9be50",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 21,
+          "state_digest": "a19234bde15aef0e078f7b9f42f105cf0c13cf5b289fcf8b4539fb8d49004620",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 22,
+          "state_digest": "6207da32baccdd0700b9f37823ecfaef2f329cbc8fa645a7a00188ab196fe3f3",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 23,
+          "state_digest": "526a6759281067c14ba3ed98b10b624a86066a173743d865105da1cca01a17ab",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 24,
+          "state_digest": "3bef878bdc1b071f51aeee67ddbdf898a0f6e2f60867040284a256888bcc03a6",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 25,
+          "state_digest": "d655d59a3ce2d7b787e690ba841e4b93451304c734e94a13d36cb428d86fa1f5",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 26,
+          "state_digest": "6daea47a098fefe0c0ca80ddab4c4ff4867f0cc02c93f3f57b40e2421ed3ac85",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 27,
+          "state_digest": "37d0b76d9d276c96c0436c1aee8c060780eb52e5e9f78450d8570233c882a7a5",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 28,
+          "state_digest": "1ce912a5699946a8853534f12ee8eff8ad58ba6450a9e0bed39e9138a2910f02",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 29,
+          "state_digest": "b75238b788add0bc789adcd061750876c3750b2c6d55aca11410861961d4121c",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 30,
+          "state_digest": "f17be6a89bda7ac08baf65be5392ec641907f4b234f4d1a44121d440162865e4",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 31,
+          "state_digest": "ae6785954ac8a5abb4eb53d9aa7496061b9a8f338b92485e664c8c72f19ec236",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 32,
+          "state_digest": "ebe4d490bdbfc4c7524d1ba40b21edfbf230e11741790bfc8754413fb25f94e6",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 33,
+          "state_digest": "8adc3ee91cc980cc9e200c6a72da9e95dd8304bc1357d5c17e436be9b23598f6",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 34,
+          "state_digest": "2c138fb65427793970afef8ffa03586ac49db94d21195bfaa67dcc32f3279f8b",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 35,
+          "state_digest": "cbc7c675aeeead94834b88d16cd0fdb4dd5021dcfdcb9393d5d39693f8093f76",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 36,
+          "state_digest": "eb557b7c7f976e2ee8cc5b177af433ff3ea55e8b4f506e97ec9a04a29ef4f62d",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 37,
+          "state_digest": "13ea8b70e592fb8b1315b896b36d864d626923e5cad9dccf6f4b72b9b1131638",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 38,
+          "state_digest": "646e956bc7d91f5bbac1d98e1772c9be3d61317e10a2b0a1dcfd607ab7a44c5c",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 39,
+          "state_digest": "19513f686390229e713fc15f3c5bee66e959ae86677f29ca048434b815888ece",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 40,
+          "state_digest": "2266a721e965ce6e511f9b7cd6872441969093e277dfb3b4f9b6a1f5901f2a90",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 41,
+          "state_digest": "641b6c53c3e90a2b78f3d16ad813973df064c69058f67948d4074de77c34b0e5",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 42,
+          "state_digest": "b2bd11343cd930c92ab35504f0778fa8d4d9760a2abbe630fe02623392864637",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 43,
+          "state_digest": "b0747c0793a77d1401af1bfa092b5f86b6b8e57ca6df73ce000e33bafba8aa14",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 44,
+          "state_digest": "c12465f780e6d510835b5fe568f0424dd8c539e7fb62eb1fcc24e7bb9d16594f",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 45,
+          "state_digest": "93e1f35885c2de4215d3c11c6960a3b6e2972ee16bd68a760240f1f095ddf255",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 46,
+          "state_digest": "aa2809a9cb4374c4881311a1235f6ac66bbe442ae27d268dbc06736f911dd95e",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 47,
+          "state_digest": "8d201c4ec0c93b6dac2e2b95cad2f8584e9803b02c74063a4f7028c591174c69",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 48,
+          "state_digest": "a7149841d0ee012f27d16c48250c9d9ef383c1a85fe08d1e4da290c5b5680e55",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 49,
+          "state_digest": "a35ab33259a2c3cbc3b7486f54eac57c511f126cbd0d5973039ef212118769aa",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 50,
+          "state_digest": "a00e08a160f5ec1f6349f5f7e781bf0011c15bbc2dffc0a470231b6ff5c0dede",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 51,
+          "state_digest": "11b6f0c4eeecf362b03ea91a78ffdcd2209bfef3e86817100e17a3f2c313b23f",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 52,
+          "state_digest": "0541e5da371912dedbb2947fa6d06206729c47439099309bb88890e37b113afa",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 53,
+          "state_digest": "cb421520437587f43b81d09bcf964ed699bef121deec4d4ffa1a8b9d81fca9cd",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 54,
+          "state_digest": "56e9a05975f13e253965ef5919fa960d0780d4a1f9055996ca2e3bf56069e261",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 55,
+          "state_digest": "bc5bae34eb69203a78a7d2c567d9343803d54914c53c3116c0e2e79e660ea172",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 56,
+          "state_digest": "b36aa02807c90be363422df75e8145b87aa6a48445cbfda6ad9761acd0809e1b",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 57,
+          "state_digest": "7de35c6021dc85a145dcd0b13c4f8f4f73e038d3ae71fc1abe0eef7237efd455",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 58,
+          "state_digest": "1682773d2adb03858963ebea5a71ae155266603ebf1e5f1bc08bf82846fcf60c",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 59,
+          "state_digest": "72f3f3d3be1eac44e5fc9e65d2a52780ae1fbb08b85da8442a77d3c94e14db64",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 60,
+          "state_digest": "ec88cbf375652174cd19be924b3ebfa62a64b36dd6f4b7668f7c24272dd2ce3b",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 61,
+          "state_digest": "0a876701579fb3123d4e7282bff0cba2856151accc5d3e1e02c176e2f57c27aa",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 62,
+          "state_digest": "3720ccb983484a76a36d523a9136d9f11100477773084074cfd08b78a9d2fcdc",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 63,
+          "state_digest": "9ecb4ca019bee5c0799a02c0d3afe9ba5455b9ce3efdb98b2a16fbc15cef93bb",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 64,
+          "state_digest": "6de11876dc50c3d224f02164d059de868400196a9f6dc99b1aa0435127f5f797",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 65,
+          "state_digest": "0ee5e8847a2bad407f8f1b9709087630f385516d80211c3319ecc46ec48f7d9f",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 66,
+          "state_digest": "31b9dff3a3945eff11e0fdec2bffa7a8305ea93712acf5c81101d10cc010b749",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 67,
+          "state_digest": "a36b9fb88fdbc9cfa516468b8605222992c8306633c7f27e31b5e82f083afdfa",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 68,
+          "state_digest": "7523dab899b9b742efc84bc41f4324a8c42b01b09baaf254f9c15ad8fe048197",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 69,
+          "state_digest": "67ba96cd6e214502637be19c7f37f15d1759490c8288e1f77a663df5816e671c",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 70,
+          "state_digest": "11d1f7360d1c5958b8cdc50e5f5ccc42b81d8fc610453a982f4f4b292c42b89e",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 71,
+          "state_digest": "02a6c548c859e430b174acb40ada482cdf684ff333ca6b8df71feb5bd70bae80",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 72,
+          "state_digest": "bc3e6b79440a1e81acdfd160e401bc345950349f873b2f680141294fc4357259",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 73,
+          "state_digest": "18ee08df39c7a94048db57a51d3e349807842248665063469207bb56b5ef2688",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 74,
+          "state_digest": "fb0d45e1ec307b5bc574d686bbbb0ef2c7470dc8cdda95664b7e007c027789e3",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 75,
+          "state_digest": "49f89dc9013d5b04768690d8cfda2e3c1098b89ec62c80b606e90eb552412e79",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 76,
+          "state_digest": "eac4e07a5103646ba2f48830397ec5df055c5519df919ab14410d765c6da387a",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 77,
+          "state_digest": "2295c7f8b08c9d9b3fc8192a377403260c5a64831335e1a471292cb7f80730cd",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 78,
+          "state_digest": "09fac817380107ec76d1a91b33cf1cb74eac6677215c62f9c871b28899360120",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 79,
+          "state_digest": "4feeb27c33a885ba0a4fff811b4c72c16572d3eb11063cdf6f26483530a8c777",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 80,
+          "state_digest": "d55b2537d81d42255f6f1924707f9cbf033cd44732d64f38de475bdc5df73df9",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 81,
+          "state_digest": "bb2d836a20dbcc913584ce7ba6998ece31581ee10c85a4658659534594b0dd58",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 82,
+          "state_digest": "9eba75230fe909f453bb0e888db91e0ca613e56761e4d8b9525b47d41c99692e",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 83,
+          "state_digest": "9a0b74588c77c780623430e24dfd7538416a43cee854c9d3c8d8d4183e753bab",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 84,
+          "state_digest": "d760c10454a1f4acba611256b096b7f8a6e2c6f218120e32379776bd873f93f8",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 85,
+          "state_digest": "bfd3869aa8ea98681383636b59ef422a1b8c7dd19f4ede7b81a4cc03c9658809",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 86,
+          "state_digest": "5cc3d0d44fa737c7bdb84f555efb0b3547c7c2d8950a86a335ece83f109f0070",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 87,
+          "state_digest": "1a397d90e76e666be271a0dc38506746d7bcfe3d01061e4052a6da771923e73c",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 88,
+          "state_digest": "3ac9bac30437dcf1f913caddb6629222552e7d11cd862b8d27d38f6b9e2a276e",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 89,
+          "state_digest": "ddb82897f610ee165aa8ae8efa51064f18347910c883f877cbf5e414dc821cd0",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 90,
+          "state_digest": "44bf284ba5e410496a535279c7915860b44bf07707348fd15bea4f90b17d4096",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 91,
+          "state_digest": "35f78e35c2a2f4e295c687323894e03b085baa5ed357f22311cfa6f61422ddc1",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 92,
+          "state_digest": "74c98c3d553df2aca0992b3c83dd95e1fab8c1e5fe95532395182b9936a33ba1",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 93,
+          "state_digest": "34c5b5102b2d726661eda0ee8f9c1371ea6503c9f82ea1237f47dffbca0b2fb7",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 94,
+          "state_digest": "ee73860282d8891917c7140ff6a89fb4b460f69861cb431c839b012774ad65d1",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 95,
+          "state_digest": "54296e67ab4172279481aeea586ace7c14f3639a153ec91662291c74c693ed42",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 96,
+          "state_digest": "f123b8c0591b9147032bfa61a51037081047c64896cd5096d871c40c759c4bf2",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 97,
+          "state_digest": "30f13f499b5e8460f18647992eeab169e3a43084f0b1e531fed0c2113149948f",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 98,
+          "state_digest": "1cd61278d857574ca818f7736ecec63369fd0c6b0ff41e2be15323344df7571d",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 99,
+          "state_digest": "f972cb4c245a435a8439dfdee211208bf39dc7088ff8b8649477d3907c44b906",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 100,
+          "state_digest": "45741a5a5ddf547a8aa39c7e29c725769f8b3036178ad2b76a70197260f08c1c",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 101,
+          "state_digest": "ae14c0cdab2aa600bb47954d4d74153c145d83ce3998b05c1c9eddc073ee8b69",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 102,
+          "state_digest": "9e05344a7650bb4ceba6682b57c5f0a164a04831178cc2daf781285162c14b27",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 103,
+          "state_digest": "52696349f55832e495f41d196f72214ec9ec83fa53c2c1f32681ba2cb4719d3d",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 104,
+          "state_digest": "ed80522348ce05d394c2d6102633395961802d7f52dddea412f62d51ee4bf496",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 105,
+          "state_digest": "509913b66babedc586822f1cede05b7a6473e8812e4773ca0641b06b957e39e0",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 106,
+          "state_digest": "30120ed393cd3af80952b642c191dff63ce9f7b7f66aaf2088534ed203b69f4f",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 107,
+          "state_digest": "aff2930e1ae09006df0e40287a428ee4b7f1f7d7f6b061677af6c62dbc1604f4",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 108,
+          "state_digest": "d4142985561b453ea86945cbe1e56efc2c32169425179339072cfee91be57420",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 109,
+          "state_digest": "0a8bf824de8afac1da898914f989e05e4e0efb20dec337c65d8e3b31c178bf2a",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 110,
+          "state_digest": "1a000dd90c600fb305c0b6f7dbc7d0f713012e700edbe4500575ab528400fef6",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 111,
+          "state_digest": "74890d463e119c9ccfd97dab7e438226cd6a8c87acfdffca40a699530b98edff",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 112,
+          "state_digest": "d68512b2b74a29dacf7018bf4f11d051eceeac5f39e6ed776a66e06299aa27bb",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 113,
+          "state_digest": "4432371e28f7fce6501da923dacd5e007a784ed3885e51677a4fed5360d3ed5d",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 114,
+          "state_digest": "31baee7a4963ba082348236bcf0a5d8f7fbda5e94e57376a5a5592a9d90a8075",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 115,
+          "state_digest": "29f171f87fe70f2e38eff49e5c7a3fcabca86b59e3900194e3f49c538a8cb737",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 116,
+          "state_digest": "6d244f2976ba0f4d256ae97f0aa535353ce1aad7895cb99e023ce9b927d0ee8f",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 117,
+          "state_digest": "0704dc2c2576d5c29b0379e3c512cee476184423c5c94f284e674fec9808799e",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 118,
+          "state_digest": "951bab31ef3dda6cd7281986de33fab04972ddc6074d78dbceec2ec2c0379987",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 119,
+          "state_digest": "bc4495b3973353519aee89f28a5e74a2e69e23cbe90f847c5918b9f32e5ca34e",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        }
+      ],
+      "events": [
+        {
+          "fields": {
+            "attacker_entity": 37,
+            "damage": 7,
+            "target_entity": 39
+          },
+          "type": "BattleEvent"
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "mode": "turn_based",
+      "kind": "melee",
+      "inputs": [
+        {
+          "frame": 0,
+          "kind": "SDL_KEYDOWN",
+          "key": 118
+        },
+        {
+          "frame": 0,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            500,
+            400
+          ],
+          "label": "select moving unit"
+        },
+        {
+          "frame": 1,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            425,
+            270
+          ],
+          "label": "move destination"
+        },
+        {
+          "frame": 6,
+          "kind": "SDL_KEYDOWN",
+          "key": 27
+        },
+        {
+          "frame": 6,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            425,
+            357
+          ],
+          "label": "select attacker"
+        },
+        {
+          "frame": 8,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            1010,
+            200
+          ],
+          "label": "attack panel button"
+        },
+        {
+          "frame": 9,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            575,
+            270
+          ],
+          "label": "attack target"
+        },
+        {
+          "frame": 14,
+          "kind": "SDL_KEYDOWN",
+          "key": 27
+        },
+        {
+          "frame": 20,
+          "kind": "SDL_KEYDOWN",
+          "key": 49
+        },
+        {
+          "frame": 21,
+          "kind": "SDL_KEYDOWN",
+          "key": 51
+        },
+        {
+          "frame": 22,
+          "kind": "SDL_KEYDOWN",
+          "key": 50
+        },
+        {
+          "frame": 80,
+          "kind": "toolbar_command",
+          "label": "separate local toolbar contract"
+        },
+        {
+          "frame": 81,
+          "kind": "SDL_KEYDOWN",
+          "key": 32
+        }
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "state_digest": "80d1f3e7a83439f24c2eab116f8da1647667007962f663c52d4dbcdff42d7edb",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 1,
+          "state_digest": "cbaa348f8cb11cb186917dc2dc6a216decda65bacc4b5078b3beb6944d4f4872",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 2,
+          "state_digest": "f9cdc85134f4b460d0e307b5fab05a90bbc12ae760458ed6bf1245be2b882631",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 3,
+          "state_digest": "04ac3e8b3fd7dbdfec26ff95090d5e6b9c39eec856b54b773345db6c724f2dbf",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 4,
+          "state_digest": "02eb7d11c7e3a5c80ff8abc76b5c9331e717a3df4e89546eb1ef14b7dc550508",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 5,
+          "state_digest": "9a42b629aa6fb43f027063765fd8fdbfd2a9b94a0aa3969258c9a6e249017034",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 6,
+          "state_digest": "02551de656d9dc347d535cd1c2b03d264fdc2006bffe82edec40e7a1b529972d",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 7,
+          "state_digest": "7f34c200fa93256257e0279bce7f60f0f576401259539d5ab071d44a033cc54a",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 8,
+          "state_digest": "157a59c375109ec01803c9262f9caec3c41a14146998cc6e12daa8a0f568921e",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 9,
+          "state_digest": "b50df001822b921344c402da59f8bb4077acc76cefdb84599282de2c2ce2967c",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 10,
+          "state_digest": "9b9f66df0f3c8769faea5305bbdcf7f76ed64359001d230fe456c609765ccf44",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 11,
+          "state_digest": "47743631ac30d1fe6f0d2950e97aa0ca9db6997f0ba3cab2119003062f568648",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 12,
+          "state_digest": "b0d9e962c552bb9323a19bb5b658550c10c11244ab09a392f9dea4054e4c40e9",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 13,
+          "state_digest": "2f7d80cf16f12ba01f5a1cb78e0022bf28f99a7e906d76f28b0ead910f727d95",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 14,
+          "state_digest": "4867396286c8fb73d0d0729a04fda7ceef5167f327138eec6be4f5d55251dfb2",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 15,
+          "state_digest": "97bd79899d2bea96bbbc699123883337b025eb908bb41e3dc51944c4ec9462f1",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 16,
+          "state_digest": "c89727e48e96d4542286164544ba01fdc08408ac05c3d0481cf7a5535428a76f",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 17,
+          "state_digest": "f85c19d4f72378f42f9ee9d54db3786cce8dd0576ecd58694710228df1e11100",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 18,
+          "state_digest": "5b9385268b0057bcce856c0c32366b5e71c41e9c242adb4eedf96d6618a90b97",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 19,
+          "state_digest": "8f4895618ad2e7dce96986c0039d0c70168a40d3d8b3bff68e1298f74c83893e",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 20,
+          "state_digest": "a59bebcdc68c296907fcf5c4e62864187cffe4acd628301479554414635d0248",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 21,
+          "state_digest": "2d9961af746bbaff1fa8edeb0184f282e9a54527212078a5b44fa9ea091c9d7d",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 22,
+          "state_digest": "fa1c099c1f9bcc3be51b84408a2e1d54c65f56799be6c1af9974b2511ce56fa0",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 23,
+          "state_digest": "06d0e35d016f894d5c01c69f6e77a1f4f90e30d9b45a3494e07ee48fc5b3f16a",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 24,
+          "state_digest": "cdae4ba1a8ce9b34979677bf23a7bbda71c1a8707dcdcf08d6299bd636551eb6",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 25,
+          "state_digest": "439327ddfbf002ac9540d840ab6160c81befbb5f0e582d4cf5978a9a687300e8",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 26,
+          "state_digest": "d296ec153c01fd90b1748df02155e13fc8a59ed0e2021ec72cbf1e0686013c3c",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 27,
+          "state_digest": "397c1e6ae019b7ed13fd0a32050dea4fb213cba1e0daf8cb72b03167cace6cc1",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 28,
+          "state_digest": "c988e01342a22f70603244d4ea3e45fea18eeb73d889f0bb311c8321217939ef",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 29,
+          "state_digest": "4d2c124e0155de8bf6b4b4a1a2cb039fdc3210cc5b33e871f241c98efff03037",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 30,
+          "state_digest": "faceeef50c81a54f65b87f188e708c0a80a20362be056527fdfaff65b14b4da7",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 31,
+          "state_digest": "87b24d0ca285bd32d03a42e78515a825a879647e1577aba013f722c2c3aac8d8",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 32,
+          "state_digest": "0d2ff2b98caa30ab738498002519456eecd062b5f59315ee5f4cebeec115d9e3",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 33,
+          "state_digest": "53b52511e722c1f2845cc7cfe76eb160659f967a44b195a712cf20c20f9761d8",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 34,
+          "state_digest": "66d6a695961fe5918e0255add5508b29959f2fec9cdced2a2d4a1d4c7461a81e",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 35,
+          "state_digest": "37fe46991b9a1347352d73909214060a2310b13b61e491d5476bc001a4cb2487",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 36,
+          "state_digest": "6ca4297fc239cb6e5ef2f7bb0a49f2de7d8d5000f21b36f4ef56d4c67b436d1c",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 37,
+          "state_digest": "e838468e7b90031165dbcd9636a4551f2ad370a0aa1a93b7f9675283315bc612",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 38,
+          "state_digest": "b664011eee2d4e804226cc3c1af47b0af23a7102462dffe48ef0e87aabb318a9",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 39,
+          "state_digest": "b6ccd0efbc6879807daeb0c20e894cd141f7360836101e9d8bf0ca4021701920",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 40,
+          "state_digest": "1b29c07c961749702e27955c92c8d2fdadf726c7c5c1f5b0c62dcdce51363895",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 41,
+          "state_digest": "232331ac93683c1eff26b2b7d04ff2e6a1fbbdd0ab45cb919f2ae6f56e680ccc",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 42,
+          "state_digest": "60c189b606c3c3854e14deddf67792099363bbff45c3d5d4706dabe972dc05be",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 43,
+          "state_digest": "477dfc9321e9aa23b24b6ab9823cb054d3adc22dbc6d345ddfeacc5bb1186f27",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 44,
+          "state_digest": "f643582ab0471b5c18cffd96fb0a5a139d74fdba03c73b5ba77a9b63b6d7d975",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 45,
+          "state_digest": "b8e59dbd0c8034b2aa220910167a3f4f5c2208b2477382ec94b2735583cfb3da",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 46,
+          "state_digest": "facd1b5c85045a9d37796d8eb23140e16962a1c832f3cd622097553d5fefeb45",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 47,
+          "state_digest": "94090934f3ca25503195a927ea2d8d92e99ff7139266988a95e11878497024b8",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 48,
+          "state_digest": "d08ceb885b23c3d93954b69191f9f4abd5698abfab006cf57e69775cac6d98d2",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 49,
+          "state_digest": "b74a64e5e76de55f004f36f57bd881d36574561d33b3131e2852503543352b7e",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 50,
+          "state_digest": "0cc8dbeb965f08a07af7b18b5e65cbdf58d4a2c3be5f3a659271764f552b327a",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 51,
+          "state_digest": "b25bcbbbcc0eac832d9eb0a77bcfc25d99370045bb09677e3cf3c3a9c8dfcf42",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 52,
+          "state_digest": "79640cbf8f4f10cdccb5388310d92429485eaf5612787ed4184b2601d74b2b43",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 53,
+          "state_digest": "b65346f46068c85aa5ec9d77a197c099812fb695ae1895d350c04f2a1c42d429",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 54,
+          "state_digest": "e314ffd00ac11213838dc150175658ece9f108ad7f19e908d6eb8b2afd0b28d4",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 55,
+          "state_digest": "a95d120eb529a4553be646a847399d1553a88836c0d01e1c3db83670c723564a",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 56,
+          "state_digest": "ed8f9345369c413d6c216fd9cfafdbe179ca42c6835b7a03a4c1c2dd478676b0",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 57,
+          "state_digest": "4c6bd23a35e836b50aea1bbdcc6f106a585cfb23690c4bd9269a09ee31bfd4c7",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 58,
+          "state_digest": "3089f87a66e7de09fcbe1e7eac501e8ecb7cf08e7a6e712221567a75e71517d1",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 59,
+          "state_digest": "dae095f68095bc8a8e4812283cbe99d70bc9978d18661054b47eb2ac81fc818c",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 60,
+          "state_digest": "7dfa86af26ea4cd5e3305c66dd4b8c3d12df08133b983ed04071fa2877cc1fb2",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 61,
+          "state_digest": "0bd45d585aff6b070c35b65ebb09d7c45508e200470b75f48bb950062c6c173f",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 62,
+          "state_digest": "93c04869ba0577131b62bf6c883b1e9b1a0bbdcbeb78e9fc3215951b5617d0fa",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 63,
+          "state_digest": "9b66f2889f83eb0e2dcadeebbf6a422c14002b17a627f170365c9dc5f1c57987",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 64,
+          "state_digest": "1537b0b8c29b84b21d167d6d1f70382ceb513042f03ddb46a142e7c20db3cc31",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 65,
+          "state_digest": "9bd75f2a919567efdaf23a518b30f63fbc4dcdc66527713bd58c2ba23ea4b9ee",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 66,
+          "state_digest": "3e69f4a7a36f2cac6c5dc92f59ee983858a9adceee6062797f3feae7750ee475",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 67,
+          "state_digest": "d74b3c2a0b33e90b3f108378bf59be04d9b2e23b897191cededacefea0faf179",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 68,
+          "state_digest": "8afb100f22d0b4bfdb74dc2a43282c746698eede97271dbf8306827a7e21575c",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 69,
+          "state_digest": "6b1b614338a8d62751bb88b37ca29413930c3c70950828f64f50cb5a40fe6f1c",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 70,
+          "state_digest": "4504aa52dd692f6da0946dcccb5aec11dfedfab2bf5fe44c7af6f9bfb9233664",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 71,
+          "state_digest": "e0a00d255a75f55ff6055e7ec95a5e18a2403a55a7f69632d619fa2e80c53232",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 72,
+          "state_digest": "5f089e19b6c8b7debeabb4eabc43904db531cf8f51a388499230403003647d93",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 73,
+          "state_digest": "e64a91c0423ecfc3270171c25cdb523218188da84ad1744f9acbd107083b069a",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 74,
+          "state_digest": "8ad9be181a3443e029c62cede314fa34dbb69356e15ba4e15150980d9a2dedcf",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 75,
+          "state_digest": "5907c9ea7caa7b40fe72ca042ddd74fa5b1cc8db674fc24f3988e4c1e42dd85c",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 76,
+          "state_digest": "55682162a8bcb9a0e4aad2baa493175ac9eac4b559a45f4b9348b719bda00d27",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 77,
+          "state_digest": "30d7ebfa980f622e224f15fa40c57d0743e5580fb6fdb391149ab7fc41d10f33",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 78,
+          "state_digest": "558b1d37de9265bdc4a5e34dac62bb522b19485f6dfcd28e22932914d4f589a0",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 79,
+          "state_digest": "2edbcd6455f6f13949841ba6d98d42d07cd074b32870041fb1a7999c80d1e503",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 80,
+          "state_digest": "60e0553da28b2ba3ebfce05293c20501a2a2722daa5d415a46c6884a209b908c",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 81,
+          "state_digest": "0330d1db15a26203829f00013468662227f9321bbc0ddb7781ae671e11b16c97",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 82,
+          "state_digest": "dd472f1f17f1d00d0e8aa364105388f0fff50cf11f74470cfb5d2532a569efa7",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 83,
+          "state_digest": "025639a669afc1bbb21af409713d9830cc6b71b5a53401143e241f8518a86896",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 84,
+          "state_digest": "fc5157ba8f66c9da33d9031aae1a138ce429041b34c717b4b71dec4e529a521f",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 85,
+          "state_digest": "eef2a650f8dd59e9fec785bb7bbf7582200fadd2f93ae7f37b9f7ccfadcd5390",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 86,
+          "state_digest": "c135eb5756d28ed573579717e1eb0c8ed3e8f2c59b910a32a8a2d85b397c5e8b",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 87,
+          "state_digest": "8b0513837b59a105de7b271f52ce7c1dbf07e4e591464cb858b4907f93de797c",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 88,
+          "state_digest": "e8f1e74a8bdffe9f7719c427a6b67a41056d2a8aff410c5dfa1f6faa5d32c7ad",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 89,
+          "state_digest": "c45cfebc1f0e8d3415fe3e3c530adc58ddc80c3ecf7871deb94885d07a06c9c8",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 90,
+          "state_digest": "aefa94b02abb5f127b428ec6c3301c7a4450ecbd1f5d589771a994dbaa611d0c",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 91,
+          "state_digest": "7a6ce8a3204d6ad073fb9ad6deb4ebfbc7b1d61135940e7ff3931f6566d66870",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 92,
+          "state_digest": "21edf6572a8c23b60567bb17fb3bf7c04e63c6769b69f95894aec16859b7b385",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 93,
+          "state_digest": "15f7c35a7ed8640c8f71202c0e8b8b2bbb6e311f280aac6763cddba9e00f5dd1",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 94,
+          "state_digest": "bfd803b93119fa62afa66a47ec6cc9d1d9bbeaafb57f994557723ad073a74905",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 95,
+          "state_digest": "8da67f4695bcd3310d1b7d360fbae1759f1f7ebcdb13610ce283230cecb56d1b",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 96,
+          "state_digest": "26dfa45a367e74bca595731014e4d724523415697755bc8d0a1c3690b6ad175b",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 97,
+          "state_digest": "0e3a4c205b0fe8272855ac028d2221e0b00db3a79000589552e0caf472a75497",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 98,
+          "state_digest": "ef7e81d2565ab5f55f534aa805dee2863f2e5f82cd59e8621453b8f29da56c74",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 99,
+          "state_digest": "1aa424a7d4463360aa0726297eae0acf867ca684bccdfd5a8ef4bd522aa073ab",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 100,
+          "state_digest": "194d7399cf0f4572a6d9dc3e2b31657f08a38446639587c4bc6c3b8727ec05ef",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 101,
+          "state_digest": "01138120619d852481bff69792471deaaea2d6a7fe2771ea04e387340dc96262",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 102,
+          "state_digest": "fb318d93f8bfe420634c572da63988fb14da09fe525350ce9fcdd4abeaac7aa5",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 103,
+          "state_digest": "e5a2dacea1cbf18c4bcae1b187e969c749aaf4f343ebb95071150e05d536807d",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 104,
+          "state_digest": "4a9aaec96c005c7c69746bc7ab224677915508f75b0b1d5ed689433357d3878b",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 105,
+          "state_digest": "b890c471cc876d8c9bc84dd91813eca14f7b90eb49d8a6d53baf08a9da539f56",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 106,
+          "state_digest": "4a5ba1a0c3ed3cc2a950d0f46ff8d653fd1ea36a5fc61cb6f3922f54ff19355d",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 107,
+          "state_digest": "91f025528139766fcf18a4a53f5864b904487667cb56fd761d1528198e7faed2",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 108,
+          "state_digest": "a0888590fe385fa673d571ffd3cf5c1363643ab4716c6dc3cb98a596b7d6ebc4",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 109,
+          "state_digest": "bf86d7e8623accda73516b20165d3e13d1d3b64a13592aaed720d2a18695cbe2",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 110,
+          "state_digest": "ab36fdb13ace624f066c55f51e626054eefe23d4e93a0a1df011e3b281521db5",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 111,
+          "state_digest": "52eafffb4a718ed92128d00e13bf46b5724e14e1dfedea8a7a7825fd336072bb",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 112,
+          "state_digest": "365106880ae3adbb8ed87354197cc38fba18d59879a0d7ae3113cce19050e825",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 113,
+          "state_digest": "7a6f9e39bb2c86f3aa8e4ab47dde5917e16570df3c95b63496cc29953ee42c83",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 114,
+          "state_digest": "53e62126a79c0ccb26de867a2bfdff537016a5e5e49b63deeb7088381cc63297",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 115,
+          "state_digest": "ca1f4892a1e9edc15c8ac4fa00dcad1b17b347daab87056f04a82ef4d48ddeae",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 116,
+          "state_digest": "38ea79f75825379fd34cbf5b199e875150e62813ff56b8d855b11128f30d6037",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 117,
+          "state_digest": "576e6b25d5fc80e0e76ddce98b29109c46d4f5ac3351cfb2f0a757831aecd7e6",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 118,
+          "state_digest": "bf3f00b882977a865aa8cadbb0de3b6a5b08d8edd550a1d3e6c03be1422b07a6",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 119,
+          "state_digest": "6836702221d76ccd4905b933b110895755b3729acaa35bc42e093f1ee1e5e592",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        }
+      ],
+      "events": [
+        {
+          "fields": {
+            "attacker_entity": 37,
+            "damage": 10,
+            "target_entity": 39
+          },
+          "type": "BattleEvent"
+        },
+        {
+          "fields": {
+            "faction": "wei"
+          },
+          "type": "TurnStartEvent"
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "mode": "turn_based",
+      "kind": "ranged",
+      "inputs": [
+        {
+          "frame": 0,
+          "kind": "SDL_KEYDOWN",
+          "key": 118
+        },
+        {
+          "frame": 0,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            500,
+            400
+          ],
+          "label": "select moving unit"
+        },
+        {
+          "frame": 1,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            425,
+            270
+          ],
+          "label": "move destination"
+        },
+        {
+          "frame": 6,
+          "kind": "SDL_KEYDOWN",
+          "key": 27
+        },
+        {
+          "frame": 6,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            425,
+            357
+          ],
+          "label": "select attacker"
+        },
+        {
+          "frame": 8,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            1010,
+            200
+          ],
+          "label": "attack panel button"
+        },
+        {
+          "frame": 9,
+          "kind": "SDL_MOUSEBUTTONDOWN",
+          "pos": [
+            575,
+            270
+          ],
+          "label": "attack target"
+        },
+        {
+          "frame": 14,
+          "kind": "SDL_KEYDOWN",
+          "key": 27
+        },
+        {
+          "frame": 20,
+          "kind": "SDL_KEYDOWN",
+          "key": 49
+        },
+        {
+          "frame": 21,
+          "kind": "SDL_KEYDOWN",
+          "key": 51
+        },
+        {
+          "frame": 22,
+          "kind": "SDL_KEYDOWN",
+          "key": 50
+        },
+        {
+          "frame": 80,
+          "kind": "toolbar_command",
+          "label": "separate local toolbar contract"
+        },
+        {
+          "frame": 81,
+          "kind": "SDL_KEYDOWN",
+          "key": 32
+        }
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "state_digest": "91863780a4f11bf39eea275b505a2adb136a1314001ea6481a62b780e3e24a28",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 1,
+          "state_digest": "82eafca1ab28bc30e056fbb3afaf942346004fd04aed28b3013422c9d9197305",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 2,
+          "state_digest": "8385610aa38289439b309c165ce93f111071efb6f589d98cd2708faf853b96ba",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 3,
+          "state_digest": "b953bacefbd569a5f639e2979a3e786538c8d3fe7ffc77abe414834f7635492d",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 4,
+          "state_digest": "91843a05ae7cc725c975bc800b354f4d19b8eac6d5c7c426873d02fefad76378",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 5,
+          "state_digest": "010d8faf9be23bb32d7a52fcc647579e2dc9e2e1d88a989ebc29ebbee4de299a",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 6,
+          "state_digest": "69ca87c792a88b4c44fbd76d23f5682da06b63a698293268a2b72393d0b045b4",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 7,
+          "state_digest": "b1c4041fd5b930754de971a59c8715229b8e38fc1cb3e1118852892010c81f85",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 8,
+          "state_digest": "7809efc3e1a22dc0dca4483d752c518079d9eb6414d62006140fae772edb7ba1",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 9,
+          "state_digest": "ae61af1df45b8f79fce8ba535dc7b45908636baec74634edcd0bf2c48fbd8cdb",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 10,
+          "state_digest": "b450b53b503ce2ebd84198231dd3411e48db6bf307a7882a31da08a4101faab5",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 11,
+          "state_digest": "5a4c3fea79ed002af386f0c09d7eded7701248be1ccbfdd6745461070d16591f",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 1
+        },
+        {
+          "frame": 12,
+          "state_digest": "ee99c14ce3bd5e38467f3267b550682de3a3da036aaf21b44cedb6d93b8cb673",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 1
+        },
+        {
+          "frame": 13,
+          "state_digest": "4463d913a09446b6cb856bb2c05ebcc839706a5afbb504063eb784ad67ccac54",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 1
+        },
+        {
+          "frame": 14,
+          "state_digest": "d8cc2aeb89fd74cfd37b8f1ec23c85aa796d428bd7ce6defa67de6793650267c",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 1
+        },
+        {
+          "frame": 15,
+          "state_digest": "a069befe70680c1db45449cb248f9acd68bb434b7a2bb955e9b778de5e428ed4",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 1
+        },
+        {
+          "frame": 16,
+          "state_digest": "658a44787cd95d24258ccb3aabd77ce3be14b37e59676e72468b6c7348aaeb49",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 1
+        },
+        {
+          "frame": 17,
+          "state_digest": "843fffdd0636c69bee182756356c39de617e2dc8eceae74834956d30ea63b683",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 1
+        },
+        {
+          "frame": 18,
+          "state_digest": "194ab19c881c4cff8504d1e84cdde1885d51c026046639b13a570a3776ee538b",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 1
+        },
+        {
+          "frame": 19,
+          "state_digest": "3f2336e91f341b4402e308a76b724ad2d0018e4b670675c143cfd7e6661b42d5",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 20,
+          "state_digest": "0da97c133e8ee0b6212a4c5d4db8e008cdd4fb291c9a38e6b9ec53592b10d08d",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 21,
+          "state_digest": "73c3e7f7ff7e8153a4e760d6d72ec46e48f6ffbb4e205f1a8b98621361373998",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 22,
+          "state_digest": "d11e8b5880881e403f2b3c166e0505915db52aa15beb80b5a0988b1c49d301d0",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 23,
+          "state_digest": "7a7182f486b561c367c73bee8529413ed0cd0577f72abb2d6385b1133977f5e1",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 24,
+          "state_digest": "88d661892865381d67a809df7da958f5009a918f825ded7f6b81adeeaa15d44c",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 25,
+          "state_digest": "2f8a3aae8517e551f3daae7bce14aa4533111f1860075594913f578f83a495b9",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 26,
+          "state_digest": "af310d27be44ece9c8baad5dd937f41ed1c04bd35adcbde37a0e1d486311376f",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 27,
+          "state_digest": "74561db516b067bf43771ed6f32acd37a6722480a70ee633bed4fc1658daec22",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 28,
+          "state_digest": "44027e020f0f16e8651ff6d64ad34d813ec158451593135d38b067893e3f7aec",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 29,
+          "state_digest": "61a43e78d8bdd3571543e88939561f10f6d8d095a91279f89301791f92c01597",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 30,
+          "state_digest": "1830c4b99856be223275c7b5b4aae8920cabb0b4ddaa52c965df80458bd8094e",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 31,
+          "state_digest": "d9e55dc95d9f554d1e6a9c0bb4ed8caaa38fa7d6035b1c67505f6bc829a7f49a",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 32,
+          "state_digest": "9f909b8990ff8d74610f266b1027d0ad6360641651d8baf2e0b6717a96964a4b",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 33,
+          "state_digest": "1caa569dcff82cf70bda7a74199731b2d9d000b8f80c9bad8a36a1aca4f50204",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 34,
+          "state_digest": "d202debc1e428f13e08d6a121a534c1a5fb2de5cf2a8c714b0835ca67e19746c",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 35,
+          "state_digest": "601249a82e26d1fcc48c5043d1d979c6d2810cc865e7edebb314d222f735dc8b",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 36,
+          "state_digest": "a6169f6512f9f84d3b8a78598f781a62d55e548c5b990ccc075579eef3d44809",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 37,
+          "state_digest": "17dbb101917c84306c86018385683af0ff30289f85620997bd281e2440ce845e",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 38,
+          "state_digest": "14d7aca75f469364f5d969d85ee931872ee57046b051eab52ec8144985400a89",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 39,
+          "state_digest": "58611b8aca9843a1b184a02cf6ae3e023cc70353d2800ebca267ab555f0e2e07",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 40,
+          "state_digest": "13d9e9e675e231719b575338e6c47d86a08bf9e230e1b487305875175b4b8364",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 41,
+          "state_digest": "71372e5b3751d02896dc541e8c2cf540df2c7c01c01dbd68589d75ec234b1d98",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 42,
+          "state_digest": "c7feb3a2d5c1b3c13b97fd7fe40959eb12e245bf63ec62abdef2aee07cd8100f",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 43,
+          "state_digest": "3d0061bc7449f57a9e9ff376457f311803652422cbdcbacda20f71628701b4d8",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 44,
+          "state_digest": "5f0cc5d4c5df63b061277f7992a2e6e33ce25978325b9ba7c964e4165e08dcd6",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 45,
+          "state_digest": "f787c04bdc75f15ad4a618cebc47bd40e08c0ff9e2a8019e141972b285981f08",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 46,
+          "state_digest": "27b34e7a1b95d0f3c903df6bb530fa0077e59a568bfe2d2b682ac460fc9f79cc",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 47,
+          "state_digest": "91235547b44d9feb18b19fd66d2e4da020f1089d0136039d7432ba0252353a38",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 48,
+          "state_digest": "c4732719f0e887aac22c24a20833b8e64986a020fe609a1eae9d62bcae2c1bbf",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 49,
+          "state_digest": "338d927fb90f0c44a50d2254e2693a0213fd2b1a7b0b75c839b63ca276233a12",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 50,
+          "state_digest": "d7837e2435c5e6fed41276a948d74d1543dab2e4aecb1a918971afe772cb305d",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 51,
+          "state_digest": "bcf221c91c961e5592f09d0e5902131a9510f185536a7f7a1ee1e0455c7d4a5e",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 52,
+          "state_digest": "0c19b75224f058925c9d10e3caf981b7ffb0c3baed7ec81cd3bbbc0a88e64142",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 53,
+          "state_digest": "0cfb66ffbda136bde95e32d79af8e337272a41cf71829e1aaf707b36cad3b1db",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 54,
+          "state_digest": "f21643f327f992f39a7481c89e627a83fbada23c762a6f0e2e7fead0ceddd2f6",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 55,
+          "state_digest": "cc3415f0fa493950b01d11396a67351c5b405f39b065269bd47ed0dab6a84331",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 56,
+          "state_digest": "96d3a44fc683e27222991f98a9de8b51bc3187ebf8d360dc37dbe677c8cc7134",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 57,
+          "state_digest": "2a90b4e93b9da96adc894eb06e7761e43ecbd4bf19c1f18d4d276e2cc9878f7a",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 58,
+          "state_digest": "af2d0ec7052a74a9609e8b47ff8134c56974b28740911e91229ca0ffc44b5fa7",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 59,
+          "state_digest": "99e8c2bce39a47af387f6ee9c73d8a930bffead37387ba5b8d90c5b9187f33ff",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 60,
+          "state_digest": "989b870f346ac384c063748c36abdcf2ea0517f7c9098b6550a3d45cf8068f50",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 61,
+          "state_digest": "db9a6a6842210228b41c9174cd3e5d427d29aab63ca8dcbd1c51515b8a85e9ea",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 62,
+          "state_digest": "c0f0d544d349ec68a51b5a493fe83d7c22d65dbe96745a7e5da9f13a7c73027a",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 63,
+          "state_digest": "d8a178f8e41d3c3daf30b599492d74ebf3ce36fdc88e28cc166f2db6d192b502",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 64,
+          "state_digest": "7db29f61c55aea56a0441bb0cd98d34abdfe03299c3117488c18e83f6c86f447",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 65,
+          "state_digest": "809a4191288ddf50a801c4cca16c01714e971ca856e0777f79581cf01a5acdb2",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 66,
+          "state_digest": "39fc75f1538347876bc8626720c69e74237f6b2a5a2ba3518e22677b9a597b11",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 67,
+          "state_digest": "0819c4639cded98d0d1e5faa4e26f27106e3c09346df1ce2eb3f3c2950fc93cf",
+          "units": 3,
+          "damage": 2,
+          "projectiles": 0
+        },
+        {
+          "frame": 68,
+          "state_digest": "3827606ea8de557165d0912e7761a699ad7a757c8357b57ee647b99b47cb7118",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 69,
+          "state_digest": "823bd62dfcea20b64408ebc047da9b7d25d9372fb1ca13b5c703729eba66bb84",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 70,
+          "state_digest": "f24dac5ec4f29d4382f8c9fbbf9e42896a419968e131984994722dd587543eef",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 71,
+          "state_digest": "3e291e02d1511576a04224bd45bfa559adb6b9d66c7ab088a500d03e4c0c0fbd",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 72,
+          "state_digest": "c0d85c260c7e600cc7f006e61c7a9703b3375d9fd4e3bd584ab4e45083aa1578",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 73,
+          "state_digest": "bb72ec2f02eca9929a6bc17ad12c22114bdebb99e1519587bc5bbe45de9943c9",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 74,
+          "state_digest": "6997eabbcec1c38a77e27cd9001bd6298f6b3eeb14a1cff2e97d6bcb3d44c4a0",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 75,
+          "state_digest": "050e4f6885a3125469c1becefa20e97a9d1931334091c4c7de29ead2881c1fe0",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 76,
+          "state_digest": "55953bf6f500e89994d5fa7aad037a3acf6a9d52e95d2522b48ed234f28054e5",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 77,
+          "state_digest": "14479f742d63bc0923ee5db5c5f09935a8f8f1d6d24309fd8ec2f842fa4e1aae",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 78,
+          "state_digest": "f807815dc915480151c9986cb8ee51041a8a328c605546e5e9285b360869f3fe",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 79,
+          "state_digest": "2b194c42af7a9c1a88b64b78dc976dc1b1e67970eb975e470cccae23839173a9",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 80,
+          "state_digest": "b6d7bee590e6b61bdc7e2bf198c9ef7dc17c7d76af8625dbf47056acc8361c2f",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 81,
+          "state_digest": "198190f7881372f79784ba0a4ca5a9cc24cbff81f3b577d83cd518e9ffb77d9a",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 82,
+          "state_digest": "7f7522ce5d8df76d27fcb015feca5c4c928d078576507c610ed94476b5cb3286",
+          "units": 3,
+          "damage": 1,
+          "projectiles": 0
+        },
+        {
+          "frame": 83,
+          "state_digest": "8bcd6f0d6f26dfddccf1945874d067252ce5e4cc4a873170a292f2acd2e731d4",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 84,
+          "state_digest": "6087c858d722ced721b9c8b386ed3511dc2551b5aa7f1226e01e234d36d1461d",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 85,
+          "state_digest": "cb20cdf3e4b3d5a9cacfac28913fc60ea01d5185d696b8af9b9d5805b08d5e03",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 86,
+          "state_digest": "1d83637cf637c839323c693d951ae421daea3a481a1cedfccf7f51b4b0704840",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 87,
+          "state_digest": "a1088c29dfc4f2af2dd340974bdd41a00f17c650faad2eed0280ebef23443f15",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 88,
+          "state_digest": "96c0e254b7bdfbbd91f3efe24c8b95a7c8106a3231ff2047b92f78ecdb0e8b37",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 89,
+          "state_digest": "27d8ff15e45fd1e885b44c7285a2f66386948eba43db31bc9d3719b8ad09a970",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 90,
+          "state_digest": "6ca2d21ebd811638f4fcd9702b56f0f93625533da10937fdd00c565d9aa81a52",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 91,
+          "state_digest": "6282eff46fe75ec43782505a05a2ec229d69bd78f0cd8362995ec22c788cd7a2",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 92,
+          "state_digest": "de844f5693303dde284df658648c75ab2cb1c86937623311d2e2b38cb34ea0ee",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 93,
+          "state_digest": "384b98c0dcd77fd702111b81c8285a416c379af29be18c08e78979b5ee12c5df",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 94,
+          "state_digest": "ce6f7654c205b479b1937dbb13d07aaae71788b7d3ce597bbb7550445d7c33b5",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 95,
+          "state_digest": "48c8c1fa97410681ab09525fc07975f3a0ca59249e0884c44e2acf1880f59a18",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 96,
+          "state_digest": "13226bf7c14ccf3fbdc6040569f4d7af32c33a039013b85a925285bf117f2074",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 97,
+          "state_digest": "f8fc70d5f61483c482219b49288963e5e79548fc3c5393596bafa635b4eb845f",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 98,
+          "state_digest": "3f7905250af3b3cd324514db379a7bb3b028b47829843d18c123f940b541e839",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 99,
+          "state_digest": "6ccd211f000c173788085bb682d69194da0d62ee6dc71f6685fca7cc56d52aec",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 100,
+          "state_digest": "c2ec8a5502c4f095cb2f2dda199fc8675963ae1bd78d510a4e3f7db6a60a4940",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 101,
+          "state_digest": "809c39e22c017227bc4e95cadc9148b3796e3ac829dc8770d2c378b1627158d4",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 102,
+          "state_digest": "b0ceaf846c686016a5f8682aaa21d664481ad7190653bd5b0eb57bb114260c3d",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 103,
+          "state_digest": "a8231b9d7da2756c8d8e834fc95505c92c42406d9e839e6ca2f2627a1c49b1f8",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 104,
+          "state_digest": "b3010d3c3e2507433f2ed0513796eb4d6179665c7dab1e0ebb036d59e6f91228",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 105,
+          "state_digest": "7d46ddd07f3adc0d49261acfbb1f9392306f840ffdf406fce7f4f9f4d9492508",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 106,
+          "state_digest": "823ce53c087231620ce18df167b18ff305f724f988f2b119b0371d80ebac2bf9",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 107,
+          "state_digest": "b945e1eca0e9a81f3ebff87e2b5210061754b6e9d9e310a31f3a3b0e2e157e41",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 108,
+          "state_digest": "eeb803da899c5cf27b1a49610fad888e76c092d5b6c6023003b29f2815d1d841",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 109,
+          "state_digest": "714c4473c790e6f4762ff184c35aff0b81299e401703b021f6a005fda5876bff",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 110,
+          "state_digest": "d95d09a1216f989503204b193ea358306d54b4ba109496ce7fc77d165e2bab99",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 111,
+          "state_digest": "b0b2263aebd7d0b7a75309fd26e4ca5b6d829681b4e5e6ae1e96c3f16e471c34",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 112,
+          "state_digest": "29651689e6c656cce3e950b72a98a2747e05e867d6c884ff445641c4a2cbb293",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 113,
+          "state_digest": "f6a107c2049f32c859cb4350ee121777dd3864e0d631f9b9ad683a84823a9dc1",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 114,
+          "state_digest": "85f2998fc78bec2409e923eff0a2494d947175eadeff74eca142471d6235a355",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 115,
+          "state_digest": "c497c3a97510730638e0bf203c05b2e2a4163118ad374200c9d0b07f561cf783",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 116,
+          "state_digest": "a8a3efe30a745c24e8628528e9c41e11722eb31d5a95627cbffaa23f8345787a",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 117,
+          "state_digest": "8fc889521d1520cba6be23170abe842616c0b68a0f43d65366b520d3e5fe3712",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 118,
+          "state_digest": "d9553eda7668a4419d9848651451388ae8f8b96d71d978c0314c08974208e1bd",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        },
+        {
+          "frame": 119,
+          "state_digest": "7824c512af8d40fe435ce9ed9eff28b7f0579b4b9979fa11eb7fb55e73ec8876",
+          "units": 3,
+          "damage": 0,
+          "projectiles": 0
+        }
+      ],
+      "events": [
+        {
+          "fields": {
+            "attacker_entity": 37,
+            "damage": 7,
+            "target_entity": 39
+          },
+          "type": "BattleEvent"
+        },
+        {
+          "fields": {
+            "faction": "wei"
+          },
+          "type": "TurnStartEvent"
+        }
+      ],
+      "all_passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "real_time-melee-000.png",
+      "sha256": "272a03c6b82f31e3024ea29611fd55e0ff2365b8cfa2cc1b878a23c90eac46b9"
+    },
+    {
+      "file": "real_time-melee-010.png",
+      "sha256": "8ae59a9c7b6def5201d8af88012c90ee968b7bdc83e9d1b31dc829b5c6b24857"
+    },
+    {
+      "file": "real_time-melee-016.png",
+      "sha256": "7f8f25282cec49b7974b4b072dfdf6bb0045f94c5b1e3404311a2b0729a1ce8b"
+    },
+    {
+      "file": "real_time-melee-055.png",
+      "sha256": "5932d1f13f7b92e2c71b2c751ebfb7700057f8b0a89bca72515e0bc38c63bbba"
+    },
+    {
+      "file": "real_time-ranged-000.png",
+      "sha256": "8685fdc0e6716591cfe5bd2f0c9f74f104f3d70a8482110d048c25cf804bef6e"
+    },
+    {
+      "file": "real_time-ranged-010.png",
+      "sha256": "d5a49a78657c2f671a147277922232c911716d847b13f79a65f5a3cc4f33804b"
+    },
+    {
+      "file": "real_time-ranged-016.png",
+      "sha256": "98ad737713fbb75b44ef08d1c51c20b63ab632799d8699480eefbe6032203a0b"
+    },
+    {
+      "file": "real_time-ranged-055.png",
+      "sha256": "454eea8f39a1398ef2542159c2466d99241a36c9e7fb94bb35a3f869a2c3f968"
+    },
+    {
+      "file": "turn_based-melee-000.png",
+      "sha256": "272a03c6b82f31e3024ea29611fd55e0ff2365b8cfa2cc1b878a23c90eac46b9"
+    },
+    {
+      "file": "turn_based-melee-010.png",
+      "sha256": "8ae59a9c7b6def5201d8af88012c90ee968b7bdc83e9d1b31dc829b5c6b24857"
+    },
+    {
+      "file": "turn_based-melee-016.png",
+      "sha256": "7f8f25282cec49b7974b4b072dfdf6bb0045f94c5b1e3404311a2b0729a1ce8b"
+    },
+    {
+      "file": "turn_based-melee-055.png",
+      "sha256": "5932d1f13f7b92e2c71b2c751ebfb7700057f8b0a89bca72515e0bc38c63bbba"
+    },
+    {
+      "file": "turn_based-ranged-000.png",
+      "sha256": "8685fdc0e6716591cfe5bd2f0c9f74f104f3d70a8482110d048c25cf804bef6e"
+    },
+    {
+      "file": "turn_based-ranged-010.png",
+      "sha256": "d5a49a78657c2f671a147277922232c911716d847b13f79a65f5a3cc4f33804b"
+    },
+    {
+      "file": "turn_based-ranged-016.png",
+      "sha256": "98ad737713fbb75b44ef08d1c51c20b63ab632799d8699480eefbe6032203a0b"
+    },
+    {
+      "file": "turn_based-ranged-055.png",
+      "sha256": "454eea8f39a1398ef2542159c2466d99241a36c9e7fb94bb35a3f869a2c3f968"
+    }
+  ],
+  "all_passed": true,
+  "capacity_claim": false,
+  "full_scene_claim": false,
+  "input_source": "synthetic SDL events; toolbar command separately invoked"
+}

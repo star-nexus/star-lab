@@ -1,0 +1,8 @@
+{
+  "source_sha": "5bda51db6cd68455aa5724a6ef0eca1e66f89dda",
+  "api": 5,
+  "extension_sha256": "a60b227d02e47998762c735a047e10a90a225fb8b78727b41afcc0d68c1d3f89",
+  "result": null,
+  "error": "'RustRuntime' object has no attribute 'execute_control'",
+  "state_changed": false
+}

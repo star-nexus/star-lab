@@ -1,0 +1,30 @@
+{
+  "all_passed": true,
+  "cases": 144,
+  "nodes": 7128,
+  "operation_counts": {
+    "request": 1008,
+    "control": 1440,
+    "capture": 144,
+    "step": 4176,
+    "reset-current": 288,
+    "keyboard-turn": 72
+  },
+  "thread_settings": [
+    1,
+    2,
+    4
+  ],
+  "thread_execution": "serial Mutex, not parallel jobs",
+  "raw_json_bytes": 265288799,
+  "raw_json_sha256": "72d729ab5e594711838969d4d84a2b2640612eecaa6998651be9858d886ac34d",
+  "window_cases": 4,
+  "window_frames": 480,
+  "screenshots": 16,
+  "input_events": {
+    "SDL_KEYDOWN": 28,
+    "SDL_MOUSEBUTTONDOWN": 20,
+    "toolbar_command": 4
+  },
+  "capacity_claim": false
+}

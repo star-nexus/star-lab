@@ -1,0 +1,22 @@
+{
+  "source_sha": "c5ae37f5fab2e3563af136f8868d8fc7227c1f23",
+  "source_dirty": "",
+  "api": 6,
+  "oracle": "python-r0c-3cc4ffe",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "os": "ProductName:\t\tmacOS\nProductVersion:\t\t26.5.2\nBuildVersion:\t\t25F84",
+  "hardware": {
+    "hw.model": "Mac16,10",
+    "machdep.cpu.brand_string": "Apple M4",
+    "hw.logicalcpu": "10",
+    "hw.memsize": "17179869184"
+  },
+  "chrome_running": true,
+  "extension_sha256": "527c60fcca55aec5b4d2481cd113c78663eb1c3f631c6e72d83964c37fe98842",
+  "locks": {
+    "uv.lock": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+    "Cargo.lock": "8b2faed1cbbae1f3c75a3b68c1743c6a02da99f370bfd2ee05578aefe8732461",
+    "rust-toolchain.toml": "887f9be066a15585a2c583578e84b0fcb541126d81546276bad3d2ff00d61167"
+  }
+}

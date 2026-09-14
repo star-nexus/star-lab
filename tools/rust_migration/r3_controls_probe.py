@@ -209,7 +209,7 @@ def replay(raw, output):
                 elif op['kind'] == 'control':
                     result = native.execute_control(op['command'], wall_time=op['wall_time'], **op['parameters'])
                 elif op['kind'] == 'capture':
-                    result = native.start_capture(op['unit_id'], op['position'], wall_time=op['wall_time'])
+                    result = native.start_capture(op['unit_id'], tuple(op['position']), wall_time=op['wall_time'])
                 elif op['kind'] == 'keyboard-turn':
                     native.finish_human_turn(wall_time=op['wall_time'])
                 else:

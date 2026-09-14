@@ -8,6 +8,8 @@
 
 **当前节点：R3c 已固定（2026-09-14）。** 生产 `5bda51db6cd68455aa5724a6ef0eca1e66f89dda` / annotated tag `rust-kernel-r3c-2026-09-14`。[报告与复现](../experiments/2026-09-rust-r3-presentation/README.md)：1504完整回归（582 native契约）、3Rust/Clippy；144配置5184节点/4032ticks差分和独立精确重放通过。Rust战斗/弹道/飘字生命周期与ID已接，资源/领地/Fog使用变化队列；Python消费展示增量，复用旧绘制缓存。真实Cocoa近战/远程、实时/回合制、选中/普通视图共960帧通过，24张截图归档；不是鼠标键盘或完整GameScene验收。API/schema=5、oracle=python-r0c-3cc4ffe；活动venv已安装本检查点归档release wheel。正式checkout `runs/star-rust-r3-presentation`，45个证据checksum通过。
 
+**活动 R3d（尚未验收）**：在上述 R3c 分支节点继续实现可信本地 UI 命令与输入适配。当前源码 API=6/schema=5；活动 venv 暂为归档 API5 wheel，需构建匹配 API6 后才能运行新接口。中断后确认无残留编译/测试进程；已有 Clippy 通过，尚未新增 Python 契约或场景验收。键盘与工具栏结束回合、UI wait/garrison 与 Agent rest 的历史差异分别保留，不合并玩法。49处无关删除保持不动。
+
 **此前 R3b：** 生产 `d5abc70e9cda8a6820546112e6172dd9e43c1515` / `rust-kernel-r3b-2026-09-13`。[报告与复现](../experiments/2026-09-rust-r3-observations/README.md)：1443 完整回归、522 Native契约、3 Rust/Clippy；54配置4203节点/702ticks差分和精确重放通过。已补五种非图像观测与同revision缓存；有效缓存随scene导入以保留时间/from_cache；单位事实共用。保留旧 godview 非空战报属性错误。API/schema=4，活动venv已装归档release wheel。
 
 此前 R0c `3cc4ffea091dcf6afa8691c217ec4b09e25d4b5f` / `rust-python-oracle-r0c-2026-09-13` 补两种观测坐标列表排序，1299回归；当前oracle为 `python-r0c-3cc4ffe`。旧R2/R3a重放仍必须用原tag/wheel。R3a动作/回合检查点 `7f4ad57bbd6966748c0fb49deb82f6ad43fc7aee` 保持不动。

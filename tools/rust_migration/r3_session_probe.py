@@ -9,13 +9,37 @@ from pathlib import Path
 import platform
 import sys
 from unittest.mock import patch
-from r3_observations_probe import git, digest
+from r3_observations_probe import git
+
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def replay_cases(cases, runtime_type):
+    for case in cases:
+        with runtime_type(case['initial'], threads=case['threads']) as runtime:
+            assert runtime.take_presentation_delta() == case['initial_delta']
+            for node in case['nodes']:
+                params = deepcopy(node['parameters'])
+                if node['op'] == 'step':
+                    runtime.step(**params)
+                    result = None
+                else:
+                    if 'position' in params:
+                        params['position'] = tuple(params['position'])
+                    result = runtime.execute_control(**params)
+                assert runtime.export_state() == node['state']
+                delta = runtime.take_presentation_delta()
+                assert delta == node['delta']
+                assert (delta['events'] if node['op'] == 'step' else result) == node['result']
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--replay', type=Path)
     parser.add_argument('--driver', choices=['cocoa', 'dummy'], default='cocoa')
     args = parser.parse_args()
     source, output = args.source.resolve(), args.output.resolve()
@@ -34,6 +58,14 @@ def main():
     from rotk_env.runtime.world_presentation import WorldPresentation
     from star_native import API_VERSION, _native
 
+    if args.replay:
+        cases = json.loads(lzma.decompress(args.replay.resolve().read_bytes()))
+        replay_cases(cases, RustRuntime)
+        result = dict(all_passed=True, cases=len(cases), nodes=sum(len(c['nodes']) for c in cases),
+                      raw_sha256=digest(args.replay.resolve()), source_sha=git(source, 'rev-parse', 'HEAD'))
+        (output / 'replay.json').write_text(json.dumps(result, indent=2)+'\n')
+        print(json.dumps(result))
+        return
     GameEngine(title='STAR Rust scene/HUD verification', width=1200, height=800, fps=30)
     def listeners():
         return {kind: tuple(items) for kind, items in EBS._listeners.items() if items}
@@ -102,21 +134,9 @@ def main():
                         raise AssertionError('Closed scene accepted input')
                     case['guards']['subscriptions_restored'] = True
                     cases.append(case)
-        # Rebuild each authority independently; no display World/session involved.
+        # Decode the exact serialized form used by the archived raw trace.
+        replay_cases(json.loads(json.dumps(cases)), RustRuntime)
         for case in cases:
-            with RustRuntime(case['initial'], threads=case['threads']) as replay:
-                assert replay.take_presentation_delta() == case['initial_delta']
-                for node in case['nodes']:
-                    params = deepcopy(node['parameters'])
-                    if node['op'] == 'step':
-                        replay.step(**params)
-                        result = None
-                    else:
-                        result = replay.execute_control(**params)
-                    assert replay.export_state() == node['state']
-                    delta = replay.take_presentation_delta()
-                    assert delta == node['delta']
-                    assert (delta['events'] if node['op'] == 'step' else result) == node['result']
             case['guards']['independent_replay'] = True
     finally:
         pygame.quit()
@@ -126,9 +146,13 @@ def main():
     compact = dict(all_passed=True, cases=[dict(mode=x['mode'], threads=x['threads'], nodes=len(x['nodes']), guards=x['guards']) for x in cases],
         source_sha=git(source, 'rev-parse', 'HEAD'), tool_sha=git(Path(__file__).resolve().parents[2], 'rev-parse', 'HEAD'),
         python=sys.version, platform=platform.platform(), api=API_VERSION, extension_sha256=digest(Path(_native.__file__)),
+        source_dirty=git(source, 'status', '--porcelain'),
+        tool_dirty=git(Path(__file__).resolve().parents[2], 'status', '--porcelain', '--', str(Path(__file__).resolve())),
+        chrome_running=os.system("pgrep -x 'Google Chrome' >/dev/null") == 0,
         driver=args.driver, window=[1200,800], pictures=pictures,
         raw=dict(path=raw_path.name, bytes=raw_path.stat().st_size, sha256=digest(raw_path), decoded_bytes=len(raw), decoded_sha256=hashlib.sha256(raw).hexdigest()),
         capacity_claim=False, game_scene_cli_claim=False, physical_input_claim=False)
+    assert not compact['source_dirty'] and not compact['tool_dirty']
     (output / 'compact.json').write_text(json.dumps(compact, ensure_ascii=False, indent=2)+'\n')
     print(json.dumps({key: compact[key] for key in ('all_passed','source_sha','tool_sha','raw')}, indent=2))
 

@@ -1,0 +1,132 @@
+{
+  "source_sha": "91dc7688601c93192fea174c69981a315ac80ef9",
+  "source_dirty": "",
+  "tool_sha": "f7784415a10541835424ec106bc93a8a9b3cab1d",
+  "api": 7,
+  "extension_sha256": "d95330879ebd9427233e8aade3bb075233fbd52ca741d197086e0ce0a01627e3",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "session_available": true,
+  "cases": [
+    {
+      "history_entries": 0,
+      "hud_present": true,
+      "first_hud": {
+        "battle_log": {
+          "baseline": {
+            "entries": [
+              {
+                "color": [
+                  0,
+                  255,
+                  0
+                ],
+                "faction": "",
+                "game_time_display": "",
+                "log_type": "turn",
+                "message": "Game Start",
+                "turn_number": null
+              },
+              {
+                "color": [
+                  255,
+                  100,
+                  100
+                ],
+                "faction": "wei",
+                "game_time_display": "",
+                "log_type": "turn",
+                "message": "Wei Faction Turn Start",
+                "turn_number": null
+              }
+            ],
+            "max_entries": 100,
+            "scroll_offset": 0,
+            "show_log": true,
+            "visible_lines": 8
+          },
+          "entries": [],
+          "full": true
+        },
+        "stats": {
+          "faction_stats": {},
+          "total_game_time": 0.0
+        }
+      },
+      "idle_hud": {
+        "battle_log": {
+          "entries": [],
+          "full": false
+        },
+        "stats": {
+          "faction_stats": {},
+          "total_game_time": 0.0
+        }
+      },
+      "first_hud_bytes": 485,
+      "idle_hud_bytes": 102,
+      "authority_unchanged": true
+    },
+    {
+      "history_entries": 10000,
+      "hud_present": true,
+      "first_hud": {
+        "battle_log": {
+          "baseline": {
+            "entries": [
+              {
+                "color": [
+                  0,
+                  255,
+                  0
+                ],
+                "faction": "",
+                "game_time_display": "",
+                "log_type": "turn",
+                "message": "Game Start",
+                "turn_number": null
+              },
+              {
+                "color": [
+                  255,
+                  100,
+                  100
+                ],
+                "faction": "wei",
+                "game_time_display": "",
+                "log_type": "turn",
+                "message": "Wei Faction Turn Start",
+                "turn_number": null
+              }
+            ],
+            "max_entries": 100,
+            "scroll_offset": 0,
+            "show_log": true,
+            "visible_lines": 8
+          },
+          "entries": [],
+          "full": true
+        },
+        "stats": {
+          "faction_stats": {},
+          "total_game_time": 0.0
+        }
+      },
+      "idle_hud": {
+        "battle_log": {
+          "entries": [],
+          "full": false
+        },
+        "stats": {
+          "faction_stats": {},
+          "total_game_time": 0.0
+        }
+      },
+      "first_hud_bytes": 485,
+      "idle_hud_bytes": 102,
+      "authority_unchanged": true
+    }
+  ],
+  "all_passed": true,
+  "performance_claim": false
+}

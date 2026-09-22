@@ -1,0 +1,133 @@
+{
+  "all_passed": true,
+  "cases": [
+    {
+      "mode": "real_time",
+      "threads": 1,
+      "nodes": 93,
+      "guards": {
+        "move_arrived": true,
+        "rendering_read_only": true,
+        "hud_matches": true,
+        "frames": 90,
+        "subscriptions_restored": true,
+        "independent_replay": true
+      }
+    },
+    {
+      "mode": "real_time",
+      "threads": 2,
+      "nodes": 93,
+      "guards": {
+        "move_arrived": true,
+        "rendering_read_only": true,
+        "hud_matches": true,
+        "frames": 90,
+        "subscriptions_restored": true,
+        "independent_replay": true
+      }
+    },
+    {
+      "mode": "real_time",
+      "threads": 4,
+      "nodes": 93,
+      "guards": {
+        "move_arrived": true,
+        "rendering_read_only": true,
+        "hud_matches": true,
+        "frames": 90,
+        "subscriptions_restored": true,
+        "independent_replay": true
+      }
+    },
+    {
+      "mode": "turn_based",
+      "threads": 1,
+      "nodes": 93,
+      "guards": {
+        "move_arrived": true,
+        "rendering_read_only": true,
+        "hud_matches": true,
+        "frames": 90,
+        "subscriptions_restored": true,
+        "independent_replay": true
+      }
+    },
+    {
+      "mode": "turn_based",
+      "threads": 2,
+      "nodes": 93,
+      "guards": {
+        "move_arrived": true,
+        "rendering_read_only": true,
+        "hud_matches": true,
+        "frames": 90,
+        "subscriptions_restored": true,
+        "independent_replay": true
+      }
+    },
+    {
+      "mode": "turn_based",
+      "threads": 4,
+      "nodes": 93,
+      "guards": {
+        "move_arrived": true,
+        "rendering_read_only": true,
+        "hud_matches": true,
+        "frames": 90,
+        "subscriptions_restored": true,
+        "independent_replay": true
+      }
+    }
+  ],
+  "source_sha": "91dc7688601c93192fea174c69981a315ac80ef9",
+  "tool_sha": "ab0567f37173d8a86c2baccbfafa113580e894ea",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "api": 7,
+  "extension_sha256": "d95330879ebd9427233e8aade3bb075233fbd52ca741d197086e0ce0a01627e3",
+  "source_dirty": "",
+  "tool_dirty": "",
+  "chrome_running": true,
+  "driver": "cocoa",
+  "window": [
+    1200,
+    800
+  ],
+  "pictures": [
+    {
+      "path": "real_time-000.png",
+      "sha256": "1220b68d19e10975a6e5b12268d2249d15ccc00e3eaf57cc6e01c3a9216fdb76"
+    },
+    {
+      "path": "real_time-025.png",
+      "sha256": "e99df86a451bd9004b435ad8a45c3a6a9c09057d1c215a936e70f0764ff643a5"
+    },
+    {
+      "path": "real_time-060.png",
+      "sha256": "96b6f295443d6c69e76cf7ffcf085a227457b00541230a14fb0605c9c73c44dc"
+    },
+    {
+      "path": "turn_based-000.png",
+      "sha256": "2cf85b9ffb93930b05526a619ac77d7384dd8519af51e490f92da6172c6ed349"
+    },
+    {
+      "path": "turn_based-025.png",
+      "sha256": "f64e1438d906eceb0d71f86a4d1ad59e3dd700030fece5aed30837e7abd9c867"
+    },
+    {
+      "path": "turn_based-060.png",
+      "sha256": "28d766749d4bb614e79dd06647849085aee8eac9f4861022f282e93f49c5b1bc"
+    }
+  ],
+  "raw": {
+    "path": "replay.json.xz",
+    "bytes": 45704,
+    "sha256": "6b39a2d0d3adaf35bae525cf490f0c284a891b776bbd5fbd52d04b2bb5088cfd",
+    "decoded_bytes": 47099306,
+    "decoded_sha256": "e02a1cad12ea196be9e806eb20b8a7256a4ae72ce6a500d630bed060ae275d32"
+  },
+  "capacity_claim": false,
+  "game_scene_cli_claim": false,
+  "physical_input_claim": false
+}

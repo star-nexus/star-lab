@@ -1,0 +1,32 @@
+{
+  "source_sha": "c5ae37f5fab2e3563af136f8868d8fc7227c1f23",
+  "source_dirty": "",
+  "tool_sha": "f7784415a10541835424ec106bc93a8a9b3cab1d",
+  "api": 6,
+  "extension_sha256": "527c60fcca55aec5b4d2481cd113c78663eb1c3f631c6e72d83964c37fe98842",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "session_available": false,
+  "cases": [
+    {
+      "history_entries": 0,
+      "hud_present": false,
+      "first_hud": null,
+      "idle_hud": null,
+      "first_hud_bytes": 4,
+      "idle_hud_bytes": 4,
+      "authority_unchanged": true
+    },
+    {
+      "history_entries": 10000,
+      "hud_present": false,
+      "first_hud": null,
+      "idle_hud": null,
+      "first_hud_bytes": 4,
+      "idle_hud_bytes": 4,
+      "authority_unchanged": true
+    }
+  ],
+  "all_passed": true,
+  "performance_claim": false
+}

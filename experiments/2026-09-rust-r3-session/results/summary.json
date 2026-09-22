@@ -1,0 +1,21 @@
+{
+  "checkpoint": "R3d2a",
+  "all_passed": true,
+  "full_regression": 1659,
+  "native_contracts": 737,
+  "new_contracts": 41,
+  "rust_tests": 3,
+  "clippy": true,
+  "fmt": true,
+  "window_configurations": 6,
+  "cocoa_frames": 540,
+  "replay_nodes": 558,
+  "full_game_scene": false,
+  "capacity": false,
+  "default_backend": "python",
+  "thread_execution": "serial mutex",
+  "source_sha": "91dc7688601c93192fea174c69981a315ac80ef9",
+  "tool_sha": "ab0567f37173d8a86c2baccbfafa113580e894ea",
+  "hud_tool_sha": "f7784415a10541835424ec106bc93a8a9b3cab1d",
+  "chrome_running": true
+}

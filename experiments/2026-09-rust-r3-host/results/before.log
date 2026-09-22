@@ -1,0 +1,8 @@
+pygame 2.6.1 (SDL 2.28.4, Python 3.13.12)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+[WorldBuilder] RngService initialized: seed=42 source=kwargs
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+World has been reset
+{"all_passed": true, "entry": "capability", "api": 7}

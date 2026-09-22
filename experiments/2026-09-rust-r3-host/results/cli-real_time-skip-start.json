@@ -1,0 +1,32 @@
+{
+  "source_sha": "a6bf5f381b0393b0ab93973502d9744d6b9e3713",
+  "source_dirty": "",
+  "tool_sha": "2ec41bdc481259440702211ab202cf3c059d7eef",
+  "api": 8,
+  "extension_sha256": "f9e7169fab2f2f154baf582d5578201a9fc3a0dfb868f7cc0f72cb3851baf46c",
+  "entry": "skip-start",
+  "mode": "real_time",
+  "network": false,
+  "capacity": false,
+  "argv": [
+    "star",
+    "--backend",
+    "rust",
+    "--no-hub",
+    "--skip-start",
+    "--mode",
+    "real_time",
+    "--scenario",
+    "chibi-small",
+    "--seed",
+    "42"
+  ],
+  "frames": 13,
+  "fixed_dt": 0.03333333333333333,
+  "native_worlds": 1,
+  "closed": true,
+  "quit": "synthetic SDL",
+  "driver": "cocoa",
+  "pygame_closed": true,
+  "all_passed": true
+}

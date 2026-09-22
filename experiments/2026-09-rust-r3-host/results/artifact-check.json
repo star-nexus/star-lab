@@ -1,0 +1,53 @@
+{
+  "all_passed": true,
+  "reports": [
+    {
+      "case": "real_time-headless",
+      "json": "real_time-headless/settlement_reports/report_20240703_180422_agents.json",
+      "csv": "real_time-headless/settlement_reports/settlement_results.csv",
+      "all_passed": true
+    },
+    {
+      "case": "real_time-skip-start",
+      "json": "real_time-skip-start/settlement_reports/report_20240703_182204_agents.json",
+      "csv": "real_time-skip-start/settlement_reports/settlement_results.csv",
+      "all_passed": true
+    },
+    {
+      "case": "real_time-menu",
+      "json": "real_time-menu/settlement_reports/report_20240703_183946_agents.json",
+      "csv": "real_time-menu/settlement_reports/settlement_results.csv",
+      "all_passed": true
+    },
+    {
+      "case": "turn_based-headless",
+      "json": "turn_based-headless/settlement_reports/report_20240703_185728_agents.json",
+      "csv": "turn_based-headless/settlement_reports/settlement_results.csv",
+      "all_passed": true
+    },
+    {
+      "case": "turn_based-skip-start",
+      "json": "turn_based-skip-start/settlement_reports/report_20240703_191511_agents.json",
+      "csv": "turn_based-skip-start/settlement_reports/settlement_results.csv",
+      "all_passed": true
+    },
+    {
+      "case": "turn_based-menu",
+      "json": "turn_based-menu/settlement_reports/report_20240703_193253_agents.json",
+      "csv": "turn_based-menu/settlement_reports/settlement_results.csv",
+      "all_passed": true
+    }
+  ],
+  "recorder_fault_injection": {
+    "case": "real_time-headless",
+    "node": 3,
+    "method": "step",
+    "kind": "state",
+    "path": "$.entities[227].components.UnitObservation.last_seen_time",
+    "actual": 1790093708.228822,
+    "expected": 1720001000.0333333
+  },
+  "source_sha": "a6bf5f381b0393b0ab93973502d9744d6b9e3713",
+  "tool_sha": "30ab6f8829095384e85662016cfb37150120869a",
+  "trace_sha256": "4cb6f2791fcfcff36b22b67983b55871e2416a7498b010ed0a8981039e142e83"
+}

@@ -1,0 +1,379 @@
+{
+  "experiment": {
+    "id": "2026-09-rust-r3-host",
+    "title": "R3d2b offline Rust GameScene and settlement",
+    "date": "2026-09-23",
+    "status": "validated",
+    "full_migration": "OPEN"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "91dc7688601c93192fea174c69981a315ac80ef9",
+    "measurement_commit": "a6bf5f381b0393b0ab93973502d9744d6b9e3713",
+    "fix_commit": "a6bf5f381b0393b0ab93973502d9744d6b9e3713",
+    "validated_commit": "a6bf5f381b0393b0ab93973502d9744d6b9e3713",
+    "branch_at_time": "codex/rust-env-migration",
+    "validated_tag": "rust-kernel-r3d2b-2026-09-23",
+    "tag_object": "3ac4ad0d6d45b545bb066314c27c9fa17dd365cc",
+    "main": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+    "merged": false
+  },
+  "tools": {
+    "repository": "star-nexus/star-lab",
+    "scene": "2efdb7d6c4a2c7627f8ad033358e183b3fb23ac3",
+    "interface": "2ec41bdc481259440702211ab202cf3c059d7eef",
+    "artifact_check": "30ab6f8829095384e85662016cfb37150120869a",
+    "initial_recorder": "963ea2b2316aaa30e0a46cbbb84c21701751ae88"
+  },
+  "hardware": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "cpu": "Apple M4",
+    "logical_cpus": "10",
+    "memory_bytes": "17179869184",
+    "rust": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+    "python": "Python 3.13.12",
+    "locks": {
+      "Cargo.lock": "3388b13475993a521b58fa448ada985f743913e581c034722719dbf6da28b918",
+      "uv.lock": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+      "rust-toolchain.toml": "887f9be066a15585a2c583578e84b0fcb541126d81546276bad3d2ff00d61167",
+      "native/python/pyproject.toml": "54de9146600293371f6159ee404677b3a33d63a2be1a150f09a37fdad35885bb"
+    }
+  },
+  "software": {
+    "api": 8,
+    "schema": 5,
+    "oracle": "python-r0c-3cc4ffe",
+    "extension_sha256": "f9e7169fab2f2f154baf582d5578201a9fc3a0dfb868f7cc0f72cb3851baf46c",
+    "build": "release",
+    "wheel_platform": "macOS ARM64 CPython3.13",
+    "protocol": "1.2"
+  },
+  "scenario": {
+    "name": "chibi-small",
+    "map_size": "15x15",
+    "resident_units": 10,
+    "agents": 0,
+    "seed": "42 in headless/skip-start; native menu seed recorded in each initial snapshot"
+  },
+  "workload": {
+    "modes": [
+      "real_time",
+      "turn_based"
+    ],
+    "scene_entries": [
+      "headless",
+      "skip-start",
+      "menu"
+    ],
+    "threads": 1,
+    "actions": "one direct local move, synthetic SDL V/SPACE, direct menu callbacks",
+    "clock": "fixed dt=1/30; injected wall time; +61 seconds after game end",
+    "limits": {
+      "realtime_sim_seconds": 1,
+      "turns": 1
+    },
+    "cli": "4 independent real main() processes; default human_vs_ai, no BOT; synthetic SDL QUIT on frame12, exit frame13",
+    "chrome_running": true,
+    "serial": true
+  },
+  "measurement": {
+    "type": "functional compatibility and replay, not capacity",
+    "guards_required": [
+      "exact response/state/delta replay",
+      "rendering does not mutate authority",
+      "report/exit/subscription restoration",
+      "CLI fixed clock and close",
+      "six JSON/CSV reports match"
+    ]
+  },
+  "variables": {
+    "independent": "R3d2a vs R3d2b API/host availability",
+    "controlled": [
+      "chibi-small",
+      "seed42 for capability",
+      "same capability tool",
+      "explicit action wall time and registration time"
+    ]
+  },
+  "raw": {
+    "path": "trace.json.xz",
+    "bytes": 55564,
+    "sha256": "4cb6f2791fcfcff36b22b67983b55871e2416a7498b010ed0a8981039e142e83",
+    "decoded_bytes": 41856116,
+    "decoded_sha256": "09405465b8f695760c67ffc8d8831210c82f86988482074b37992832909015c5"
+  },
+  "validation": {
+    "checkpoint": "R3d2b",
+    "all_passed": true,
+    "source_sha": "a6bf5f381b0393b0ab93973502d9744d6b9e3713",
+    "full_regression": 1738,
+    "native_contracts": 816,
+    "new_contracts": 79,
+    "rust_tests": 3,
+    "fmt": true,
+    "clippy": true,
+    "scene_cases": 6,
+    "scene_updates": 237,
+    "window_scene_updates": 158,
+    "dummy_scene_updates": 79,
+    "replay_nodes": 510,
+    "initial_snapshots": 6,
+    "cli_cases": 4,
+    "cli_frames": 52,
+    "report_json_files": 6,
+    "report_csv_files": 6,
+    "png_files": 4,
+    "chrome_running": true,
+    "full_R3": false,
+    "capacity": false,
+    "default_backend": "python",
+    "thread_execution": "serial mutex"
+  },
+  "commands_file": "README.md",
+  "artifacts": {
+    "formal": [
+      {
+        "path": "artifacts/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+        "bytes": 1305817,
+        "sha256": "4260f6d22bf1b9124fd7f064c4358df8bbab10a6ab30e7e80591d97ce8bf8bb2"
+      },
+      {
+        "path": "results/active-install.log",
+        "bytes": 389,
+        "sha256": "c1c123d542516fdd859873b9559322311270d26f642261b78db00e232c31dd35"
+      },
+      {
+        "path": "results/after.json",
+        "bytes": 1315,
+        "sha256": "95cb54739c611f8d98b75d4b0bbf5954f31da771b3f3a6ca4ccefb211fa469ab"
+      },
+      {
+        "path": "results/after.log",
+        "bytes": 504,
+        "sha256": "6b2245453d9b2703f87d09b50df68d04cf880e822a09bd78c199e077aef6582d"
+      },
+      {
+        "path": "results/artifact-check.json",
+        "bytes": 1961,
+        "sha256": "85cf4ea40c413e2e6e27f764cb490fa5ee0d297f362517406eb025389f2406cf"
+      },
+      {
+        "path": "results/artifact-check.log",
+        "bytes": 115,
+        "sha256": "bd400aeebc2a89a3baff7e423df83de4ce1727493cd95a55c87e198af16e9c6f"
+      },
+      {
+        "path": "results/before.json",
+        "bytes": 1459,
+        "sha256": "360413d28aa3c5a23a339b06823df0521d3c9a27d7c743114f7ff07e1dd7a51d"
+      },
+      {
+        "path": "results/before.log",
+        "bytes": 504,
+        "sha256": "60187d199c38d0e38686659fc0f4268260daab0fb7e92d2cc0b384c02dffe4d3"
+      },
+      {
+        "path": "results/build.log",
+        "bytes": 1083,
+        "sha256": "4faedd5aa54b33bfee166c1e0220b9721a3f5a8f834e9f3d3075b3d0239ce160"
+      },
+      {
+        "path": "results/cli-real_time-headless.json",
+        "bytes": 701,
+        "sha256": "193c687a265a09ef47e770706f31929880c588fe42252994d95bdba834e16af7"
+      },
+      {
+        "path": "results/cli-real_time-headless.log",
+        "bytes": 1335,
+        "sha256": "424acfc5494fb3185d518ff989143e82c6392b61bb82bd61d89b5e690fd817d6"
+      },
+      {
+        "path": "results/cli-real_time-skip-start.json",
+        "bytes": 705,
+        "sha256": "69a7e50d69614212656a4f17f97dd07c4a8442fc649bd0e98722752a1346b9cd"
+      },
+      {
+        "path": "results/cli-real_time-skip-start.log",
+        "bytes": 2204,
+        "sha256": "326cd0928b66496af5c04b6a0bc68abb9f2dcc07c4bffe7f7a28269226af4589"
+      },
+      {
+        "path": "results/cli-turn_based-headless.json",
+        "bytes": 703,
+        "sha256": "cb9071b4391769ccb69910c76c647c61b7607c72606151aae7cba1a4b6577b0a"
+      },
+      {
+        "path": "results/cli-turn_based-headless.log",
+        "bytes": 1336,
+        "sha256": "ad15e45e2c674a28423795690bb36a2a626ad0ade7eb7adbffa2ef32c3fa8a95"
+      },
+      {
+        "path": "results/cli-turn_based-skip-start.json",
+        "bytes": 707,
+        "sha256": "a7d3135f96fc7178bf7545d07015949c499840677c9e8bb1fa6b1009021916df"
+      },
+      {
+        "path": "results/cli-turn_based-skip-start.log",
+        "bytes": 2205,
+        "sha256": "e4c0cc6cf10278ed14e5db20fb4f4de706cdd72d2a2cf2bbf5c26ac4718e04af"
+      },
+      {
+        "path": "results/clippy.log",
+        "bytes": 2577,
+        "sha256": "6dc1bf088214f306596b8c014a060a438de532d1aafdcaf39a0346c8e7896ce5"
+      },
+      {
+        "path": "results/environment.json",
+        "bytes": 670,
+        "sha256": "c34ee09beb0c3871d634ffaa526d43f711ae73ceb6a7971be57c34a827482646"
+      },
+      {
+        "path": "results/fmt.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "results/regression.log",
+        "bytes": 2022,
+        "sha256": "c07849fe2b6a1b1ad278697144241b322e7021fd36422ab1c625b06adef56ba3"
+      },
+      {
+        "path": "results/replay.json",
+        "bytes": 199,
+        "sha256": "7f0834b3af3408b8ad506b6c894e0e14bfba78460a987a99047d30ff0a53f03e"
+      },
+      {
+        "path": "results/replay.log",
+        "bytes": 301,
+        "sha256": "e13ee5b30992fe7a1c45cbb59c55bd687d0d66bf8ec50d382a7786aff7468a7a"
+      },
+      {
+        "path": "results/rust-test.log",
+        "bytes": 3658,
+        "sha256": "2fcb7a921bac4a65b3df4d3ab096c262555373259c3ea7b063ebdd368218acfb"
+      },
+      {
+        "path": "results/summary.json",
+        "bytes": 635,
+        "sha256": "6d8df6ee932db5ec8303c512e7e94429bbcc8d4740e739a41d8b73495545a40e"
+      },
+      {
+        "path": "results/window/compact.json",
+        "bytes": 3181,
+        "sha256": "972a6eb20f8dc6556db23cf79a3e838ea6a7d63da1c1e521db15f5f87105a1c5"
+      },
+      {
+        "path": "results/window/real_time-headless/settlement_reports/report_20240703_180422_agents.json",
+        "bytes": 7510,
+        "sha256": "b87c6f265acab0f0da9731870ae0f15bce4a570270908a2a4f96e47bdb7ea7ad"
+      },
+      {
+        "path": "results/window/real_time-headless/settlement_reports/settlement_results.csv",
+        "bytes": 421,
+        "sha256": "b607d757242f1f4e520e5227b6fd3b3057ab8fa87c07f9be40bca9c6520fd322"
+      },
+      {
+        "path": "results/window/real_time-menu/settlement_reports/report_20240703_183946_agents.json",
+        "bytes": 7510,
+        "sha256": "30a61dfbb7916412f09f044bf3bd6d3e19bf6a82b79cb897c692c3a6c9ea4fa8"
+      },
+      {
+        "path": "results/window/real_time-menu/settlement_reports/settlement_results.csv",
+        "bytes": 421,
+        "sha256": "1151fa972a4c3fe0b977a21789ceeb8a54682ca1dce7399f00deb89cc957ceff"
+      },
+      {
+        "path": "results/window/real_time-menu.png",
+        "bytes": 242332,
+        "sha256": "9f765d8ca02e0bcc6003db4c10fdccda05778fcd0433e199dcb31e4996b03a1c"
+      },
+      {
+        "path": "results/window/real_time-skip-start/settlement_reports/report_20240703_182204_agents.json",
+        "bytes": 7510,
+        "sha256": "1b2232d2cbe3797ad8a628b5f69bd7d36807e3fd43f13a694811d1bc329a2495"
+      },
+      {
+        "path": "results/window/real_time-skip-start/settlement_reports/settlement_results.csv",
+        "bytes": 421,
+        "sha256": "51fd694baf79a478047b55738a1c0d5ea81da259e229b8be58c8fe94e983b692"
+      },
+      {
+        "path": "results/window/real_time-skip-start.png",
+        "bytes": 242332,
+        "sha256": "9f765d8ca02e0bcc6003db4c10fdccda05778fcd0433e199dcb31e4996b03a1c"
+      },
+      {
+        "path": "results/window/trace.json.xz",
+        "bytes": 55564,
+        "sha256": "4cb6f2791fcfcff36b22b67983b55871e2416a7498b010ed0a8981039e142e83"
+      },
+      {
+        "path": "results/window/turn_based-headless/settlement_reports/report_20240703_185728_agents.json",
+        "bytes": 7512,
+        "sha256": "113f5911fbfa32167cd801514eb4352037ed93df5331e079d0b077bd51753d65"
+      },
+      {
+        "path": "results/window/turn_based-headless/settlement_reports/settlement_results.csv",
+        "bytes": 423,
+        "sha256": "0b3a480c46ee63a9eeaf304a5958395309b3e2704c179aa48cc4cd292ca58553"
+      },
+      {
+        "path": "results/window/turn_based-menu/settlement_reports/report_20240703_193253_agents.json",
+        "bytes": 7512,
+        "sha256": "526b5be07bae5cf0831def666c7b0c0ba38c856b0955423480e6fa2c39de8a2b"
+      },
+      {
+        "path": "results/window/turn_based-menu/settlement_reports/settlement_results.csv",
+        "bytes": 423,
+        "sha256": "16cbbd1381f016bdf6289ce6e8c3969acfb591e30c2fa94fbd4e8ea93df226fd"
+      },
+      {
+        "path": "results/window/turn_based-menu.png",
+        "bytes": 244654,
+        "sha256": "f8ea95ba2f355f4ad07fdf76fd67bed016b7b217e9e47f99b345c87182fca20f"
+      },
+      {
+        "path": "results/window/turn_based-skip-start/settlement_reports/report_20240703_191511_agents.json",
+        "bytes": 7512,
+        "sha256": "056ae8981370dfcb7c4bd3c4ad2064881f6886a229f9e86a5fae36ab26e45615"
+      },
+      {
+        "path": "results/window/turn_based-skip-start/settlement_reports/settlement_results.csv",
+        "bytes": 423,
+        "sha256": "e7d5478b4ad46a119efedfbc23c93887bb52bd8dfb11b1bd8d370562053050b2"
+      },
+      {
+        "path": "results/window/turn_based-skip-start.png",
+        "bytes": 244654,
+        "sha256": "f8ea95ba2f355f4ad07fdf76fd67bed016b7b217e9e47f99b345c87182fca20f"
+      },
+      {
+        "path": "results/window.log",
+        "bytes": 23508,
+        "sha256": "84182e3fac09c79b5d21cbe2f7d15f006ba9e0463389d9847599cb6ac346fde1"
+      }
+    ],
+    "intermediate": [
+      {
+        "path": "results/intermediate/recorder-missing-time.log",
+        "bytes": 24071,
+        "sha256": "83da8c0c2fdef15434c482d944c1801e8022afd9ccb1df774009b2d2af4a0358"
+      }
+    ],
+    "external": []
+  },
+  "headline": {
+    "problem_signature": "API7 rejects backend CLI and three telemetry verbs; no post-game host API",
+    "root_cause": "missing application host boundary and incomplete HUD report data",
+    "resolution": "offline NativeSession GameScene plus Rust telemetry and one-shot authoritative report projection",
+    "result": "functional checkpoint passed; R3/R4/R5 open"
+  },
+  "revisit_when": [
+    "network host/VLM/BOT integration",
+    "dynamic cold-component presentation",
+    "R4 worker implementation",
+    "R5 formal capacity and platform installation"
+  ]
+}

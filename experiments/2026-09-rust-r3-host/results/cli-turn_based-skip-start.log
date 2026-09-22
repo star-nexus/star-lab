@@ -1,0 +1,51 @@
+pygame 2.6.1 (SDL 2.28.4, Python 3.13.12)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+
+============================================================
+  Romance of the Three Kingdoms Strategy Game
+============================================================
+
+A hex-based turn-based strategy game powered by a modern framework.
+
+Game Features:
+  ✓ Hexagonal map system for deep tactical play
+  ✓ Diverse terrain effects influencing strategy
+  ✓ Fog of war for realistic battlefield uncertainty
+  ✓ Play as AI or human, or both
+  ✓ Detailed game statistics and analytics
+  ✓ Classic turn-based strategy mechanics
+
+Launching the game, please wait...
+Falling back to default font for title
+Game mode: turn_based
+Player configuration: human_vs_ai
+Game scenario: chibi-small
+Rule BOT: disabled
+Hub: offline (--no-hub)
+Root seed: 42
+Game started! Configure the game in the start interface, then click start game.
+World has been reset
+[WorldBuilder] RngService initialized: seed=42 source=cli
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+[Integrated] Map Render System initialized - performance + features
+[Integrated] Unit Render System initialized - performance + features
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+Creating UI buttons...
+✓ Created End Turn button (Entity ID: 225)
+✓ Created Settings button (Entity ID: 226)
+✓ Created Help button (Entity ID: 227)
+✓ Created Statistics button (Entity ID: 228)
+UI buttons creation completed!
+[Integrated] Loaded 6 terrain textures
+[DEBUG] Loaded 9 unit textures, pre-cached 54 variants
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+[Integrated] Map Render System initialized - performance + features
+[Integrated] Unit Render System initialized - performance + features
+[Integrated] Loaded 6 terrain textures
+[DEBUG] Loaded 9 unit textures, pre-cached 54 variants
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+World has been reset
+Game exited
+Game Over
+{"all_passed": true, "entry": "skip-start", "api": 8}

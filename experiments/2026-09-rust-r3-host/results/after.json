@@ -1,0 +1,52 @@
+{
+  "source_sha": "a6bf5f381b0393b0ab93973502d9744d6b9e3713",
+  "source_dirty": "",
+  "tool_sha": "2ec41bdc481259440702211ab202cf3c059d7eef",
+  "api": 8,
+  "extension_sha256": "f9e7169fab2f2f154baf582d5578201a9fc3a0dfb868f7cc0f72cb3851baf46c",
+  "entry": "capability",
+  "mode": "real_time",
+  "network": false,
+  "capacity": false,
+  "cli_backend": "rust",
+  "report_context": {
+    "map_type": "Custom map (chibi-small)",
+    "game_mode": "real_time",
+    "symmetry_type": "chibi-small"
+  },
+  "responses": {
+    "strategy_ping": {
+      "message": "Strategy score accepted",
+      "new_score": 0.75,
+      "pings": 1,
+      "success": true
+    },
+    "report_llm_stats": {
+      "faction": "wei",
+      "http_error_total": 0,
+      "message": "LLM stats received",
+      "spatial_awareness_error": 0,
+      "stats": {
+        "successful_calls": 1,
+        "total_calls": 2
+      },
+      "success": true,
+      "toolcall_error_total": 0
+    },
+    "retrieve_game_status": {
+      "data": {
+        "connected_agents": 0,
+        "current_player": "wei",
+        "registered_factions": [
+          "wei"
+        ],
+        "timestamp": 1720000001.0,
+        "turn": 1
+      },
+      "message": "Game status reported",
+      "success": true
+    }
+  },
+  "prepare_game_end_available": true,
+  "all_passed": true
+}

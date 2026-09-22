@@ -1,0 +1,2 @@
+experiment_id,timestamp,map_type,game_mode,is_tie,winner_faction,is_half_win,game_duration_seconds,total_turns,wei_total_units,wei_current_units,wei_surviving_units,wei_destroyed_units,shu_total_units,shu_current_units,shu_surviving_units,shu_destroyed_units,total_battles,symmetry
+20240703_182204,2024-07-03T18:22:04.133331,Custom map (chibi-small),real_time,True,tie,False,1.07,0,5,5,5,0,5,5,5,0,0,Custom (chibi-small)

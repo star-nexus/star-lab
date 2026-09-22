@@ -39,11 +39,12 @@ def main():
         results.append(dict(case=case['name'],json=str(files[0].relative_to(window)),csv=str((folder/'settlement_results.csv').relative_to(window)),all_passed=True))
     # Fault injection is a diagnostic reproduction, never an alternate formal trace.
     faulty=deepcopy(cases[0]);step=next(n for n in faulty['nodes'] if n['method']=='step')
-    step['kwargs']['wall_time']=None
+    expected_wall_time=step['kwargs']['wall_time'];step['kwargs']['wall_time']=None
     try:replay([faulty],RustRuntime)
     except AssertionError as exc:difference=exc.args[0]
     else:raise AssertionError('missing wall metadata must break replay')
-    assert difference['method']=='step' and difference['path']=='$.singletons.GameTime.last_update_time',difference
+    assert difference['method']=='step' and difference['kind']=='state',difference
+    assert difference['path'].endswith('.UnitObservation.last_seen_time') and difference['expected']==expected_wall_time,difference
     result=dict(all_passed=True,reports=results,recorder_fault_injection=difference,source_sha=git(source,'rev-parse','HEAD'),
         tool_sha=git(Path(__file__).resolve().parents[2],'rev-parse','HEAD'),trace_sha256=hashlib.sha256((window/'trace.json.xz').read_bytes()).hexdigest())
     output.parent.mkdir(parents=True,exist_ok=True);output.write_text(json.dumps(result,indent=2)+'\n')

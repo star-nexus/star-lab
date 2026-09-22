@@ -18,17 +18,34 @@ from r3_observations_probe import git
 def file_sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def first_difference(actual, expected, path='$'):
+    if type(actual) is not type(expected):return dict(path=path,actual=actual,expected=expected)
+    if isinstance(actual,dict):
+        if actual.keys()!=expected.keys():return dict(path=path,actual_keys=list(actual),expected_keys=list(expected))
+        for key in actual:
+            difference=first_difference(actual[key],expected[key],f'{path}.{key}')
+            if difference:return difference
+    elif isinstance(actual,list):
+        if len(actual)!=len(expected):return dict(path=path,actual_length=len(actual),expected_length=len(expected))
+        for index,(a,e) in enumerate(zip(actual,expected)):
+            difference=first_difference(a,e,f'{path}[{index}]')
+            if difference:return difference
+    elif actual!=expected:return dict(path=path,actual=actual,expected=expected)
+    return None
+
+
 def replay(cases, Runtime):
     count=0
     for case in cases:
         with Runtime(case['initial'],threads=case['threads']) as runtime:
-            for node in case['nodes']:
+            for index,node in enumerate(case['nodes']):
                 kwargs=deepcopy(node['kwargs']);args=deepcopy(node['args'])
                 if node['method']=='execute_control' and 'position' in kwargs:
                     kwargs['position']=tuple(kwargs['position'])
                 result=getattr(runtime,node['method'])(*args,**kwargs)
-                assert result==node['result'],(case['entry'],node['method'])
-                assert runtime.export_state()==node['state']
+                for kind,actual,expected in [('result',result,node['result']),('state',runtime.export_state(),node['state'])]:
+                    difference=first_difference(actual,expected)
+                    if difference:raise AssertionError(dict(case=case['name'],node=index,method=node['method'],kind=kind,**difference))
                 count+=1
     return count
 
@@ -72,7 +89,8 @@ def main():
     def recorded(method):
         original=getattr(RustRuntime,method)
         def invoke(self,*args,**kwargs):
-            if method!='take_presentation_delta':kwargs.setdefault('wall_time',now[0])
+            if method!='take_presentation_delta' and kwargs.get('wall_time') is None:
+                kwargs['wall_time']=now[0]
             result=original(self,*args,**kwargs)
             active[0]['nodes'].append(dict(method=method,args=deepcopy(args),kwargs=deepcopy(kwargs),result=deepcopy(result),state=original_export(self)))
             return result
@@ -150,9 +168,13 @@ def main():
                     manager._current_scene=None
                     case['guards']=dict(report=True,exit=True,subscriptions_restored=True,rendering_read_only=True,backend_preserved=True)
                     cases.append(case)
-        count=replay(json.loads(json.dumps(cases)),RustRuntime)
+        # Preserve the completed workload even if independent replay fails.
+        raw=json.dumps(cases,ensure_ascii=False,separators=(',',':')).encode();path=output/'trace.json.xz';path.write_bytes(lzma.compress(raw))
+        try:count=replay(json.loads(raw),RustRuntime)
+        except Exception as exc:
+            (output/'replay-failure.json').write_text(json.dumps(dict(error=repr(exc),source_sha=git(source,'rev-parse','HEAD'),tool_sha=git(Path(__file__).resolve().parents[2],'rev-parse','HEAD'),raw_sha256=file_sha(path)),indent=2)+'\n')
+            raise
     finally:pygame.quit()
-    raw=json.dumps(cases,ensure_ascii=False,separators=(',',':')).encode();path=output/'trace.json.xz';path.write_bytes(lzma.compress(raw))
     compact=dict(all_passed=True,source_sha=git(source,'rev-parse','HEAD'),tool_sha=git(Path(__file__).resolve().parents[2],'rev-parse','HEAD'),
         source_dirty=git(source,'status','--porcelain'),api=API_VERSION,extension_sha256=file_sha(Path(_native.__file__)),python=sys.version,platform=platform.platform(),
         driver='cocoa',chrome_running=os.system("pgrep -x 'Google Chrome' >/dev/null")==0,cases=[{k:v for k,v in c.items() if k not in ('nodes','initial')} for c in cases],

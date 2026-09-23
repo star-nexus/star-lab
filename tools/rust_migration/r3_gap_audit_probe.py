@@ -51,7 +51,7 @@ def main():
                         actual=runtime.execute_action(action,params,agent_id='a')
                         py_state=export_initial_state(world);rs_state=runtime.export_state()
                         steps.append(dict(action=action,parameters=params,python=expected,rust=actual,python_state=py_state,rust_state=rs_state,response_equal=actual==json.loads(json.dumps(expected)),state_equal=rs_state==py_state))
-                    expected_equal = (args.expect_numeric_equivalence if name.startswith('unicode_')
+                    expected_equal = (True if name == 'float_text' else args.expect_numeric_equivalence if name.startswith('unicode_')
                                       else args.expect_text_order if name in ('mapping_evidence','nested_mapping_evidence','stored_mapping_labels')
                                       else False)
                     assert steps[-1]['state_equal'] == expected_equal, (name, steps[-1]['state_equal'], expected_equal)

@@ -1,0 +1,21 @@
+{
+  "source_sha": "343ced3809f0ddf57c53036613abea2f9280daf5",
+  "source_dirty": "",
+  "tool_sha": "a080d3bb1853b08442efd49b58d760813ebe8a3e",
+  "api": 12,
+  "extension_sha256": "dd583a3adcb9064e3d4320e3e5a5eb9f12c032247d93356398c65c75c1a44cda",
+  "cases": 9,
+  "supported": 9,
+  "message_state_equal": 45,
+  "message_checks": 45,
+  "turn_checks": 18,
+  "all_guards_passed": true,
+  "actual_windows": false,
+  "network_connected": false,
+  "capacity_result": false,
+  "raw": {
+    "path": "raw.json.xz",
+    "sha256": "2d501d1d1f7138cb0c42c45b8a17a2ad8cc6f8cebf5332ce522b668e53e13a30",
+    "decoded_sha256": "6b6909e28446781147b705bbe235bb4617398f09ebed68b3eec061407979c035"
+  }
+}

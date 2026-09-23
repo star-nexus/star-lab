@@ -1,0 +1,210 @@
+[
+  {
+    "name": "build",
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+    "source_sha": "97f45b1c8fb1c6054d22ab9c970541955ea528c8",
+    "argv": [
+      "uvx",
+      "--from",
+      "maturin==1.15.0",
+      "maturin",
+      "build",
+      "--release",
+      "--locked",
+      "--manifest-path",
+      "native/python/Cargo.toml",
+      "--interpreter",
+      ".venv/bin/python",
+      "--out",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-host-authority/artifacts"
+    ],
+    "environment_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:$PATH",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target"
+    },
+    "returncode": 0
+  },
+  {
+    "name": "install",
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+    "argv": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      ".venv/bin/python",
+      "--reinstall",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-host-authority/artifacts/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl"
+    ],
+    "returncode": 0
+  },
+  {
+    "name": "targeted",
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+    "source_sha": "343ced3809f0ddf57c53036613abea2f9280daf5",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "rotk_env/tests/test_native_host_authority.py",
+      "rotk_env/tests/test_native_settlement.py"
+    ],
+    "returncode": 0
+  },
+  {
+    "name": "full-pytest",
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+    "source_sha": "343ced3809f0ddf57c53036613abea2f9280daf5",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "returncode": 0
+  },
+  {
+    "name": "before",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-vlm/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/r3_host_authority_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-vlm",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-host-authority/results/before"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-vlm",
+    "returncode": 0,
+    "environment_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg05wWktI:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target"
+    }
+  },
+  {
+    "name": "after",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/r3_host_authority_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-host-authority/results/after",
+      "--expect-supported"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+    "returncode": 0,
+    "environment_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg05wWktI:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target"
+    }
+  },
+  {
+    "name": "rust-tests",
+    "argv": [
+      "cargo",
+      "test",
+      "-p",
+      "star-core",
+      "-p",
+      "star-rotk",
+      "--locked"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+    "returncode": 0,
+    "environment_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg05wWktI:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target"
+    }
+  },
+  {
+    "name": "fmt",
+    "argv": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--",
+      "--check"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+    "returncode": 0,
+    "environment_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg05wWktI:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target"
+    }
+  },
+  {
+    "name": "clippy",
+    "argv": [
+      "cargo",
+      "clippy",
+      "--workspace",
+      "--all-targets",
+      "--locked",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+    "returncode": 0,
+    "environment_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg05wWktI:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target"
+    }
+  },
+  {
+    "name": "old-scene-replay",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/r3_scene_host_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-host-authority/results/old-scene-replay",
+      "--replay",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-vlm/results/window/trace.json.xz"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+    "returncode": 0,
+    "environment_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg05wWktI:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target"
+    }
+  },
+  {
+    "name": "scene-host",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/r3_scene_host_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-host-authority/results/window"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+    "returncode": 0,
+    "environment_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg05wWktI:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target"
+    }
+  },
+  {
+    "name": "new-scene-replay",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/r3_scene_host_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-host-authority/results/new-scene-replay",
+      "--replay",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-host-authority/results/window/trace.json.xz"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+    "returncode": 0,
+    "environment_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg05wWktI:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target"
+    }
+  }
+]

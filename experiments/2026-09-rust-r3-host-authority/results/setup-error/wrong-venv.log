@@ -1,0 +1,2091 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                       [100%]
+=================================== FAILURES ===================================
+_ test_message_accounting_full_state_and_partial_failure_match_python[None-1] __
+
+threads = 1, agent = None, frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('agent', [None, '', 'unknown', 'a', 'b'])
+    def test_message_accounting_full_state_and_partial_failure_match_python(threads, agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_message_accounting_full_state_and_partial_failure_match_python[None-2] __
+
+threads = 2, agent = None, frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('agent', [None, '', 'unknown', 'a', 'b'])
+    def test_message_accounting_full_state_and_partial_failure_match_python(threads, agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_message_accounting_full_state_and_partial_failure_match_python[None-4] __
+
+threads = 4, agent = None, frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('agent', [None, '', 'unknown', 'a', 'b'])
+    def test_message_accounting_full_state_and_partial_failure_match_python(threads, agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+___ test_message_accounting_full_state_and_partial_failure_match_python[-1] ____
+
+threads = 1, agent = '', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('agent', [None, '', 'unknown', 'a', 'b'])
+    def test_message_accounting_full_state_and_partial_failure_match_python(threads, agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+___ test_message_accounting_full_state_and_partial_failure_match_python[-2] ____
+
+threads = 2, agent = '', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('agent', [None, '', 'unknown', 'a', 'b'])
+    def test_message_accounting_full_state_and_partial_failure_match_python(threads, agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+___ test_message_accounting_full_state_and_partial_failure_match_python[-4] ____
+
+threads = 4, agent = '', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('agent', [None, '', 'unknown', 'a', 'b'])
+    def test_message_accounting_full_state_and_partial_failure_match_python(threads, agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_message_accounting_full_state_and_partial_failure_match_python[unknown-1] _
+
+threads = 1, agent = 'unknown', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('agent', [None, '', 'unknown', 'a', 'b'])
+    def test_message_accounting_full_state_and_partial_failure_match_python(threads, agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_message_accounting_full_state_and_partial_failure_match_python[unknown-2] _
+
+threads = 2, agent = 'unknown', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('agent', [None, '', 'unknown', 'a', 'b'])
+    def test_message_accounting_full_state_and_partial_failure_match_python(threads, agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_message_accounting_full_state_and_partial_failure_match_python[unknown-4] _
+
+threads = 4, agent = 'unknown', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('agent', [None, '', 'unknown', 'a', 'b'])
+    def test_message_accounting_full_state_and_partial_failure_match_python(threads, agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+___ test_message_accounting_full_state_and_partial_failure_match_python[a-1] ___
+
+threads = 1, agent = 'a', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('agent', [None, '', 'unknown', 'a', 'b'])
+    def test_message_accounting_full_state_and_partial_failure_match_python(threads, agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+___ test_message_accounting_full_state_and_partial_failure_match_python[a-2] ___
+
+threads = 2, agent = 'a', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('agent', [None, '', 'unknown', 'a', 'b'])
+    def test_message_accounting_full_state_and_partial_failure_match_python(threads, agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+___ test_message_accounting_full_state_and_partial_failure_match_python[a-4] ___
+
+threads = 4, agent = 'a', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('agent', [None, '', 'unknown', 'a', 'b'])
+    def test_message_accounting_full_state_and_partial_failure_match_python(threads, agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+___ test_message_accounting_full_state_and_partial_failure_match_python[b-1] ___
+
+threads = 1, agent = 'b', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('agent', [None, '', 'unknown', 'a', 'b'])
+    def test_message_accounting_full_state_and_partial_failure_match_python(threads, agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+___ test_message_accounting_full_state_and_partial_failure_match_python[b-2] ___
+
+threads = 2, agent = 'b', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('agent', [None, '', 'unknown', 'a', 'b'])
+    def test_message_accounting_full_state_and_partial_failure_match_python(threads, agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+___ test_message_accounting_full_state_and_partial_failure_match_python[b-4] ___
+
+threads = 4, agent = 'b', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('agent', [None, '', 'unknown', 'a', 'b'])
+    def test_message_accounting_full_state_and_partial_failure_match_python(threads, agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_______ test_message_counters_do_not_overflow_or_change_action_counts[0] _______
+
+count = 0, frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('count', [0, 2**64-1, 10**100])
+    def test_message_counters_do_not_overflow_or_change_action_counts(count, frozen):
+        world, _, _, llm = setup('none')
+        try:
+            llm._process_action_request(agent_id='a', action_id=0, action='register_agent_info',
+                                       params=dict(REG, faction='wei'), send_response=False)
+            stats = world.get_singleton_component(c.GameStats)
+            stats.interaction_counts_by_agent['a'] = count
+            stats.interaction_counts_by_faction[Faction.WEI] = count
+>           with RustRuntime(export_initial_state(world)) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+World has been reset
+_ test_message_counters_do_not_overflow_or_change_action_counts[18446744073709551615] _
+
+count = 18446744073709551615, frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('count', [0, 2**64-1, 10**100])
+    def test_message_counters_do_not_overflow_or_change_action_counts(count, frozen):
+        world, _, _, llm = setup('none')
+        try:
+            llm._process_action_request(agent_id='a', action_id=0, action='register_agent_info',
+                                       params=dict(REG, faction='wei'), send_response=False)
+            stats = world.get_singleton_component(c.GameStats)
+            stats.interaction_counts_by_agent['a'] = count
+            stats.interaction_counts_by_faction[Faction.WEI] = count
+>           with RustRuntime(export_initial_state(world)) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+World has been reset
+_ test_message_counters_do_not_overflow_or_change_action_counts[10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000] _
+
+count = 100000000000000000...0000000000000000000, frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('count', [0, 2**64-1, 10**100])
+    def test_message_counters_do_not_overflow_or_change_action_counts(count, frozen):
+        world, _, _, llm = setup('none')
+        try:
+            llm._process_action_request(agent_id='a', action_id=0, action='register_agent_info',
+                                       params=dict(REG, faction='wei'), send_response=False)
+            stats = world.get_singleton_component(c.GameStats)
+            stats.interaction_counts_by_agent['a'] = count
+            stats.interaction_counts_by_faction[Faction.WEI] = count
+>           with RustRuntime(export_initial_state(world)) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+World has been reset
+___ test_first_registration_message_retains_legacy_counting_position[False] ____
+
+batch = False, frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('batch', [False, True])
+    def test_first_registration_message_retains_legacy_counting_position(batch, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world)) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+____ test_first_registration_message_retains_legacy_counting_position[True] ____
+
+batch = True, frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('batch', [False, True])
+    def test_first_registration_message_retains_legacy_counting_position(batch, frozen):
+        world, _, _, llm = setup('none')
+        try:
+>           with RustRuntime(export_initial_state(world)) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected0-1] _
+
+threads = 1, connected = [], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1065a4c50>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        world.get_singleton_component(c.GameState).current_player = Faction.WEI
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected0-2] _
+
+threads = 2, connected = [], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1066059b0>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        world.get_singleton_component(c.GameState).current_player = Faction.WEI
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected0-4] _
+
+threads = 4, connected = [], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106605c50>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        world.get_singleton_component(c.GameState).current_player = Faction.WEI
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected1-1] _
+
+threads = 1, connected = ['a'], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106605ef0>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        world.get_singleton_component(c.GameState).current_player = Faction.WEI
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected1-2] _
+
+threads = 2, connected = ['a'], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106606190>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        world.get_singleton_component(c.GameState).current_player = Faction.WEI
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected1-4] _
+
+threads = 4, connected = ['a'], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1066069e0>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        world.get_singleton_component(c.GameState).current_player = Faction.WEI
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected2-1] _
+
+threads = 1, connected = ['b', 'c', 'unknown', 'a'], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106607150>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        world.get_singleton_component(c.GameState).current_player = Faction.WEI
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected2-2] _
+
+threads = 2, connected = ['b', 'c', 'unknown', 'a'], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106607310>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        world.get_singleton_component(c.GameState).current_player = Faction.WEI
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected2-4] _
+
+threads = 4, connected = ['b', 'c', 'unknown', 'a'], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106606890>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        world.get_singleton_component(c.GameState).current_player = Faction.WEI
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected3-1] _
+
+threads = 1, connected = ['id0', 'id1', 'id2', 'id3', 'id4', 'id5', ...]
+frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1066047c0>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        world.get_singleton_component(c.GameState).current_player = Faction.WEI
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected3-2] _
+
+threads = 2, connected = ['id0', 'id1', 'id2', 'id3', 'id4', 'id5', ...]
+frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106605c50>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        world.get_singleton_component(c.GameState).current_player = Faction.WEI
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected3-4] _
+
+threads = 4, connected = ['id0', 'id1', 'id2', 'id3', 'id4', 'id5', ...]
+frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106607620>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        world.get_singleton_component(c.GameState).current_player = Faction.WEI
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+>           with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+____ test_host_boundary_rejects_stale_epoch_and_closed_runtime[host_status] ____
+
+method = 'host_status', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('method', ['host_status', 'record_message', 'turn_start_context'])
+    def test_host_boundary_rejects_stale_epoch_and_closed_runtime(method, frozen):
+        world, _, _, _ = setup('none')
+        try:
+            initial = export_initial_state(world)
+>           with RustRuntime(initial) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+__ test_host_boundary_rejects_stale_epoch_and_closed_runtime[record_message] ___
+
+method = 'record_message', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('method', ['host_status', 'record_message', 'turn_start_context'])
+    def test_host_boundary_rejects_stale_epoch_and_closed_runtime(method, frozen):
+        world, _, _, _ = setup('none')
+        try:
+            initial = export_initial_state(world)
+>           with RustRuntime(initial) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_host_boundary_rejects_stale_epoch_and_closed_runtime[turn_start_context] _
+
+method = 'turn_start_context', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('method', ['host_status', 'record_message', 'turn_start_context'])
+    def test_host_boundary_rejects_stale_epoch_and_closed_runtime(method, frozen):
+        world, _, _, _ = setup('none')
+        try:
+            initial = export_initial_state(world)
+>           with RustRuntime(initial) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+__________ test_turn_context_rejects_invalid_time_without_writes[nan] __________
+
+wall = nan, frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('wall', [float('nan'), float('inf'), -float('inf')])
+    def test_turn_context_rejects_invalid_time_without_writes(wall, frozen):
+        world, _, _, _ = setup('none')
+        try:
+            initial = export_initial_state(world)
+>           with RustRuntime(initial) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+__________ test_turn_context_rejects_invalid_time_without_writes[inf] __________
+
+wall = inf, frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('wall', [float('nan'), float('inf'), -float('inf')])
+    def test_turn_context_rejects_invalid_time_without_writes(wall, frozen):
+        world, _, _, _ = setup('none')
+        try:
+            initial = export_initial_state(world)
+>           with RustRuntime(initial) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_________ test_turn_context_rejects_invalid_time_without_writes[-inf] __________
+
+wall = -inf, frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('wall', [float('nan'), float('inf'), -float('inf')])
+    def test_turn_context_rejects_invalid_time_without_writes(wall, frozen):
+        world, _, _, _ = setup('none')
+        try:
+            initial = export_initial_state(world)
+>           with RustRuntime(initial) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+___ test_settlement_trigger_uses_authority_even_when_display_is_wrong[False] ___
+
+ended = False
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1066078c0>
+frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('ended', [False, True])
+    def test_settlement_trigger_uses_authority_even_when_display_is_wrong(ended, monkeypatch, frozen):
+>       with NativeSession(display='none', mode='real_time', scenario='chibi-small', seed=42) as session:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:157: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/session.py:22: in __init__
+    self.runtime = RustRuntime(initial, threads=threads)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+[WorldBuilder] RngService initialized: seed=42 source=kwargs
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+World has been reset
+___ test_settlement_trigger_uses_authority_even_when_display_is_wrong[True] ____
+
+ended = True
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x104007690>
+frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('ended', [False, True])
+    def test_settlement_trigger_uses_authority_even_when_display_is_wrong(ended, monkeypatch, frozen):
+>       with NativeSession(display='none', mode='real_time', scenario='chibi-small', seed=42) as session:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:157: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/session.py:22: in __init__
+    self.runtime = RustRuntime(initial, threads=threads)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+[WorldBuilder] RngService initialized: seed=42 source=kwargs
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+World has been reset
+_____________ test_message_creates_missing_stats_like_legacy[None] _____________
+
+agent = None, frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('agent', [None, '', 'unknown'])
+    def test_message_creates_missing_stats_like_legacy(agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+            world.remove_singleton_component(c.GameStats)
+>           with RustRuntime(export_initial_state(world)) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:178: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_______________ test_message_creates_missing_stats_like_legacy[] _______________
+
+agent = '', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('agent', [None, '', 'unknown'])
+    def test_message_creates_missing_stats_like_legacy(agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+            world.remove_singleton_component(c.GameStats)
+>           with RustRuntime(export_initial_state(world)) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:178: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+___________ test_message_creates_missing_stats_like_legacy[unknown] ____________
+
+agent = 'unknown', frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('agent', [None, '', 'unknown'])
+    def test_message_creates_missing_stats_like_legacy(agent, frozen):
+        world, _, _, llm = setup('none')
+        try:
+            world.remove_singleton_component(c.GameStats)
+>           with RustRuntime(export_initial_state(world)) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:178: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_______ test_turn_context_retains_game_over_edge_and_is_not_a_new_action _______
+
+frozen = [1720000000.0]
+
+    def test_turn_context_retains_game_over_edge_and_is_not_a_new_action(frozen):
+        world, _, _, llm = setup('none')
+        try:
+            state = world.get_singleton_component(c.GameState)
+            state.game_over = True
+>           with RustRuntime(export_initial_state(world)) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_host_authority.py:194: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+World has been reset
+_ test_full_report_data_matches_python_and_does_not_alias_authority[none-real_time] _
+
+mode = 'real_time', display = 'none', frozen = [1720000000.0], fonts = None
+
+    @pytest.mark.parametrize('mode',['real_time','turn_based'])
+    @pytest.mark.parametrize('display',['none','dummy'])
+    def test_full_report_data_matches_python_and_does_not_alias_authority(mode,display,frozen,fonts):
+        source=build_skirmish_world(mode=mode,scenario='chibi-small',seed=42,display=display)
+        try:
+            llm=next(s for s in source.systems if type(s).__name__=='LLMSystem')
+            for agent,faction in [('a','wei'),('b','wei'),('c','shu')]:
+                for action,params in [('register_agent_info',dict(faction=faction,provider='synthetic',model_id=agent,base_url='https://host/v1')),
+                                      ('report_llm_stats',dict(faction=faction,api_stats=dict(total_calls=7,prompt_tokens=100,completion_tokens=30))),
+                                      ('strategy_ping',dict(faction=faction,score=.5,evidence='cooperate'))]:
+                    llm._process_action_request(agent_id=agent,action_id=0,action=action,params=params,send_response=False)
+            stats=source.get_singleton_component(c.GameStats)
+            stats.battle_history=[{'attacker':1,'defender':2,'damage':3,'faction':'wei'}]
+            state=source.get_singleton_component(c.GameState);state.game_over=True;state.winner=Faction.WEI
+            original=export_initial_state(source,display=display)
+>           with RustRuntime(original) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_settlement.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+[WorldBuilder] RngService initialized: seed=42 source=kwargs
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:a (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ✅ Received LLM API stats for faction wei: {'total_calls': 7, 'prompt_tokens': 100, 'completion_tokens': 30}
+[LLMSystem] 📊 Error stats - HTTP errors: 0, Tool-call errors: 0, spatial-awareness errors: 0
+[LLMSystem] 📊 Stats progress: 1/1 -> received=['wei'], registered=['wei']
+[LLMSystem] 🎯 All LLM stats received; settlement report generation flag set
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:b (b)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ✅ Received LLM API stats for faction wei: {'total_calls': 7, 'prompt_tokens': 100, 'completion_tokens': 30}
+[LLMSystem] 📊 Error stats - HTTP errors: 0, Tool-call errors: 0, spatial-awareness errors: 0
+[LLMSystem] 📊 Stats progress: 1/1 -> received=['wei'], registered=['wei']
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:c (c)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLMSystem] ✅ Received LLM API stats for faction shu: {'total_calls': 7, 'prompt_tokens': 100, 'completion_tokens': 30}
+[LLMSystem] 📊 Error stats - HTTP errors: 0, Tool-call errors: 0, spatial-awareness errors: 0
+[LLMSystem] 📊 Stats progress: 2/2 -> received=['shu', 'wei'], registered=['shu', 'wei']
+World has been reset
+_ test_full_report_data_matches_python_and_does_not_alias_authority[none-turn_based] _
+
+mode = 'turn_based', display = 'none', frozen = [1720000000.0], fonts = None
+
+    @pytest.mark.parametrize('mode',['real_time','turn_based'])
+    @pytest.mark.parametrize('display',['none','dummy'])
+    def test_full_report_data_matches_python_and_does_not_alias_authority(mode,display,frozen,fonts):
+        source=build_skirmish_world(mode=mode,scenario='chibi-small',seed=42,display=display)
+        try:
+            llm=next(s for s in source.systems if type(s).__name__=='LLMSystem')
+            for agent,faction in [('a','wei'),('b','wei'),('c','shu')]:
+                for action,params in [('register_agent_info',dict(faction=faction,provider='synthetic',model_id=agent,base_url='https://host/v1')),
+                                      ('report_llm_stats',dict(faction=faction,api_stats=dict(total_calls=7,prompt_tokens=100,completion_tokens=30))),
+                                      ('strategy_ping',dict(faction=faction,score=.5,evidence='cooperate'))]:
+                    llm._process_action_request(agent_id=agent,action_id=0,action=action,params=params,send_response=False)
+            stats=source.get_singleton_component(c.GameStats)
+            stats.battle_history=[{'attacker':1,'defender':2,'damage':3,'faction':'wei'}]
+            state=source.get_singleton_component(c.GameState);state.game_over=True;state.winner=Faction.WEI
+            original=export_initial_state(source,display=display)
+>           with RustRuntime(original) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_settlement.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+[WorldBuilder] RngService initialized: seed=42 source=kwargs
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:a (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ✅ Received LLM API stats for faction wei: {'total_calls': 7, 'prompt_tokens': 100, 'completion_tokens': 30}
+[LLMSystem] 📊 Error stats - HTTP errors: 0, Tool-call errors: 0, spatial-awareness errors: 0
+[LLMSystem] 📊 Stats progress: 1/1 -> received=['wei'], registered=['wei']
+[LLMSystem] 🎯 All LLM stats received; settlement report generation flag set
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:b (b)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ✅ Received LLM API stats for faction wei: {'total_calls': 7, 'prompt_tokens': 100, 'completion_tokens': 30}
+[LLMSystem] 📊 Error stats - HTTP errors: 0, Tool-call errors: 0, spatial-awareness errors: 0
+[LLMSystem] 📊 Stats progress: 1/1 -> received=['wei'], registered=['wei']
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:c (c)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLMSystem] ✅ Received LLM API stats for faction shu: {'total_calls': 7, 'prompt_tokens': 100, 'completion_tokens': 30}
+[LLMSystem] 📊 Error stats - HTTP errors: 0, Tool-call errors: 0, spatial-awareness errors: 0
+[LLMSystem] 📊 Stats progress: 2/2 -> received=['shu', 'wei'], registered=['shu', 'wei']
+World has been reset
+_ test_full_report_data_matches_python_and_does_not_alias_authority[dummy-real_time] _
+
+mode = 'real_time', display = 'dummy', frozen = [1720000000.0], fonts = None
+
+    @pytest.mark.parametrize('mode',['real_time','turn_based'])
+    @pytest.mark.parametrize('display',['none','dummy'])
+    def test_full_report_data_matches_python_and_does_not_alias_authority(mode,display,frozen,fonts):
+        source=build_skirmish_world(mode=mode,scenario='chibi-small',seed=42,display=display)
+        try:
+            llm=next(s for s in source.systems if type(s).__name__=='LLMSystem')
+            for agent,faction in [('a','wei'),('b','wei'),('c','shu')]:
+                for action,params in [('register_agent_info',dict(faction=faction,provider='synthetic',model_id=agent,base_url='https://host/v1')),
+                                      ('report_llm_stats',dict(faction=faction,api_stats=dict(total_calls=7,prompt_tokens=100,completion_tokens=30))),
+                                      ('strategy_ping',dict(faction=faction,score=.5,evidence='cooperate'))]:
+                    llm._process_action_request(agent_id=agent,action_id=0,action=action,params=params,send_response=False)
+            stats=source.get_singleton_component(c.GameStats)
+            stats.battle_history=[{'attacker':1,'defender':2,'damage':3,'faction':'wei'}]
+            state=source.get_singleton_component(c.GameState);state.game_over=True;state.winner=Faction.WEI
+            original=export_initial_state(source,display=display)
+>           with RustRuntime(original) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_settlement.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+[WorldBuilder] RngService initialized: seed=42 source=kwargs
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:a (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ✅ Received LLM API stats for faction wei: {'total_calls': 7, 'prompt_tokens': 100, 'completion_tokens': 30}
+[LLMSystem] 📊 Error stats - HTTP errors: 0, Tool-call errors: 0, spatial-awareness errors: 0
+[LLMSystem] 📊 Stats progress: 1/1 -> received=['wei'], registered=['wei']
+[LLMSystem] 🎯 All LLM stats received; settlement report generation flag set
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:b (b)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ✅ Received LLM API stats for faction wei: {'total_calls': 7, 'prompt_tokens': 100, 'completion_tokens': 30}
+[LLMSystem] 📊 Error stats - HTTP errors: 0, Tool-call errors: 0, spatial-awareness errors: 0
+[LLMSystem] 📊 Stats progress: 1/1 -> received=['wei'], registered=['wei']
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:c (c)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLMSystem] ✅ Received LLM API stats for faction shu: {'total_calls': 7, 'prompt_tokens': 100, 'completion_tokens': 30}
+[LLMSystem] 📊 Error stats - HTTP errors: 0, Tool-call errors: 0, spatial-awareness errors: 0
+[LLMSystem] 📊 Stats progress: 2/2 -> received=['shu', 'wei'], registered=['shu', 'wei']
+World has been reset
+_ test_full_report_data_matches_python_and_does_not_alias_authority[dummy-turn_based] _
+
+mode = 'turn_based', display = 'dummy', frozen = [1720000000.0], fonts = None
+
+    @pytest.mark.parametrize('mode',['real_time','turn_based'])
+    @pytest.mark.parametrize('display',['none','dummy'])
+    def test_full_report_data_matches_python_and_does_not_alias_authority(mode,display,frozen,fonts):
+        source=build_skirmish_world(mode=mode,scenario='chibi-small',seed=42,display=display)
+        try:
+            llm=next(s for s in source.systems if type(s).__name__=='LLMSystem')
+            for agent,faction in [('a','wei'),('b','wei'),('c','shu')]:
+                for action,params in [('register_agent_info',dict(faction=faction,provider='synthetic',model_id=agent,base_url='https://host/v1')),
+                                      ('report_llm_stats',dict(faction=faction,api_stats=dict(total_calls=7,prompt_tokens=100,completion_tokens=30))),
+                                      ('strategy_ping',dict(faction=faction,score=.5,evidence='cooperate'))]:
+                    llm._process_action_request(agent_id=agent,action_id=0,action=action,params=params,send_response=False)
+            stats=source.get_singleton_component(c.GameStats)
+            stats.battle_history=[{'attacker':1,'defender':2,'damage':3,'faction':'wei'}]
+            state=source.get_singleton_component(c.GameState);state.game_over=True;state.winner=Faction.WEI
+            original=export_initial_state(source,display=display)
+>           with RustRuntime(original) as runtime:
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_settlement.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+[WorldBuilder] RngService initialized: seed=42 source=kwargs
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:a (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ✅ Received LLM API stats for faction wei: {'total_calls': 7, 'prompt_tokens': 100, 'completion_tokens': 30}
+[LLMSystem] 📊 Error stats - HTTP errors: 0, Tool-call errors: 0, spatial-awareness errors: 0
+[LLMSystem] 📊 Stats progress: 1/1 -> received=['wei'], registered=['wei']
+[LLMSystem] 🎯 All LLM stats received; settlement report generation flag set
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:b (b)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ✅ Received LLM API stats for faction wei: {'total_calls': 7, 'prompt_tokens': 100, 'completion_tokens': 30}
+[LLMSystem] 📊 Error stats - HTTP errors: 0, Tool-call errors: 0, spatial-awareness errors: 0
+[LLMSystem] 📊 Stats progress: 1/1 -> received=['wei'], registered=['wei']
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:c (c)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLMSystem] ✅ Received LLM API stats for faction shu: {'total_calls': 7, 'prompt_tokens': 100, 'completion_tokens': 30}
+[LLMSystem] 📊 Error stats - HTTP errors: 0, Tool-call errors: 0, spatial-awareness errors: 0
+[LLMSystem] 📊 Stats progress: 2/2 -> received=['shu', 'wei'], registered=['shu', 'wei']
+World has been reset
+______ test_offline_host_exports_full_data_once_at_legacy_deadline[False] ______
+
+failure = False
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x104019320>
+frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('failure',[False,True])
+    def test_offline_host_exports_full_data_once_at_legacy_deadline(failure,monkeypatch,frozen):
+        prepare=module.prepare_display_world
+        def ended(**kwargs):
+            world,initial=prepare(**kwargs)
+            initial['singletons']['GameState'].update(game_over=True,winner='wei')
+            return world,initial
+        monkeypatch.setattr(module,'prepare_display_world',ended)
+        saved=[]
+        monkeypatch.setattr(NativeSettlementFormatter,'_save_report_to_files',lambda self,data:saved.append(deepcopy(data)))
+        monkeypatch.setattr(NativeSettlementFormatter,'_print_report_summary',lambda self,data:None)
+        if failure:
+            monkeypatch.setattr(NativeSettlementFormatter,'_collect_comprehensive_statistics',lambda self:(_ for _ in ()).throw(ValueError('injected report error')))
+>       with module.NativeSession(display='none',mode='real_time',scenario='chibi-small',seed=42) as session:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_settlement.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/session.py:22: in __init__
+    self.runtime = RustRuntime(initial, threads=threads)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+[WorldBuilder] RngService initialized: seed=42 source=kwargs
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+World has been reset
+______ test_offline_host_exports_full_data_once_at_legacy_deadline[True] _______
+
+failure = True
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1040183d0>
+frozen = [1720000000.0]
+
+    @pytest.mark.parametrize('failure',[False,True])
+    def test_offline_host_exports_full_data_once_at_legacy_deadline(failure,monkeypatch,frozen):
+        prepare=module.prepare_display_world
+        def ended(**kwargs):
+            world,initial=prepare(**kwargs)
+            initial['singletons']['GameState'].update(game_over=True,winner='wei')
+            return world,initial
+        monkeypatch.setattr(module,'prepare_display_world',ended)
+        saved=[]
+        monkeypatch.setattr(NativeSettlementFormatter,'_save_report_to_files',lambda self,data:saved.append(deepcopy(data)))
+        monkeypatch.setattr(NativeSettlementFormatter,'_print_report_summary',lambda self,data:None)
+        if failure:
+            monkeypatch.setattr(NativeSettlementFormatter,'_collect_comprehensive_statistics',lambda self:(_ for _ in ()).throw(ValueError('injected report error')))
+>       with module.NativeSession(display='none',mode='real_time',scenario='chibi-small',seed=42) as session:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rotk_env/tests/test_native_settlement.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rotk_env/runtime/session.py:22: in __init__
+    self.runtime = RustRuntime(initial, threads=threads)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rotk_env/runtime/native.py:93: in __init__
+    native = load_native()
+             ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_native():
+        try:
+            import star_native
+            from star_native import NativeRuntime, RULES_VERSION
+        except ImportError as exc:
+            raise RuntimeError('Rust backend is unavailable. Install star-native (developer: uv sync --extra native).') from exc
+        if RULES_VERSION != ORACLE_VERSION:
+            raise RuntimeError(f'Rust rules version mismatch: {RULES_VERSION}; expected {ORACLE_VERSION}')
+        actual_api = getattr(star_native, 'API_VERSION', None)
+        if actual_api != NATIVE_API_VERSION:
+>           raise RuntimeError(f'Rust API version mismatch: {actual_api}; expected {NATIVE_API_VERSION}. Rebuild/install the matching star-native wheel.')
+E           RuntimeError: Rust API version mismatch: 11; expected 12. Rebuild/install the matching star-native wheel.
+
+rotk_env/runtime/native.py:25: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+[WorldBuilder] RngService initialized: seed=42 source=kwargs
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+World has been reset
+=========================== short test summary info ============================
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_accounting_full_state_and_partial_failure_match_python[None-1]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_accounting_full_state_and_partial_failure_match_python[None-2]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_accounting_full_state_and_partial_failure_match_python[None-4]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_accounting_full_state_and_partial_failure_match_python[-1]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_accounting_full_state_and_partial_failure_match_python[-2]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_accounting_full_state_and_partial_failure_match_python[-4]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_accounting_full_state_and_partial_failure_match_python[unknown-1]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_accounting_full_state_and_partial_failure_match_python[unknown-2]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_accounting_full_state_and_partial_failure_match_python[unknown-4]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_accounting_full_state_and_partial_failure_match_python[a-1]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_accounting_full_state_and_partial_failure_match_python[a-2]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_accounting_full_state_and_partial_failure_match_python[a-4]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_accounting_full_state_and_partial_failure_match_python[b-1]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_accounting_full_state_and_partial_failure_match_python[b-2]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_accounting_full_state_and_partial_failure_match_python[b-4]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_counters_do_not_overflow_or_change_action_counts[0]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_counters_do_not_overflow_or_change_action_counts[18446744073709551615]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_counters_do_not_overflow_or_change_action_counts[10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
+FAILED rotk_env/tests/test_native_host_authority.py::test_first_registration_message_retains_legacy_counting_position[False]
+FAILED rotk_env/tests/test_native_host_authority.py::test_first_registration_message_retains_legacy_counting_position[True]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected0-1]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected0-2]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected0-4]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected1-1]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected1-2]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected1-4]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected2-1]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected2-2]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected2-4]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected3-1]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected3-2]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected3-4]
+FAILED rotk_env/tests/test_native_host_authority.py::test_host_boundary_rejects_stale_epoch_and_closed_runtime[host_status]
+FAILED rotk_env/tests/test_native_host_authority.py::test_host_boundary_rejects_stale_epoch_and_closed_runtime[record_message]
+FAILED rotk_env/tests/test_native_host_authority.py::test_host_boundary_rejects_stale_epoch_and_closed_runtime[turn_start_context]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_context_rejects_invalid_time_without_writes[nan]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_context_rejects_invalid_time_without_writes[inf]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_context_rejects_invalid_time_without_writes[-inf]
+FAILED rotk_env/tests/test_native_host_authority.py::test_settlement_trigger_uses_authority_even_when_display_is_wrong[False]
+FAILED rotk_env/tests/test_native_host_authority.py::test_settlement_trigger_uses_authority_even_when_display_is_wrong[True]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_creates_missing_stats_like_legacy[None]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_creates_missing_stats_like_legacy[]
+FAILED rotk_env/tests/test_native_host_authority.py::test_message_creates_missing_stats_like_legacy[unknown]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_context_retains_game_over_edge_and_is_not_a_new_action
+FAILED rotk_env/tests/test_native_settlement.py::test_full_report_data_matches_python_and_does_not_alias_authority[none-real_time]
+FAILED rotk_env/tests/test_native_settlement.py::test_full_report_data_matches_python_and_does_not_alias_authority[none-turn_based]
+FAILED rotk_env/tests/test_native_settlement.py::test_full_report_data_matches_python_and_does_not_alias_authority[dummy-real_time]
+FAILED rotk_env/tests/test_native_settlement.py::test_full_report_data_matches_python_and_does_not_alias_authority[dummy-turn_based]
+FAILED rotk_env/tests/test_native_settlement.py::test_offline_host_exports_full_data_once_at_legacy_deadline[False]
+FAILED rotk_env/tests/test_native_settlement.py::test_offline_host_exports_full_data_once_at_legacy_deadline[True]
+50 failed in 0.81s

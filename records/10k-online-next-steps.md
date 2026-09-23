@@ -1,5 +1,23 @@
 # 10K 后续工作优先级
 
+## 最新检查点：R3d4a，Rust宿主权威接口（2026-09-24）
+
+最终 **`5ce4b3f02a5fb676e11c8bc240e86513d3e00b25`** / annotated tag **`rust-kernel-r3d4a-2026-09-24`**；运行实现/构建 `97f45b1c8fb1c6054d22ab9c970541955ea528c8`，测试/测量 `343ced3809f0ddf57c53036613abea2f9280daf5`（只改测试起始阵营，运行代码一致）；最终只改文档。[报告与复现](../experiments/2026-09-rust-r3-host-authority/README.md)。
+
+迁移进度：`R0 █ | R1 █ | R2/R3 ▒ 功能迁移中 | R4 ░ | R5 ░`（非工时百分比）。继续采用Rust性能内核＋Python易用接口/生态边界；5000Agents是独立扩展目标，不等于5000Units或已验收容量。
+
+新增API12 `host_status`、`record_message`、`turn_start_context`：Rust提供当前回合/结束状态、消息计数及通知候选；Python连接、ACK重试与通知编排保持上层职责。离线结算已读取四字段Rust权威状态，避免依赖Python展示缓存；60墙钟秒等待与一次完整报告导出保持原状。回合候选仍O(注册Agents)，本轮没有端到端性能收益数字。
+
+1979完整回归（Native1057、新增44），50针对性、3Rust/fmt/Clippy通过；9配置45次消息状态、18次通知顺序与Python一致；旧/新六场景510节点及新进程重放通过，6JSON/CSV和4PNG归档。保留两个setup-error日志但不作正式因果证据。**没有真实联网、ACK重试、并行或新容量结论。**
+
+[主GAP台账](../../star-main/docs/native-benchmark-gaps.md)已更新：单条与批次计消息时点不同，未注册先增加个人计数再报错；重新注册保留旧阵营registry行；通知set顺序随Python hash seed可能跨进程变化。均为保留的旧机制，不能静默修正或宣称跨进程网络顺序已确定。**G009仍OPEN**，G008/R001/R002也未关闭。
+
+活动生产venv与完整试玩目录 **`runs/star-rust-r3-host-authority`** 为API12/schema5 release，扩展SHA `dd583a3adcb9064e3d4320e3e5a5eb9f12c032247d93356398c65c75c1a44cda`；旧API11目录/tag未动。main仍6a970dea、无merge/push、Python默认，1/2/4仍串行Mutex，原49处Agent/font删除保留。
+
+**下一步：接通G009的Python owner线程消息宿主**，复用Rust权威接口，验证真实可信身份/单条与批次计数、回合ACK/重试/断连、结束通知/上报等待及错误关闭。VLM必须在显示owner线程完成；成功end_turn→读取通知上下文之间不得接纳其他写入（当前独立API不是跨调用事务）。随后BOT策略桥接G008及动态冷组件R002审计；完整R3后才R4并行和R5容量/跨平台。首个正式关卡仍5000Units＋1000Agents/30Hz/约30秒闭环，Agent思考期不轮询。
+
+以下记录为历史节点，当前状态以上文为准。
+
 ## 用户补充的长期语言边界（2026-09-23）
 
 采用类似PyTorch的产品组织：**Rust承担性能关键执行，Python承担易用接口与生态。** 迁移完成不以Rust代码占比或消灭Python为标准。四层架构不变；权威状态/玩法推进/观测计算及批处理在Rust，Python保留Agent/ENV SDK、配置与场景编写、启动、模型接入、实验、UI和社区扩展。扩展通过配置和明确命令接入，不能恢复一套可写的Python权威世界。

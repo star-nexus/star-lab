@@ -1,0 +1,1183 @@
+....................FFFFFFFFFFFF..................                       [100%]
+=================================== FAILURES ===================================
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected0-1] _
+
+threads = 1, connected = [], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x107114450>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+            with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                agents = [('a', 'wei'), ('b', 'shu'), ('c', 'shu')] + [(f'id{i}', 'shu' if i % 2 else 'wei') for i in range(30)]
+                for aid, faction in agents:
+                    call(llm, runtime, aid, 'register_agent_info', dict(REG, faction=faction))
+                call(llm, runtime, 'b', 'register_agent_info', dict(REG, faction='wei'))
+                # b remains in Shu's registry. Do not "fix" inherited targeting.
+                for aid, faction in [('a', 'wei'), ('c', 'shu')]:
+                    sent.clear()
+>                   assert call(llm, runtime, aid, 'end_turn', {'faction': faction})['success']
+E                   assert False
+
+rotk_env/tests/test_native_host_authority.py:105: AssertionError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (c)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id0)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id1)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id2)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id3)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id4)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id5)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id6)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id7)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id8)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id9)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id10)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id11)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id12)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id13)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id14)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id15)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id16)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id17)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id18)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id19)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id20)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id21)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id22)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id23)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id24)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id25)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id26)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id27)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id28)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id29)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: end_turn with params: {'faction': 'wei'}
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected0-2] _
+
+threads = 2, connected = [], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1071c5470>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+            with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                agents = [('a', 'wei'), ('b', 'shu'), ('c', 'shu')] + [(f'id{i}', 'shu' if i % 2 else 'wei') for i in range(30)]
+                for aid, faction in agents:
+                    call(llm, runtime, aid, 'register_agent_info', dict(REG, faction=faction))
+                call(llm, runtime, 'b', 'register_agent_info', dict(REG, faction='wei'))
+                # b remains in Shu's registry. Do not "fix" inherited targeting.
+                for aid, faction in [('a', 'wei'), ('c', 'shu')]:
+                    sent.clear()
+>                   assert call(llm, runtime, aid, 'end_turn', {'faction': faction})['success']
+E                   assert False
+
+rotk_env/tests/test_native_host_authority.py:105: AssertionError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (c)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id0)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id1)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id2)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id3)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id4)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id5)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id6)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id7)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id8)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id9)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id10)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id11)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id12)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id13)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id14)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id15)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id16)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id17)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id18)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id19)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id20)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id21)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id22)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id23)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id24)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id25)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id26)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id27)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id28)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id29)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: end_turn with params: {'faction': 'wei'}
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected0-4] _
+
+threads = 4, connected = [], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1071c5940>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+            with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                agents = [('a', 'wei'), ('b', 'shu'), ('c', 'shu')] + [(f'id{i}', 'shu' if i % 2 else 'wei') for i in range(30)]
+                for aid, faction in agents:
+                    call(llm, runtime, aid, 'register_agent_info', dict(REG, faction=faction))
+                call(llm, runtime, 'b', 'register_agent_info', dict(REG, faction='wei'))
+                # b remains in Shu's registry. Do not "fix" inherited targeting.
+                for aid, faction in [('a', 'wei'), ('c', 'shu')]:
+                    sent.clear()
+>                   assert call(llm, runtime, aid, 'end_turn', {'faction': faction})['success']
+E                   assert False
+
+rotk_env/tests/test_native_host_authority.py:105: AssertionError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (c)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id0)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id1)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id2)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id3)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id4)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id5)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id6)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id7)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id8)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id9)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id10)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id11)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id12)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id13)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id14)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id15)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id16)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id17)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id18)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id19)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id20)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id21)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id22)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id23)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id24)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id25)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id26)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id27)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id28)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id29)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: end_turn with params: {'faction': 'wei'}
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected1-1] _
+
+threads = 1, connected = ['a'], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x107006c80>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+            with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                agents = [('a', 'wei'), ('b', 'shu'), ('c', 'shu')] + [(f'id{i}', 'shu' if i % 2 else 'wei') for i in range(30)]
+                for aid, faction in agents:
+                    call(llm, runtime, aid, 'register_agent_info', dict(REG, faction=faction))
+                call(llm, runtime, 'b', 'register_agent_info', dict(REG, faction='wei'))
+                # b remains in Shu's registry. Do not "fix" inherited targeting.
+                for aid, faction in [('a', 'wei'), ('c', 'shu')]:
+                    sent.clear()
+>                   assert call(llm, runtime, aid, 'end_turn', {'faction': faction})['success']
+E                   assert False
+
+rotk_env/tests/test_native_host_authority.py:105: AssertionError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (c)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id0)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id1)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id2)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id3)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id4)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id5)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id6)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id7)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id8)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id9)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id10)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id11)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id12)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id13)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id14)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id15)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id16)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id17)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id18)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id19)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id20)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id21)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id22)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id23)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id24)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id25)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id26)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id27)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id28)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id29)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: end_turn with params: {'faction': 'wei'}
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected1-2] _
+
+threads = 2, connected = ['a'], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1070072a0>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+            with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                agents = [('a', 'wei'), ('b', 'shu'), ('c', 'shu')] + [(f'id{i}', 'shu' if i % 2 else 'wei') for i in range(30)]
+                for aid, faction in agents:
+                    call(llm, runtime, aid, 'register_agent_info', dict(REG, faction=faction))
+                call(llm, runtime, 'b', 'register_agent_info', dict(REG, faction='wei'))
+                # b remains in Shu's registry. Do not "fix" inherited targeting.
+                for aid, faction in [('a', 'wei'), ('c', 'shu')]:
+                    sent.clear()
+>                   assert call(llm, runtime, aid, 'end_turn', {'faction': faction})['success']
+E                   assert False
+
+rotk_env/tests/test_native_host_authority.py:105: AssertionError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (c)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id0)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id1)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id2)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id3)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id4)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id5)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id6)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id7)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id8)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id9)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id10)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id11)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id12)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id13)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id14)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id15)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id16)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id17)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id18)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id19)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id20)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id21)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id22)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id23)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id24)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id25)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id26)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id27)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id28)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id29)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: end_turn with params: {'faction': 'wei'}
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected1-4] _
+
+threads = 4, connected = ['a'], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1071c5e10>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+            with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                agents = [('a', 'wei'), ('b', 'shu'), ('c', 'shu')] + [(f'id{i}', 'shu' if i % 2 else 'wei') for i in range(30)]
+                for aid, faction in agents:
+                    call(llm, runtime, aid, 'register_agent_info', dict(REG, faction=faction))
+                call(llm, runtime, 'b', 'register_agent_info', dict(REG, faction='wei'))
+                # b remains in Shu's registry. Do not "fix" inherited targeting.
+                for aid, faction in [('a', 'wei'), ('c', 'shu')]:
+                    sent.clear()
+>                   assert call(llm, runtime, aid, 'end_turn', {'faction': faction})['success']
+E                   assert False
+
+rotk_env/tests/test_native_host_authority.py:105: AssertionError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (c)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id0)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id1)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id2)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id3)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id4)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id5)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id6)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id7)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id8)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id9)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id10)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id11)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id12)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id13)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id14)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id15)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id16)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id17)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id18)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id19)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id20)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id21)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id22)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id23)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id24)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id25)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id26)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id27)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id28)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id29)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: end_turn with params: {'faction': 'wei'}
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected2-1] _
+
+threads = 1, connected = ['b', 'c', 'unknown', 'a'], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1071c6270>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+            with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                agents = [('a', 'wei'), ('b', 'shu'), ('c', 'shu')] + [(f'id{i}', 'shu' if i % 2 else 'wei') for i in range(30)]
+                for aid, faction in agents:
+                    call(llm, runtime, aid, 'register_agent_info', dict(REG, faction=faction))
+                call(llm, runtime, 'b', 'register_agent_info', dict(REG, faction='wei'))
+                # b remains in Shu's registry. Do not "fix" inherited targeting.
+                for aid, faction in [('a', 'wei'), ('c', 'shu')]:
+                    sent.clear()
+>                   assert call(llm, runtime, aid, 'end_turn', {'faction': faction})['success']
+E                   assert False
+
+rotk_env/tests/test_native_host_authority.py:105: AssertionError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (c)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id0)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id1)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id2)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id3)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id4)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id5)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id6)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id7)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id8)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id9)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id10)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id11)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id12)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id13)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id14)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id15)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id16)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id17)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id18)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id19)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id20)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id21)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id22)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id23)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id24)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id25)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id26)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id27)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id28)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id29)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: end_turn with params: {'faction': 'wei'}
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected2-2] _
+
+threads = 2, connected = ['b', 'c', 'unknown', 'a'], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x107007540>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+            with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                agents = [('a', 'wei'), ('b', 'shu'), ('c', 'shu')] + [(f'id{i}', 'shu' if i % 2 else 'wei') for i in range(30)]
+                for aid, faction in agents:
+                    call(llm, runtime, aid, 'register_agent_info', dict(REG, faction=faction))
+                call(llm, runtime, 'b', 'register_agent_info', dict(REG, faction='wei'))
+                # b remains in Shu's registry. Do not "fix" inherited targeting.
+                for aid, faction in [('a', 'wei'), ('c', 'shu')]:
+                    sent.clear()
+>                   assert call(llm, runtime, aid, 'end_turn', {'faction': faction})['success']
+E                   assert False
+
+rotk_env/tests/test_native_host_authority.py:105: AssertionError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (c)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id0)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id1)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id2)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id3)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id4)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id5)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id6)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id7)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id8)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id9)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id10)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id11)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id12)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id13)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id14)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id15)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id16)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id17)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id18)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id19)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id20)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id21)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id22)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id23)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id24)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id25)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id26)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id27)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id28)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id29)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: end_turn with params: {'faction': 'wei'}
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected2-4] _
+
+threads = 4, connected = ['b', 'c', 'unknown', 'a'], frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x107007620>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+            with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                agents = [('a', 'wei'), ('b', 'shu'), ('c', 'shu')] + [(f'id{i}', 'shu' if i % 2 else 'wei') for i in range(30)]
+                for aid, faction in agents:
+                    call(llm, runtime, aid, 'register_agent_info', dict(REG, faction=faction))
+                call(llm, runtime, 'b', 'register_agent_info', dict(REG, faction='wei'))
+                # b remains in Shu's registry. Do not "fix" inherited targeting.
+                for aid, faction in [('a', 'wei'), ('c', 'shu')]:
+                    sent.clear()
+>                   assert call(llm, runtime, aid, 'end_turn', {'faction': faction})['success']
+E                   assert False
+
+rotk_env/tests/test_native_host_authority.py:105: AssertionError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (c)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id0)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id1)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id2)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id3)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id4)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id5)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id6)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id7)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id8)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id9)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id10)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id11)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id12)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id13)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id14)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id15)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id16)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id17)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id18)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id19)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id20)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id21)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id22)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id23)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id24)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id25)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id26)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id27)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id28)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id29)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: end_turn with params: {'faction': 'wei'}
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected3-1] _
+
+threads = 1, connected = ['id0', 'id1', 'id2', 'id3', 'id4', 'id5', ...]
+frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x107007700>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+            with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                agents = [('a', 'wei'), ('b', 'shu'), ('c', 'shu')] + [(f'id{i}', 'shu' if i % 2 else 'wei') for i in range(30)]
+                for aid, faction in agents:
+                    call(llm, runtime, aid, 'register_agent_info', dict(REG, faction=faction))
+                call(llm, runtime, 'b', 'register_agent_info', dict(REG, faction='wei'))
+                # b remains in Shu's registry. Do not "fix" inherited targeting.
+                for aid, faction in [('a', 'wei'), ('c', 'shu')]:
+                    sent.clear()
+>                   assert call(llm, runtime, aid, 'end_turn', {'faction': faction})['success']
+E                   assert False
+
+rotk_env/tests/test_native_host_authority.py:105: AssertionError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (c)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id0)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id1)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id2)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id3)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id4)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id5)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id6)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id7)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id8)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id9)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id10)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id11)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id12)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id13)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id14)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id15)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id16)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id17)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id18)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id19)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id20)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id21)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id22)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id23)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id24)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id25)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id26)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id27)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id28)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id29)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: end_turn with params: {'faction': 'wei'}
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected3-2] _
+
+threads = 2, connected = ['id0', 'id1', 'id2', 'id3', 'id4', 'id5', ...]
+frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1070077e0>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+            with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                agents = [('a', 'wei'), ('b', 'shu'), ('c', 'shu')] + [(f'id{i}', 'shu' if i % 2 else 'wei') for i in range(30)]
+                for aid, faction in agents:
+                    call(llm, runtime, aid, 'register_agent_info', dict(REG, faction=faction))
+                call(llm, runtime, 'b', 'register_agent_info', dict(REG, faction='wei'))
+                # b remains in Shu's registry. Do not "fix" inherited targeting.
+                for aid, faction in [('a', 'wei'), ('c', 'shu')]:
+                    sent.clear()
+>                   assert call(llm, runtime, aid, 'end_turn', {'faction': faction})['success']
+E                   assert False
+
+rotk_env/tests/test_native_host_authority.py:105: AssertionError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (c)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id0)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id1)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id2)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id3)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id4)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id5)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id6)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id7)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id8)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id9)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id10)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id11)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id12)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id13)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id14)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id15)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id16)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id17)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id18)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id19)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id20)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id21)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id22)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id23)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id24)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id25)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id26)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id27)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id28)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id29)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: end_turn with params: {'faction': 'wei'}
+World has been reset
+_ test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected3-4] _
+
+threads = 4, connected = ['id0', 'id1', 'id2', 'id3', 'id4', 'id5', ...]
+frozen = [1720000000.0]
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1070072a0>
+
+    @pytest.mark.parametrize('threads', [1, 2, 4])
+    @pytest.mark.parametrize('connected', [[], ['a'], ['b', 'c', 'unknown', 'a'], [f'id{i}' for i in range(30)]])
+    def test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry(threads, connected, frozen, monkeypatch):
+        world, _, _, llm = setup('none')
+        sent = []
+        monkeypatch.setattr(llm, 'send_message', lambda payload, *, target: sent.append((deepcopy(payload), target['id'])))
+        llm.client.connected_agents = dict.fromkeys(connected, {})
+        try:
+            with RustRuntime(export_initial_state(world), threads=threads) as runtime:
+                agents = [('a', 'wei'), ('b', 'shu'), ('c', 'shu')] + [(f'id{i}', 'shu' if i % 2 else 'wei') for i in range(30)]
+                for aid, faction in agents:
+                    call(llm, runtime, aid, 'register_agent_info', dict(REG, faction=faction))
+                call(llm, runtime, 'b', 'register_agent_info', dict(REG, faction='wei'))
+                # b remains in Shu's registry. Do not "fix" inherited targeting.
+                for aid, faction in [('a', 'wei'), ('c', 'shu')]:
+                    sent.clear()
+>                   assert call(llm, runtime, aid, 'end_turn', {'faction': faction})['success']
+E                   assert False
+
+rotk_env/tests/test_native_host_authority.py:105: AssertionError
+----------------------------- Captured stdout call -----------------------------
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (c)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id0)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id1)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id2)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id3)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id4)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id5)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id6)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id7)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id8)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id9)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id10)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id11)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id12)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id13)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id14)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id15)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id16)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id17)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id18)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id19)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id20)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id21)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id22)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id23)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id24)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id25)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id26)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id27)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (id28)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:model (id29)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:model (b)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: end_turn with params: {'faction': 'wei'}
+World has been reset
+=========================== short test summary info ============================
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected0-1]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected0-2]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected0-4]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected1-1]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected1-2]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected1-4]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected2-1]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected2-2]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected2-4]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected3-1]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected3-2]
+FAILED rotk_env/tests/test_native_host_authority.py::test_turn_candidates_reproduce_legacy_notification_order_and_stale_registry[connected3-4]
+12 failed, 38 passed in 5.94s

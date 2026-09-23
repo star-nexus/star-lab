@@ -1,0 +1,332 @@
+{
+  "experiment_id": "20240703_191511",
+  "timestamp": "2024-07-03T19:15:11.333327",
+  "map_type": "Custom map (chibi-small)",
+  "is_tie": true,
+  "winner_faction": null,
+  "is_half_win": false,
+  "end_reason": "timeout",
+  "game_duration_seconds": 62.566665172576904,
+  "game_duration_formatted": "62.57s",
+  "game_mode": "turn_based",
+  "total_turns": 2,
+  "units_info": {
+    "wei": {
+      "total_units": 5,
+      "current_units": 5,
+      "surviving_units": 5,
+      "destroyed_units": 0,
+      "total_health": 500,
+      "units": [
+        {
+          "unit_id": 231,
+          "unit_type": "infantry",
+          "position": {
+            "col": 1,
+            "row": 2
+          },
+          "current_count": 100,
+          "max_count": 100,
+          "health_percentage": 1.0
+        },
+        {
+          "unit_id": 232,
+          "unit_type": "archer",
+          "position": {
+            "col": 2,
+            "row": 3
+          },
+          "current_count": 100,
+          "max_count": 100,
+          "health_percentage": 1.0
+        },
+        {
+          "unit_id": 233,
+          "unit_type": "archer",
+          "position": {
+            "col": 1,
+            "row": 4
+          },
+          "current_count": 100,
+          "max_count": 100,
+          "health_percentage": 1.0
+        },
+        {
+          "unit_id": 234,
+          "unit_type": "archer",
+          "position": {
+            "col": 2,
+            "row": 4
+          },
+          "current_count": 100,
+          "max_count": 100,
+          "health_percentage": 1.0
+        },
+        {
+          "unit_id": 235,
+          "unit_type": "cavalry",
+          "position": {
+            "col": 3,
+            "row": 3
+          },
+          "current_count": 100,
+          "max_count": 100,
+          "health_percentage": 1.0
+        }
+      ]
+    },
+    "shu": {
+      "total_units": 5,
+      "current_units": 5,
+      "surviving_units": 5,
+      "destroyed_units": 0,
+      "total_health": 500,
+      "units": [
+        {
+          "unit_id": 236,
+          "unit_type": "infantry",
+          "position": {
+            "col": -1,
+            "row": -4
+          },
+          "current_count": 100,
+          "max_count": 100,
+          "health_percentage": 1.0
+        },
+        {
+          "unit_id": 237,
+          "unit_type": "archer",
+          "position": {
+            "col": -2,
+            "row": -3
+          },
+          "current_count": 100,
+          "max_count": 100,
+          "health_percentage": 1.0
+        },
+        {
+          "unit_id": 238,
+          "unit_type": "archer",
+          "position": {
+            "col": -1,
+            "row": -5
+          },
+          "current_count": 100,
+          "max_count": 100,
+          "health_percentage": 1.0
+        },
+        {
+          "unit_id": 239,
+          "unit_type": "archer",
+          "position": {
+            "col": -2,
+            "row": -4
+          },
+          "current_count": 100,
+          "max_count": 100,
+          "health_percentage": 1.0
+        },
+        {
+          "unit_id": 240,
+          "unit_type": "cavalry",
+          "position": {
+            "col": -3,
+            "row": -4
+          },
+          "current_count": 100,
+          "max_count": 100,
+          "health_percentage": 1.0
+        }
+      ]
+    }
+  },
+  "battle_statistics": {
+    "total_battles": 0,
+    "faction_battle_stats": {
+      "wei": {
+        "kills": 0,
+        "losses": 0,
+        "damage_dealt": 0,
+        "damage_taken": 0,
+        "units_created": 0,
+        "turns_played": 1,
+        "territory_controlled": 5,
+        "actions_taken": 1,
+        "movement_distance": 1,
+        "battles_won": 0,
+        "battles_lost": 0
+      },
+      "shu": {
+        "kills": 0,
+        "losses": 0,
+        "damage_dealt": 0,
+        "damage_taken": 0,
+        "units_created": 0,
+        "turns_played": 1,
+        "territory_controlled": 5,
+        "actions_taken": 0,
+        "movement_distance": 0,
+        "battles_won": 0,
+        "battles_lost": 0
+      },
+      "wu": {}
+    },
+    "battle_history": [],
+    "casualties": {
+      "wei": {
+        "units_lost": 0,
+        "damage_dealt": 0,
+        "damage_taken": 0
+      },
+      "shu": {
+        "units_lost": 0,
+        "damage_dealt": 0,
+        "damage_taken": 0
+      },
+      "wu": {
+        "units_lost": 0,
+        "damage_dealt": 0,
+        "damage_taken": 0
+      }
+    },
+    "victory_types": {}
+  },
+  "map_statistics": {
+    "map_width": 15,
+    "map_height": 15,
+    "total_tiles": 225,
+    "terrain_distribution": {
+      "water": 59,
+      "plain": 126,
+      "forest": 17,
+      "urban": 15,
+      "hill": 8
+    },
+    "territory_control": {},
+    "symmetry_type": "chibi-small",
+    "special_features": {}
+  },
+  "performance_statistics": {
+    "fps_statistics": {
+      "average_fps": 60.0,
+      "min_fps": 45.0,
+      "max_fps": 75.0
+    },
+    "memory_usage": {
+      "total_memory": "128MB",
+      "peak_memory": "150MB"
+    },
+    "rendering_performance": {
+      "render_calls_per_frame": 100,
+      "texture_memory": "64MB"
+    },
+    "system_performance": {
+      "cpu_usage": "15%",
+      "gpu_usage": "25%"
+    }
+  },
+  "model_info": {
+    "wei": "placeholder_model",
+    "shu": "placeholder_model",
+    "wu": "placeholder_model"
+  },
+  "agent_endpoints": {
+    "wei": "unknown",
+    "shu": "unknown",
+    "wu": "unknown"
+  },
+  "strategy_scores": {
+    "wei": 0.0,
+    "shu": 0.0,
+    "wu": 0.0
+  },
+  "strategy_evidence": {
+    "wei": [],
+    "shu": [],
+    "wu": []
+  },
+  "enable_thinking": {
+    "wei": null,
+    "shu": null,
+    "wu": null
+  },
+  "action_counts": {
+    "wei": 0,
+    "shu": 0,
+    "wu": 0
+  },
+  "interaction_counts": {
+    "wei": 0,
+    "shu": 0,
+    "wu": 0
+  },
+  "llm_api_stats": {
+    "wei": {
+      "total_calls": 0,
+      "successful_calls": 0,
+      "failed_calls": 0,
+      "success_rate": 0.0,
+      "toolcall_error_total": 0,
+      "http_error_total": 0,
+      "spatial_awareness_error": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 0,
+      "reasoning_tokens": 0,
+      "cache_hit_rate": 0.0,
+      "provider": "unknown",
+      "model_id": "unknown"
+    },
+    "shu": {
+      "total_calls": 0,
+      "successful_calls": 0,
+      "failed_calls": 0,
+      "success_rate": 0.0,
+      "toolcall_error_total": 0,
+      "http_error_total": 0,
+      "spatial_awareness_error": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 0,
+      "reasoning_tokens": 0,
+      "cache_hit_rate": 0.0,
+      "provider": "unknown",
+      "model_id": "unknown"
+    },
+    "wu": {
+      "total_calls": 0,
+      "successful_calls": 0,
+      "failed_calls": 0,
+      "success_rate": 0.0,
+      "toolcall_error_total": 0,
+      "http_error_total": 0,
+      "spatial_awareness_error": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 0,
+      "reasoning_tokens": 0,
+      "cache_hit_rate": 0.0,
+      "provider": "unknown",
+      "model_id": "unknown"
+    }
+  },
+  "llm_token_totals": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 0,
+    "reasoning_tokens": 0,
+    "total_tokens": 0,
+    "cache_hit_rate": 0.0
+  },
+  "providers": {
+    "wei": null,
+    "shu": null,
+    "wu": null
+  },
+  "providers_slug": "agents",
+  "registered_agents": []
+}

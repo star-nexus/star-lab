@@ -1,0 +1,71 @@
+{
+  "source_sha": "173410ad603121bfe97c028e6d121c7bd9a8e232",
+  "tool_sha": "5eaa8cb223dec051ed4d31fec084a66f96ffd81a",
+  "source_dirty": "",
+  "input_rgba": [
+    [
+      200,
+      80,
+      30,
+      128
+    ],
+    [
+      10,
+      20,
+      30,
+      0
+    ],
+    [
+      20,
+      90,
+      140,
+      255
+    ]
+  ],
+  "decoded_rgba": [
+    [
+      100,
+      40,
+      15,
+      128
+    ],
+    [
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      20,
+      90,
+      140,
+      255
+    ]
+  ],
+  "stored_bgra": [
+    [
+      15,
+      40,
+      100,
+      128
+    ],
+    [
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      140,
+      90,
+      20,
+      255
+    ]
+  ],
+  "bytes_sha256": "5ba57a19f2b89fd943e5871e953a515fa90a91d202d94148af3c82a6e66201af",
+  "all_guards_passed": true,
+  "legacy_behavior": true,
+  "pygame": "2.6.1",
+  "actual_encoding": "TGA",
+  "native_runtime_used": false
+}

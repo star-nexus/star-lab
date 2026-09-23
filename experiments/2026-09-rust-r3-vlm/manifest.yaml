@@ -1,0 +1,133 @@
+{
+  "experiment": {
+    "id": "2026-09-rust-r3-vlm",
+    "title": "Authorized Rust VLM projection and legacy Python framebuffer attachment",
+    "date": "2026-09-23",
+    "status": "validated_checkpoint",
+    "full_migration": "OPEN"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "24215823c74a79774d38cc0b354b6e3d091a3b86",
+    "implementation_commit": "8b59e6b79d6b34213e67c252078816c8929c0a2f",
+    "batch_snapshot_commit": "f54ec969f7a84900f17c3d61e60f0cd68819b146",
+    "fix_commit": "173410ad603121bfe97c028e6d121c7bd9a8e232",
+    "measurement_commit": "173410ad603121bfe97c028e6d121c7bd9a8e232",
+    "validated_commit": "30c4b76c152857c98ff45fc7952af9ceb758059e",
+    "validated_tag": "rust-kernel-r3d3c-2026-09-23",
+    "validation_note": "Final changes are documentation only; source-equivalence.json",
+    "main": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+    "merged": false
+  },
+  "tools": {
+    "repository": "star-nexus/star-lab",
+    "audit_sha": "6e67f8a12be2f3c648fe3aafbc1b3b99367b42ae",
+    "final_sha": "5eaa8cb223dec051ed4d31fec084a66f96ffd81a",
+    "pixel_diagnostic_sha": "c3fec33645aa82871009e6c1889167bb05b376d1",
+    "commands": "results/commands.json"
+  },
+  "hardware": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "cpu": "Apple M4",
+    "logical_cpus": "10",
+    "memory_bytes": "17179869184",
+    "python": "Python 3.13.12",
+    "rust": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+    "source": "173410ad603121bfe97c028e6d121c7bd9a8e232",
+    "tool_source": "5eaa8cb223dec051ed4d31fec084a66f96ffd81a",
+    "locks": {
+      "Cargo.lock": "1cc729d1d6963697acecba2668b2eabcb61f98e7c618cf653259a9ab2853ed30",
+      "uv.lock": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+      "rust-toolchain.toml": "887f9be066a15585a2c583578e84b0fcb541126d81546276bad3d2ff00d61167"
+    },
+    "build_env": {
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "PATH_prefix": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin"
+    },
+    "chrome_open": true
+  },
+  "software": {
+    "api": 11,
+    "schema": 5,
+    "oracle": "python-r0c-3cc4ffe",
+    "extension_sha256": "29e256d91e80337731050164c1fc20b9fb02fbc5ae14d1d49065a90e84c5515b",
+    "build": "release",
+    "wheel": "CPython3.13 macOS ARM64"
+  },
+  "scenario": {
+    "audit": "make_vision_world; seed42; 3Units; registered synthetic Agent a; full initial state in raw",
+    "window": "chibi-small 15x15 / 10Units; VLM explicitly enabled only by probe; both Human; one synthetic registered Wei Agent",
+    "codec": "three RGBA pixels; no Rust world"
+  },
+  "workload": {
+    "audit": "2 modes x 3 display configurations x 1/2/4 settings x missing/1x1/13x7 screen =54; no actual windows in this fixture",
+    "cocoa_vlm": "2 modes x 2 UI views; all queries request Wei; no forced redraw in capture",
+    "clocks": "frozen/injected wall metadata; world fixed dt; scene settlement jumps61 wall seconds",
+    "parallelism": "1/2/4 settings remain serial; admission lock protects display boundary",
+    "chrome": "kept open; workloads serial"
+  },
+  "results": {
+    "stage": "R3d3c",
+    "migration_complete": false,
+    "capacity_claim": false,
+    "full_regression": 1935,
+    "native_contracts": 1013,
+    "new_contracts": 38,
+    "targeted": 62,
+    "rust_tests": 3,
+    "fmt_clippy": true,
+    "closed": [
+      "G007 local interface"
+    ],
+    "open": [
+      "G008",
+      "G009"
+    ],
+    "risks": [
+      "R001",
+      "R002"
+    ],
+    "vlm_cases": 54,
+    "before_supported": 0,
+    "after_response_and_state_equal": 54,
+    "cocoa_vlm_cases": 4,
+    "cocoa_updates": 12,
+    "player_cases": 36,
+    "player_authority_equal": 36,
+    "player_projection_equal": 36,
+    "scene_cases": 6,
+    "scene_updates": 237,
+    "cocoa_window_updates": 158,
+    "cocoa_headless_scene_updates": 79,
+    "old_scene_replay_nodes": 510,
+    "new_scene_replay_nodes": 510,
+    "independent_new_replay_nodes": 510,
+    "legacy_codec_control": "before/after identical stored TGA and decoded pixels",
+    "visual_inspection": "real_time-shu.png; Fog/view matches current display, query remains Wei; old HUD overlap retained"
+  },
+  "artifacts": {
+    "checksums": "artifacts/SHA256SUMS",
+    "formal": "results except intermediate",
+    "intermediate": "pixel-guard failure: valid workload, byte equality held; invalid lossless-RGB assumption; diagnosis retained",
+    "codec_after_media": "canonical results/codec-before/frame.tga, surface.png and decoded.png; byte-identical"
+  },
+  "canonical_references": [
+    {
+      "path": "../2026-09-rust-r3-text-order/results/window/trace.json.xz",
+      "sha256": "9c80bb4a5b09a2c1675b677f3f00cff08c7eba670f0026085a318924c4ecf006",
+      "use": "old scene replay; not duplicated"
+    },
+    {
+      "path": "../2026-09-rust-r3-text-order/artifacts/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+      "use": "API10 before wheel"
+    }
+  ],
+  "limits": [
+    "No network/real LLM delivery or capacity/parallel speedup claim",
+    "Global existing framebuffer, not isolated per-Agent rendering or same-tick synchronization",
+    "Legacy TGA/PNG mismatch and alpha transformation preserved",
+    "No Linux/CPython3.14 install gate",
+    "Admission lock covers one public adapter, not arbitrary external window writes"
+  ]
+}

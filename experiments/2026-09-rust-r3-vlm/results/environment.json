@@ -1,0 +1,21 @@
+{
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "cpu": "Apple M4",
+  "logical_cpus": "10",
+  "memory_bytes": "17179869184",
+  "python": "Python 3.13.12",
+  "rust": "rustc 1.98.1 (48a229cea 2026-09-01)",
+  "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+  "source": "173410ad603121bfe97c028e6d121c7bd9a8e232",
+  "tool_source": "5eaa8cb223dec051ed4d31fec084a66f96ffd81a",
+  "locks": {
+    "Cargo.lock": "1cc729d1d6963697acecba2668b2eabcb61f98e7c618cf653259a9ab2853ed30",
+    "uv.lock": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+    "rust-toolchain.toml": "887f9be066a15585a2c583578e84b0fcb541126d81546276bad3d2ff00d61167"
+  },
+  "build_env": {
+    "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+    "PATH_prefix": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin"
+  },
+  "chrome_open": true
+}

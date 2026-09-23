@@ -1,0 +1,39 @@
+{
+  "stage": "R3d3c",
+  "migration_complete": false,
+  "capacity_claim": false,
+  "full_regression": 1935,
+  "native_contracts": 1013,
+  "new_contracts": 38,
+  "targeted": 62,
+  "rust_tests": 3,
+  "fmt_clippy": true,
+  "closed": [
+    "G007 local interface"
+  ],
+  "open": [
+    "G008",
+    "G009"
+  ],
+  "risks": [
+    "R001",
+    "R002"
+  ],
+  "vlm_cases": 54,
+  "before_supported": 0,
+  "after_response_and_state_equal": 54,
+  "cocoa_vlm_cases": 4,
+  "cocoa_updates": 12,
+  "player_cases": 36,
+  "player_authority_equal": 36,
+  "player_projection_equal": 36,
+  "scene_cases": 6,
+  "scene_updates": 237,
+  "cocoa_window_updates": 158,
+  "cocoa_headless_scene_updates": 79,
+  "old_scene_replay_nodes": 510,
+  "new_scene_replay_nodes": 510,
+  "independent_new_replay_nodes": 510,
+  "legacy_codec_control": "before/after identical stored TGA and decoded pixels",
+  "visual_inspection": "real_time-shu.png; Fog/view matches current display, query remains Wei; old HUD overlap retained"
+}

@@ -1,0 +1,30 @@
+pygame 2.6.1 (SDL 2.28.4, Python 3.13.12)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+[WorldBuilder] RngService initialized: seed=42 source=kwargs
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+[Integrated] Map Render System initialized - performance + features
+[Integrated] Unit Render System initialized - performance + features
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+Creating UI buttons...
+✓ Created End Turn button (Entity ID: 225)
+✓ Created Settings button (Entity ID: 226)
+✓ Created Help button (Entity ID: 227)
+✓ Created Statistics button (Entity ID: 228)
+UI buttons creation completed!
+[Integrated] Loaded 6 terrain textures
+[DEBUG] Loaded 9 unit textures, pre-cached 54 variants
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+[Integrated] Map Render System initialized - performance + features
+[Integrated] Unit Render System initialized - performance + features
+[Integrated] Loaded 6 terrain textures
+[DEBUG] Loaded 9 unit textures, pre-cached 54 variants
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+World has been reset
+Traceback (most recent call last):
+  File "/Users/liyang/Developer/star-lab/tools/rust_migration/r3_vlm_window_probe.py", line 83, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/liyang/Developer/star-lab/tools/rust_migration/r3_vlm_window_probe.py", line 66, in main
+    raise AssertionError(mismatch)
+AssertionError: {'source_sha': '173410ad603121bfe97c028e6d121c7bd9a8e232', 'tool_sha': 'c3fec33645aa82871009e6c1889167bb05b376d1', 'legacy_and_native_bytes_equal': True, 'name': 'real_time-wei', 'size': (1200, 800), 'decoded_size': (1200, 800), 'masks': (16711680, 65280, 255, 4278190080), 'decoded_masks': (16711680, 65280, 255, 4278190080), 'rgb_bytes': 2880000, 'decoded_bytes': 2880000, 'changed_channels': 2249, 'first_difference': 53376, 'screen_now_equal': True}

@@ -1,0 +1,381 @@
+pygame 2.6.1 (SDL 2.28.4, Python 3.13.12)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=failed
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ⚠️ params.agent_id='spoofed' does not match WS sender 'a' on 'get_faction_state_vlm'; overriding with authenticated id
+[LLM ACTION HANDLER] Executing action: get_faction_state_vlm with params: {'faction': 'wei', 'unit_ids': [38, 37, 38], 'agent_id': 'a'}
+Handling faction state for wei
+[FACTION_STATE_VLM] Completed for wei, frame=ok
+World has been reset
+{"source_sha": "173410ad603121bfe97c028e6d121c7bd9a8e232", "source_dirty": "", "tool_sha": "6e67f8a12be2f3c648fe3aafbc1b3b99367b42ae", "api": 11, "extension_sha256": "29e256d91e80337731050164c1fc20b9fb02fbc5ae14d1d49065a90e84c5515b", "expected_supported": true, "cases": 54, "response_equal": 54, "state_equal": 54, "all_guards_passed": true, "full_migration": false, "actual_windows": false, "raw": {"path": "raw.json.xz", "sha256": "6f21ebcc0cb18d280333c5caba6b5c37c829eda18bd94640fef1d798a1565751", "bytes": 11300, "decoded_sha256": "daa24ee093c6118fe659d39cd773caa66019f9ca49f80ddb4817cae183c06c0a", "decoded_bytes": 6051825}}

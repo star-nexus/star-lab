@@ -1,0 +1,31 @@
+{
+  "source_sha": "173410ad603121bfe97c028e6d121c7bd9a8e232",
+  "tool_sha": "c3fec33645aa82871009e6c1889167bb05b376d1",
+  "legacy_and_native_bytes_equal": true,
+  "name": "real_time-wei",
+  "size": [
+    1200,
+    800
+  ],
+  "decoded_size": [
+    1200,
+    800
+  ],
+  "masks": [
+    16711680,
+    65280,
+    255,
+    4278190080
+  ],
+  "decoded_masks": [
+    16711680,
+    65280,
+    255,
+    4278190080
+  ],
+  "rgb_bytes": 2880000,
+  "decoded_bytes": 2880000,
+  "changed_channels": 2249,
+  "first_difference": 53376,
+  "screen_now_equal": true
+}

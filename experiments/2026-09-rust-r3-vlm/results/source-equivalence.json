@@ -1,0 +1,11 @@
+{
+  "measured": "173410ad603121bfe97c028e6d121c7bd9a8e232",
+  "validated": "30c4b76c152857c98ff45fc7952af9ceb758059e",
+  "tag": "rust-kernel-r3d3c-2026-09-23",
+  "changed_paths": [
+    "docs/native-benchmark-gaps.md",
+    "docs/native-runtime.md"
+  ],
+  "runtime_and_tests_identical": true,
+  "main": "6a970deaee7d9b8d3939edd102973f2377edd6ac"
+}

@@ -1,0 +1,615 @@
+pygame 2.6.1 (SDL 2.28.4, Python 3.13.12)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+[WorldBuilder] RngService initialized: seed=42 source=kwargs
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+Coordinates: ON
+[GameScene] Game end, waiting for settlement report...
+[GameScene] Waiting for settlement report generation... 0.0s / 60.0s (remaining 60.0s)
+[SettlementReport] 🎯 Begin generating settlement report...
+[SettlementReport] 📊 Debug:
+  GameStats exists: True
+  Initial unit counts: {<Faction.WEI: 'wei'>: 5, <Faction.SHU: 'shu'>: 5}
+  wei:
+    initial units: 5
+    surviving units: 5
+    unit detail records: 5
+    ✅ added to settlement report
+  shu:
+    initial units: 5
+    surviving units: 5
+    unit detail records: 5
+    ✅ added to settlement report
+  wu:
+    initial units: 0
+    surviving units: 0
+    unit detail records: 0
+    ❌ initial units is 0, skip
+[SettlementReport] 🔧 corrected wei faction_battle_stats.losses: 0 -> 0
+[SettlementReport] 🔧 corrected wei casualties.units_lost: 0 -> 0
+[SettlementReport] 🔧 corrected shu faction_battle_stats.losses: 0 -> 0
+[SettlementReport] 🔧 corrected shu casualties.units_lost: 0 -> 0
+[SettlementReport] 📋 Agent registry found, registered factions: []
+[SettlementReport] ⚠️ wei: Agent info not registered, using placeholder
+[SettlementReport] ⚠️ shu: Agent info not registered, using placeholder
+[SettlementReport] ⚠️ wu: Agent info not registered, using placeholder
+[SettlementReport] 📁 report saved to: settlement_reports/report_20240703_180422_agents.json
+[SettlementReport] 📊 CSV data appended to: settlement_reports/settlement_results.csv
+
+================================================================================
+🎯 Game Settlement Report
+================================================================================
+📅 Experiment ID: 20240703_180422
+⏰ Generated at: 2024-07-03T18:04:22.066666
+🗺️ Map type: Custom map (chibi-small)
+🎮 Game mode: real_time
+🔄 Symmetry: Custom (chibi-small)
+
+🏆 Game result:
+   Result: Draw
+⏱️ Game duration: 1.07s
+⚡ Real-time: no turn limit
+
+⚔️ Battle statistics:
+   Total battles: 0
+
+👥 Unit statistics:
+   WEI Faction:
+     Total units: 5
+     Surviving units: 5
+     Destroyed units: 0
+   SHU Faction:
+     Total units: 5
+     Surviving units: 5
+     Destroyed units: 0
+
+🗺️ Map statistics:
+   Map size: 15x15
+   Total tiles: 225
+   Terrain distribution:
+     water: 59 tiles (26.2%)
+     plain: 126 tiles (56.0%)
+     forest: 17 tiles (7.6%)
+     urban: 15 tiles (6.7%)
+     hill: 8 tiles (3.6%)
+
+🤖 LLM API Statistics:
+
+💰 Token spend (all factions):
+   Prompt tokens: 0
+   Cache hit/miss: 0/0 (0.00%)
+   Completion tokens: 0 (reasoning: 0)
+   Total tokens: 0
+================================================================================
+[SettlementReport] ✅ Settlement report generated!
+World has been reset
+[GameScene] Settlement report generated, switching to game over scene
+Game End, Winner: None, 
+Statistics: {'total_turns': 1, 'game_duration': 1.0666666666666667, 'total_units': 10, 'surviving_units': 10, 'faction_stats': {<Faction.WEI: 'wei'>: {'total_units': 5, 'surviving_units': 5}, <Faction.SHU: 'shu'>: {'total_units': 5, 'surviving_units': 5}}}
+[GameScene] Headless mode: Stopping game loop...
+World has been reset
+Falling back to default font for title
+World has been reset
+[WorldBuilder] RngService initialized: seed=42 source=kwargs
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+[Integrated] Map Render System initialized - performance + features
+[Integrated] Unit Render System initialized - performance + features
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+Creating UI buttons...
+✓ Created End Turn button (Entity ID: 225)
+✓ Created Settings button (Entity ID: 226)
+✓ Created Help button (Entity ID: 227)
+✓ Created Statistics button (Entity ID: 228)
+UI buttons creation completed!
+[Integrated] Loaded 6 terrain textures
+[DEBUG] Loaded 9 unit textures, pre-cached 54 variants
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+[Integrated] Map Render System initialized - performance + features
+[Integrated] Unit Render System initialized - performance + features
+[Integrated] Loaded 6 terrain textures
+[DEBUG] Loaded 9 unit textures, pre-cached 54 variants
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+Coordinates: ON
+[GameScene] Game end, waiting for settlement report...
+[GameScene] Waiting for settlement report generation... 0.0s / 60.0s (remaining 60.0s)
+[SettlementReport] 🎯 Begin generating settlement report...
+[SettlementReport] 📊 Debug:
+  GameStats exists: True
+  Initial unit counts: {<Faction.WEI: 'wei'>: 5, <Faction.SHU: 'shu'>: 5}
+  wei:
+    initial units: 5
+    surviving units: 5
+    unit detail records: 5
+    ✅ added to settlement report
+  shu:
+    initial units: 5
+    surviving units: 5
+    unit detail records: 5
+    ✅ added to settlement report
+  wu:
+    initial units: 0
+    surviving units: 0
+    unit detail records: 0
+    ❌ initial units is 0, skip
+[SettlementReport] 🔧 corrected wei faction_battle_stats.losses: 0 -> 0
+[SettlementReport] 🔧 corrected wei casualties.units_lost: 0 -> 0
+[SettlementReport] 🔧 corrected shu faction_battle_stats.losses: 0 -> 0
+[SettlementReport] 🔧 corrected shu casualties.units_lost: 0 -> 0
+[SettlementReport] 📋 Agent registry found, registered factions: []
+[SettlementReport] ⚠️ wei: Agent info not registered, using placeholder
+[SettlementReport] ⚠️ shu: Agent info not registered, using placeholder
+[SettlementReport] ⚠️ wu: Agent info not registered, using placeholder
+[SettlementReport] 📁 report saved to: settlement_reports/report_20240703_182204_agents.json
+[SettlementReport] 📊 CSV data appended to: settlement_reports/settlement_results.csv
+
+================================================================================
+🎯 Game Settlement Report
+================================================================================
+📅 Experiment ID: 20240703_182204
+⏰ Generated at: 2024-07-03T18:22:04.133331
+🗺️ Map type: Custom map (chibi-small)
+🎮 Game mode: real_time
+🔄 Symmetry: Custom (chibi-small)
+
+🏆 Game result:
+   Result: Draw
+⏱️ Game duration: 1.07s
+⚡ Real-time: no turn limit
+
+⚔️ Battle statistics:
+   Total battles: 0
+
+👥 Unit statistics:
+   WEI Faction:
+     Total units: 5
+     Surviving units: 5
+     Destroyed units: 0
+   SHU Faction:
+     Total units: 5
+     Surviving units: 5
+     Destroyed units: 0
+
+🗺️ Map statistics:
+   Map size: 15x15
+   Total tiles: 225
+   Terrain distribution:
+     water: 59 tiles (26.2%)
+     plain: 126 tiles (56.0%)
+     forest: 17 tiles (7.6%)
+     urban: 15 tiles (6.7%)
+     hill: 8 tiles (3.6%)
+
+🤖 LLM API Statistics:
+
+💰 Token spend (all factions):
+   Prompt tokens: 0
+   Cache hit/miss: 0/0 (0.00%)
+   Completion tokens: 0 (reasoning: 0)
+   Total tokens: 0
+================================================================================
+[SettlementReport] ✅ Settlement report generated!
+World has been reset
+[GameScene] Settlement report generated, switching to game over scene
+World has been reset
+World has been reset
+Falling back to default font for title
+World has been reset
+Falling back to default font for title
+World has been reset
+[WorldBuilder] RngService initialized: seed=1042048600 source=wallclock
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+[Integrated] Map Render System initialized - performance + features
+[Integrated] Unit Render System initialized - performance + features
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+Creating UI buttons...
+✓ Created End Turn button (Entity ID: 225)
+✓ Created Settings button (Entity ID: 226)
+✓ Created Help button (Entity ID: 227)
+✓ Created Statistics button (Entity ID: 228)
+UI buttons creation completed!
+[Integrated] Loaded 6 terrain textures
+[DEBUG] Loaded 9 unit textures, pre-cached 54 variants
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+[Integrated] Map Render System initialized - performance + features
+[Integrated] Unit Render System initialized - performance + features
+[Integrated] Loaded 6 terrain textures
+[DEBUG] Loaded 9 unit textures, pre-cached 54 variants
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+Coordinates: ON
+[GameScene] Game end, waiting for settlement report...
+[GameScene] Waiting for settlement report generation... 0.0s / 60.0s (remaining 60.0s)
+[SettlementReport] 🎯 Begin generating settlement report...
+[SettlementReport] 📊 Debug:
+  GameStats exists: True
+  Initial unit counts: {<Faction.WEI: 'wei'>: 5, <Faction.SHU: 'shu'>: 5}
+  wei:
+    initial units: 5
+    surviving units: 5
+    unit detail records: 5
+    ✅ added to settlement report
+  shu:
+    initial units: 5
+    surviving units: 5
+    unit detail records: 5
+    ✅ added to settlement report
+  wu:
+    initial units: 0
+    surviving units: 0
+    unit detail records: 0
+    ❌ initial units is 0, skip
+[SettlementReport] 🔧 corrected wei faction_battle_stats.losses: 0 -> 0
+[SettlementReport] 🔧 corrected wei casualties.units_lost: 0 -> 0
+[SettlementReport] 🔧 corrected shu faction_battle_stats.losses: 0 -> 0
+[SettlementReport] 🔧 corrected shu casualties.units_lost: 0 -> 0
+[SettlementReport] 📋 Agent registry found, registered factions: []
+[SettlementReport] ⚠️ wei: Agent info not registered, using placeholder
+[SettlementReport] ⚠️ shu: Agent info not registered, using placeholder
+[SettlementReport] ⚠️ wu: Agent info not registered, using placeholder
+[SettlementReport] 📁 report saved to: settlement_reports/report_20240703_183946_agents.json
+[SettlementReport] 📊 CSV data appended to: settlement_reports/settlement_results.csv
+
+================================================================================
+🎯 Game Settlement Report
+================================================================================
+📅 Experiment ID: 20240703_183946
+⏰ Generated at: 2024-07-03T18:39:46.199997
+🗺️ Map type: Custom map (chibi-small)
+🎮 Game mode: real_time
+🔄 Symmetry: Custom (chibi-small)
+
+🏆 Game result:
+   Result: Draw
+⏱️ Game duration: 1.07s
+⚡ Real-time: no turn limit
+
+⚔️ Battle statistics:
+   Total battles: 0
+
+👥 Unit statistics:
+   WEI Faction:
+     Total units: 5
+     Surviving units: 5
+     Destroyed units: 0
+   SHU Faction:
+     Total units: 5
+     Surviving units: 5
+     Destroyed units: 0
+
+🗺️ Map statistics:
+   Map size: 15x15
+   Total tiles: 225
+   Terrain distribution:
+     water: 59 tiles (26.2%)
+     plain: 126 tiles (56.0%)
+     forest: 17 tiles (7.6%)
+     urban: 15 tiles (6.7%)
+     hill: 8 tiles (3.6%)
+
+🤖 LLM API Statistics:
+
+💰 Token spend (all factions):
+   Prompt tokens: 0
+   Cache hit/miss: 0/0 (0.00%)
+   Completion tokens: 0 (reasoning: 0)
+   Total tokens: 0
+================================================================================
+[SettlementReport] ✅ Settlement report generated!
+World has been reset
+[GameScene] Settlement report generated, switching to game over scene
+World has been reset
+World has been reset
+Falling back to default font for title
+World has been reset
+[WorldBuilder] RngService initialized: seed=42 source=kwargs
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+Coordinates: ON
+End current turn
+End current turn
+[GameScene] Game end, waiting for settlement report...
+[GameScene] Waiting for settlement report generation... 0.0s / 60.0s (remaining 60.0s)
+[SettlementReport] 🎯 Begin generating settlement report...
+[SettlementReport] 📊 Debug:
+  GameStats exists: True
+  Initial unit counts: {<Faction.WEI: 'wei'>: 5, <Faction.SHU: 'shu'>: 5}
+  wei:
+    initial units: 5
+    surviving units: 5
+    unit detail records: 5
+    ✅ added to settlement report
+  shu:
+    initial units: 5
+    surviving units: 5
+    unit detail records: 5
+    ✅ added to settlement report
+  wu:
+    initial units: 0
+    surviving units: 0
+    unit detail records: 0
+    ❌ initial units is 0, skip
+[SettlementReport] 🔧 corrected wei faction_battle_stats.losses: 0 -> 0
+[SettlementReport] 🔧 corrected wei casualties.units_lost: 0 -> 0
+[SettlementReport] 🔧 corrected shu faction_battle_stats.losses: 0 -> 0
+[SettlementReport] 🔧 corrected shu casualties.units_lost: 0 -> 0
+[SettlementReport] 📋 Agent registry found, registered factions: []
+[SettlementReport] ⚠️ wei: Agent info not registered, using placeholder
+[SettlementReport] ⚠️ shu: Agent info not registered, using placeholder
+[SettlementReport] ⚠️ wu: Agent info not registered, using placeholder
+[SettlementReport] 📁 report saved to: settlement_reports/report_20240703_185728_agents.json
+[SettlementReport] 📊 CSV data appended to: settlement_reports/settlement_results.csv
+
+================================================================================
+🎯 Game Settlement Report
+================================================================================
+📅 Experiment ID: 20240703_185728
+⏰ Generated at: 2024-07-03T18:57:28.766662
+🗺️ Map type: Custom map (chibi-small)
+🎮 Game mode: turn_based
+🔄 Symmetry: Custom (chibi-small)
+
+🏆 Game result:
+   Result: Draw
+⏱️ Game duration: 62.57s
+🔄 Total turns: 2
+
+⚔️ Battle statistics:
+   Total battles: 0
+
+👥 Unit statistics:
+   WEI Faction:
+     Total units: 5
+     Surviving units: 5
+     Destroyed units: 0
+   SHU Faction:
+     Total units: 5
+     Surviving units: 5
+     Destroyed units: 0
+
+🗺️ Map statistics:
+   Map size: 15x15
+   Total tiles: 225
+   Terrain distribution:
+     water: 59 tiles (26.2%)
+     plain: 126 tiles (56.0%)
+     forest: 17 tiles (7.6%)
+     urban: 15 tiles (6.7%)
+     hill: 8 tiles (3.6%)
+
+🤖 LLM API Statistics:
+
+💰 Token spend (all factions):
+   Prompt tokens: 0
+   Cache hit/miss: 0/0 (0.00%)
+   Completion tokens: 0 (reasoning: 0)
+   Total tokens: 0
+================================================================================
+[SettlementReport] ✅ Settlement report generated!
+World has been reset
+[GameScene] Settlement report generated, switching to game over scene
+Game End, Winner: None, 
+Statistics: {'total_turns': 2, 'game_duration': 62.566665172576904, 'total_units': 10, 'surviving_units': 10, 'faction_stats': {<Faction.WEI: 'wei'>: {'total_units': 5, 'surviving_units': 5}, <Faction.SHU: 'shu'>: {'total_units': 5, 'surviving_units': 5}}}
+[GameScene] Headless mode: Stopping game loop...
+World has been reset
+Falling back to default font for title
+World has been reset
+[WorldBuilder] RngService initialized: seed=42 source=kwargs
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+[Integrated] Map Render System initialized - performance + features
+[Integrated] Unit Render System initialized - performance + features
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+Creating UI buttons...
+✓ Created End Turn button (Entity ID: 225)
+✓ Created Settings button (Entity ID: 226)
+✓ Created Help button (Entity ID: 227)
+✓ Created Statistics button (Entity ID: 228)
+UI buttons creation completed!
+[Integrated] Loaded 6 terrain textures
+[DEBUG] Loaded 9 unit textures, pre-cached 54 variants
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+[Integrated] Map Render System initialized - performance + features
+[Integrated] Unit Render System initialized - performance + features
+[Integrated] Loaded 6 terrain textures
+[DEBUG] Loaded 9 unit textures, pre-cached 54 variants
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+Coordinates: ON
+End current turn
+End current turn
+[GameScene] Game end, waiting for settlement report...
+[GameScene] Waiting for settlement report generation... 0.0s / 60.0s (remaining 60.0s)
+[SettlementReport] 🎯 Begin generating settlement report...
+[SettlementReport] 📊 Debug:
+  GameStats exists: True
+  Initial unit counts: {<Faction.WEI: 'wei'>: 5, <Faction.SHU: 'shu'>: 5}
+  wei:
+    initial units: 5
+    surviving units: 5
+    unit detail records: 5
+    ✅ added to settlement report
+  shu:
+    initial units: 5
+    surviving units: 5
+    unit detail records: 5
+    ✅ added to settlement report
+  wu:
+    initial units: 0
+    surviving units: 0
+    unit detail records: 0
+    ❌ initial units is 0, skip
+[SettlementReport] 🔧 corrected wei faction_battle_stats.losses: 0 -> 0
+[SettlementReport] 🔧 corrected wei casualties.units_lost: 0 -> 0
+[SettlementReport] 🔧 corrected shu faction_battle_stats.losses: 0 -> 0
+[SettlementReport] 🔧 corrected shu casualties.units_lost: 0 -> 0
+[SettlementReport] 📋 Agent registry found, registered factions: []
+[SettlementReport] ⚠️ wei: Agent info not registered, using placeholder
+[SettlementReport] ⚠️ shu: Agent info not registered, using placeholder
+[SettlementReport] ⚠️ wu: Agent info not registered, using placeholder
+[SettlementReport] 📁 report saved to: settlement_reports/report_20240703_191511_agents.json
+[SettlementReport] 📊 CSV data appended to: settlement_reports/settlement_results.csv
+
+================================================================================
+🎯 Game Settlement Report
+================================================================================
+📅 Experiment ID: 20240703_191511
+⏰ Generated at: 2024-07-03T19:15:11.333327
+🗺️ Map type: Custom map (chibi-small)
+🎮 Game mode: turn_based
+🔄 Symmetry: Custom (chibi-small)
+
+🏆 Game result:
+   Result: Draw
+⏱️ Game duration: 62.57s
+🔄 Total turns: 2
+
+⚔️ Battle statistics:
+   Total battles: 0
+
+👥 Unit statistics:
+   WEI Faction:
+     Total units: 5
+     Surviving units: 5
+     Destroyed units: 0
+   SHU Faction:
+     Total units: 5
+     Surviving units: 5
+     Destroyed units: 0
+
+🗺️ Map statistics:
+   Map size: 15x15
+   Total tiles: 225
+   Terrain distribution:
+     water: 59 tiles (26.2%)
+     plain: 126 tiles (56.0%)
+     forest: 17 tiles (7.6%)
+     urban: 15 tiles (6.7%)
+     hill: 8 tiles (3.6%)
+
+🤖 LLM API Statistics:
+
+💰 Token spend (all factions):
+   Prompt tokens: 0
+   Cache hit/miss: 0/0 (0.00%)
+   Completion tokens: 0 (reasoning: 0)
+   Total tokens: 0
+================================================================================
+[SettlementReport] ✅ Settlement report generated!
+World has been reset
+[GameScene] Settlement report generated, switching to game over scene
+World has been reset
+World has been reset
+Falling back to default font for title
+World has been reset
+Falling back to default font for title
+World has been reset
+[WorldBuilder] RngService initialized: seed=2259359008 source=wallclock
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+[Integrated] Map Render System initialized - performance + features
+[Integrated] Unit Render System initialized - performance + features
+[MapSystem] Loaded chibi-small.json 15x15 tiles=225 formations=['shu', 'wei', 'wu']
+[MapSystem] GameStats component not found, skipping map info save
+Creating UI buttons...
+✓ Created End Turn button (Entity ID: 225)
+✓ Created Settings button (Entity ID: 226)
+✓ Created Help button (Entity ID: 227)
+✓ Created Statistics button (Entity ID: 228)
+UI buttons creation completed!
+[Integrated] Loaded 6 terrain textures
+[DEBUG] Loaded 9 unit textures, pre-cached 54 variants
+[MapSystem] Map info saved: 15x15 id=chibi-small spawns={'wei': (2, 3), 'shu': (-2, -4), 'wu': (2, -3)}
+[Integrated] Map Render System initialized - performance + features
+[Integrated] Unit Render System initialized - performance + features
+[Integrated] Loaded 6 terrain textures
+[DEBUG] Loaded 9 unit textures, pre-cached 54 variants
+[UnitActionButtonSystem] Text surfaces prewarmed: 38 cached variants
+Coordinates: ON
+End current turn
+End current turn
+[GameScene] Game end, waiting for settlement report...
+[GameScene] Waiting for settlement report generation... 0.0s / 60.0s (remaining 60.0s)
+[SettlementReport] 🎯 Begin generating settlement report...
+[SettlementReport] 📊 Debug:
+  GameStats exists: True
+  Initial unit counts: {<Faction.WEI: 'wei'>: 5, <Faction.SHU: 'shu'>: 5}
+  wei:
+    initial units: 5
+    surviving units: 5
+    unit detail records: 5
+    ✅ added to settlement report
+  shu:
+    initial units: 5
+    surviving units: 5
+    unit detail records: 5
+    ✅ added to settlement report
+  wu:
+    initial units: 0
+    surviving units: 0
+    unit detail records: 0
+    ❌ initial units is 0, skip
+[SettlementReport] 🔧 corrected wei faction_battle_stats.losses: 0 -> 0
+[SettlementReport] 🔧 corrected wei casualties.units_lost: 0 -> 0
+[SettlementReport] 🔧 corrected shu faction_battle_stats.losses: 0 -> 0
+[SettlementReport] 🔧 corrected shu casualties.units_lost: 0 -> 0
+[SettlementReport] 📋 Agent registry found, registered factions: []
+[SettlementReport] ⚠️ wei: Agent info not registered, using placeholder
+[SettlementReport] ⚠️ shu: Agent info not registered, using placeholder
+[SettlementReport] ⚠️ wu: Agent info not registered, using placeholder
+[SettlementReport] 📁 report saved to: settlement_reports/report_20240703_193253_agents.json
+[SettlementReport] 📊 CSV data appended to: settlement_reports/settlement_results.csv
+
+================================================================================
+🎯 Game Settlement Report
+================================================================================
+📅 Experiment ID: 20240703_193253
+⏰ Generated at: 2024-07-03T19:32:53.899992
+🗺️ Map type: Custom map (chibi-small)
+🎮 Game mode: turn_based
+🔄 Symmetry: Custom (chibi-small)
+
+🏆 Game result:
+   Result: Draw
+⏱️ Game duration: 62.57s
+🔄 Total turns: 2
+
+⚔️ Battle statistics:
+   Total battles: 0
+
+👥 Unit statistics:
+   WEI Faction:
+     Total units: 5
+     Surviving units: 5
+     Destroyed units: 0
+   SHU Faction:
+     Total units: 5
+     Surviving units: 5
+     Destroyed units: 0
+
+🗺️ Map statistics:
+   Map size: 15x15
+   Total tiles: 225
+   Terrain distribution:
+     water: 59 tiles (26.2%)
+     plain: 126 tiles (56.0%)
+     forest: 17 tiles (7.6%)
+     urban: 15 tiles (6.7%)
+     hill: 8 tiles (3.6%)
+
+🤖 LLM API Statistics:
+
+💰 Token spend (all factions):
+   Prompt tokens: 0
+   Cache hit/miss: 0/0 (0.00%)
+   Completion tokens: 0 (reasoning: 0)
+   Total tokens: 0
+================================================================================
+[SettlementReport] ✅ Settlement report generated!
+World has been reset
+[GameScene] Settlement report generated, switching to game over scene
+World has been reset
+World has been reset
+Falling back to default font for title
+World has been reset
+{"all_passed": true, "nodes": 510}

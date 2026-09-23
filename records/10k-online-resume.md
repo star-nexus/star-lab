@@ -1,5 +1,23 @@
 # 10K / 100% moving / 30 Hz — 恢复入口
 
+## 最新检查点：R3d3c，VLM本地图像接口已迁移（2026-09-23）
+
+生产最终节点 **`30c4b76c152857c98ff45fc7952af9ceb758059e`** / annotated tag **`rust-kernel-r3d3c-2026-09-23`**；构建/测量 `173410ad603121bfe97c028e6d121c7bd9a8e232`，最终只改两份文档，代码/测试一致。[完整报告与复现](../experiments/2026-09-rust-r3-vlm/README.md)。
+
+迁移进度：`R0 █ | R1 █ | R2/R3 ▒ 功能迁移中 | R4 ░ | R5 ░`（█完成、▒进行中、░待实施/验收；非工时百分比）。每阶段继续附进度条并更新[主GAP台账](../../star-main/docs/native-benchmark-gaps.md)，修复保留反例和版本历史。
+
+**G007关闭限本地公开Python接口**：Rust执行原鉴权/阵营状态投影，Python附加原RenderEngine画面；默认动作集不变，需MatchRules显式启用VLM。完整批次预校验并冻结参数，在VLM处截图后再执行后续动作；普通查询继续共享。step/reset/close等不能穿过未完成的截图；截图错误仍保留结构化响应。无内核热循环Python回调。
+
+1935完整回归（Native1013，新增VLM38），62针对性/3Rust/fmt/Clippy通过。54组已启用VLM由全未实现→响应和状态全一致；真实Cocoa两模式×魏蜀显示视角四组与Python图像字节相同；36组Player及旧/新场景各510节点重放通过。74个归档文件SHA256已核验。**没有新容量或并行结论。**
+
+**必须保留的视觉历史边界**：当前全局画面不随请求阵营切换，不强制重绘到最新tick；无screen和1×1 headless行为不变。实际TGA却标PNG；透明像素编码还可能改变RGB，旧/新独立3像素及原始TGA包均复现。初版原始RGB等价guard失败已作为有效中间诊断归档，最终以原Python实际编码字节比较。它们不归为Rust新增差异，也未借迁移修改规则/输入；真实多模态模型接收和历史评分影响未验证。
+
+活动生产venv与完整试玩目录 **`runs/star-rust-r3-vlm`** 均为API11/schema5 release，扩展SHA `29e256d91e80337731050164c1fc20b9fb02fbc5ae14d1d49065a90e84c5515b`。旧API10目录/tag保留；main仍6a970dea，未merge/push，Python默认；1/2/4仍串行；原49处Agent/font删除未动。
+
+**下一步：继续R3的网络host/回合ACK/结束投递（G009），结合动态冷组件写入覆盖审计（R002），随后BOT（G008）。** R001宽松转换风险仍开放。网络host需把真实截图安排在应用显示owner线程，不能把单runtime admission锁误当成全局窗口线程安全；不重调BOT难度、不取消移动力弱化。完整R3后才R4真并行和R5容量/跨平台安装及最终tag+squash/default切换。
+
+以下旧记录按原节点保留；当前状态以上文为准。
+
 ## 最新检查点：R3d3b，Benchmark文字兼容修复（2026-09-23）
 
 生产最终节点 **`24215823c74a79774d38cc0b354b6e3d091a3b86`** / annotated tag **`rust-kernel-r3d3b-2026-09-23`**；构建/测量 `11aefce1fb498cd6b388b1dcf498dbd8529eafb0`，最终仅更新GAP台账，代码/测试一致。[完整报告与复现](../experiments/2026-09-rust-r3-text-order/README.md)。

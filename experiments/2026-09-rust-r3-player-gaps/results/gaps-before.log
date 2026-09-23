@@ -1,0 +1,19 @@
+pygame 2.6.1 (SDL 2.28.4, Python 3.13.12)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (a)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[LLMSystem] ✅ Received LLM API stats for faction wei: {'total_calls': '１２', 'successful_calls': 1}
+[LLMSystem] 📊 Error stats - HTTP errors: 0, Tool-call errors: 0, spatial-awareness errors: 0
+[LLMSystem] 📊 Stats progress: 1/1 -> received=['wei'], registered=['wei']
+[LLMSystem] 🎯 All LLM stats received; settlement report generation flag set
+[LLMSystem] ✅ Received LLM API stats for faction wei: {'total_calls': 2, 'successful_calls': 1}
+[LLMSystem] 📊 Error stats - HTTP errors: 0, Tool-call errors: 0, spatial-awareness errors: 0
+[LLMSystem] 📊 Stats progress: 1/1 -> received=['wei'], registered=['wei']
+World has been reset
+{"diagnostic_reproduced": true, "cases": 3}

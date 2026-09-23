@@ -1,0 +1,39 @@
+{
+  "checkpoint": "R3d3a",
+  "full_migration": false,
+  "full_regression": 1852,
+  "native_contracts": 930,
+  "new_contracts": 114,
+  "new_player_contracts": 37,
+  "new_numeric_contracts": 77,
+  "rust_tests": 3,
+  "clippy": true,
+  "fmt": true,
+  "player_cases": 36,
+  "player_before_authority_equal": 36,
+  "player_before_display_equal": 0,
+  "player_after_authority_equal": 36,
+  "player_after_display_equal": 36,
+  "numeric_repros_fixed": 2,
+  "text_order_gap_open": true,
+  "closed_gaps": [
+    "G004",
+    "G005"
+  ],
+  "open_confirmed_gaps": [
+    "G006",
+    "G007",
+    "G008",
+    "G009"
+  ],
+  "scene_cases": 6,
+  "scene_updates": 237,
+  "window_scene_updates": 158,
+  "headless_scene_updates_inside_cocoa": 79,
+  "replay_nodes": 510,
+  "api": 9,
+  "schema": 5,
+  "default_backend": "python",
+  "thread_execution": "serial mutex",
+  "capacity": false
+}

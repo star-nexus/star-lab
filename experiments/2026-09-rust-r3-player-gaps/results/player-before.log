@@ -1,0 +1,489 @@
+pygame 2.6.1 (SDL 2.28.4, Python 3.13.12)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+🎮 Game start: shu acts first
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (alpha)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered wei faction agent: synthetic:fake (beta)
+[LLMSystem] 📝 Registered factions: ['wei'] (expected=1)
+[AgentInfoRegistry] ✅ Registered shu faction agent: synthetic:fake (enemy)
+[LLMSystem] 📝 Registered factions: ['shu', 'wei'] (expected=2)
+[LLM ACTION HANDLER] Executing action: attack with params: {'unit_id': 37, 'target_id': 39}
+[ATTACK_ACTION] Begin processing attack action, params: {'unit_id': 37, 'target_id': 39}
+⚔️ wei forces attacked shu! damage:7, count:1->0
+💀 shu unit @(1,1) was killed by wei!
+[ATTACK_ACTION] 1 casualties, target destroyed
+World has been reset
+World has been reset
+{"source_sha": "a6bf5f381b0393b0ab93973502d9744d6b9e3713", "source_dirty": "", "tool_sha": "4c7f057f32633f0353286b2ac961474712a9499a", "api": 8, "extension_sha256": "f9e7169fab2f2f154baf582d5578201a9fc3a0dfb868f7cc0f72cb3851baf46c", "cases": 36, "authority_equal": 36, "presentation_equal": 0, "all_guards_passed": true, "capacity": false, "raw": {"path": "raw.json.xz", "bytes": 10836, "sha256": "4042822b90a2746e9d5621099af44fb334599ff5a3689fcf751e3aee8f1e8678", "decoded_bytes": 2431045, "decoded_sha256": "886df26ad4153571630b403ed6e6c11d3cadfa50e0a1ecf79ca3489ced95bffb"}}

@@ -1,0 +1,19 @@
+{
+  "source_sha": "a6bf5f381b0393b0ab93973502d9744d6b9e3713",
+  "source_dirty": "",
+  "tool_sha": "4c7f057f32633f0353286b2ac961474712a9499a",
+  "api": 8,
+  "extension_sha256": "f9e7169fab2f2f154baf582d5578201a9fc3a0dfb868f7cc0f72cb3851baf46c",
+  "cases": 36,
+  "authority_equal": 36,
+  "presentation_equal": 0,
+  "all_guards_passed": true,
+  "capacity": false,
+  "raw": {
+    "path": "raw.json.xz",
+    "bytes": 10836,
+    "sha256": "4042822b90a2746e9d5621099af44fb334599ff5a3689fcf751e3aee8f1e8678",
+    "decoded_bytes": 2431045,
+    "decoded_sha256": "886df26ad4153571630b403ed6e6c11d3cadfa50e0a1ecf79ca3489ced95bffb"
+  }
+}

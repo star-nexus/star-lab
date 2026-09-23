@@ -1,0 +1,116 @@
+{
+  "all_passed": true,
+  "source_sha": "5e086be1160d49d148d09cfa6f3ee1743a3b8a1c",
+  "tool_sha": "39e2c374cce0c0e0b8e46fee2ce3142a5a1d9196",
+  "source_dirty": "",
+  "api": 9,
+  "extension_sha256": "60a6a30e7e267e08140173e821a53b52fcde02222124ce3382a94d2fba153070",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "driver": "cocoa",
+  "chrome_running": true,
+  "cases": [
+    {
+      "name": "real_time-headless",
+      "mode": "real_time",
+      "entry": "headless",
+      "rendered_frames": 32,
+      "report_generated": true,
+      "threads": 1,
+      "guards": {
+        "report": true,
+        "exit": true,
+        "subscriptions_restored": true,
+        "rendering_read_only": true,
+        "backend_preserved": true
+      }
+    },
+    {
+      "name": "real_time-skip-start",
+      "mode": "real_time",
+      "entry": "skip-start",
+      "rendered_frames": 32,
+      "report_generated": true,
+      "threads": 1,
+      "guards": {
+        "report": true,
+        "exit": true,
+        "subscriptions_restored": true,
+        "rendering_read_only": true,
+        "backend_preserved": true
+      }
+    },
+    {
+      "name": "real_time-menu",
+      "mode": "real_time",
+      "entry": "menu",
+      "rendered_frames": 32,
+      "report_generated": true,
+      "threads": 1,
+      "guards": {
+        "report": true,
+        "exit": true,
+        "subscriptions_restored": true,
+        "rendering_read_only": true,
+        "backend_preserved": true
+      }
+    },
+    {
+      "name": "turn_based-headless",
+      "mode": "turn_based",
+      "entry": "headless",
+      "rendered_frames": 47,
+      "report_generated": true,
+      "threads": 1,
+      "guards": {
+        "report": true,
+        "exit": true,
+        "subscriptions_restored": true,
+        "rendering_read_only": true,
+        "backend_preserved": true
+      }
+    },
+    {
+      "name": "turn_based-skip-start",
+      "mode": "turn_based",
+      "entry": "skip-start",
+      "rendered_frames": 47,
+      "report_generated": true,
+      "threads": 1,
+      "guards": {
+        "report": true,
+        "exit": true,
+        "subscriptions_restored": true,
+        "rendering_read_only": true,
+        "backend_preserved": true
+      }
+    },
+    {
+      "name": "turn_based-menu",
+      "mode": "turn_based",
+      "entry": "menu",
+      "rendered_frames": 47,
+      "report_generated": true,
+      "threads": 1,
+      "guards": {
+        "report": true,
+        "exit": true,
+        "subscriptions_restored": true,
+        "rendering_read_only": true,
+        "backend_preserved": true
+      }
+    }
+  ],
+  "replay_nodes": 510,
+  "raw": {
+    "path": "trace.json.xz",
+    "bytes": 56048,
+    "sha256": "28bb5342360adf44bc0c32b3722e6df92abfab20ac9e84e4afd91e41cd71e49c",
+    "decoded_bytes": 41873267,
+    "decoded_sha256": "c76d7552968321ee4fe214fd1f1f61b79bd518327a75b361daec663689267f7a"
+  },
+  "wall_clock": "injected; 61 second jump for settlement",
+  "capacity_claim": false,
+  "network_claim": false,
+  "controls": "direct local move; synthetic SDL V and SPACE; menu callbacks invoked directly"
+}

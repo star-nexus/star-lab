@@ -1,0 +1,437 @@
+{
+  "experiment": {
+    "id": "2026-09-rust-r3-player-gaps",
+    "title": "Player membership and Unicode telemetry compatibility; GAP ledger",
+    "date": "2026-09-23",
+    "status": "validated_checkpoint",
+    "full_migration": "OPEN"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "a6bf5f381b0393b0ab93973502d9744d6b9e3713",
+    "fix_commit": "5e086be1160d49d148d09cfa6f3ee1743a3b8a1c",
+    "measurement_commit": "5e086be1160d49d148d09cfa6f3ee1743a3b8a1c",
+    "validated_commit": "a11c2b125cae451bcac6e3c3332bcbd65af24409",
+    "validated_tag": "rust-kernel-r3d3a-2026-09-23",
+    "branch_at_time": "codex/rust-env-migration",
+    "validation_note": "Only docs/native-benchmark-gaps.md changed after tests; source-equivalence.json proves identical runtime and tests",
+    "main": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+    "merged": false
+  },
+  "tools": {
+    "repository": "star-nexus/star-lab",
+    "player_before": "4c7f057f32633f0353286b2ac961474712a9499a",
+    "gaps_before": "b76302acf93f1c54de2c40fb0ecccdaf956ee5a1",
+    "after": "39e2c374cce0c0e0b8e46fee2ce3142a5a1d9196",
+    "scene_file_unchanged_since": "2efdb7d6c4a2c7627f8ad033358e183b3fb23ac3"
+  },
+  "hardware": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "cpu": "Apple M4",
+    "logical_cpus": "10",
+    "memory_bytes": "17179869184",
+    "python": "Python 3.13.12",
+    "unicode": "15.1.0",
+    "rust": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+    "locks": {
+      "Cargo.lock": "3388b13475993a521b58fa448ada985f743913e581c034722719dbf6da28b918",
+      "uv.lock": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+      "rust-toolchain.toml": "887f9be066a15585a2c583578e84b0fcb541126d81546276bad3d2ff00d61167"
+    },
+    "build_env": {
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "PATH_prefix": "/Users/liyang/.cargo/bin"
+    }
+  },
+  "software": {
+    "api": 9,
+    "schema": 5,
+    "oracle": "python-r0c-3cc4ffe",
+    "extension_sha256": "60a6a30e7e267e08140173e821a53b52fcde02222124ce3382a94d2fba153070",
+    "build": "release",
+    "wheel": "CPython3.13 macOS ARM64"
+  },
+  "scenario": {
+    "player": "make fixture in test_native_combat_presentation.py; 3 Units; full initial state in raw",
+    "gaps": "make_vision_world none; 3 registered-input cases; full initial state in raw",
+    "window": "chibi-small 15x15 / 10 Units / 0 Agents"
+  },
+  "workload": {
+    "player": "two modes x 3 displays x 1/2/4 settings x before/after initial drain; death attack",
+    "numeric": [
+      "fullwidth score",
+      "fullwidth cumulative call count"
+    ],
+    "text": "mapping evidence z,a insertion order",
+    "wall": "injected 1720000000.0 in local probes; scene time injection and +61 sec settlement jump",
+    "chrome_running": true,
+    "serial": true,
+    "performance": false
+  },
+  "measurement": {
+    "type": "functional before/after and valid negative diagnostic",
+    "guards_required": [
+      "authoritative state and response equality except intentionally audited differences",
+      "Player display equality after patch",
+      "explicit OPEN G006 retained",
+      "scene rendering read-only and subscription cleanup",
+      "fresh-process exact replay"
+    ],
+    "capacity": false
+  },
+  "variables": {
+    "independent": "production API8 vs API9",
+    "controlled": [
+      "same fixture and actions",
+      "injected wall and registration times",
+      "same display/mode/thread setting"
+    ]
+  },
+  "validation": {
+    "checkpoint": "R3d3a",
+    "full_migration": false,
+    "full_regression": 1852,
+    "native_contracts": 930,
+    "new_contracts": 114,
+    "new_player_contracts": 37,
+    "new_numeric_contracts": 77,
+    "rust_tests": 3,
+    "clippy": true,
+    "fmt": true,
+    "player_cases": 36,
+    "player_before_authority_equal": 36,
+    "player_before_display_equal": 0,
+    "player_after_authority_equal": 36,
+    "player_after_display_equal": 36,
+    "numeric_repros_fixed": 2,
+    "text_order_gap_open": true,
+    "closed_gaps": [
+      "G004",
+      "G005"
+    ],
+    "open_confirmed_gaps": [
+      "G006",
+      "G007",
+      "G008",
+      "G009"
+    ],
+    "scene_cases": 6,
+    "scene_updates": 237,
+    "window_scene_updates": 158,
+    "headless_scene_updates_inside_cocoa": 79,
+    "replay_nodes": 510,
+    "api": 9,
+    "schema": 5,
+    "default_backend": "python",
+    "thread_execution": "serial mutex",
+    "capacity": false
+  },
+  "raw_forensic": {
+    "player-before": {
+      "source_sha": "a6bf5f381b0393b0ab93973502d9744d6b9e3713",
+      "tool_sha": "4c7f057f32633f0353286b2ac961474712a9499a",
+      "api": 8,
+      "raw": {
+        "path": "raw.json.xz",
+        "bytes": 10836,
+        "sha256": "4042822b90a2746e9d5621099af44fb334599ff5a3689fcf751e3aee8f1e8678",
+        "decoded_bytes": 2431045,
+        "decoded_sha256": "886df26ad4153571630b403ed6e6c11d3cadfa50e0a1ecf79ca3489ced95bffb"
+      }
+    },
+    "player-after": {
+      "source_sha": "5e086be1160d49d148d09cfa6f3ee1743a3b8a1c",
+      "tool_sha": "39e2c374cce0c0e0b8e46fee2ce3142a5a1d9196",
+      "api": 9,
+      "raw": {
+        "path": "raw.json.xz",
+        "bytes": 10924,
+        "sha256": "6030126e48489f1229e5c0de1531171a912fd12e0f7f448948640386a272349b",
+        "decoded_bytes": 2438353,
+        "decoded_sha256": "fe3ae9b6e35c1b24a9be64e3553f5f68ea9378ed22055e63f22ecdc1e31f0097"
+      }
+    },
+    "gaps-before": {
+      "source_sha": "a6bf5f381b0393b0ab93973502d9744d6b9e3713",
+      "tool_sha": "b76302acf93f1c54de2c40fb0ecccdaf956ee5a1",
+      "api": 8,
+      "raw": {
+        "path": "raw.json.xz",
+        "sha256": "e0da652e27549c40fbe14133dceee2e767b8dc4df0b9cb85e2996212d1c890ca",
+        "bytes": 6060,
+        "decoded_sha256": "acd7ddcfcdd98376625214cf217e3a0e79e53fb7817689aebbea78af13119628",
+        "decoded_bytes": 348288
+      }
+    },
+    "gaps-after": {
+      "source_sha": "5e086be1160d49d148d09cfa6f3ee1743a3b8a1c",
+      "tool_sha": "39e2c374cce0c0e0b8e46fee2ce3142a5a1d9196",
+      "api": 9,
+      "raw": {
+        "path": "raw.json.xz",
+        "sha256": "1ddf1599a301c5248266e31abd9e16d0fbbe28b0f76da5903a9b3b55f9569a1f",
+        "bytes": 6064,
+        "decoded_sha256": "7eca0eccad6b25e6d2377d8bc5d0bdc1bce8199cdcbb66c87162f2be4a6071d4",
+        "decoded_bytes": 348365
+      }
+    },
+    "window": {
+      "source_sha": "5e086be1160d49d148d09cfa6f3ee1743a3b8a1c",
+      "tool_sha": "39e2c374cce0c0e0b8e46fee2ce3142a5a1d9196",
+      "api": 9,
+      "raw": {
+        "path": "trace.json.xz",
+        "bytes": 56048,
+        "sha256": "28bb5342360adf44bc0c32b3722e6df92abfab20ac9e84e4afd91e41cd71e49c",
+        "decoded_bytes": 41873267,
+        "decoded_sha256": "c76d7552968321ee4fe214fd1f1f61b79bd518327a75b361daec663689267f7a"
+      }
+    }
+  },
+  "commands_file": "README.md",
+  "gap_ledger": "star-main/docs/native-benchmark-gaps.md",
+  "artifacts": {
+    "formal": [
+      {
+        "path": "artifacts/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+        "bytes": 1312144,
+        "sha256": "e1de9731f06c73ecc5b47138c492a1b6f2462c3385deba794f6a753262f13e66"
+      },
+      {
+        "path": "results/active-install.log",
+        "bytes": 466,
+        "sha256": "31bc32e62f390201fe7efe38bf76fab8b152e1997ee6a53bdf595eee41d3e191"
+      },
+      {
+        "path": "results/build.log",
+        "bytes": 890,
+        "sha256": "6b61ec2d0fe2c49f7f5f0ee2452653fa69c0d40289af9e34689bc59ecc7fb764"
+      },
+      {
+        "path": "results/clippy.log",
+        "bytes": 397,
+        "sha256": "6131a2f21b098169845468281d532e451eaf4006556c58792d82ef207552212a"
+      },
+      {
+        "path": "results/environment.json",
+        "bytes": 703,
+        "sha256": "e778aed649ddb3f6010240a204d0a903317ccc32ee25eb8317a3939c09879049"
+      },
+      {
+        "path": "results/fmt.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "results/gaps-after/compact.json",
+        "bytes": 9221,
+        "sha256": "b40a05e95c29d508cd90fee581ba20dacb167797895283052e94895942407ef9"
+      },
+      {
+        "path": "results/gaps-after/raw.json.xz",
+        "bytes": 6064,
+        "sha256": "1ddf1599a301c5248266e31abd9e16d0fbbe28b0f76da5903a9b3b55f9569a1f"
+      },
+      {
+        "path": "results/gaps-after.log",
+        "bytes": 1245,
+        "sha256": "9b3cfedf7b02c02abf35db97c6608dc4ee43b83896a51ac75b9a5cd5e2fa70f7"
+      },
+      {
+        "path": "results/gaps-before/compact.json",
+        "bytes": 9094,
+        "sha256": "ff2bf82f2a421e7cfc2db2f2c69f1a63ffe13ef1aa6cd1adf1bf8215920eb7b6"
+      },
+      {
+        "path": "results/gaps-before/raw.json.xz",
+        "bytes": 6060,
+        "sha256": "e0da652e27549c40fbe14133dceee2e767b8dc4df0b9cb85e2996212d1c890ca"
+      },
+      {
+        "path": "results/gaps-before.log",
+        "bytes": 1245,
+        "sha256": "9b3cfedf7b02c02abf35db97c6608dc4ee43b83896a51ac75b9a5cd5e2fa70f7"
+      },
+      {
+        "path": "results/install.log",
+        "bytes": 219,
+        "sha256": "c24b97c90c82ef44eb51ebc4195aa5b9c63422c4eeb704574f76267166fae316"
+      },
+      {
+        "path": "results/player-after/compact.json",
+        "bytes": 627,
+        "sha256": "3ede057d7dbb3ef8b01b0050064fe1e5f7a405836506c5851bbc27cd3ccb5697"
+      },
+      {
+        "path": "results/player-after/raw.json.xz",
+        "bytes": 10924,
+        "sha256": "6030126e48489f1229e5c0de1531171a912fd12e0f7f448948640386a272349b"
+      },
+      {
+        "path": "results/player-after.log",
+        "bytes": 29241,
+        "sha256": "7228f8134b342a6e3435275dc7cb4643565c37c9ad98cfe9d5ec732bda8af207"
+      },
+      {
+        "path": "results/player-before/compact.json",
+        "bytes": 626,
+        "sha256": "8070bdeb89c7b119620b994ef04e0ccb9c216f657b2df6a7b2721b6644276fcf"
+      },
+      {
+        "path": "results/player-before/raw.json.xz",
+        "bytes": 10836,
+        "sha256": "4042822b90a2746e9d5621099af44fb334599ff5a3689fcf751e3aee8f1e8678"
+      },
+      {
+        "path": "results/player-before.log",
+        "bytes": 29240,
+        "sha256": "61e441208e1bcb3ede24d44ceccd165daafe73d7094236bfc85f99c512d21e40"
+      },
+      {
+        "path": "results/regression.log",
+        "bytes": 2102,
+        "sha256": "6a76711bb6d74484da2e44e45491a2f5f7e839d7350ec8517219dc6e0f17851f"
+      },
+      {
+        "path": "results/replay.json",
+        "bytes": 199,
+        "sha256": "302350ed113effa72f9ff9c00e7d52706b43bb1b5177e76573b18627eb428251"
+      },
+      {
+        "path": "results/replay.log",
+        "bytes": 301,
+        "sha256": "49f857027e9622bb2dddb667e99f2107a5d7ac9f7fd3ed3d45842178fdcc7dcd"
+      },
+      {
+        "path": "results/rust-test.log",
+        "bytes": 1284,
+        "sha256": "a7e18db3102487d92e4f541a17e26f4e44e17104f8c6f600a75ea029e191ebe7"
+      },
+      {
+        "path": "results/source-equivalence.json",
+        "bytes": 239,
+        "sha256": "bd815b595576b458366942055874867a7817b4234194a83a41d59baf9600a2de"
+      },
+      {
+        "path": "results/summary.json",
+        "bytes": 863,
+        "sha256": "05e0d8712fbf765d636f4a4226b8919ead75785f9846fb366dc3f3a615692344"
+      },
+      {
+        "path": "results/sync.log",
+        "bytes": 1022,
+        "sha256": "cd7c548ac39894225209f80bd41be8ca782e664e82e173d2f55034e34ff0b41a"
+      },
+      {
+        "path": "results/window/compact.json",
+        "bytes": 3181,
+        "sha256": "d0ae2a233dbd7f2f06b9c7f359f1ff1ca650c17e552894de7f620c4d82bc4b50"
+      },
+      {
+        "path": "results/window/real_time-headless/settlement_reports/report_20240703_180422_agents.json",
+        "bytes": 7510,
+        "sha256": "b87c6f265acab0f0da9731870ae0f15bce4a570270908a2a4f96e47bdb7ea7ad"
+      },
+      {
+        "path": "results/window/real_time-headless/settlement_reports/settlement_results.csv",
+        "bytes": 421,
+        "sha256": "b607d757242f1f4e520e5227b6fd3b3057ab8fa87c07f9be40bca9c6520fd322"
+      },
+      {
+        "path": "results/window/real_time-menu/settlement_reports/report_20240703_183946_agents.json",
+        "bytes": 7510,
+        "sha256": "30a61dfbb7916412f09f044bf3bd6d3e19bf6a82b79cb897c692c3a6c9ea4fa8"
+      },
+      {
+        "path": "results/window/real_time-menu/settlement_reports/settlement_results.csv",
+        "bytes": 421,
+        "sha256": "1151fa972a4c3fe0b977a21789ceeb8a54682ca1dce7399f00deb89cc957ceff"
+      },
+      {
+        "path": "results/window/real_time-menu.png",
+        "bytes": 242382,
+        "sha256": "d67ed27a4b34be49fc08032b3d3d9eacfdd8e7455fb2e6016525329756358f45"
+      },
+      {
+        "path": "results/window/real_time-skip-start/settlement_reports/report_20240703_182204_agents.json",
+        "bytes": 7510,
+        "sha256": "1b2232d2cbe3797ad8a628b5f69bd7d36807e3fd43f13a694811d1bc329a2495"
+      },
+      {
+        "path": "results/window/real_time-skip-start/settlement_reports/settlement_results.csv",
+        "bytes": 421,
+        "sha256": "51fd694baf79a478047b55738a1c0d5ea81da259e229b8be58c8fe94e983b692"
+      },
+      {
+        "path": "results/window/real_time-skip-start.png",
+        "bytes": 242382,
+        "sha256": "d67ed27a4b34be49fc08032b3d3d9eacfdd8e7455fb2e6016525329756358f45"
+      },
+      {
+        "path": "results/window/trace.json.xz",
+        "bytes": 56048,
+        "sha256": "28bb5342360adf44bc0c32b3722e6df92abfab20ac9e84e4afd91e41cd71e49c"
+      },
+      {
+        "path": "results/window/turn_based-headless/settlement_reports/report_20240703_185728_agents.json",
+        "bytes": 7512,
+        "sha256": "113f5911fbfa32167cd801514eb4352037ed93df5331e079d0b077bd51753d65"
+      },
+      {
+        "path": "results/window/turn_based-headless/settlement_reports/settlement_results.csv",
+        "bytes": 423,
+        "sha256": "0b3a480c46ee63a9eeaf304a5958395309b3e2704c179aa48cc4cd292ca58553"
+      },
+      {
+        "path": "results/window/turn_based-menu/settlement_reports/report_20240703_193253_agents.json",
+        "bytes": 7512,
+        "sha256": "526b5be07bae5cf0831def666c7b0c0ba38c856b0955423480e6fa2c39de8a2b"
+      },
+      {
+        "path": "results/window/turn_based-menu/settlement_reports/settlement_results.csv",
+        "bytes": 423,
+        "sha256": "16cbbd1381f016bdf6289ce6e8c3969acfb591e30c2fa94fbd4e8ea93df226fd"
+      },
+      {
+        "path": "results/window/turn_based-menu.png",
+        "bytes": 244687,
+        "sha256": "96a424ae43b57b346ec736d5790faf9e034f52b13cd95c1d215c04960245a8f3"
+      },
+      {
+        "path": "results/window/turn_based-skip-start/settlement_reports/report_20240703_191511_agents.json",
+        "bytes": 7512,
+        "sha256": "056ae8981370dfcb7c4bd3c4ad2064881f6886a229f9e86a5fae36ab26e45615"
+      },
+      {
+        "path": "results/window/turn_based-skip-start/settlement_reports/settlement_results.csv",
+        "bytes": 423,
+        "sha256": "e7d5478b4ad46a119efedfbc23c93887bb52bd8dfb11b1bd8d370562053050b2"
+      },
+      {
+        "path": "results/window/turn_based-skip-start.png",
+        "bytes": 244687,
+        "sha256": "96a424ae43b57b346ec736d5790faf9e034f52b13cd95c1d215c04960245a8f3"
+      },
+      {
+        "path": "results/window.log",
+        "bytes": 23506,
+        "sha256": "4e6c697d2e2c77219129740d5459bcb0c6cb6a5b107b30fe0e58def7311a14b2"
+      }
+    ],
+    "external": []
+  },
+  "protocol": "1.2",
+  "headline": {
+    "root_cause": "missing Player projection; Unicode decimal characters not normalized before Rust parsing",
+    "result": "G004/G005 fixed; G006 remains open",
+    "no_historical_real_llm_score_audit": true
+  },
+  "revisit_when": [
+    "fix G006 and audit permissive scalar conversions",
+    "dynamic Player/cold data writes",
+    "Unicode version change",
+    "VLM/network/BOT integration",
+    "R4 parallel and R5 capacity/install"
+  ]
+}

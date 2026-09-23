@@ -21,6 +21,8 @@ def main():
     src = args.source.resolve(); out = args.output.resolve(); out.mkdir(parents=True, exist_ok=True)
     os.chdir(src); sys.path.insert(0, str(src)); os.environ['SDL_VIDEODRIVER'] = 'dummy'
     from star_native import API_VERSION, _native
+    from rotk_env import components as c
+    from rotk_env.prefabs.config import Faction
     from rotk_env.runtime.bootstrap import export_initial_state
     from rotk_env.runtime.native import RustRuntime
     from rotk_env.tests.test_native_turn import setup
@@ -32,6 +34,7 @@ def main():
         for display in ['none', 'dummy', 'window']:
             for threads in [1, 2, 4]:
                 world, _, _, llm = setup(display)
+                world.get_singleton_component(c.GameState).current_player = Faction.WEI
                 initial = export_initial_state(world, display=display)
                 steps = []; sent = []
                 llm.send_message = lambda payload, *, target: sent.append((deepcopy(payload), target['id']))
@@ -53,6 +56,7 @@ def main():
                             py = llm._process_action_request(agent_id=aid, action_id=1, action='end_turn', params=deepcopy(params), send_response=False)
                             rs = runtime.execute_action('end_turn', params, agent_id=aid)
                             assert rs == json.loads(json.dumps(py))
+                            assert rs['success']
                             context = runtime.turn_start_context() if supported else None
                             delivered = None
                             if context is not None:

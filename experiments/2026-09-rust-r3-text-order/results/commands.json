@@ -1,0 +1,165 @@
+[
+  {
+    "name": "full-tests",
+    "command": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order/.venv/bin/python",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+    "exit_code": 0,
+    "seconds": 36.849695920944214
+  },
+  {
+    "name": "rust-tests",
+    "command": [
+      "/Users/liyang/.cargo/bin/cargo",
+      "test",
+      "-p",
+      "star-core",
+      "-p",
+      "star-rotk",
+      "--locked"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+    "exit_code": 0,
+    "seconds": 11.27339482307434
+  },
+  {
+    "name": "fmt",
+    "command": [
+      "/Users/liyang/.cargo/bin/cargo",
+      "fmt",
+      "--all",
+      "--",
+      "--check"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+    "exit_code": 0,
+    "seconds": 0.25072789192199707
+  },
+  {
+    "name": "clippy",
+    "command": [
+      "/Users/liyang/.cargo/bin/cargo",
+      "clippy",
+      "--workspace",
+      "--all-targets",
+      "--locked",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+    "exit_code": 0,
+    "seconds": 1.67022705078125
+  },
+  {
+    "name": "unicode-table",
+    "command": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/generate_unicode_repr.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+      "--check"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+    "exit_code": 0,
+    "seconds": 0.1095428466796875
+  },
+  {
+    "name": "before",
+    "command": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-player-gaps/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/r3_gap_audit_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-player-gaps",
+      "--output",
+      "/Users/liyang/Developer/star-lab/runs/r3d3b-validation/before",
+      "--expect-numeric-equivalence",
+      "--extended-text-audit"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+    "exit_code": 0,
+    "seconds": 0.43682098388671875
+  },
+  {
+    "name": "after",
+    "command": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/r3_gap_audit_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+      "--output",
+      "/Users/liyang/Developer/star-lab/runs/r3d3b-validation/after",
+      "--expect-numeric-equivalence",
+      "--extended-text-audit",
+      "--expect-text-order",
+      "--expect-unicode-repr"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+    "exit_code": 0,
+    "seconds": 0.3777651786804199
+  },
+  {
+    "name": "players",
+    "command": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/r3_player_projection_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+      "--output",
+      "/Users/liyang/Developer/star-lab/runs/r3d3b-validation/players"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+    "exit_code": 0,
+    "seconds": 0.5866079330444336
+  },
+  {
+    "name": "old-scene-replay",
+    "command": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/r3_scene_host_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+      "--output",
+      "/Users/liyang/Developer/star-lab/runs/r3d3b-validation/old-scene-replay",
+      "--replay",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-player-gaps/results/window/trace.json.xz"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+    "exit_code": 0,
+    "seconds": 3.7869880199432373
+  },
+  {
+    "name": "window",
+    "command": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/r3_scene_host_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+      "--output",
+      "/Users/liyang/Developer/star-lab/runs/r3d3b-validation/window"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+    "exit_code": 0,
+    "seconds": 24.909431219100952
+  },
+  {
+    "name": "new-scene-replay",
+    "command": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/r3_scene_host_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+      "--output",
+      "/Users/liyang/Developer/star-lab/runs/r3d3b-validation/new-scene-replay",
+      "--replay",
+      "/Users/liyang/Developer/star-lab/runs/r3d3b-validation/window/trace.json.xz"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-text-order",
+    "exit_code": 0,
+    "seconds": 3.9459609985351562
+  }
+]

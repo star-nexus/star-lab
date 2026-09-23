@@ -1,0 +1,765 @@
+{
+  "source_sha": "a11c2b125cae451bcac6e3c3332bcbd65af24409",
+  "source_dirty": "",
+  "tool_sha": "5f75250bf98a76e1f3dc85c994ddf009348db425",
+  "api": 9,
+  "extension_sha256": "60a6a30e7e267e08140173e821a53b52fcde02222124ce3382a94d2fba153070",
+  "migration_gate_passed": false,
+  "diagnostic_reproduced": true,
+  "numeric_fix_expected": true,
+  "text_order_fix_expected": false,
+  "extended_text_audit": true,
+  "unicode_repr_fix_expected": false,
+  "cases": [
+    {
+      "name": "mapping_evidence",
+      "response_equal": true,
+      "state_equal": false,
+      "python_stats": {
+        "faction_stats": {},
+        "battle_history": [],
+        "turn_history": [],
+        "unit_observation_history": [],
+        "game_mode_stats": {},
+        "game_start_time": 0.0,
+        "total_game_time": 0.0,
+        "initial_unit_counts": {},
+        "action_counts_by_agent": {
+          "a": 2
+        },
+        "action_counts_by_faction": {
+          "wei": 2
+        },
+        "agent_id_to_faction": {
+          "a": "wei"
+        },
+        "interaction_counts_by_agent": {},
+        "interaction_counts_by_faction": {},
+        "strategy_scores_by_faction": {
+          "wei": 0.5
+        },
+        "strategy_ping_count_by_faction": {
+          "wei": 1
+        },
+        "strategy_evidence": {
+          "wei": [
+            "{'z': 1, 'a': 2}"
+          ]
+        },
+        "last_strategy_ping_ts": {
+          "wei": 1720000000.0
+        },
+        "map_info": {},
+        "llm_api_stats": {},
+        "can_generate_settlement_report": false,
+        "expected_llm_stats_count": 1,
+        "received_llm_stats_count": 0,
+        "registered_factions": {
+          "$set": [
+            "wei"
+          ]
+        },
+        "received_llm_stats_factions": {
+          "$set": []
+        }
+      },
+      "rust_stats": {
+        "action_counts_by_agent": {
+          "a": 2
+        },
+        "action_counts_by_faction": {
+          "wei": 2
+        },
+        "agent_id_to_faction": {
+          "a": "wei"
+        },
+        "battle_history": [],
+        "can_generate_settlement_report": false,
+        "expected_llm_stats_count": 1,
+        "faction_stats": {},
+        "game_mode_stats": {},
+        "game_start_time": 0.0,
+        "initial_unit_counts": {},
+        "interaction_counts_by_agent": {},
+        "interaction_counts_by_faction": {},
+        "last_strategy_ping_ts": {
+          "wei": 1720000000.0
+        },
+        "llm_api_stats": {},
+        "map_info": {},
+        "received_llm_stats_count": 0,
+        "received_llm_stats_factions": {
+          "$set": []
+        },
+        "registered_factions": {
+          "$set": [
+            "wei"
+          ]
+        },
+        "strategy_evidence": {
+          "wei": [
+            "{'a': 2, 'z': 1}"
+          ]
+        },
+        "strategy_ping_count_by_faction": {
+          "wei": 1
+        },
+        "strategy_scores_by_faction": {
+          "wei": 0.5
+        },
+        "total_game_time": 0.0,
+        "turn_history": [],
+        "unit_observation_history": []
+      }
+    },
+    {
+      "name": "unicode_score",
+      "response_equal": true,
+      "state_equal": true,
+      "python_stats": {
+        "faction_stats": {},
+        "battle_history": [],
+        "turn_history": [],
+        "unit_observation_history": [],
+        "game_mode_stats": {},
+        "game_start_time": 0.0,
+        "total_game_time": 0.0,
+        "initial_unit_counts": {},
+        "action_counts_by_agent": {
+          "a": 2
+        },
+        "action_counts_by_faction": {
+          "wei": 2
+        },
+        "agent_id_to_faction": {
+          "a": "wei"
+        },
+        "interaction_counts_by_agent": {},
+        "interaction_counts_by_faction": {},
+        "strategy_scores_by_faction": {
+          "wei": 0.5
+        },
+        "strategy_ping_count_by_faction": {
+          "wei": 1
+        },
+        "strategy_evidence": {},
+        "last_strategy_ping_ts": {
+          "wei": 1720000000.0
+        },
+        "map_info": {},
+        "llm_api_stats": {},
+        "can_generate_settlement_report": false,
+        "expected_llm_stats_count": 1,
+        "received_llm_stats_count": 0,
+        "registered_factions": {
+          "$set": [
+            "wei"
+          ]
+        },
+        "received_llm_stats_factions": {
+          "$set": []
+        }
+      },
+      "rust_stats": {
+        "action_counts_by_agent": {
+          "a": 2
+        },
+        "action_counts_by_faction": {
+          "wei": 2
+        },
+        "agent_id_to_faction": {
+          "a": "wei"
+        },
+        "battle_history": [],
+        "can_generate_settlement_report": false,
+        "expected_llm_stats_count": 1,
+        "faction_stats": {},
+        "game_mode_stats": {},
+        "game_start_time": 0.0,
+        "initial_unit_counts": {},
+        "interaction_counts_by_agent": {},
+        "interaction_counts_by_faction": {},
+        "last_strategy_ping_ts": {
+          "wei": 1720000000.0
+        },
+        "llm_api_stats": {},
+        "map_info": {},
+        "received_llm_stats_count": 0,
+        "received_llm_stats_factions": {
+          "$set": []
+        },
+        "registered_factions": {
+          "$set": [
+            "wei"
+          ]
+        },
+        "strategy_evidence": {},
+        "strategy_ping_count_by_faction": {
+          "wei": 1
+        },
+        "strategy_scores_by_faction": {
+          "wei": 0.5
+        },
+        "total_game_time": 0.0,
+        "turn_history": [],
+        "unit_observation_history": []
+      }
+    },
+    {
+      "name": "unicode_counter",
+      "response_equal": true,
+      "state_equal": true,
+      "python_stats": {
+        "faction_stats": {},
+        "battle_history": [],
+        "turn_history": [],
+        "unit_observation_history": [],
+        "game_mode_stats": {},
+        "game_start_time": 0.0,
+        "total_game_time": 0.0,
+        "initial_unit_counts": {},
+        "action_counts_by_agent": {
+          "a": 3
+        },
+        "action_counts_by_faction": {
+          "wei": 3
+        },
+        "agent_id_to_faction": {
+          "a": "wei"
+        },
+        "interaction_counts_by_agent": {},
+        "interaction_counts_by_faction": {},
+        "strategy_scores_by_faction": {},
+        "strategy_ping_count_by_faction": {},
+        "strategy_evidence": {},
+        "last_strategy_ping_ts": {},
+        "map_info": {},
+        "llm_api_stats": {
+          "wei": {
+            "total_calls": 14,
+            "successful_calls": 2,
+            "toolcall_error_total": 0,
+            "http_error_total": 0,
+            "spatial_awareness_error": 0,
+            "failed_calls": 0,
+            "success_rate": 14.29,
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 0,
+            "reasoning_tokens": 0,
+            "cache_hit_rate": 0.0,
+            "provider": "unknown",
+            "model_id": "unknown",
+            "timestamp": 1720000000.0
+          }
+        },
+        "can_generate_settlement_report": true,
+        "expected_llm_stats_count": 1,
+        "received_llm_stats_count": 1,
+        "registered_factions": {
+          "$set": [
+            "wei"
+          ]
+        },
+        "received_llm_stats_factions": {
+          "$set": [
+            "wei"
+          ]
+        }
+      },
+      "rust_stats": {
+        "action_counts_by_agent": {
+          "a": 3
+        },
+        "action_counts_by_faction": {
+          "wei": 3
+        },
+        "agent_id_to_faction": {
+          "a": "wei"
+        },
+        "battle_history": [],
+        "can_generate_settlement_report": true,
+        "expected_llm_stats_count": 1,
+        "faction_stats": {},
+        "game_mode_stats": {},
+        "game_start_time": 0.0,
+        "initial_unit_counts": {},
+        "interaction_counts_by_agent": {},
+        "interaction_counts_by_faction": {},
+        "last_strategy_ping_ts": {},
+        "llm_api_stats": {
+          "wei": {
+            "cache_hit_rate": 0.0,
+            "completion_tokens": 0,
+            "failed_calls": 0,
+            "http_error_total": 0,
+            "model_id": "unknown",
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 0,
+            "prompt_tokens": 0,
+            "provider": "unknown",
+            "reasoning_tokens": 0,
+            "spatial_awareness_error": 0,
+            "success_rate": 14.29,
+            "successful_calls": 2,
+            "timestamp": 1720000000.0,
+            "toolcall_error_total": 0,
+            "total_calls": 14
+          }
+        },
+        "map_info": {},
+        "received_llm_stats_count": 1,
+        "received_llm_stats_factions": {
+          "$set": [
+            "wei"
+          ]
+        },
+        "registered_factions": {
+          "$set": [
+            "wei"
+          ]
+        },
+        "strategy_evidence": {},
+        "strategy_ping_count_by_faction": {},
+        "strategy_scores_by_faction": {},
+        "total_game_time": 0.0,
+        "turn_history": [],
+        "unit_observation_history": []
+      }
+    },
+    {
+      "name": "nested_mapping_evidence",
+      "response_equal": true,
+      "state_equal": false,
+      "python_stats": {
+        "faction_stats": {},
+        "battle_history": [],
+        "turn_history": [],
+        "unit_observation_history": [],
+        "game_mode_stats": {},
+        "game_start_time": 0.0,
+        "total_game_time": 0.0,
+        "initial_unit_counts": {},
+        "action_counts_by_agent": {
+          "a": 2
+        },
+        "action_counts_by_faction": {
+          "wei": 2
+        },
+        "agent_id_to_faction": {
+          "a": "wei"
+        },
+        "interaction_counts_by_agent": {},
+        "interaction_counts_by_faction": {},
+        "strategy_scores_by_faction": {
+          "wei": 0.5
+        },
+        "strategy_ping_count_by_faction": {
+          "wei": 1
+        },
+        "strategy_evidence": {
+          "wei": [
+            "{'z': [{'y': None, 'b': True}], 'a': False}"
+          ]
+        },
+        "last_strategy_ping_ts": {
+          "wei": 1720000000.0
+        },
+        "map_info": {},
+        "llm_api_stats": {},
+        "can_generate_settlement_report": false,
+        "expected_llm_stats_count": 1,
+        "received_llm_stats_count": 0,
+        "registered_factions": {
+          "$set": [
+            "wei"
+          ]
+        },
+        "received_llm_stats_factions": {
+          "$set": []
+        }
+      },
+      "rust_stats": {
+        "action_counts_by_agent": {
+          "a": 2
+        },
+        "action_counts_by_faction": {
+          "wei": 2
+        },
+        "agent_id_to_faction": {
+          "a": "wei"
+        },
+        "battle_history": [],
+        "can_generate_settlement_report": false,
+        "expected_llm_stats_count": 1,
+        "faction_stats": {},
+        "game_mode_stats": {},
+        "game_start_time": 0.0,
+        "initial_unit_counts": {},
+        "interaction_counts_by_agent": {},
+        "interaction_counts_by_faction": {},
+        "last_strategy_ping_ts": {
+          "wei": 1720000000.0
+        },
+        "llm_api_stats": {},
+        "map_info": {},
+        "received_llm_stats_count": 0,
+        "received_llm_stats_factions": {
+          "$set": []
+        },
+        "registered_factions": {
+          "$set": [
+            "wei"
+          ]
+        },
+        "strategy_evidence": {
+          "wei": [
+            "{'a': False, 'z': [{'b': True, 'y': None}]}"
+          ]
+        },
+        "strategy_ping_count_by_faction": {
+          "wei": 1
+        },
+        "strategy_scores_by_faction": {
+          "wei": 0.5
+        },
+        "total_game_time": 0.0,
+        "turn_history": [],
+        "unit_observation_history": []
+      }
+    },
+    {
+      "name": "stored_mapping_labels",
+      "response_equal": true,
+      "state_equal": false,
+      "python_stats": {
+        "faction_stats": {},
+        "battle_history": [],
+        "turn_history": [],
+        "unit_observation_history": [],
+        "game_mode_stats": {},
+        "game_start_time": 0.0,
+        "total_game_time": 0.0,
+        "initial_unit_counts": {},
+        "action_counts_by_agent": {
+          "a": 3
+        },
+        "action_counts_by_faction": {
+          "wei": 3
+        },
+        "agent_id_to_faction": {
+          "a": "wei"
+        },
+        "interaction_counts_by_agent": {},
+        "interaction_counts_by_faction": {},
+        "strategy_scores_by_faction": {},
+        "strategy_ping_count_by_faction": {},
+        "strategy_evidence": {},
+        "last_strategy_ping_ts": {},
+        "map_info": {},
+        "llm_api_stats": {
+          "wei": {
+            "total_calls": 0,
+            "successful_calls": 0,
+            "toolcall_error_total": 0,
+            "http_error_total": 0,
+            "spatial_awareness_error": 0,
+            "failed_calls": 0,
+            "success_rate": 0.0,
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 0,
+            "reasoning_tokens": 0,
+            "cache_hit_rate": 0.0,
+            "provider": "{'z': 1, 'a': 2} + next",
+            "model_id": "[{'y': 1, 'b': 2}] + next",
+            "timestamp": 1720000000.0
+          }
+        },
+        "can_generate_settlement_report": true,
+        "expected_llm_stats_count": 1,
+        "received_llm_stats_count": 1,
+        "registered_factions": {
+          "$set": [
+            "wei"
+          ]
+        },
+        "received_llm_stats_factions": {
+          "$set": [
+            "wei"
+          ]
+        }
+      },
+      "rust_stats": {
+        "action_counts_by_agent": {
+          "a": 3
+        },
+        "action_counts_by_faction": {
+          "wei": 3
+        },
+        "agent_id_to_faction": {
+          "a": "wei"
+        },
+        "battle_history": [],
+        "can_generate_settlement_report": true,
+        "expected_llm_stats_count": 1,
+        "faction_stats": {},
+        "game_mode_stats": {},
+        "game_start_time": 0.0,
+        "initial_unit_counts": {},
+        "interaction_counts_by_agent": {},
+        "interaction_counts_by_faction": {},
+        "last_strategy_ping_ts": {},
+        "llm_api_stats": {
+          "wei": {
+            "cache_hit_rate": 0.0,
+            "completion_tokens": 0,
+            "failed_calls": 0,
+            "http_error_total": 0,
+            "model_id": "[{'b': 2, 'y': 1}] + next",
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 0,
+            "prompt_tokens": 0,
+            "provider": "{'a': 2, 'z': 1} + next",
+            "reasoning_tokens": 0,
+            "spatial_awareness_error": 0,
+            "success_rate": 0.0,
+            "successful_calls": 0,
+            "timestamp": 1720000000.0,
+            "toolcall_error_total": 0,
+            "total_calls": 0
+          }
+        },
+        "map_info": {},
+        "received_llm_stats_count": 1,
+        "received_llm_stats_factions": {
+          "$set": [
+            "wei"
+          ]
+        },
+        "registered_factions": {
+          "$set": [
+            "wei"
+          ]
+        },
+        "strategy_evidence": {},
+        "strategy_ping_count_by_faction": {},
+        "strategy_scores_by_faction": {},
+        "total_game_time": 0.0,
+        "turn_history": [],
+        "unit_observation_history": []
+      }
+    },
+    {
+      "name": "float_text",
+      "response_equal": true,
+      "state_equal": true,
+      "python_stats": {
+        "faction_stats": {},
+        "battle_history": [],
+        "turn_history": [],
+        "unit_observation_history": [],
+        "game_mode_stats": {},
+        "game_start_time": 0.0,
+        "total_game_time": 0.0,
+        "initial_unit_counts": {},
+        "action_counts_by_agent": {
+          "a": 2
+        },
+        "action_counts_by_faction": {
+          "wei": 2
+        },
+        "agent_id_to_faction": {
+          "a": "wei"
+        },
+        "interaction_counts_by_agent": {},
+        "interaction_counts_by_faction": {},
+        "strategy_scores_by_faction": {
+          "wei": 0.5
+        },
+        "strategy_ping_count_by_faction": {
+          "wei": 1
+        },
+        "strategy_evidence": {
+          "wei": [
+            "[1e-07]"
+          ]
+        },
+        "last_strategy_ping_ts": {
+          "wei": 1720000000.0
+        },
+        "map_info": {},
+        "llm_api_stats": {},
+        "can_generate_settlement_report": false,
+        "expected_llm_stats_count": 1,
+        "received_llm_stats_count": 0,
+        "registered_factions": {
+          "$set": [
+            "wei"
+          ]
+        },
+        "received_llm_stats_factions": {
+          "$set": []
+        }
+      },
+      "rust_stats": {
+        "action_counts_by_agent": {
+          "a": 2
+        },
+        "action_counts_by_faction": {
+          "wei": 2
+        },
+        "agent_id_to_faction": {
+          "a": "wei"
+        },
+        "battle_history": [],
+        "can_generate_settlement_report": false,
+        "expected_llm_stats_count": 1,
+        "faction_stats": {},
+        "game_mode_stats": {},
+        "game_start_time": 0.0,
+        "initial_unit_counts": {},
+        "interaction_counts_by_agent": {},
+        "interaction_counts_by_faction": {},
+        "last_strategy_ping_ts": {
+          "wei": 1720000000.0
+        },
+        "llm_api_stats": {},
+        "map_info": {},
+        "received_llm_stats_count": 0,
+        "received_llm_stats_factions": {
+          "$set": []
+        },
+        "registered_factions": {
+          "$set": [
+            "wei"
+          ]
+        },
+        "strategy_evidence": {
+          "wei": [
+            "[1e-07]"
+          ]
+        },
+        "strategy_ping_count_by_faction": {
+          "wei": 1
+        },
+        "strategy_scores_by_faction": {
+          "wei": 0.5
+        },
+        "total_game_time": 0.0,
+        "turn_history": [],
+        "unit_observation_history": []
+      }
+    },
+    {
+      "name": "nonprintable_text",
+      "response_equal": true,
+      "state_equal": false,
+      "python_stats": {
+        "faction_stats": {},
+        "battle_history": [],
+        "turn_history": [],
+        "unit_observation_history": [],
+        "game_mode_stats": {},
+        "game_start_time": 0.0,
+        "total_game_time": 0.0,
+        "initial_unit_counts": {},
+        "action_counts_by_agent": {
+          "a": 2
+        },
+        "action_counts_by_faction": {
+          "wei": 2
+        },
+        "agent_id_to_faction": {
+          "a": "wei"
+        },
+        "interaction_counts_by_agent": {},
+        "interaction_counts_by_faction": {},
+        "strategy_scores_by_faction": {
+          "wei": 0.5
+        },
+        "strategy_ping_count_by_faction": {
+          "wei": 1
+        },
+        "strategy_evidence": {
+          "wei": [
+            "['\\xa0']"
+          ]
+        },
+        "last_strategy_ping_ts": {
+          "wei": 1720000000.0
+        },
+        "map_info": {},
+        "llm_api_stats": {},
+        "can_generate_settlement_report": false,
+        "expected_llm_stats_count": 1,
+        "received_llm_stats_count": 0,
+        "registered_factions": {
+          "$set": [
+            "wei"
+          ]
+        },
+        "received_llm_stats_factions": {
+          "$set": []
+        }
+      },
+      "rust_stats": {
+        "action_counts_by_agent": {
+          "a": 2
+        },
+        "action_counts_by_faction": {
+          "wei": 2
+        },
+        "agent_id_to_faction": {
+          "a": "wei"
+        },
+        "battle_history": [],
+        "can_generate_settlement_report": false,
+        "expected_llm_stats_count": 1,
+        "faction_stats": {},
+        "game_mode_stats": {},
+        "game_start_time": 0.0,
+        "initial_unit_counts": {},
+        "interaction_counts_by_agent": {},
+        "interaction_counts_by_faction": {},
+        "last_strategy_ping_ts": {
+          "wei": 1720000000.0
+        },
+        "llm_api_stats": {},
+        "map_info": {},
+        "received_llm_stats_count": 0,
+        "received_llm_stats_factions": {
+          "$set": []
+        },
+        "registered_factions": {
+          "$set": [
+            "wei"
+          ]
+        },
+        "strategy_evidence": {
+          "wei": [
+            "[' ']"
+          ]
+        },
+        "strategy_ping_count_by_faction": {
+          "wei": 1
+        },
+        "strategy_scores_by_faction": {
+          "wei": 0.5
+        },
+        "total_game_time": 0.0,
+        "turn_history": [],
+        "unit_observation_history": []
+      }
+    }
+  ],
+  "raw": {
+    "path": "raw.json.xz",
+    "sha256": "0b1dd9ce8d2400a688d8b07ef0d68ca1c694e5266c26a77d4c107963b177c171",
+    "bytes": 6764,
+    "decoded_sha256": "e7e0e0114fe9e0a84aebfd543926316317bcd69ffea658b9496efdc9a54f6f40",
+    "decoded_bytes": 799231
+  }
+}

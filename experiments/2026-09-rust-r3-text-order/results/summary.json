@@ -1,0 +1,38 @@
+{
+  "stage": "R3d3b",
+  "migration_complete": false,
+  "capacity_claim": false,
+  "full_regression": 1897,
+  "native_contracts": 975,
+  "new_contracts": 45,
+  "targeted": 188,
+  "rust_tests": 3,
+  "guards": "fmt/clippy/generator passed",
+  "closed": [
+    "G006",
+    "G013"
+  ],
+  "open": [
+    "G007",
+    "G008",
+    "G009"
+  ],
+  "risks": [
+    "R001",
+    "R002"
+  ],
+  "input_cases": 7,
+  "before_equal": 3,
+  "after_equal": 7,
+  "player_cases": 36,
+  "player_authority_equal": 36,
+  "player_projection_equal": 36,
+  "scene_cases": 6,
+  "scene_updates": 237,
+  "cocoa_window_updates": 158,
+  "cocoa_headless_scene_updates": 79,
+  "old_scene_replay_nodes": 510,
+  "new_scene_replay_nodes": 510,
+  "independent_new_replay_nodes": 510,
+  "visual_inspection": "turn_based-menu.png; existing HUD overlap retained; no pixel equality claim"
+}

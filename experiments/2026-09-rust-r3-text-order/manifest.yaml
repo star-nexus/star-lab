@@ -1,0 +1,157 @@
+{
+  "experiment": {
+    "id": "2026-09-rust-r3-text-order",
+    "title": "Ordered JSON and Unicode repr Benchmark compatibility",
+    "date": "2026-09-23",
+    "status": "validated_checkpoint",
+    "full_migration": "OPEN"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "a11c2b125cae451bcac6e3c3332bcbd65af24409",
+    "key_order_fix_commit": "0dcd86e8170ed9eab34e33a3a0301f9c4f3cc27a",
+    "fix_commit": "11aefce1fb498cd6b388b1dcf498dbd8529eafb0",
+    "measurement_commit": "11aefce1fb498cd6b388b1dcf498dbd8529eafb0",
+    "validated_commit": "24215823c74a79774d38cc0b354b6e3d091a3b86",
+    "validated_tag": "rust-kernel-r3d3b-2026-09-23",
+    "validation_note": "Final commit changes GAP ledger only; source-equivalence.json",
+    "main": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+    "merged": false
+  },
+  "tools": {
+    "repository": "star-nexus/star-lab",
+    "sha": "5f75250bf98a76e1f3dc85c994ddf009348db425",
+    "commands": "results/commands.json",
+    "generator": "tools/rust_migration/generate_unicode_repr.py"
+  },
+  "hardware": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "cpu": "Apple M4",
+    "logical_cpus": "10",
+    "memory_bytes": "17179869184",
+    "python": "Python 3.13.12",
+    "unicode": "15.1.0",
+    "rust": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+    "source": "11aefce1fb498cd6b388b1dcf498dbd8529eafb0",
+    "tool_source": "5f75250bf98a76e1f3dc85c994ddf009348db425",
+    "locks": {
+      "Cargo.lock": "1cc729d1d6963697acecba2668b2eabcb61f98e7c618cf653259a9ab2853ed30",
+      "uv.lock": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+      "rust-toolchain.toml": "887f9be066a15585a2c583578e84b0fcb541126d81546276bad3d2ff00d61167"
+    },
+    "build_env": {
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "PATH_prefix": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin"
+    },
+    "chrome_open": true
+  },
+  "software": {
+    "api": 10,
+    "schema": 5,
+    "oracle": "python-r0c-3cc4ffe",
+    "extension_sha256": "214b864f854a6fda64b0c56226bac15f9e8babc2ded28cea9195184311001d77",
+    "build": "release",
+    "wheel": "CPython3.13 macOS ARM64"
+  },
+  "scenario": {
+    "audit": "make_vision_world none; full initial scene in raw; injected wall/datetime",
+    "player": "2 modes x 3 displays x 1/2/4 settings x before/after baseline death; full raw",
+    "window": "chibi-small 15x15, 10 Units, 0 Agents; 2 modes x 3 entries; six cases; synthetic controls"
+  },
+  "workload": {
+    "audit": [
+      "mapping_evidence",
+      "unicode_score",
+      "unicode_counter",
+      "nested_mapping_evidence",
+      "stored_mapping_labels",
+      "float_text",
+      "nonprintable_text"
+    ],
+    "clock": "world fixed dt; frozen/injected wall metadata; scene settlement jumps 61 wall seconds",
+    "parallelism": "none; 1/2/4 settings still serial",
+    "chrome": "kept open",
+    "serialization_order": "decoded object key order only matters when converted to text; lists/text fully compared"
+  },
+  "results": {
+    "stage": "R3d3b",
+    "migration_complete": false,
+    "capacity_claim": false,
+    "full_regression": 1897,
+    "native_contracts": 975,
+    "new_contracts": 45,
+    "targeted": 188,
+    "rust_tests": 3,
+    "guards": "fmt/clippy/generator passed",
+    "closed": [
+      "G006",
+      "G013"
+    ],
+    "open": [
+      "G007",
+      "G008",
+      "G009"
+    ],
+    "risks": [
+      "R001",
+      "R002"
+    ],
+    "input_cases": 7,
+    "before_equal": 3,
+    "after_equal": 7,
+    "player_cases": 36,
+    "player_authority_equal": 36,
+    "player_projection_equal": 36,
+    "scene_cases": 6,
+    "scene_updates": 237,
+    "cocoa_window_updates": 158,
+    "cocoa_headless_scene_updates": 79,
+    "old_scene_replay_nodes": 510,
+    "new_scene_replay_nodes": 510,
+    "independent_new_replay_nodes": 510,
+    "visual_inspection": "turn_based-menu.png; existing HUD overlap retained; no pixel equality claim"
+  },
+  "artifacts": {
+    "before": {
+      "path": "raw.json.xz",
+      "sha256": "0b1dd9ce8d2400a688d8b07ef0d68ca1c694e5266c26a77d4c107963b177c171",
+      "bytes": 6764,
+      "decoded_sha256": "e7e0e0114fe9e0a84aebfd543926316317bcd69ffea658b9496efdc9a54f6f40",
+      "decoded_bytes": 799231
+    },
+    "after": {
+      "path": "raw.json.xz",
+      "sha256": "90354b2948debe3219d5963ff6aeb23e5d974de39e299b01ee3dc6121767d409",
+      "bytes": 5652,
+      "decoded_sha256": "8a2f08755d645f0c2009085a71a4452b18e59e9c842cde05a9f92f47921813ec",
+      "decoded_bytes": 799177
+    },
+    "window": {
+      "path": "trace.json.xz",
+      "bytes": 52848,
+      "sha256": "9c80bb4a5b09a2c1675b677f3f00cff08c7eba670f0026085a318924c4ecf006",
+      "decoded_bytes": 41874097,
+      "decoded_sha256": "995152938ac7a28a302c5c03482abf63021294fde14c24aa04bc8e36d7cb6d69"
+    },
+    "checksums": "artifacts/SHA256SUMS",
+    "classification": "formal"
+  },
+  "canonical_references": [
+    {
+      "path": "../2026-09-rust-r3-player-gaps/results/window/trace.json.xz",
+      "sha256": "28bb5342360adf44bc0c32b3722e6df92abfab20ac9e84e4afd91e41cd71e49c",
+      "use": "old source replay; not duplicated"
+    },
+    {
+      "path": "../2026-09-rust-r3-player-gaps/artifacts/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+      "use": "API9 before wheel"
+    }
+  ],
+  "limits": [
+    "No real LLM, network, capacity or parallel speedup claim",
+    "No Linux/3.14 validation",
+    "Lone-surrogate/non-JSON Python object compatibility not established",
+    "Historical benchmark impact requires original input logs"
+  ]
+}

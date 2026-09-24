@@ -1,0 +1,141 @@
+{
+  "experiment": {
+    "id": "2026-09-rust-kernel-assembly",
+    "title": "R3k3 owned observation JSON assembly",
+    "date": "2026-09-24",
+    "status": "validated"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "67e35deaacef22ed1754f39245d771c3af887888",
+    "measurement_commit": "450bf97db4c52ead5d5ab36eda5a035a33ee4158",
+    "fix_commit": "450bf97db4c52ead5d5ab36eda5a035a33ee4158",
+    "validated_commit": "a3ff47b796537e2a543d42da6094aa13d64f6e63",
+    "branch_at_time": "codex/rust-env-migration",
+    "validated_tag": "rust-kernel-r3k3-2026-09-24",
+    "final_diff_files": [
+      "docs/native-benchmark-gaps.md",
+      "docs/native-runtime.md"
+    ],
+    "runtime_code_diff": "",
+    "tool_commit": "864f01ad2764aa387b3b472a096e3572cd070911"
+  },
+  "hardware": {
+    "machine": "Mac mini M4",
+    "cpu": "Apple M4",
+    "memory_bytes": "17179869184",
+    "gpu": "not used by probe",
+    "display": "no rendered frame"
+  },
+  "software": {
+    "os": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+    "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "dependency_lock_sha256": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+    "cargo_lock_sha256": "1cc729d1d6963697acecba2668b2eabcb61f98e7c618cf653259a9ab2853ed30",
+    "api": 14,
+    "schema": 5,
+    "rules": "python-r0c-3cc4ffe",
+    "extension_sha256": "a36e0684f4e76b7b4036e6ca20b217d1f5a78dda11929f7a9a714afd090a7c74"
+  },
+  "scenario": {
+    "name": "canonical archived inputs for query microbench, not online capacity scene",
+    "cases": [
+      "100 Units/6211 tiles/Fog7cells",
+      "100 Units/6211 tiles/Fog disabled",
+      "5000 Units/range3/Fog disabled"
+    ],
+    "moving_units": 0
+  },
+  "workload": {
+    "seed": 42,
+    "selected_units": [
+      5,
+      100
+    ],
+    "requests": [
+      1,
+      8
+    ],
+    "agents": "one registered synthetic identity per query, no think loop",
+    "MP": 0,
+    "phase": "supplied batches, no timed admission",
+    "camera": "none",
+    "zoom": null,
+    "wall_time": "1720000000 + index; registration timestamp fixed"
+  },
+  "measurement": {
+    "warmup_calls": 1,
+    "samples": 5,
+    "timing": "Native query/batch including JSON encoding; excludes import/reset/Python decode; 1 warmup +5 samples",
+    "guards_required": [
+      "exact complete responses and metrics across A/B",
+      "identical initial/final state hashes across A/B",
+      "matches canonical archived handler response",
+      "public batch matches sequential native response and final state",
+      "one census/faction build per segment",
+      "clean measured source",
+      "old scene replay and full regression"
+    ]
+  },
+  "variables": {
+    "independent": "owned JSON assembly vs serialize-to-Value",
+    "controlled": [
+      "same archived initial worlds",
+      "same requests/order/metadata",
+      "same schema/rules/API",
+      "same thread setting (serial)",
+      "Chrome left open",
+      "release build"
+    ]
+  },
+  "validation": {
+    "full_pytest": 2144,
+    "targeted": 62,
+    "new_tests": 0,
+    "rust_tests": 3,
+    "fmt": true,
+    "clippy": true,
+    "replay_cases": 6,
+    "replay_nodes": 510,
+    "exact_comparisons": 12
+  },
+  "artifacts": {
+    "canonical_inputs": [
+      {
+        "path": "experiments/2026-09-rust-kernel-catalog/results/after/raw.json.xz",
+        "sha256": "63530ed0a5e5d7aa6c4b1238dd13b95177731048e4466624f7a277c8f3f86141"
+      },
+      {
+        "path": "experiments/2026-09-rust-kernel-targets/results/after/raw.json.xz",
+        "sha256": "bf9dd60ac5b2888d3c10b2aa6784dbc6f73f83833b1ee0c5076d20c508dc158f"
+      }
+    ],
+    "canonical_replay": {
+      "path": "experiments/2026-09-rust-r3-host-authority/results/window/trace.json.xz",
+      "sha256": "f3543008f4c9409457a822fc2e90f4db757dd9ebe24437dd8cd991db9d0a0d0c"
+    },
+    "formal": [
+      "results/before/compact.json",
+      "results/before/raw.json.xz",
+      "results/after/compact.json",
+      "results/after/raw.json.xz",
+      "results/comparison.json",
+      "results/commands.json",
+      "results/environment.json"
+    ],
+    "integrity": "artifacts/SHA256SUMS",
+    "external": []
+  },
+  "headline": {
+    "root_cause": "owned JSON trees serialized into fresh trees during envelope assembly",
+    "resolution": "move already owned Value arrays into envelopes",
+    "result": "5000 Unit public query 52.232→30.815ms; 8 queries 173.365→95.241ms; not frame or queue acceptance"
+  },
+  "main_unchanged": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+  "revisit_when": [
+    "public response clones or encoding dominate",
+    "parallel read context introduced",
+    "response representation changes"
+  ]
+}

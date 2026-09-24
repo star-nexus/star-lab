@@ -1,0 +1,421 @@
+{
+  "source_sha": "67e35deaacef22ed1754f39245d771c3af887888",
+  "source_dirty": "",
+  "tool_sha": "864f01ad2764aa387b3b472a096e3572cd070911",
+  "api": 14,
+  "extension_sha256": "8358eecb5adfd2b7de7b020003aafa546280926bb7c9e4fa3e7e42f2f99fe02d",
+  "inputs": [
+    {
+      "path": "experiments/2026-09-rust-kernel-catalog/results/after/raw.json.xz",
+      "sha256": "63530ed0a5e5d7aa6c4b1238dd13b95177731048e4466624f7a277c8f3f86141"
+    },
+    {
+      "path": "experiments/2026-09-rust-kernel-targets/results/after/raw.json.xz",
+      "sha256": "bf9dd60ac5b2888d3c10b2aa6784dbc6f73f83833b1ee0c5076d20c508dc158f"
+    }
+  ],
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "rows": [
+    {
+      "scenario": "terrain-local",
+      "mode": "handler",
+      "requests": 1,
+      "selected_units": 5,
+      "initial_sha256": "30a19c691b794e62b068c1d2e52e64901f882dd2d5844c532dbd828988b2490d",
+      "final_sha256": "30a19c691b794e62b068c1d2e52e64901f882dd2d5844c532dbd828988b2490d",
+      "response_sha256": "a1ae1593851cf9bd3356c6bbce5df171b6a07ffe59c5c0ebc433ded42b2ce88c",
+      "wire_bytes": 3615,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 5,
+        "enemy_builds": 3,
+        "tile_builds": 7,
+        "census_entities_visited": 100,
+        "enemy_entities_visited": 100,
+        "terrain_cells_visited": 7,
+        "attack_cell_lookups": 0,
+        "attack_distance_checks": 15,
+        "attack_rule_checks": 6
+      },
+      "samples_ms": [
+        0.203041,
+        0.198208,
+        0.187542,
+        0.186583,
+        0.187333
+      ],
+      "median_ms": 0.187542,
+      "matches_sequential": true,
+      "matches_archived_response": true
+    },
+    {
+      "scenario": "terrain-local",
+      "mode": "public",
+      "requests": 1,
+      "selected_units": 5,
+      "initial_sha256": "30a19c691b794e62b068c1d2e52e64901f882dd2d5844c532dbd828988b2490d",
+      "final_sha256": "78e87ef3f5e8f710212345dfd9f8ff438735c08906e9e39f14343d47c7e55096",
+      "response_sha256": "90cbc64d0aa149a78e13aae636c31d9bc0b702b93214527246456578e5af5b3b",
+      "wire_bytes": 3660,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 5,
+        "enemy_builds": 3,
+        "tile_builds": 7,
+        "census_entities_visited": 100,
+        "enemy_entities_visited": 100,
+        "terrain_cells_visited": 7,
+        "attack_cell_lookups": 0,
+        "attack_distance_checks": 15,
+        "attack_rule_checks": 6
+      },
+      "samples_ms": [
+        0.179542,
+        0.248708,
+        0.194959,
+        0.225333,
+        0.205833
+      ],
+      "median_ms": 0.205833,
+      "matches_sequential": true,
+      "matches_archived_response": true
+    },
+    {
+      "scenario": "terrain-local",
+      "mode": "handler",
+      "requests": 8,
+      "selected_units": 5,
+      "initial_sha256": "5fbe7aef2dd8a930fa303dd4794598f1e10cfdd483b497c24684951179a82d6e",
+      "final_sha256": "5fbe7aef2dd8a930fa303dd4794598f1e10cfdd483b497c24684951179a82d6e",
+      "response_sha256": "3e666d06ec65c485600e4a66d64454ea12061fe92da110c58021aecc64bfc867",
+      "wire_bytes": 27016,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 5,
+        "enemy_builds": 3,
+        "tile_builds": 7,
+        "census_entities_visited": 100,
+        "enemy_entities_visited": 100,
+        "terrain_cells_visited": 7,
+        "attack_cell_lookups": 0,
+        "attack_distance_checks": 15,
+        "attack_rule_checks": 6
+      },
+      "samples_ms": [
+        0.651166,
+        0.747208,
+        0.743667,
+        0.750417,
+        0.694458
+      ],
+      "median_ms": 0.743667,
+      "matches_sequential": true,
+      "matches_archived_response": true
+    },
+    {
+      "scenario": "terrain-local",
+      "mode": "public",
+      "requests": 8,
+      "selected_units": 5,
+      "initial_sha256": "5fbe7aef2dd8a930fa303dd4794598f1e10cfdd483b497c24684951179a82d6e",
+      "final_sha256": "b56b377c4d0d5d5d2998b2a7e62978f5741f338cae6249e6a1ce28b40dcfbbd0",
+      "response_sha256": "b96678f97dfcb82853caac4e15a49f6b0973eef784f641f9342f121463e13345",
+      "wire_bytes": 27061,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 5,
+        "enemy_builds": 3,
+        "tile_builds": 7,
+        "census_entities_visited": 100,
+        "enemy_entities_visited": 100,
+        "terrain_cells_visited": 7,
+        "attack_cell_lookups": 0,
+        "attack_distance_checks": 15,
+        "attack_rule_checks": 6
+      },
+      "samples_ms": [
+        0.69925,
+        1.447333,
+        0.760417,
+        0.762042,
+        0.694833
+      ],
+      "median_ms": 0.760417,
+      "matches_sequential": true,
+      "matches_archived_response": true
+    },
+    {
+      "scenario": "terrain-disabled",
+      "mode": "handler",
+      "requests": 1,
+      "selected_units": 5,
+      "initial_sha256": "1790e2106a115b02d72e05f0bf8d42cb3e518f1e5903162d36ecda782548263d",
+      "final_sha256": "1790e2106a115b02d72e05f0bf8d42cb3e518f1e5903162d36ecda782548263d",
+      "response_sha256": "c0e30703c3e7de1a2bf4ebb25a1a3d937f20501e30f00a066c833fe8f19fdf6a",
+      "wire_bytes": 440271,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 5,
+        "enemy_builds": 50,
+        "tile_builds": 6211,
+        "census_entities_visited": 100,
+        "enemy_entities_visited": 100,
+        "terrain_cells_visited": 6211,
+        "attack_cell_lookups": 35,
+        "attack_distance_checks": 0,
+        "attack_rule_checks": 16
+      },
+      "samples_ms": [
+        27.354334,
+        29.104958,
+        27.720833,
+        29.2405,
+        33.804416
+      ],
+      "median_ms": 29.104958,
+      "matches_sequential": true,
+      "matches_archived_response": true
+    },
+    {
+      "scenario": "terrain-disabled",
+      "mode": "public",
+      "requests": 1,
+      "selected_units": 5,
+      "initial_sha256": "1790e2106a115b02d72e05f0bf8d42cb3e518f1e5903162d36ecda782548263d",
+      "final_sha256": "9e127be5a361488344a84c5bd4920a0026704dfd280a29ada3ab8544fb9b20bd",
+      "response_sha256": "a2166ed4f2ffc751798d2a55d91c64326425d1968d0fffdf8e93dbeef4b994fd",
+      "wire_bytes": 440316,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 5,
+        "enemy_builds": 50,
+        "tile_builds": 6211,
+        "census_entities_visited": 100,
+        "enemy_entities_visited": 100,
+        "terrain_cells_visited": 6211,
+        "attack_cell_lookups": 35,
+        "attack_distance_checks": 0,
+        "attack_rule_checks": 16
+      },
+      "samples_ms": [
+        32.412667,
+        33.229875,
+        28.544083,
+        34.546042,
+        30.219209
+      ],
+      "median_ms": 32.412667,
+      "matches_sequential": true,
+      "matches_archived_response": true
+    },
+    {
+      "scenario": "terrain-disabled",
+      "mode": "handler",
+      "requests": 8,
+      "selected_units": 5,
+      "initial_sha256": "130eafde687801c7c51073094a5d0a0375a940dc3b0291cff35decb5c65075bb",
+      "final_sha256": "130eafde687801c7c51073094a5d0a0375a940dc3b0291cff35decb5c65075bb",
+      "response_sha256": "333dbfbb79d9f9650263f2a68a361b406e348330e4d1e58ad2682c341695137b",
+      "wire_bytes": 3520208,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 5,
+        "enemy_builds": 50,
+        "tile_builds": 6211,
+        "census_entities_visited": 100,
+        "enemy_entities_visited": 100,
+        "terrain_cells_visited": 6211,
+        "attack_cell_lookups": 35,
+        "attack_distance_checks": 0,
+        "attack_rule_checks": 16
+      },
+      "samples_ms": [
+        95.326625,
+        104.02125,
+        99.552,
+        98.463417,
+        100.042
+      ],
+      "median_ms": 99.552,
+      "matches_sequential": true,
+      "matches_archived_response": true
+    },
+    {
+      "scenario": "terrain-disabled",
+      "mode": "public",
+      "requests": 8,
+      "selected_units": 5,
+      "initial_sha256": "130eafde687801c7c51073094a5d0a0375a940dc3b0291cff35decb5c65075bb",
+      "final_sha256": "cb1867241ef665679e1a27c29dd2f4c8781897689c943158751f6fdddd59a96d",
+      "response_sha256": "b98ac8197204afec974af25774b411791b7c42127e4ecaa3c815b7c5dbe68de4",
+      "wire_bytes": 3520253,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 5,
+        "enemy_builds": 50,
+        "tile_builds": 6211,
+        "census_entities_visited": 100,
+        "enemy_entities_visited": 100,
+        "terrain_cells_visited": 6211,
+        "attack_cell_lookups": 35,
+        "attack_distance_checks": 0,
+        "attack_rule_checks": 16
+      },
+      "samples_ms": [
+        99.091417,
+        98.849083,
+        100.543958,
+        105.075292,
+        101.181583
+      ],
+      "median_ms": 100.543958,
+      "matches_sequential": true,
+      "matches_archived_response": true
+    },
+    {
+      "scenario": "units-5000",
+      "mode": "handler",
+      "requests": 1,
+      "selected_units": 100,
+      "initial_sha256": "85ecdf736262ee79a0be1f21c8d48bb8f8de122cbad995ef0997cd7f73f844a4",
+      "final_sha256": "85ecdf736262ee79a0be1f21c8d48bb8f8de122cbad995ef0997cd7f73f844a4",
+      "response_sha256": "d777640a0c63a137c2f83ce5522866fe41586e360d180e16fbac3fead3c4a2f0",
+      "wire_bytes": 755366,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 100,
+        "enemy_builds": 2500,
+        "tile_builds": 5677,
+        "census_entities_visited": 5000,
+        "enemy_entities_visited": 5000,
+        "terrain_cells_visited": 5677,
+        "attack_cell_lookups": 3700,
+        "attack_distance_checks": 0,
+        "attack_rule_checks": 1393
+      },
+      "samples_ms": [
+        47.382292,
+        50.928417,
+        47.582209,
+        50.414334,
+        51.312334
+      ],
+      "median_ms": 50.414334,
+      "matches_sequential": true,
+      "matches_archived_response": true
+    },
+    {
+      "scenario": "units-5000",
+      "mode": "public",
+      "requests": 1,
+      "selected_units": 100,
+      "initial_sha256": "85ecdf736262ee79a0be1f21c8d48bb8f8de122cbad995ef0997cd7f73f844a4",
+      "final_sha256": "ca8f2b78ed5c37b69f8644503957bb61796ac930ea0268ee213285228647a66b",
+      "response_sha256": "94c65e7ef73571e033f8b16a053c1bd486a4f8b5ac179b737fc959aefcc561a8",
+      "wire_bytes": 755411,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 100,
+        "enemy_builds": 2500,
+        "tile_builds": 5677,
+        "census_entities_visited": 5000,
+        "enemy_entities_visited": 5000,
+        "terrain_cells_visited": 5677,
+        "attack_cell_lookups": 3700,
+        "attack_distance_checks": 0,
+        "attack_rule_checks": 1393
+      },
+      "samples_ms": [
+        52.231917,
+        51.332708,
+        55.01725,
+        51.018041,
+        55.416291
+      ],
+      "median_ms": 52.231917,
+      "matches_sequential": true,
+      "matches_archived_response": true
+    },
+    {
+      "scenario": "units-5000",
+      "mode": "handler",
+      "requests": 8,
+      "selected_units": 100,
+      "initial_sha256": "adee3063c2d9208027c2d2a08741491e019222d39e3f27a0c9f9eae9a45e82c1",
+      "final_sha256": "adee3063c2d9208027c2d2a08741491e019222d39e3f27a0c9f9eae9a45e82c1",
+      "response_sha256": "a441fbb9bef8b2fdfaae9b00411709f18e94eef51a19f7034f469129478161fe",
+      "wire_bytes": 6040898,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 100,
+        "enemy_builds": 2500,
+        "tile_builds": 5677,
+        "census_entities_visited": 5000,
+        "enemy_entities_visited": 5000,
+        "terrain_cells_visited": 5677,
+        "attack_cell_lookups": 3700,
+        "attack_distance_checks": 0,
+        "attack_rule_checks": 1393
+      },
+      "samples_ms": [
+        175.8645,
+        189.026125,
+        173.319834,
+        177.398875,
+        167.945458
+      ],
+      "median_ms": 175.8645,
+      "matches_sequential": true,
+      "matches_archived_response": true
+    },
+    {
+      "scenario": "units-5000",
+      "mode": "public",
+      "requests": 8,
+      "selected_units": 100,
+      "initial_sha256": "adee3063c2d9208027c2d2a08741491e019222d39e3f27a0c9f9eae9a45e82c1",
+      "final_sha256": "515a7b54733966deafc82acd17ff78ded3900c1b7838265e99116eaa80df44cf",
+      "response_sha256": "bc7b614d296c34cc963878efa76bac8a4e8a2602fe1b2bd14445e3674d1aafe1",
+      "wire_bytes": 6040943,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 100,
+        "enemy_builds": 2500,
+        "tile_builds": 5677,
+        "census_entities_visited": 5000,
+        "enemy_entities_visited": 5000,
+        "terrain_cells_visited": 5677,
+        "attack_cell_lookups": 3700,
+        "attack_distance_checks": 0,
+        "attack_rule_checks": 1393
+      },
+      "samples_ms": [
+        192.543667,
+        170.14825,
+        173.365458,
+        174.396125,
+        172.249375
+      ],
+      "median_ms": 173.365458,
+      "matches_sequential": true,
+      "matches_archived_response": true
+    }
+  ],
+  "timing": "Native query/batch including JSON encoding; excludes import/reset/Python decode; 1 warmup +5 samples",
+  "raw_sha256": "9934637e2dc98133dc6e75ce7fdfa09d53e266c9393d81f800e5a7f27b52ebf3",
+  "all_guards_passed": true,
+  "capacity_claim": false
+}

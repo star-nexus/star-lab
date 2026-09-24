@@ -1,0 +1,127 @@
+{
+  "all_equal": true,
+  "rows": [
+    {
+      "scenario": "terrain-local",
+      "mode": "handler",
+      "requests": 1,
+      "wire_bytes": 3615,
+      "before_ms": 0.187542,
+      "after_ms": 0.124834,
+      "speed_ratio": 1.502331095695083,
+      "equal": true
+    },
+    {
+      "scenario": "terrain-local",
+      "mode": "public",
+      "requests": 1,
+      "wire_bytes": 3660,
+      "before_ms": 0.205833,
+      "after_ms": 0.1365,
+      "speed_ratio": 1.5079340659340656,
+      "equal": true
+    },
+    {
+      "scenario": "terrain-local",
+      "mode": "handler",
+      "requests": 8,
+      "wire_bytes": 27016,
+      "before_ms": 0.743667,
+      "after_ms": 0.2905,
+      "speed_ratio": 2.5599552495697075,
+      "equal": true
+    },
+    {
+      "scenario": "terrain-local",
+      "mode": "public",
+      "requests": 8,
+      "wire_bytes": 27061,
+      "before_ms": 0.760417,
+      "after_ms": 0.343375,
+      "speed_ratio": 2.214538041499818,
+      "equal": true
+    },
+    {
+      "scenario": "terrain-disabled",
+      "mode": "handler",
+      "requests": 1,
+      "wire_bytes": 440271,
+      "before_ms": 29.104958,
+      "after_ms": 17.838125,
+      "speed_ratio": 1.6316153183140043,
+      "equal": true
+    },
+    {
+      "scenario": "terrain-disabled",
+      "mode": "public",
+      "requests": 1,
+      "wire_bytes": 440316,
+      "before_ms": 32.412667,
+      "after_ms": 17.524542,
+      "speed_ratio": 1.8495585790487419,
+      "equal": true
+    },
+    {
+      "scenario": "terrain-disabled",
+      "mode": "handler",
+      "requests": 8,
+      "wire_bytes": 3520208,
+      "before_ms": 99.552,
+      "after_ms": 55.400084,
+      "speed_ratio": 1.7969647843855256,
+      "equal": true
+    },
+    {
+      "scenario": "terrain-disabled",
+      "mode": "public",
+      "requests": 8,
+      "wire_bytes": 3520253,
+      "before_ms": 100.543958,
+      "after_ms": 54.464042,
+      "speed_ratio": 1.8460612600144515,
+      "equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "mode": "handler",
+      "requests": 1,
+      "wire_bytes": 755366,
+      "before_ms": 50.414334,
+      "after_ms": 30.086084,
+      "speed_ratio": 1.6756695221618074,
+      "equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "mode": "public",
+      "requests": 1,
+      "wire_bytes": 755411,
+      "before_ms": 52.231917,
+      "after_ms": 30.814791,
+      "speed_ratio": 1.6950274626233877,
+      "equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "mode": "handler",
+      "requests": 8,
+      "wire_bytes": 6040898,
+      "before_ms": 175.8645,
+      "after_ms": 101.20225,
+      "speed_ratio": 1.737752866166513,
+      "equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "mode": "public",
+      "requests": 8,
+      "wire_bytes": 6040943,
+      "before_ms": 173.365458,
+      "after_ms": 95.241375,
+      "speed_ratio": 1.82027462329266,
+      "equal": true
+    }
+  ],
+  "timing": "Native query/batch including JSON encoding; excludes import/reset/Python decode; 1 warmup +5 samples",
+  "capacity_claim": false
+}

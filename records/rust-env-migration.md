@@ -1,5 +1,19 @@
 # Rust 内核＋Python 接口迁移
 
+## 最新检查点：R3k3，Rust观测JSON装配（2026-09-24）
+
+**仍只推进Rust高效执行世界的部分**，Python保留SDK、策略、网络/ACK、UI和报告。最终 **`a3ff47b796537e2a543d42da6094aa13d64f6e63`** / annotated tag **`rust-kernel-r3k3-2026-09-24`**；实现/构建/测量 **`450bf97db4c52ead5d5ab36eda5a035a33ee4158`**，最终仅文档变化。[阶段报告与复现](../experiments/2026-09-rust-kernel-assembly/README.md)。
+
+迁移进度：`R0 █ | R1 █ | R2/R3 ▒ 内核补齐中 | R4 ░ | R5 ░`（非工时百分比）。将已拥有的观测数组/批次结果直接装入外层JSON，消除重复serialize-to-Value；必要的共享事实独立副本仍保留。无跨帧缓存、信息简化、规则变更或新并行。
+
+2144完整回归、62针对性、3Rust/fmt/Clippy、旧6场景510节点通过；12组前后完整响应/计数/长度与初始最终状态hash一致，public批次另与逐条执行比对。5000Units/100己方Unit查询：public单请求中位52.232→30.815ms，8请求173.365→95.241ms；关闭Fog地形8请求100.544→54.464ms。每项1预热+5样本，只计native查询/批次与编码，**不是30Hz整体容量结论**；8请求大载荷仍超单帧预算。
+
+兼容API14/schema5，规则不变；新扩展SHA **`a36e0684f4e76b7b4036e6ca20b217d1f5a78dda11929f7a9a714afd090a7c74`**，不能单靠API14区分本次性能实现。生产venv与完整目录 **`runs/star-rust-kernel-assembly`** 已安装，旧R3k2目录保持原样。main仍6a970dea，未merge/push，Python默认，49处原删除保留。
+
+[GAP台账](../../star-main/docs/native-benchmark-gaps.md)追加本轮无已确认新增机制差异及验证边界；G008/G009/R001/R002不自动关闭。下一步拆分剩余公共事实复制/编码成本，核验稳定只读上下文的响应表示与生命周期，继续权威状态写入审计后推进R4真并行；Pythonhost/BOT策略不当作Rust重写任务。5000Units+1000Agents首关与5000Agents扩展均未验收。
+
+工具Lab **`864f01ad2764aa387b3b472a096e3572cd070911`**；完整raw、commands、环境、canonical引用和checksum见报告。下方历史记录保留，当前状态以上文为准。
+
 ## 最新检查点：R3k2，Rust公共观测索引（2026-09-24）
 
 **当前范围只迁移Rust负责高效执行世界的部分。** Python保留SDK、策略、网络/ACK、UI和报告；下方旧“先接网络host”优先级已被覆盖。

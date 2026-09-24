@@ -16,6 +16,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--threads', type=int, choices=(1,2,4), default=1)
+    parser.add_argument('--mp', type=int, choices=(0,6), default=0)
     args = parser.parse_args()
     source, out = args.source.resolve(), args.output.resolve()
     lab = Path(__file__).resolve().parents[2]
@@ -42,11 +44,19 @@ def main():
     assert len(scenarios) == 3
     rows, raw = [], []
     for name, case in scenarios:
-        initial_wire = json.dumps(case['initial'])
+        initial = json.loads(json.dumps(case['initial']))
+        if args.mp:
+            for entity in initial['entities']:
+                movement = entity['components'].get('MovementPoints')
+                if movement is not None:
+                    movement.update(current_mp=args.mp,max_mp=args.mp,base_mp=args.mp)
+        initial_wire = json.dumps(initial)
         for count in (1, 8):
             params = [dict(case['parameters'], agent_id=f'agent-{i}') for i in range(count)]
             requests = [dict(agent_id=f'agent-{i}', action='get_faction_state', parameters=p, wall_time=1720000000.+i) for i,p in enumerate(params)]
-            n = NativeRuntime(initial_wire)
+            import_start = time.perf_counter_ns()
+            n = NativeRuntime(initial_wire, args.threads)
+            import_ms = (time.perf_counter_ns()-import_start)/1e6
             try:
                 for i in range(count):
                     reg = dict(agent_id=f'agent-{i}', action='register_agent_info', parameters=dict(faction='wei',provider='synthetic',model_id='fake',base_url='https://host'),wall_time=1720000000.,registration_time='2026-09-24T12:00:00',sanitized_base_url='https://host')
@@ -55,12 +65,16 @@ def main():
                 registered = json.loads(registered_wire)
                 expected = [json.loads(n.execute_action_json(json.dumps(r))) for r in requests]
                 expected_final = json.loads(n.export_state_json())
-                for result in expected:
-                    assert result == case['response'][0]
+                if not args.mp:
+                    for result in expected:
+                        assert result == case['response'][0]
+                elif name == 'units-5000':
+                    assert sum(len(u['reachable']) for u in expected[0]['units']) > 0
                 for mode in (('handler', 'public', 'single') if count == 1 else ('handler', 'public')):
                     wire = json.dumps(params if mode == 'handler' else requests[0] if mode == 'single' else requests)
                     operation = (n._observation_probe_json if mode == 'handler' else n.execute_action_json if mode == 'single' else n.execute_actions_json)
                     samples = []
+                    sample_metrics = []
                     report = None
                     for iteration in range(6):
                         n.reset(registered_wire)  # Reset/import deliberately excluded from timing.
@@ -73,6 +87,7 @@ def main():
                         assert report['results'] == expected
                         if iteration:
                             samples.append(elapsed)
+                            sample_metrics.append(report.get('metrics', report.get('observation_segments', [{}])[0].get('metrics', {})))
                     final = json.loads(n.export_state_json())
                     assert final == (registered if mode == 'handler' else expected_final)
                     metrics = (report['metrics'] if mode == 'handler' else report['observation_segments'][0]['metrics'] if mode == 'public' else {})
@@ -83,10 +98,10 @@ def main():
                         assert metrics['panel_encodes'] == len(params[0]['unit_ids'])
                         assert metrics['shared_public_results'] == count
                         assert metrics['shared_panel_results'] == count * len(params[0]['unit_ids'])
-                    row = dict(scenario=name, mode=mode, requests=count, selected_units=len(params[0]['unit_ids']),
+                    row = dict(scenario=name, mode=mode, requests=count, threads=args.threads,mp=args.mp,import_ms=import_ms, selected_units=len(params[0]['unit_ids']),
                                initial_sha256=digest(registered),final_sha256=digest(final),response_sha256=digest(report),agent_response_sha256=digest(report['results']),
-                               wire_bytes=len(encoded.encode()),metrics=metrics,samples_ms=samples,median_ms=sorted(samples)[2],
-                               matches_sequential=True,matches_archived_response=True)
+                               wire_bytes=len(encoded.encode()),metrics=metrics,sample_metrics=sample_metrics,reachable_cells=sum(len(u['reachable']) for u in expected[0]['units']),samples_ms=samples,median_ms=sorted(samples)[2],
+                               matches_sequential=True,matches_archived_response=True if not args.mp else None)
                     rows.append(row)
                     # Initial world lives only in the canonical input archive. Keep all actual
                     # envelopes/results and the post-registration/final state hashes here.
@@ -96,7 +111,7 @@ def main():
     raw_path = out/'raw.json.xz'
     raw_path.write_bytes(lzma.compress(json.dumps(raw,separators=(',',':')).encode()))
     report = dict(source_sha=git(source,'rev-parse','HEAD'),source_dirty=git(source,'status','--porcelain'),
-                  tool_sha=git(lab,'rev-parse','HEAD'),api=API_VERSION,
+                  tool_sha=git(lab,'rev-parse','HEAD'),api=API_VERSION,threads=args.threads,mp=args.mp,
                   extension_sha256=hashlib.sha256(Path(_native.__file__).read_bytes()).hexdigest(),
                   inputs=references,platform=platform.platform(),python=sys.version,rows=rows,
                   timing='Native query/batch including JSON encoding; excludes import/reset/Python decode; 1 warmup +5 samples',

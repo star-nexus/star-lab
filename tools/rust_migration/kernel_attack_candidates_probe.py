@@ -27,7 +27,7 @@ def main():
     os.chdir(src);sys.path.insert(0,str(src));os.environ['SDL_VIDEODRIVER']='dummy'
     from star_native import NativeRuntime,API_VERSION,_native
     from rotk_env import components as c
-    from rotk_env.prefabs.config import Faction
+    from rotk_env.prefabs.config import Faction, GameMode
     from rotk_env.runtime.bootstrap import export_initial_state
     from rotk_env.systems.llm_action_handler import LLMActionHandler
     from rotk_env.tests.test_faction_state_affordances import _world,_spawn,_disc
@@ -36,7 +36,7 @@ def main():
     with patch('time.time',return_value=1720000000.),contextlib.redirect_stdout(io.StringIO()):
         for n in [500,5000]:
             for radius,ap in [(1,2),(3,2),(80,2),(3,0)]:
-                world=_world();world.add_singleton_component(c.GameTime());world.add_singleton_component(c.RngService(seed=42))
+                world=_world();world.add_singleton_component(c.GameTime(current_mode=GameMode.REAL_TIME,game_start_time=1720000000.,turn_start_time=1720000000.,last_update_time=1720000000.));world.add_singleton_component(c.RngService(seed=42))
                 for entity in list(world.get_singleton_component(c.MapData).tiles.values()):world.destroy_entity(entity)
                 board=_disc(world,math.ceil(math.sqrt(n/3))+2)
                 cells=sorted(board.tiles)

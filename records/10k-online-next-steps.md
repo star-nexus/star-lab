@@ -1,5 +1,21 @@
 # 10K 后续工作优先级
 
+## 最新检查点：R3k2，Rust公共观测索引（2026-09-24）
+
+**当前范围只迁移Rust负责高效执行世界的部分。** Python保留SDK、策略、网络/ACK、UI和报告；下方旧“先接网络host”优先级已被覆盖。
+
+最终 **`67e35deaacef22ed1754f39245d771c3af887888`** / annotated tag **`rust-kernel-r3k2-2026-09-24`**；实现/构建/测量 **`0e912d85c18027e77125fd770500bdd123c30d75`**，最终只改文档。[完整阶段报告](../experiments/2026-09-rust-kernel-catalog/README.md)。
+
+迁移进度：`R0 █ | R1 █ | R2/R3 ▒ 内核补齐中 | R4 ░ | R5 ░`（非工时百分比）。Unit索引减少地块/特效扫描，Fog地形按较小集合精确投影；死亡/reset/特效销毁同步成员。不改规则、不跨帧缓存，尚无真并行。
+
+2144完整回归（新增32）、165针对性、3Rust/fmt/Clippy和旧6场景510节点通过。100Units、5Unit查询、6211/60919地块×3种Fog共6组初始状态和完整响应相同；小地图3组另对照Python。大地图局部7格视野中位1.224→0.125ms，空视野0.842→0.084ms；关闭Fog294.697→296.953ms负对照保留。每组1预热+5样本，仅native查询+编码，**不是30Hz整帧/Agent容量结论**。
+
+API14/schema5，扩展SHA `8358eecb5adfd2b7de7b020003aafa546280926bb7c9e4fa3e7e42f2f99fe02d`；生产venv及完整目录 **`runs/star-rust-kernel-catalog`** 已安装。旧API13目录保持原样；49处原删除保留，main仍6a970dea，未merge/push，Python默认。
+
+[GAP台账](../../star-main/docs/native-benchmark-gaps.md)记录本轮无已确认新增机制差异及索引生命周期责任；G008/G009仍为Python应用集成事项，R001/R002未笼统关闭。下一步审计Rust公共数据装配/编码/批次边界及权威状态写入，随后再推进R4只读并行。5000Units+1000Agents/30Hz首关和5000Agents扩展均未验收。复现工具Lab `b395de44a4c08cbf08841195a5fd5f49dea0f5d7`，raw/compact/commands/环境/checksum见报告。
+
+以下历史记录保留，当前状态以上文为准。
+
 ## 当前方向与检查点：R3k1，继续Rust世界执行（2026-09-24）
 
 **用户最新范围：只迁移Rust负责高效执行世界的部分。** 本节取代上一条“先接网络host”的工作优先级；网络连接、ACK/通知、BOT策略、UI与报告保留Python并单列集成，不作为下一步Rust重写任务。

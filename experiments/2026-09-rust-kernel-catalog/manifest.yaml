@@ -1,0 +1,45 @@
+{
+  "stage": "R3k2",
+  "status": "VALIDATED kernel optimization; no capacity claim",
+  "source_repository": "https://github.com/star-nexus/star.git",
+  "before_source": "d5a1d5cfc0096a632019a6cc7d94929b77238db7",
+  "build_and_measured_source": "0e912d85c18027e77125fd770500bdd123c30d75",
+  "final_source": "67e35deaacef22ed1754f39245d771c3af887888",
+  "tool_source": "b395de44a4c08cbf08841195a5fd5f49dea0f5d7",
+  "tag": "rust-kernel-r3k2-2026-09-24",
+  "api": 14,
+  "schema": 5,
+  "rules": "python-r0c-3cc4ffe",
+  "extension_sha256": "8358eecb5adfd2b7de7b020003aafa546280926bb7c9e4fa3e7e42f2f99fe02d",
+  "final_diff_files": [
+    "docs/native-benchmark-gaps.md",
+    "docs/native-runtime.md"
+  ],
+  "runtime_code_diff": "",
+  "tests": {
+    "full": 2144,
+    "new": 32,
+    "targeted": 165,
+    "rust": 3,
+    "fmt": true,
+    "clippy": true,
+    "old_replay_cases": 6,
+    "old_replay_nodes": 510
+  },
+  "exact_case_matches": 6,
+  "python_response_matches": 3,
+  "canonical_trace": {
+    "path": "experiments/2026-09-rust-r3-host-authority/results/window/trace.json.xz",
+    "sha256": "f3543008f4c9409457a822fc2e90f4db757dd9ebe24437dd8cd991db9d0a0d0c"
+  },
+  "main_unchanged": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+  "limitations": [
+    "No frame/queue/Agent capacity gate",
+    "Five samples per isolated query; no significance claim",
+    "1/2/4 configurations remain serial",
+    "Disabled Fog output cost remains; negative control retained",
+    "Python network/ACK/BOT/UI integration separate"
+  ],
+  "environment": "results/environment.json",
+  "commands": "results/commands.json"
+}

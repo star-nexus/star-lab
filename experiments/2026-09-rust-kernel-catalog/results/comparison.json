@@ -1,0 +1,127 @@
+{
+  "all_equal": true,
+  "rows": [
+    {
+      "radius": 45,
+      "tiles": 6211,
+      "fog": "local",
+      "initial_equal": true,
+      "response_equal": true,
+      "before_median_ms": 0.2177499991375953,
+      "after_median_ms": 0.12404199515003711,
+      "speed_ratio": 1.7554538595917621,
+      "before_derived_scan": [
+        6311,
+        6311,
+        6211
+      ],
+      "after_measured_scan": [
+        100,
+        100,
+        7
+      ]
+    },
+    {
+      "radius": 45,
+      "tiles": 6211,
+      "fog": "empty",
+      "initial_equal": true,
+      "response_equal": true,
+      "before_median_ms": 0.17174999811686575,
+      "after_median_ms": 0.08612500096205622,
+      "speed_ratio": 1.994194440619316,
+      "before_derived_scan": [
+        6311,
+        6311,
+        6211
+      ],
+      "after_measured_scan": [
+        100,
+        100,
+        0
+      ]
+    },
+    {
+      "radius": 45,
+      "tiles": 6211,
+      "fog": "disabled",
+      "initial_equal": true,
+      "response_equal": true,
+      "before_median_ms": 26.659499999368563,
+      "after_median_ms": 25.250040998798795,
+      "speed_ratio": 1.0558200678025362,
+      "before_derived_scan": [
+        6311,
+        6311,
+        6211
+      ],
+      "after_measured_scan": [
+        100,
+        100,
+        6211
+      ]
+    },
+    {
+      "radius": 142,
+      "tiles": 60919,
+      "fog": "local",
+      "initial_equal": true,
+      "response_equal": true,
+      "before_median_ms": 1.2237920018378645,
+      "after_median_ms": 0.1253749942407012,
+      "speed_ratio": 9.761053304523925,
+      "before_derived_scan": [
+        61019,
+        61019,
+        60919
+      ],
+      "after_measured_scan": [
+        100,
+        100,
+        7
+      ]
+    },
+    {
+      "radius": 142,
+      "tiles": 60919,
+      "fog": "empty",
+      "initial_equal": true,
+      "response_equal": true,
+      "before_median_ms": 0.8422499959124252,
+      "after_median_ms": 0.08429199806414545,
+      "speed_ratio": 9.99205162121653,
+      "before_derived_scan": [
+        61019,
+        61019,
+        60919
+      ],
+      "after_measured_scan": [
+        100,
+        100,
+        0
+      ]
+    },
+    {
+      "radius": 142,
+      "tiles": 60919,
+      "fog": "disabled",
+      "initial_equal": true,
+      "response_equal": true,
+      "before_median_ms": 294.6973330108449,
+      "after_median_ms": 296.9532499992056,
+      "speed_ratio": 0.9924031240999494,
+      "before_derived_scan": [
+        61019,
+        61019,
+        60919
+      ],
+      "after_measured_scan": [
+        100,
+        100,
+        60919
+      ]
+    }
+  ],
+  "timing": "native query plus JSON encode; 1 warmup, 5 samples; import/decode excluded",
+  "capacity_claim": false
+}

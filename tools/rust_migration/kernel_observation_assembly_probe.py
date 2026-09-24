@@ -57,9 +57,9 @@ def main():
                 expected_final = json.loads(n.export_state_json())
                 for result in expected:
                     assert result == case['response'][0]
-                for mode in ('handler', 'public'):
-                    wire = json.dumps(params if mode == 'handler' else requests)
-                    operation = n._observation_probe_json if mode == 'handler' else n.execute_actions_json
+                for mode in (('handler', 'public', 'single') if count == 1 else ('handler', 'public')):
+                    wire = json.dumps(params if mode == 'handler' else requests[0] if mode == 'single' else requests)
+                    operation = (n._observation_probe_json if mode == 'handler' else n.execute_action_json if mode == 'single' else n.execute_actions_json)
                     samples = []
                     report = None
                     for iteration in range(6):
@@ -68,15 +68,23 @@ def main():
                         encoded = operation(wire)
                         elapsed = (time.perf_counter_ns()-start)/1e6
                         report = json.loads(encoded)
+                        if mode == 'single':
+                            report = dict(results=[report])
                         assert report['results'] == expected
                         if iteration:
                             samples.append(elapsed)
                     final = json.loads(n.export_state_json())
                     assert final == (registered if mode == 'handler' else expected_final)
-                    metrics = report['metrics'] if mode == 'handler' else report['observation_segments'][0]['metrics']
-                    assert metrics['census_builds'] == metrics['faction_builds'] == 1
+                    metrics = (report['metrics'] if mode == 'handler' else report['observation_segments'][0]['metrics'] if mode == 'public' else {})
+                    if metrics:
+                        assert metrics['census_builds'] == metrics['faction_builds'] == 1
+                    if 'public_encodes' in metrics:
+                        assert metrics['public_encodes'] == 1
+                        assert metrics['panel_encodes'] == len(params[0]['unit_ids'])
+                        assert metrics['shared_public_results'] == count
+                        assert metrics['shared_panel_results'] == count * len(params[0]['unit_ids'])
                     row = dict(scenario=name, mode=mode, requests=count, selected_units=len(params[0]['unit_ids']),
-                               initial_sha256=digest(registered),final_sha256=digest(final),response_sha256=digest(report),
+                               initial_sha256=digest(registered),final_sha256=digest(final),response_sha256=digest(report),agent_response_sha256=digest(report['results']),
                                wire_bytes=len(encoded.encode()),metrics=metrics,samples_ms=samples,median_ms=sorted(samples)[2],
                                matches_sequential=True,matches_archived_response=True)
                     rows.append(row)

@@ -1,0 +1,136 @@
+[
+  {
+    "name": "build",
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-kernel-targets",
+    "source": "7460cd9e3739667a461017616ee17c5e3f9eb291",
+    "argv": [
+      "uvx",
+      "--from",
+      "maturin==1.15.0",
+      "maturin",
+      "build",
+      "--release",
+      "--locked",
+      "--manifest-path",
+      "native/python/Cargo.toml",
+      "--interpreter",
+      ".venv/bin/python",
+      "--out",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-kernel-targets/artifacts"
+    ],
+    "env": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:$PATH",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target"
+    },
+    "returncode": 0
+  },
+  {
+    "name": "targeted",
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-kernel-targets",
+    "source": "8dd16f4daf47b30f36e8f4974c08392b64a60f85",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "rotk_env/tests/test_native_attack_candidates.py",
+      "rotk_env/tests/test_native_observation.py",
+      "rotk_env/tests/test_native_request_batch.py"
+    ],
+    "returncode": 0
+  },
+  {
+    "name": "full",
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-kernel-targets",
+    "source": "8dd16f4daf47b30f36e8f4974c08392b64a60f85",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "returncode": 0
+  },
+  {
+    "name": "before",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/kernel_attack_candidates_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-kernel-targets/results/before"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-r3-host-authority",
+    "returncode": 0
+  },
+  {
+    "name": "after",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-kernel-targets/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/kernel_attack_candidates_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-kernel-targets",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-kernel-targets/results/after"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-kernel-targets",
+    "returncode": 0
+  },
+  {
+    "name": "rust-tests",
+    "argv": [
+      "cargo",
+      "test",
+      "-p",
+      "star-core",
+      "-p",
+      "star-rotk",
+      "--locked"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-kernel-targets",
+    "returncode": 0
+  },
+  {
+    "name": "fmt",
+    "argv": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--",
+      "--check"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-kernel-targets",
+    "returncode": 0
+  },
+  {
+    "name": "clippy",
+    "argv": [
+      "cargo",
+      "clippy",
+      "--workspace",
+      "--all-targets",
+      "--locked",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-kernel-targets",
+    "returncode": 0
+  },
+  {
+    "name": "old-scene-replay",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-kernel-targets/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/r3_scene_host_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-kernel-targets",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-kernel-targets/results/old-scene-replay",
+      "--replay",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-host-authority/results/window/trace.json.xz"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-kernel-targets",
+    "returncode": 0
+  }
+]

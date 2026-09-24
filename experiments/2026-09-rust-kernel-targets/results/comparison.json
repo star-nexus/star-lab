@@ -1,0 +1,182 @@
+{
+  "exact_initial_and_response_matches": 8,
+  "rows": [
+    {
+      "units": 500,
+      "radius": 1,
+      "ap": 2,
+      "selected_units": 100,
+      "visible_enemies": 250,
+      "legacy_enemy_visits": 25000,
+      "attackable_targets": 54,
+      "before_ms": 48.748500004876405,
+      "after_ms": 5.524833002709784,
+      "ratio": 8.823524617118121,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 100,
+        "enemy_builds": 250,
+        "tile_builds": 721,
+        "attack_cell_lookups": 700,
+        "attack_distance_checks": 0,
+        "attack_rule_checks": 54
+      }
+    },
+    {
+      "units": 500,
+      "radius": 3,
+      "ap": 2,
+      "selected_units": 100,
+      "visible_enemies": 250,
+      "legacy_enemy_visits": 25000,
+      "attackable_targets": 721,
+      "before_ms": 47.120041999733075,
+      "after_ms": 5.604083999060094,
+      "ratio": 8.40816126375621,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 100,
+        "enemy_builds": 250,
+        "tile_builds": 721,
+        "attack_cell_lookups": 3700,
+        "attack_distance_checks": 0,
+        "attack_rule_checks": 721
+      }
+    },
+    {
+      "units": 500,
+      "radius": 80,
+      "ap": 2,
+      "selected_units": 100,
+      "visible_enemies": 250,
+      "legacy_enemy_visits": 25000,
+      "attackable_targets": 25000,
+      "before_ms": 14.7187909897184,
+      "after_ms": 15.134165994822979,
+      "ratio": 0.9725538225729341,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 100,
+        "enemy_builds": 250,
+        "tile_builds": 721,
+        "attack_cell_lookups": 0,
+        "attack_distance_checks": 25000,
+        "attack_rule_checks": 25000
+      }
+    },
+    {
+      "units": 500,
+      "radius": 3,
+      "ap": 0,
+      "selected_units": 100,
+      "visible_enemies": 250,
+      "legacy_enemy_visits": 25000,
+      "attackable_targets": 0,
+      "before_ms": 6.27491700288374,
+      "after_ms": 5.335917012416758,
+      "ratio": 1.175977247824866,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 100,
+        "enemy_builds": 250,
+        "tile_builds": 721,
+        "attack_cell_lookups": 0,
+        "attack_distance_checks": 0,
+        "attack_rule_checks": 0
+      }
+    },
+    {
+      "units": 5000,
+      "radius": 1,
+      "ap": 2,
+      "selected_units": 100,
+      "visible_enemies": 2500,
+      "legacy_enemy_visits": 250000,
+      "attackable_targets": 166,
+      "before_ms": 468.44837500248104,
+      "after_ms": 42.50116700131912,
+      "ratio": 11.022012054114695,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 100,
+        "enemy_builds": 2500,
+        "tile_builds": 5677,
+        "attack_cell_lookups": 700,
+        "attack_distance_checks": 0,
+        "attack_rule_checks": 166
+      }
+    },
+    {
+      "units": 5000,
+      "radius": 3,
+      "ap": 2,
+      "selected_units": 100,
+      "visible_enemies": 2500,
+      "legacy_enemy_visits": 250000,
+      "attackable_targets": 1393,
+      "before_ms": 465.19566599454265,
+      "after_ms": 44.009125005686656,
+      "ratio": 10.570436606827156,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 100,
+        "enemy_builds": 2500,
+        "tile_builds": 5677,
+        "attack_cell_lookups": 3700,
+        "attack_distance_checks": 0,
+        "attack_rule_checks": 1393
+      }
+    },
+    {
+      "units": 5000,
+      "radius": 80,
+      "ap": 2,
+      "selected_units": 100,
+      "visible_enemies": 2500,
+      "legacy_enemy_visits": 250000,
+      "attackable_targets": 248654,
+      "before_ms": 143.42608299921267,
+      "after_ms": 144.65750000090338,
+      "ratio": 0.9914873615147295,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 100,
+        "enemy_builds": 2500,
+        "tile_builds": 5677,
+        "attack_cell_lookups": 0,
+        "attack_distance_checks": 250000,
+        "attack_rule_checks": 248654
+      }
+    },
+    {
+      "units": 5000,
+      "radius": 3,
+      "ap": 0,
+      "selected_units": 100,
+      "visible_enemies": 2500,
+      "legacy_enemy_visits": 250000,
+      "attackable_targets": 0,
+      "before_ms": 52.653791004559025,
+      "after_ms": 44.34995799965691,
+      "ratio": 1.187234292419541,
+      "metrics": {
+        "census_builds": 1,
+        "faction_builds": 1,
+        "panel_builds": 100,
+        "enemy_builds": 2500,
+        "tile_builds": 5677,
+        "attack_cell_lookups": 0,
+        "attack_distance_checks": 0,
+        "attack_rule_checks": 0
+      }
+    }
+  ],
+  "capacity_claim": false
+}

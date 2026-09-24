@@ -1,0 +1,67 @@
+........................................................................ [ 44%]
+..........................................................F............. [ 88%]
+...................                                                      [100%]
+=================================== FAILURES ===================================
+__________ test_index_tracks_movement_commit_death_and_reset[window] ___________
+
+display = 'window'
+
+    @pytest.mark.parametrize('display',['none','dummy','window'])
+    def test_index_tracks_movement_commit_death_and_reset(display):
+        world,(a,b,target),_=setup(display)
+        world.get_singleton_component(c.FogOfWar).enabled=False
+        for i in range(80):_spawn(world,faction=Faction.SHU,col=50+i,row=0,mp=0)
+        world.get_component(target,c.UnitCount).current_count=1
+        if display=='window':rebuild_unit_spatial_index(world)
+        params={'faction':'wei','unit_ids':[a]}
+        n=NativeRuntime(json.dumps(export_initial_state(world,display=display)))
+        handler=LLMActionHandler(world)
+        movement=next(s for s in world.systems if isinstance(s,MovementSystem))
+        from rotk_env.systems.combat_system import CombatSystem
+        combat=next(s for s in world.systems if isinstance(s,CombatSystem))
+        def check():
+            report=observe(n,[params]);assert report['results']==[handler.handle_faction_state(params)]
+            assert report['metrics']['attack_cell_lookups']==7
+            return report['results'][0]['units'][0]['attackable']
+        try:
+            assert target not in check()
+            assert probe(n,'move',target,(0,1))==json.loads(json.dumps(movement.move_unit(target,(0,1))))
+            check()  # Animated modes still use the old committed cell.
+            if display!='none':
+                animation=next(s for s in world.systems if isinstance(s,AnimationSystem))
+                for dt in [.01, .1, 1.]:
+                    animation._update_movement_animations(dt);n.step(dt,1720000000.)
+                    check()
+            assert target in check()
+            assert combat_probe(n,'attack',a,target)==combat.execute_attack(a,target)
+>           assert target not in check()
+                                 ^^^^^^^
+
+rotk_env/tests/test_native_attack_candidates.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def check():
+>       report=observe(n,[params]);assert report['results']==[handler.handle_faction_state(params)]
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert [{'success': ...: 'wei', ...}] == [{'success': ...: 'wei', ...}]
+E         
+E         At index 0 diff: {'success': True, 'result': True, 'state': 'active', 'faction': 'wei', 'fog': 'disabled', 'total_units': 2, 'alive_units': 2, 'actionable_units': 2, 'visible_enemy_units': [{'unit_id': 40, 'unit_type': 'infantry', 'faction': 'shu', 'position': {'col': 50, 'row': 0}, 'unit_status': {'current_count': 100}}, {'unit_id': 41, 'unit_type': 'infantry', 'faction': 'shu', 'position': {'col': 51, 'row': 0}, 'unit_status': {'current_count': 100}}, {'unit_id': 42, 'unit_type': 'infantry', 'faction': 'shu', 'position': {'col': 52, 'row': 0}, 'unit_status': {'current...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+rotk_env/tests/test_native_attack_candidates.py:89: AssertionError
+----------------------------- Captured stdout call -----------------------------
+Handling faction state for wei
+✓ Unit 39 moves to (0, 1)
+Handling faction state for wei
+Handling faction state for wei
+Handling faction state for wei
+Handling faction state for wei
+Handling faction state for wei
+⚔️ wei forces attacked shu! damage:4, count:1->0
+💀 shu unit @(0,1) was killed by wei!
+Handling faction state for wei
+World has been reset
+=========================== short test summary info ============================
+FAILED rotk_env/tests/test_native_attack_candidates.py::test_index_tracks_movement_commit_death_and_reset[window]
+1 failed, 162 passed in 6.08s

@@ -1,5 +1,21 @@
 # 10K 后续工作优先级
 
+## 当前方向与检查点：R3k1，继续Rust世界执行（2026-09-24）
+
+**用户最新范围：只迁移Rust负责高效执行世界的部分。** 本节取代上一条“先接网络host”的工作优先级；网络连接、ACK/通知、BOT策略、UI与报告保留Python并单列集成，不作为下一步Rust重写任务。
+
+最终 **`d5a1d5cfc0096a632019a6cc7d94929b77238db7`** / annotated tag **`rust-kernel-r3k1-2026-09-24`**；构建 `7460cd9`、测试/测量 `8dd16f4`（Rust代码一致，精确SHA见manifest）。[阶段报告](../experiments/2026-09-rust-kernel-targets/README.md)。
+
+迁移进度：`R0 █ | R1 █ | R2/R3 ▒ 内核补齐中 | R4 ░ | R5 ░`。本轮补迁Python已有的attackable空间局部筛选；复用Rust占用索引，按Fog可见集合过滤，再走原Combat判定与ID排序。巨大射程回退列表，AP不足提前结束，不采用近似或跨帧缓存。
+
+2112完整回归（新增133）、163针对性、3Rust/fmt/Clippy、旧六场景510节点重放通过。8组500/5000Units前后初始状态及完整响应一致；500档4组另对照Python。5000Units/100己方查询/2500可见敌军的单查询射程1为468.45→42.50ms、射程3为465.20→44.01ms；这是1预热+5样本中位数，含JSON编码、不含世界/展示/排队，**不是30Hz容量结果**。射程80略慢的负对照和setup-error均保留。
+
+API13/schema5 release，扩展SHA `8671e69b5ac586762d45c8f174370bc8e72ec528e1b88a7b408bcfd1b0d9607a`；活动生产venv与完整目录 **`runs/star-rust-kernel-targets`** 已装新wheel。旧API12目录不动；49处原删除保留；main仍6a970dea，无merge/push，Python默认，无新并行。
+
+[GAP台账](../../star-main/docs/native-benchmark-gaps.md)记录性能迁移遗漏及规则未变的实测范围；G008/G009仍是Python应用集成未完成项，R001/R002不笼统关闭。下一步继续审计Rust公共观测事实、空间/实体索引及批量装配成本，再按证据推进只读并行；用户在本轮再次要求继续此方向。首个5000Units+1000Agents/30Hz闭环验收与5000Agents扩展尚未完成。
+
+以下记录保留为历史，当前范围以上文为准。
+
 ## 最新检查点：R3d4a，Rust宿主权威接口（2026-09-24）
 
 最终 **`5ce4b3f02a5fb676e11c8bc240e86513d3e00b25`** / annotated tag **`rust-kernel-r3d4a-2026-09-24`**；运行实现/构建 `97f45b1c8fb1c6054d22ab9c970541955ea528c8`，测试/测量 `343ced3809f0ddf57c53036613abea2f9280daf5`（只改测试起始阵营，运行代码一致）；最终只改文档。[报告与复现](../experiments/2026-09-rust-r3-host-authority/README.md)。

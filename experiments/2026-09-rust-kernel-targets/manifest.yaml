@@ -1,0 +1,38 @@
+{
+  "stage": "R3k1",
+  "status": "VALIDATED kernel optimization; no capacity claim",
+  "before_source": "5ce4b3f02a5fb676e11c8bc240e86513d3e00b25",
+  "build_source": "7460cd9e3739667a461017616ee17c5e3f9eb291",
+  "measured_source": "8dd16f4daf47b30f36e8f4974c08392b64a60f85",
+  "final_source": "d5a1d5cfc0096a632019a6cc7d94929b77238db7",
+  "tool_source": "264bc5ec77dc787a161fedfa184e7614e45c4738",
+  "tag": "rust-kernel-r3k1-2026-09-24",
+  "api": 13,
+  "schema": 5,
+  "extension_sha256": "8671e69b5ac586762d45c8f174370bc8e72ec528e1b88a7b408bcfd1b0d9607a",
+  "runtime_code_diff": "",
+  "final_diff_files": [
+    "docs/native-benchmark-gaps.md",
+    "docs/native-runtime.md"
+  ],
+  "tests": {
+    "full": 2112,
+    "new": 133,
+    "targeted": 163,
+    "rust": 3,
+    "fmt": true,
+    "clippy": true,
+    "old_replay_nodes": 510
+  },
+  "exact_case_matches": 8,
+  "python_response_matches": 4,
+  "limitations": [
+    "No frame/Agent queue/capacity gate",
+    "Five samples per isolated query; no significance claim",
+    "Single-thread kernel; no new parallelism",
+    "Large-range negative controls retained",
+    "Python network/ACK/BOT/UI remain separate integration"
+  ],
+  "setup_error": "Window death fixture used base combat instead of production window adapter; see README.",
+  "main_unchanged": "6a970deaee7d9b8d3939edd102973f2377edd6ac"
+}

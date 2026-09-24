@@ -1,5 +1,19 @@
 # Rust 内核＋Python 接口迁移
 
+## 最新检查点：R3k4，Rust只读批次编码共享（2026-09-24）
+
+**当前范围仍是Rust高效执行世界**；Python保留SDK、策略、网络/ACK、UI与报告。最终 **`3892f95af6638e213f1b842fd9c0fe4b7b3dab80`** / annotated tag **`rust-kernel-r3k4-2026-09-24`**；实现/构建/测量 **`f37ae76785f05dd9dc9ac3009731267117bbda90`**，最终仅文档变化。[完整阶段报告](../experiments/2026-09-rust-kernel-encoded/README.md)。
+
+迁移进度：`R0 █ | R1 █ | R2/R3 ▒ 内核补齐中 | R4 ░ | R5 ░`（非工时百分比）。同只读段阵营公共字段和Unit基础面板各编码一次、不可变共享，每请求分别捕获owner/commandable；单动作/可信批次/probe均接入。写入结束共享段，旧响应保留旧事实；无TTL、字段删减或新增线程。
+
+2156完整回归（新增12）、74针对性、3Rust/fmt/Clippy、旧6场景510节点通过。15组Agent完整响应、初始/最终状态hash、旧计数一致；四个新增编码/引用计数仅诊断。5000Units/100Unit查询：public8请求88.366→23.552ms，single27.639→21.531ms；编码1阵营/100面板、引用8/800，仍完整约6.04MB。每项1预热+5样本，仅native处理和编码，**不含世界/绘制/排队，不是30Hz容量验收**。
+
+API15/schema5、oracle不变；扩展SHA **`62451b1ee2844373f162e1489d40684894febbc0e8efc27167046f1c18363206`**，生产venv与完整目录 **`runs/star-rust-kernel-encoded`** 已安装。旧R3k3/API14目录/wheel保留，main仍6a970dea、未merge/push、Python默认，49处原删除未动。
+
+[GAP台账](../../star-main/docs/native-benchmark-gaps.md)记录无已确认新增机制差异及生命周期证据；G008/G009/R001/R002仍开放。下一步继续权威状态写入/派生覆盖审计，明确只读任务输入/生命周期后推进R4真并行，不把Python上层重写Rust。5000Units+1000Agents/30Hz首关与5000Agents扩展尚未验收。
+
+工具Lab **`c34682448d033d62c92a65e5b468cac3f5b1790a`**，原始证据/命令/环境/canonical引用/checksum均在阶段报告。以下保留历史，当前状态以上文为准。
+
 ## 最新检查点：R3k3，Rust观测JSON装配（2026-09-24）
 
 **仍只推进Rust高效执行世界的部分**，Python保留SDK、策略、网络/ACK、UI和报告。最终 **`a3ff47b796537e2a543d42da6094aa13d64f6e63`** / annotated tag **`rust-kernel-r3k3-2026-09-24`**；实现/构建/测量 **`450bf97db4c52ead5d5ab36eda5a035a33ee4158`**，最终仅文档变化。[阶段报告与复现](../experiments/2026-09-rust-kernel-assembly/README.md)。

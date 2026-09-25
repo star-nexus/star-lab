@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/liyang/Developer/star-lab/tools/rust_migration/kernel_observation_assembly_probe.py", line 126, in <module>
+    main()
+    ~~~~^^
+  File "/Users/liyang/Developer/star-lab/tools/rust_migration/kernel_observation_assembly_probe.py", line 72, in main
+    assert sum(len(u['reachable']) for u in expected[0]['units']) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

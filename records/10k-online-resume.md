@@ -1,5 +1,19 @@
 # 10K / 100% moving / 30 Hz — 恢复入口
 
+## 最新检查点：R4a，只读Unit面板真并行（2026-09-25）
+
+最终 **`45bd11cca09a88fb4c757feecc234a4efe932dae`** / annotated tag **`rust-kernel-r4a-2026-09-25`**；实现/构建/测量 **`ddb084e42e07fdb359c511b8727f888ff3a5a38b`**，最终仅文档变化。[阶段报告与复现](../experiments/2026-09-rust-read-parallel/README.md)。
+
+迁移进度：`R0 █ | R1 █ | R2/R3 ▒ 内核补齐中 | R4 ▒ 只读并行首版 | R5 ░`（非工时百分比）。2/4配置现已使用固定线程池，在同一稳定只读段计算缺失Unit面板；按输入序合并、写前join、reset复用、close释放。世界/权限/公共投影/最终输出仍串行，默认Python/1线程不变。Python保留SDK、策略、网络/ACK、UI与报告。
+
+2165完整回归、83针对性、4Rust/fmt/Clippy、旧6场景510节点通过；30案例×旧单线程/新1/2/4共120组完整Agent响应/初始最终状态/原工作计数一致。MP6留空格诊断保持5000存活Units、返回966可达格；单请求1/2/4中位25.0/20.9/21.3ms，小查询有回退。1预热+5样本、仅查询+编码，**不是30Hz/排队/5000Agents容量结论**。
+
+API16/schema5/oracle不变；扩展SHA **`353320733d25979d2213d70d9fc08ed933a2b1b5c5c079199e85e42633fa2141`**，生产venv与完整目录 **`runs/star-rust-read-parallel`** 已安装。旧API15目录保留；main仍6a970dea、未merge/push、49处原删除未动。完整raw/compact/命令/toolSHA/环境/checksum见报告。
+
+[GAP台账](../../star-main/docs/native-benchmark-gaps.md)无已确认新增规则差异；[状态边界审计](../../star-main/docs/native-state-boundaries.md)明确typed权威数据与Python派生展示。G008/G009及R001/R002仍开放。下一步拆分公共投影/面板调度/最终编码成本，扩展实际Agent子集负载，再做30Hz完整闭环验收；不把Python应用层重写当Rust迁移。首关5000Units+1000Agents与5000Agents扩展均未验收。
+
+以下保留历史；当前状态以上文为准。
+
 ## 最新检查点：R3k4，Rust只读批次编码共享（2026-09-24）
 
 **当前范围仍是Rust高效执行世界**；Python保留SDK、策略、网络/ACK、UI与报告。最终 **`3892f95af6638e213f1b842fd9c0fe4b7b3dab80`** / annotated tag **`rust-kernel-r3k4-2026-09-24`**；实现/构建/测量 **`f37ae76785f05dd9dc9ac3009731267117bbda90`**，最终仅文档变化。[完整阶段报告](../experiments/2026-09-rust-kernel-encoded/README.md)。

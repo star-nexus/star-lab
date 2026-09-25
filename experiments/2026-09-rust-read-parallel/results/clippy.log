@@ -1,0 +1,4 @@
+    Checking star-core v0.1.0 (/Users/liyang/Developer/star-lab/runs/star-rust-read-parallel/native/core)
+    Checking star-rotk v0.1.0 (/Users/liyang/Developer/star-lab/runs/star-rust-read-parallel/native/rotk)
+    Checking star-python v0.1.0 (/Users/liyang/Developer/star-lab/runs/star-rust-read-parallel/native/python)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.76s

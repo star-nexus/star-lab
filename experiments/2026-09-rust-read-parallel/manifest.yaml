@@ -1,0 +1,188 @@
+{
+  "experiment": {
+    "id": "2026-09-rust-read-parallel",
+    "title": "R4a bounded scoped read-panel parallelism",
+    "date": "2026-09-25",
+    "status": "validated narrow read stage; capacity not accepted"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "3892f95af6638e213f1b842fd9c0fe4b7b3dab80",
+    "measurement_commit": "ddb084e42e07fdb359c511b8727f888ff3a5a38b",
+    "fix_commit": "ddb084e42e07fdb359c511b8727f888ff3a5a38b",
+    "validated_commit": "45bd11cca09a88fb4c757feecc234a4efe932dae",
+    "validated_tag": "rust-kernel-r4a-2026-09-25",
+    "branch_at_time": "codex/rust-env-migration",
+    "final_diff_files": [
+      "docs/native-benchmark-gaps.md",
+      "docs/native-runtime.md",
+      "docs/native-state-boundaries.md"
+    ],
+    "runtime_code_diff": "",
+    "comparison_tool_commit": "6c991b76192f4e7941c7dc29844dca8486fd3f2c",
+    "probe_tool_commits": {
+      "after-t1-mp0": "a2fad389dee26abc9fc610df36dd8e397517c913",
+      "after-t1-mp6-spaced": "3d3113a3314cc384bfcf7f7dc3e0e5714f612c96",
+      "after-t2-mp0": "a2fad389dee26abc9fc610df36dd8e397517c913",
+      "after-t2-mp6-spaced": "3d3113a3314cc384bfcf7f7dc3e0e5714f612c96",
+      "after-t4-mp0": "a2fad389dee26abc9fc610df36dd8e397517c913",
+      "after-t4-mp6-spaced": "3d3113a3314cc384bfcf7f7dc3e0e5714f612c96",
+      "before-mp0": "a2fad389dee26abc9fc610df36dd8e397517c913",
+      "before-mp6-spaced": "3d3113a3314cc384bfcf7f7dc3e0e5714f612c96"
+    }
+  },
+  "hardware": {
+    "machine": "Mac mini M4",
+    "cpu": "Apple M4",
+    "memory_bytes": "17179869184",
+    "gpu": "unused by probe",
+    "display": "no rendered frames"
+  },
+  "software": {
+    "os": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+    "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "api": 16,
+    "schema": 5,
+    "rules": "python-r0c-3cc4ffe",
+    "extension_sha256": "353320733d25979d2213d70d9fc08ed933a2b1b5c5c079199e85e42633fa2141",
+    "cargo_lock_sha256": "e86cb2bee26f1d95c1cde0abec61bdea575a73ae7218db60b7f06be735f15188",
+    "dependency_lock_sha256": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae"
+  },
+  "scenario": {
+    "name": "canonical observation microbench plus MP6 deterministic empty-destination diagnostic",
+    "cases": [
+      "100Units/6211tiles/Fog7cells",
+      "100Units/6211tiles/Fogdisabled",
+      "5000Units/range3/Fogdisabled"
+    ],
+    "selected_units": [
+      5,
+      100
+    ],
+    "moving_units": 0
+  },
+  "workload": {
+    "seed": 42,
+    "requests": [
+      1,
+      8
+    ],
+    "agents": "one synthetic registered identity per request; no thought/admission loop",
+    "MP": [
+      0,
+      6
+    ],
+    "mp6_5000_positions": "existing sorted terrain cells, Unit i uses floor(i*tile_count/5000); all5000 living Units retained",
+    "modes": [
+      "handler",
+      "public",
+      "single (one request only)"
+    ],
+    "threads": [
+      1,
+      2,
+      4
+    ],
+    "wall_time": "1720000000+index; fixed registration metadata",
+    "camera": null
+  },
+  "measurement": {
+    "warmup_calls": 1,
+    "samples": 5,
+    "timing": "native query/batch plus encoding; excludes import/reset/Python decode; import_ms separately reported",
+    "guards_required": [
+      "full Agent response equality old/new and1/2/4",
+      "initial/final authoritative state equality",
+      "old work counters equality",
+      "MP0 canonical response equality",
+      "public batch matches sequential actions",
+      "MP6 nonempty reachability",
+      "clean measured source",
+      "full regression and old replay"
+    ]
+  },
+  "variables": {
+    "independent": "same source worker count; old/new serial comparison separate",
+    "controlled": [
+      "initial state/order/metadata per treatment",
+      "same rules/schema",
+      "Chrome open",
+      "release build",
+      "serial experiment execution"
+    ]
+  },
+  "validation": {
+    "full_pytest": 2165,
+    "targeted": 83,
+    "new_tests": 9,
+    "rust_tests": 4,
+    "fmt": true,
+    "clippy": true,
+    "replay_cases": 6,
+    "replay_nodes": 510,
+    "query_configurations": 8,
+    "query_rows": 120,
+    "paired_cases": 30,
+    "full_results_and_state_equal": true,
+    "diagnostic_fields_added": [
+      "panel_tasks",
+      "panel_worker_threads",
+      "parallel_panel_batches"
+    ]
+  },
+  "artifacts": {
+    "canonical_inputs": [
+      {
+        "path": "experiments/2026-09-rust-kernel-catalog/results/after/raw.json.xz",
+        "sha256": "63530ed0a5e5d7aa6c4b1238dd13b95177731048e4466624f7a277c8f3f86141"
+      },
+      {
+        "path": "experiments/2026-09-rust-kernel-targets/results/after/raw.json.xz",
+        "sha256": "bf9dd60ac5b2888d3c10b2aa6784dbc6f73f83833b1ee0c5076d20c508dc158f"
+      }
+    ],
+    "canonical_replay": {
+      "path": "experiments/2026-09-rust-r3-host-authority/results/window/trace.json.xz",
+      "sha256": "f3543008f4c9409457a822fc2e90f4db757dd9ebe24437dd8cd991db9d0a0d0c"
+    },
+    "index": "results/artifact-index.json",
+    "formal": [
+      "results/comparison.json",
+      "results/commands.json",
+      "results/environment.json",
+      "results/after-t1-mp0/compact.json",
+      "results/after-t1-mp0/raw.json.xz",
+      "results/after-t1-mp6-spaced/compact.json",
+      "results/after-t1-mp6-spaced/raw.json.xz",
+      "results/after-t2-mp0/compact.json",
+      "results/after-t2-mp0/raw.json.xz",
+      "results/after-t2-mp6-spaced/compact.json",
+      "results/after-t2-mp6-spaced/raw.json.xz",
+      "results/after-t4-mp0/compact.json",
+      "results/after-t4-mp0/raw.json.xz",
+      "results/after-t4-mp6-spaced/compact.json",
+      "results/after-t4-mp6-spaced/raw.json.xz",
+      "results/before-mp0/compact.json",
+      "results/before-mp0/raw.json.xz",
+      "results/before-mp6-spaced/compact.json",
+      "results/before-mp6-spaced/raw.json.xz"
+    ],
+    "intermediate": [
+      "results/intermediate/before-mp6.log",
+      "results/intermediate/README.md"
+    ],
+    "integrity": "artifacts/SHA256SUMS"
+  },
+  "defaults": {
+    "backend": "python",
+    "native_threads": 1
+  },
+  "capacity_claim": false,
+  "main_unchanged": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+  "revisit_when": [
+    "per-phase public projection/encoding profile",
+    "large varied Unit subsets",
+    "full30Hzframe/queue trials"
+  ]
+}

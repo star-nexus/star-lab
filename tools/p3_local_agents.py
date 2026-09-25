@@ -136,9 +136,10 @@ class Session:
 class LocalAgents:
     def __init__(self, world, count, delay=1.0, *, scope='faction', encode=True,
                  policy='mixed', seed=42, clock=time.perf_counter, max_records=2_000_000,
-                 observation_hz=None, observation_mode="single", cycle_mode="legacy", jitter_seconds=5.0, request_call=None):
+                 observation_hz=None, observation_mode="single", cycle_mode="legacy", jitter_seconds=5.0, request_call=None, payload_callback=None):
         from rotk_env.components import Unit, UnitCount
         self.world, self.clock = world, clock
+        self.payload_callback = payload_callback
         self.request_call = request_call
         self.gate = None if request_call is not None else next(s for s in world.systems if s.__class__.__name__ == 'LLMSystem')
         self.scope, self.encode, self.policy = scope, encode, policy
@@ -348,6 +349,8 @@ class LocalAgents:
                 if self.encode:
                     payload = json.dumps(response, separators=(',', ':'), ensure_ascii=False).encode()
                     row['bytes'] = len(payload)
+                    if self.payload_callback is not None:
+                        self.payload_callback(payload)
                 row['build_ms'] = (constructed - begin) * 1000
                 row['encode_ms'] = (self.clock() - constructed) * 1000
                 # All three modes include the same JSON client boundary.

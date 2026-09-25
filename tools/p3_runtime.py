@@ -23,6 +23,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--source', required=True)
     p.add_argument('--backend', choices=['python','rust'], default='python')
+    p.add_argument('--record-native-inputs', action='store_true')
     p.add_argument('--native-threads', type=int, choices=[1,2,4], default=1)
     p.add_argument('--fps', type=int, default=30)
     p.add_argument('--clock-mode', choices=['wall', 'fixed'], default='wall')
@@ -51,6 +52,8 @@ def main():
         p.error('FPS must be positive and jitter nonnegative')
     if args.backend == 'rust' and (args.attribute or args.movement_overlay or args.observation_mode != 'single'):
         p.error('Native diagnostic uses production session and single observations; no legacy overlays/attribution')
+    if args.record_native_inputs and (args.backend != 'rust' or args.no_encode):
+        p.error('Native input recorder requires Rust and the encoded client boundary')
     args.source = str(Path(args.source).resolve())
     out = Path(args.output).resolve()
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -89,15 +92,22 @@ def main():
         original_init(scene)
         import pygame
         holder['display'] = list(pygame.display.get_window_size())
+        holder['display_driver'] = pygame.display.get_driver()
+        holder['surface_size'] = list(pygame.display.get_surface().get_size())
         holder['scene'] = scene
         holder['world'] = scene.world
         holder['initial_units'] = len(scene.world.query().with_component(Unit).entities())
-        request_call = None
+        request_call = payload_callback = None
         if args.backend == 'rust':
             from star_native import _native, API_VERSION
             holder['extension'] = {'api':API_VERSION, 'sha256':hashlib.sha256(Path(_native.__file__).read_bytes()).hexdigest()}
             session = scene.native_session
             request_call = lambda owner, verb, params: session.runtime.execute_action(verb, params, agent_id=owner.agent_id)
+            if args.record_native_inputs:
+                from rust_migration.native_loop_trace import NativeLoopTrace
+                recorder = NativeLoopTrace(session.runtime,out,source_id,holder['extension'],args.native_threads)
+                holder['recorder'] = recorder
+                request_call, payload_callback = recorder.call, recorder.payload
             # Match legacy scale-harness input isolation without installing a
             # Python gameplay harness over the authoritative Rust world.
             pygame.event.set_blocked([pygame.KEYDOWN, pygame.KEYUP, pygame.MOUSEBUTTONDOWN,
@@ -118,7 +128,7 @@ def main():
                 instrument(obj,method,key)
         holder['agents'] = LocalAgents(scene.world, args.agents,
             args.delay if args.delay == 'mixed' else float(args.delay), scope=args.scope,
-            encode=not args.no_encode, policy=args.policy, observation_hz=args.observation_hz, observation_mode=args.observation_mode, cycle_mode=args.cycle_mode, jitter_seconds=args.jitter_seconds, request_call=request_call)
+            encode=not args.no_encode, policy=args.policy, observation_hz=args.observation_hz, observation_mode=args.observation_mode, cycle_mode=args.cycle_mode, jitter_seconds=args.jitter_seconds, request_call=request_call, payload_callback=payload_callback)
         if args.attribute:
             holder['attribution'] = Attribution(holder['agents'].gate.action_handler)
         if args.movement_overlay:
@@ -156,6 +166,12 @@ def main():
                 holder['cpu_seconds'] = time.process_time()-holder['cpu_start']
                 if args.backend == 'rust':
                     holder['final_native'] = holder['scene'].native_session.runtime.diagnostics()
+                    if 'recorder' in holder:
+                        holder['native_recording'] = holder['recorder'].finish()
+                    import pygame
+                    image=out.with_suffix('.final.png')
+                    pygame.image.save(pygame.display.get_surface(),str(image))
+                    holder['screenshot'] = {'file':image.name,'sha256':hashlib.sha256(image.read_bytes()).hexdigest()}
                 return
             agents = holder['agents']
             if agents.epoch is None:
@@ -293,6 +309,8 @@ def main():
         'frame_work_ms':work,'frame_count':len(admitted),'world_hz':len(admitted)/args.seconds,
         'observation_response_ms':ob,'observation_queue_ms':oq,'action_queue_ms':ac,
         'native_phases_ms':{k:stats([f[k] for f in admitted]) for k in ('native_step_ms','delta_ms','presentation_apply_ms','inputs_ms','display_systems_ms') if admitted and k in admitted[0]},
+        'native_recording':holder.get('native_recording'),'screenshot':holder.get('screenshot'),
+        'display_driver':holder.get('display_driver'),'surface_size':holder.get('surface_size'),
         'extension':holder.get('extension'),'final_native':holder.get('final_native'),'cpu_seconds':holder.get('cpu_seconds'), 'blocks30':blocks,
         'nominal_observations':nominal_observations, 'completed_observations':completed_observations,
         'nominal_load_fraction':completed_observations/max(1,nominal_observations),

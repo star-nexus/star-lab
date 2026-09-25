@@ -1,12 +1,12 @@
 """Recompute admitted metrics and compare exact presentation deltas across builds."""
-import argparse,gzip,json,sys
+import argparse,gzip,json,subprocess,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from p3_local_agents import stats
 parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--root',type=Path,required=True);root=parser.parse_args().root;rows=[]
 for p in sorted((root/'results').glob('t1*.json')):
  if p.name.endswith('.raw.json'):continue
- r=json.loads(p.read_text());raw=json.loads(p.with_suffix('.raw.json').read_text());f=[x for x in raw['frames'] if x['t']>=r['workload']['warmup']];e=[x for x in raw['events'] if x['t']>=r['workload']['warmup']]
+ r=json.loads(p.read_text());rp=p.with_suffix('.raw.json');raw=json.loads(rp.read_text() if rp.exists() else gzip.decompress(rp.with_suffix('.json.gz').read_bytes()));f=[x for x in raw['frames'] if x['t']>=r['workload']['warmup']];e=[x for x in raw['events'] if x['t']>=r['workload']['warmup']]
  assert len(f)==r['frame_count']
  assert stats([x['work_ms'] for x in f])==r['frame_work_ms']
  assert stats([x['response_ms'] for x in e if x['event']=='observe'])==r['observation_response_ms']
@@ -16,7 +16,7 @@ groups={}
 for r in rows:
     key=r['source']['sha'];groups.setdefault(key,[]).append(r)
 acceptance={key:dict(completed=sum(r['seconds']==300 for r in rs),passed=sum(r['seconds']==300 and r['passed'] for r in rs),capacity_gate_passed=sum(r['seconds']==300 and r['passed'] for r in rs)>=3) for key,rs in groups.items()}
-result=dict(rows=rows,acceptance_by_source=acceptance,capacity_gate_passed=any(r['capacity_gate_passed'] for r in acceptance.values()),all_metric_recomputations_passed=True)
+result=dict(analyzer_sha=subprocess.check_output(['git','rev-parse','HEAD'],cwd=Path(__file__).resolve().parents[2],text=True).strip(),rows=rows,acceptance_by_source=acceptance,capacity_gate_passed=any(r['capacity_gate_passed'] for r in acceptance.values()),all_metric_recomputations_passed=True)
 before=root/'results/delta-before';after=root/'results/delta-after'
 if (after/'compact.json').exists():
     b=json.loads((before/'compact.json').read_text());a=json.loads((after/'compact.json').read_text())

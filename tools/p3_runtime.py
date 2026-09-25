@@ -22,6 +22,8 @@ from p3_local_agents import Attribution, LocalAgents, fixture, identity, stats
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--source', required=True)
+    p.add_argument('--backend', choices=['python','rust'], default='python')
+    p.add_argument('--native-threads', type=int, choices=[1,2,4], default=1)
     p.add_argument('--fps', type=int, default=30)
     p.add_argument('--clock-mode', choices=['wall', 'fixed'], default='wall')
     p.add_argument('--cycle-mode', choices=['legacy', 'post-action'], default='legacy')
@@ -47,6 +49,8 @@ def main():
     args = p.parse_args()
     if args.fps <= 0 or args.jitter_seconds < 0:
         p.error('FPS must be positive and jitter nonnegative')
+    if args.backend == 'rust' and (args.attribute or args.movement_overlay or args.observation_mode != 'single'):
+        p.error('Native diagnostic uses production session and single observations; no legacy overlays/attribution')
     args.source = str(Path(args.source).resolve())
     out = Path(args.output).resolve()
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -88,9 +92,33 @@ def main():
         holder['scene'] = scene
         holder['world'] = scene.world
         holder['initial_units'] = len(scene.world.query().with_component(Unit).entities())
+        request_call = None
+        if args.backend == 'rust':
+            from star_native import _native, API_VERSION
+            holder['extension'] = {'api':API_VERSION, 'sha256':hashlib.sha256(Path(_native.__file__).read_bytes()).hexdigest()}
+            session = scene.native_session
+            request_call = lambda owner, verb, params: session.runtime.execute_action(verb, params, agent_id=owner.agent_id)
+            # Match legacy scale-harness input isolation without installing a
+            # Python gameplay harness over the authoritative Rust world.
+            pygame.event.set_blocked([pygame.KEYDOWN, pygame.KEYUP, pygame.MOUSEBUTTONDOWN,
+                pygame.MOUSEBUTTONUP, pygame.MOUSEMOTION, pygame.MOUSEWHEEL])
+            def instrument(obj, method, key):
+                original = getattr(obj,method)
+                def timed(*a, **kw):
+                    began = time.perf_counter()
+                    try:return original(*a, **kw)
+                    finally:
+                        phases=holder.setdefault('phases',{})
+                        phases[key]=phases.get(key,0.)+(time.perf_counter()-began)*1000
+                setattr(obj,method,timed)
+            for obj, method, key in [(session.runtime,'step','native_step_ms'),
+                (session.runtime,'take_presentation_delta','delta_ms'),
+                (session.presentation,'apply','presentation_apply_ms'),
+                (session,'update_inputs','inputs_ms'), (session,'update_display','display_systems_ms')]:
+                instrument(obj,method,key)
         holder['agents'] = LocalAgents(scene.world, args.agents,
             args.delay if args.delay == 'mixed' else float(args.delay), scope=args.scope,
-            encode=not args.no_encode, policy=args.policy, observation_hz=args.observation_hz, observation_mode=args.observation_mode, cycle_mode=args.cycle_mode, jitter_seconds=args.jitter_seconds)
+            encode=not args.no_encode, policy=args.policy, observation_hz=args.observation_hz, observation_mode=args.observation_mode, cycle_mode=args.cycle_mode, jitter_seconds=args.jitter_seconds, request_call=request_call)
         if args.attribute:
             holder['attribution'] = Attribution(holder['agents'].gate.action_handler)
         if args.movement_overlay:
@@ -112,10 +140,12 @@ def main():
         holder['start'] = time.perf_counter()
         holder['last_census'] = -1
         holder['sim_time'] = 0.
+        holder['cpu_start'] = time.process_time()
 
     def update(engine):
         start = time.perf_counter()
         engine._p3_start = start
+        holder['phases'] = {}
         if 'start' in holder:
             elapsed = start - holder['start']
             if elapsed >= args.warmup+args.seconds:
@@ -123,6 +153,9 @@ def main():
                 holder['finished'] = True
                 holder['end'] = start
                 holder['final_agents'] = holder['agents'].summary()
+                holder['cpu_seconds'] = time.process_time()-holder['cpu_start']
+                if args.backend == 'rust':
+                    holder['final_native'] = holder['scene'].native_session.runtime.diagnostics()
                 return
             agents = holder['agents']
             if agents.epoch is None:
@@ -147,6 +180,9 @@ def main():
             old = holder.get('positions', positions)
             changes = sum(old.get(i) != pos for i,pos in positions.items())
             holder['positions'] = positions
+            if args.backend == 'rust':
+                native_diag=holder['scene'].native_session.runtime.diagnostics()
+                assert alive==native_diag['living_units'] and moving==native_diag['moving_units']
             heap = agents.heap
             oldest = max(0., time.perf_counter()-heap[0][0])*1000 if heap else 0
             censuses.append({'t':elapsed, 'alive':alive, 'moving':moving,
@@ -162,6 +198,7 @@ def main():
             raise RuntimeError('frame recorder overflow')
         row = {'t':elapsed,'update_work_ms':(end-start)*1000,
             'agent_ms':(agent_end-start)*1000, 'dt':engine.delta_time}
+        row.update(holder.get('phases',{}))
         frames.append(row)
         holder['pending_frame'] = row
 
@@ -184,11 +221,15 @@ def main():
     profiler.end_frame = frame_end
     sys.argv = [str(Path(args.source)/'rotk_env/main.py'), '--skip-start',
         '--mode','real_time','--players','human_vs_two_ai','--scenario',scenario,
-        '--seed','42','--no-hub','--scale-harness-socket',
-        f'/tmp/star-p3-{os.getpid()}.sock']
+        '--seed','42','--no-hub','--backend',args.backend,'--native-threads',str(args.native_threads)]
+    if args.backend == 'python':
+        sys.argv += ['--scale-harness-socket',f'/tmp/star-p3-{os.getpid()}.sock']
     if args.clock_mode == 'wall':
         sys.argv.append('--uncapped')
-    entry.main()
+    try:
+        entry.main()
+    finally:
+        (Path(args.source)/'rotk_env/maps'/f'{scenario}.json').unlink(missing_ok=True)
     if not holder.get('finished'):
         raise RuntimeError('Runtime ended before complete measurement; inspect log')
     agents = holder['agents']
@@ -197,6 +238,7 @@ def main():
     cens = [r for r in censuses if r['t'] >= args.warmup]
     work = stats([f['work_ms'] for f in admitted])
     ob = stats([r['response_ms'] for r in events if r['event']=='observe'])
+    oq = stats([r['queue_ms'] for r in events if r['event']=='observe'])
     ac = stats([r['queue_ms'] for r in events if r['event']=='act'])
     nominal_observations = 0
     for i, session in enumerate(agents.sessions):
@@ -226,6 +268,7 @@ def main():
         'frame_p99':work.get('p99',float('inf')) <= 1000/args.fps,
         'world_hz':len(admitted)/args.seconds >= args.fps*.99,
         'observation_p99':args.no_agents or ob.get('p99',float('inf')) <=100,
+        'observation_queue_p99':args.no_agents or oq.get('p99',float('inf'))<=100,
         'action_queue_p99':args.no_agents or ac.get('p99',float('inf')) <=100,
         'queue_bounded':args.no_agents or holder['final_agents']['oldest_overdue_ms']<=100,
         'offered_load_met':args.no_agents or completed_observations >= .95*nominal_observations,
@@ -248,7 +291,9 @@ def main():
         'safe_environment':{k:os.environ.get(k) for k in ('STAR_SCALE_MINIMAP_UNITS','HEADLESS','SDL_VIDEODRIVER')},
         'fixture_sha256':fixture_hash, 'guards':guards, 'pass':all(guards.values()),
         'frame_work_ms':work,'frame_count':len(admitted),'world_hz':len(admitted)/args.seconds,
-        'observation_response_ms':ob,'action_queue_ms':ac, 'blocks30':blocks,
+        'observation_response_ms':ob,'observation_queue_ms':oq,'action_queue_ms':ac,
+        'native_phases_ms':{k:stats([f[k] for f in admitted]) for k in ('native_step_ms','delta_ms','presentation_apply_ms','inputs_ms','display_systems_ms') if admitted and k in admitted[0]},
+        'extension':holder.get('extension'),'final_native':holder.get('final_native'),'cpu_seconds':holder.get('cpu_seconds'), 'blocks30':blocks,
         'nominal_observations':nominal_observations, 'completed_observations':completed_observations,
         'nominal_load_fraction':completed_observations/max(1,nominal_observations),
         'worst_rolling5_p99_ms':worst5,'longest_miss_streak':longest,

@@ -136,10 +136,11 @@ class Session:
 class LocalAgents:
     def __init__(self, world, count, delay=1.0, *, scope='faction', encode=True,
                  policy='mixed', seed=42, clock=time.perf_counter, max_records=2_000_000,
-                 observation_hz=None, observation_mode="single", cycle_mode="legacy", jitter_seconds=5.0):
+                 observation_hz=None, observation_mode="single", cycle_mode="legacy", jitter_seconds=5.0, request_call=None):
         from rotk_env.components import Unit, UnitCount
         self.world, self.clock = world, clock
-        self.gate = next(s for s in world.systems if s.__class__.__name__ == 'LLMSystem')
+        self.request_call = request_call
+        self.gate = None if request_call is not None else next(s for s in world.systems if s.__class__.__name__ == 'LLMSystem')
         self.scope, self.encode, self.policy = scope, encode, policy
         if observation_hz is not None and observation_hz <= 0:
             raise ValueError("observation_hz must be positive")
@@ -201,6 +202,8 @@ class LocalAgents:
 
     def call(self, session, verb, params):
         self.request_id += 1
+        if self.request_call is not None:
+            return self.request_call(session, verb, dict(params))
         return self.gate._process_action_request(agent_id=session.agent_id,
             action_id=self.request_id, action=verb, params=dict(params), send_response=False)
 

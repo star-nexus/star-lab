@@ -162,3 +162,22 @@ def test_post_action_offsets_and_normal_delays_are_reproducible():
     b, cb = setup(30, cycle_mode='post-action')
     assert [a._sample_delay(a.delay_rngs[0], 30) for _ in range(100)] == [b._sample_delay(b.delay_rngs[0], 30) for _ in range(100)]
     assert a.nominal_closed_loop_observations(30, 300) == b.nominal_closed_loop_observations(30, 300)
+
+
+def test_injected_request_boundary_needs_no_python_llm_system():
+    world=_world()
+    for f,col in [(Faction.WEI,0),(Faction.SHU,2)]:
+        _spawn(world,faction=f,col=col,row=0)
+    calls=[]
+    def call(session,verb,params):
+        calls.append((session.agent_id,verb,params))
+        if verb=='claim_units':return {'success':True,'claimed':params['unit_ids']}
+        if verb=='get_faction_state':return {'success':True,'units':[]}
+        return {'success':True}
+    clock=Clock()
+    agents=LocalAgents(world,2,30,scope='selected',clock=clock,request_call=call,cycle_mode='post-action')
+    assert agents.gate is None
+    agents.start(synchronized=True);agents.pump()
+    assert len(calls)==6 and agents.counts['cycles']==2
+    assert all(e[0]>=15 for e in agents.heap)
+    world.reset()

@@ -1,0 +1,836 @@
+{
+  "all_guards_passed": true,
+  "rows": 84,
+  "profile_rows": 54,
+  "ingress_rows": 30,
+  "ingress": [
+    {
+      "scenario": "terrain-local",
+      "mode": "handler",
+      "requests": 1,
+      "before_ms": 0.166833,
+      "after_ms": 0.14875,
+      "full_response_equal": true
+    },
+    {
+      "scenario": "terrain-local",
+      "mode": "public",
+      "requests": 1,
+      "before_ms": 0.181167,
+      "after_ms": 0.15825,
+      "full_response_equal": true
+    },
+    {
+      "scenario": "terrain-local",
+      "mode": "single",
+      "requests": 1,
+      "before_ms": 0.165125,
+      "after_ms": 0.153459,
+      "full_response_equal": true
+    },
+    {
+      "scenario": "terrain-local",
+      "mode": "handler",
+      "requests": 8,
+      "before_ms": 0.183334,
+      "after_ms": 0.190542,
+      "full_response_equal": true
+    },
+    {
+      "scenario": "terrain-local",
+      "mode": "public",
+      "requests": 8,
+      "before_ms": 0.192667,
+      "after_ms": 0.182584,
+      "full_response_equal": true
+    },
+    {
+      "scenario": "terrain-disabled",
+      "mode": "handler",
+      "requests": 1,
+      "before_ms": 12.603708,
+      "after_ms": 1.471541,
+      "full_response_equal": true
+    },
+    {
+      "scenario": "terrain-disabled",
+      "mode": "public",
+      "requests": 1,
+      "before_ms": 12.459625,
+      "after_ms": 1.487542,
+      "full_response_equal": true
+    },
+    {
+      "scenario": "terrain-disabled",
+      "mode": "single",
+      "requests": 1,
+      "before_ms": 13.516125,
+      "after_ms": 1.509375,
+      "full_response_equal": true
+    },
+    {
+      "scenario": "terrain-disabled",
+      "mode": "handler",
+      "requests": 8,
+      "before_ms": 14.003583,
+      "after_ms": 2.298167,
+      "full_response_equal": true
+    },
+    {
+      "scenario": "terrain-disabled",
+      "mode": "public",
+      "requests": 8,
+      "before_ms": 14.188792,
+      "after_ms": 2.394084,
+      "full_response_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "mode": "handler",
+      "requests": 1,
+      "before_ms": 23.928833,
+      "after_ms": 6.590792,
+      "full_response_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "mode": "public",
+      "requests": 1,
+      "before_ms": 23.898875,
+      "after_ms": 6.43925,
+      "full_response_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "mode": "single",
+      "requests": 1,
+      "before_ms": 24.712667,
+      "after_ms": 6.362125,
+      "full_response_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "mode": "handler",
+      "requests": 8,
+      "before_ms": 26.797334,
+      "after_ms": 9.513208,
+      "full_response_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "mode": "public",
+      "requests": 8,
+      "before_ms": 26.511292,
+      "after_ms": 8.742084,
+      "full_response_equal": true
+    }
+  ],
+  "paired_cases": 18,
+  "thread_equivalence": true,
+  "unchanged_wire_bytes": true,
+  "capacity_claim": false,
+  "cases": [
+    {
+      "scenario": "terrain-local",
+      "variant": "single5",
+      "threads": 1,
+      "reachable_cells": 29,
+      "bytes": 4306,
+      "medians_ms": {
+        "oracle": 0.104708,
+        "before": 0.099208,
+        "after": 0.086
+      },
+      "after_over_before": 0.866865575356826,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.000709,
+          "batch_ns": 0.092583,
+          "final_encode_ns": 0.001625,
+          "drop_ns": 0.006833,
+          "native_ns": 0.101792,
+          "census_ns": 0.00825,
+          "faction_ns": 0.022791,
+          "public_encode_ns": 0.004292,
+          "panels_ns": 0.066041
+        },
+        "after": {
+          "parse_ns": 0.000834,
+          "batch_ns": 0.090958,
+          "final_encode_ns": 0.001541,
+          "drop_ns": 0.005083,
+          "native_ns": 0.098542,
+          "census_ns": 0.009125,
+          "faction_ns": 0.015,
+          "public_encode_ns": 0.001917,
+          "panels_ns": 0.073167
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "terrain-local",
+      "variant": "single5",
+      "threads": 2,
+      "reachable_cells": 29,
+      "bytes": 4306,
+      "medians_ms": {
+        "oracle": 0.114583,
+        "before": 0.077125,
+        "after": 0.068833
+      },
+      "after_over_before": 0.892486223662885,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.000667,
+          "batch_ns": 0.067542,
+          "final_encode_ns": 0.001834,
+          "drop_ns": 0.008416,
+          "native_ns": 0.081583,
+          "census_ns": 0.007458,
+          "faction_ns": 0.022,
+          "public_encode_ns": 0.004208,
+          "panels_ns": 0.046334
+        },
+        "after": {
+          "parse_ns": 0.000875,
+          "batch_ns": 0.060375,
+          "final_encode_ns": 0.002334,
+          "drop_ns": 0.00725,
+          "native_ns": 0.071708,
+          "census_ns": 0.007958,
+          "faction_ns": 0.013834,
+          "public_encode_ns": 0.002041,
+          "panels_ns": 0.043459
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "terrain-local",
+      "variant": "single5",
+      "threads": 4,
+      "reachable_cells": 29,
+      "bytes": 4306,
+      "medians_ms": {
+        "oracle": 0.096708,
+        "before": 0.092041,
+        "after": 0.083708
+      },
+      "after_over_before": 0.9094642604926066,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.000916,
+          "batch_ns": 0.077875,
+          "final_encode_ns": 0.002041,
+          "drop_ns": 0.011333,
+          "native_ns": 0.093333,
+          "census_ns": 0.00825,
+          "faction_ns": 0.024791,
+          "public_encode_ns": 0.004917,
+          "panels_ns": 0.052916
+        },
+        "after": {
+          "parse_ns": 0.000958,
+          "batch_ns": 0.073792,
+          "final_encode_ns": 0.002375,
+          "drop_ns": 0.007958,
+          "native_ns": 0.084625,
+          "census_ns": 0.008875,
+          "faction_ns": 0.015958,
+          "public_encode_ns": 0.00225,
+          "panels_ns": 0.054625
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "terrain-disabled",
+      "variant": "single5",
+      "threads": 1,
+      "reachable_cells": 29,
+      "bytes": 440962,
+      "medians_ms": {
+        "oracle": 12.973167,
+        "before": 11.853708,
+        "after": 1.477042
+      },
+      "after_over_before": 0.12460590390787424,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.004,
+          "batch_ns": 8.261666,
+          "final_encode_ns": 0.023583,
+          "drop_ns": 3.014292,
+          "native_ns": 11.432958,
+          "census_ns": 0.01175,
+          "faction_ns": 8.153666,
+          "public_encode_ns": 2.931375,
+          "panels_ns": 0.107541
+        },
+        "after": {
+          "parse_ns": 0.002583,
+          "batch_ns": 1.19875,
+          "final_encode_ns": 0.026333,
+          "drop_ns": 0.172083,
+          "native_ns": 1.391375,
+          "census_ns": 0.00875,
+          "faction_ns": 1.110375,
+          "public_encode_ns": 0.029584,
+          "panels_ns": 0.076541
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "terrain-disabled",
+      "variant": "single5",
+      "threads": 2,
+      "reachable_cells": 29,
+      "bytes": 440962,
+      "medians_ms": {
+        "oracle": 13.571667,
+        "before": 13.208125,
+        "after": 1.416792
+      },
+      "after_over_before": 0.10726670136752946,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.004708,
+          "batch_ns": 8.315792,
+          "final_encode_ns": 0.02775,
+          "drop_ns": 4.086458,
+          "native_ns": 12.462458,
+          "census_ns": 0.013292,
+          "faction_ns": 8.213458,
+          "public_encode_ns": 2.883875,
+          "panels_ns": 0.083125
+        },
+        "after": {
+          "parse_ns": 0.001167,
+          "batch_ns": 1.160584,
+          "final_encode_ns": 0.025334,
+          "drop_ns": 0.163167,
+          "native_ns": 1.34925,
+          "census_ns": 0.008834,
+          "faction_ns": 1.086125,
+          "public_encode_ns": 0.040292,
+          "panels_ns": 0.061541
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "terrain-disabled",
+      "variant": "single5",
+      "threads": 4,
+      "reachable_cells": 29,
+      "bytes": 440962,
+      "medians_ms": {
+        "oracle": 12.088292,
+        "before": 12.120708,
+        "after": 1.402834
+      },
+      "after_over_before": 0.11573861856914627,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.00375,
+          "batch_ns": 8.295416,
+          "final_encode_ns": 0.019666,
+          "drop_ns": 3.732959,
+          "native_ns": 12.337791,
+          "census_ns": 0.011417,
+          "faction_ns": 8.21725,
+          "public_encode_ns": 2.768084,
+          "panels_ns": 0.098209
+        },
+        "after": {
+          "parse_ns": 0.001709,
+          "batch_ns": 1.136458,
+          "final_encode_ns": 0.011375,
+          "drop_ns": 0.163958,
+          "native_ns": 1.316084,
+          "census_ns": 0.009584,
+          "faction_ns": 1.060417,
+          "public_encode_ns": 0.02475,
+          "panels_ns": 0.063542
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "variant": "single5",
+      "threads": 1,
+      "reachable_cells": 54,
+      "bytes": 706363,
+      "medians_ms": {
+        "oracle": 20.412417,
+        "before": 19.189375,
+        "after": 2.547041
+      },
+      "after_over_before": 0.13273183727974466,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.004625,
+          "batch_ns": 14.35825,
+          "final_encode_ns": 0.055917,
+          "drop_ns": 4.894417,
+          "native_ns": 19.209667,
+          "census_ns": 0.343584,
+          "faction_ns": 14.108792,
+          "public_encode_ns": 5.691334,
+          "panels_ns": 0.239833
+        },
+        "after": {
+          "parse_ns": 0.003166,
+          "batch_ns": 2.22725,
+          "final_encode_ns": 0.047667,
+          "drop_ns": 0.234041,
+          "native_ns": 2.539375,
+          "census_ns": 0.344542,
+          "faction_ns": 1.99875,
+          "public_encode_ns": 0.079,
+          "panels_ns": 0.207166
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "variant": "single100",
+      "threads": 1,
+      "reachable_cells": 966,
+      "bytes": 773777,
+      "medians_ms": {
+        "oracle": 24.499292,
+        "before": 23.338583,
+        "after": 6.218375
+      },
+      "after_over_before": 0.26644184010657374,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.013834,
+          "batch_ns": 18.091916,
+          "final_encode_ns": 0.073083,
+          "drop_ns": 5.189292,
+          "native_ns": 23.435292,
+          "census_ns": 0.36225,
+          "faction_ns": 14.411875,
+          "public_encode_ns": 5.83075,
+          "panels_ns": 3.675167
+        },
+        "after": {
+          "parse_ns": 0.008916,
+          "batch_ns": 5.721584,
+          "final_encode_ns": 0.0745,
+          "drop_ns": 0.3165,
+          "native_ns": 6.164,
+          "census_ns": 0.371958,
+          "faction_ns": 2.107791,
+          "public_encode_ns": 0.072083,
+          "panels_ns": 3.576458
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "variant": "repeat100",
+      "threads": 1,
+      "reachable_cells": 966,
+      "bytes": 6187066,
+      "medians_ms": {
+        "oracle": 26.448,
+        "before": 25.865166,
+        "after": 8.988084
+      },
+      "after_over_before": 0.3474976344632778,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.070167,
+          "batch_ns": 18.281416,
+          "final_encode_ns": 1.193375,
+          "drop_ns": 6.178792,
+          "native_ns": 25.560333,
+          "census_ns": 0.352458,
+          "faction_ns": 14.0865,
+          "public_encode_ns": 5.44025,
+          "panels_ns": 4.103503
+        },
+        "after": {
+          "parse_ns": 0.066542,
+          "batch_ns": 5.994625,
+          "final_encode_ns": 1.471834,
+          "drop_ns": 0.482417,
+          "native_ns": 8.169541,
+          "census_ns": 0.364792,
+          "faction_ns": 2.064834,
+          "public_encode_ns": 0.083209,
+          "panels_ns": 3.784583
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "variant": "disjoint5",
+      "threads": 1,
+      "reachable_cells": 54,
+      "bytes": 5647776,
+      "medians_ms": {
+        "oracle": 25.035375,
+        "before": 24.710375,
+        "after": 6.44225
+      },
+      "after_over_before": 0.2607103291633575,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.014584,
+          "batch_ns": 16.794917,
+          "final_encode_ns": 0.792542,
+          "drop_ns": 6.554125,
+          "native_ns": 23.724375,
+          "census_ns": 0.454708,
+          "faction_ns": 14.926333,
+          "public_encode_ns": 5.973875,
+          "panels_ns": 1.907165
+        },
+        "after": {
+          "parse_ns": 0.015416,
+          "batch_ns": 4.145875,
+          "final_encode_ns": 1.30975,
+          "drop_ns": 0.502834,
+          "native_ns": 5.974209,
+          "census_ns": 0.38675,
+          "faction_ns": 2.306708,
+          "public_encode_ns": 0.089083,
+          "panels_ns": 1.653666
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "variant": "single5",
+      "threads": 2,
+      "reachable_cells": 54,
+      "bytes": 706363,
+      "medians_ms": {
+        "oracle": 20.639416,
+        "before": 20.084792,
+        "after": 3.040333
+      },
+      "after_over_before": 0.15137488105428226,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.004666,
+          "batch_ns": 14.976458,
+          "final_encode_ns": 0.060708,
+          "drop_ns": 5.368916,
+          "native_ns": 20.375666,
+          "census_ns": 0.397458,
+          "faction_ns": 14.788875,
+          "public_encode_ns": 6.148291,
+          "panels_ns": 0.177583
+        },
+        "after": {
+          "parse_ns": 0.004583,
+          "batch_ns": 2.27625,
+          "final_encode_ns": 0.054625,
+          "drop_ns": 0.290041,
+          "native_ns": 2.669541,
+          "census_ns": 0.356208,
+          "faction_ns": 2.0475,
+          "public_encode_ns": 0.080375,
+          "panels_ns": 0.162416
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "variant": "single100",
+      "threads": 2,
+      "reachable_cells": 966,
+      "bytes": 773777,
+      "medians_ms": {
+        "oracle": 23.075417,
+        "before": 24.954667,
+        "after": 4.588167
+      },
+      "after_over_before": 0.1838600771551069,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.018167,
+          "batch_ns": 18.147792,
+          "final_encode_ns": 0.084083,
+          "drop_ns": 6.567625,
+          "native_ns": 24.925833,
+          "census_ns": 0.422708,
+          "faction_ns": 15.591125,
+          "public_encode_ns": 6.200042,
+          "panels_ns": 2.38
+        },
+        "after": {
+          "parse_ns": 0.009083,
+          "batch_ns": 4.05275,
+          "final_encode_ns": 0.065,
+          "drop_ns": 0.340459,
+          "native_ns": 4.809917,
+          "census_ns": 0.352125,
+          "faction_ns": 2.047625,
+          "public_encode_ns": 0.078,
+          "panels_ns": 1.915083
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "variant": "repeat100",
+      "threads": 2,
+      "reachable_cells": 966,
+      "bytes": 6187066,
+      "medians_ms": {
+        "oracle": 35.080542,
+        "before": 24.783209,
+        "after": 6.943666
+      },
+      "after_over_before": 0.280176227380401,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.075667,
+          "batch_ns": 17.321,
+          "final_encode_ns": 0.990917,
+          "drop_ns": 5.487625,
+          "native_ns": 23.829708,
+          "census_ns": 0.370834,
+          "faction_ns": 15.154459,
+          "public_encode_ns": 6.332834,
+          "panels_ns": 2.080081
+        },
+        "after": {
+          "parse_ns": 0.052041,
+          "batch_ns": 4.405667,
+          "final_encode_ns": 1.440542,
+          "drop_ns": 0.523916,
+          "native_ns": 6.384375,
+          "census_ns": 0.416,
+          "faction_ns": 2.252375,
+          "public_encode_ns": 0.072666,
+          "panels_ns": 2.031041
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "variant": "disjoint5",
+      "threads": 2,
+      "reachable_cells": 54,
+      "bytes": 5647777,
+      "medians_ms": {
+        "oracle": 23.46075,
+        "before": 21.711,
+        "after": 5.420666
+      },
+      "after_over_before": 0.24967371378563863,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.013375,
+          "batch_ns": 15.188833,
+          "final_encode_ns": 1.163125,
+          "drop_ns": 4.77125,
+          "native_ns": 21.006625,
+          "census_ns": 0.366208,
+          "faction_ns": 14.096209,
+          "public_encode_ns": 5.785292,
+          "panels_ns": 1.06375
+        },
+        "after": {
+          "parse_ns": 0.013208,
+          "batch_ns": 3.400084,
+          "final_encode_ns": 1.2795,
+          "drop_ns": 0.346875,
+          "native_ns": 5.041125,
+          "census_ns": 0.375958,
+          "faction_ns": 2.239666,
+          "public_encode_ns": 0.09325,
+          "panels_ns": 1.084416
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "variant": "single5",
+      "threads": 4,
+      "reachable_cells": 54,
+      "bytes": 706363,
+      "medians_ms": {
+        "oracle": 20.683,
+        "before": 19.26175,
+        "after": 2.620583
+      },
+      "after_over_before": 0.13605113761729853,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.003916,
+          "batch_ns": 14.224291,
+          "final_encode_ns": 0.080791,
+          "drop_ns": 4.71625,
+          "native_ns": 19.245833,
+          "census_ns": 0.364667,
+          "faction_ns": 14.062042,
+          "public_encode_ns": 5.783333,
+          "panels_ns": 0.134417
+        },
+        "after": {
+          "parse_ns": 0.002459,
+          "batch_ns": 2.287333,
+          "final_encode_ns": 0.062166,
+          "drop_ns": 0.272666,
+          "native_ns": 2.661417,
+          "census_ns": 0.410667,
+          "faction_ns": 2.103083,
+          "public_encode_ns": 0.074834,
+          "panels_ns": 0.114542
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "variant": "single100",
+      "threads": 4,
+      "reachable_cells": 966,
+      "bytes": 773777,
+      "medians_ms": {
+        "oracle": 22.624125,
+        "before": 22.306541,
+        "after": 3.852083
+      },
+      "after_over_before": 0.1726884952714094,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.014792,
+          "batch_ns": 16.197625,
+          "final_encode_ns": 0.064708,
+          "drop_ns": 5.587167,
+          "native_ns": 22.19625,
+          "census_ns": 0.421459,
+          "faction_ns": 15.02825,
+          "public_encode_ns": 5.871958,
+          "panels_ns": 1.0835
+        },
+        "after": {
+          "parse_ns": 0.00825,
+          "batch_ns": 3.0295,
+          "final_encode_ns": 0.069125,
+          "drop_ns": 0.309041,
+          "native_ns": 3.434625,
+          "census_ns": 0.344333,
+          "faction_ns": 1.988084,
+          "public_encode_ns": 0.072625,
+          "panels_ns": 1.006
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "variant": "repeat100",
+      "threads": 4,
+      "reachable_cells": 966,
+      "bytes": 6187066,
+      "medians_ms": {
+        "oracle": 24.299958,
+        "before": 23.974375,
+        "after": 6.11975
+      },
+      "after_over_before": 0.2552621288354754,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.076625,
+          "batch_ns": 16.034875,
+          "final_encode_ns": 1.034375,
+          "drop_ns": 6.163042,
+          "native_ns": 23.181667,
+          "census_ns": 0.457,
+          "faction_ns": 14.853875,
+          "public_encode_ns": 6.000583,
+          "panels_ns": 1.089624
+        },
+        "after": {
+          "parse_ns": 0.063542,
+          "batch_ns": 3.174042,
+          "final_encode_ns": 1.028375,
+          "drop_ns": 0.483375,
+          "native_ns": 4.755708,
+          "census_ns": 0.357334,
+          "faction_ns": 2.060958,
+          "public_encode_ns": 0.079292,
+          "panels_ns": 1.015042
+        }
+      },
+      "exact_results_and_states_equal": true
+    },
+    {
+      "scenario": "units-5000",
+      "variant": "disjoint5",
+      "threads": 4,
+      "reachable_cells": 54,
+      "bytes": 5647777,
+      "medians_ms": {
+        "oracle": 23.076167,
+        "before": 26.173875,
+        "after": 5.626833
+      },
+      "after_over_before": 0.2149789819046664,
+      "phases_ms": {
+        "oracle": {},
+        "before": {
+          "parse_ns": 0.015958,
+          "batch_ns": 16.38575,
+          "final_encode_ns": 1.322209,
+          "drop_ns": 5.918791,
+          "native_ns": 23.842208,
+          "census_ns": 0.388375,
+          "faction_ns": 15.486292,
+          "public_encode_ns": 6.17775,
+          "panels_ns": 0.875501
+        },
+        "after": {
+          "parse_ns": 0.015292,
+          "batch_ns": 3.10625,
+          "final_encode_ns": 0.876709,
+          "drop_ns": 0.501833,
+          "native_ns": 4.337917,
+          "census_ns": 0.365917,
+          "faction_ns": 2.225709,
+          "public_encode_ns": 0.086292,
+          "panels_ns": 0.811958
+        }
+      },
+      "exact_results_and_states_equal": true
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "experiment": {
+    "id": "2026-09-rust-public-facts",
+    "title": "R4b direct typed public facts and phase attribution",
+    "date": "2026-09-25",
+    "status": "validated;not capacity acceptance"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "45bd11cca09a88fb4c757feecc234a4efe932dae",
+    "instrumentation_commit": "244b17fabdde585c4dac367acd52a3247929f886",
+    "fix_build_commit": "290de0a7c7dde1255b3d7556552fc6acddac6fbe",
+    "measurement_commit": "94f7b0c41f88d9012600556b123552ced9d48b69",
+    "validated_commit": "90481f985bc66f30d8ed7627afe0ee37aec1aa75",
+    "validated_tag": "rust-kernel-r4b-2026-09-25",
+    "branch_at_time": "codex/rust-env-migration",
+    "test_only_diff": [
+      "rotk_env/tests/test_native_public_facts.py"
+    ],
+    "final_diff_files": [
+      "docs/native-benchmark-gaps.md",
+      "docs/native-runtime.md",
+      "docs/native-state-boundaries.md"
+    ],
+    "runtime_diff_build_to_final": "",
+    "comparison_tool_commit": "d34a3ac02c81c39620a73259ceae180a204b44b2",
+    "probe_tool_commits": {
+      "after": "9f043548d3921de4b51faee53244ce21e7f7702f",
+      "after-public": "9f043548d3921de4b51faee53244ce21e7f7702f",
+      "before": "4921a39f4a175d9d5dff54d8b50e16481a5b3ae8",
+      "before-public": "9f043548d3921de4b51faee53244ce21e7f7702f",
+      "oracle": "4921a39f4a175d9d5dff54d8b50e16481a5b3ae8"
+    }
+  },
+  "hardware": {
+    "machine": "Mac mini M4",
+    "cpu": "Apple M4",
+    "memory_bytes": "17179869184",
+    "gpu": "unused",
+    "display": "no rendered frame"
+  },
+  "software": {
+    "os": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+    "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "api": 17,
+    "schema": 5,
+    "rules": "python-r0c-3cc4ffe",
+    "extension_sha256": "90fe642f549c2d3a1bebc05e14e0db013f7a105959a2340afc2f7accc922c1f3",
+    "cargo_lock_sha256": "e86cb2bee26f1d95c1cde0abec61bdea575a73ae7218db60b7f06be735f15188",
+    "dependency_lock_sha256": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae"
+  },
+  "scenario": {
+    "name": "canonical observation microbench with MP6 and exact dynamic occupancy",
+    "cases": [
+      "100Units/6211tiles/Fog7cells",
+      "100Units/6211tiles/Fogdisabled",
+      "5000Units/range3/Fogdisabled"
+    ],
+    "moving_units": 0
+  },
+  "workload": {
+    "seed": 42,
+    "MP": 6,
+    "selected_units": [
+      5,
+      100
+    ],
+    "queries": [
+      1,
+      8
+    ],
+    "subsets": [
+      "single5",
+      "single100",
+      "repeat100",
+      "disjoint5"
+    ],
+    "mp6_5000_positions": "unit i uses existing sorted terrain cell floor(i*tile_count/5000), preserving all5000livingUnits",
+    "threads": [
+      1,
+      2,
+      4
+    ],
+    "agents": "handler synthetic identities;separate1/8registered public queries;no think/admission loop",
+    "camera": null
+  },
+  "measurement": {
+    "samples": 5,
+    "warmup": 1,
+    "preparation": "expected result call excluded;phase modes alternate order each iteration",
+    "timing": "ordinary native handler call includes Python string conversion,excludes decoding;profile captures parse/batch/finalencode/drop separately;ingress probe excludes reset/import",
+    "nested_fields": "census/public_encode inside faction;faction/panels inside batch;panel includes schedule/join/cachecommit;do not sum nested medians",
+    "limitations": [
+      "only5samples",
+      "serial nonrandomized source comparison",
+      "noCPUallocationprofile",
+      "no frame/queue gate"
+    ]
+  },
+  "variables": {
+    "independent": "JSON-tree public facts vs directly encoded typed facts",
+    "controlled": [
+      "same source instrumentation before/after",
+      "same canonicalstate/subsets/order",
+      "same rules/schema",
+      "releasewheel",
+      "Chrome open",
+      "serial experiment execution"
+    ]
+  },
+  "validation": {
+    "full_pytest": 2171,
+    "targeted": 89,
+    "new_tests": 6,
+    "rust_tests": 4,
+    "fmt": true,
+    "clippy": true,
+    "replay_cases": 6,
+    "replay_nodes": 510,
+    "query_rows": 84,
+    "profile_rows": 54,
+    "ingress_rows": 30,
+    "full_response_state_and_bytes_equal": true,
+    "original_work_counters_equal": true,
+    "worker_utilization_excluded": true
+  },
+  "artifacts": {
+    "canonical_inputs": [
+      {
+        "path": "experiments/2026-09-rust-kernel-catalog/results/after/raw.json.xz",
+        "sha256": "63530ed0a5e5d7aa6c4b1238dd13b95177731048e4466624f7a277c8f3f86141"
+      },
+      {
+        "path": "experiments/2026-09-rust-kernel-targets/results/after/raw.json.xz",
+        "sha256": "bf9dd60ac5b2888d3c10b2aa6784dbc6f73f83833b1ee0c5076d20c508dc158f"
+      }
+    ],
+    "canonical_replay": {
+      "path": "experiments/2026-09-rust-r3-host-authority/results/window/trace.json.xz",
+      "sha256": "f3543008f4c9409457a822fc2e90f4db757dd9ebe24437dd8cd991db9d0a0d0c"
+    },
+    "index": "results/artifact-index.json",
+    "formal": [
+      "results/comparison.json",
+      "results/commands.json",
+      "results/environment.json",
+      "results/after/compact.json",
+      "results/after/raw.json.xz",
+      "results/after-public/compact.json",
+      "results/after-public/raw.json.xz",
+      "results/before/compact.json",
+      "results/before/raw.json.xz",
+      "results/before-public/compact.json",
+      "results/before-public/raw.json.xz",
+      "results/oracle/compact.json",
+      "results/oracle/raw.json.xz"
+    ],
+    "intermediate": [
+      "results/intermediate/targeted-fixture-zero-id.log"
+    ],
+    "integrity": "artifacts/SHA256SUMS"
+  },
+  "defaults": {
+    "backend": "python",
+    "threads": 1
+  },
+  "capacity_claim": false,
+  "main_unchanged": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+  "revisit_when": [
+    "full closed-loop world/display/queue budget",
+    "real Agent subset andpayload distribution",
+    "remainingPanel/pathcost forlarge subsets"
+  ]
+}

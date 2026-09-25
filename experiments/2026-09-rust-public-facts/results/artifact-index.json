@@ -1,0 +1,59 @@
+{
+  "raw": [
+    {
+      "path": "results/after/raw.json.xz",
+      "bytes": 39992,
+      "sha256": "7197861c4190ce72f631699d3197f9aeb8cc913ee146553754a574e99c06ed54",
+      "compact": "results/after/compact.json",
+      "source_sha": "94f7b0c41f88d9012600556b123552ced9d48b69",
+      "tool_sha": "9f043548d3921de4b51faee53244ce21e7f7702f",
+      "extension_sha256": "90fe642f549c2d3a1bebc05e14e0db013f7a105959a2340afc2f7accc922c1f3"
+    },
+    {
+      "path": "results/after-public/raw.json.xz",
+      "bytes": 32772,
+      "sha256": "97785b3f9b2becf1c5b92506eb6079f1f23f799fcd6458e3aeed620a8b22ffac",
+      "compact": "results/after-public/compact.json",
+      "source_sha": "94f7b0c41f88d9012600556b123552ced9d48b69",
+      "tool_sha": "9f043548d3921de4b51faee53244ce21e7f7702f",
+      "extension_sha256": "90fe642f549c2d3a1bebc05e14e0db013f7a105959a2340afc2f7accc922c1f3"
+    },
+    {
+      "path": "results/before/raw.json.xz",
+      "bytes": 40300,
+      "sha256": "1dbabd5f5a6f4d161a161d610ddc5a4bca83d2d475d42dd4c43f256b4d143abe",
+      "compact": "results/before/compact.json",
+      "source_sha": "244b17fabdde585c4dac367acd52a3247929f886",
+      "tool_sha": "4921a39f4a175d9d5dff54d8b50e16481a5b3ae8",
+      "extension_sha256": "8a128ad52aafd487ec59831d107df3948394272fc5730cc67c0180cf32af2dc8"
+    },
+    {
+      "path": "results/before-public/raw.json.xz",
+      "bytes": 32728,
+      "sha256": "2d422b4ec81b66dc0530b850f93a1d4236cef3ad285d988c84b34c88681612ab",
+      "compact": "results/before-public/compact.json",
+      "source_sha": "244b17fabdde585c4dac367acd52a3247929f886",
+      "tool_sha": "9f043548d3921de4b51faee53244ce21e7f7702f",
+      "extension_sha256": "8a128ad52aafd487ec59831d107df3948394272fc5730cc67c0180cf32af2dc8"
+    },
+    {
+      "path": "results/oracle/raw.json.xz",
+      "bytes": 35624,
+      "sha256": "f0174fbcbf7afae94936924380f293969742ea0fa568d144e613bea873c92e55",
+      "compact": "results/oracle/compact.json",
+      "source_sha": "45bd11cca09a88fb4c757feecc234a4efe932dae",
+      "tool_sha": "4921a39f4a175d9d5dff54d8b50e16481a5b3ae8",
+      "extension_sha256": "353320733d25979d2213d70d9fc08ed933a2b1b5c5c079199e85e42633fa2141"
+    }
+  ],
+  "canonical_inputs": [
+    {
+      "path": "experiments/2026-09-rust-kernel-catalog/results/after/raw.json.xz",
+      "sha256": "63530ed0a5e5d7aa6c4b1238dd13b95177731048e4466624f7a277c8f3f86141"
+    },
+    {
+      "path": "experiments/2026-09-rust-kernel-targets/results/after/raw.json.xz",
+      "sha256": "bf9dd60ac5b2888d3c10b2aa6784dbc6f73f83833b1ee0c5076d20c508dc158f"
+    }
+  ]
+}

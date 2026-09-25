@@ -1,5 +1,19 @@
 # 10K / 100% moving / 30 Hz — 恢复入口
 
+## 最新检查点：R4b，公共事实直接编码（2026-09-25）
+
+最终 **`90481f985bc66f30d8ed7627afe0ee37aec1aa75`** / annotated tag **`rust-kernel-r4b-2026-09-25`**；构建 **`290de0a7c7dde1255b3d7556552fc6acddac6fbe`**，测量/测试 **`94f7b0c41f88d9012600556b123552ced9d48b69`**（仅测试预期变化），最终仅文档。[阶段报告与复现](../experiments/2026-09-rust-public-facts/README.md)。
+
+迁移进度：`R0 █ | R1 █ | R2/R3 ▒ 内核补齐中 | R4 ▒ 并行与数据装配优化 | R5 ░`（非工时百分比）。公共敌军/地形直接编码，消除临时JSON树/深复制；同只读段跨阵营共享，字段/Fog/权限/顺序/写入边界不变。新增opt-in分段诊断，普通路径不读计时墙钟；不影响CD。Python继续保留SDK、策略、网络/ACK、UI和报告。
+
+2171完整回归、89针对性、4Rust/fmt/Clippy、旧6场景510节点通过。54handler+30真实动作入口对照，完整响应/状态/字节长度/原工作计数相同（worker利用数可变）。5000Units/MP6单线程查询5Units中位19.189→2.547ms；100Units可信单请求23.899→6.439ms、8请求26.511→8.742ms。分段确认公共构建/释放减少。**查询微测不是30Hz整帧/排队/5000Agents容量验收。**
+
+API17/schema5/oracle不变；扩展SHA **`90fe642f549c2d3a1bebc05e14e0db013f7a105959a2340afc2f7accc922c1f3`**，生产venv与 **`runs/star-rust-public-facts`** 已安装；旧API16及仅计时API17目录/wheel保留。main未动、未merge/push，49原删除保留，默认Python/1线程。工具/源码SHA、全部raw/compact、环境与checksum见报告。
+
+[GAP台账](../../star-main/docs/native-benchmark-gaps.md)记录无已确认新增机制差异、zeroID测试预期修正和计时边界；G008/G009、R001/R002仍开放。**下一步回到完整合成Agent闭环容量诊断，核验新版Rust下世界/展示/排队预算；按证据处理剩余内核热点。** 首关5000Units+1000Agents/30Hz、5000Agents扩展未验收；Python集成可单列，不把其代码重写当Rust迁移。
+
+以下保留历史；当前状态以上文为准。
+
 ## 最新检查点：R4a，只读Unit面板真并行（2026-09-25）
 
 最终 **`45bd11cca09a88fb4c757feecc234a4efe932dae`** / annotated tag **`rust-kernel-r4a-2026-09-25`**；实现/构建/测量 **`ddb084e42e07fdb359c511b8727f888ff3a5a38b`**，最终仅文档变化。[阶段报告与复现](../experiments/2026-09-rust-read-parallel/README.md)。

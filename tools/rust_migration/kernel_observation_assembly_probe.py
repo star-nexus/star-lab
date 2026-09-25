@@ -50,6 +50,16 @@ def main():
                 movement = entity['components'].get('MovementPoints')
                 if movement is not None:
                     movement.update(current_mp=args.mp,max_mp=args.mp,base_mp=args.mp)
+        if args.mp and name == 'units-5000':
+            # The archived dense front has no empty destination within MP=6.
+            # Spread all 5000 living units over existing tiles, preserving IDs,
+            # factions and count, to exercise nonempty exact reachability.
+            cells = sorted((e['components']['HexPosition']['col'], e['components']['HexPosition']['row'])
+                           for e in initial['entities'] if 'Terrain' in e['components'])
+            units = [e for e in initial['entities'] if 'Unit' in e['components']]
+            for i, entity in enumerate(units):
+                col, row = cells[i * len(cells) // len(units)]
+                entity['components']['HexPosition'].update(col=col, row=row)
         initial_wire = json.dumps(initial)
         for count in (1, 8):
             params = [dict(case['parameters'], agent_id=f'agent-{i}') for i in range(count)]

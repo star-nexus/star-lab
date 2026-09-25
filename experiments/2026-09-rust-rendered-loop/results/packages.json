@@ -1,0 +1,12 @@
+[
+  {
+    "path": "artifacts/r4c-rendered-loop-raw.zip",
+    "bytes": 30873867,
+    "sha256": "bd76a52df051b907124925c40e9b0d0c9ba05fcb677a8ad0d4cdd58c79bebf59"
+  },
+  {
+    "path": "artifacts/r4c-rendered-loop-compact.zip",
+    "bytes": 229441,
+    "sha256": "1e395dd851c1b57e2c6123be374a94c10f4e5ccf1f000f16c4ad573bddf025b9"
+  }
+]

@@ -1,5 +1,21 @@
 # 10K / 100% moving / 30 Hz — 恢复入口
 
+## 最新检查点：R4c，Rust展示编码与真实窗口容量首关（2026-09-25）
+
+最终 **`b05c1465e551072bced220ae12c2474ec7e81e85`** / annotated **`rust-kernel-r4c-2026-09-25`**；构建/测量 **`e85e3067b1d2aed5cf08be9dbe35b1deed91dba1`**，最终仅文档。[阶段报告与复现](../experiments/2026-09-rust-rendered-loop/README.md)。
+
+迁移进度：`R0 █ | R1 █ | R2/R3 ▒ | R4 ▒ 首关容量通过 | R5 ░`（阶段覆盖，不是工时百分比）。Rust展示增量直接编码借用组件，省去中间JSON树；Python接口、绘制与规则不变。固定实际输入2000tick/9296请求：完整delta、字节长度、响应与最终状态相同；编码平均1.613→0.177ms，P99 2.349→0.434ms，Python解码未改善。2171完整回归、108针对性、14Lab、4Rust/fmt/Clippy和旧6场景510节点通过。
+
+**本机M4、canonical窗口5000Units＋1000Agents、30Hz、约30秒闭环，30秒预热＋300秒测量×3全部guard通过。** 整帧P99 **32.479/32.613/32.405ms**；观测响应 **85.990/82.840/87.093ms**、动作排队 **94.090/93.040/94.272ms**，均30Hz。单线程内核，Lab每帧事件预算8ms；全程5000存活，同时移动峰值171/173/178。不是5000同时移动或5000Agents。窗口2480×1243、Fog开启、canonical minimap单位层关闭、有限测量内GC延迟维护、Chrome开启，Hub/LLM不计入。
+
+旧版18ms预算短测和8ms预算300秒失败均保留（后者35.561ms）；所有慢帧保留，新版个别30秒块仍超33.33ms，不能外推无限时长或任意配置。第三轮实际轨迹4线程重放40741请求/9878tick/9878展示事件，响应及最终状态一致。仅首关性能通过，完整迁移/R5未完成，默认Python/1线程不变。
+
+API17/schema5/oracle不变，扩展SHA **`8c74d05d89f1037c0157ad25e32ed4c6852bad7d316694cb056faa8c72f2d2e2`**。生产venv已安装；**`runs/star-rust-presentation-encoding`保持测量SHA**用于严格重放，旧`runs/star-rust-public-facts`及旧wheel保留。main仍6a970dea、未merge/push、49原删除保留。raw/compact双包、逐成员hash、commands/环境/全部工具SHA见报告；解包后可重算。
+
+[GAP台账](../../star-main/docs/native-benchmark-gaps.md)无已确认新增玩法差异。**下一步优先：R001宽松输入转换边界与R002剩余权威写入/展示消费者审计；按计划补高接触密度、24Hz、10000Units和独立5000Agents诊断、平台wheel矩阵。** G008/G009作为Python应用接入保留，不把网络/BOT策略/UI重写Rust；满足剩余功能/安装要求后再考虑默认切换和squash merge。
+
+以下保留历史；当前状态以上文为准。
+
 ## 最新检查点：R4b，公共事实直接编码（2026-09-25）
 
 最终 **`90481f985bc66f30d8ed7627afe0ee37aec1aa75`** / annotated tag **`rust-kernel-r4b-2026-09-25`**；构建 **`290de0a7c7dde1255b3d7556552fc6acddac6fbe`**，测量/测试 **`94f7b0c41f88d9012600556b123552ced9d48b69`**（仅测试预期变化），最终仅文档。[阶段报告与复现](../experiments/2026-09-rust-public-facts/README.md)。

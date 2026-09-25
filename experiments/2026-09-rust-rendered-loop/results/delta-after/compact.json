@@ -1,0 +1,32 @@
+{
+  "source_sha": "e85e3067b1d2aed5cf08be9dbe35b1deed91dba1",
+  "tool_sha": "a53cb2d6870d7b5b069b393390efeab75c821f65",
+  "extension_sha256": "8c74d05d89f1037c0157ad25e32ed4c6852bad7d316694cb056faa8c72f2d2e2",
+  "trace_sha256": "20ace73375f712865a7191197cb3d592570c6a0f970aa5d42c1ea5172e2e898a",
+  "ticks": 2000,
+  "requests": 9296,
+  "request_hashes_sha256": "6ee2303d123c68cf1fdcd3da40e2eaebf8eb2706ab020be45bb3c8e215504684",
+  "final_state_sha256": "c7c8e805bf97c8fbfe137080bb22f1bedb8f1538cf9e6cf3db59e8882ae457cb",
+  "native_ms": {
+    "count": 1101,
+    "min": 0.068584,
+    "avg": 0.1768136485013624,
+    "p50": 0.165041,
+    "p95": 0.276583,
+    "p99": 0.434458,
+    "max": 0.98775
+  },
+  "decode_ms": {
+    "count": 1101,
+    "min": 0.199333,
+    "avg": 0.49028523433242505,
+    "p50": 0.43175,
+    "p95": 0.694792,
+    "p99": 1.227083,
+    "max": 26.827292
+  },
+  "raw_sha256": "47cff2e691d651db9a0df1a9796bc01a21b3cdee0b348992c9aaeecdc2e0c9be",
+  "raw_bytes": 112787,
+  "all_replay_guards_passed": true,
+  "capacity_claim": false
+}

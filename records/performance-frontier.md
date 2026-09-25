@@ -6,6 +6,20 @@ For admission criteria, see [`../PROTOCOL.md`](../PROTOCOL.md).
 
 Different measurement planes are kept separate rather than mixed into one table.
 
+## Native rendered Agent closed-loop frontier — R4c
+
+Validated canonical window profile, 2026-09-25. Build/measurement `e85e3067b1d2aed5cf08be9dbe35b1deed91dba1`; final docs `b05c1465e551072bced220ae12c2474ec7e81e85`, annotated `rust-kernel-r4c-2026-09-25`. [Evidence, raw/compact packages and integrity](../experiments/2026-09-rust-rendered-loop/README.md).
+
+Mac mini M4, CPython3.13/release native API17, Cocoa2480×1243, canonical120×120/FogON, minimap Unit layer OFF, finite-run GC deferred, Chrome open. 5000 living Units /1000 synthetic Agents, selected observations, 30Hz fixed dt; post-action think truncated normal30±5s within15–45s, first requests uniform0–30s. No Hub/realLLM. One native thread, Lab event budget8ms. Whole-frame work includes admission/world/display/render/present; excludes active pacing wait. Three independent30s warmups+300s windows; no removed slow frames.
+
+| Repeat | Frame P99 ms | Observation response P99 ms | Action queue P99 ms | Hz | Living | Peak moving |
+|---|---:|---:|---:|---:|---:|---:|
+| 1 |32.478751|85.989951|94.090125|30.0|5000|171|
+| 2 |32.613375|82.840035|93.040334|30.0|5000|173|
+| 3 |32.405167|87.093479|94.272292|30.0|5000|178|
+
+All frame, frequency, observation/action queues, response, backlog, survival and offered-load guards passed independently. Some30s subwindows exceed33.33ms; this is full300s acceptance, not a no-jitter promise. The prior valid R4b300s failure35.561ms remains archived. Fixed-input encoding A/B is distinct from live runs whose admission timing differs. This does not establish5000Agents,5000simultaneouslymoving,10000Units,high-contact/fullminimap or cross-platform capacity; defaults remain Python/1thread while migration completes.
+
 ## Historical whole-frame frontier
 
 | Date | STAR source | Milestone tag | Scenario | Resident | Moving | Map | Phase | Fog | Avg frame | P99 | Avg FPS | Platform | Evidence |

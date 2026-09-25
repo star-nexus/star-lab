@@ -1,0 +1,177 @@
+{
+  "experiment": {
+    "id": "2026-09-rust-rendered-loop",
+    "title": "R4c direct presentation rows and rendered native closed-loop acceptance",
+    "date": "2026-09-25",
+    "status": "validated scoped capacity; migration unfinished"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "90481f985bc66f30d8ed7627afe0ee37aec1aa75",
+    "measurement_commit": "e85e3067b1d2aed5cf08be9dbe35b1deed91dba1",
+    "fix_commit": "e85e3067b1d2aed5cf08be9dbe35b1deed91dba1",
+    "validated_commit": "b05c1465e551072bced220ae12c2474ec7e81e85",
+    "validated_tag": "rust-kernel-r4c-2026-09-25",
+    "branch_at_time": "codex/rust-env-migration",
+    "runtime_diff_build_to_final": "",
+    "tools": {
+      "window_before_short": "afcd7a943807ab54d8ee17df5709aab764b463d4",
+      "window_before_long": "91a4a0c28b3156a07a50748f05528a2f6b82ed16",
+      "delta_before": "fb2314e196c95ba0922afcb2386360a25cf00d28",
+      "after_all": "a53cb2d6870d7b5b069b393390efeab75c821f65",
+      "analysis": "2f9bd94d88f6e22aa7817d0dfc2f77ac94a91d6d"
+    }
+  },
+  "hardware": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "cpu": "Apple M4",
+    "memory_bytes": 17179869184,
+    "os": "ProductName:\t\tmacOS\nProductVersion:\t\t26.5.2\nBuildVersion:\t\t25F84\n",
+    "rust": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "python": "Python 3.13.12",
+    "chrome_open": true,
+    "serial_runs": true,
+    "cargo_lock_sha256": "e86cb2bee26f1d95c1cde0abec61bdea575a73ae7218db60b7f06be735f15188",
+    "dependency_lock_sha256": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae"
+  },
+  "software": {
+    "api": 17,
+    "schema": 5,
+    "oracle": "python-r0c-3cc4ffe",
+    "before_extension_sha256": "90fe642f549c2d3a1bebc05e14e0db013f7a105959a2340afc2f7accc922c1f3",
+    "after_extension_sha256": "8c74d05d89f1037c0157ad25e32ed4c6852bad7d316694cb056faa8c72f2d2e2"
+  },
+  "scenario": {
+    "name": "canonical E8 runtime fixture",
+    "map": "120x120/14400tiles",
+    "resident": 5000,
+    "moving": "per-run census; not 5000 continuously moving",
+    "fog": true,
+    "seed": 42,
+    "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+    "canonical_archive": {
+      "path": "experiments/2026-09-10k-e8-volume/artifacts/scenario.zip",
+      "sha256": "1e162aa258156a0857cd2f94a246da53eaec4642ff78fabc3e2dd9df0c5a4423"
+    },
+    "camera": "existing canonical fixed camera; no interactive input",
+    "window": [
+      2480,
+      1243
+    ],
+    "driver": "cocoa",
+    "minimap_unit_layer": "off"
+  },
+  "workload": {
+    "agents": 1000,
+    "controlled_units_per_agent": 5,
+    "threads": 1,
+    "world_fps": 30,
+    "dt": "1/30",
+    "first_request": "uniform 0..30 wall seconds",
+    "think": "after action truncated normal mean30 sd5 min15 max45 wall seconds",
+    "probabilities": {
+      "move": 0.5,
+      "attack": 0.25,
+      "wait": 0.25
+    },
+    "invalid": "wait, no resample",
+    "scope": "selected",
+    "thinking_period_poll": false,
+    "protocol_hub": false,
+    "real_llm": false,
+    "lab_budget_ms": 8
+  },
+  "measurement": {
+    "warmup_seconds": 30,
+    "sustained_seconds": 300,
+    "independent_repetitions": 3,
+    "frame_work": "full production window work excluding active pacing wait; capture and census included",
+    "gc_policy": "realtime_defer in finite process",
+    "chrome_open": true,
+    "serial": true,
+    "gate": "each full 300-second window separately",
+    "thresholds": {
+      "frame_p99_ms": 33.333333333333336,
+      "world_hz_min": 29.7,
+      "observation_response_p99_ms": 100,
+      "observation_queue_p99_ms": 100,
+      "action_queue_p99_ms": 100,
+      "oldest_backlog_ms": 100,
+      "nominal_load_min": 0.95,
+      "survival_min": 0.95
+    },
+    "short_before_no_input_recording": true,
+    "long_before_and_all_after_recording": true
+  },
+  "variables": {
+    "independent": "native presentation JSON-tree construction vs typed borrowed rows",
+    "strict_ab": "same first2000 ticks of recorded actual inputs, same requests/state/deltas",
+    "window_limit": "live arrival timing differs; before afternoon/after night; all background load not controlled"
+  },
+  "validation": {
+    "pytest": 2171,
+    "targeted": 108,
+    "lab_tests": 14,
+    "rust_tests": 4,
+    "fmt": true,
+    "clippy": true,
+    "old_scenes": 6,
+    "old_nodes": 510,
+    "delta_ticks": 2000,
+    "delta_requests": 9296,
+    "delta_sample_ticks_at_least": 900,
+    "delta_samples": 1101,
+    "delta_exact": true,
+    "after_replay_t4": {
+      "source_sha": "e85e3067b1d2aed5cf08be9dbe35b1deed91dba1",
+      "tool_sha": "a53cb2d6870d7b5b069b393390efeab75c821f65",
+      "trace_sha256": "08832cc4fdd7aebc942f968c28880270b740a50a390fb4a65c34bf4a438d3de9",
+      "threads": 4,
+      "counts": {
+        "request": 40741,
+        "step": 9878,
+        "presentation": 9878
+      },
+      "elapsed_seconds": 47.812573458009865,
+      "failure": null,
+      "expected_final_sha256": "4c00d3c9b2f10f2476f2914203cc1b75bd848a1f34abc360015ac3bc67f0c2a7",
+      "actual_final_sha256": "4c00d3c9b2f10f2476f2914203cc1b75bd848a1f34abc360015ac3bc67f0c2a7",
+      "all_passed": true
+    },
+    "all_three_runs_pass": true,
+    "capacity_claim": "scoped canonical5000Units1000Agents30Hz; not all R3/R5 completed"
+  },
+  "artifacts": {
+    "raw": {
+      "path": "artifacts/r4c-rendered-loop-raw.zip",
+      "sha256": "bd76a52df051b907124925c40e9b0d0c9ba05fcb677a8ad0d4cdd58c79bebf59",
+      "bytes": 30873867
+    },
+    "compact": "artifacts/r4c-rendered-loop-compact.zip",
+    "packages_index": "results/packages.json",
+    "members": "results/artifact-index.json",
+    "checksum": "artifacts/SHA256SUMS",
+    "compact_evidence": [
+      "results/comparison.json",
+      "results/blocks.json",
+      "results/commands.json",
+      "results/environment.json"
+    ],
+    "old_valid_failures": [
+      "t1-60",
+      "t1-budget8-300-r1"
+    ],
+    "setup_failure": "rust-tests.log: standalone extension linkage; use cargo test -p star-core -p star-rotk --locked"
+  },
+  "defaults": {
+    "backend": "python",
+    "threads": 1
+  },
+  "gaps_open": [
+    "G008",
+    "G009",
+    "R001",
+    "R002"
+  ],
+  "main_unchanged": "6a970deaee7d9b8d3939edd102973f2377edd6ac"
+}

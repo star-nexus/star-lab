@@ -1,0 +1,788 @@
+[
+  {
+    "name": "lab-tests",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts/.venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tools/test_p3_local_agents.py",
+      "tools/test_p3_analyze.py"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "returncode": 0,
+    "env_overrides": {
+      "HEADLESS": "0",
+      "SDL_VIDEODRIVER": "cocoa",
+      "PYTHONPATH": "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts:/Users/liyang/Developer/star-lab/tools"
+    }
+  },
+  {
+    "name": "t1-60",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/p3_runtime.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts",
+      "--backend",
+      "rust",
+      "--native-threads",
+      "1",
+      "--fps",
+      "30",
+      "--clock-mode",
+      "fixed",
+      "--cycle-mode",
+      "post-action",
+      "--jitter-seconds",
+      "5",
+      "--units",
+      "5000",
+      "--agents",
+      "1000",
+      "--delay",
+      "30",
+      "--scope",
+      "selected",
+      "--layout",
+      "canonical",
+      "--policy",
+      "stochastic",
+      "--seconds",
+      "60",
+      "--warmup",
+      "30",
+      "--budget-ms",
+      "18",
+      "--gc-policy",
+      "realtime_defer",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/t1-60.json"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "returncode": 0,
+    "env_overrides": {
+      "HEADLESS": "0",
+      "SDL_VIDEODRIVER": "cocoa",
+      "PYTHONPATH": "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts:/Users/liyang/Developer/star-lab/tools"
+    }
+  },
+  {
+    "name": "t1-budget6-60",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/p3_runtime.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts",
+      "--backend",
+      "rust",
+      "--native-threads",
+      "1",
+      "--fps",
+      "30",
+      "--clock-mode",
+      "fixed",
+      "--cycle-mode",
+      "post-action",
+      "--jitter-seconds",
+      "5",
+      "--units",
+      "5000",
+      "--agents",
+      "1000",
+      "--delay",
+      "30",
+      "--scope",
+      "selected",
+      "--layout",
+      "canonical",
+      "--policy",
+      "stochastic",
+      "--seconds",
+      "60",
+      "--warmup",
+      "30",
+      "--budget-ms",
+      "6",
+      "--gc-policy",
+      "realtime_defer",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/t1-budget6-60.json"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "returncode": 0,
+    "env_overrides": {
+      "HEADLESS": "0",
+      "SDL_VIDEODRIVER": "cocoa",
+      "PYTHONPATH": "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts:/Users/liyang/Developer/star-lab/tools"
+    }
+  },
+  {
+    "name": "t1-budget8-60",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/p3_runtime.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts",
+      "--backend",
+      "rust",
+      "--native-threads",
+      "1",
+      "--fps",
+      "30",
+      "--clock-mode",
+      "fixed",
+      "--cycle-mode",
+      "post-action",
+      "--jitter-seconds",
+      "5",
+      "--units",
+      "5000",
+      "--agents",
+      "1000",
+      "--delay",
+      "30",
+      "--scope",
+      "selected",
+      "--layout",
+      "canonical",
+      "--policy",
+      "stochastic",
+      "--seconds",
+      "60",
+      "--warmup",
+      "30",
+      "--budget-ms",
+      "8",
+      "--gc-policy",
+      "realtime_defer",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/t1-budget8-60.json"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "returncode": 0,
+    "env_overrides": {
+      "HEADLESS": "0",
+      "SDL_VIDEODRIVER": "cocoa",
+      "PYTHONPATH": "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts:/Users/liyang/Developer/star-lab/tools"
+    }
+  },
+  {
+    "name": "lab-trace-tests",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts/.venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tools/test_p3_local_agents.py",
+      "tools/test_p3_analyze.py",
+      "tools/rust_migration/test_native_loop_trace.py"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "returncode": 0,
+    "env_overrides": {
+      "HEADLESS": "0",
+      "SDL_VIDEODRIVER": "cocoa",
+      "PYTHONPATH": "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts:/Users/liyang/Developer/star-lab/tools:/Users/liyang/Developer/star-lab/tools/rust_migration",
+      "PYTHONUNBUFFERED": "1"
+    }
+  },
+  {
+    "name": "t1-budget8-300-r1",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/p3_runtime.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts",
+      "--backend",
+      "rust",
+      "--native-threads",
+      "1",
+      "--record-native-inputs",
+      "--fps",
+      "30",
+      "--clock-mode",
+      "fixed",
+      "--cycle-mode",
+      "post-action",
+      "--jitter-seconds",
+      "5",
+      "--units",
+      "5000",
+      "--agents",
+      "1000",
+      "--delay",
+      "30",
+      "--scope",
+      "selected",
+      "--layout",
+      "canonical",
+      "--policy",
+      "stochastic",
+      "--seconds",
+      "300",
+      "--warmup",
+      "30",
+      "--budget-ms",
+      "8",
+      "--gc-policy",
+      "realtime_defer",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/t1-budget8-300-r1.json"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "returncode": 0,
+    "env_overrides": {
+      "HEADLESS": "0",
+      "SDL_VIDEODRIVER": "cocoa",
+      "PYTHONPATH": "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts:/Users/liyang/Developer/star-lab/tools:/Users/liyang/Developer/star-lab/tools/rust_migration",
+      "PYTHONUNBUFFERED": "1"
+    }
+  },
+  {
+    "name": "long-replay-t4",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/replay_rendered_loop.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts",
+      "--trace",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/t1-budget8-300-r1.trace.json.gz",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/long-replay-t4.json",
+      "--threads",
+      "4"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "returncode": 0,
+    "env_overrides": {
+      "HEADLESS": "0",
+      "SDL_VIDEODRIVER": "cocoa",
+      "PYTHONPATH": "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts:/Users/liyang/Developer/star-lab/tools:/Users/liyang/Developer/star-lab/tools/rust_migration",
+      "PYTHONUNBUFFERED": "1"
+    }
+  },
+  {
+    "name": "delta-before",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/delta_trace_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts",
+      "--trace",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/t1-budget8-300-r1.trace.json.gz",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/delta-before"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "returncode": 0
+  },
+  {
+    "name": "after-sync",
+    "argv": [
+      "uv",
+      "sync",
+      "--locked",
+      "--python",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-public-facts/.venv/bin/python"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+    "returncode": 0,
+    "env_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/Users/liyang/Developer/star-main/.venv/bin:/opt/homebrew/opt/curl/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg0OAN9SM:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy"
+    }
+  },
+  {
+    "name": "after-build",
+    "argv": [
+      "uvx",
+      "--from",
+      "maturin==1.15.0",
+      "maturin",
+      "build",
+      "--release",
+      "--locked",
+      "--manifest-path",
+      "native/python/Cargo.toml",
+      "--interpreter",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding/.venv/bin/python",
+      "--out",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/artifacts/after"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+    "returncode": 0,
+    "env_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/Users/liyang/Developer/star-main/.venv/bin:/opt/homebrew/opt/curl/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg0OAN9SM:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy"
+    }
+  },
+  {
+    "name": "after-install",
+    "argv": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/artifacts/after/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+    "returncode": 0,
+    "env_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/Users/liyang/Developer/star-main/.venv/bin:/opt/homebrew/opt/curl/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg0OAN9SM:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy"
+    }
+  },
+  {
+    "name": "after-targeted",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding/.venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "rotk_env/tests/test_native_combat_presentation.py",
+      "rotk_env/tests/test_native_presentation_delta.py",
+      "rotk_env/tests/test_native_hud.py",
+      "rotk_env/tests/test_native_world_presentation.py",
+      "rotk_env/tests/test_native_game_scene.py",
+      "rotk_env/tests/test_native_session.py"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+    "returncode": 0,
+    "env_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/Users/liyang/Developer/star-main/.venv/bin:/opt/homebrew/opt/curl/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg0OAN9SM:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy"
+    }
+  },
+  {
+    "name": "after-full",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding/.venv/bin/python",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+    "returncode": 0,
+    "env_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/Users/liyang/Developer/star-main/.venv/bin:/opt/homebrew/opt/curl/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg0OAN9SM:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy"
+    }
+  },
+  {
+    "name": "rust-tests",
+    "argv": [
+      "cargo",
+      "test",
+      "--workspace",
+      "--locked"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+    "returncode": 101,
+    "env_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/Users/liyang/Developer/star-main/.venv/bin:/opt/homebrew/opt/curl/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg0OAN9SM:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy"
+    }
+  },
+  {
+    "name": "rust-core-tests",
+    "argv": [
+      "cargo",
+      "test",
+      "-p",
+      "star-core",
+      "-p",
+      "star-rotk",
+      "--locked"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+    "returncode": 0,
+    "env_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/Users/liyang/Developer/star-main/.venv/bin:/opt/homebrew/opt/curl/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg0OAN9SM:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy"
+    }
+  },
+  {
+    "name": "rust-fmt",
+    "argv": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--",
+      "--check"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+    "returncode": 0,
+    "env_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/Users/liyang/Developer/star-main/.venv/bin:/opt/homebrew/opt/curl/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg0OAN9SM:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy"
+    }
+  },
+  {
+    "name": "rust-clippy",
+    "argv": [
+      "cargo",
+      "clippy",
+      "--workspace",
+      "--all-targets",
+      "--locked",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+    "returncode": 0,
+    "env_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/Users/liyang/Developer/star-main/.venv/bin:/opt/homebrew/opt/curl/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg0OAN9SM:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy"
+    }
+  },
+  {
+    "name": "delta-after",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/delta_trace_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+      "--trace",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/t1-budget8-300-r1.trace.json.gz",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/delta-after"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "returncode": 0,
+    "env_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/Users/liyang/Developer/star-main/.venv/bin:/opt/homebrew/opt/curl/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg0OAN9SM:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy"
+    }
+  },
+  {
+    "name": "lab-after-tests",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding/.venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "/Users/liyang/Developer/star-lab/tools/test_p3_local_agents.py",
+      "/Users/liyang/Developer/star-lab/tools/test_p3_analyze.py",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/test_native_loop_trace.py"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+    "returncode": 0,
+    "env_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/Users/liyang/Developer/star-main/.venv/bin:/opt/homebrew/opt/curl/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg0OAN9SM:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy"
+    }
+  },
+  {
+    "name": "old-scene-replay",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/r3_scene_host_probe.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/old-scene-replay",
+      "--replay",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-r3-host-authority/results/window/trace.json.xz"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+    "returncode": 0,
+    "env_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/Users/liyang/Developer/star-main/.venv/bin:/opt/homebrew/opt/curl/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg0OAN9SM:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy"
+    }
+  },
+  {
+    "name": "t1-after-budget8-60-r0",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/p3_runtime.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+      "--backend",
+      "rust",
+      "--native-threads",
+      "1",
+      "--record-native-inputs",
+      "--fps",
+      "30",
+      "--clock-mode",
+      "fixed",
+      "--cycle-mode",
+      "post-action",
+      "--jitter-seconds",
+      "5",
+      "--units",
+      "5000",
+      "--agents",
+      "1000",
+      "--delay",
+      "30",
+      "--scope",
+      "selected",
+      "--layout",
+      "canonical",
+      "--policy",
+      "stochastic",
+      "--seconds",
+      "60",
+      "--warmup",
+      "30",
+      "--budget-ms",
+      "8",
+      "--gc-policy",
+      "realtime_defer",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/t1-after-budget8-60-r0.json"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "returncode": 0,
+    "env_overrides": {
+      "HEADLESS": "0",
+      "SDL_VIDEODRIVER": "cocoa",
+      "PYTHONPATH": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding:/Users/liyang/Developer/star-lab/tools:/Users/liyang/Developer/star-lab/tools/rust_migration",
+      "PYTHONUNBUFFERED": "1"
+    }
+  },
+  {
+    "name": "t1-after-budget8-300-r1",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/p3_runtime.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+      "--backend",
+      "rust",
+      "--native-threads",
+      "1",
+      "--record-native-inputs",
+      "--fps",
+      "30",
+      "--clock-mode",
+      "fixed",
+      "--cycle-mode",
+      "post-action",
+      "--jitter-seconds",
+      "5",
+      "--units",
+      "5000",
+      "--agents",
+      "1000",
+      "--delay",
+      "30",
+      "--scope",
+      "selected",
+      "--layout",
+      "canonical",
+      "--policy",
+      "stochastic",
+      "--seconds",
+      "300",
+      "--warmup",
+      "30",
+      "--budget-ms",
+      "8",
+      "--gc-policy",
+      "realtime_defer",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/t1-after-budget8-300-r1.json"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "returncode": 0,
+    "env_overrides": {
+      "HEADLESS": "0",
+      "SDL_VIDEODRIVER": "cocoa",
+      "PYTHONPATH": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding:/Users/liyang/Developer/star-lab/tools:/Users/liyang/Developer/star-lab/tools/rust_migration",
+      "PYTHONUNBUFFERED": "1"
+    }
+  },
+  {
+    "name": "t1-after-budget8-300-r2",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/p3_runtime.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+      "--backend",
+      "rust",
+      "--native-threads",
+      "1",
+      "--record-native-inputs",
+      "--fps",
+      "30",
+      "--clock-mode",
+      "fixed",
+      "--cycle-mode",
+      "post-action",
+      "--jitter-seconds",
+      "5",
+      "--units",
+      "5000",
+      "--agents",
+      "1000",
+      "--delay",
+      "30",
+      "--scope",
+      "selected",
+      "--layout",
+      "canonical",
+      "--policy",
+      "stochastic",
+      "--seconds",
+      "300",
+      "--warmup",
+      "30",
+      "--budget-ms",
+      "8",
+      "--gc-policy",
+      "realtime_defer",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/t1-after-budget8-300-r2.json"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "returncode": 0,
+    "env_overrides": {
+      "HEADLESS": "0",
+      "SDL_VIDEODRIVER": "cocoa",
+      "PYTHONPATH": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding:/Users/liyang/Developer/star-lab/tools:/Users/liyang/Developer/star-lab/tools/rust_migration",
+      "PYTHONUNBUFFERED": "1"
+    }
+  },
+  {
+    "name": "t1-after-budget8-300-r3",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/p3_runtime.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+      "--backend",
+      "rust",
+      "--native-threads",
+      "1",
+      "--record-native-inputs",
+      "--fps",
+      "30",
+      "--clock-mode",
+      "fixed",
+      "--cycle-mode",
+      "post-action",
+      "--jitter-seconds",
+      "5",
+      "--units",
+      "5000",
+      "--agents",
+      "1000",
+      "--delay",
+      "30",
+      "--scope",
+      "selected",
+      "--layout",
+      "canonical",
+      "--policy",
+      "stochastic",
+      "--seconds",
+      "300",
+      "--warmup",
+      "30",
+      "--budget-ms",
+      "8",
+      "--gc-policy",
+      "realtime_defer",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/t1-after-budget8-300-r3.json"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "returncode": 0,
+    "env_overrides": {
+      "HEADLESS": "0",
+      "SDL_VIDEODRIVER": "cocoa",
+      "PYTHONPATH": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding:/Users/liyang/Developer/star-lab/tools:/Users/liyang/Developer/star-lab/tools/rust_migration",
+      "PYTHONUNBUFFERED": "1"
+    }
+  },
+  {
+    "name": "after-replay-t4",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/replay_rendered_loop.py",
+      "--source",
+      "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+      "--trace",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/t1-after-budget8-300-r3.trace.json.gz",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/results/after-replay-t4.json",
+      "--threads",
+      "4"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "returncode": 0,
+    "env_overrides": {
+      "HEADLESS": "0",
+      "SDL_VIDEODRIVER": "cocoa",
+      "PYTHONPATH": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding:/Users/liyang/Developer/star-lab/tools:/Users/liyang/Developer/star-lab/tools/rust_migration",
+      "PYTHONUNBUFFERED": "1"
+    }
+  },
+  {
+    "name": "production-install",
+    "argv": [
+      "uv",
+      "pip",
+      "install",
+      "--reinstall",
+      "--python",
+      "/Users/liyang/Developer/star-main/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-rendered-loop/artifacts/after/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+    "returncode": 0,
+    "env_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg0OAN9SM:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy"
+    }
+  },
+  {
+    "name": "production-import",
+    "argv": [
+      "/Users/liyang/Developer/star-main/.venv/bin/python",
+      "-c",
+      "import hashlib; from pathlib import Path; import star_native; from star_native import _native; print(star_native.API_VERSION, hashlib.sha256(Path(_native.__file__).read_bytes()).hexdigest())"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/star-rust-presentation-encoding",
+    "returncode": 0,
+    "env_overrides": {
+      "PATH": "/Users/liyang/.cargo/bin:/Users/liyang/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin://Applications/Topaz Gigapixel.app/Contents/Resources/bin:/Library/TeX/texbin:/Users/liyang/.codex/tmp/arg0/codex-arg0OAN9SM:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/homebrew/opt/curl/bin:/Users/liyang/miniconda3/bin:/Users/liyang/miniconda3/condabin:/Users/liyang/.local/bin:/Applications/\u6781\u7a7a\u95f4.app/Contents/Resources/app.asar.unpacked/bin/platform-tools:/Users/liyang/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources",
+      "CARGO_TARGET_DIR": "/Users/liyang/Developer/star-main/target",
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy"
+    }
+  }
+]

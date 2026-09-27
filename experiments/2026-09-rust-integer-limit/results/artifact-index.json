@@ -1,0 +1,99 @@
+{
+  "raw_package": {
+    "path": "artifacts/r3d5-integer-limit-raw.zip",
+    "bytes": 1470812,
+    "sha256": "f1ad825163ad1af71bed8e7b3577b62a86f8d97ccd2526380b14086042131150"
+  },
+  "members": [
+    {
+      "path": "artifacts/after/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+      "bytes": 1447352,
+      "sha256": "5faf2cd02753d2aec9ee431a5003daefeb12f803248d981694f8d4d888605967"
+    },
+    {
+      "path": "results/after/raw.json.xz",
+      "bytes": 8704,
+      "sha256": "9808a8f679e7f30e59000ab00f8af1625fd8258adf0474e6070132f178be0bcf"
+    },
+    {
+      "path": "results/after.log",
+      "bytes": 216697,
+      "sha256": "272419b1dbc5af66f7b45d2048f6f35e6c4d824e1ddef0c89372b7b4b52f0f27"
+    },
+    {
+      "path": "results/before/raw.json.xz",
+      "bytes": 8652,
+      "sha256": "4a4ee17659db9339ef6e65b82a6ad255cd86e9e048695a55e559407b4647c938"
+    },
+    {
+      "path": "results/before.log",
+      "bytes": 216702,
+      "sha256": "81dc1391c00706eba0e0b343e719b97725f998556ec494dfd8d65c429c5e7eed"
+    },
+    {
+      "path": "results/build.log",
+      "bytes": 924,
+      "sha256": "44d7e4daa656645d3355b3826a6925061b851775ee5479ebf430674d8c3b2f39"
+    },
+    {
+      "path": "results/clippy.log",
+      "bytes": 394,
+      "sha256": "53db42dae8e92c434e3d7f9f4ec75e85f3f1c5714b61d4771a7204f072132c53"
+    },
+    {
+      "path": "results/fmt.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/full.log",
+      "bytes": 2502,
+      "sha256": "4064b81aa286d956e8d351ecf2e6d1057d47fe9dd1b30f52adb0e553a4401220"
+    },
+    {
+      "path": "results/install.log",
+      "bytes": 261,
+      "sha256": "d061dcbfc45a4416b83ecb1605ca3f198fb9a3021eebc779915c7fda50bcd0a3"
+    },
+    {
+      "path": "results/lab-tests.log",
+      "bytes": 99,
+      "sha256": "8b058f6253219b25661b1196be4763babab3a3532c8375f3859a7e15eaf04012"
+    },
+    {
+      "path": "results/old-scenes/replay.json",
+      "bytes": 199,
+      "sha256": "d1447ef939ee8314f7c696b6967ea6dd482e8739387e169bd38f3513dde22010"
+    },
+    {
+      "path": "results/old-scenes.log",
+      "bytes": 301,
+      "sha256": "3c40170ddb21a3e22bac31bf5d8652965c40eead5376cf0bdf761f12e93825e3"
+    },
+    {
+      "path": "results/production-import.log",
+      "bytes": 68,
+      "sha256": "ce9ff9c262d5034a4e7ce9f2907c647c8d4df67204bfa6050fe7a8444e1af4be"
+    },
+    {
+      "path": "results/production-install.log",
+      "bytes": 538,
+      "sha256": "44009211294e3da36126231f5c0a7388138424506f645ac7f73637f18ab2eab0"
+    },
+    {
+      "path": "results/rust.log",
+      "bytes": 1344,
+      "sha256": "edfb915bfb642c8b3bc68eb2d0d828c304f80798dbe56f17f6e516dfabcf0159"
+    },
+    {
+      "path": "results/sync.log",
+      "bytes": 1072,
+      "sha256": "03947bed93f899bb102abbd2df684febe8c4d1d15f6b402193995c6787b8712d"
+    },
+    {
+      "path": "results/targeted.log",
+      "bytes": 260,
+      "sha256": "b3414f42a0340232e32745d305bebeff1e7bd63f415edcdc5cee75e10cf0d12c"
+    }
+  ]
+}

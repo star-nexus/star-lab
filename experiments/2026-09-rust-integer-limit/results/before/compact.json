@@ -1,0 +1,158 @@
+{
+  "source_sha": "e85e3067b1d2aed5cf08be9dbe35b1deed91dba1",
+  "source_dirty": "",
+  "tool_sha": "41cc5ccc83fecbb21bc3ea5d0bbec2678175011e",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "int_max_str_digits": 4300,
+  "api": 17,
+  "extension_sha256": "8c74d05d89f1037c0157ad25e32ed4c6852bad7d316694cb056faa8c72f2d2e2",
+  "cases": [
+    {
+      "name": "ascii-4299",
+      "response_equal": true,
+      "state_equal": true,
+      "python_counter": 3,
+      "rust_counter": 3
+    },
+    {
+      "name": "unicode-4299",
+      "response_equal": true,
+      "state_equal": true,
+      "python_counter": 3,
+      "rust_counter": 3
+    },
+    {
+      "name": "separators-4299",
+      "response_equal": true,
+      "state_equal": true,
+      "python_counter": 3,
+      "rust_counter": 3
+    },
+    {
+      "name": "signed-4299",
+      "response_equal": true,
+      "state_equal": true,
+      "python_counter": 1,
+      "rust_counter": 1
+    },
+    {
+      "name": "ascii-4300",
+      "response_equal": true,
+      "state_equal": true,
+      "python_counter": 3,
+      "rust_counter": 3
+    },
+    {
+      "name": "unicode-4300",
+      "response_equal": true,
+      "state_equal": true,
+      "python_counter": 3,
+      "rust_counter": 3
+    },
+    {
+      "name": "separators-4300",
+      "response_equal": true,
+      "state_equal": true,
+      "python_counter": 3,
+      "rust_counter": 3
+    },
+    {
+      "name": "signed-4300",
+      "response_equal": true,
+      "state_equal": true,
+      "python_counter": 1,
+      "rust_counter": 1
+    },
+    {
+      "name": "ascii-4301",
+      "response_equal": true,
+      "state_equal": false,
+      "python_counter": 2,
+      "rust_counter": 3
+    },
+    {
+      "name": "unicode-4301",
+      "response_equal": true,
+      "state_equal": false,
+      "python_counter": 2,
+      "rust_counter": 3
+    },
+    {
+      "name": "separators-4301",
+      "response_equal": true,
+      "state_equal": false,
+      "python_counter": 2,
+      "rust_counter": 3
+    },
+    {
+      "name": "signed-4301",
+      "response_equal": true,
+      "state_equal": false,
+      "python_counter": 2,
+      "rust_counter": 1
+    },
+    {
+      "name": "empty",
+      "response_equal": true,
+      "state_equal": true,
+      "python_counter": 2,
+      "rust_counter": 2
+    },
+    {
+      "name": "malformed",
+      "response_equal": true,
+      "state_equal": true,
+      "python_counter": 2,
+      "rust_counter": 2
+    },
+    {
+      "name": "float",
+      "response_equal": true,
+      "state_equal": true,
+      "python_counter": 2,
+      "rust_counter": 2
+    },
+    {
+      "name": "bool",
+      "response_equal": true,
+      "state_equal": true,
+      "python_counter": 3,
+      "rust_counter": 3
+    },
+    {
+      "name": "number",
+      "response_equal": true,
+      "state_equal": true,
+      "python_counter": 4,
+      "rust_counter": 4
+    },
+    {
+      "name": "list",
+      "response_equal": true,
+      "state_equal": true,
+      "python_counter": 2,
+      "rust_counter": 2
+    },
+    {
+      "name": "zeros-over",
+      "response_equal": true,
+      "state_equal": true,
+      "python_counter": 2,
+      "rust_counter": 2
+    },
+    {
+      "name": "long-float-score",
+      "response_equal": true,
+      "state_equal": true,
+      "python_counter": 2,
+      "rust_counter": 2
+    }
+  ],
+  "all_equal": false,
+  "raw": {
+    "path": "raw.json.xz",
+    "sha256": "4a4ee17659db9339ef6e65b82a6ad255cd86e9e048695a55e559407b4647c938",
+    "bytes": 8652
+  },
+  "capacity_claim": false
+}

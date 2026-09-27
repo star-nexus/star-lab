@@ -1,0 +1,154 @@
+{
+  "cases": [
+    {
+      "name": "ascii-4299",
+      "before_response_equal": true,
+      "before_state_equal": true,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "unicode-4299",
+      "before_response_equal": true,
+      "before_state_equal": true,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "separators-4299",
+      "before_response_equal": true,
+      "before_state_equal": true,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "signed-4299",
+      "before_response_equal": true,
+      "before_state_equal": true,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "ascii-4300",
+      "before_response_equal": true,
+      "before_state_equal": true,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "unicode-4300",
+      "before_response_equal": true,
+      "before_state_equal": true,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "separators-4300",
+      "before_response_equal": true,
+      "before_state_equal": true,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "signed-4300",
+      "before_response_equal": true,
+      "before_state_equal": true,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "ascii-4301",
+      "before_response_equal": true,
+      "before_state_equal": false,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "unicode-4301",
+      "before_response_equal": true,
+      "before_state_equal": false,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "separators-4301",
+      "before_response_equal": true,
+      "before_state_equal": false,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "signed-4301",
+      "before_response_equal": true,
+      "before_state_equal": false,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "empty",
+      "before_response_equal": true,
+      "before_state_equal": true,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "malformed",
+      "before_response_equal": true,
+      "before_state_equal": true,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "float",
+      "before_response_equal": true,
+      "before_state_equal": true,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "bool",
+      "before_response_equal": true,
+      "before_state_equal": true,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "number",
+      "before_response_equal": true,
+      "before_state_equal": true,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "list",
+      "before_response_equal": true,
+      "before_state_equal": true,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "zeros-over",
+      "before_response_equal": true,
+      "before_state_equal": true,
+      "after_response_equal": true,
+      "after_state_equal": true
+    },
+    {
+      "name": "long-float-score",
+      "before_response_equal": true,
+      "before_state_equal": true,
+      "after_response_equal": true,
+      "after_state_equal": true
+    }
+  ],
+  "initial_and_python_across_versions_equal_except_creation_wall_times": true,
+  "cross_run_normalized_fields": [
+    "singletons.GameTime.last_update_time",
+    "singletons.GameTime.game_start_time",
+    "singletons.GameTime.turn_start_time"
+  ],
+  "within_run_full_state_comparison_excludes_nothing": true,
+  "all_after_equal": true,
+  "tool_sha": "b1aebc8f3472dd25f9e1ae7160a36d04f457ea2c",
+  "capacity_claim": false
+}

@@ -1,0 +1,113 @@
+{
+  "experiment": {
+    "id": "2026-09-rust-integer-limit",
+    "date": "2026-09-27",
+    "status": "validated G014 fix; not migration completion"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "e85e3067b1d2aed5cf08be9dbe35b1deed91dba1",
+    "fix_commit": "07bdb2e89c69959c2b8cb8e61329536c032f187e",
+    "measurement_commit": "07bdb2e89c69959c2b8cb8e61329536c032f187e",
+    "validated_commit": "257ebf11372fe82ed368bdbba2c3760a6450d110",
+    "validated_tag": "rust-kernel-r3d5-2026-09-27",
+    "final_diff": "docs only",
+    "branch_at_time": "codex/rust-env-migration",
+    "before_tool": "41cc5ccc83fecbb21bc3ea5d0bbec2678175011e",
+    "after_tool": "cb748373dc23d3a29be98355abf767203f08f78e",
+    "comparison_tool": "b1aebc8f3472dd25f9e1ae7160a36d04f457ea2c"
+  },
+  "hardware": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "cpu": "Apple M4",
+    "memory_bytes": 17179869184,
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+    "rust": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "cargo_lock_sha256": "e86cb2bee26f1d95c1cde0abec61bdea575a73ae7218db60b7f06be735f15188",
+    "uv_lock_sha256": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+    "baseline_integer_limit": 4300,
+    "wall_time": 1720000000.0,
+    "registration_time": "2026-09-12T12:00:00",
+    "SDL_VIDEODRIVER": "dummy",
+    "HEADLESS": "1",
+    "capacity_measurement": false
+  },
+  "software": {
+    "before_api": 17,
+    "after_api": 18,
+    "schema": 5,
+    "oracle": "python-r0c-3cc4ffe",
+    "before_extension_sha256": "8c74d05d89f1037c0157ad25e32ed4c6852bad7d316694cb056faa8c72f2d2e2",
+    "after_extension_sha256": "324454a00ab8bd3559c9229e6c6c9644242d65c488585eba7d29a63b39d29405"
+  },
+  "scenario": {
+    "name": "test_native_vision.make_vision_world none; registered synthetic Agent; paired Python/Rust",
+    "display": "none/dummy SDL; no window performance run"
+  },
+  "workload": {
+    "boundary_lengths": [
+      4299,
+      4300,
+      4301
+    ],
+    "styles": [
+      "ascii",
+      "unicode",
+      "separators",
+      "signed"
+    ],
+    "public_probe_cases": 20,
+    "requests_per_case": 3,
+    "contract_custom_limits": [
+      640,
+      5000,
+      0
+    ],
+    "seed": "fixture-defined"
+  },
+  "measurement": {
+    "type": "semantic differential, no performance claim",
+    "within_pair_excluded_fields": [],
+    "cross_run_auxiliary_normalization": [
+      "singletons.GameTime.last_update_time",
+      "singletons.GameTime.game_start_time",
+      "singletons.GameTime.turn_start_time"
+    ]
+  },
+  "validation": {
+    "before_response_mismatches": 0,
+    "before_state_mismatches": 4,
+    "after_mismatches": 0,
+    "new_tests": 24,
+    "full_pytest": 2195,
+    "targeted": 177,
+    "rust_tests": 4,
+    "fmt": true,
+    "clippy": true,
+    "lab_tests": 15,
+    "old_replay_scenes": 6,
+    "old_replay_nodes": 510
+  },
+  "artifacts": {
+    "raw": {
+      "path": "artifacts/r3d5-integer-limit-raw.zip",
+      "bytes": 1470812,
+      "sha256": "f1ad825163ad1af71bed8e7b3577b62a86f8d97ccd2526380b14086042131150"
+    },
+    "compact": "artifacts/r3d5-integer-limit-compact.zip",
+    "packages_index": "results/packages.json",
+    "member_index": "results/artifact-index.json",
+    "checksum": "artifacts/SHA256SUMS",
+    "canonical_old_replay": {
+      "path": "experiments/2026-09-rust-r3-host-authority/results/window/trace.json.xz",
+      "sha256": "f3543008f4c9409457a822fc2e90f4db757dd9ebe24437dd8cd991db9d0a0d0c"
+    }
+  },
+  "defaults": {
+    "backend": "python",
+    "threads": 1
+  },
+  "main_unchanged": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+  "capacity_claim": false,
+  "gap": "G014 CLOSED; R001/R002/G008/G009 remain open"
+}

@@ -1,0 +1,19 @@
+# Unpacked working copies; canonical raw package is committed.
+/artifacts/after/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl
+/results/after/raw.json.xz
+/results/after.log
+/results/before/raw.json.xz
+/results/before.log
+/results/build.log
+/results/clippy.log
+/results/fmt.log
+/results/full.log
+/results/install.log
+/results/lab-tests.log
+/results/old-scenes/replay.json
+/results/old-scenes.log
+/results/production-import.log
+/results/production-install.log
+/results/rust.log
+/results/sync.log
+/results/targeted.log

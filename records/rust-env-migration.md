@@ -1,5 +1,21 @@
 # Rust 内核＋Python 接口迁移
 
+## 最新检查点：R3d5，R4c后的数值兼容性补审（2026-09-27）
+
+最终 **`257ebf11372fe82ed368bdbba2c3760a6450d110`** / annotated **`rust-kernel-r3d5-2026-09-27`**；实现/构建/测试 **`07bdb2e89c69959c2b8cb8e61329536c032f187e`**，最终仅文档。[阶段报告与复现](../experiments/2026-09-rust-integer-limit/README.md)。
+
+进度：`R0 █ | R1 █ | R2/R3 ▒ 兼容性补审 | R4 ▒ 首关已过 | R5 ░`（阶段覆盖，不是工时百分比）。**发现并修复G014**：默认4300位限制下，超长十进制字符串首次上报保留，第二次累计旧Rust为3/Python为2（负号版本1/2），动作响应仍一致。20组公开入口前后审计，旧版4组完整状态不同，新版20组全部响应/权威状态一致。只在跨运行辅助检查中归零GameTime三个创建墙钟，配对完整状态比较不排除任何字段；raw保留全部原值。
+
+Python仅在统计请求接纳时携带当前解释器限制，Rust执行转换；可信元数据不受Agent parameters覆盖。默认4300、640/5000及0关闭限制、修改设置、批次/reset、全部11个累计字段都有契约；不改Python原规则，不把统计转换移回Python。录制器记录请求的限制，4线程CLI重放恢复相同设置。
+
+新增24契约，2195完整Python回归、177针对性、4Rust/fmt/Clippy、15Lab、旧6场景510节点通过。[GAP台账](../../star-main/docs/native-benchmark-gaps.md)永久保留G014历史反例并标记本范围CLOSED；R001其余输入边界、R002动态展示、G008/G009应用接入仍开放。
+
+**API18/schema5**，oracle不变，扩展SHA **`324454a00ab8bd3559c9229e6c6c9644242d65c488585eba7d29a63b39d29405`**。生产venv及完整测量目录 **`runs/star-rust-integer-limit`** 已安装；该目录保持构建SHA便于重放，旧R4c/API17目录/wheel保留。main仍6a970dea、未merge/push、49原删除保留，默认Python/1线程不变。原始状态、日志、wheel和compact双包均有checksum；manifest含全部源码/tool身份。
+
+**本轮没有重测容量**。R4c三轮5000Units/1000Agents、30Hz通过结果仍严格绑定原tag/API17，不改写成API18测量。下一步继续R001其他转换/错误边界、R002权威写入及实际消费者审计；按既定计划补高接触密度/24Hz/10000Units/独立5000Agents诊断与平台安装矩阵。Python网络、BOT策略、UI保留原边界。
+
+以下保留历史；当前状态以上文为准。
+
 ## 最新检查点：R4c，Rust展示编码与真实窗口容量首关（2026-09-25）
 
 最终 **`b05c1465e551072bced220ae12c2474ec7e81e85`** / annotated **`rust-kernel-r4c-2026-09-25`**；构建/测量 **`e85e3067b1d2aed5cf08be9dbe35b1deed91dba1`**，最终仅文档。[阶段报告与复现](../experiments/2026-09-rust-rendered-loop/README.md)。

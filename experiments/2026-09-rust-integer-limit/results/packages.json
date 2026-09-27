@@ -1,0 +1,12 @@
+[
+  {
+    "path": "artifacts/r3d5-integer-limit-raw.zip",
+    "bytes": 1470812,
+    "sha256": "f1ad825163ad1af71bed8e7b3577b62a86f8d97ccd2526380b14086042131150"
+  },
+  {
+    "path": "artifacts/r3d5-integer-limit-compact.zip",
+    "bytes": 13199,
+    "sha256": "978dce724074509c030fc9601943a272b3fd5fb59d08cfe31945e08565283b90"
+  }
+]

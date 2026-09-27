@@ -23,6 +23,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--source', required=True)
     p.add_argument('--backend', choices=['python','rust'], default='python')
+    p.add_argument('--legacy-python-cli', action='store_true', help='Use the original production Python CLI before backend selection existed')
     p.add_argument('--record-native-inputs', action='store_true')
     p.add_argument('--native-wire', action='store_true', help='Forward the native faction JSON; retain full client decoding')
     p.add_argument('--native-threads', type=int, choices=[1,2,4], default=1)
@@ -57,6 +58,8 @@ def main():
         p.error('Native input recorder requires Rust and the encoded client boundary')
     if args.native_wire and (args.backend != 'rust' or args.no_encode):
         p.error('Native wire requires Rust and full client decoding')
+    if args.legacy_python_cli and args.backend != 'python':
+        p.error('Legacy CLI is only valid for the original Python backend')
     args.source = str(Path(args.source).resolve())
     out = Path(args.output).resolve()
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -244,7 +247,9 @@ def main():
     profiler.end_frame = frame_end
     sys.argv = [str(Path(args.source)/'rotk_env/main.py'), '--skip-start',
         '--mode','real_time','--players','human_vs_two_ai','--scenario',scenario,
-        '--seed','42','--no-hub','--backend',args.backend,'--native-threads',str(args.native_threads)]
+        '--seed','42','--no-hub']
+    if not args.legacy_python_cli:
+        sys.argv += ['--backend',args.backend,'--native-threads',str(args.native_threads)]
     if args.backend == 'python':
         sys.argv += ['--scale-harness-socket',f'/tmp/star-p3-{os.getpid()}.sock']
     if args.clock_mode == 'wall':

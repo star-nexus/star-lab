@@ -1,0 +1,100 @@
+{
+  "mode": "direct",
+  "threads": 1,
+  "source_sha": "07bdb2e89c69959c2b8cb8e61329536c032f187e",
+  "extension": {
+    "api": 18,
+    "sha256": "324454a00ab8bd3559c9229e6c6c9644242d65c488585eba7d29a63b39d29405"
+  },
+  "trace_sha256": "8016b65ec5ee43f826c5c114892eaf0e2080b9baee3bda0366d28661031d3472",
+  "all_responses_events_and_final_state_match": true,
+  "final_state_sha256": "7de62b3ae62011417f395c69d2ff435f8396a6fb5bf1b87479090e8421bd6465",
+  "counts": {
+    "request": 19929,
+    "step": 2679,
+    "presentation": 2679
+  },
+  "observations": 7980,
+  "admitted_observations": 5286,
+  "warmup_ticks": 900,
+  "wire_differences": 0,
+  "metrics": {
+    "envelope_ms": {
+      "count": 5286,
+      "min": 0.002458,
+      "avg": 0.0034180461596670453,
+      "p50": 0.003209,
+      "p95": 0.004459,
+      "p99": 0.006583,
+      "max": 0.03625
+    },
+    "native_ms": {
+      "count": 5286,
+      "min": 0.875584,
+      "avg": 1.0329406761256148,
+      "p50": 1.017833,
+      "p95": 1.135709,
+      "p99": 1.245375,
+      "max": 5.925875
+    },
+    "server_decode_ms": {
+      "count": 5286,
+      "min": 0.0,
+      "avg": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "max": 0.0
+    },
+    "server_encode_ms": {
+      "count": 5286,
+      "min": 0.002208,
+      "avg": 0.0030806551267499056,
+      "p50": 0.002709,
+      "p95": 0.003375,
+      "p99": 0.007875,
+      "max": 0.19425
+    },
+    "client_decode_ms": {
+      "count": 5286,
+      "min": 0.623875,
+      "avg": 0.7343561063185774,
+      "p50": 0.716125,
+      "p95": 0.815125,
+      "p99": 0.924334,
+      "max": 8.647916
+    },
+    "total_ms": {
+      "count": 5286,
+      "min": 1.547458,
+      "avg": 1.7737954837306091,
+      "p50": 1.745083,
+      "p95": 1.923625,
+      "p99": 2.0835,
+      "max": 9.666083
+    },
+    "bytes": {
+      "count": 5286,
+      "min": 150680,
+      "avg": 161572.03007945517,
+      "p50": 160458,
+      "p95": 177597,
+      "p99": 181594,
+      "max": 182463
+    },
+    "canonical_bytes": {
+      "count": 5286,
+      "min": 150680,
+      "avg": 161572.03007945517,
+      "p50": 160458,
+      "p95": 177597,
+      "p99": 181594,
+      "max": 182463
+    }
+  },
+  "raw": {
+    "file": "boundary-direct-t1.rows.json.gz",
+    "bytes": 191515,
+    "sha256": "f41117f0a53a816114457ef6b2a9048806b572c63e1030557984df56f9769bfd"
+  }
+}

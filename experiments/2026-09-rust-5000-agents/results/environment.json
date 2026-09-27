@@ -1,0 +1,20 @@
+{
+  "hardware": "Apple M4",
+  "os": "ProductName:\t\tmacOS\nProductVersion:\t\t26.5.2\nBuildVersion:\t\t25F84",
+  "rust": "rustc 1.98.1 (48a229cea 2026-09-01)",
+  "source_before": "07bdb2e89c69959c2b8cb8e61329536c032f187e",
+  "source_after": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+  "production_main": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+  "production_status": "D rotk_agent/README.md\n D rotk_agent/adapters/__init__.py\n D rotk_agent/adapters/base.py\n D rotk_agent/adapters/chat_completions.py\n D rotk_agent/adapters/fake.py\n D rotk_agent/adapters/nemotron.py\n D rotk_agent/adapters/responses.py\n D rotk_agent/core/__init__.py\n D rotk_agent/core/agent.py\n D rotk_agent/core/bridge.py\n D rotk_agent/core/config.py\n D rotk_agent/core/console.py\n D rotk_agent/core/delays.py\n D rotk_agent/core/errors.py\n D rotk_agent/core/filters.py\n D rotk_agent/core/reachable_guard.py\n D rotk_agent/core/runner.py\n D rotk_agent/core/scoring.py\n D rotk_agent/core/stats.py\n D rotk_agent/core/tools.py\n D rotk_agent/core/types.py\n D rotk_agent/main.py\n D rotk_agent/modes/__init__.py\n D rotk_agent/modes/base.py\n D rotk_agent/modes/realtime.py\n D rotk_agent/modes/turn.py\n D rotk_agent/profiles.py\n D rotk_agent/prompts/system_prompt_realtime_cn.md\n D rotk_agent/prompts/system_prompt_realtime_cn_baseline.md\n D rotk_agent/prompts/system_prompt_realtime_en.md\n D rotk_agent/prompts/system_prompt_turn_cn.md\n D rotk_agent/prompts/system_prompt_turn_en.md\n D rotk_agent/tests/__init__.py\n D rotk_agent/tests/conftest.py\n D rotk_agent/tests/support.py\n D rotk_agent/tests/test_adapters.py\n D rotk_agent/tests/test_agent_loop.py\n D rotk_agent/tests/test_auto_test.py\n D rotk_agent/tests/test_config.py\n D rotk_agent/tests/test_errors.py\n D rotk_agent/tests/test_filters.py\n D rotk_agent/tests/test_profiles.py\n D rotk_agent/tests/test_reachable_guard.py\n D rotk_agent/tests/test_runner.py\n D rotk_agent/tests/test_scoring.py\n D rotk_agent/tests/test_stats.py\n D rotk_agent/tests/test_tools.py\n D rotk_agent/tests/test_turn_mode.py\n D rotk_env/assets/fonts/sh.otf",
+  "tool_sha": "4fcc2fa1c840d11a7a03169f9abe4dfe97292359",
+  "source_after_status": "",
+  "chrome_process_present": true,
+  "extension": {
+    "api": 18,
+    "sha256": "324454a00ab8bd3559c9229e6c6c9644242d65c488585eba7d29a63b39d29405"
+  },
+  "memory_bytes": 17179869184,
+  "final_production_sha": "72ea765bf3fc962fdea185d0311db2970ed422bd",
+  "final_production_tag": "rust-kernel-r4d-2026-09-27",
+  "tool_latest_before_archive": "227a180fa9060581c90053baa96433e93145f37f"
+}

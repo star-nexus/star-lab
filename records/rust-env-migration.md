@@ -1,5 +1,28 @@
 # Rust 内核＋Python 接口迁移
 
+## 最新检查点：R4d，Rust观测JSON直传与5000-Agent诊断（2026-09-27）
+
+最终生产 **`72ea765bf3fc962fdea185d0311db2970ed422bd`** / annotated **`rust-kernel-r4d-2026-09-27`**；实现/测试/测量 **`5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5`**，最终仅文档。[阶段报告、完整正负结果与复现](../experiments/2026-09-rust-5000-agents/README.md)。
+
+进度：`世界内核 █ 已迁移 | 观测传递 █ 本轮优化 | 5000-Agent容量 ▒ 未通过 | 兼容/平台/发布 ▒ 待收尾`（阶段状态，不是工时百分比）。**新增Python `get_faction_state_json` 正式接口，直接传递Rust已编码观测，省去服务端decode/encode；原字典API、客户端完整decode、权限/规则/时钟/约30秒闭环不变。** 不将Python SDK/策略/UI重写Rust；网络host没有自动接入新路径，G009仍OPEN。
+
+固定旧实际输入19929请求/2679tick/2679展示：传统边界平均3.223ms→直传1线程1.774ms（约省45%），4线程1.750ms；所有响应、事件、最终状态一致。新窗口12ms预算实际轨迹另以4线程重放31706请求/2676tick/2676展示，全部一致。新增22契约、2217完整Python回归、18Lab测试通过。Rust源码和二进制未改，复用API18/schema5/oracle及SHA `324454a00ab8bd3559c9229e6c6c9644242d65c488585eba7d29a63b39d29405`；本轮没有重复构建/Cargo测试。GAP台账记录接口兼容范围，无已确认新增玩法GAP；G008/G009/R001/R002继续开放。
+
+**窗口诊断均30秒预热＋60秒测量，不是正式300秒×3验收。** M4、Chrome开启、5000Units存活、Cocoa2480×1239、Fog/canonical/minimap单位层关闭/有限GC延迟，native1线程。5000Agents每人1Unit；1000Agents约每人5Units。实际同时移动峰值68–172，不是5000同时移动。
+
+- 1000Agents旧字典/8ms：整帧P99 **28.900ms**、观测 **121.462ms**、动作排队 **128.913ms**；帧通过但排队未过。
+- 1000Agents直传/8ms：**27.385 / 40.641 / 32.818ms**，30Hz，全部短测guard通过。
+- 5000Agents旧字典/8ms：帧26.354ms但观测排队约26.6秒、完成比例0.550；旧18ms预算仍失败，帧39.710ms/Hz28.517。
+- 5000Agents直传/8ms：帧26.325ms、观测7.747秒、比例0.744；12ms预算：帧**33.124ms**、观测**1075.260ms**；14ms预算：帧**35.300ms**、观测**409.486ms**。12/14完成比例约1，但都未满足排队门槛；不能只看FPS或吞吐量。
+
+**5000-Agent容量仍未通过，不更新Frontier。** R4c/API17三轮通过仍绑定原tag及2480×1243窗口；不能把本轮单次API18短测当作API回归或正式更新容量。全部慢帧、负结果、完整输入、raw/compact及成员hash保留，详见报告。原生产main仍6a970dea，未merge/push，49处原删除保留，默认Python/1线程。
+
+完整新测量checkout：**`/Users/liyang/.codex/worktrees/rust-wire-observation/star-main`**，保持实现SHA和API18 wheel；旧 `runs/star-rust-integer-limit` 保持07bdb2e，不改写旧重放身份。窗口工具旧19c99a3/新4fcc2fa；固定流归因c9e15ac；末尾227a180仅保持Lab内部请求计数（不改变已测量的接口或调度），全部完整SHA在manifest。
+
+**下一步优先：让已到达且连续的只读查询利用Rust现有批次的公共事实共享，减少每Agent重建；先固定输入验证，再完整窗口测量。** 不跨动作写入、不等未来请求凑批、不引入TTL/思考轮询；保持权限、顺序和批次实际返回延迟。5000-Agent初步守住所有短测门槛后再跑300秒×3；其后补高接触密度/24Hz/10000Units、兼容边界和平台安装矩阵。Python网络/BOT集成仍是独立应用接入工作。
+
+以下保留历史；当前状态以上文为准。
+
 ## 最新检查点：R3d5，R4c后的数值兼容性补审（2026-09-27）
 
 最终 **`257ebf11372fe82ed368bdbba2c3760a6450d110`** / annotated **`rust-kernel-r3d5-2026-09-27`**；实现/构建/测试 **`07bdb2e89c69959c2b8cb8e61329536c032f187e`**，最终仅文档。[阶段报告与复现](../experiments/2026-09-rust-integer-limit/README.md)。

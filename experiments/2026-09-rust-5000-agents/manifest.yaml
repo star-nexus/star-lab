@@ -1,0 +1,51 @@
+{
+  "schema": "star-lab-experiment-v1",
+  "stage": "R4d",
+  "status": "interface_validated_capacity_open",
+  "source_repository": "https://github.com/star-nexus/star",
+  "problem_sha": "07bdb2e89c69959c2b8cb8e61329536c032f187e",
+  "fix_measurement_sha": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+  "validated_final_sha": "72ea765bf3fc962fdea185d0311db2970ed422bd",
+  "validated_tag": "rust-kernel-r4d-2026-09-27",
+  "tool_commits": {
+    "19c99a3": "19c99a32bdbcb4c3727becfcad742b329818441f",
+    "c9e15ac": "c9e15acc29cda1bdb6e77aae1cbc3f0dae0c6738",
+    "6186a47": "6186a474e2583da74ca3c5f8a8b236dee37bd773",
+    "4fcc2fa": "4fcc2fa1c840d11a7a03169f9abe4dfe97292359",
+    "227a180": "227a180fa9060581c90053baa96433e93145f37f"
+  },
+  "environment": "results/environment.json",
+  "commands": "results/commands.json",
+  "analysis": "results/comparison.json",
+  "packages": "results/packages.json",
+  "raw_member_hashes": "results/artifact-index.json",
+  "tests": {
+    "new_contracts": 22,
+    "full_python": 2217,
+    "lab": 18
+  },
+  "capacity_gate_passed": false,
+  "seed": 42,
+  "units": 5000,
+  "agents": [
+    1000,
+    5000
+  ],
+  "warmup_seconds": 30,
+  "measurement_seconds": 60,
+  "frames": "all admitted frames, no outlier removal",
+  "api": 18,
+  "schema_version": 5,
+  "oracle": "python-r0c-3cc4ffe",
+  "extension_sha256": "324454a00ab8bd3559c9229e6c6c9644242d65c488585eba7d29a63b39d29405",
+  "wheel_canonical_archive": "../2026-09-rust-integer-limit/artifacts/r3d5-integer-limit-raw.zip",
+  "artifact_classification": "completed controlled diagnostics including valid negative results; fixed-input attribution; regression validation",
+  "not_claimed": [
+    "300s x 3 gate",
+    "5000 simultaneous movers",
+    "Protocol/Hub capacity",
+    "real LLM",
+    "platform wheel matrix"
+  ],
+  "packager_sha": "9d114a2a42242298abbc92f2c95bc53488eace83"
+}

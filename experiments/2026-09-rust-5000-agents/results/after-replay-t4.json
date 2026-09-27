@@ -1,0 +1,16 @@
+{
+  "source_sha": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+  "tool_sha": "4fcc2fa1c840d11a7a03169f9abe4dfe97292359",
+  "trace_sha256": "cd04e11b4c68a9bf9dbacee6a3f20510a24ef130b136d21c4df6426ad253cca3",
+  "threads": 4,
+  "counts": {
+    "request": 31706,
+    "step": 2676,
+    "presentation": 2676
+  },
+  "elapsed_seconds": 19.677280291973148,
+  "failure": null,
+  "expected_final_sha256": "4561647efef9a58429d8114c2612cbbf8a04ce84d87e4db3d8135450ce5d3018",
+  "actual_final_sha256": "4561647efef9a58429d8114c2612cbbf8a04ce84d87e4db3d8135450ce5d3018",
+  "all_passed": true
+}

@@ -1,0 +1,12 @@
+{
+  "raw": {
+    "file": "artifacts/r4d-5000-agents-raw.zip",
+    "bytes": 26244114,
+    "sha256": "49cc277dfcda90d260fef6136657a86b2de3f3c678860a27b9bc704248e5ff8e"
+  },
+  "compact": {
+    "file": "artifacts/r4d-5000-agents-compact.zip",
+    "bytes": 111061,
+    "sha256": "a505cd2e5abf3ec65df2f9e97f1e4a6a71c8108ca2cafb6c57ec3c8b82939c1e"
+  }
+}

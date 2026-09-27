@@ -16,6 +16,7 @@ def main():
         n.take_presentation_delta()
         for op in raw['entries']:
             if op['kind']=='request':
+                if 'integer_string_limit' in op: sys.set_int_max_str_digits(op['integer_string_limit'])
                 r=n.execute_action(op['action'],op['parameters'],agent_id=op['agent_id'],wall_time=op['wall_time'],registration_time=op['registration_time'])
                 h=(hashlib.sha256(json.dumps(r,separators=(',',':'),ensure_ascii=False).encode()).hexdigest() if 'response_wire_sha256' in op else digest(r));assert h==op.get('response_wire_sha256',op.get('response_sha256'));request_hashes.append(h)
             elif op['kind']=='step':n.step(op['dt'],wall_time=op['wall_time']);ticks+=1

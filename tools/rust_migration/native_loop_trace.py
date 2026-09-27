@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 import time
+import sys
 
 
 def digest(value):
@@ -44,8 +45,9 @@ class NativeLoopTrace:
     def call(self,session,verb,params):
         if self.pending is not None:raise RuntimeError('observation payload was not recorded')
         wall=time.time();registration=datetime.datetime.now().isoformat() if verb=='register_agent_info' else None
+        integer_string_limit=sys.get_int_max_str_digits()
         result=self.runtime.execute_action(verb,params,agent_id=session.agent_id,wall_time=wall,registration_time=registration)
-        op=self.append(kind='request',action=verb,parameters=params,agent_id=session.agent_id,wall_time=wall,registration_time=registration)
+        op=self.append(kind='request',action=verb,parameters=params,agent_id=session.agent_id,wall_time=wall,registration_time=registration,integer_string_limit=integer_string_limit)
         if verb=='get_faction_state':self.pending=op
         else:op['response_sha256']=digest(result)
         return result

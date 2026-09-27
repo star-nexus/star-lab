@@ -193,13 +193,15 @@ def test_wire_forwarding_preserves_client_decode_action_order_and_thinking():
             agents.payload_callback=payloads.append
             if wire:
                 agents.observation_json_call=lambda session,params: json.dumps(
-                    agents.call(session,'get_faction_state',params),separators=(',',':'),ensure_ascii=False)
+                    agents.gate._process_action_request(agent_id=session.agent_id,
+                        action_id=agents.request_id,action='get_faction_state',params=params,send_response=False),
+                    separators=(',',':'),ensure_ascii=False)
             agents.pump(1000)
             clock.now=40
             agents.pump(1000)
             assert all(r['decode_ms']>=0 for r in agents.records if r['event']=='observe')
             traces.append((dict(agents.counts),[(r['event'],r['agent'],r.get('actions')) for r in agents.records],
-                           [json.loads(p)['units'] for p in payloads],sorted(agents.heap)))
+                           [json.loads(p)['units'] for p in payloads],sorted(agents.heap),agents.request_id))
         finally:
             agents.world.reset()
     assert traces[0]==traces[1]

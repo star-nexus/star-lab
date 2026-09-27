@@ -348,6 +348,7 @@ class LocalAgents:
                 if self.observation_json_call is None:
                     response = self.call(session, 'get_faction_state', params)
                 else:
+                    self.request_id += 1
                     wire = self.observation_json_call(session, params)
                 constructed = self.clock()
                 if self.encode:

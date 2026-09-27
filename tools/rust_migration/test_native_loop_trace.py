@@ -8,9 +8,11 @@ from rotk_env.runtime.native import RustRuntime
 from rotk_env.tests.test_native_observation import setup
 import rotk_env
 import star_native
+import pytest
 
 
-def test_native_input_capture_replays_on_other_worker_count(tmp_path):
+@pytest.mark.parametrize('wire', [False, True])
+def test_native_input_capture_replays_on_other_worker_count(tmp_path, wire):
     import hashlib
     from star_native import _native
     src=Path(rotk_env.__file__).resolve().parents[1]
@@ -23,8 +25,12 @@ def test_native_input_capture_replays_on_other_worker_count(tmp_path):
             recorder=NativeLoopTrace(n,tmp_path/'small.json',identity,extension,1)
             owner=SimpleNamespace(agent_id='alpha')
             for i in range(3):
-                response=recorder.call(owner,'get_faction_state',dict(faction='wei',unit_ids=[a]))
-                recorder.payload(json.dumps(response,separators=(',',':'),ensure_ascii=False).encode())
+                params=dict(faction='wei',unit_ids=[a])
+                if wire:
+                    recorder.payload(recorder.observation_json(owner,params).encode())
+                else:
+                    response=recorder.call(owner,'get_faction_state',params)
+                    recorder.payload(json.dumps(response,separators=(',',':'),ensure_ascii=False).encode())
                 if i==0:recorder.call(owner,'move',dict(unit_id=a,target_position=dict(col=-2,row=0)))
                 n.step(1/30,wall_time=1720000000.+i/30);n.take_presentation_delta()
             saved=recorder.finish()

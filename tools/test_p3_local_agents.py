@@ -1,4 +1,5 @@
 """The Lab scheduler must not sleep the world or hide an overdue workload."""
+import json
 from p3_local_agents import LocalAgents
 from rotk_env.tests.test_faction_state_affordances import _world, _spawn
 from rotk_env.prefabs.config import Faction
@@ -181,3 +182,24 @@ def test_injected_request_boundary_needs_no_python_llm_system():
     assert len(calls)==6 and agents.counts['cycles']==2
     assert all(e[0]>=15 for e in agents.heap)
     world.reset()
+
+
+def test_wire_forwarding_preserves_client_decode_action_order_and_thinking():
+    traces=[]
+    for wire in (False,True):
+        agents,clock=setup(30,cycle_mode='post-action')
+        try:
+            payloads=[]
+            agents.payload_callback=payloads.append
+            if wire:
+                agents.observation_json_call=lambda session,params: json.dumps(
+                    agents.call(session,'get_faction_state',params),separators=(',',':'),ensure_ascii=False)
+            agents.pump(1000)
+            clock.now=40
+            agents.pump(1000)
+            assert all(r['decode_ms']>=0 for r in agents.records if r['event']=='observe')
+            traces.append((dict(agents.counts),[(r['event'],r['agent'],r.get('actions')) for r in agents.records],
+                           [json.loads(p)['units'] for p in payloads],sorted(agents.heap)))
+        finally:
+            agents.world.reset()
+    assert traces[0]==traces[1]

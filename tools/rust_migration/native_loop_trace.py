@@ -56,6 +56,15 @@ class NativeLoopTrace:
         if self.pending is None:raise RuntimeError('unexpected observation payload')
         self.pending['response_wire_sha256']=hashlib.sha256(payload).hexdigest();self.pending=None
 
+    def observation_json(self,session,params):
+        if self.pending is not None:raise RuntimeError('observation payload was not recorded')
+        wall=time.time()
+        result=self.runtime.get_faction_state_json(**params,agent_id=session.agent_id,wall_time=wall)
+        self.pending=self.append(kind='request',action='get_faction_state',parameters=params,
+            agent_id=session.agent_id,wall_time=wall,registration_time=None,
+            integer_string_limit=sys.get_int_max_str_digits(),response_wire_format='native-json')
+        return result
+
     def finish(self):
         if self.pending is not None:raise RuntimeError('unfinished observation capture')
         raw=dict(schema='star-rendered-native-inputs-v1',source=self.source,extension=self.extension,threads=self.threads,

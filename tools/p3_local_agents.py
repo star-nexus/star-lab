@@ -136,11 +136,14 @@ class Session:
 class LocalAgents:
     def __init__(self, world, count, delay=1.0, *, scope='faction', encode=True,
                  policy='mixed', seed=42, clock=time.perf_counter, max_records=2_000_000,
-                 observation_hz=None, observation_mode="single", cycle_mode="legacy", jitter_seconds=5.0, request_call=None, payload_callback=None):
+                 observation_hz=None, observation_mode="single", cycle_mode="legacy", jitter_seconds=5.0, request_call=None, payload_callback=None, observation_json_call=None):
         from rotk_env.components import Unit, UnitCount
         self.world, self.clock = world, clock
         self.payload_callback = payload_callback
         self.request_call = request_call
+        if observation_json_call is not None and (not encode or observation_mode != 'single'):
+            raise ValueError('JSON forwarding requires the encoded single-observation boundary')
+        self.observation_json_call = observation_json_call
         self.gate = None if request_call is not None else next(s for s in world.systems if s.__class__.__name__ == 'LLMSystem')
         self.scope, self.encode, self.policy = scope, encode, policy
         if observation_hz is not None and observation_hz <= 0:
@@ -342,12 +345,14 @@ class LocalAgents:
                 params = {'faction': session.faction}
                 if self.scope == 'selected':
                     params['unit_ids'] = session.units
-                response = self.call(session, 'get_faction_state', params)
+                if self.observation_json_call is None:
+                    response = self.call(session, 'get_faction_state', params)
+                else:
+                    wire = self.observation_json_call(session, params)
                 constructed = self.clock()
-                if not response.get('success'):
-                    raise RuntimeError(f'Observation failed: {response}')
                 if self.encode:
-                    payload = json.dumps(response, separators=(',', ':'), ensure_ascii=False).encode()
+                    payload = (wire.encode() if self.observation_json_call is not None else
+                               json.dumps(response, separators=(',', ':'), ensure_ascii=False).encode())
                     row['bytes'] = len(payload)
                     if self.payload_callback is not None:
                         self.payload_callback(payload)
@@ -358,6 +363,8 @@ class LocalAgents:
                     decode_start = self.clock()
                     response = json.loads(payload)
                     row['decode_ms'] = (self.clock() - decode_start) * 1000
+                if not response.get('success'):
+                    raise RuntimeError(f'Observation failed: {response}')
                 self._consume_observation(response, row, session, index, due)
             else:
                 row['snapshot_age_ms'] = (begin - session.observed_at) * 1000

@@ -1,0 +1,12 @@
+{
+  "raw": {
+    "file": "artifacts/r4e-1000-agents-raw.zip",
+    "bytes": 22616338,
+    "sha256": "ad96be639d7e17e931d7984f87e4d5d2049653e769dc1a43b7d0d4d58f1d00c5"
+  },
+  "compact": {
+    "file": "artifacts/r4e-1000-agents-compact.zip",
+    "bytes": 142363,
+    "sha256": "84c6edba27c80a47e631f95770acf474b8f069a095d84d14366ce69864588e5e"
+  }
+}

@@ -6,6 +6,20 @@ For admission criteria, see [`../PROTOCOL.md`](../PROTOCOL.md).
 
 Different measurement planes are kept separate rather than mixed into one table.
 
+## Native rendered Agent closed-loop frontier — R4e / API18
+
+Validated2026-09-29. Measurement `5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5`; final docs `7e145d169433695cd4957e186a6b2fda06813c26`, annotated `rust-kernel-r4e-2026-09-29`. [Evidence and checksums](../experiments/2026-09-rust-1000-agent-validation/README.md).
+
+Mac mini M4/16GiB, CPython3.13.12/release API18, Cocoa2480×1239, canonical120×120/FogON, minimap Units OFF, finite-run GC deferred, Chrome open. 5000 living Units/1000 synthetic Agents, one native thread,8ms Agent budget; fixed30Hz world,30±5s wall-clock post-action thinking truncated15–45s, initial offsets0–30s. PerUnit move/attack/wait50/25/25, illegalwait. No thinking-period polling or Protocol/Hub/realLLM. Full-frame work includes Agent service/world/Python display/present, excludes pacing wait. Three independent30s warmups+300s measurements; all9000frames per run retained.
+
+| Run | Frame P99 ms | Observation response P99 ms | Action queue P99 ms | Hz | Alive / peak moving |
+|---|---:|---:|---:|---:|---:|
+| rust-300-r1 | 29.800 | 45.872 | 35.293 | 30.0 | 5000 / 171 |
+| rust-300-r2 | 29.275 | 47.783 | 35.601 | 30.0 | 5000 / 177 |
+| rust-300-r3 | 29.470 | 44.798 | 34.744 | 30.0 | 5000 / 173 |
+
+All guards passed, including observation and action queues, survival, clock, backlog and completed-loop fraction. Maximum single frames37.361/35.370/39.215ms; whole-window P99 admission does not guarantee every frame or every short window. Peak movers171–177, not5000. All evidence bound to this workload; high-density combat and5000-Agent expansion are not accepted by this row. Original and normalized Python short negative controls remain archived; single live runs do not establish a universal language speedup. Previous R4c row remains independently valid for its source/profile.
+
 ## Native rendered Agent closed-loop frontier — R4c
 
 Validated canonical window profile, 2026-09-25. Build/measurement `e85e3067b1d2aed5cf08be9dbe35b1deed91dba1`; final docs `b05c1465e551072bced220ae12c2474ec7e81e85`, annotated `rust-kernel-r4c-2026-09-25`. [Evidence, raw/compact packages and integrity](../experiments/2026-09-rust-rendered-loop/README.md).

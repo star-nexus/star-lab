@@ -1,0 +1,1543 @@
+{
+  "all_raw_recomputations_passed": true,
+  "rows": [
+    {
+      "run": "python-normalized-60",
+      "source": {
+        "path": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+        "sha": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+        "dirty": ""
+      },
+      "tooling": {
+        "path": "/Users/liyang/Developer/star-lab",
+        "sha": "103f2ebf633b4934c3007228db3f62740e51d231",
+        "dirty": ""
+      },
+      "workload": {
+        "source": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+        "backend": "python",
+        "legacy_python_cli": false,
+        "record_native_inputs": false,
+        "native_wire": false,
+        "native_threads": 1,
+        "fps": 30,
+        "clock_mode": "fixed",
+        "cycle_mode": "post-action",
+        "jitter_seconds": 5.0,
+        "units": 5000,
+        "agents": 1000,
+        "delay": "30",
+        "observation_mode": "single",
+        "observation_hz": null,
+        "scope": "selected",
+        "layout": "canonical",
+        "policy": "stochastic",
+        "seconds": 60.0,
+        "warmup": 30.0,
+        "budget_ms": 8.0,
+        "attribute": false,
+        "no_encode": false,
+        "synchronized": false,
+        "movement_overlay": false,
+        "no_agents": false,
+        "gc_policy": "realtime_defer",
+        "output": "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-1000-agent-validation/results/python-normalized-60.json"
+      },
+      "passed": false,
+      "guards": {
+        "complete": true,
+        "source_clean": true,
+        "tooling_clean": true,
+        "fog_on": true,
+        "world_alive": true,
+        "position_progress": true,
+        "frame_p99": true,
+        "world_hz": true,
+        "observation_p99": false,
+        "observation_queue_p99": false,
+        "action_queue_p99": false,
+        "queue_bounded": false,
+        "offered_load_met": true,
+        "duration_formal": true,
+        "not_diagnostic": true,
+        "fixed_clock": true,
+        "board_clock": true,
+        "nonempty_move": true,
+        "nonempty_attack": true,
+        "initial_resident_units": true,
+        "live_workload_95pct": true
+      },
+      "failed_guards": [
+        "observation_p99",
+        "observation_queue_p99",
+        "action_queue_p99",
+        "queue_bounded"
+      ],
+      "frame": {
+        "count": 1800,
+        "min": 10.764500009827316,
+        "avg": 22.959236341218155,
+        "p50": 22.993001039139926,
+        "p95": 27.40541601087898,
+        "p99": 28.716708009596914,
+        "max": 31.29616699879989
+      },
+      "world_hz": 30.0,
+      "observation": {
+        "count": 1932,
+        "min": 8.377838472370058,
+        "avg": 316.7333392650284,
+        "p50": 282.80689351959154,
+        "p95": 649.5968610979617,
+        "p99": 935.1458950550295,
+        "max": 1064.0273159369826
+      },
+      "observation_queue": {
+        "count": 1932,
+        "min": 0.42883848072960973,
+        "avg": 309.1583823906964,
+        "p50": 275.09637124603614,
+        "p95": 641.8460853747092,
+        "p99": 928.0129370745271,
+        "max": 1056.7903988994658
+      },
+      "action_queue": {
+        "count": 1946,
+        "min": 0.0032910029403865337,
+        "avg": 319.86855218083,
+        "p50": 287.9546250333078,
+        "p95": 659.1197500238195,
+        "p99": 934.3423750251532,
+        "max": 1052.708540984895
+      },
+      "nominal_load_fraction": 0.9958762886597938,
+      "oldest_overdue_ms": 568.8147268956527,
+      "service": {
+        "build_ms": {
+          "count": 1932,
+          "min": 4.95020899688825,
+          "avg": 5.787661516996521,
+          "p50": 5.786208028439432,
+          "p95": 6.1525419587269425,
+          "p99": 6.503000040538609,
+          "max": 7.051958993542939
+        },
+        "encode_ms": {
+          "count": 1932,
+          "min": 0.783249968662858,
+          "avg": 0.9262237299123285,
+          "p50": 0.9229169809259474,
+          "p95": 1.0252500069327652,
+          "p99": 1.061666989699006,
+          "max": 1.1257919832132757
+        },
+        "decode_ms": {
+          "count": 1932,
+          "min": 0.7293330272659659,
+          "avg": 0.8503707101017596,
+          "p50": 0.8488749735988677,
+          "p95": 0.9232920128852129,
+          "p99": 0.948333996348083,
+          "max": 1.0538339847698808
+        },
+        "service_ms": {
+          "count": 1932,
+          "min": 6.516333960462362,
+          "avg": 7.574956874332032,
+          "p50": 7.571374997496605,
+          "p95": 8.089834009297192,
+          "p99": 8.461791032459587,
+          "max": 9.139542002230883
+        },
+        "bytes": {
+          "count": 1932,
+          "min": 166348,
+          "avg": 181548.350931677,
+          "p50": 180635,
+          "p95": 196135,
+          "p99": 198099,
+          "max": 198804
+        }
+      },
+      "agent_ms": {
+        "count": 1800,
+        "min": 0.001374981366097927,
+        "avg": 10.466655697059146,
+        "p50": 10.234582994598895,
+        "p95": 15.216958010569215,
+        "p99": 15.560667030513287,
+        "max": 16.108166018966585
+      },
+      "non_agent_ms": {
+        "count": 1800,
+        "min": 10.673001001123339,
+        "avg": 12.492580644159009,
+        "p50": 12.370124051813036,
+        "p95": 13.893833965994418,
+        "p99": 15.66516689490527,
+        "max": 17.552165954839438
+      },
+      "native_phases": {},
+      "alive_min": 5000,
+      "peak_moving": 170,
+      "cpu_seconds": 62.627301,
+      "maxrss": 417398784,
+      "counts_including_warmup": {
+        "chosen_attack": 3634,
+        "idle_units": 7770,
+        "unavailable_attack": 3518,
+        "chosen_move": 7435,
+        "unavailable_move": 546,
+        "observations": 2955,
+        "chosen_wait": 3706,
+        "move_accepted": 6637,
+        "cycles": 2936,
+        "wait_cycles": 171,
+        "attack_accepted": 115,
+        "move_rejected": 199
+      },
+      "hardware": {
+        "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+        "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+        "machine": "arm64",
+        "chrome": "kept open; no slow frames removed",
+        "window": [
+          2480,
+          1239
+        ]
+      },
+      "display_driver": "cocoa",
+      "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+      "extension": null,
+      "native_recording": null,
+      "raw": {
+        "path": "python-normalized-60.raw.json",
+        "size": 2712833,
+        "sha256": "9b9469938bb7c31589fee6f3ef96501af32741dd4174073791c2c3f50701a47f"
+      }
+    },
+    {
+      "run": "python-original-60",
+      "source": {
+        "path": "/Users/liyang/.codex/worktrees/python-capacity-baseline/star-main",
+        "sha": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+        "dirty": ""
+      },
+      "tooling": {
+        "path": "/Users/liyang/Developer/star-lab",
+        "sha": "103f2ebf633b4934c3007228db3f62740e51d231",
+        "dirty": ""
+      },
+      "workload": {
+        "source": "/Users/liyang/.codex/worktrees/python-capacity-baseline/star-main",
+        "backend": "python",
+        "legacy_python_cli": true,
+        "record_native_inputs": false,
+        "native_wire": false,
+        "native_threads": 1,
+        "fps": 30,
+        "clock_mode": "fixed",
+        "cycle_mode": "post-action",
+        "jitter_seconds": 5.0,
+        "units": 5000,
+        "agents": 1000,
+        "delay": "30",
+        "observation_mode": "single",
+        "observation_hz": null,
+        "scope": "selected",
+        "layout": "canonical",
+        "policy": "stochastic",
+        "seconds": 60.0,
+        "warmup": 30.0,
+        "budget_ms": 8.0,
+        "attribute": false,
+        "no_encode": false,
+        "synchronized": false,
+        "movement_overlay": false,
+        "no_agents": false,
+        "gc_policy": "realtime_defer",
+        "output": "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-1000-agent-validation/results/python-original-60.json"
+      },
+      "passed": false,
+      "guards": {
+        "complete": true,
+        "source_clean": true,
+        "tooling_clean": true,
+        "fog_on": true,
+        "world_alive": true,
+        "position_progress": true,
+        "frame_p99": true,
+        "world_hz": true,
+        "observation_p99": false,
+        "observation_queue_p99": false,
+        "action_queue_p99": false,
+        "queue_bounded": false,
+        "offered_load_met": true,
+        "duration_formal": true,
+        "not_diagnostic": true,
+        "fixed_clock": true,
+        "board_clock": true,
+        "nonempty_move": true,
+        "nonempty_attack": true,
+        "initial_resident_units": true,
+        "live_workload_95pct": true
+      },
+      "failed_guards": [
+        "observation_p99",
+        "observation_queue_p99",
+        "action_queue_p99",
+        "queue_bounded"
+      ],
+      "frame": {
+        "count": 1800,
+        "min": 11.513916018884629,
+        "avg": 23.987813733854434,
+        "p50": 23.924625071231276,
+        "p95": 28.902042016852647,
+        "p99": 31.80024999892339,
+        "max": 69.52845799969509
+      },
+      "world_hz": 30.0,
+      "observation": {
+        "count": 1901,
+        "min": 7.762075518257916,
+        "avg": 498.88938211394753,
+        "p50": 292.6662847166881,
+        "p95": 1415.0609318749048,
+        "p99": 1594.9921417050064,
+        "max": 1674.0406539174728
+      },
+      "observation_queue": {
+        "count": 1901,
+        "min": 0.265950511675328,
+        "avg": 491.06736325765166,
+        "p50": 285.1006435812451,
+        "p95": 1406.0183727997355,
+        "p99": 1587.003969878424,
+        "max": 1665.925612905994
+      },
+      "action_queue": {
+        "count": 1902,
+        "min": 0.003541994374245405,
+        "avg": 499.44447069513325,
+        "p50": 292.10795904509723,
+        "p95": 1422.6207089959644,
+        "p99": 1593.9917089999653,
+        "max": 1692.123833054211
+      },
+      "nominal_load_fraction": 0.9798969072164948,
+      "oldest_overdue_ms": 1492.809061484877,
+      "service": {
+        "build_ms": {
+          "count": 1901,
+          "min": 5.2096250001341105,
+          "avg": 6.022557272223794,
+          "p50": 5.951708997599781,
+          "p95": 6.720042030792683,
+          "p99": 7.366042002104223,
+          "max": 11.347958003170788
+        },
+        "encode_ms": {
+          "count": 1901,
+          "min": 0.7587500149384141,
+          "avg": 0.914805324901011,
+          "p50": 0.9054580004885793,
+          "p95": 1.039541035424918,
+          "p99": 1.1349580017849803,
+          "max": 1.4435839839279652
+        },
+        "decode_ms": {
+          "count": 1901,
+          "min": 0.7284160237759352,
+          "avg": 0.8713728309484559,
+          "p50": 0.8639169973321259,
+          "p95": 0.9803749853745103,
+          "p99": 1.0505830287002027,
+          "max": 1.198749989271164
+        },
+        "service_ms": {
+          "count": 1901,
+          "min": 6.726541032548994,
+          "avg": 7.822018856295864,
+          "p50": 7.741082983557135,
+          "p95": 8.69341695215553,
+          "p99": 9.409957972820848,
+          "max": 12.978082988411188
+        },
+        "bytes": {
+          "count": 1901,
+          "min": 162160,
+          "avg": 179423.2582851131,
+          "p50": 179574,
+          "p95": 190941,
+          "p99": 193172,
+          "max": 194246
+        }
+      },
+      "agent_ms": {
+        "count": 1800,
+        "min": 0.0015829573385417461,
+        "avg": 10.593224419474913,
+        "p50": 10.407291993033141,
+        "p95": 15.367457992397249,
+        "p99": 15.948916028719395,
+        "max": 35.546166996937245
+      },
+      "non_agent_ms": {
+        "count": 1800,
+        "min": 11.170875979587436,
+        "avg": 13.394589314379523,
+        "p50": 13.102957047522068,
+        "p95": 15.966165985446423,
+        "p99": 17.92695902986452,
+        "max": 56.88616697443649
+      },
+      "native_phases": {},
+      "alive_min": 5000,
+      "peak_moving": 163,
+      "cpu_seconds": 65.638339,
+      "maxrss": 372293632,
+      "counts_including_warmup": {
+        "chosen_attack": 3589,
+        "idle_units": 7647,
+        "unavailable_attack": 3485,
+        "chosen_move": 7349,
+        "unavailable_move": 520,
+        "observations": 2916,
+        "chosen_wait": 3642,
+        "move_accepted": 6457,
+        "cycles": 2871,
+        "wait_cycles": 166,
+        "attack_accepted": 100,
+        "move_rejected": 255,
+        "attack_rejected": 1
+      },
+      "hardware": {
+        "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+        "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+        "machine": "arm64",
+        "chrome": "kept open; no slow frames removed",
+        "window": [
+          2480,
+          1239
+        ]
+      },
+      "display_driver": "cocoa",
+      "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+      "extension": null,
+      "native_recording": null,
+      "raw": {
+        "path": "python-original-60.raw.json",
+        "size": 2674746,
+        "sha256": "bed2d0c114c57de0bde654ba91653ce323b16b5a779bd70e7628e19453e0e50f"
+      }
+    },
+    {
+      "run": "rust-300-r1",
+      "source": {
+        "path": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+        "sha": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+        "dirty": ""
+      },
+      "tooling": {
+        "path": "/Users/liyang/Developer/star-lab",
+        "sha": "103f2ebf633b4934c3007228db3f62740e51d231",
+        "dirty": ""
+      },
+      "workload": {
+        "source": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+        "backend": "rust",
+        "legacy_python_cli": false,
+        "record_native_inputs": true,
+        "native_wire": true,
+        "native_threads": 1,
+        "fps": 30,
+        "clock_mode": "fixed",
+        "cycle_mode": "post-action",
+        "jitter_seconds": 5.0,
+        "units": 5000,
+        "agents": 1000,
+        "delay": "30",
+        "observation_mode": "single",
+        "observation_hz": null,
+        "scope": "selected",
+        "layout": "canonical",
+        "policy": "stochastic",
+        "seconds": 300.0,
+        "warmup": 30.0,
+        "budget_ms": 8.0,
+        "attribute": false,
+        "no_encode": false,
+        "synchronized": false,
+        "movement_overlay": false,
+        "no_agents": false,
+        "gc_policy": "realtime_defer",
+        "output": "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-1000-agent-validation/results/rust-300-r1.json"
+      },
+      "passed": true,
+      "guards": {
+        "complete": true,
+        "source_clean": true,
+        "tooling_clean": true,
+        "fog_on": true,
+        "world_alive": true,
+        "position_progress": true,
+        "frame_p99": true,
+        "world_hz": true,
+        "observation_p99": true,
+        "observation_queue_p99": true,
+        "action_queue_p99": true,
+        "queue_bounded": true,
+        "offered_load_met": true,
+        "duration_formal": true,
+        "not_diagnostic": true,
+        "fixed_clock": true,
+        "board_clock": true,
+        "nonempty_move": true,
+        "nonempty_attack": true,
+        "initial_resident_units": true,
+        "live_workload_95pct": true
+      },
+      "failed_guards": [],
+      "frame": {
+        "count": 9000,
+        "min": 14.017209061421454,
+        "avg": 21.544302587875993,
+        "p50": 21.389834058936685,
+        "p95": 27.781623997725546,
+        "p99": 29.799540934618562,
+        "max": 37.36066602868959
+      },
+      "world_hz": 30.0,
+      "observation": {
+        "count": 9937,
+        "min": 2.208464196883142,
+        "avg": 19.907842494699057,
+        "p50": 19.773815758526325,
+        "p95": 35.28519539395347,
+        "p99": 45.87194666964933,
+        "max": 80.35345922689885
+      },
+      "observation_queue": {
+        "count": 9937,
+        "min": 0.0033604446798563004,
+        "avg": 16.8034439047439,
+        "p50": 16.63508714409545,
+        "p95": 32.087223895359784,
+        "p99": 42.59427008219063,
+        "max": 77.08566723158583
+      },
+      "action_queue": {
+        "count": 9938,
+        "min": 0.001500011421740055,
+        "avg": 9.99794810926417,
+        "p50": 2.5766250328160822,
+        "p95": 30.605208012275398,
+        "p99": 35.29262501979247,
+        "max": 69.74858301691711
+      },
+      "nominal_load_fraction": 0.9985931062204804,
+      "oldest_overdue_ms": 0,
+      "service": {
+        "build_ms": {
+          "count": 9937,
+          "min": 1.1779170017689466,
+          "avg": 1.9514231813291856,
+          "p50": 2.0704169874079525,
+          "p95": 2.4603750207461417,
+          "p99": 2.61854100972414,
+          "max": 5.496500001754612
+        },
+        "encode_ms": {
+          "count": 9937,
+          "min": 0.05420797970145941,
+          "avg": 0.07635408200353011,
+          "p50": 0.07624999852851033,
+          "p95": 0.0909580267034471,
+          "p99": 0.09849999332800508,
+          "max": 0.1403329661116004
+        },
+        "decode_ms": {
+          "count": 9937,
+          "min": 0.6735000060871243,
+          "avg": 1.062584882506264,
+          "p50": 1.0504170204512775,
+          "p95": 1.3489999691955745,
+          "p99": 1.4482500264421105,
+          "max": 2.096083015203476
+        },
+        "service_ms": {
+          "count": 9937,
+          "min": 1.9647920271381736,
+          "avg": 3.104398589955158,
+          "p50": 3.1289170146919787,
+          "p95": 3.685791976749897,
+          "p99": 3.9020839612931013,
+          "max": 7.3611249681562185
+        },
+        "bytes": {
+          "count": 9937,
+          "min": 166397,
+          "avg": 215286.9344872698,
+          "p50": 219720,
+          "p95": 251419,
+          "p99": 260824,
+          "max": 263103
+        }
+      },
+      "agent_ms": {
+        "count": 9000,
+        "min": 0.001541979145258665,
+        "avg": 3.7015515278067648,
+        "p50": 3.6697080358862877,
+        "p95": 9.448750002775341,
+        "p99": 10.157541022635996,
+        "max": 12.676583020947874
+      },
+      "non_agent_ms": {
+        "count": 9000,
+        "min": 14.009417034685612,
+        "avg": 17.84275106006923,
+        "p50": 17.806792980991304,
+        "p95": 20.127250987570733,
+        "p99": 21.96237404132262,
+        "max": 26.646709069609642
+      },
+      "native_phases": {
+        "native_step_ms": {
+          "count": 9000,
+          "min": 0.050458009354770184,
+          "avg": 0.2951989766313798,
+          "p50": 0.213958031963557,
+          "p95": 0.6032909732311964,
+          "p99": 0.7577079813927412,
+          "max": 1.2817499809898436
+        },
+        "delta_ms": {
+          "count": 9000,
+          "min": 0.3267499851062894,
+          "avg": 0.7093410852184105,
+          "p50": 0.7051249849610031,
+          "p95": 0.8945830049924552,
+          "p99": 0.9872079826891422,
+          "max": 1.652292034123093
+        },
+        "presentation_apply_ms": {
+          "count": 9000,
+          "min": 1.3142090174369514,
+          "avg": 2.768049899792661,
+          "p50": 2.7598749729804695,
+          "p95": 3.456750011537224,
+          "p99": 3.741250024177134,
+          "max": 5.016708979383111
+        },
+        "inputs_ms": {
+          "count": 9000,
+          "min": 0.07408298552036285,
+          "avg": 0.09586009501557176,
+          "p50": 0.09362504351884127,
+          "p95": 0.11704099597409368,
+          "p99": 0.1312500098720193,
+          "max": 0.2460000105202198
+        },
+        "display_systems_ms": {
+          "count": 9000,
+          "min": 7.008083048276603,
+          "avg": 8.679312874530702,
+          "p50": 8.679500024300069,
+          "p95": 9.781708009541035,
+          "p99": 10.698083031456918,
+          "max": 16.798999975435436
+        }
+      },
+      "alive_min": 5000,
+      "peak_moving": 171,
+      "cpu_seconds": 219.857613,
+      "maxrss": 745619456,
+      "counts_including_warmup": {
+        "chosen_attack": 13629,
+        "idle_units": 27115,
+        "unavailable_attack": 12685,
+        "chosen_move": 27547,
+        "unavailable_move": 582,
+        "observations": 11005,
+        "chosen_wait": 13848,
+        "move_accepted": 26944,
+        "cycles": 11005,
+        "wait_cycles": 386,
+        "attack_accepted": 944,
+        "move_rejected": 21
+      },
+      "hardware": {
+        "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+        "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+        "machine": "arm64",
+        "chrome": "kept open; no slow frames removed",
+        "window": [
+          2480,
+          1239
+        ]
+      },
+      "display_driver": "cocoa",
+      "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+      "extension": {
+        "api": 18,
+        "sha256": "324454a00ab8bd3559c9229e6c6c9644242d65c488585eba7d29a63b39d29405"
+      },
+      "native_recording": {
+        "trace": {
+          "file": "rust-300-r1.trace.json.gz",
+          "bytes": 2714300,
+          "sha256": "76b3dc18f021ae945f28048422a2608fed7b61457666b662c7340434b303c6bb"
+        },
+        "initial": {
+          "file": "rust-300-r1.initial.json.gz",
+          "bytes": 646796,
+          "sha256": "1571e91edbc7ad7ddd14bb6343548732fac95ed320bb3d70917b9e2276d20672"
+        },
+        "operations": 60678,
+        "final_state_sha256": "ef992847d99fde26234673ae12173b26e31d46785da4f097833d77b519998871"
+      },
+      "raw": {
+        "path": "rust-300-r1.raw.json",
+        "size": 12089778,
+        "sha256": "4025d9aa9683dd08302d48b48d57cba6af10b19c80e256727151e4a501022fb8"
+      }
+    },
+    {
+      "run": "rust-300-r2",
+      "source": {
+        "path": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+        "sha": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+        "dirty": ""
+      },
+      "tooling": {
+        "path": "/Users/liyang/Developer/star-lab",
+        "sha": "103f2ebf633b4934c3007228db3f62740e51d231",
+        "dirty": ""
+      },
+      "workload": {
+        "source": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+        "backend": "rust",
+        "legacy_python_cli": false,
+        "record_native_inputs": true,
+        "native_wire": true,
+        "native_threads": 1,
+        "fps": 30,
+        "clock_mode": "fixed",
+        "cycle_mode": "post-action",
+        "jitter_seconds": 5.0,
+        "units": 5000,
+        "agents": 1000,
+        "delay": "30",
+        "observation_mode": "single",
+        "observation_hz": null,
+        "scope": "selected",
+        "layout": "canonical",
+        "policy": "stochastic",
+        "seconds": 300.0,
+        "warmup": 30.0,
+        "budget_ms": 8.0,
+        "attribute": false,
+        "no_encode": false,
+        "synchronized": false,
+        "movement_overlay": false,
+        "no_agents": false,
+        "gc_policy": "realtime_defer",
+        "output": "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-1000-agent-validation/results/rust-300-r2.json"
+      },
+      "passed": true,
+      "guards": {
+        "complete": true,
+        "source_clean": true,
+        "tooling_clean": true,
+        "fog_on": true,
+        "world_alive": true,
+        "position_progress": true,
+        "frame_p99": true,
+        "world_hz": true,
+        "observation_p99": true,
+        "observation_queue_p99": true,
+        "action_queue_p99": true,
+        "queue_bounded": true,
+        "offered_load_met": true,
+        "duration_formal": true,
+        "not_diagnostic": true,
+        "fixed_clock": true,
+        "board_clock": true,
+        "nonempty_move": true,
+        "nonempty_attack": true,
+        "initial_resident_units": true,
+        "live_workload_95pct": true
+      },
+      "failed_guards": [],
+      "frame": {
+        "count": 9000,
+        "min": 14.41524998517707,
+        "avg": 21.49029384655619,
+        "p50": 21.315917023457587,
+        "p95": 27.57108397781849,
+        "p99": 29.274792002979666,
+        "max": 35.36987496772781
+      },
+      "world_hz": 30.0,
+      "observation": {
+        "count": 9939,
+        "min": 2.198734669946134,
+        "avg": 19.969681972609052,
+        "p50": 19.84919683309272,
+        "p95": 35.679446649737656,
+        "p99": 47.78308281674981,
+        "max": 80.17017657402903
+      },
+      "observation_queue": {
+        "count": 9939,
+        "min": 0.0035679549910128117,
+        "avg": 16.852292224824513,
+        "p50": 16.687352384906262,
+        "p95": 32.40766964154318,
+        "p99": 44.77525147376582,
+        "max": 77.15859357267618
+      },
+      "action_queue": {
+        "count": 9942,
+        "min": 0.0016249832697212696,
+        "avg": 10.031766305457033,
+        "p50": 2.616457990370691,
+        "p95": 30.667042010463774,
+        "p99": 35.60062497854233,
+        "max": 69.43104101810604
+      },
+      "nominal_load_fraction": 0.998794091046126,
+      "oldest_overdue_ms": 22.699240304064006,
+      "service": {
+        "build_ms": {
+          "count": 9939,
+          "min": 1.1545840534381568,
+          "avg": 1.955782708233845,
+          "p50": 2.053791016805917,
+          "p95": 2.4912080261856318,
+          "p99": 2.6370839914307,
+          "max": 3.1256669899448752
+        },
+        "encode_ms": {
+          "count": 9939,
+          "min": 0.055750017054378986,
+          "avg": 0.07634982099495727,
+          "p50": 0.07599999662488699,
+          "p95": 0.09037501877173781,
+          "p99": 0.09754201164469123,
+          "max": 0.14175003161653876
+        },
+        "decode_ms": {
+          "count": 9939,
+          "min": 0.7116670021787286,
+          "avg": 1.0722583568154014,
+          "p50": 1.0589170269668102,
+          "p95": 1.359541027341038,
+          "p99": 1.4479169622063637,
+          "max": 1.8012499785982072
+        },
+        "service_ms": {
+          "count": 9939,
+          "min": 1.9985420512966812,
+          "avg": 3.117389747784539,
+          "p50": 3.136874991469085,
+          "p95": 3.7174170138314366,
+          "p99": 3.918333037290722,
+          "max": 4.621084022801369
+        },
+        "bytes": {
+          "count": 9939,
+          "min": 166575,
+          "avg": 215918.45739007948,
+          "p50": 216272,
+          "p95": 251651,
+          "p99": 259754,
+          "max": 261464
+        }
+      },
+      "agent_ms": {
+        "count": 9000,
+        "min": 0.001333013642579317,
+        "avg": 3.712856874342025,
+        "p50": 3.673332976177335,
+        "p95": 9.458167012780905,
+        "p99": 10.208291001617908,
+        "max": 12.143249972723424
+      },
+      "non_agent_ms": {
+        "count": 9000,
+        "min": 14.023166964761913,
+        "avg": 17.77743697221417,
+        "p50": 17.72224996238947,
+        "p95": 19.77354200789705,
+        "p99": 21.696665964554995,
+        "max": 27.522374992258847
+      },
+      "native_phases": {
+        "native_step_ms": {
+          "count": 9000,
+          "min": 0.051333976443856955,
+          "avg": 0.2896394564433851,
+          "p50": 0.21491700317710638,
+          "p95": 0.582750013563782,
+          "p99": 0.7155420025810599,
+          "max": 1.1297909659333527
+        },
+        "delta_ms": {
+          "count": 9000,
+          "min": 0.34608301939442754,
+          "avg": 0.7072035481105559,
+          "p50": 0.7057080511003733,
+          "p95": 0.8795000030659139,
+          "p99": 0.9542909683659673,
+          "max": 1.444583002012223
+        },
+        "presentation_apply_ms": {
+          "count": 9000,
+          "min": 1.388541015330702,
+          "avg": 2.772917327878531,
+          "p50": 2.773708023596555,
+          "p95": 3.4094160073436797,
+          "p99": 3.6610409733839333,
+          "max": 5.00350003130734
+        },
+        "inputs_ms": {
+          "count": 9000,
+          "min": 0.07124996045604348,
+          "avg": 0.09228250668254784,
+          "p50": 0.08991599315777421,
+          "p95": 0.11312495917081833,
+          "p99": 0.12929097283631563,
+          "max": 0.2297920291312039
+        },
+        "display_systems_ms": {
+          "count": 9000,
+          "min": 7.053667039144784,
+          "avg": 8.641393626820193,
+          "p50": 8.61379102570936,
+          "p95": 9.601792029570788,
+          "p99": 10.381250001955777,
+          "max": 17.793458013329655
+        }
+      },
+      "alive_min": 5000,
+      "peak_moving": 177,
+      "cpu_seconds": 219.623947,
+      "maxrss": 768950272,
+      "counts_including_warmup": {
+        "chosen_attack": 13600,
+        "idle_units": 26990,
+        "unavailable_attack": 12650,
+        "chosen_move": 27689,
+        "unavailable_move": 605,
+        "observations": 11005,
+        "chosen_wait": 13735,
+        "move_accepted": 27060,
+        "cycles": 11005,
+        "wait_cycles": 363,
+        "attack_accepted": 950,
+        "move_rejected": 24
+      },
+      "hardware": {
+        "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+        "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+        "machine": "arm64",
+        "chrome": "kept open; no slow frames removed",
+        "window": [
+          2480,
+          1239
+        ]
+      },
+      "display_driver": "cocoa",
+      "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+      "extension": {
+        "api": 18,
+        "sha256": "324454a00ab8bd3559c9229e6c6c9644242d65c488585eba7d29a63b39d29405"
+      },
+      "native_recording": {
+        "trace": {
+          "file": "rust-300-r2.trace.json.gz",
+          "bytes": 2721747,
+          "sha256": "7100a5d6e40a76f810418060856284b69a97b14f033d6f3853ab1738b3172567"
+        },
+        "initial": {
+          "file": "rust-300-r2.initial.json.gz",
+          "bytes": 646798,
+          "sha256": "aa70304c2b664b10e38830ea959c124b1fb3ecb15006b1a73c872e6c3bab0c83"
+        },
+        "operations": 60799,
+        "final_state_sha256": "9bc8dea076e73988c5cffe5a769de44fd700b7cf0cc6479ca2f05e4b4f4919f3"
+      },
+      "raw": {
+        "path": "rust-300-r2.raw.json",
+        "size": 12095912,
+        "sha256": "459e262d8204d7d06732e0d401895f09669a5241e7ab237193673e242a2e8a4a"
+      }
+    },
+    {
+      "run": "rust-300-r3",
+      "source": {
+        "path": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+        "sha": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+        "dirty": ""
+      },
+      "tooling": {
+        "path": "/Users/liyang/Developer/star-lab",
+        "sha": "103f2ebf633b4934c3007228db3f62740e51d231",
+        "dirty": ""
+      },
+      "workload": {
+        "source": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+        "backend": "rust",
+        "legacy_python_cli": false,
+        "record_native_inputs": true,
+        "native_wire": true,
+        "native_threads": 1,
+        "fps": 30,
+        "clock_mode": "fixed",
+        "cycle_mode": "post-action",
+        "jitter_seconds": 5.0,
+        "units": 5000,
+        "agents": 1000,
+        "delay": "30",
+        "observation_mode": "single",
+        "observation_hz": null,
+        "scope": "selected",
+        "layout": "canonical",
+        "policy": "stochastic",
+        "seconds": 300.0,
+        "warmup": 30.0,
+        "budget_ms": 8.0,
+        "attribute": false,
+        "no_encode": false,
+        "synchronized": false,
+        "movement_overlay": false,
+        "no_agents": false,
+        "gc_policy": "realtime_defer",
+        "output": "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-1000-agent-validation/results/rust-300-r3.json"
+      },
+      "passed": true,
+      "guards": {
+        "complete": true,
+        "source_clean": true,
+        "tooling_clean": true,
+        "fog_on": true,
+        "world_alive": true,
+        "position_progress": true,
+        "frame_p99": true,
+        "world_hz": true,
+        "observation_p99": true,
+        "observation_queue_p99": true,
+        "action_queue_p99": true,
+        "queue_bounded": true,
+        "offered_load_met": true,
+        "duration_formal": true,
+        "not_diagnostic": true,
+        "fixed_clock": true,
+        "board_clock": true,
+        "nonempty_move": true,
+        "nonempty_attack": true,
+        "initial_resident_units": true,
+        "live_workload_95pct": true
+      },
+      "failed_guards": [],
+      "frame": {
+        "count": 9000,
+        "min": 14.070124947465956,
+        "avg": 21.552431627383662,
+        "p50": 21.382417937275022,
+        "p95": 27.605541981756687,
+        "p99": 29.469833010807633,
+        "max": 39.2146660014987
+      },
+      "world_hz": 30.0,
+      "observation": {
+        "count": 9939,
+        "min": 2.3193638771772385,
+        "avg": 19.737925523729842,
+        "p50": 19.620821112766862,
+        "p95": 35.13974399538711,
+        "p99": 44.79793977225199,
+        "max": 88.73172098537907
+      },
+      "observation_queue": {
+        "count": 9939,
+        "min": 0.002041575498878956,
+        "avg": 16.66371730300875,
+        "p50": 16.552383836824447,
+        "p95": 31.94557229289785,
+        "p99": 41.63983493344858,
+        "max": 85.58959601214156
+      },
+      "action_queue": {
+        "count": 9936,
+        "min": 0.0015840050764381886,
+        "avg": 9.789617021988086,
+        "p50": 2.5487919920124114,
+        "p95": 30.31858295435086,
+        "p99": 34.744457982014865,
+        "max": 91.31308301584795
+      },
+      "nominal_load_fraction": 0.998794091046126,
+      "oldest_overdue_ms": 28.384042030666023,
+      "service": {
+        "build_ms": {
+          "count": 9939,
+          "min": 1.1560419807210565,
+          "avg": 1.9246428337395405,
+          "p50": 2.0155420061200857,
+          "p95": 2.4394580395892262,
+          "p99": 2.5867500226013362,
+          "max": 5.9100420330651104
+        },
+        "encode_ms": {
+          "count": 9939,
+          "min": 0.05491694901138544,
+          "avg": 0.07633746016273221,
+          "p50": 0.07616699440404773,
+          "p95": 0.09049999061971903,
+          "p99": 0.09866699110716581,
+          "max": 0.19212497863918543
+        },
+        "decode_ms": {
+          "count": 9939,
+          "min": 0.6943339831195772,
+          "avg": 1.0599446894632565,
+          "p50": 1.0491250432096422,
+          "p95": 1.3441250193864107,
+          "p99": 1.4523749705404043,
+          "max": 2.795292006339878
+        },
+        "service_ms": {
+          "count": 9939,
+          "min": 1.9601670210249722,
+          "avg": 3.074208220721096,
+          "p50": 3.0828749877400696,
+          "p95": 3.641041985247284,
+          "p99": 3.8303330074995756,
+          "max": 8.865875017363578
+        },
+        "bytes": {
+          "count": 9939,
+          "min": 165828,
+          "avg": 214452.2563638193,
+          "p50": 215095,
+          "p95": 249913,
+          "p99": 260167,
+          "max": 264272
+        }
+      },
+      "agent_ms": {
+        "count": 9000,
+        "min": 0.001374981366097927,
+        "avg": 3.664583545824927,
+        "p50": 3.62475001020357,
+        "p95": 9.41270898329094,
+        "p99": 10.029290977399796,
+        "max": 11.54754200251773
+      },
+      "non_agent_ms": {
+        "count": 9000,
+        "min": 13.886375061701983,
+        "avg": 17.887848081558737,
+        "p50": 17.87024998338893,
+        "p95": 19.96762602357194,
+        "p99": 21.724958962295204,
+        "max": 28.971833002287894
+      },
+      "native_phases": {
+        "native_step_ms": {
+          "count": 9000,
+          "min": 0.045249995309859514,
+          "avg": 0.28777444317367756,
+          "p50": 0.21104200277477503,
+          "p95": 0.5873749614693224,
+          "p99": 0.7018330506980419,
+          "max": 0.9747919975779951
+        },
+        "delta_ms": {
+          "count": 9000,
+          "min": 0.3245829720981419,
+          "avg": 0.7032280891564571,
+          "p50": 0.7010000408627093,
+          "p95": 0.881417014170438,
+          "p99": 0.9702920215204358,
+          "max": 1.7696249997243285
+        },
+        "presentation_apply_ms": {
+          "count": 9000,
+          "min": 1.348958001472056,
+          "avg": 2.7846267367325104,
+          "p50": 2.787208999507129,
+          "p95": 3.428374999202788,
+          "p99": 3.7592079606838524,
+          "max": 4.347249981947243
+        },
+        "inputs_ms": {
+          "count": 9000,
+          "min": 0.06758299423381686,
+          "avg": 0.09081254521798757,
+          "p50": 0.08845899719744921,
+          "p95": 0.1097920467145741,
+          "p99": 0.12904201867058873,
+          "max": 0.22037496091797948
+        },
+        "display_systems_ms": {
+          "count": 9000,
+          "min": 7.258083031047136,
+          "avg": 8.762730349728372,
+          "p50": 8.754457987379283,
+          "p95": 9.66974999755621,
+          "p99": 10.695707984268665,
+          "max": 13.706375029869378
+        }
+      },
+      "alive_min": 5000,
+      "peak_moving": 173,
+      "cpu_seconds": 220.445909,
+      "maxrss": 726089728,
+      "counts_including_warmup": {
+        "chosen_attack": 13624,
+        "idle_units": 27038,
+        "unavailable_attack": 12646,
+        "chosen_move": 27644,
+        "unavailable_move": 626,
+        "observations": 11007,
+        "chosen_wait": 13766,
+        "move_accepted": 26996,
+        "cycles": 11004,
+        "wait_cycles": 395,
+        "attack_accepted": 978,
+        "move_rejected": 13
+      },
+      "hardware": {
+        "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+        "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+        "machine": "arm64",
+        "chrome": "kept open; no slow frames removed",
+        "window": [
+          2480,
+          1239
+        ]
+      },
+      "display_driver": "cocoa",
+      "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+      "extension": {
+        "api": 18,
+        "sha256": "324454a00ab8bd3559c9229e6c6c9644242d65c488585eba7d29a63b39d29405"
+      },
+      "native_recording": {
+        "trace": {
+          "file": "rust-300-r3.trace.json.gz",
+          "bytes": 2720018,
+          "sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77"
+        },
+        "initial": {
+          "file": "rust-300-r3.initial.json.gz",
+          "bytes": 646799,
+          "sha256": "8b594c465a63728222c57f257111d500c1c378e226b3496c63c0b11870629bc0"
+        },
+        "operations": 60754,
+        "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf"
+      },
+      "raw": {
+        "path": "rust-300-r3.raw.json",
+        "size": 12094427,
+        "sha256": "d88d45a27c923f2edfaae47d478b1c73ad680f01c23caa2dfc65cb9e1677ce67"
+      }
+    },
+    {
+      "run": "rust-60",
+      "source": {
+        "path": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+        "sha": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+        "dirty": ""
+      },
+      "tooling": {
+        "path": "/Users/liyang/Developer/star-lab",
+        "sha": "103f2ebf633b4934c3007228db3f62740e51d231",
+        "dirty": ""
+      },
+      "workload": {
+        "source": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+        "backend": "rust",
+        "legacy_python_cli": false,
+        "record_native_inputs": true,
+        "native_wire": true,
+        "native_threads": 1,
+        "fps": 30,
+        "clock_mode": "fixed",
+        "cycle_mode": "post-action",
+        "jitter_seconds": 5.0,
+        "units": 5000,
+        "agents": 1000,
+        "delay": "30",
+        "observation_mode": "single",
+        "observation_hz": null,
+        "scope": "selected",
+        "layout": "canonical",
+        "policy": "stochastic",
+        "seconds": 60.0,
+        "warmup": 30.0,
+        "budget_ms": 8.0,
+        "attribute": false,
+        "no_encode": false,
+        "synchronized": false,
+        "movement_overlay": false,
+        "no_agents": false,
+        "gc_policy": "realtime_defer",
+        "output": "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-1000-agent-validation/results/rust-60.json"
+      },
+      "passed": true,
+      "guards": {
+        "complete": true,
+        "source_clean": true,
+        "tooling_clean": true,
+        "fog_on": true,
+        "world_alive": true,
+        "position_progress": true,
+        "frame_p99": true,
+        "world_hz": true,
+        "observation_p99": true,
+        "observation_queue_p99": true,
+        "action_queue_p99": true,
+        "queue_bounded": true,
+        "offered_load_met": true,
+        "duration_formal": true,
+        "not_diagnostic": true,
+        "fixed_clock": true,
+        "board_clock": true,
+        "nonempty_move": true,
+        "nonempty_attack": true,
+        "initial_resident_units": true,
+        "live_workload_95pct": true
+      },
+      "failed_guards": [],
+      "frame": {
+        "count": 1800,
+        "min": 14.55120905302465,
+        "avg": 19.658359043371295,
+        "p50": 19.48691694997251,
+        "p95": 25.05983301671222,
+        "p99": 26.45283396122977,
+        "max": 29.166832973714918
+      },
+      "world_hz": 30.0,
+      "observation": {
+        "count": 1943,
+        "min": 2.144106721971184,
+        "avg": 19.476688939877185,
+        "p50": 19.524037488736212,
+        "p95": 34.76875741034746,
+        "p99": 46.63142084609717,
+        "max": 79.33390518883243
+      },
+      "observation_queue": {
+        "count": 1943,
+        "min": 0.0036897254176437855,
+        "avg": 16.73523588832209,
+        "p50": 16.723499924410135,
+        "p95": 31.970892567187548,
+        "p99": 44.38683780608699,
+        "max": 76.28773816395551
+      },
+      "action_queue": {
+        "count": 1943,
+        "min": 0.0015410478226840496,
+        "avg": 7.549984072159154,
+        "p50": 2.225959033239633,
+        "p95": 30.535000027157366,
+        "p99": 57.52375000156462,
+        "max": 69.38533298671246
+      },
+      "nominal_load_fraction": 1.0015463917525773,
+      "oldest_overdue_ms": 0,
+      "service": {
+        "build_ms": {
+          "count": 1943,
+          "min": 1.1453339830040932,
+          "avg": 1.7729428313934732,
+          "p50": 1.8732090247794986,
+          "p95": 2.2446660441346467,
+          "p99": 2.3695420240983367,
+          "max": 2.68416601466015
+        },
+        "encode_ms": {
+          "count": 1943,
+          "min": 0.05254201823845506,
+          "avg": 0.0656697261245462,
+          "p50": 0.06525003118440509,
+          "p95": 0.07466698298230767,
+          "p99": 0.08216704009100795,
+          "max": 0.09054201655089855
+        },
+        "decode_ms": {
+          "count": 1943,
+          "min": 0.6780830444768071,
+          "avg": 0.8900256698236456,
+          "p50": 0.8825419936329126,
+          "p95": 1.0577919892966747,
+          "p99": 1.116290979553014,
+          "max": 1.2041250010952353
+        },
+        "service_ms": {
+          "count": 1943,
+          "min": 1.9093339797109365,
+          "avg": 2.7414530515550948,
+          "p50": 2.77329096570611,
+          "p95": 3.2158750109374523,
+          "p99": 3.3909580088220537,
+          "max": 3.738874976988882
+        },
+        "bytes": {
+          "count": 1943,
+          "min": 164771,
+          "avg": 183552.03088008234,
+          "p50": 181741,
+          "p95": 203042,
+          "p99": 203947,
+          "max": 205038
+        }
+      },
+      "agent_ms": {
+        "count": 1800,
+        "min": 0.0014579854905605316,
+        "avg": 3.1960499925319,
+        "p50": 3.197041980456561,
+        "p95": 8.230707957409322,
+        "p99": 9.925333957653493,
+        "max": 10.504083009436727
+      },
+      "non_agent_ms": {
+        "count": 1800,
+        "min": 14.201665995642543,
+        "avg": 16.462309050839394,
+        "p50": 16.402498877141625,
+        "p95": 18.080708978231996,
+        "p99": 19.67070798855275,
+        "max": 24.782624968793243
+      },
+      "native_phases": {
+        "native_step_ms": {
+          "count": 1800,
+          "min": 0.059999991208314896,
+          "avg": 0.27066348886971053,
+          "p50": 0.20041700918227434,
+          "p95": 0.531375000718981,
+          "p99": 0.6807500030845404,
+          "max": 1.1652919929474592
+        },
+        "delta_ms": {
+          "count": 1800,
+          "min": 0.34241698449477553,
+          "avg": 0.6517733841448918,
+          "p50": 0.6513749831356108,
+          "p95": 0.8136249962262809,
+          "p99": 0.8672080002725124,
+          "max": 1.0339589789509773
+        },
+        "presentation_apply_ms": {
+          "count": 1800,
+          "min": 1.387708995025605,
+          "avg": 2.707255582208745,
+          "p50": 2.721083990763873,
+          "p95": 3.401916997972876,
+          "p99": 3.7396250409074128,
+          "max": 4.127332998905331
+        },
+        "inputs_ms": {
+          "count": 1800,
+          "min": 0.06966700311750174,
+          "avg": 0.08977146573468214,
+          "p50": 0.08700002217665315,
+          "p95": 0.10950001887977123,
+          "p99": 0.12795801740139723,
+          "max": 0.1555840135551989
+        },
+        "display_systems_ms": {
+          "count": 1800,
+          "min": 6.967916968278587,
+          "avg": 7.94465661627732,
+          "p50": 7.883083017077297,
+          "p95": 8.68166598957032,
+          "p99": 9.185832983348519,
+          "max": 11.836249963380396
+        }
+      },
+      "alive_min": 5000,
+      "peak_moving": 172,
+      "cpu_seconds": 55.255388999999994,
+      "maxrss": 726466560,
+      "counts_including_warmup": {
+        "chosen_attack": 3718,
+        "idle_units": 7932,
+        "unavailable_attack": 3571,
+        "chosen_move": 7580,
+        "unavailable_move": 604,
+        "observations": 3011,
+        "chosen_wait": 3757,
+        "move_accepted": 6971,
+        "cycles": 3011,
+        "wait_cycles": 163,
+        "attack_accepted": 146,
+        "move_rejected": 5,
+        "attack_rejected": 1
+      },
+      "hardware": {
+        "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+        "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+        "machine": "arm64",
+        "chrome": "kept open; no slow frames removed",
+        "window": [
+          2480,
+          1239
+        ]
+      },
+      "display_driver": "cocoa",
+      "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+      "extension": {
+        "api": 18,
+        "sha256": "324454a00ab8bd3559c9229e6c6c9644242d65c488585eba7d29a63b39d29405"
+      },
+      "native_recording": {
+        "trace": {
+          "file": "rust-60.trace.json.gz",
+          "bytes": 768184,
+          "sha256": "f8b8b42f8d09ef75e25bb9f1cedd21ea5c3810a36952ea69f1d601391fb893ed"
+        },
+        "initial": {
+          "file": "rust-60.initial.json.gz",
+          "bytes": 646799,
+          "sha256": "4a515170a8b102ce492c1cc31670785999e3f6187408a36952d8f3ad379d857e"
+        },
+        "operations": 17498,
+        "final_state_sha256": "6f566c00168c4be249dea9dc053667e45399ffe5f8496b0825509b332035f747"
+      },
+      "raw": {
+        "path": "rust-60.raw.json",
+        "size": 3268650,
+        "sha256": "8f7b053d8e1739814b3288abb6889f8233c66e7590ba4312fe65c6adeeab6319"
+      }
+    }
+  ],
+  "short_live_ratios": {
+    "python-normalized-60": {
+      "frame_p99_time_ratio": 1.085581531706023,
+      "observation_service_mean_time_ratio": 2.763117489841791,
+      "frame_p99_reduction_fraction": 0.07883473438566047,
+      "observation_service_reduction_fraction": 0.6380899459844331,
+      "note": "One independent live run per backend, same workload parameters; actual admitted actions and state trajectories differ. Not a pure language or fixed-input speedup."
+    },
+    "python-original-60": {
+      "frame_p99_time_ratio": 1.202149079585612,
+      "observation_service_mean_time_ratio": 2.8532383043579057,
+      "frame_p99_reduction_fraction": 0.16815641505568846,
+      "observation_service_reduction_fraction": 0.6495210377371403,
+      "note": "One independent live run per backend, same workload parameters; actual admitted actions and state trajectories differ. Not a pure language or fixed-input speedup."
+    }
+  },
+  "rust_long_runs": 3,
+  "rust_long_gate_passed": true
+}

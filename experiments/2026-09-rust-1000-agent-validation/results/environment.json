@@ -1,0 +1,18 @@
+{
+  "hardware": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+    "machine": "arm64",
+    "chrome": "kept open; no slow frames removed",
+    "window": [
+      2480,
+      1239
+    ]
+  },
+  "machine_model": "Mac mini M4",
+  "memory_bytes": 17179869184,
+  "cpu_cores": 10,
+  "display_driver": "cocoa",
+  "source_and_tools": "See manifest and per-run summaries",
+  "no_production_code_change": true
+}

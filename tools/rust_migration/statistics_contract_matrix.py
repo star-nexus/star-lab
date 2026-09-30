@@ -34,7 +34,7 @@ def generate(source, output):
             n = 10 if display == 'window' else 10000
             state['singletons']['GameStats']['unit_observation_history'] = [{'prior': i} for i in range(n)]
             cases.append(dict(name=f'{display}-first-error-{fault}', initial=state, steps=[.25, .25], reset_after=[0]))
-        for variant in ['disabled', 'absent', 'no-stats-singleton', 'no-fog', 'no-tracker', 'zero-batch']:
+        for variant in ['disabled', 'absent', 'no-stats-singleton', 'no-fog', 'no-tracker', 'empty-batch']:
             state = copy.deepcopy(initial)
             if variant == 'disabled':
                 state['systems']['StatisticsSystem']['enabled'] = False
@@ -47,7 +47,9 @@ def generate(source, output):
             elif variant == 'no-tracker':
                 del state['singletons']['VisibilityTracker']
             else:
-                state['systems']['StatisticsSystem']['batch_size'] = 0
+                state['systems']['StatisticsSystem']['cycle'] = dict(phase='observations', index=0,
+                    observation_entities=[], visibility_entities=[], faction_counts={},
+                    visibility_cleared=False, fog_disabled_visible_to=None)
             cases.append(dict(name=f'{display}-{variant}', initial=state, steps=[.25, 1., 1., 1.], reset_after=[1]))
     initial, (a, b, c) = initial_statistics('window')
     units = {e['id']: e['components'] for e in initial['entities']}

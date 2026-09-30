@@ -40,6 +40,7 @@ def main():
     p.add_argument('--extension-sha256', required=True)
     p.add_argument('--native-package', type=Path, help='parent containing a preserved star_native package')
     p.add_argument('--kernel-source-sha', help='identity of preserved binary if different from wrapper source')
+    p.add_argument('--min-rows', type=int, help='this-call experimental threshold; omitted uses normal step')
     p.add_argument('--threads', type=int, choices=[1, 2, 4], default=1)
     p.add_argument('--mode', choices=['plain', 'compare'], required=True)
     a = p.parse_args()
@@ -82,11 +83,16 @@ def main():
                 run = 0
             if kind == 'step':
                 step_start = time.perf_counter_ns()
-                plain.step(op['dt'], wall_time=op['wall_time'])
+                if a.min_rows is None:
+                    plain.step(op['dt'], wall_time=op['wall_time'])
+                else:
+                    plain._native._statistics_step_json(op['dt'], op['wall_time'], a.min_rows, False)
                 step_samples.append(time.perf_counter_ns() - step_start)
                 if measured:
                     # Diagnostic advancing call under the same instance lock.
-                    timing = json.loads(measured._native._step_profile_json(op['dt'], op['wall_time']))
+                    timing = json.loads(measured._native._step_profile_json(op['dt'], op['wall_time'])
+                                        if a.min_rows is None else
+                                        measured._native._statistics_step_json(op['dt'], op['wall_time'], a.min_rows, True))
                     timing['seq'] = index
                     timings.append(timing)
                 continue
@@ -137,6 +143,7 @@ def main():
                   initial_sha256=sha(initial_path), original_source=trace['source'],
                   mode=a.mode, threads=a.threads, counts=dict(counts),
                   kernel_source_sha=a.kernel_source_sha or actual_source,
+                  min_rows=a.min_rows,
                   read_segment_histogram=dict(sorted(segments.items())),
                   observations_in_shareable_segments=sum(n*c for n, c in segments.items() if n > 1),
                   stream_sha256=stream.hexdigest(), final_state_sha256=digest(final),

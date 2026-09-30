@@ -20,6 +20,7 @@ def generate(source, output):
     for display in ['none', 'dummy', 'window']:
         for mode in ['real_time', 'turn_based']:
             initial, ids = initial_statistics(display)
+            initial['mode'] = mode
             initial['clock']['realtime'] = mode == 'real_time'
             initial['singletons']['GameTime']['current_mode'] = mode
             # The trace owns these exact bootstrap bytes, including injected wall metadata.

@@ -72,6 +72,8 @@ def main():
             phases = {key: summarize(row['phases_ns'].get(key, 0) for row in rows)
                       for key in rows[0]['phases_ns']}
             derived = dict(
+                moving_before=summarize((row['moving_before'] for row in rows), 'count'),
+                capturing_before=summarize((row['capturing_before'] for row in rows), 'count'),
                 vision_geometry_share=computed['vision']['geometry_ns']['total']/phases['vision']['total'],
                 vision_commit_share=computed['vision']['commit_ns']['total']/phases['vision']['total'],
                 vision_geometry_per_miss_ns=computed['vision']['geometry_ns']['total']/computed['vision']['geometry_misses']['total']
@@ -100,7 +102,12 @@ def main():
         assert sha(canonical_path.read_bytes()) == canonical['archive_sha256']
         with zipfile.ZipFile(canonical_path) as old:
             assert sha(old.read(canonical['member'])) == canonical['sha256'] == contracts[0]['raw']['sha256']
-    result = dict(tool_sha256=sha(Path(__file__).read_bytes()),raw=index['raw'], all_passed=True,
+    for point in points[1:]:
+        for system, metrics in points[0]['candidate_summary'].items():
+            for key, summary in metrics.items():
+                if not key.endswith('_ns'):
+                    assert summary == point['candidate_summary'][system][key], (system, key)
+    result = dict(activity_counts_equal=True,tool_sha256=sha(Path(__file__).read_bytes()),raw=index['raw'], all_passed=True,
                   stream_sha256=stream,final_state_sha256=final,replays=4,profiled_replays=3,
                   contract_variants=4,contract_cases=36,contract_steps=174,contracts_raw=index['contracts_raw'],points=points,
                   limits='Diagnostic nested timer costs; loop upper bounds include ECS/JSON writes and timing overhead. One fixed canonical trace per thread setting; not causal speedup, new live capacity, or all-Unit activity.')

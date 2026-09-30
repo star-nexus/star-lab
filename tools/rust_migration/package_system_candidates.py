@@ -14,10 +14,34 @@ def sha(data):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--experiment', type=Path, required=True)
-    p.add_argument('--build-dir', type=Path, required=True)
+    p.add_argument('--build-dir', type=Path)
+    p.add_argument('--compact-only', action='store_true', help='package decision-grade directory after documents are finalized')
     a = p.parse_args()
-    root, build = a.experiment.resolve(), a.build_dir.resolve()
+    root = a.experiment.resolve()
     results = root/'results'
+    if a.compact_only:
+        index = json.loads((results/'packages.json').read_text())
+        files = {name:(root/name).read_bytes() for name in ['README.md','manifest.yaml','analysis.md','decision.md']}
+        for path in sorted(results.glob('*.json')):
+            if path.name != 'contract-commands.json' and path.name != 'packages.json':
+                files['results/'+path.name] = path.read_bytes()
+        snapshot = {key:value for key,value in index.items() if key != 'compact'}
+        files['results/packages.json'] = (json.dumps(snapshot,indent=2)+'\n').encode()
+        files['SHA256SUMS'] = ''.join(f'{sha(data)}  {name}\n' for name,data in sorted(files.items())).encode()
+        compact = root/'artifacts/system-candidates-compact.zip'
+        with zipfile.ZipFile(compact,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
+            for name,data in sorted(files.items()):
+                item = zipfile.ZipInfo(name,date_time=(2026,10,1,0,0,0))
+                item.compress_type = zipfile.ZIP_DEFLATED
+                z.writestr(item,data,compresslevel=9)
+        index['compact'] = dict(file='artifacts/'+compact.name,sha256=sha(compact.read_bytes()),bytes=compact.stat().st_size,
+                                tool_sha256=sha(Path(__file__).read_bytes()),
+                                scope='Decision-grade snapshot; own checksum is in the adjacent canonical index to avoid recursive self-hashing.')
+        (results/'packages.json').write_text(json.dumps(index,indent=2)+'\n')
+        print(json.dumps(index['compact']))
+        return
+    assert a.build_dir is not None, '--build-dir required for raw packaging'
+    build = a.build_dir.resolve()
     files = {}
     for name in ['baseline-e2-t1','candidate-t1','candidate-t2','candidate-t4']:
         path = results/(name+'.json')

@@ -1,0 +1,5 @@
+experiment:
+  id: 2026-10-rust-internal-system-candidates
+  status: draft
+source:
+  problem_commit: 0aa28ac2ae0267048fcdb3998f9d76175ed4d699

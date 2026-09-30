@@ -1,6 +1,7 @@
 //! Mechanism-only feasibility probe using locked Bevy and production components.
 //! These small systems are not substitutes for the production advance_* methods.
-use bevy_ecs::{entity::EntityHashSet, prelude::*, query::BatchingStrategy, schedule::ExecutorKind};
+use bevy_ecs::{batching::BatchingStrategy, entity::EntityHashSet, prelude::*,
+    schedule::{MultiThreadedExecutor, SingleThreadedExecutor}};
 use bevy_tasks::{ComputeTaskPool, TaskPoolBuilder};
 use serde_json::json;
 use star_core::{read_pool::ReadPool, world::OrderedWorld};
@@ -75,7 +76,8 @@ fn run_schedule(threads: usize, case: &str) -> serde_json::Value {
     let independent = case == "disjoint_components";
     let mut world = new_world(independent && threads > 1);
     let mut schedule = Schedule::default();
-    schedule.set_executor_kind(if threads == 1 { ExecutorKind::SingleThreaded } else { ExecutorKind::MultiThreaded });
+    if threads == 1 { schedule.set_executor(SingleThreadedExecutor::new()); }
+    else { schedule.set_executor(MultiThreadedExecutor::new()); }
     match case {
         "disjoint_components" => { schedule.add_systems((mp, vision)); },
         "same_component" => { schedule.add_systems((mp, mp_second)); },

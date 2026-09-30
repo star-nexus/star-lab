@@ -1,0 +1,17 @@
+experiment:
+  id: 2026-09-rust-statistics-compute
+  date: 2026-10-01
+  status: draft
+  scope: serial decomposition and conditional internal Statistics parallel research
+source:
+  repository: star-nexus/star
+  problem_commit: c058d75c0ad67a7c340c2a6ac74a9d5bc2888adf
+  serial_commit: 44c3696814b82d7c9d92a83ef7d160ef462168af
+  measurement_commit: 7ab0ac1d97f5d68b8d81c505fa505a1cb234a56c
+  fix_commit: null
+  validated_commit: null
+  validated_tag: null
+headline:
+  resolution: pending net whole-call and capacity gates
+artifacts:
+  formal: []

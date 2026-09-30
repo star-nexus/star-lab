@@ -1,0 +1,24 @@
+{
+  "repositories": [
+    {
+      "path": "/Users/liyang/Developer/star-main",
+      "head": "7e145d169433695cd4957e186a6b2fda06813c26",
+      "status": " D rotk_agent/README.md\n D rotk_agent/adapters/__init__.py\n D rotk_agent/adapters/base.py\n D rotk_agent/adapters/chat_completions.py\n D rotk_agent/adapters/fake.py\n D rotk_agent/adapters/nemotron.py\n D rotk_agent/adapters/responses.py\n D rotk_agent/core/__init__.py\n D rotk_agent/core/agent.py\n D rotk_agent/core/bridge.py\n D rotk_agent/core/config.py\n D rotk_agent/core/console.py\n D rotk_agent/core/delays.py\n D rotk_agent/core/errors.py\n D rotk_agent/core/filters.py\n D rotk_agent/core/reachable_guard.py\n D rotk_agent/core/runner.py\n D rotk_agent/core/scoring.py\n D rotk_agent/core/stats.py\n D rotk_agent/core/tools.py\n D rotk_agent/core/types.py\n D rotk_agent/main.py\n D rotk_agent/modes/__init__.py\n D rotk_agent/modes/base.py\n D rotk_agent/modes/realtime.py\n D rotk_agent/modes/turn.py\n D rotk_agent/profiles.py\n D rotk_agent/prompts/system_prompt_realtime_cn.md\n D rotk_agent/prompts/system_prompt_realtime_cn_baseline.md\n D rotk_agent/prompts/system_prompt_realtime_en.md\n D rotk_agent/prompts/system_prompt_turn_cn.md\n D rotk_agent/prompts/system_prompt_turn_en.md\n D rotk_agent/tests/__init__.py\n D rotk_agent/tests/conftest.py\n D rotk_agent/tests/support.py\n D rotk_agent/tests/test_adapters.py\n D rotk_agent/tests/test_agent_loop.py\n D rotk_agent/tests/test_auto_test.py\n D rotk_agent/tests/test_config.py\n D rotk_agent/tests/test_errors.py\n D rotk_agent/tests/test_filters.py\n D rotk_agent/tests/test_profiles.py\n D rotk_agent/tests/test_reachable_guard.py\n D rotk_agent/tests/test_runner.py\n D rotk_agent/tests/test_scoring.py\n D rotk_agent/tests/test_stats.py\n D rotk_agent/tests/test_tools.py\n D rotk_agent/tests/test_turn_mode.py\n D rotk_env/assets/fonts/sh.otf\n",
+      "status_sha256": "c46233383bdcbc47aa08a935836bb9e8317fca9de7d4719e2385400bf07a08e8"
+    },
+    {
+      "path": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+      "head": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+      "status": "",
+      "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/liyang/.codex/worktrees/python-capacity-baseline/star-main",
+      "head": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+      "status": "",
+      "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "frozen_extension_sha256": "324454a00ab8bd3559c9229e6c6c9644242d65c488585eba7d29a63b39d29405",
+  "all_passed": true
+}

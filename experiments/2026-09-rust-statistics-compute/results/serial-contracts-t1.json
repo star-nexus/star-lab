@@ -1,0 +1,17 @@
+{
+  "source_sha": "44c3696814b82d7c9d92a83ef7d160ef462168af",
+  "extension_sha256": "357093a0fad3b7951e2cfa5d20c754a89540dec66f6a962d43c660a190d09d10",
+  "tool_sha256": "c44ce1648054bdee83afcef1ee1f9c1648e2cc26d26a80cb2550cad7b4c729b5",
+  "input_sha256": "11b33c95ad2b22e1842e24e0d0ce6b8c24e25bf19f05ae0761b6ca7ca2ffcf75",
+  "threads": 1,
+  "min_rows": null,
+  "cases": 36,
+  "steps": 174,
+  "all_passed": true,
+  "raw": {
+    "file": "serial-contracts-t1.raw.json.gz",
+    "sha256": "9db82664ad15814eec53a603f0d5148ad4d431ef66a4f36871f21de38847078c",
+    "bytes": 1047591
+  },
+  "scope": "synthetic full exports, one-shot deltas, errors and reset/close; not capacity"
+}

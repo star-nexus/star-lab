@@ -1,0 +1,17 @@
+{
+  "source_sha": "2bc57d5f2241a578f61d71bb5774e7063a03ec25",
+  "extension_sha256": "23dc7e4f5425e855a780a802d889f13bd28f300577688e66378ab574b7712d55",
+  "tool_sha256": "c44ce1648054bdee83afcef1ee1f9c1648e2cc26d26a80cb2550cad7b4c729b5",
+  "input_sha256": "11b33c95ad2b22e1842e24e0d0ce6b8c24e25bf19f05ae0761b6ca7ca2ffcf75",
+  "threads": 4,
+  "min_rows": null,
+  "cases": 36,
+  "steps": 174,
+  "all_passed": true,
+  "raw": {
+    "file": "selected-contracts-t4.raw.json.gz",
+    "sha256": "9db82664ad15814eec53a603f0d5148ad4d431ef66a4f36871f21de38847078c",
+    "bytes": 1047591
+  },
+  "scope": "synthetic full exports, one-shot deltas, errors and reset/close; not capacity"
+}

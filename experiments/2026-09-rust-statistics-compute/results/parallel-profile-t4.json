@@ -1,0 +1,186 @@
+{
+  "source_sha": "7ab0ac1d97f5d68b8d81c505fa505a1cb234a56c",
+  "tool_sha256": "0aa72c8b80555aaba15b839c57b498ba43395c96cbd72b4e81de325e16fe3b4e",
+  "extension_sha256": "f84c9e8be6ebb616892e0625de4feb28647774065f0b25637720fbae0dd760df",
+  "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+  "initial_sha256": "8b594c465a63728222c57f257111d500c1c378e226b3496c63c0b11870629bc0",
+  "original_source": {
+    "path": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+    "sha": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+    "dirty": ""
+  },
+  "mode": "compare",
+  "threads": 4,
+  "counts": {
+    "request": 40994,
+    "step": 9880,
+    "presentation": 9880
+  },
+  "kernel_source_sha": "7ab0ac1d97f5d68b8d81c505fa505a1cb234a56c",
+  "min_rows": 128,
+  "read_segment_histogram": {
+    "1": 3910,
+    "2": 2048,
+    "3": 921,
+    "4": 57,
+    "5": 2
+  },
+  "observations_in_shareable_segments": 7097,
+  "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+  "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf",
+  "phase_summary": {
+    "captures": {
+      "samples": 9880,
+      "mean_ns": 70.3581983805668,
+      "p99_ns": 250,
+      "max_ns": 8584
+    },
+    "clock": {
+      "samples": 9880,
+      "mean_ns": 899.8295546558704,
+      "p99_ns": 2000,
+      "max_ns": 7125
+    },
+    "lifecycle": {
+      "samples": 9880,
+      "mean_ns": 488.01417004048585,
+      "p99_ns": 1208,
+      "max_ns": 23333
+    },
+    "movement": {
+      "samples": 9880,
+      "mean_ns": 24458.70374493927,
+      "p99_ns": 49959,
+      "max_ns": 158834
+    },
+    "recovery": {
+      "samples": 9880,
+      "mean_ns": 3604.6385627530362,
+      "p99_ns": 13125,
+      "max_ns": 428417
+    },
+    "statistics": {
+      "samples": 9880,
+      "mean_ns": 121775.3072874494,
+      "p99_ns": 455208,
+      "max_ns": 1079292
+    },
+    "vision": {
+      "samples": 9880,
+      "mean_ns": 42917.11174089069,
+      "p99_ns": 121709,
+      "max_ns": 234917
+    },
+    "visuals": {
+      "samples": 9880,
+      "mean_ns": 9205.62024291498,
+      "p99_ns": 31208,
+      "max_ns": 90875
+    }
+  },
+  "statistics_summary": {
+    "observation_rows": {
+      "samples": 9880,
+      "mean_ns": 42.00404858299595,
+      "p99_ns": 128,
+      "max_ns": 128
+    },
+    "gather_ns": {
+      "samples": 9880,
+      "mean_ns": 7915.903643724696,
+      "p99_ns": 37167,
+      "max_ns": 108000
+    },
+    "compute_ns": {
+      "samples": 9880,
+      "mean_ns": 301.3992914979757,
+      "p99_ns": 2707,
+      "max_ns": 20082
+    },
+    "records_ns": {
+      "samples": 9880,
+      "mean_ns": 61408.8774291498,
+      "p99_ns": 263125,
+      "max_ns": 441082
+    },
+    "commit_ns": {
+      "samples": 9880,
+      "mean_ns": 7984.678036437247,
+      "p99_ns": 34458,
+      "max_ns": 238375
+    },
+    "trim_ns": {
+      "samples": 9880,
+      "mean_ns": 44422.928441295546,
+      "p99_ns": 187833,
+      "max_ns": 491208
+    },
+    "visibility_ns": {
+      "samples": 9880,
+      "mean_ns": 26145.496761133603,
+      "p99_ns": 111125,
+      "max_ns": 236791
+    },
+    "factions_ns": {
+      "samples": 9880,
+      "mean_ns": 6737.547469635628,
+      "p99_ns": 34875,
+      "max_ns": 69458
+    },
+    "kernel_wall_ns": {
+      "samples": 9880,
+      "mean_ns": 24170.184412955467,
+      "p99_ns": 120458,
+      "max_ns": 212292
+    },
+    "worker_max_ns": {
+      "samples": 9880,
+      "mean_ns": 17580.088562753037,
+      "p99_ns": 89624,
+      "max_ns": 170250
+    },
+    "dispatch_residual_ns": {
+      "samples": 9880,
+      "mean_ns": 6491.584008097166,
+      "p99_ns": 39125,
+      "max_ns": 99750
+    },
+    "parallel_batches": {
+      "samples": 9880,
+      "mean_ns": 0.32763157894736844,
+      "p99_ns": 1,
+      "max_ns": 1
+    },
+    "jobs": {
+      "samples": 9880,
+      "mean_ns": 1.3105263157894738,
+      "p99_ns": 4,
+      "max_ns": 4
+    },
+    "worker_threads": {
+      "samples": 9880,
+      "mean_ns": 1.3087044534412955,
+      "p99_ns": 4,
+      "max_ns": 4
+    }
+  },
+  "ordinary_step_summary": {
+    "samples": 9880,
+    "mean_ns": 227058.59331983805,
+    "p99_ns": 607792,
+    "max_ns": 1456125
+  },
+  "elapsed_seconds": 108.44170020800084,
+  "all_passed": true,
+  "scope": "fixed recorded input including warmup; compare mode interleaves diagnostic twin and is not controlled latency A/B or live capacity",
+  "step_raw": {
+    "file": "parallel-profile-t4.steps.json.gz",
+    "sha256": "8aede5a22baf3ee1d6cf6e71dcccd91645c8f3eaef1e6565f5eb40b47425251f",
+    "bytes": 25366
+  },
+  "timing_raw": {
+    "file": "parallel-profile-t4.timings.json.gz",
+    "sha256": "e5f41c7acdb759a24756ee47c95790277026b339dcbc947c24e7f71f7c3f9141",
+    "bytes": 461258
+  }
+}

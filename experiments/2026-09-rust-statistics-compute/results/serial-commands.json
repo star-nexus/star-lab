@@ -1,0 +1,56 @@
+[
+  {
+    "name": "baseline-t1",
+    "argv": [
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/profile_statistics_trace.py",
+      "--source",
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "--source-sha",
+      "44c3696814b82d7c9d92a83ef7d160ef462168af",
+      "--trace",
+      "/Users/liyang/Developer/star-lab/runs/ecs-e2-input/rust-300-r3.trace.json.gz",
+      "--trace-sha256",
+      "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+      "--threads",
+      "1",
+      "--mode",
+      "plain",
+      "--native-package",
+      "/Users/liyang/Developer/star-lab/runs/ecs-e2-baseline",
+      "--kernel-source-sha",
+      "c058d75c0ad67a7c340c2a6ac74a9d5bc2888adf",
+      "--extension-sha256",
+      "a73c477263d792cd0c4f71e3ab6001a36223cf0afd7136f8e8975f16b584731f",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-statistics-compute/results/baseline-t1.json"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "exit_status": 0
+  },
+  {
+    "name": "serial-split-t1",
+    "argv": [
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/profile_statistics_trace.py",
+      "--source",
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "--source-sha",
+      "44c3696814b82d7c9d92a83ef7d160ef462168af",
+      "--trace",
+      "/Users/liyang/Developer/star-lab/runs/ecs-e2-input/rust-300-r3.trace.json.gz",
+      "--trace-sha256",
+      "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+      "--threads",
+      "1",
+      "--mode",
+      "compare",
+      "--extension-sha256",
+      "357093a0fad3b7951e2cfa5d20c754a89540dec66f6a962d43c660a190d09d10",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-statistics-compute/results/serial-split-t1.json"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab",
+    "exit_status": 0
+  }
+]

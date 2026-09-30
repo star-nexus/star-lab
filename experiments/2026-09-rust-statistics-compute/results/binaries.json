@@ -1,0 +1,17 @@
+{
+  "serial": {
+    "wheel_sha256": "eaa63de1752b4223c3c15a73a912076599fd89dbb26a164bf092d8329a1fa64c",
+    "bytes": 1464498,
+    "extension_sha256": "357093a0fad3b7951e2cfa5d20c754a89540dec66f6a962d43c660a190d09d10"
+  },
+  "parallel": {
+    "wheel_sha256": "0d9735eaa1781574a686e126b28e24db49eb21dd05c0ed1060d98f79b3f1f847",
+    "bytes": 1488528,
+    "extension_sha256": "f84c9e8be6ebb616892e0625de4feb28647774065f0b25637720fbae0dd760df"
+  },
+  "selected": {
+    "wheel_sha256": "65584f4609e3feb590d7136c67ec03aed1324d3fecebf8ed51bd96f2c0f3bbd2",
+    "bytes": 1488531,
+    "extension_sha256": "23dc7e4f5425e855a780a802d889f13bd28f300577688e66378ab574b7712d55"
+  }
+}

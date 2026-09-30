@@ -1,21 +1,25 @@
 # Rust System并行：当前状态与边界（2026-09-29）
 
-## E2 Statistics 内部并行研究进行中（2026-10-01）
+## E2 Statistics 内部并行研究完成（2026-10-01）
 
-当前任务见 [E2研究包](../experiments/2026-09-rust-statistics-compute/README.md)及
-[恢复入口](rust-ecs-parallel.md)。从E1按计划进入Statistics当前批次纯计算/有序提交。
-串行拆分 **44c3696814b82d7c9d92a83ef7d160ef462168af**；并行研究原型
-**7ab0ac1d97f5d68b8d81c505fa505a1cb234a56c**，同一独立工作树/分支。
-进度：`串行拆分 █ | 分项归因 █ | scoped原型 █ | 全量等价 █ | 净收益 ▒ | 真实容量 ░`。
+正式包：[E2报告](../experiments/2026-09-rust-statistics-compute/README.md)，含analysis/decision/manifest、完整raw、逐步samples、错误/reset契约、wheel及源码恢复bundle。
+活动工作树 `/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main`，分支 `codex/rust-ecs-parallel`。
+实测/策略 **2bc57d5f2241a578f61d71bb5774e7063a03ec25**；最终文档 **0aa28ac2ae0267048fcdb3998f9d76175ed4d699**（执行代码相同）；
+annotated **rust-parallel-e2-statistics-2026-10-01**。正式扩展SHA **23dc7e4f5425e855a780a802d889f13bd28f300577688e66378ab574b7712d55**。
+串行44c3696、实验调度7ab0ac1及独立旧P0 binary均保留。
+进度：`串行拆分 █ | 分项归因 █ | scoped计算 █ | 全量等价 █ | 净收益/门槛 █ | 真实容量 █ | canonical归档/复算 █`。
 
-旧P0二进制与新原型1/2/4的36场景/174step完整状态、错误、展示及reset输出一致；
-原R4e40994请求/9880tick/9880展示的完整输出流与最终状态也一致。79项定向契约通过。
-记录构建是独立热点，算术极小；裁剪及逐行提交仍串行。现有实例池不增加worker预算。
-同二进制、同线程数的inline/128行策略独立交替对照正在完成，小批次阈值和真实窗口待验。
-普通step当前仍串行调度，私有推进探针按调用控制实验；API18/schema5/oracle/默认1线程不变。
-没有新已确认规则GAP；G008/G009 OPEN、R001/R002 RISK继续保留。5000Agents暂缓。
-磁盘满中断的pytest已在仅清理本任务编译缓存后重跑通过；原删除、冻结目录和正式证据保留。
-此状态优先于下方历史E1/P0下一步，不是容量或发布完成结论。
+仅当前Statistics批次的JSON记录构建在已有实例池内部并行，主线程原序提交；实际候选行至少128且显式native2/4才调度。小/尾批inline、默认1不变，没有between-System调度器。健康算术极小，trim/visibility/factions及写入保留串行。
+旧/新8种契约完整输出字节相同（36场景/174step）；20次R4e40994请求/9880tick/展示的完整流/最终状态一致，含正式普通step1/2/4。2291Python/4Rust/fmt/Clippy/release通过，多实例/reset/close覆盖。
+同binary同线程只改门槛的3组完整step对照：2线程均值减少4.18–16.76%，4线程7.58–10.36%，各组P99改善。合成1–32行并行负收益；64为测得mean-positive点，64行native4 P99反而更差，128保守操作门槛。此因果对照不是旧P0到全部新实现或整帧加速。
+
+真实5000Units/1000Agents/native4三轮30预热＋300s Cocoa全部guard通过：帧P99 28.283/28.643/28.631ms，Hz29.997/29.993/30.000。
+max帧91.923/102.449/32.239ms、worst5s P99 39.837/76.037/31.794ms原样保留，不保证每帧/短窗口。alive_min5000，peak movers180/173/173；不外推全5000移动、高密度、Hub/真实LLM或5000Agents。R4e native1验收及全部历史证据不覆盖。
+canonical raw SHA **62c5e73a2356334fc0fa85e3b5f4054a46f5f759ad7cb6c9fcef41dcd7b190ba**；8个完全相同contract raw只存1成员+别名；analyzer由canonical包复算而非依赖ignored loose scratch。工具checkpoint **69969a1713bb83d7e18fd4b05137276bc412cb72**，各测量工具hash/旧变体commit及完整argv/env见manifest/results。
+
+API18/schema5/oracle/Python生态边界不变。无新确认玩法GAP；G008/G009 OPEN、R001/R002 RISK、G001–3基线变化保留，5000Agents暂缓。原49项删除和两处冻结HEAD/扩展hash均核验保留。没有push/merge，迁移/发布未完成。
+下一候选E3先归因Vision uncached几何与有序缓存/Fog提交；between-System Recovery/Lifecycle/Vision保留低优先级窄接口研究（现有理想重叠小于派发成本），不直接全System入池。先读本E2包/生产native-statistics-parallel/GAP，再读E1依赖与机制、P0归因和R4e历史容量。
+此状态优先于下方历史E1/P0下一步。
 
 ## 独立Rust并行任务：E1 ECS方案探索完成（2026-09-30）
 

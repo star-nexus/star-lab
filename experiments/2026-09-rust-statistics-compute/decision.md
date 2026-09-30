@@ -1,9 +1,13 @@
-# Decision — E2 (draft)
+# E2 decision
 
-Status: proposed; defaults/policy not selected.
+选择Statistics当前批次完整观测记录构建的System内部并行。使用已有实例ReadPool，至少128实际候选行且配置native2/4才派发；分块数量不超过实例workers，worker返回按原ordinal的自有Result，全部join后主线程原序提交。空／小／尾批走inline，默认1线程及游戏batch/cycle/history均不变。
 
-Keep Statistics current batch, sampling cadence, cycle and exact successful-prefix
-error behavior. Use the existing instance pool only for independent owned row
-results. Empty/tiny work remains inline once crossover is selected from evidence.
-Same-input1/2/4 complete equivalence precedes latency A/B; whole-call net evidence
-precedes a normal policy change and real5000/1000window gates. Retain negative cases.
+测得mean-positive最小点64行；操作门槛128。64收益较小、尾延迟不稳定；128为当前原窗口batch并提供更大CPU工作余量。净收益来自同binary同线程只改调度政策的3组全step对照，不由aggregate FPS选赢家。原型与正式binary均做完整fixed-input等价；正式binary三轮实际窗口全部门槛通过，逐帧tail/最慢值保留。annotated tag rust-parallel-e2-statistics-2026-10-01，最终文档0aa28ac2ae0267048fcdb3998f9d76175ed4d699与实测2bc57d5执行代码完全相同。
+
+保留负结果：1–32行并行更慢；health算术极小；trim及顺序提交不是本阶段worker工作；全部System进池会违反业务/错误/结构修改边界。全resident扫描与whole-world复制、扩大batch、观测降采样/TTL、提前或乱序commit不采用。跨请求共享仍与System并行分开，P0候选及其证据保留。
+
+接受范围是当前记录构建叶子及此canonical5000Units/1000Agents配置，不表示ECS自动Schedule整体并行、5000Agents容量或整帧因果加速。G008/G009与R001/R002不关闭，迁移/发布仍未完成。默认native1不改；native4为显式配置。
+
+重新评估条件：硬件/worker预算、记录payload或batch分布变化、history政策另行版本化、线程池增加嵌套或多实例oversubscription、Vision miss成本与System访问边界变化。E3优先归因Vision uncached几何与有序缓存/Fog提交；between-SystemR/L/V候选留作低优先级窄接口研究，不将其全方法投入池。
+
+恢复入口、生产GAP台账和本包checksum/alias链均需更新。先验证精确源码，再annotated milestone；不push/merge，不移动旧tag，不改冻结checkout。

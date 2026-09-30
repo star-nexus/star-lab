@@ -1,0 +1,17 @@
+{
+  "source_sha": "7ab0ac1d97f5d68b8d81c505fa505a1cb234a56c",
+  "extension_sha256": "f84c9e8be6ebb616892e0625de4feb28647774065f0b25637720fbae0dd760df",
+  "tool_sha256": "c44ce1648054bdee83afcef1ee1f9c1648e2cc26d26a80cb2550cad7b4c729b5",
+  "input_sha256": "11b33c95ad2b22e1842e24e0d0ce6b8c24e25bf19f05ae0761b6ca7ca2ffcf75",
+  "threads": 4,
+  "min_rows": 0,
+  "cases": 36,
+  "steps": 174,
+  "all_passed": true,
+  "raw": {
+    "file": "parallel-contracts-t4.raw.json.gz",
+    "sha256": "9db82664ad15814eec53a603f0d5148ad4d431ef66a4f36871f21de38847078c",
+    "bytes": 1047591
+  },
+  "scope": "synthetic full exports, one-shot deltas, errors and reset/close; not capacity"
+}

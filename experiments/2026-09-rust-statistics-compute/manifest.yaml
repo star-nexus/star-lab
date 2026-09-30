@@ -1,17 +1,444 @@
-experiment:
-  id: 2026-09-rust-statistics-compute
-  date: 2026-10-01
-  status: draft
-  scope: serial decomposition and conditional internal Statistics parallel research
-source:
-  repository: star-nexus/star
-  problem_commit: c058d75c0ad67a7c340c2a6ac74a9d5bc2888adf
-  serial_commit: 44c3696814b82d7c9d92a83ef7d160ef462168af
-  measurement_commit: 7ab0ac1d97f5d68b8d81c505fa505a1cb234a56c
-  fix_commit: null
-  validated_commit: null
-  validated_tag: null
-headline:
-  resolution: pending net whole-call and capacity gates
-artifacts:
-  formal: []
+{
+  "experiment": {
+    "id": "2026-09-rust-statistics-compute",
+    "title": "E2 Statistics current-batch scoped compute with ordered commit",
+    "date": "2026-10-01",
+    "status": "validated"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "c058d75c0ad67a7c340c2a6ac74a9d5bc2888adf",
+    "serial_commit": "44c3696814b82d7c9d92a83ef7d160ef462168af",
+    "prototype_commit": "7ab0ac1d97f5d68b8d81c505fa505a1cb234a56c",
+    "measurement_commit": "2bc57d5f2241a578f61d71bb5774e7063a03ec25",
+    "fix_commit": "2bc57d5f2241a578f61d71bb5774e7063a03ec25",
+    "validated_commit": "0aa28ac2ae0267048fcdb3998f9d76175ed4d699",
+    "validated_tag": "rust-parallel-e2-statistics-2026-10-01",
+    "branch_at_time": "codex/rust-ecs-parallel",
+    "base_tag": "rust-kernel-r4e-2026-09-29",
+    "validated_vs_measured": "Documentation only; native code/tests identical",
+    "bundle": "artifacts/statistics-source.bundle",
+    "bundle_requires": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+    "api": 18,
+    "schema": 5,
+    "oracle": "python-r0c-3cc4ffe"
+  },
+  "hardware": {
+    "machine": "Mac mini",
+    "cpu": "Apple M4 /10 logical cores",
+    "memory": "17179869184 bytes",
+    "gpu": null,
+    "display": "Cocoa2480x1239; Chrome left open"
+  },
+  "software": {
+    "os": "macOS26.5.2 /25F84",
+    "python": "3.13.12",
+    "rust": "1.98.1",
+    "cargo": "1.98.1",
+    "maturin": "1.15.0",
+    "bevy": "0.19.1",
+    "pyo3": "0.29.2",
+    "dependency_lock": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+    "cargo_lock": "e86cb2bee26f1d95c1cde0abec61bdea575a73ae7218db60b7f06be735f15188"
+  },
+  "scenario": {
+    "name": "p3_runtime canonical generated fixture; exact hash in each live compact",
+    "map_size": [
+      120,
+      120
+    ],
+    "resident_units": 5000,
+    "moving_units": "peak180/173/173; not all movers",
+    "synthetic_contracts": "36 cases/174steps; none/dummy/window and all stated errors/states",
+    "synthetic_crossover": "259resident, selected0/1/8/16/32/64/128/256 rows, steady10000history, animation/vision disabled"
+  },
+  "workload": {
+    "seed": "42; exact RNG/state and admitted order in canonical initial/trace",
+    "fog": true,
+    "camera": "canonical default camera/zoom preserved in initial and final screenshot",
+    "zoom": "unchanged",
+    "agents": 1000,
+    "delay_seconds": 30,
+    "jitter_seconds": 5,
+    "think_bounds_seconds": [
+      15,
+      45
+    ],
+    "cycle_mode": "post-action",
+    "scope": "selected",
+    "layout": "canonical",
+    "policy": "stochastic",
+    "fps": 30,
+    "budget_ms": 8,
+    "native_threads": 4,
+    "native_wire": true,
+    "full_client_decode": true,
+    "default_native_threads": 1,
+    "paused_agents_target": 5000
+  },
+  "measurement": {
+    "warmup_seconds": 30,
+    "sustained_seconds": 300,
+    "repeats": 3,
+    "gc_policy": "realtime_defer",
+    "no_removed_slow_samples": true,
+    "headless_replay": "includes recorded warmup;9880step samples/run",
+    "guards_required": [
+      "complete",
+      "source_clean",
+      "tooling_clean",
+      "fog_on",
+      "world_alive",
+      "position_progress",
+      "frame_p99",
+      "world_hz",
+      "observation_p99",
+      "observation_queue_p99",
+      "action_queue_p99",
+      "queue_bounded",
+      "offered_load_met",
+      "duration_formal",
+      "not_diagnostic",
+      "fixed_clock",
+      "board_clock",
+      "nonempty_move",
+      "nonempty_attack",
+      "initial_resident_units",
+      "live_workload_95pct"
+    ],
+    "crossover": {
+      "warmup": 20,
+      "samples_per_policy_point": 200,
+      "order": "alternating AB/BA with reset excluded"
+    },
+    "live_max_frame_ms": [
+      91.92254196386784,
+      102.44866600260139,
+      32.238833024166524
+    ],
+    "worst_rolling5_p99_ms": [
+      39.83670799061656,
+      76.03725010994822,
+      31.793875037692487
+    ]
+  },
+  "variables": {
+    "independent": {
+      "net_dispatch_min_rows": [
+        1152921504606846976,
+        128
+      ],
+      "crossover_forced_min_rows": [
+        1152921504606846976,
+        0
+      ],
+      "native_threads": [
+        1,
+        2,
+        4
+      ]
+    },
+    "controlled": [
+      "Same7ab binary/thread/input for each net pair;3 independent alternating trials",
+      "Current game batch/history/clock/error/commit semantics",
+      "Actual canonical live workload parameters; admitted actions differ across live windows"
+    ],
+    "operational_min_rows": 128,
+    "measured_mean_positive_rows": 64
+  },
+  "environment": {
+    "headless": {
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy",
+      "PYTHONHASHSEED": "0"
+    },
+    "live": {
+      "HEADLESS": "0",
+      "SDL_VIDEODRIVER": "cocoa",
+      "PYTHONHASHSEED": "0",
+      "PYTHONUNBUFFERED": "1",
+      "STAR_SCALE_MINIMAP_UNITS": "off"
+    },
+    "exact_commands_and_env": [
+      "results/serial-commands.json",
+      "results/parallel-commands.json",
+      "results/net-commands.json",
+      "results/selected-commands.json",
+      "results/validation.json"
+    ]
+  },
+  "tooling": {
+    "selected_runner_commit": "87c1b99f25dc706c10a60be2f4f1a72878ab1bc9",
+    "analyzer_package_commit": "69969a1713bb83d7e18fd4b05137276bc412cb72",
+    "old_profile_commit": "1d4628950038df83b7216f72e5c28cc3746e0e35",
+    "current_profile_matrix_commit": "395d5daeda64d45280e67181f37d505745f6d925",
+    "crossover_commit": "07be567fccec8bcde262b94208e4bdc51a95f861",
+    "per_result_hashes": true
+  },
+  "binaries": {
+    "serial": {
+      "wheel_sha256": "eaa63de1752b4223c3c15a73a912076599fd89dbb26a164bf092d8329a1fa64c",
+      "bytes": 1464498,
+      "extension_sha256": "357093a0fad3b7951e2cfa5d20c754a89540dec66f6a962d43c660a190d09d10"
+    },
+    "parallel": {
+      "wheel_sha256": "0d9735eaa1781574a686e126b28e24db49eb21dd05c0ed1060d98f79b3f1f847",
+      "bytes": 1488528,
+      "extension_sha256": "f84c9e8be6ebb616892e0625de4feb28647774065f0b25637720fbae0dd760df"
+    },
+    "selected": {
+      "wheel_sha256": "65584f4609e3feb590d7136c67ec03aed1324d3fecebf8ed51bd96f2c0f3bbd2",
+      "bytes": 1488531,
+      "extension_sha256": "23dc7e4f5425e855a780a802d889f13bd28f300577688e66378ab574b7712d55"
+    }
+  },
+  "artifacts": {
+    "formal": [
+      {
+        "path": "artifacts/statistics-compute-raw.zip",
+        "sha256": "62c5e73a2356334fc0fa85e3b5f4054a46f5f759ad7cb6c9fcef41dcd7b190ba",
+        "bytes": 25951662
+      },
+      {
+        "path": "artifacts/statistics-source.bundle",
+        "sha256": "dfcdcbfa9434f00a4a22b3a56db39b7a088d5a06e197a9e26f3e64a5ed9389ab",
+        "bytes": 385642
+      },
+      {
+        "path": "results/baseline-contracts-t1.json",
+        "sha256": "95c86edc13c9d434b1a56c8ebcd345b090ec76e169a211a54bfac7e177e86098",
+        "bytes": 673
+      },
+      {
+        "path": "results/baseline-t1.json",
+        "sha256": "c6da9c2b32612b9961e1a3ffcc59572fffdadcc774575842a8e4913d89c21b44",
+        "bytes": 1658
+      },
+      {
+        "path": "results/binaries.json",
+        "sha256": "1b3f1adc1b3cad1a25fc450b2470cfc47cd00b65edb88c2cf97cb7ae299642d6",
+        "bytes": 667
+      },
+      {
+        "path": "results/capacity-comparison.json",
+        "sha256": "c1ec1ebb3e6f6da95c30148c4fb3e245674470d38b3c7c3f6881278aefd5d717",
+        "bytes": 26393
+      },
+      {
+        "path": "results/compute-comparison.json",
+        "sha256": "1ae071a25f42b84bf7480dd385cf078dfda78606b167a125978911988bdd3859",
+        "bytes": 16989
+      },
+      {
+        "path": "results/crossover.json",
+        "sha256": "af2c2db7287e3946b89b9fed89be223af7baf0e73a94b2f271a14d9a1769dd45",
+        "bytes": 21865
+      },
+      {
+        "path": "results/isolation.json",
+        "sha256": "41478365bb0c223f350e8dd0ae6a0f0575e8e1b0ac2651d3efcb19751b5c6670",
+        "bytes": 2632
+      },
+      {
+        "path": "results/net-commands.json",
+        "sha256": "77a21d3382f2dee42252ac4e1fb6e108bf6917943042b8b43242d2244b8d6d5e",
+        "bytes": 12003
+      },
+      {
+        "path": "results/net-t2-inline-r1.json",
+        "sha256": "bb5e7f714609cc0091e4d8ee6c7087618bbf91cf43ae744112d870bad704079d",
+        "bytes": 1698
+      },
+      {
+        "path": "results/net-t2-inline-r2.json",
+        "sha256": "7a4a652fb7009de19a07c8877a8f96439cc12f786e20cb3447b7a95496219fb2",
+        "bytes": 1697
+      },
+      {
+        "path": "results/net-t2-inline-r3.json",
+        "sha256": "cbbf828ba17b2694f9d1790a46f46e068a6b0608bb34d475ac8a9f4929409d26",
+        "bytes": 1698
+      },
+      {
+        "path": "results/net-t2-m128-r1.json",
+        "sha256": "ff0d531b726bc8ff6860e57937c69be674fbe28b6b591b0d8d2d8ffd77c7a848",
+        "bytes": 1680
+      },
+      {
+        "path": "results/net-t2-m128-r2.json",
+        "sha256": "fe7dd0840ef971494ee9a06904cbef58acdf917ffb4ca2be07027c92daaf4456",
+        "bytes": 1679
+      },
+      {
+        "path": "results/net-t2-m128-r3.json",
+        "sha256": "1ba1a61573f5333f520f176c530e1134b87debbf59695835ebcec4686ccaa412",
+        "bytes": 1680
+      },
+      {
+        "path": "results/net-t4-inline-r1.json",
+        "sha256": "8aab160832cc07cb111221a7b07d8132949f51bee7ca30d5ea2e01c8969fc506",
+        "bytes": 1697
+      },
+      {
+        "path": "results/net-t4-inline-r2.json",
+        "sha256": "f1e0241d1892a2720c40ba825b247b778290ef9a11e9312e2d6c0b62c04f4176",
+        "bytes": 1699
+      },
+      {
+        "path": "results/net-t4-inline-r3.json",
+        "sha256": "4614a6785383b274e50778267d6f5a018eba335bb636bc6f89bc07b9305390ef",
+        "bytes": 1698
+      },
+      {
+        "path": "results/net-t4-m128-r1.json",
+        "sha256": "bc9773b9de6fd1a6f5d9831946b034cfd5149da80875c03a825939a1dbff0eb4",
+        "bytes": 1681
+      },
+      {
+        "path": "results/net-t4-m128-r2.json",
+        "sha256": "67311b99072dd1a2faf766057d69bab89e77d460b7e4903a6fde07d96f37d57d",
+        "bytes": 1680
+      },
+      {
+        "path": "results/net-t4-m128-r3.json",
+        "sha256": "79fc07d1af49bdbc3005000fc1c59745472037f9d5251c994fad67249ffcdc90",
+        "bytes": 1678
+      },
+      {
+        "path": "results/packages.json",
+        "sha256": "2b11496d41c9e9e3d3ddfe46f74f1c62c51e55a7bf786aa61c486384ed11bab7",
+        "bytes": 21234
+      },
+      {
+        "path": "results/parallel-commands.json",
+        "sha256": "0600ba1b3d728070bb077af0e00526bd013a7c59e5d9fdc48c0db29a7c00874a",
+        "bytes": 5472
+      },
+      {
+        "path": "results/parallel-contracts-t1.json",
+        "sha256": "1735555b803627cb77d3215d8c5202d74661b006b765be885d12d691c866ce14",
+        "bytes": 670
+      },
+      {
+        "path": "results/parallel-contracts-t2.json",
+        "sha256": "c597217abaa6432a7325caf6b6e419bc1e687fbeb71583e4f1b2e116c33ec1fa",
+        "bytes": 670
+      },
+      {
+        "path": "results/parallel-contracts-t4.json",
+        "sha256": "47c47288f78effba15cf7e75e5dba711c3c453114c5aaa1bb969ba7bbb78c02e",
+        "bytes": 670
+      },
+      {
+        "path": "results/parallel-profile-t1.json",
+        "sha256": "40f69cb9acdd1fe02a679b587832d7dcc8b165126489233b8bc5a3e857288254",
+        "bytes": 4660
+      },
+      {
+        "path": "results/parallel-profile-t2.json",
+        "sha256": "22a18080824050561c0f7591de43187b9e5561d22c7b1f08d71bdd041dfedc61",
+        "bytes": 4740
+      },
+      {
+        "path": "results/parallel-profile-t4.json",
+        "sha256": "6334a06175ce7310cae79a3faad96a0a013bd758695a73efc20a66e9ce38a9f4",
+        "bytes": 4747
+      },
+      {
+        "path": "results/rust4-300-r1.json",
+        "sha256": "31eaa021713eee9465a95e48573d494937d4eaa506ab7ad3a2457222edcb7851",
+        "bytes": 244263
+      },
+      {
+        "path": "results/rust4-300-r2.json",
+        "sha256": "c67f7daa00dc6a3e6ccb711ef5cb9f0c1fdc86953bc9a3cf0f2b0ec1ac552b6c",
+        "bytes": 252075
+      },
+      {
+        "path": "results/rust4-300-r3.json",
+        "sha256": "e8b2cc4460e588b50b9d77085cee2aa288d63099c14f46a6cbd3ea019dbcda7b",
+        "bytes": 244266
+      },
+      {
+        "path": "results/selected-commands.json",
+        "sha256": "b088e00445603503977cc3673b2e5bf9b73a1f15f20bc43197ea9a321e88a34a",
+        "bytes": 14823
+      },
+      {
+        "path": "results/selected-contracts-t1.json",
+        "sha256": "047a462dd43e6a35f6ab35049775995f0c9f29dbb85f1e612a679ff7b88c9bb7",
+        "bytes": 673
+      },
+      {
+        "path": "results/selected-contracts-t2.json",
+        "sha256": "f37504169a0c08f7b1fb570dce6be3119125bdc70b3ccc404d197c6b812bb4fd",
+        "bytes": 673
+      },
+      {
+        "path": "results/selected-contracts-t4.json",
+        "sha256": "6cb8ce9f19daea307737200f8a791d917e8978e311d07bde71b8486eddced83c",
+        "bytes": 673
+      },
+      {
+        "path": "results/selected-normal-t1.json",
+        "sha256": "3117aa32b74a06727b5188f77da90a8d893a7f457dc236fc707dc0004e179e79",
+        "bytes": 1685
+      },
+      {
+        "path": "results/selected-normal-t2.json",
+        "sha256": "aef64bab83af06cadf46a214556c592e213c7c963be84f91cc19330328b72696",
+        "bytes": 1684
+      },
+      {
+        "path": "results/selected-normal-t4.json",
+        "sha256": "4591a0dc6a9de947c5c9eaabcaff25c13bf35eee9480f75b95ebffd07742b63d",
+        "bytes": 1685
+      },
+      {
+        "path": "results/serial-commands.json",
+        "sha256": "d9fbfde9ebf512060f38f863fa53e948f473d87e3f5ae1f7c2b163a78f563007",
+        "bytes": 2083
+      },
+      {
+        "path": "results/serial-contracts-t1.json",
+        "sha256": "f3a5b309c2e82e514f7d97fc0c9c1f86d60663f5d2aee75551926eb431e1d4e2",
+        "bytes": 671
+      },
+      {
+        "path": "results/serial-split-t1.json",
+        "sha256": "94840ec6908d77ce62f6c9454e2745ad4ff6243dca50b0ead6b423bbdd606618",
+        "bytes": 3935
+      },
+      {
+        "path": "results/validation.json",
+        "sha256": "d21d4c84bf7be11a4d44d71f13af0d0eb071fddc9a81b43c78466347cb95f89e",
+        "bytes": 2248
+      }
+    ],
+    "external": [
+      {
+        "path": "../2026-09-rust-1000-agent-validation/artifacts/r4e-1000-agents-raw.zip",
+        "trace_member": "results/rust-300-r3.trace.json.gz",
+        "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+        "initial_sha256": "8b594c465a63728222c57f257111d500c1c378e226b3496c63c0b11870629bc0"
+      },
+      {
+        "path": "../2026-09-rust-system-attribution/artifacts/rust-system-attribution-raw.zip",
+        "sha256": "93b8f7051c0ab8a4fdd67252a88e4ef0db54f531ddd740d00c976a0d18c86c28",
+        "wheel_member": "artifacts/wheel/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+        "baseline_extension_sha256": "a73c477263d792cd0c4f71e3ab6001a36223cf0afd7136f8e8975f16b584731f"
+      }
+    ]
+  },
+  "headline": {
+    "problem_signature": "Unattributed serial Statistics and incorrect whole-method parallel scope",
+    "root_cause": "Independent JSON record construction dominates arithmetic; sequential trim/commit remains",
+    "resolution": "Existing instance pool128-row cutoff, bounded pure owned candidates, original-order commit",
+    "result": "Full equivalence/regression/net/crossover and three native4 real-window gates passed; no frame causal or expanded5000Agent claim"
+  },
+  "revisit_when": [
+    "Hardware/payload/current-batch distribution changes",
+    "Pool budgets/oversubscription/extra nested dispatch changes",
+    "Vision cache-miss cost or narrow System interface decomposition warrants next prototype"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "source_sha": "2bc57d5f2241a578f61d71bb5774e7063a03ec25",
+  "extension_sha256": "23dc7e4f5425e855a780a802d889f13bd28f300577688e66378ab574b7712d55",
+  "python_tests": 2291,
+  "rust_tests": 4,
+  "checks": [
+    {
+      "command": "HEADLESS=1 SDL_VIDEODRIVER=dummy .venv/bin/python -m pytest -q --capture=sys",
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "exit_code": 0,
+      "log": "validation/pytest.log",
+      "sha256": "448b2468d3842fff619addc2181a7505c34453975530ed263b1abf80c290ffdd",
+      "bytes": 2582
+    },
+    {
+      "command": "cargo test --locked -p star-core -p star-rotk",
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "exit_code": 0,
+      "log": "validation/cargo-test.log",
+      "sha256": "1605885db3197bbb7f05068c2b35bc815b63bad77b76cf31c42708aece50a61f",
+      "bytes": 3759
+    },
+    {
+      "command": "cargo fmt --all --check",
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "exit_code": 0,
+      "log": "validation/fmt.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "command": "cargo clippy --locked --workspace --all-targets -- -D warnings",
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "exit_code": 0,
+      "log": "validation/clippy.log",
+      "sha256": "f6fd7c06c287c76cf9489168ee038a6f7e64f954f4784ddd87fa45402e70e139",
+      "bytes": 2585
+    }
+  ],
+  "all_passed": true,
+  "notes": [
+    "Release wheel built with maturin1.15.0/Cargo1.98.1/Rust1.98.1/Python3.13.12; locked dependencies.",
+    "Earlier FD-capture pytest was interrupted by disk exhaustion, then active worktree dev build cache was cleaned and full sys-capture suite passed. Intermediate environment failure is not a rules GAP; retained environment log when available."
+  ],
+  "cargo_environment": {
+    "PATH": "/Users/liyang/.cargo/bin:$PATH"
+  },
+  "release_build_command": "env PATH=\"/Users/liyang/.cargo/bin:$PATH\" uvx --from maturin==1.15.0 maturin build --release --locked --manifest-path native/python/Cargo.toml --interpreter .venv/bin/python --out /Users/liyang/Developer/star-lab/runs/ecs-e2-build/selected"
+}

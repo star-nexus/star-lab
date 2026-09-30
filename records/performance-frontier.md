@@ -6,6 +6,18 @@ For admission criteria, see [`../PROTOCOL.md`](../PROTOCOL.md).
 
 Different measurement planes are kept separate rather than mixed into one table.
 
+## E2 continuation at the existing5000/1000 point — explicit native4
+
+Validated2026-10-01. Measured2bc57d5f2241a578f61d71bb5774e7063a03ec25; final docs0aa28ac2ae0267048fcdb3998f9d76175ed4d699, annotated `rust-parallel-e2-statistics-2026-10-01`. [Canonical evidence and checksums](../experiments/2026-09-rust-statistics-compute/README.md). Same R4e canonical120×120/Cocoa2480×1239/Fog/seed42/native-wire/full decode/5000Units/1000syntheticAgents/30Hz/30±5s/8ms/realtime_defer/Chrome-open profile; explicit4workers share the existing instance pool. Default1 remains, earlierR4e evidence independently preserved. This adds an accepted worker configuration, no scale expansion or causal whole-frame speedup claim.
+
+| Run | Frame P99 ms | Observation response P99 ms | Action queue P99 ms | Hz | Max frame ms | Alive / peak moving |
+|---|---:|---:|---:|---:|---:|---:|
+| rust4-300-r1 | 28.283 | 43.347 | 33.508 | 29.997 | 91.923 | 5000 / 180 |
+| rust4-300-r2 | 28.643 | 45.531 | 35.489 | 29.993 | 102.449 | 5000 / 173 |
+| rust4-300-r3 | 28.631 | 44.518 | 34.070 | 30.000 | 32.239 | 5000 / 173 |
+
+Three30s warmups+300s windows pass all recorded guards,8999/8998/9000admitted frames. No slow frames removed; worst rolling5s P99 39.837/76.037/31.794ms, longestmiss2/2/0. Whole-window acceptance does not promise each frame/short window. Fixed-input whole-step dispatch A/B is separately causal; actual live admitted trajectories differ. No all5000movers/high-density/Hub/realLLM/5000Agents acceptance, no GAP closure or release completion.
+
 ## Native rendered Agent closed-loop frontier — R4e / API18
 
 Validated2026-09-29. Measurement `5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5`; final docs `7e145d169433695cd4957e186a6b2fda06813c26`, annotated `rust-kernel-r4e-2026-09-29`. [Evidence and checksums](../experiments/2026-09-rust-1000-agent-validation/README.md).

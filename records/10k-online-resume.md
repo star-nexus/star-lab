@@ -1,5 +1,7 @@
 # 10K / 100% moving / 30 Hz — 恢复入口
 
+新Session开展Rust并行工作，先读[专门交接入口](rust-parallel-handoff.md)（2026-09-30，含设计演变、负结果、代码/测试入口和冻结起点）。
+
 ## 最新检查点：R4e，1000-Agent当前容量验证通过（2026-09-29）
 
 最终生产 **`7e145d169433695cd4957e186a6b2fda06813c26`** / annotated **`rust-kernel-r4e-2026-09-29`**；测量实现仍 **`5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5`**，API18原二进制，本轮生产仅文档。[完整正负结果与复现](../experiments/2026-09-rust-1000-agent-validation/README.md)。

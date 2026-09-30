@@ -1,0 +1,66 @@
+{
+  "all_passed": true,
+  "source_sha": "6d4018cc0c607a51a3783428867ba9259bb43f43",
+  "documentation_sha": "ad02b75f2b83f97fe0bef4c1c9eee5742b1610fb",
+  "python_tests": 2315,
+  "rust_tests": 4,
+  "new_tests": 24,
+  "targeted_tests": 46,
+  "fmt": true,
+  "clippy": true,
+  "release": true,
+  "commands": [
+    {
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "command": "HEADLESS=1 SDL_VIDEODRIVER=dummy .venv/bin/python -m pytest -q --capture=sys"
+    },
+    {
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "command": "HEADLESS=1 SDL_VIDEODRIVER=dummy .venv/bin/python -m pytest -q --capture=sys rotk_env/tests/test_native_system_candidates.py rotk_env/tests/test_native_step_profile.py"
+    },
+    {
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "command": "env PATH=\"/Users/liyang/.cargo/bin:$PATH\" cargo test --locked -p star-core -p star-rotk"
+    },
+    {
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "command": "env PATH=\"/Users/liyang/.cargo/bin:$PATH\" cargo fmt --all --check"
+    },
+    {
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "command": "env PATH=\"/Users/liyang/.cargo/bin:$PATH\" cargo clippy --locked --workspace --all-targets -- -D warnings"
+    },
+    {
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "command": "env PATH=\"/Users/liyang/.cargo/bin:$PATH\" uvx --from maturin==1.15.0 maturin build --release --locked --manifest-path native/python/Cargo.toml --interpreter .venv/bin/python --out /Users/liyang/Developer/star-lab/runs/ecs-e3-build/wheel"
+    }
+  ],
+  "logs": [
+    {
+      "member": "validation/build.log",
+      "sha256": "95a1252398ba1f6a9878933e21824c0a4e094a721515c9f5994b776f5691b926",
+      "bytes": 722
+    },
+    {
+      "member": "validation/clippy.log",
+      "sha256": "774f9a9d96f73e42a8df7f2628fb004a7f81d0f09aa200361c145e90785a850f",
+      "bytes": 282
+    },
+    {
+      "member": "validation/cargo-test-core.log",
+      "sha256": "1fff8c0534c38bfa4f19c782fd565d699710f36d7447b945a055e423d6623696",
+      "bytes": 1064
+    },
+    {
+      "member": "validation/pytest.log",
+      "sha256": "ab8813aa5b033d206bd9f71b894bafb6d1238b6ff656d712e82c38fcf20fc6e4",
+      "bytes": 2662
+    },
+    {
+      "member": "validation/targeted.log",
+      "sha256": "1f989e92f4c35233965dad162f72c55ee2f3060229efd37dd700ecde76c06a6b",
+      "bytes": 100
+    }
+  ],
+  "scope": "Private instrumentation; no new parallel policy, live capacity, closed GAP or Frontier. PyO3 extension verified by Python tests; standalone extension-module cargo test linkage configuration is not a workload result."
+}

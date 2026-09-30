@@ -1,0 +1,92 @@
+[
+  {
+    "name": "baseline-e2-t1",
+    "argv": [
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/bin/python",
+      "tools/rust_migration/statistics_contract_matrix.py",
+      "--source",
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "--input",
+      "/Users/liyang/Developer/star-lab/runs/ecs-e2-input/contracts.json.gz",
+      "--extension-sha256",
+      "23dc7e4f5425e855a780a802d889f13bd28f300577688e66378ab574b7712d55",
+      "--threads",
+      "1",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-10-rust-internal-system-candidates/results/contracts-baseline-e2-t1.json",
+      "--native-package",
+      "/Users/liyang/Developer/star-lab/runs/ecs-e3-baseline"
+    ],
+    "environment": {
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy",
+      "PYGAME_HIDE_SUPPORT_PROMPT": "1"
+    }
+  },
+  {
+    "name": "candidate-t1",
+    "argv": [
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/bin/python",
+      "tools/rust_migration/statistics_contract_matrix.py",
+      "--source",
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "--input",
+      "/Users/liyang/Developer/star-lab/runs/ecs-e2-input/contracts.json.gz",
+      "--extension-sha256",
+      "e0f46cfbffd8542c08cd2b2e6b4a26c000da05ecb9bffd3466d77fa859a9834d",
+      "--threads",
+      "1",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-10-rust-internal-system-candidates/results/contracts-candidate-t1.json"
+    ],
+    "environment": {
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy",
+      "PYGAME_HIDE_SUPPORT_PROMPT": "1"
+    }
+  },
+  {
+    "name": "candidate-t2",
+    "argv": [
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/bin/python",
+      "tools/rust_migration/statistics_contract_matrix.py",
+      "--source",
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "--input",
+      "/Users/liyang/Developer/star-lab/runs/ecs-e2-input/contracts.json.gz",
+      "--extension-sha256",
+      "e0f46cfbffd8542c08cd2b2e6b4a26c000da05ecb9bffd3466d77fa859a9834d",
+      "--threads",
+      "2",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-10-rust-internal-system-candidates/results/contracts-candidate-t2.json"
+    ],
+    "environment": {
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy",
+      "PYGAME_HIDE_SUPPORT_PROMPT": "1"
+    }
+  },
+  {
+    "name": "candidate-t4",
+    "argv": [
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/bin/python",
+      "tools/rust_migration/statistics_contract_matrix.py",
+      "--source",
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "--input",
+      "/Users/liyang/Developer/star-lab/runs/ecs-e2-input/contracts.json.gz",
+      "--extension-sha256",
+      "e0f46cfbffd8542c08cd2b2e6b4a26c000da05ecb9bffd3466d77fa859a9834d",
+      "--threads",
+      "4",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-10-rust-internal-system-candidates/results/contracts-candidate-t4.json"
+    ],
+    "environment": {
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy",
+      "PYGAME_HIDE_SUPPORT_PROMPT": "1"
+    }
+  }
+]

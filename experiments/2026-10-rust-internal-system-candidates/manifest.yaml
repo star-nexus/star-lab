@@ -1,5 +1,172 @@
-experiment:
-  id: 2026-10-rust-internal-system-candidates
-  status: draft
-source:
-  problem_commit: 0aa28ac2ae0267048fcdb3998f9d76175ed4d699
+{
+  "experiment": {
+    "id": "2026-10-rust-internal-system-candidates",
+    "date": "2026-10-01",
+    "status": "validated",
+    "kind": "internal System attribution and conditional roadmap; no execution-policy fix"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "branch_at_time": "codex/rust-ecs-parallel",
+    "base_tag": "rust-kernel-r4e-2026-09-29",
+    "problem_commit": "0aa28ac2ae0267048fcdb3998f9d76175ed4d699",
+    "measurement_commit": "6d4018cc0c607a51a3783428867ba9259bb43f43",
+    "validated_commit": "6d4018cc0c607a51a3783428867ba9259bb43f43",
+    "fix_commit": null,
+    "documentation_commit": "ad02b75f2b83f97fe0bef4c1c9eee5742b1610fb",
+    "validated_tag": "rust-parallel-e3-internal-attribution-2026-10-01",
+    "tag_object": "4212a1151f30cb8a919359cb9ab4bb8df0ce5298",
+    "bundle": {
+      "file": "artifacts/system-candidates-source.bundle",
+      "sha256": "37990aa916922457c32a4b50ff50c24cae31cf8bf2930f872c728c38533483c1",
+      "bytes": 13024,
+      "requires": "0aa28ac2ae0267048fcdb3998f9d76175ed4d699"
+    },
+    "api": 18,
+    "schema": 5,
+    "oracle": "python-r0c-3cc4ffe",
+    "pushed": false
+  },
+  "hardware": {
+    "machine": "Mac mini Mac16,10",
+    "cpu": "Apple M4",
+    "logical_cores": 10,
+    "memory_bytes": 17179869184
+  },
+  "software": {
+    "os": "macOS26.5.2 /25F84",
+    "python": "3.13.12",
+    "rust": "1.98.1",
+    "cargo": "1.98.1",
+    "maturin": "1.15.0",
+    "bevy": "0.19.1",
+    "pyo3": "0.29.2",
+    "cargo_lock": "e86cb2bee26f1d95c1cde0abec61bdea575a73ae7218db60b7f06be735f15188",
+    "uv_lock": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae"
+  },
+  "scenario": {
+    "name": "R4e canonical p3_runtime recorded live input",
+    "seed": 42,
+    "map_size": [
+      120,
+      120
+    ],
+    "resident_units": 5000,
+    "agents": 1000,
+    "fog": true,
+    "display": "recorded window state replayed headless; no rendering/live host",
+    "camera": "unchanged serialized state",
+    "paused_agents": 5000,
+    "think": "post-action;30\u00b15s truncated15\u201345; no polling while thinking",
+    "dt": "recorded fixed30Hz",
+    "includes_recorded_warmup": true,
+    "request_count": 40994,
+    "step_count": 9880,
+    "presentation_count": 9880,
+    "native_threads": [
+      1,
+      2,
+      4
+    ],
+    "default_native_threads": 1,
+    "moving_mean": 122.4673076923077,
+    "moving_max": 186
+  },
+  "measurement": {
+    "mode": "one complete diagnostic twin replay per1/2/4; independent E2 plain replay",
+    "repeats_per_configuration": 1,
+    "native_release": true,
+    "not_causal_latency_ab": true,
+    "no_cpu_affinity": true,
+    "no_removed_samples": true,
+    "guards": [
+      "exact source/extension/input hashes",
+      "full decoded twin responses/deltas/final state",
+      "recorded response wire/events/final hashes",
+      "independent E2 stream equality",
+      "36 cases/174steps4variant exact raw byte equality",
+      "full regressions",
+      "canonical archive re-analysis",
+      "original deletes and frozen isolation unchanged"
+    ]
+  },
+  "binary": {
+    "extension_sha256": "e0f46cfbffd8542c08cd2b2e6b4a26c000da05ecb9bffd3466d77fa859a9834d",
+    "wheel_member": "wheel/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+    "wheel_sha256": "6a95bb79ae02f860094a88780b84dd64f73cc845c5e52fb43bb217daa79e4cd7",
+    "raw_archive": {
+      "file": "artifacts/system-candidates-raw.zip",
+      "sha256": "c3e347b145fcc5edfda304bb35030d3d3d9320861f116a5507d2b92cbd9b6abd",
+      "bytes": 5071795
+    }
+  },
+  "baseline_binary": {
+    "archive": "../2026-09-rust-statistics-compute/artifacts/statistics-compute-raw.zip",
+    "archive_sha256": "62c5e73a2356334fc0fa85e3b5f4054a46f5f759ad7cb6c9fcef41dcd7b190ba",
+    "wheel_member": "wheels/selected/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+    "kernel_source_sha": "2bc57d5f2241a578f61d71bb5774e7063a03ec25",
+    "documentation_sha": "0aa28ac2ae0267048fcdb3998f9d76175ed4d699",
+    "extension_sha256": "23dc7e4f5425e855a780a802d889f13bd28f300577688e66378ab574b7712d55"
+  },
+  "canonical_inputs": {
+    "trace": {
+      "archive": "../2026-09-rust-1000-agent-validation/artifacts/r4e-1000-agents-raw.zip",
+      "archive_sha256": "ad96be639d7e17e931d7984f87e4d5d2049653e769dc1a43b7d0d4d58f1d00c5",
+      "member": "results/rust-300-r3.trace.json.gz",
+      "sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77"
+    },
+    "initial": {
+      "archive": "../2026-09-rust-1000-agent-validation/artifacts/r4e-1000-agents-raw.zip",
+      "archive_sha256": "ad96be639d7e17e931d7984f87e4d5d2049653e769dc1a43b7d0d4d58f1d00c5",
+      "member": "results/rust-300-r3.initial.json.gz",
+      "sha256": "8b594c465a63728222c57f257111d500c1c378e226b3496c63c0b11870629bc0"
+    },
+    "contracts": {
+      "archive": "../2026-09-rust-statistics-compute/artifacts/statistics-compute-raw.zip",
+      "archive_sha256": "62c5e73a2356334fc0fa85e3b5f4054a46f5f759ad7cb6c9fcef41dcd7b190ba",
+      "member": "inputs/contracts.json.gz",
+      "sha256": "11b33c95ad2b22e1842e24e0d0ce6b8c24e25bf19f05ae0761b6ca7ca2ffcf75"
+    }
+  },
+  "contracts_raw": {
+    "archive": "../2026-09-rust-statistics-compute/artifacts/statistics-compute-raw.zip",
+    "archive_sha256": "62c5e73a2356334fc0fa85e3b5f4054a46f5f759ad7cb6c9fcef41dcd7b190ba",
+    "member": "results/contracts-canonical.raw.json.gz",
+    "sha256": "9db82664ad15814eec53a603f0d5148ad4d431ef66a4f36871f21de38847078c",
+    "bytes": 1047591,
+    "aliases": [
+      "contracts-baseline-e2-t1.raw.json.gz",
+      "contracts-candidate-t1.raw.json.gz",
+      "contracts-candidate-t2.raw.json.gz",
+      "contracts-candidate-t4.raw.json.gz"
+    ],
+    "reason": "All newly executed outputs are byte-identical to E2 canonical raw; retain hash identities and one authoritative artifact."
+  },
+  "tooling": {
+    "repository": "star-nexus/star-lab",
+    "measurement_commit": "65c6585a370b0587a9c83c32b17cbfe2823b49d5",
+    "archive_checkpoint": "2e4c5766b344bfcde94e51fb5bcf7d909a265caf",
+    "files": {
+      "profile_system_candidates.py": "ccae26333206116c26a90832b84cd3a27cc67af8dec6c1b9f7dea9dbfc9f1293",
+      "statistics_contract_matrix.py": "c44ce1648054bdee83afcef1ee1f9c1648e2cc26d26a80cb2550cad7b4c729b5",
+      "analyze_system_candidates.py": "9c38d0daae4ed3642f6339cc5003a29c365d3ca9d196f7682208f5e7284a3fe5",
+      "package_system_candidates.py": "e4ba8ee81a42e9a673e68f6171611896054ed9ecc787a92592335ca545367333",
+      "prepare_system_candidates.py": "8a8ce0308a22273f1169e75bed9ea67518e1c9caf8defe3a1147d7fd6f8f0c17"
+    },
+    "raw_package_commit": "0cebec5d006cf23c63ed7095f56146b8c6f9daf7",
+    "raw_package_tool_sha256": "084405cbc07b11979d8d2bcb9e3907e3d8efc7a6fed1f9ab8187832d5045e25a"
+  },
+  "commands": "results/commands.json",
+  "startup_and_regression_commands": "results/validation.json",
+  "raw": {
+    "file": "artifacts/system-candidates-raw.zip",
+    "sha256": "c3e347b145fcc5edfda304bb35030d3d3d9320861f116a5507d2b92cbd9b6abd",
+    "bytes": 5071795
+  },
+  "compact_index": "results/packages.json",
+  "validation": "results/validation.json",
+  "analysis": "results/analysis.json",
+  "isolation": "results/isolation.json",
+  "frontier_update": false,
+  "confirmed_new_gap": false
+}

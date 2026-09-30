@@ -1,0 +1,125 @@
+{
+  "raw": {
+    "file": "artifacts/system-candidates-raw.zip",
+    "sha256": "c3e347b145fcc5edfda304bb35030d3d3d9320861f116a5507d2b92cbd9b6abd",
+    "bytes": 5071795
+  },
+  "members": {
+    "replays/baseline-e2-t1.json": {
+      "sha256": "7972e7fb15f92122ce5f2f3a3d9648f30fbf4e96edcded38f44df2a030907326",
+      "bytes": 2751
+    },
+    "replays/baseline-e2-t1.steps.json.gz": {
+      "sha256": "739f3dff0dd81887e71a250f6d8f0b67db01a8bbfabffa1da594b8cb454b57af",
+      "bytes": 24901
+    },
+    "contracts/baseline-e2-t1.json": {
+      "sha256": "f1207aa0c1a3c4f4af07141f22cba2a3c388c5c9b95efe62467a3893c7c962a9",
+      "bytes": 676
+    },
+    "replays/candidate-t1.json": {
+      "sha256": "beba0d205816a5aa9b59c284a2294d7180813bce51deb6d3dae7682a8356c57c",
+      "bytes": 15010
+    },
+    "replays/candidate-t1.steps.json.gz": {
+      "sha256": "ed11114df8c5ade118341d99f7c26083b68856e13359986a6063b9d1e07acba4",
+      "bytes": 25521
+    },
+    "replays/candidate-t1.timings.json.gz": {
+      "sha256": "92bafe0edcda86f6d8eb9cbb3631200237057fe2d3fe02681862f23e22c3c710",
+      "bytes": 1123019
+    },
+    "contracts/candidate-t1.json": {
+      "sha256": "62fe2b26df1ff4a9918211cfcd164eebe0dd2eb0ddd8baad033a5e9a301a2ac4",
+      "bytes": 674
+    },
+    "replays/candidate-t2.json": {
+      "sha256": "48468bc5d69ef0d4bc78832fa2c084577fa72cdcab60f418d91746c3b52834d4",
+      "bytes": 15102
+    },
+    "replays/candidate-t2.steps.json.gz": {
+      "sha256": "b9b9e92952a8ebe8b51081817267637dc3cee8d145a8281bef3544589ffb7243",
+      "bytes": 25419
+    },
+    "replays/candidate-t2.timings.json.gz": {
+      "sha256": "95a91d71809ef3710673a85f3cb98aa7751553004a11f80bbbf1b1a199bdf15a",
+      "bytes": 1164814
+    },
+    "contracts/candidate-t2.json": {
+      "sha256": "fe709b4443164078ae14a3d538ab6c346d564b84120322ef04d9efa360d1b533",
+      "bytes": 674
+    },
+    "replays/candidate-t4.json": {
+      "sha256": "6a9067a86c38d870a0d50104e21ff6c99ec2a447e750c00b8d2a42f5be6468d4",
+      "bytes": 15106
+    },
+    "replays/candidate-t4.steps.json.gz": {
+      "sha256": "f14396b8d7eaa48a3358a171f8d40305ccb2a32de5d61deeae0be66b668e7747",
+      "bytes": 25291
+    },
+    "replays/candidate-t4.timings.json.gz": {
+      "sha256": "ec78946c8e5923e99c81eed8bc4ac75af132f7431037a0dda802237267cba1d5",
+      "bytes": 1157395
+    },
+    "contracts/candidate-t4.json": {
+      "sha256": "d6380f1a91d682145c37bf33573f0df8ec9fb1167772cffcac2a8f08afc2f134",
+      "bytes": 674
+    },
+    "validation/build.log": {
+      "sha256": "95a1252398ba1f6a9878933e21824c0a4e094a721515c9f5994b776f5691b926",
+      "bytes": 722
+    },
+    "validation/clippy.log": {
+      "sha256": "774f9a9d96f73e42a8df7f2628fb004a7f81d0f09aa200361c145e90785a850f",
+      "bytes": 282
+    },
+    "validation/cargo-test-core.log": {
+      "sha256": "1fff8c0534c38bfa4f19c782fd565d699710f36d7447b945a055e423d6623696",
+      "bytes": 1064
+    },
+    "validation/pytest.log": {
+      "sha256": "ab8813aa5b033d206bd9f71b894bafb6d1238b6ff656d712e82c38fcf20fc6e4",
+      "bytes": 2662
+    },
+    "validation/targeted.log": {
+      "sha256": "1f989e92f4c35233965dad162f72c55ee2f3060229efd37dd700ecde76c06a6b",
+      "bytes": 100
+    },
+    "commands/contract-commands.json": {
+      "sha256": "1b796c2e84876e3cdcb3dd6c81529a85bf33262e3f8cd219558266835bd5a4cf",
+      "bytes": 3244
+    },
+    "wheel/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl": {
+      "sha256": "6a95bb79ae02f860094a88780b84dd64f73cc845c5e52fb43bb217daa79e4cd7",
+      "bytes": 1507919
+    }
+  },
+  "contracts_raw": {
+    "archive": "../2026-09-rust-statistics-compute/artifacts/statistics-compute-raw.zip",
+    "archive_sha256": "62c5e73a2356334fc0fa85e3b5f4054a46f5f759ad7cb6c9fcef41dcd7b190ba",
+    "member": "results/contracts-canonical.raw.json.gz",
+    "sha256": "9db82664ad15814eec53a603f0d5148ad4d431ef66a4f36871f21de38847078c",
+    "bytes": 1047591,
+    "aliases": [
+      "contracts-baseline-e2-t1.raw.json.gz",
+      "contracts-candidate-t1.raw.json.gz",
+      "contracts-candidate-t2.raw.json.gz",
+      "contracts-candidate-t4.raw.json.gz"
+    ],
+    "reason": "All newly executed outputs are byte-identical to E2 canonical raw; retain hash identities and one authoritative artifact."
+  },
+  "tool_sha256": "084405cbc07b11979d8d2bcb9e3907e3d8efc7a6fed1f9ab8187832d5045e25a",
+  "source_bundle": {
+    "file": "artifacts/system-candidates-source.bundle",
+    "sha256": "37990aa916922457c32a4b50ff50c24cae31cf8bf2930f872c728c38533483c1",
+    "bytes": 13024,
+    "requires": "0aa28ac2ae0267048fcdb3998f9d76175ed4d699"
+  },
+  "compact": {
+    "file": "artifacts/system-candidates-compact.zip",
+    "sha256": "d3f375e688b1402a5b19f9818034c4913b2e90850b78286f53272abba07a3e86",
+    "bytes": 41361,
+    "tool_sha256": "e4ba8ee81a42e9a673e68f6171611896054ed9ecc787a92592335ca545367333",
+    "scope": "Decision-grade snapshot; own checksum is in the adjacent canonical index to avoid recursive self-hashing."
+  }
+}

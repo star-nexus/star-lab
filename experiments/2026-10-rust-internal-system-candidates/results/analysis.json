@@ -1,0 +1,3460 @@
+{
+  "activity_counts_equal": true,
+  "tool_sha256": "9c38d0daae4ed3642f6339cc5003a29c365d3ca9d196f7682208f5e7284a3fe5",
+  "raw": {
+    "file": "artifacts/system-candidates-raw.zip",
+    "sha256": "c3e347b145fcc5edfda304bb35030d3d3d9320861f116a5507d2b92cbd9b6abd",
+    "bytes": 5071795
+  },
+  "all_passed": true,
+  "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+  "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf",
+  "replays": 4,
+  "profiled_replays": 3,
+  "contract_variants": 4,
+  "contract_cases": 36,
+  "contract_steps": 174,
+  "contracts_raw": {
+    "archive": "../2026-09-rust-statistics-compute/artifacts/statistics-compute-raw.zip",
+    "archive_sha256": "62c5e73a2356334fc0fa85e3b5f4054a46f5f759ad7cb6c9fcef41dcd7b190ba",
+    "member": "results/contracts-canonical.raw.json.gz",
+    "sha256": "9db82664ad15814eec53a603f0d5148ad4d431ef66a4f36871f21de38847078c",
+    "bytes": 1047591,
+    "aliases": [
+      "contracts-baseline-e2-t1.raw.json.gz",
+      "contracts-candidate-t1.raw.json.gz",
+      "contracts-candidate-t2.raw.json.gz",
+      "contracts-candidate-t4.raw.json.gz"
+    ],
+    "reason": "All newly executed outputs are byte-identical to E2 canonical raw; retain hash identities and one authoritative artifact."
+  },
+  "points": [
+    {
+      "name": "candidate-t1",
+      "threads": 1,
+      "source_sha": "6d4018cc0c607a51a3783428867ba9259bb43f43",
+      "extension_sha256": "e0f46cfbffd8542c08cd2b2e6b4a26c000da05ecb9bffd3466d77fa859a9834d",
+      "phase_summary": {
+        "captures": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 648994,
+          "mean": 65.68765182186235,
+          "p99": 208,
+          "max": 1208,
+          "nonzero_samples": 9382
+        },
+        "clock": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 8538290,
+          "mean": 864.1993927125507,
+          "p99": 1875,
+          "max": 7125,
+          "nonzero_samples": 9880
+        },
+        "lifecycle": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 3359284,
+          "mean": 340.0085020242915,
+          "p99": 916,
+          "max": 12167,
+          "nonzero_samples": 9880
+        },
+        "movement": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 306763780,
+          "mean": 31048.965587044535,
+          "p99": 62417,
+          "max": 959833,
+          "nonzero_samples": 9879
+        },
+        "recovery": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 38406433,
+          "mean": 3887.290789473684,
+          "p99": 13292,
+          "max": 431375,
+          "nonzero_samples": 9880
+        },
+        "statistics": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 1307628723,
+          "mean": 132351.08532388663,
+          "p99": 505000,
+          "max": 3102958,
+          "nonzero_samples": 9880
+        },
+        "vision": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 429817924,
+          "mean": 43503.838461538464,
+          "p99": 124875,
+          "max": 3596750,
+          "nonzero_samples": 9880
+        },
+        "visuals": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 92031176,
+          "mean": 9314.896356275303,
+          "p99": 30250,
+          "max": 259333,
+          "nonzero_samples": 9880
+        }
+      },
+      "candidate_summary": {
+        "vision": {
+          "audit_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 260534,
+            "mean": 26.369838056680162,
+            "p99": 167,
+            "max": 1375,
+            "nonzero_samples": 4876
+          },
+          "audit_runs": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "dirty_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 80603,
+            "mean": 8.158198380566802,
+            "p99": 23,
+            "max": 35,
+            "nonzero_samples": 9478
+          },
+          "removed_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "unit_cache_hits": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "recompute_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 80603,
+            "mean": 8.158198380566802,
+            "p99": 23,
+            "max": 35,
+            "nonzero_samples": 9478
+          },
+          "gather_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 42452986,
+            "mean": 4296.860931174089,
+            "p99": 13082,
+            "max": 77539,
+            "nonzero_samples": 9478
+          },
+          "cache_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 72896019,
+            "mean": 7378.139574898785,
+            "p99": 20959,
+            "max": 138292,
+            "nonzero_samples": 9478
+          },
+          "geometry_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 5464484,
+            "mean": 553.0854251012146,
+            "p99": 5208,
+            "max": 13708,
+            "nonzero_samples": 1869
+          },
+          "geometry_hits": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 78391,
+            "mean": 7.9343117408906885,
+            "p99": 23,
+            "max": 34,
+            "nonzero_samples": 9460
+          },
+          "geometry_misses": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 2212,
+            "mean": 0.22388663967611336,
+            "p99": 2,
+            "max": 5,
+            "nonzero_samples": 1869
+          },
+          "geometry_evictions": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "max_effective_range": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 18956,
+            "mean": 1.9186234817813765,
+            "p99": 2,
+            "max": 2,
+            "nonzero_samples": 9478
+          },
+          "geometry_tiles": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 42028,
+            "mean": 4.253846153846154,
+            "p99": 38,
+            "max": 95,
+            "nonzero_samples": 1869
+          },
+          "commit_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 278305585,
+            "mean": 28168.581477732794,
+            "p99": 81959,
+            "max": 3554833,
+            "nonzero_samples": 9478
+          },
+          "presentation_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 904941,
+            "mean": 91.59321862348177,
+            "p99": 500,
+            "max": 3125,
+            "nonzero_samples": 5818
+          }
+        },
+        "movement": {
+          "active_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 1209977,
+            "mean": 122.4673076923077,
+            "p99": 172,
+            "max": 186,
+            "nonzero_samples": 9876
+          },
+          "advanced_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 1209977,
+            "mean": 122.4673076923077,
+            "p99": 172,
+            "max": 186,
+            "nonzero_samples": 9876
+          },
+          "invalid_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "crossings": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 80603,
+            "mean": 8.158198380566802,
+            "p99": 23,
+            "max": 35,
+            "nonzero_samples": 9478
+          },
+          "row_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 119941151,
+            "mean": 12139.792611336032,
+            "p99": 23583,
+            "max": 76254,
+            "nonzero_samples": 9876
+          },
+          "spatial_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 35269298,
+            "mean": 3569.767004048583,
+            "p99": 10916,
+            "max": 54917,
+            "nonzero_samples": 9478
+          },
+          "pixel_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 895374,
+            "mean": 90.6248987854251,
+            "p99": 374,
+            "max": 4042,
+            "nonzero_samples": 7624
+          },
+          "dirty_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 31727117,
+            "mean": 3211.2466599190284,
+            "p99": 5839,
+            "max": 50755,
+            "nonzero_samples": 9875
+          },
+          "cleanup_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 1883973,
+            "mean": 190.68552631578947,
+            "p99": 750,
+            "max": 8583,
+            "nonzero_samples": 8902
+          }
+        },
+        "visuals": {
+          "attack_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 2933,
+            "mean": 0.29686234817813767,
+            "p99": 2,
+            "max": 5,
+            "nonzero_samples": 2393
+          },
+          "projectile_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "effect_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 15631,
+            "mean": 1.582085020242915,
+            "p99": 6,
+            "max": 11,
+            "nonzero_samples": 7195
+          },
+          "damage_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 65780,
+            "mean": 6.657894736842105,
+            "p99": 17,
+            "max": 28,
+            "nonzero_samples": 9505
+          },
+          "spawned": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "removed": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 2035,
+            "mean": 0.20597165991902833,
+            "p99": 2,
+            "max": 4,
+            "nonzero_samples": 1751
+          },
+          "attack_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 3126489,
+            "mean": 316.44625506072873,
+            "p99": 2459,
+            "max": 8459,
+            "nonzero_samples": 5940
+          },
+          "projectile_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 360173,
+            "mean": 36.45475708502024,
+            "p99": 250,
+            "max": 625,
+            "nonzero_samples": 5558
+          },
+          "effect_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 9283355,
+            "mean": 939.6108299595141,
+            "p99": 3958,
+            "max": 31041,
+            "nonzero_samples": 8589
+          },
+          "damage_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 67606412,
+            "mean": 6842.754251012146,
+            "p99": 22333,
+            "max": 256292,
+            "nonzero_samples": 9699
+          },
+          "structural_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 8984042,
+            "mean": 909.315991902834,
+            "p99": 6457,
+            "max": 45208,
+            "nonzero_samples": 9202
+          }
+        },
+        "recovery": {
+          "new_ids": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 7063,
+            "mean": 0.7148785425101215,
+            "p99": 3,
+            "max": 5007,
+            "nonzero_samples": 884
+          },
+          "mp_pending": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 26996,
+            "mean": 2.7323886639676114,
+            "p99": 14,
+            "max": 24,
+            "nonzero_samples": 5839
+          },
+          "ap_entries": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 974,
+            "mean": 0.09858299595141701,
+            "p99": 1,
+            "max": 3,
+            "nonzero_samples": 879
+          },
+          "mp_entries": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 26753,
+            "mean": 2.7077935222672065,
+            "p99": 14,
+            "max": 24,
+            "nonzero_samples": 5786
+          },
+          "skill_entries": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "stale_entries": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "ap_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 1430119,
+            "mean": 144.7488866396761,
+            "p99": 1333,
+            "max": 5375,
+            "nonzero_samples": 7435
+          },
+          "mp_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 21804349,
+            "mean": 2206.917914979757,
+            "p99": 10375,
+            "max": 23583,
+            "nonzero_samples": 8686
+          },
+          "skill_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 181761,
+            "mean": 18.39686234817814,
+            "p99": 83,
+            "max": 708,
+            "nonzero_samples": 4114
+          }
+        }
+      },
+      "derived": {
+        "moving_before": {
+          "unit": "count",
+          "samples": 9880,
+          "total": 1209977,
+          "mean": 122.4673076923077,
+          "p99": 172,
+          "max": 186,
+          "nonzero_samples": 9876
+        },
+        "capturing_before": {
+          "unit": "count",
+          "samples": 9880,
+          "total": 0,
+          "mean": 0.0,
+          "p99": 0,
+          "max": 0,
+          "nonzero_samples": 0
+        },
+        "vision_geometry_share": 0.01271348562932429,
+        "vision_commit_share": 0.6474964617808726,
+        "vision_geometry_per_miss_ns": 2470.3815551537073,
+        "vision_miss_tick_histogram": {
+          "0": 8011,
+          "1": 1583,
+          "2": 240,
+          "3": 38,
+          "4": 5,
+          "5": 3
+        },
+        "vision_geometry_nonempty": {
+          "unit": "ns",
+          "samples": 1869,
+          "total": 5464484,
+          "mean": 2923.7474585339755,
+          "p99": 7332,
+          "max": 13708,
+          "nonzero_samples": 1869
+        },
+        "movement_optimistic_row_upper": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 52944736,
+          "mean": 5358.778947368421,
+          "p99": 9259,
+          "max": 35126,
+          "nonzero_samples": 9876
+        },
+        "movement_active_histogram": {
+          "0": 4,
+          "1": 1,
+          "6": 1,
+          "9": 1,
+          "13": 4,
+          "17": 2,
+          "19": 1,
+          "20": 5,
+          "21": 1,
+          "22": 1,
+          "24": 2,
+          "28": 1,
+          "29": 6,
+          "31": 2,
+          "34": 2,
+          "35": 4,
+          "36": 2,
+          "37": 1,
+          "38": 8,
+          "39": 12,
+          "40": 15,
+          "41": 8,
+          "42": 3,
+          "43": 4,
+          "44": 3,
+          "45": 1,
+          "46": 3,
+          "51": 3,
+          "53": 2,
+          "54": 3,
+          "56": 3,
+          "57": 2,
+          "58": 2,
+          "59": 2,
+          "60": 7,
+          "61": 7,
+          "62": 10,
+          "63": 9,
+          "64": 10,
+          "65": 9,
+          "66": 13,
+          "67": 12,
+          "68": 14,
+          "69": 9,
+          "70": 12,
+          "71": 6,
+          "72": 9,
+          "73": 14,
+          "74": 9,
+          "75": 11,
+          "76": 11,
+          "77": 9,
+          "78": 11,
+          "79": 8,
+          "80": 11,
+          "81": 13,
+          "82": 15,
+          "83": 19,
+          "84": 19,
+          "85": 25,
+          "86": 24,
+          "87": 31,
+          "88": 40,
+          "89": 41,
+          "90": 44,
+          "91": 48,
+          "92": 42,
+          "93": 56,
+          "94": 41,
+          "95": 52,
+          "96": 64,
+          "97": 77,
+          "98": 84,
+          "99": 73,
+          "100": 79,
+          "101": 80,
+          "102": 109,
+          "103": 97,
+          "104": 128,
+          "105": 114,
+          "106": 120,
+          "107": 108,
+          "108": 114,
+          "109": 141,
+          "110": 150,
+          "111": 160,
+          "112": 176,
+          "113": 168,
+          "114": 212,
+          "115": 196,
+          "116": 204,
+          "117": 176,
+          "118": 215,
+          "119": 212,
+          "120": 214,
+          "121": 219,
+          "122": 234,
+          "123": 195,
+          "124": 198,
+          "125": 214,
+          "126": 221,
+          "127": 203,
+          "128": 232,
+          "129": 215,
+          "130": 223,
+          "131": 212,
+          "132": 216,
+          "133": 201,
+          "134": 152,
+          "135": 187,
+          "136": 165,
+          "137": 136,
+          "138": 150,
+          "139": 144,
+          "140": 126,
+          "141": 134,
+          "142": 129,
+          "143": 130,
+          "144": 93,
+          "145": 77,
+          "146": 80,
+          "147": 75,
+          "148": 92,
+          "149": 61,
+          "150": 56,
+          "151": 63,
+          "152": 57,
+          "153": 58,
+          "154": 51,
+          "155": 43,
+          "156": 51,
+          "157": 32,
+          "158": 30,
+          "159": 31,
+          "160": 40,
+          "161": 31,
+          "162": 32,
+          "163": 26,
+          "164": 23,
+          "165": 22,
+          "166": 26,
+          "167": 16,
+          "168": 16,
+          "169": 26,
+          "170": 12,
+          "171": 17,
+          "172": 16,
+          "173": 7,
+          "174": 9,
+          "175": 13,
+          "176": 10,
+          "177": 12,
+          "178": 4,
+          "179": 6,
+          "180": 7,
+          "181": 6,
+          "182": 5,
+          "183": 2,
+          "184": 1,
+          "185": 1,
+          "186": 1
+        },
+        "visuals_loop_upper": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 80376429,
+          "mean": 8135.266093117409,
+          "p99": 26625,
+          "max": 258584,
+          "nonzero_samples": 9868
+        },
+        "recovery_due_histogram": {
+          "0": 3738,
+          "1": 805,
+          "2": 1018,
+          "3": 1101,
+          "4": 850,
+          "5": 623,
+          "6": 448,
+          "7": 366,
+          "8": 254,
+          "9": 158,
+          "10": 143,
+          "11": 101,
+          "12": 88,
+          "13": 56,
+          "14": 48,
+          "15": 29,
+          "16": 22,
+          "17": 19,
+          "18": 4,
+          "19": 4,
+          "20": 2,
+          "22": 1,
+          "23": 1,
+          "24": 1
+        },
+        "recovery_due_group_upper": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 23416229,
+          "mean": 2370.0636639676113,
+          "p99": 10625,
+          "max": 23750,
+          "nonzero_samples": 9586
+        },
+        "visuals_nonempty_attack_ns": {
+          "unit": "ns",
+          "samples": 2393,
+          "total": 2943510,
+          "mean": 1230.0501462599248,
+          "p99": 3375,
+          "max": 8459,
+          "nonzero_samples": 2393
+        },
+        "visuals_nonempty_projectile_ns": {
+          "unit": "ns",
+          "samples": 0,
+          "total": 0,
+          "mean": null,
+          "p99": null,
+          "max": null,
+          "nonzero_samples": 0
+        },
+        "visuals_nonempty_effect_ns": {
+          "unit": "ns",
+          "samples": 7195,
+          "total": 9201388,
+          "mean": 1278.8586518415566,
+          "p99": 4333,
+          "max": 31041,
+          "nonzero_samples": 7195
+        },
+        "visuals_nonempty_damage_ns": {
+          "unit": "ns",
+          "samples": 9505,
+          "total": 67594706,
+          "mean": 7111.489321409785,
+          "p99": 22416,
+          "max": 256292,
+          "nonzero_samples": 9505
+        }
+      },
+      "tail_samples": {
+        "vision": [
+          {
+            "seq": 22755,
+            "phase_ns": 3596750,
+            "fields": {
+              "audit_ns": 83,
+              "audit_runs": 0,
+              "dirty_rows": 11,
+              "removed_rows": 0,
+              "unit_cache_hits": 0,
+              "recompute_rows": 11,
+              "gather_ns": 16168,
+              "cache_ns": 18875,
+              "geometry_ns": 0,
+              "geometry_hits": 11,
+              "geometry_misses": 0,
+              "geometry_evictions": 0,
+              "max_effective_range": 2,
+              "geometry_tiles": 0,
+              "commit_ns": 3554833,
+              "presentation_ns": 0
+            }
+          },
+          {
+            "seq": 32157,
+            "phase_ns": 301792,
+            "fields": {
+              "audit_ns": 250,
+              "audit_runs": 0,
+              "dirty_rows": 15,
+              "removed_rows": 0,
+              "unit_cache_hits": 0,
+              "recompute_rows": 15,
+              "gather_ns": 23082,
+              "cache_ns": 34501,
+              "geometry_ns": 0,
+              "geometry_hits": 15,
+              "geometry_misses": 0,
+              "geometry_evictions": 0,
+              "max_effective_range": 2,
+              "geometry_tiles": 0,
+              "commit_ns": 229999,
+              "presentation_ns": 83
+            }
+          },
+          {
+            "seq": 19075,
+            "phase_ns": 292458,
+            "fields": {
+              "audit_ns": 83,
+              "audit_runs": 0,
+              "dirty_rows": 19,
+              "removed_rows": 0,
+              "unit_cache_hits": 0,
+              "recompute_rows": 19,
+              "gather_ns": 23833,
+              "cache_ns": 53457,
+              "geometry_ns": 0,
+              "geometry_hits": 19,
+              "geometry_misses": 0,
+              "geometry_evictions": 0,
+              "max_effective_range": 2,
+              "geometry_tiles": 0,
+              "commit_ns": 198954,
+              "presentation_ns": 0
+            }
+          },
+          {
+            "seq": 60064,
+            "phase_ns": 272042,
+            "fields": {
+              "audit_ns": 250,
+              "audit_runs": 0,
+              "dirty_rows": 12,
+              "removed_rows": 0,
+              "unit_cache_hits": 0,
+              "recompute_rows": 12,
+              "gather_ns": 35792,
+              "cache_ns": 23542,
+              "geometry_ns": 0,
+              "geometry_hits": 12,
+              "geometry_misses": 0,
+              "geometry_evictions": 0,
+              "max_effective_range": 2,
+              "geometry_tiles": 0,
+              "commit_ns": 198835,
+              "presentation_ns": 42
+            }
+          },
+          {
+            "seq": 39121,
+            "phase_ns": 241833,
+            "fields": {
+              "audit_ns": 167,
+              "audit_runs": 0,
+              "dirty_rows": 17,
+              "removed_rows": 0,
+              "unit_cache_hits": 0,
+              "recompute_rows": 17,
+              "gather_ns": 77539,
+              "cache_ns": 29084,
+              "geometry_ns": 0,
+              "geometry_hits": 17,
+              "geometry_misses": 0,
+              "geometry_evictions": 0,
+              "max_effective_range": 2,
+              "geometry_tiles": 0,
+              "commit_ns": 125669,
+              "presentation_ns": 0
+            }
+          }
+        ],
+        "movement": [
+          {
+            "seq": 34539,
+            "phase_ns": 959833,
+            "fields": {
+              "active_rows": 130,
+              "advanced_rows": 130,
+              "invalid_rows": 0,
+              "crossings": 2,
+              "row_ns": 16166,
+              "spatial_ns": 1624,
+              "pixel_ns": 0,
+              "dirty_ns": 6832,
+              "cleanup_ns": 1042
+            }
+          },
+          {
+            "seq": 39116,
+            "phase_ns": 606167,
+            "fields": {
+              "active_rows": 142,
+              "advanced_rows": 142,
+              "invalid_rows": 0,
+              "crossings": 9,
+              "row_ns": 31289,
+              "spatial_ns": 6001,
+              "pixel_ns": 0,
+              "dirty_ns": 16917,
+              "cleanup_ns": 750
+            }
+          },
+          {
+            "seq": 39849,
+            "phase_ns": 158542,
+            "fields": {
+              "active_rows": 124,
+              "advanced_rows": 124,
+              "invalid_rows": 0,
+              "crossings": 18,
+              "row_ns": 59588,
+              "spatial_ns": 22168,
+              "pixel_ns": 584,
+              "dirty_ns": 10623,
+              "cleanup_ns": 458
+            }
+          },
+          {
+            "seq": 60064,
+            "phase_ns": 143958,
+            "fields": {
+              "active_rows": 121,
+              "advanced_rows": 121,
+              "invalid_rows": 0,
+              "crossings": 12,
+              "row_ns": 40464,
+              "spatial_ns": 21918,
+              "pixel_ns": 84,
+              "dirty_ns": 8178,
+              "cleanup_ns": 1667
+            }
+          },
+          {
+            "seq": 54801,
+            "phase_ns": 140541,
+            "fields": {
+              "active_rows": 143,
+              "advanced_rows": 143,
+              "invalid_rows": 0,
+              "crossings": 6,
+              "row_ns": 28034,
+              "spatial_ns": 8791,
+              "pixel_ns": 166,
+              "dirty_ns": 9156,
+              "cleanup_ns": 958
+            }
+          }
+        ],
+        "visuals": [
+          {
+            "seq": 39116,
+            "phase_ns": 259333,
+            "fields": {
+              "attack_rows": 0,
+              "projectile_rows": 0,
+              "effect_rows": 1,
+              "damage_rows": 6,
+              "spawned": 0,
+              "removed": 0,
+              "attack_ns": 41,
+              "projectile_ns": 209,
+              "effect_ns": 2042,
+              "damage_ns": 256292,
+              "structural_ns": 374
+            }
+          },
+          {
+            "seq": 38572,
+            "phase_ns": 91875,
+            "fields": {
+              "attack_rows": 0,
+              "projectile_rows": 0,
+              "effect_rows": 1,
+              "damage_rows": 11,
+              "spawned": 0,
+              "removed": 2,
+              "attack_ns": 83,
+              "projectile_ns": 83,
+              "effect_ns": 27458,
+              "damage_ns": 18042,
+              "structural_ns": 45208
+            }
+          },
+          {
+            "seq": 39121,
+            "phase_ns": 65167,
+            "fields": {
+              "attack_rows": 0,
+              "projectile_rows": 0,
+              "effect_rows": 1,
+              "damage_rows": 6,
+              "spawned": 0,
+              "removed": 0,
+              "attack_ns": 0,
+              "projectile_ns": 0,
+              "effect_ns": 31041,
+              "damage_ns": 33333,
+              "structural_ns": 209
+            }
+          },
+          {
+            "seq": 20620,
+            "phase_ns": 58333,
+            "fields": {
+              "attack_rows": 2,
+              "projectile_rows": 0,
+              "effect_rows": 2,
+              "damage_rows": 12,
+              "spawned": 0,
+              "removed": 0,
+              "attack_ns": 8459,
+              "projectile_ns": 42,
+              "effect_ns": 4208,
+              "damage_ns": 45041,
+              "structural_ns": 84
+            }
+          },
+          {
+            "seq": 16777,
+            "phase_ns": 56042,
+            "fields": {
+              "attack_rows": 0,
+              "projectile_rows": 0,
+              "effect_rows": 4,
+              "damage_rows": 9,
+              "spawned": 0,
+              "removed": 2,
+              "attack_ns": 375,
+              "projectile_ns": 0,
+              "effect_ns": 6292,
+              "damage_ns": 22125,
+              "structural_ns": 25626
+            }
+          }
+        ],
+        "recovery": [
+          {
+            "seq": 2000,
+            "phase_ns": 431375,
+            "fields": {
+              "new_ids": 5007,
+              "mp_pending": 0,
+              "ap_entries": 0,
+              "mp_entries": 0,
+              "skill_entries": 0,
+              "stale_entries": 0,
+              "ap_ns": 42,
+              "mp_ns": 0,
+              "skill_ns": 83
+            }
+          },
+          {
+            "seq": 24349,
+            "phase_ns": 47041,
+            "fields": {
+              "new_ids": 2,
+              "mp_pending": 8,
+              "ap_entries": 1,
+              "mp_entries": 2,
+              "skill_entries": 0,
+              "stale_entries": 0,
+              "ap_ns": 2166,
+              "mp_ns": 12084,
+              "skill_ns": 41
+            }
+          },
+          {
+            "seq": 32157,
+            "phase_ns": 44708,
+            "fields": {
+              "new_ids": 0,
+              "mp_pending": 14,
+              "ap_entries": 1,
+              "mp_entries": 9,
+              "skill_entries": 0,
+              "stale_entries": 0,
+              "ap_ns": 2834,
+              "mp_ns": 16792,
+              "skill_ns": 41
+            }
+          },
+          {
+            "seq": 39970,
+            "phase_ns": 28667,
+            "fields": {
+              "new_ids": 0,
+              "mp_pending": 5,
+              "ap_entries": 0,
+              "mp_entries": 14,
+              "skill_entries": 0,
+              "stale_entries": 0,
+              "ap_ns": 125,
+              "mp_ns": 23583,
+              "skill_ns": 42
+            }
+          },
+          {
+            "seq": 34539,
+            "phase_ns": 26875,
+            "fields": {
+              "new_ids": 0,
+              "mp_pending": 14,
+              "ap_entries": 0,
+              "mp_entries": 0,
+              "skill_entries": 0,
+              "stale_entries": 0,
+              "ap_ns": 125,
+              "mp_ns": 125,
+              "skill_ns": 84
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "candidate-t2",
+      "threads": 2,
+      "source_sha": "6d4018cc0c607a51a3783428867ba9259bb43f43",
+      "extension_sha256": "e0f46cfbffd8542c08cd2b2e6b4a26c000da05ecb9bffd3466d77fa859a9834d",
+      "phase_summary": {
+        "captures": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 728256,
+          "mean": 73.71012145748988,
+          "p99": 250,
+          "max": 709,
+          "nonzero_samples": 9467
+        },
+        "clock": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 8583265,
+          "mean": 868.7515182186235,
+          "p99": 1833,
+          "max": 21416,
+          "nonzero_samples": 9880
+        },
+        "lifecycle": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 4233953,
+          "mean": 428.53775303643727,
+          "p99": 1125,
+          "max": 23375,
+          "nonzero_samples": 9880
+        },
+        "movement": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 325727977,
+          "mean": 32968.418724696356,
+          "p99": 64917,
+          "max": 213000,
+          "nonzero_samples": 9879
+        },
+        "recovery": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 40176240,
+          "mean": 4066.4210526315787,
+          "p99": 13750,
+          "max": 422083,
+          "nonzero_samples": 9880
+        },
+        "statistics": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 1242806222,
+          "mean": 125790.10344129555,
+          "p99": 445792,
+          "max": 775792,
+          "nonzero_samples": 9880
+        },
+        "vision": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 431603879,
+          "mean": 43684.60313765182,
+          "p99": 125292,
+          "max": 257375,
+          "nonzero_samples": 9880
+        },
+        "visuals": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 93443053,
+          "mean": 9457.798886639675,
+          "p99": 29750,
+          "max": 84416,
+          "nonzero_samples": 9880
+        }
+      },
+      "candidate_summary": {
+        "vision": {
+          "audit_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 253574,
+            "mean": 25.665384615384614,
+            "p99": 166,
+            "max": 541,
+            "nonzero_samples": 4972
+          },
+          "audit_runs": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "dirty_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 80603,
+            "mean": 8.158198380566802,
+            "p99": 23,
+            "max": 35,
+            "nonzero_samples": 9478
+          },
+          "removed_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "unit_cache_hits": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "recompute_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 80603,
+            "mean": 8.158198380566802,
+            "p99": 23,
+            "max": 35,
+            "nonzero_samples": 9478
+          },
+          "gather_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 43048707,
+            "mean": 4357.156578947369,
+            "p99": 13082,
+            "max": 31290,
+            "nonzero_samples": 9478
+          },
+          "cache_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 76018273,
+            "mean": 7694.157186234818,
+            "p99": 22291,
+            "max": 161208,
+            "nonzero_samples": 9478
+          },
+          "geometry_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 5917482,
+            "mean": 598.9354251012146,
+            "p99": 5709,
+            "max": 20584,
+            "nonzero_samples": 1869
+          },
+          "geometry_hits": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 78391,
+            "mean": 7.9343117408906885,
+            "p99": 23,
+            "max": 34,
+            "nonzero_samples": 9460
+          },
+          "geometry_misses": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 2212,
+            "mean": 0.22388663967611336,
+            "p99": 2,
+            "max": 5,
+            "nonzero_samples": 1869
+          },
+          "geometry_evictions": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "max_effective_range": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 18956,
+            "mean": 1.9186234817813765,
+            "p99": 2,
+            "max": 2,
+            "nonzero_samples": 9478
+          },
+          "geometry_tiles": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 42028,
+            "mean": 4.253846153846154,
+            "p99": 38,
+            "max": 95,
+            "nonzero_samples": 1869
+          },
+          "commit_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 275149747,
+            "mean": 27849.16467611336,
+            "p99": 79999,
+            "max": 195832,
+            "nonzero_samples": 9478
+          },
+          "presentation_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 981986,
+            "mean": 99.39129554655871,
+            "p99": 542,
+            "max": 4500,
+            "nonzero_samples": 5828
+          }
+        },
+        "movement": {
+          "active_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 1209977,
+            "mean": 122.4673076923077,
+            "p99": 172,
+            "max": 186,
+            "nonzero_samples": 9876
+          },
+          "advanced_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 1209977,
+            "mean": 122.4673076923077,
+            "p99": 172,
+            "max": 186,
+            "nonzero_samples": 9876
+          },
+          "invalid_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "crossings": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 80603,
+            "mean": 8.158198380566802,
+            "p99": 23,
+            "max": 35,
+            "nonzero_samples": 9478
+          },
+          "row_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 121331903,
+            "mean": 12280.556983805667,
+            "p99": 24079,
+            "max": 60671,
+            "nonzero_samples": 9876
+          },
+          "spatial_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 35763362,
+            "mean": 3619.7734817813766,
+            "p99": 10962,
+            "max": 29248,
+            "nonzero_samples": 9478
+          },
+          "pixel_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 924756,
+            "mean": 93.59878542510121,
+            "p99": 374,
+            "max": 6208,
+            "nonzero_samples": 7684
+          },
+          "dirty_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 31768394,
+            "mean": 3215.4244939271257,
+            "p99": 5626,
+            "max": 20459,
+            "nonzero_samples": 9876
+          },
+          "cleanup_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 2007356,
+            "mean": 203.17368421052632,
+            "p99": 833,
+            "max": 5084,
+            "nonzero_samples": 8911
+          }
+        },
+        "visuals": {
+          "attack_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 2933,
+            "mean": 0.29686234817813767,
+            "p99": 2,
+            "max": 5,
+            "nonzero_samples": 2393
+          },
+          "projectile_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "effect_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 15631,
+            "mean": 1.582085020242915,
+            "p99": 6,
+            "max": 11,
+            "nonzero_samples": 7195
+          },
+          "damage_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 65780,
+            "mean": 6.657894736842105,
+            "p99": 17,
+            "max": 28,
+            "nonzero_samples": 9505
+          },
+          "spawned": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "removed": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 2035,
+            "mean": 0.20597165991902833,
+            "p99": 2,
+            "max": 4,
+            "nonzero_samples": 1751
+          },
+          "attack_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 3203855,
+            "mean": 324.2768218623482,
+            "p99": 2458,
+            "max": 6083,
+            "nonzero_samples": 6096
+          },
+          "projectile_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 434740,
+            "mean": 44.002024291497975,
+            "p99": 250,
+            "max": 6667,
+            "nonzero_samples": 6011
+          },
+          "effect_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 9302770,
+            "mean": 941.5759109311741,
+            "p99": 4000,
+            "max": 12833,
+            "nonzero_samples": 8688
+          },
+          "damage_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 68540773,
+            "mean": 6937.32520242915,
+            "p99": 22625,
+            "max": 58084,
+            "nonzero_samples": 9705
+          },
+          "structural_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 9016764,
+            "mean": 912.627935222672,
+            "p99": 6334,
+            "max": 18332,
+            "nonzero_samples": 9319
+          }
+        },
+        "recovery": {
+          "new_ids": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 7063,
+            "mean": 0.7148785425101215,
+            "p99": 3,
+            "max": 5007,
+            "nonzero_samples": 884
+          },
+          "mp_pending": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 26996,
+            "mean": 2.7323886639676114,
+            "p99": 14,
+            "max": 24,
+            "nonzero_samples": 5839
+          },
+          "ap_entries": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 974,
+            "mean": 0.09858299595141701,
+            "p99": 1,
+            "max": 3,
+            "nonzero_samples": 879
+          },
+          "mp_entries": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 26753,
+            "mean": 2.7077935222672065,
+            "p99": 14,
+            "max": 24,
+            "nonzero_samples": 5786
+          },
+          "skill_entries": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "stale_entries": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "ap_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 1518318,
+            "mean": 153.6759109311741,
+            "p99": 1417,
+            "max": 9459,
+            "nonzero_samples": 7730
+          },
+          "mp_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 22861346,
+            "mean": 2313.9014170040487,
+            "p99": 10708,
+            "max": 31458,
+            "nonzero_samples": 8551
+          },
+          "skill_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 205517,
+            "mean": 20.801315789473684,
+            "p99": 84,
+            "max": 8917,
+            "nonzero_samples": 4309
+          }
+        }
+      },
+      "derived": {
+        "moving_before": {
+          "unit": "count",
+          "samples": 9880,
+          "total": 1209977,
+          "mean": 122.4673076923077,
+          "p99": 172,
+          "max": 186,
+          "nonzero_samples": 9876
+        },
+        "capturing_before": {
+          "unit": "count",
+          "samples": 9880,
+          "total": 0,
+          "mean": 0.0,
+          "p99": 0,
+          "max": 0,
+          "nonzero_samples": 0
+        },
+        "vision_geometry_share": 0.013710446749715149,
+        "vision_commit_share": 0.6375052690386038,
+        "vision_geometry_per_miss_ns": 2675.1726943942135,
+        "vision_miss_tick_histogram": {
+          "0": 8011,
+          "1": 1583,
+          "2": 240,
+          "3": 38,
+          "4": 5,
+          "5": 3
+        },
+        "vision_geometry_nonempty": {
+          "unit": "ns",
+          "samples": 1869,
+          "total": 5917482,
+          "mean": 3166.1219903691813,
+          "p99": 7667,
+          "max": 20584,
+          "nonzero_samples": 1869
+        },
+        "movement_optimistic_row_upper": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 53800147,
+          "mean": 5445.359008097166,
+          "p99": 9378,
+          "max": 29406,
+          "nonzero_samples": 9876
+        },
+        "movement_active_histogram": {
+          "0": 4,
+          "1": 1,
+          "6": 1,
+          "9": 1,
+          "13": 4,
+          "17": 2,
+          "19": 1,
+          "20": 5,
+          "21": 1,
+          "22": 1,
+          "24": 2,
+          "28": 1,
+          "29": 6,
+          "31": 2,
+          "34": 2,
+          "35": 4,
+          "36": 2,
+          "37": 1,
+          "38": 8,
+          "39": 12,
+          "40": 15,
+          "41": 8,
+          "42": 3,
+          "43": 4,
+          "44": 3,
+          "45": 1,
+          "46": 3,
+          "51": 3,
+          "53": 2,
+          "54": 3,
+          "56": 3,
+          "57": 2,
+          "58": 2,
+          "59": 2,
+          "60": 7,
+          "61": 7,
+          "62": 10,
+          "63": 9,
+          "64": 10,
+          "65": 9,
+          "66": 13,
+          "67": 12,
+          "68": 14,
+          "69": 9,
+          "70": 12,
+          "71": 6,
+          "72": 9,
+          "73": 14,
+          "74": 9,
+          "75": 11,
+          "76": 11,
+          "77": 9,
+          "78": 11,
+          "79": 8,
+          "80": 11,
+          "81": 13,
+          "82": 15,
+          "83": 19,
+          "84": 19,
+          "85": 25,
+          "86": 24,
+          "87": 31,
+          "88": 40,
+          "89": 41,
+          "90": 44,
+          "91": 48,
+          "92": 42,
+          "93": 56,
+          "94": 41,
+          "95": 52,
+          "96": 64,
+          "97": 77,
+          "98": 84,
+          "99": 73,
+          "100": 79,
+          "101": 80,
+          "102": 109,
+          "103": 97,
+          "104": 128,
+          "105": 114,
+          "106": 120,
+          "107": 108,
+          "108": 114,
+          "109": 141,
+          "110": 150,
+          "111": 160,
+          "112": 176,
+          "113": 168,
+          "114": 212,
+          "115": 196,
+          "116": 204,
+          "117": 176,
+          "118": 215,
+          "119": 212,
+          "120": 214,
+          "121": 219,
+          "122": 234,
+          "123": 195,
+          "124": 198,
+          "125": 214,
+          "126": 221,
+          "127": 203,
+          "128": 232,
+          "129": 215,
+          "130": 223,
+          "131": 212,
+          "132": 216,
+          "133": 201,
+          "134": 152,
+          "135": 187,
+          "136": 165,
+          "137": 136,
+          "138": 150,
+          "139": 144,
+          "140": 126,
+          "141": 134,
+          "142": 129,
+          "143": 130,
+          "144": 93,
+          "145": 77,
+          "146": 80,
+          "147": 75,
+          "148": 92,
+          "149": 61,
+          "150": 56,
+          "151": 63,
+          "152": 57,
+          "153": 58,
+          "154": 51,
+          "155": 43,
+          "156": 51,
+          "157": 32,
+          "158": 30,
+          "159": 31,
+          "160": 40,
+          "161": 31,
+          "162": 32,
+          "163": 26,
+          "164": 23,
+          "165": 22,
+          "166": 26,
+          "167": 16,
+          "168": 16,
+          "169": 26,
+          "170": 12,
+          "171": 17,
+          "172": 16,
+          "173": 7,
+          "174": 9,
+          "175": 13,
+          "176": 10,
+          "177": 12,
+          "178": 4,
+          "179": 6,
+          "180": 7,
+          "181": 6,
+          "182": 5,
+          "183": 2,
+          "184": 1,
+          "185": 1,
+          "186": 1
+        },
+        "visuals_loop_upper": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 81482138,
+          "mean": 8247.17995951417,
+          "p99": 26833,
+          "max": 69417,
+          "nonzero_samples": 9874
+        },
+        "recovery_due_histogram": {
+          "0": 3738,
+          "1": 805,
+          "2": 1018,
+          "3": 1101,
+          "4": 850,
+          "5": 623,
+          "6": 448,
+          "7": 366,
+          "8": 254,
+          "9": 158,
+          "10": 143,
+          "11": 101,
+          "12": 88,
+          "13": 56,
+          "14": 48,
+          "15": 29,
+          "16": 22,
+          "17": 19,
+          "18": 4,
+          "19": 4,
+          "20": 2,
+          "22": 1,
+          "23": 1,
+          "24": 1
+        },
+        "recovery_due_group_upper": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 24585181,
+          "mean": 2488.3786437246963,
+          "p99": 10916,
+          "max": 31542,
+          "nonzero_samples": 9578
+        },
+        "visuals_nonempty_attack_ns": {
+          "unit": "ns",
+          "samples": 2393,
+          "total": 2993149,
+          "mean": 1250.7935645633097,
+          "p99": 3250,
+          "max": 6083,
+          "nonzero_samples": 2393
+        },
+        "visuals_nonempty_projectile_ns": {
+          "unit": "ns",
+          "samples": 0,
+          "total": 0,
+          "mean": null,
+          "p99": null,
+          "max": null,
+          "nonzero_samples": 0
+        },
+        "visuals_nonempty_effect_ns": {
+          "unit": "ns",
+          "samples": 7195,
+          "total": 9212173,
+          "mean": 1280.3576094510076,
+          "p99": 4250,
+          "max": 12833,
+          "nonzero_samples": 7195
+        },
+        "visuals_nonempty_damage_ns": {
+          "unit": "ns",
+          "samples": 9505,
+          "total": 68529021,
+          "mean": 7209.786533403472,
+          "p99": 22792,
+          "max": 58084,
+          "nonzero_samples": 9505
+        }
+      },
+      "tail_samples": {
+        "vision": [
+          {
+            "seq": 58168,
+            "phase_ns": 257375,
+            "fields": {
+              "audit_ns": 0,
+              "audit_runs": 0,
+              "dirty_rows": 32,
+              "removed_rows": 0,
+              "unit_cache_hits": 0,
+              "recompute_rows": 32,
+              "gather_ns": 30123,
+              "cache_ns": 51417,
+              "geometry_ns": 3208,
+              "geometry_hits": 31,
+              "geometry_misses": 1,
+              "geometry_evictions": 0,
+              "max_effective_range": 2,
+              "geometry_tiles": 19,
+              "commit_ns": 159999,
+              "presentation_ns": 750
+            }
+          },
+          {
+            "seq": 36571,
+            "phase_ns": 256709,
+            "fields": {
+              "audit_ns": 250,
+              "audit_runs": 0,
+              "dirty_rows": 18,
+              "removed_rows": 0,
+              "unit_cache_hits": 0,
+              "recompute_rows": 18,
+              "gather_ns": 19668,
+              "cache_ns": 26497,
+              "geometry_ns": 0,
+              "geometry_hits": 18,
+              "geometry_misses": 0,
+              "geometry_evictions": 0,
+              "max_effective_range": 2,
+              "geometry_tiles": 0,
+              "commit_ns": 195832,
+              "presentation_ns": 42
+            }
+          },
+          {
+            "seq": 17255,
+            "phase_ns": 252541,
+            "fields": {
+              "audit_ns": 0,
+              "audit_runs": 0,
+              "dirty_rows": 15,
+              "removed_rows": 0,
+              "unit_cache_hits": 0,
+              "recompute_rows": 15,
+              "gather_ns": 31290,
+              "cache_ns": 30916,
+              "geometry_ns": 4583,
+              "geometry_hits": 14,
+              "geometry_misses": 1,
+              "geometry_evictions": 0,
+              "max_effective_range": 2,
+              "geometry_tiles": 19,
+              "commit_ns": 152001,
+              "presentation_ns": 917
+            }
+          },
+          {
+            "seq": 20867,
+            "phase_ns": 216625,
+            "fields": {
+              "audit_ns": 42,
+              "audit_runs": 0,
+              "dirty_rows": 18,
+              "removed_rows": 0,
+              "unit_cache_hits": 0,
+              "recompute_rows": 18,
+              "gather_ns": 21458,
+              "cache_ns": 28584,
+              "geometry_ns": 0,
+              "geometry_hits": 18,
+              "geometry_misses": 0,
+              "geometry_evictions": 0,
+              "max_effective_range": 2,
+              "geometry_tiles": 0,
+              "commit_ns": 150208,
+              "presentation_ns": 42
+            }
+          },
+          {
+            "seq": 58583,
+            "phase_ns": 210375,
+            "fields": {
+              "audit_ns": 42,
+              "audit_runs": 0,
+              "dirty_rows": 10,
+              "removed_rows": 0,
+              "unit_cache_hits": 0,
+              "recompute_rows": 10,
+              "gather_ns": 4874,
+              "cache_ns": 161208,
+              "geometry_ns": 3791,
+              "geometry_hits": 9,
+              "geometry_misses": 1,
+              "geometry_evictions": 0,
+              "max_effective_range": 2,
+              "geometry_tiles": 19,
+              "commit_ns": 35877,
+              "presentation_ns": 333
+            }
+          }
+        ],
+        "movement": [
+          {
+            "seq": 48227,
+            "phase_ns": 213000,
+            "fields": {
+              "active_rows": 146,
+              "advanced_rows": 146,
+              "invalid_rows": 0,
+              "crossings": 8,
+              "row_ns": 20824,
+              "spatial_ns": 5376,
+              "pixel_ns": 0,
+              "dirty_ns": 7162,
+              "cleanup_ns": 917
+            }
+          },
+          {
+            "seq": 6468,
+            "phase_ns": 211167,
+            "fields": {
+              "active_rows": 163,
+              "advanced_rows": 163,
+              "invalid_rows": 0,
+              "crossings": 13,
+              "row_ns": 37541,
+              "spatial_ns": 14667,
+              "pixel_ns": 292,
+              "dirty_ns": 10787,
+              "cleanup_ns": 1042
+            }
+          },
+          {
+            "seq": 6471,
+            "phase_ns": 154292,
+            "fields": {
+              "active_rows": 158,
+              "advanced_rows": 158,
+              "invalid_rows": 0,
+              "crossings": 9,
+              "row_ns": 33918,
+              "spatial_ns": 10541,
+              "pixel_ns": 250,
+              "dirty_ns": 12050,
+              "cleanup_ns": 1750
+            }
+          },
+          {
+            "seq": 19704,
+            "phase_ns": 142500,
+            "fields": {
+              "active_rows": 144,
+              "advanced_rows": 144,
+              "invalid_rows": 0,
+              "crossings": 4,
+              "row_ns": 20665,
+              "spatial_ns": 3291,
+              "pixel_ns": 125,
+              "dirty_ns": 9084,
+              "cleanup_ns": 42
+            }
+          },
+          {
+            "seq": 19645,
+            "phase_ns": 130750,
+            "fields": {
+              "active_rows": 126,
+              "advanced_rows": 126,
+              "invalid_rows": 0,
+              "crossings": 6,
+              "row_ns": 32751,
+              "spatial_ns": 6417,
+              "pixel_ns": 125,
+              "dirty_ns": 9252,
+              "cleanup_ns": 417
+            }
+          }
+        ],
+        "visuals": [
+          {
+            "seq": 52588,
+            "phase_ns": 84416,
+            "fields": {
+              "attack_rows": 1,
+              "projectile_rows": 0,
+              "effect_rows": 6,
+              "damage_rows": 16,
+              "spawned": 0,
+              "removed": 1,
+              "attack_ns": 3875,
+              "projectile_ns": 41,
+              "effect_ns": 12000,
+              "damage_ns": 52750,
+              "structural_ns": 14251
+            }
+          },
+          {
+            "seq": 20874,
+            "phase_ns": 70375,
+            "fields": {
+              "attack_rows": 0,
+              "projectile_rows": 0,
+              "effect_rows": 1,
+              "damage_rows": 12,
+              "spawned": 0,
+              "removed": 0,
+              "attack_ns": 42,
+              "projectile_ns": 42,
+              "effect_ns": 12833,
+              "damage_ns": 56500,
+              "structural_ns": 167
+            }
+          },
+          {
+            "seq": 60741,
+            "phase_ns": 65000,
+            "fields": {
+              "attack_rows": 0,
+              "projectile_rows": 0,
+              "effect_rows": 2,
+              "damage_rows": 19,
+              "spawned": 0,
+              "removed": 0,
+              "attack_ns": 125,
+              "projectile_ns": 125,
+              "effect_ns": 5250,
+              "damage_ns": 58084,
+              "structural_ns": 334
+            }
+          },
+          {
+            "seq": 50719,
+            "phase_ns": 57500,
+            "fields": {
+              "attack_rows": 1,
+              "projectile_rows": 0,
+              "effect_rows": 2,
+              "damage_rows": 8,
+              "spawned": 0,
+              "removed": 2,
+              "attack_ns": 4208,
+              "projectile_ns": 0,
+              "effect_ns": 6042,
+              "damage_ns": 28083,
+              "structural_ns": 18332
+            }
+          },
+          {
+            "seq": 25523,
+            "phase_ns": 53625,
+            "fields": {
+              "attack_rows": 3,
+              "projectile_rows": 0,
+              "effect_rows": 4,
+              "damage_rows": 9,
+              "spawned": 0,
+              "removed": 0,
+              "attack_ns": 6083,
+              "projectile_ns": 42,
+              "effect_ns": 8000,
+              "damage_ns": 31542,
+              "structural_ns": 7167
+            }
+          }
+        ],
+        "recovery": [
+          {
+            "seq": 2000,
+            "phase_ns": 422083,
+            "fields": {
+              "new_ids": 5007,
+              "mp_pending": 0,
+              "ap_entries": 0,
+              "mp_entries": 0,
+              "skill_entries": 0,
+              "stale_entries": 0,
+              "ap_ns": 0,
+              "mp_ns": 41,
+              "skill_ns": 83
+            }
+          },
+          {
+            "seq": 22419,
+            "phase_ns": 38584,
+            "fields": {
+              "new_ids": 0,
+              "mp_pending": 11,
+              "ap_entries": 0,
+              "mp_entries": 6,
+              "skill_entries": 0,
+              "stale_entries": 0,
+              "ap_ns": 42,
+              "mp_ns": 27875,
+              "skill_ns": 42
+            }
+          },
+          {
+            "seq": 2902,
+            "phase_ns": 37625,
+            "fields": {
+              "new_ids": 0,
+              "mp_pending": 3,
+              "ap_entries": 0,
+              "mp_entries": 8,
+              "skill_entries": 0,
+              "stale_entries": 0,
+              "ap_ns": 42,
+              "mp_ns": 31458,
+              "skill_ns": 42
+            }
+          },
+          {
+            "seq": 54676,
+            "phase_ns": 32458,
+            "fields": {
+              "new_ids": 2,
+              "mp_pending": 9,
+              "ap_entries": 0,
+              "mp_entries": 14,
+              "skill_entries": 0,
+              "stale_entries": 0,
+              "ap_ns": 41,
+              "mp_ns": 14542,
+              "skill_ns": 0
+            }
+          },
+          {
+            "seq": 22148,
+            "phase_ns": 27500,
+            "fields": {
+              "new_ids": 0,
+              "mp_pending": 4,
+              "ap_entries": 0,
+              "mp_entries": 7,
+              "skill_entries": 0,
+              "stale_entries": 0,
+              "ap_ns": 0,
+              "mp_ns": 23459,
+              "skill_ns": 42
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "candidate-t4",
+      "threads": 4,
+      "source_sha": "6d4018cc0c607a51a3783428867ba9259bb43f43",
+      "extension_sha256": "e0f46cfbffd8542c08cd2b2e6b4a26c000da05ecb9bffd3466d77fa859a9834d",
+      "phase_summary": {
+        "captures": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 782833,
+          "mean": 79.2341093117409,
+          "p99": 209,
+          "max": 94917,
+          "nonzero_samples": 9426
+        },
+        "clock": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 8645389,
+          "mean": 875.0393724696356,
+          "p99": 1875,
+          "max": 15708,
+          "nonzero_samples": 9880
+        },
+        "lifecycle": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 3724206,
+          "mean": 376.9439271255061,
+          "p99": 1083,
+          "max": 37042,
+          "nonzero_samples": 9880
+        },
+        "movement": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 312568653,
+          "mean": 31636.503340080973,
+          "p99": 64750,
+          "max": 985417,
+          "nonzero_samples": 9878
+        },
+        "recovery": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 40191092,
+          "mean": 4067.924291497976,
+          "p99": 13625,
+          "max": 420042,
+          "nonzero_samples": 9880
+        },
+        "statistics": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 1173475474,
+          "mean": 118772.82125506073,
+          "p99": 536042,
+          "max": 3452875,
+          "nonzero_samples": 9880
+        },
+        "vision": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 420311270,
+          "mean": 42541.626518218625,
+          "p99": 120041,
+          "max": 380125,
+          "nonzero_samples": 9880
+        },
+        "visuals": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 91531321,
+          "mean": 9264.30374493927,
+          "p99": 31625,
+          "max": 280041,
+          "nonzero_samples": 9880
+        }
+      },
+      "candidate_summary": {
+        "vision": {
+          "audit_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 241481,
+            "mean": 24.441396761133603,
+            "p99": 125,
+            "max": 667,
+            "nonzero_samples": 4695
+          },
+          "audit_runs": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "dirty_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 80603,
+            "mean": 8.158198380566802,
+            "p99": 23,
+            "max": 35,
+            "nonzero_samples": 9478
+          },
+          "removed_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "unit_cache_hits": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "recompute_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 80603,
+            "mean": 8.158198380566802,
+            "p99": 23,
+            "max": 35,
+            "nonzero_samples": 9478
+          },
+          "gather_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 41799017,
+            "mean": 4230.6697368421055,
+            "p99": 12749,
+            "max": 36128,
+            "nonzero_samples": 9478
+          },
+          "cache_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 74452342,
+            "mean": 7535.662145748988,
+            "p99": 21667,
+            "max": 270873,
+            "nonzero_samples": 9478
+          },
+          "geometry_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 5764794,
+            "mean": 583.4811740890689,
+            "p99": 5500,
+            "max": 15417,
+            "nonzero_samples": 1869
+          },
+          "geometry_hits": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 78391,
+            "mean": 7.9343117408906885,
+            "p99": 23,
+            "max": 34,
+            "nonzero_samples": 9460
+          },
+          "geometry_misses": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 2212,
+            "mean": 0.22388663967611336,
+            "p99": 2,
+            "max": 5,
+            "nonzero_samples": 1869
+          },
+          "geometry_evictions": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "max_effective_range": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 18956,
+            "mean": 1.9186234817813765,
+            "p99": 2,
+            "max": 2,
+            "nonzero_samples": 9478
+          },
+          "geometry_tiles": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 42028,
+            "mean": 4.253846153846154,
+            "p99": 38,
+            "max": 95,
+            "nonzero_samples": 1869
+          },
+          "commit_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 267715225,
+            "mean": 27096.68269230769,
+            "p99": 77250,
+            "max": 237834,
+            "nonzero_samples": 9478
+          },
+          "presentation_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 909453,
+            "mean": 92.0498987854251,
+            "p99": 500,
+            "max": 5500,
+            "nonzero_samples": 5735
+          }
+        },
+        "movement": {
+          "active_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 1209977,
+            "mean": 122.4673076923077,
+            "p99": 172,
+            "max": 186,
+            "nonzero_samples": 9876
+          },
+          "advanced_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 1209977,
+            "mean": 122.4673076923077,
+            "p99": 172,
+            "max": 186,
+            "nonzero_samples": 9876
+          },
+          "invalid_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "crossings": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 80603,
+            "mean": 8.158198380566802,
+            "p99": 23,
+            "max": 35,
+            "nonzero_samples": 9478
+          },
+          "row_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 120697299,
+            "mean": 12216.3258097166,
+            "p99": 23990,
+            "max": 45624,
+            "nonzero_samples": 9876
+          },
+          "spatial_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 35432949,
+            "mean": 3586.3308704453443,
+            "p99": 11207,
+            "max": 28791,
+            "nonzero_samples": 9478
+          },
+          "pixel_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 900630,
+            "mean": 91.15688259109312,
+            "p99": 374,
+            "max": 6543,
+            "nonzero_samples": 7652
+          },
+          "dirty_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 32073769,
+            "mean": 3246.3328947368423,
+            "p99": 5508,
+            "max": 36872,
+            "nonzero_samples": 9876
+          },
+          "cleanup_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 1985700,
+            "mean": 200.98178137651823,
+            "p99": 750,
+            "max": 9541,
+            "nonzero_samples": 8892
+          }
+        },
+        "visuals": {
+          "attack_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 2933,
+            "mean": 0.29686234817813767,
+            "p99": 2,
+            "max": 5,
+            "nonzero_samples": 2393
+          },
+          "projectile_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "effect_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 15631,
+            "mean": 1.582085020242915,
+            "p99": 6,
+            "max": 11,
+            "nonzero_samples": 7195
+          },
+          "damage_rows": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 65780,
+            "mean": 6.657894736842105,
+            "p99": 17,
+            "max": 28,
+            "nonzero_samples": 9505
+          },
+          "spawned": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "removed": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 2035,
+            "mean": 0.20597165991902833,
+            "p99": 2,
+            "max": 4,
+            "nonzero_samples": 1751
+          },
+          "attack_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 3244114,
+            "mean": 328.3516194331984,
+            "p99": 2541,
+            "max": 17708,
+            "nonzero_samples": 6040
+          },
+          "projectile_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 373299,
+            "mean": 37.7832995951417,
+            "p99": 209,
+            "max": 1042,
+            "nonzero_samples": 5639
+          },
+          "effect_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 9128343,
+            "mean": 923.9213562753037,
+            "p99": 3917,
+            "max": 29916,
+            "nonzero_samples": 8558
+          },
+          "damage_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 67280775,
+            "mean": 6809.79504048583,
+            "p99": 23292,
+            "max": 242417,
+            "nonzero_samples": 9678
+          },
+          "structural_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 8794922,
+            "mean": 890.1742914979757,
+            "p99": 6375,
+            "max": 24459,
+            "nonzero_samples": 9280
+          }
+        },
+        "recovery": {
+          "new_ids": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 7063,
+            "mean": 0.7148785425101215,
+            "p99": 3,
+            "max": 5007,
+            "nonzero_samples": 884
+          },
+          "mp_pending": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 26996,
+            "mean": 2.7323886639676114,
+            "p99": 14,
+            "max": 24,
+            "nonzero_samples": 5839
+          },
+          "ap_entries": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 974,
+            "mean": 0.09858299595141701,
+            "p99": 1,
+            "max": 3,
+            "nonzero_samples": 879
+          },
+          "mp_entries": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 26753,
+            "mean": 2.7077935222672065,
+            "p99": 14,
+            "max": 24,
+            "nonzero_samples": 5786
+          },
+          "skill_entries": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "stale_entries": {
+            "unit": "count",
+            "samples": 9880,
+            "total": 0,
+            "mean": 0.0,
+            "p99": 0,
+            "max": 0,
+            "nonzero_samples": 0
+          },
+          "ap_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 1417358,
+            "mean": 143.4572874493927,
+            "p99": 1375,
+            "max": 3708,
+            "nonzero_samples": 7161
+          },
+          "mp_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 23014586,
+            "mean": 2329.4115384615384,
+            "p99": 10750,
+            "max": 241083,
+            "nonzero_samples": 8806
+          },
+          "skill_ns": {
+            "unit": "ns",
+            "samples": 9880,
+            "total": 198908,
+            "mean": 20.13238866396761,
+            "p99": 84,
+            "max": 458,
+            "nonzero_samples": 4434
+          }
+        }
+      },
+      "derived": {
+        "moving_before": {
+          "unit": "count",
+          "samples": 9880,
+          "total": 1209977,
+          "mean": 122.4673076923077,
+          "p99": 172,
+          "max": 186,
+          "nonzero_samples": 9876
+        },
+        "capturing_before": {
+          "unit": "count",
+          "samples": 9880,
+          "total": 0,
+          "mean": 0.0,
+          "p99": 0,
+          "max": 0,
+          "nonzero_samples": 0
+        },
+        "vision_geometry_share": 0.01371553515564786,
+        "vision_commit_share": 0.6369451501978521,
+        "vision_geometry_per_miss_ns": 2606.1455696202534,
+        "vision_miss_tick_histogram": {
+          "0": 8011,
+          "1": 1583,
+          "2": 240,
+          "3": 38,
+          "4": 5,
+          "5": 3
+        },
+        "vision_geometry_nonempty": {
+          "unit": "ns",
+          "samples": 1869,
+          "total": 5764794,
+          "mean": 3084.4269662921347,
+          "p99": 7876,
+          "max": 15417,
+          "nonzero_samples": 1869
+        },
+        "movement_optimistic_row_upper": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 53190581,
+          "mean": 5383.662044534413,
+          "p99": 9333,
+          "max": 24159,
+          "nonzero_samples": 9876
+        },
+        "movement_active_histogram": {
+          "0": 4,
+          "1": 1,
+          "6": 1,
+          "9": 1,
+          "13": 4,
+          "17": 2,
+          "19": 1,
+          "20": 5,
+          "21": 1,
+          "22": 1,
+          "24": 2,
+          "28": 1,
+          "29": 6,
+          "31": 2,
+          "34": 2,
+          "35": 4,
+          "36": 2,
+          "37": 1,
+          "38": 8,
+          "39": 12,
+          "40": 15,
+          "41": 8,
+          "42": 3,
+          "43": 4,
+          "44": 3,
+          "45": 1,
+          "46": 3,
+          "51": 3,
+          "53": 2,
+          "54": 3,
+          "56": 3,
+          "57": 2,
+          "58": 2,
+          "59": 2,
+          "60": 7,
+          "61": 7,
+          "62": 10,
+          "63": 9,
+          "64": 10,
+          "65": 9,
+          "66": 13,
+          "67": 12,
+          "68": 14,
+          "69": 9,
+          "70": 12,
+          "71": 6,
+          "72": 9,
+          "73": 14,
+          "74": 9,
+          "75": 11,
+          "76": 11,
+          "77": 9,
+          "78": 11,
+          "79": 8,
+          "80": 11,
+          "81": 13,
+          "82": 15,
+          "83": 19,
+          "84": 19,
+          "85": 25,
+          "86": 24,
+          "87": 31,
+          "88": 40,
+          "89": 41,
+          "90": 44,
+          "91": 48,
+          "92": 42,
+          "93": 56,
+          "94": 41,
+          "95": 52,
+          "96": 64,
+          "97": 77,
+          "98": 84,
+          "99": 73,
+          "100": 79,
+          "101": 80,
+          "102": 109,
+          "103": 97,
+          "104": 128,
+          "105": 114,
+          "106": 120,
+          "107": 108,
+          "108": 114,
+          "109": 141,
+          "110": 150,
+          "111": 160,
+          "112": 176,
+          "113": 168,
+          "114": 212,
+          "115": 196,
+          "116": 204,
+          "117": 176,
+          "118": 215,
+          "119": 212,
+          "120": 214,
+          "121": 219,
+          "122": 234,
+          "123": 195,
+          "124": 198,
+          "125": 214,
+          "126": 221,
+          "127": 203,
+          "128": 232,
+          "129": 215,
+          "130": 223,
+          "131": 212,
+          "132": 216,
+          "133": 201,
+          "134": 152,
+          "135": 187,
+          "136": 165,
+          "137": 136,
+          "138": 150,
+          "139": 144,
+          "140": 126,
+          "141": 134,
+          "142": 129,
+          "143": 130,
+          "144": 93,
+          "145": 77,
+          "146": 80,
+          "147": 75,
+          "148": 92,
+          "149": 61,
+          "150": 56,
+          "151": 63,
+          "152": 57,
+          "153": 58,
+          "154": 51,
+          "155": 43,
+          "156": 51,
+          "157": 32,
+          "158": 30,
+          "159": 31,
+          "160": 40,
+          "161": 31,
+          "162": 32,
+          "163": 26,
+          "164": 23,
+          "165": 22,
+          "166": 26,
+          "167": 16,
+          "168": 16,
+          "169": 26,
+          "170": 12,
+          "171": 17,
+          "172": 16,
+          "173": 7,
+          "174": 9,
+          "175": 13,
+          "176": 10,
+          "177": 12,
+          "178": 4,
+          "179": 6,
+          "180": 7,
+          "181": 6,
+          "182": 5,
+          "183": 2,
+          "184": 1,
+          "185": 1,
+          "186": 1
+        },
+        "visuals_loop_upper": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 80026531,
+          "mean": 8099.851315789474,
+          "p99": 27833,
+          "max": 254542,
+          "nonzero_samples": 9867
+        },
+        "recovery_due_histogram": {
+          "0": 3738,
+          "1": 805,
+          "2": 1018,
+          "3": 1101,
+          "4": 850,
+          "5": 623,
+          "6": 448,
+          "7": 366,
+          "8": 254,
+          "9": 158,
+          "10": 143,
+          "11": 101,
+          "12": 88,
+          "13": 56,
+          "14": 48,
+          "15": 29,
+          "16": 22,
+          "17": 19,
+          "18": 4,
+          "19": 4,
+          "20": 2,
+          "22": 1,
+          "23": 1,
+          "24": 1
+        },
+        "recovery_due_group_upper": {
+          "unit": "ns",
+          "samples": 9880,
+          "total": 24630852,
+          "mean": 2493.0012145748988,
+          "p99": 11083,
+          "max": 241292,
+          "nonzero_samples": 9604
+        },
+        "visuals_nonempty_attack_ns": {
+          "unit": "ns",
+          "samples": 2393,
+          "total": 3044746,
+          "mean": 1272.3552026744671,
+          "p99": 3667,
+          "max": 17708,
+          "nonzero_samples": 2393
+        },
+        "visuals_nonempty_projectile_ns": {
+          "unit": "ns",
+          "samples": 0,
+          "total": 0,
+          "mean": null,
+          "p99": null,
+          "max": null,
+          "nonzero_samples": 0
+        },
+        "visuals_nonempty_effect_ns": {
+          "unit": "ns",
+          "samples": 7195,
+          "total": 9050231,
+          "mean": 1257.8500347463516,
+          "p99": 4334,
+          "max": 29916,
+          "nonzero_samples": 7195
+        },
+        "visuals_nonempty_damage_ns": {
+          "unit": "ns",
+          "samples": 9505,
+          "total": 67271605,
+          "mean": 7077.496580746975,
+          "p99": 23666,
+          "max": 242417,
+          "nonzero_samples": 9505
+        }
+      },
+      "tail_samples": {
+        "vision": [
+          {
+            "seq": 46817,
+            "phase_ns": 380125,
+            "fields": {
+              "audit_ns": 250,
+              "audit_runs": 0,
+              "dirty_rows": 12,
+              "removed_rows": 0,
+              "unit_cache_hits": 0,
+              "recompute_rows": 12,
+              "gather_ns": 13332,
+              "cache_ns": 270873,
+              "geometry_ns": 0,
+              "geometry_hits": 12,
+              "geometry_misses": 0,
+              "geometry_evictions": 0,
+              "max_effective_range": 2,
+              "geometry_tiles": 0,
+              "commit_ns": 85167,
+              "presentation_ns": 0
+            }
+          },
+          {
+            "seq": 56637,
+            "phase_ns": 325750,
+            "fields": {
+              "audit_ns": 0,
+              "audit_runs": 0,
+              "dirty_rows": 21,
+              "removed_rows": 0,
+              "unit_cache_hits": 0,
+              "recompute_rows": 21,
+              "gather_ns": 20750,
+              "cache_ns": 46460,
+              "geometry_ns": 4625,
+              "geometry_hits": 20,
+              "geometry_misses": 1,
+              "geometry_evictions": 0,
+              "max_effective_range": 2,
+              "geometry_tiles": 19,
+              "commit_ns": 237834,
+              "presentation_ns": 625
+            }
+          },
+          {
+            "seq": 56673,
+            "phase_ns": 294541,
+            "fields": {
+              "audit_ns": 166,
+              "audit_runs": 0,
+              "dirty_rows": 13,
+              "removed_rows": 0,
+              "unit_cache_hits": 0,
+              "recompute_rows": 13,
+              "gather_ns": 18713,
+              "cache_ns": 23125,
+              "geometry_ns": 7208,
+              "geometry_hits": 12,
+              "geometry_misses": 1,
+              "geometry_evictions": 0,
+              "max_effective_range": 2,
+              "geometry_tiles": 19,
+              "commit_ns": 231668,
+              "presentation_ns": 709
+            }
+          },
+          {
+            "seq": 15200,
+            "phase_ns": 256042,
+            "fields": {
+              "audit_ns": 0,
+              "audit_runs": 0,
+              "dirty_rows": 23,
+              "removed_rows": 0,
+              "unit_cache_hits": 0,
+              "recompute_rows": 23,
+              "gather_ns": 33623,
+              "cache_ns": 50875,
+              "geometry_ns": 0,
+              "geometry_hits": 23,
+              "geometry_misses": 0,
+              "geometry_evictions": 0,
+              "max_effective_range": 2,
+              "geometry_tiles": 0,
+              "commit_ns": 156289,
+              "presentation_ns": 375
+            }
+          },
+          {
+            "seq": 44631,
+            "phase_ns": 232917,
+            "fields": {
+              "audit_ns": 333,
+              "audit_runs": 0,
+              "dirty_rows": 13,
+              "removed_rows": 0,
+              "unit_cache_hits": 0,
+              "recompute_rows": 13,
+              "gather_ns": 36128,
+              "cache_ns": 22332,
+              "geometry_ns": 0,
+              "geometry_hits": 13,
+              "geometry_misses": 0,
+              "geometry_evictions": 0,
+              "max_effective_range": 2,
+              "geometry_tiles": 0,
+              "commit_ns": 148041,
+              "presentation_ns": 0
+            }
+          }
+        ],
+        "movement": [
+          {
+            "seq": 49925,
+            "phase_ns": 985417,
+            "fields": {
+              "active_rows": 121,
+              "advanced_rows": 121,
+              "invalid_rows": 0,
+              "crossings": 9,
+              "row_ns": 21126,
+              "spatial_ns": 9293,
+              "pixel_ns": 165,
+              "dirty_ns": 4837,
+              "cleanup_ns": 1292
+            }
+          },
+          {
+            "seq": 56673,
+            "phase_ns": 535875,
+            "fields": {
+              "active_rows": 125,
+              "advanced_rows": 125,
+              "invalid_rows": 0,
+              "crossings": 13,
+              "row_ns": 42874,
+              "spatial_ns": 19998,
+              "pixel_ns": 332,
+              "dirty_ns": 10446,
+              "cleanup_ns": 458
+            }
+          },
+          {
+            "seq": 46071,
+            "phase_ns": 179041,
+            "fields": {
+              "active_rows": 129,
+              "advanced_rows": 129,
+              "invalid_rows": 0,
+              "crossings": 11,
+              "row_ns": 37959,
+              "spatial_ns": 17459,
+              "pixel_ns": 84,
+              "dirty_ns": 10164,
+              "cleanup_ns": 584
+            }
+          },
+          {
+            "seq": 49158,
+            "phase_ns": 176041,
+            "fields": {
+              "active_rows": 109,
+              "advanced_rows": 109,
+              "invalid_rows": 0,
+              "crossings": 0,
+              "row_ns": 42330,
+              "spatial_ns": 0,
+              "pixel_ns": 0,
+              "dirty_ns": 36872,
+              "cleanup_ns": 42
+            }
+          },
+          {
+            "seq": 42612,
+            "phase_ns": 152875,
+            "fields": {
+              "active_rows": 137,
+              "advanced_rows": 137,
+              "invalid_rows": 0,
+              "crossings": 14,
+              "row_ns": 34625,
+              "spatial_ns": 11334,
+              "pixel_ns": 251,
+              "dirty_ns": 13548,
+              "cleanup_ns": 1333
+            }
+          }
+        ],
+        "visuals": [
+          {
+            "seq": 58108,
+            "phase_ns": 280041,
+            "fields": {
+              "attack_rows": 0,
+              "projectile_rows": 0,
+              "effect_rows": 6,
+              "damage_rows": 14,
+              "spawned": 0,
+              "removed": 3,
+              "attack_ns": 208,
+              "projectile_ns": 167,
+              "effect_ns": 11750,
+              "damage_ns": 242417,
+              "structural_ns": 24459
+            }
+          },
+          {
+            "seq": 49158,
+            "phase_ns": 100333,
+            "fields": {
+              "attack_rows": 0,
+              "projectile_rows": 0,
+              "effect_rows": 0,
+              "damage_rows": 7,
+              "spawned": 0,
+              "removed": 0,
+              "attack_ns": 83,
+              "projectile_ns": 125,
+              "effect_ns": 42,
+              "damage_ns": 99000,
+              "structural_ns": 458
+            }
+          },
+          {
+            "seq": 43594,
+            "phase_ns": 81000,
+            "fields": {
+              "attack_rows": 3,
+              "projectile_rows": 0,
+              "effect_rows": 3,
+              "damage_rows": 17,
+              "spawned": 0,
+              "removed": 0,
+              "attack_ns": 7792,
+              "projectile_ns": 41,
+              "effect_ns": 3875,
+              "damage_ns": 62583,
+              "structural_ns": 5042
+            }
+          },
+          {
+            "seq": 56701,
+            "phase_ns": 80667,
+            "fields": {
+              "attack_rows": 3,
+              "projectile_rows": 0,
+              "effect_rows": 8,
+              "damage_rows": 20,
+              "spawned": 0,
+              "removed": 0,
+              "attack_ns": 8250,
+              "projectile_ns": 83,
+              "effect_ns": 29916,
+              "damage_ns": 41125,
+              "structural_ns": 125
+            }
+          },
+          {
+            "seq": 58096,
+            "phase_ns": 79000,
+            "fields": {
+              "attack_rows": 1,
+              "projectile_rows": 0,
+              "effect_rows": 6,
+              "damage_rows": 15,
+              "spawned": 0,
+              "removed": 0,
+              "attack_ns": 1667,
+              "projectile_ns": 42,
+              "effect_ns": 5750,
+              "damage_ns": 66417,
+              "structural_ns": 4333
+            }
+          }
+        ],
+        "recovery": [
+          {
+            "seq": 2000,
+            "phase_ns": 420042,
+            "fields": {
+              "new_ids": 5007,
+              "mp_pending": 0,
+              "ap_entries": 0,
+              "mp_entries": 0,
+              "skill_entries": 0,
+              "stale_entries": 0,
+              "ap_ns": 41,
+              "mp_ns": 42,
+              "skill_ns": 84
+            }
+          },
+          {
+            "seq": 46827,
+            "phase_ns": 255250,
+            "fields": {
+              "new_ids": 2,
+              "mp_pending": 7,
+              "ap_entries": 0,
+              "mp_entries": 5,
+              "skill_entries": 0,
+              "stale_entries": 0,
+              "ap_ns": 84,
+              "mp_ns": 241083,
+              "skill_ns": 125
+            }
+          },
+          {
+            "seq": 49150,
+            "phase_ns": 74750,
+            "fields": {
+              "new_ids": 0,
+              "mp_pending": 12,
+              "ap_entries": 1,
+              "mp_entries": 3,
+              "skill_entries": 0,
+              "stale_entries": 0,
+              "ap_ns": 2541,
+              "mp_ns": 5500,
+              "skill_ns": 0
+            }
+          },
+          {
+            "seq": 49162,
+            "phase_ns": 48209,
+            "fields": {
+              "new_ids": 0,
+              "mp_pending": 0,
+              "ap_entries": 0,
+              "mp_entries": 3,
+              "skill_entries": 0,
+              "stale_entries": 0,
+              "ap_ns": 167,
+              "mp_ns": 47542,
+              "skill_ns": 209
+            }
+          },
+          {
+            "seq": 57586,
+            "phase_ns": 41250,
+            "fields": {
+              "new_ids": 4,
+              "mp_pending": 2,
+              "ap_entries": 0,
+              "mp_entries": 0,
+              "skill_entries": 0,
+              "stale_entries": 0,
+              "ap_ns": 83,
+              "mp_ns": 125,
+              "skill_ns": 41
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "limits": "Diagnostic nested timer costs; loop upper bounds include ECS/JSON writes and timing overhead. One fixed canonical trace per thread setting; not causal speedup, new live capacity, or all-Unit activity."
+}

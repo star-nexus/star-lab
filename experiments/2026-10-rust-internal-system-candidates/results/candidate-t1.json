@@ -1,0 +1,626 @@
+{
+  "source_sha": "6d4018cc0c607a51a3783428867ba9259bb43f43",
+  "tool_sha256": "ccae26333206116c26a90832b84cd3a27cc67af8dec6c1b9f7dea9dbfc9f1293",
+  "argv": [
+    "tools/rust_migration/profile_system_candidates.py",
+    "--source",
+    "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+    "--source-sha",
+    "6d4018cc0c607a51a3783428867ba9259bb43f43",
+    "--trace",
+    "/Users/liyang/Developer/star-lab/runs/ecs-e2-input/rust-300-r3.trace.json.gz",
+    "--trace-sha256",
+    "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+    "--extension-sha256",
+    "e0f46cfbffd8542c08cd2b2e6b4a26c000da05ecb9bffd3466d77fa859a9834d",
+    "--output",
+    "/Users/liyang/Developer/star-lab/experiments/2026-10-rust-internal-system-candidates/results/candidate-t1.json",
+    "--threads",
+    "1",
+    "--mode",
+    "compare"
+  ],
+  "environment": {
+    "HEADLESS": "1",
+    "SDL_VIDEODRIVER": "dummy",
+    "PYGAME_HIDE_SUPPORT_PROMPT": "1"
+  },
+  "tooling_commit": "65c6585a370b0587a9c83c32b17cbfe2823b49d5",
+  "extension_sha256": "e0f46cfbffd8542c08cd2b2e6b4a26c000da05ecb9bffd3466d77fa859a9834d",
+  "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+  "initial_sha256": "8b594c465a63728222c57f257111d500c1c378e226b3496c63c0b11870629bc0",
+  "original_source": {
+    "path": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+    "sha": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+    "dirty": ""
+  },
+  "mode": "compare",
+  "threads": 1,
+  "counts": {
+    "request": 40994,
+    "step": 9880,
+    "presentation": 9880
+  },
+  "kernel_source_sha": "6d4018cc0c607a51a3783428867ba9259bb43f43",
+  "min_rows": null,
+  "read_segment_histogram": {
+    "1": 3910,
+    "2": 2048,
+    "3": 921,
+    "4": 57,
+    "5": 2
+  },
+  "observations_in_shareable_segments": 7097,
+  "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+  "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf",
+  "phase_summary": {
+    "captures": {
+      "samples": 9880,
+      "mean_ns": 65.68765182186235,
+      "p99_ns": 208,
+      "max_ns": 1208
+    },
+    "clock": {
+      "samples": 9880,
+      "mean_ns": 864.1993927125507,
+      "p99_ns": 1875,
+      "max_ns": 7125
+    },
+    "lifecycle": {
+      "samples": 9880,
+      "mean_ns": 340.0085020242915,
+      "p99_ns": 916,
+      "max_ns": 12167
+    },
+    "movement": {
+      "samples": 9880,
+      "mean_ns": 31048.965587044535,
+      "p99_ns": 62417,
+      "max_ns": 959833
+    },
+    "recovery": {
+      "samples": 9880,
+      "mean_ns": 3887.290789473684,
+      "p99_ns": 13292,
+      "max_ns": 431375
+    },
+    "statistics": {
+      "samples": 9880,
+      "mean_ns": 132351.08532388663,
+      "p99_ns": 505000,
+      "max_ns": 3102958
+    },
+    "vision": {
+      "samples": 9880,
+      "mean_ns": 43503.838461538464,
+      "p99_ns": 124875,
+      "max_ns": 3596750
+    },
+    "visuals": {
+      "samples": 9880,
+      "mean_ns": 9314.896356275303,
+      "p99_ns": 30250,
+      "max_ns": 259333
+    }
+  },
+  "statistics_summary": {
+    "observation_rows": {
+      "samples": 9880,
+      "mean_ns": 42.00404858299595,
+      "p99_ns": 128,
+      "max_ns": 128
+    },
+    "gather_ns": {
+      "samples": 9880,
+      "mean_ns": 7238.158502024292,
+      "p99_ns": 33375,
+      "max_ns": 108542
+    },
+    "compute_ns": {
+      "samples": 9880,
+      "mean_ns": 52.72672064777328,
+      "p99_ns": 292,
+      "max_ns": 2834
+    },
+    "records_ns": {
+      "samples": 9880,
+      "mean_ns": 49008.74827935223,
+      "p99_ns": 240458,
+      "max_ns": 2636584
+    },
+    "commit_ns": {
+      "samples": 9880,
+      "mean_ns": 6871.576518218623,
+      "p99_ns": 32458,
+      "max_ns": 243041
+    },
+    "trim_ns": {
+      "samples": 9880,
+      "mean_ns": 34408.387449392714,
+      "p99_ns": 160166,
+      "max_ns": 405542
+    },
+    "visibility_ns": {
+      "samples": 9880,
+      "mean_ns": 24797.198076923076,
+      "p99_ns": 107333,
+      "max_ns": 506208
+    },
+    "factions_ns": {
+      "samples": 9880,
+      "mean_ns": 6402.169028340081,
+      "p99_ns": 33084,
+      "max_ns": 81042
+    },
+    "kernel_wall_ns": {
+      "samples": 9880,
+      "mean_ns": 49110.110020242915,
+      "p99_ns": 240750,
+      "max_ns": 2637208
+    },
+    "worker_max_ns": {
+      "samples": 9880,
+      "mean_ns": 0.0,
+      "p99_ns": 0,
+      "max_ns": 0
+    },
+    "dispatch_residual_ns": {
+      "samples": 9880,
+      "mean_ns": 0.0,
+      "p99_ns": 0,
+      "max_ns": 0
+    },
+    "parallel_batches": {
+      "samples": 9880,
+      "mean_ns": 0.0,
+      "p99_ns": 0,
+      "max_ns": 0
+    },
+    "jobs": {
+      "samples": 9880,
+      "mean_ns": 0.0,
+      "p99_ns": 0,
+      "max_ns": 0
+    },
+    "worker_threads": {
+      "samples": 9880,
+      "mean_ns": 0.0,
+      "p99_ns": 0,
+      "max_ns": 0
+    }
+  },
+  "candidate_summary": {
+    "vision": {
+      "audit_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 260534,
+        "mean": 26.369838056680162,
+        "p99": 167,
+        "max": 1375,
+        "nonzero_samples": 4876
+      },
+      "audit_runs": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 0,
+        "mean": 0.0,
+        "p99": 0,
+        "max": 0,
+        "nonzero_samples": 0
+      },
+      "dirty_rows": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 80603,
+        "mean": 8.158198380566802,
+        "p99": 23,
+        "max": 35,
+        "nonzero_samples": 9478
+      },
+      "removed_rows": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 0,
+        "mean": 0.0,
+        "p99": 0,
+        "max": 0,
+        "nonzero_samples": 0
+      },
+      "unit_cache_hits": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 0,
+        "mean": 0.0,
+        "p99": 0,
+        "max": 0,
+        "nonzero_samples": 0
+      },
+      "recompute_rows": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 80603,
+        "mean": 8.158198380566802,
+        "p99": 23,
+        "max": 35,
+        "nonzero_samples": 9478
+      },
+      "gather_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 42452986,
+        "mean": 4296.860931174089,
+        "p99": 13082,
+        "max": 77539,
+        "nonzero_samples": 9478
+      },
+      "cache_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 72896019,
+        "mean": 7378.139574898785,
+        "p99": 20959,
+        "max": 138292,
+        "nonzero_samples": 9478
+      },
+      "geometry_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 5464484,
+        "mean": 553.0854251012146,
+        "p99": 5208,
+        "max": 13708,
+        "nonzero_samples": 1869
+      },
+      "geometry_hits": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 78391,
+        "mean": 7.9343117408906885,
+        "p99": 23,
+        "max": 34,
+        "nonzero_samples": 9460
+      },
+      "geometry_misses": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 2212,
+        "mean": 0.22388663967611336,
+        "p99": 2,
+        "max": 5,
+        "nonzero_samples": 1869
+      },
+      "geometry_evictions": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 0,
+        "mean": 0.0,
+        "p99": 0,
+        "max": 0,
+        "nonzero_samples": 0
+      },
+      "max_effective_range": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 18956,
+        "mean": 1.9186234817813765,
+        "p99": 2,
+        "max": 2,
+        "nonzero_samples": 9478
+      },
+      "geometry_tiles": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 42028,
+        "mean": 4.253846153846154,
+        "p99": 38,
+        "max": 95,
+        "nonzero_samples": 1869
+      },
+      "commit_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 278305585,
+        "mean": 28168.581477732794,
+        "p99": 81959,
+        "max": 3554833,
+        "nonzero_samples": 9478
+      },
+      "presentation_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 904941,
+        "mean": 91.59321862348177,
+        "p99": 500,
+        "max": 3125,
+        "nonzero_samples": 5818
+      }
+    },
+    "movement": {
+      "active_rows": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 1209977,
+        "mean": 122.4673076923077,
+        "p99": 172,
+        "max": 186,
+        "nonzero_samples": 9876
+      },
+      "advanced_rows": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 1209977,
+        "mean": 122.4673076923077,
+        "p99": 172,
+        "max": 186,
+        "nonzero_samples": 9876
+      },
+      "invalid_rows": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 0,
+        "mean": 0.0,
+        "p99": 0,
+        "max": 0,
+        "nonzero_samples": 0
+      },
+      "crossings": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 80603,
+        "mean": 8.158198380566802,
+        "p99": 23,
+        "max": 35,
+        "nonzero_samples": 9478
+      },
+      "row_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 119941151,
+        "mean": 12139.792611336032,
+        "p99": 23583,
+        "max": 76254,
+        "nonzero_samples": 9876
+      },
+      "spatial_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 35269298,
+        "mean": 3569.767004048583,
+        "p99": 10916,
+        "max": 54917,
+        "nonzero_samples": 9478
+      },
+      "pixel_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 895374,
+        "mean": 90.6248987854251,
+        "p99": 374,
+        "max": 4042,
+        "nonzero_samples": 7624
+      },
+      "dirty_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 31727117,
+        "mean": 3211.2466599190284,
+        "p99": 5839,
+        "max": 50755,
+        "nonzero_samples": 9875
+      },
+      "cleanup_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 1883973,
+        "mean": 190.68552631578947,
+        "p99": 750,
+        "max": 8583,
+        "nonzero_samples": 8902
+      }
+    },
+    "visuals": {
+      "attack_rows": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 2933,
+        "mean": 0.29686234817813767,
+        "p99": 2,
+        "max": 5,
+        "nonzero_samples": 2393
+      },
+      "projectile_rows": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 0,
+        "mean": 0.0,
+        "p99": 0,
+        "max": 0,
+        "nonzero_samples": 0
+      },
+      "effect_rows": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 15631,
+        "mean": 1.582085020242915,
+        "p99": 6,
+        "max": 11,
+        "nonzero_samples": 7195
+      },
+      "damage_rows": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 65780,
+        "mean": 6.657894736842105,
+        "p99": 17,
+        "max": 28,
+        "nonzero_samples": 9505
+      },
+      "spawned": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 0,
+        "mean": 0.0,
+        "p99": 0,
+        "max": 0,
+        "nonzero_samples": 0
+      },
+      "removed": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 2035,
+        "mean": 0.20597165991902833,
+        "p99": 2,
+        "max": 4,
+        "nonzero_samples": 1751
+      },
+      "attack_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 3126489,
+        "mean": 316.44625506072873,
+        "p99": 2459,
+        "max": 8459,
+        "nonzero_samples": 5940
+      },
+      "projectile_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 360173,
+        "mean": 36.45475708502024,
+        "p99": 250,
+        "max": 625,
+        "nonzero_samples": 5558
+      },
+      "effect_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 9283355,
+        "mean": 939.6108299595141,
+        "p99": 3958,
+        "max": 31041,
+        "nonzero_samples": 8589
+      },
+      "damage_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 67606412,
+        "mean": 6842.754251012146,
+        "p99": 22333,
+        "max": 256292,
+        "nonzero_samples": 9699
+      },
+      "structural_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 8984042,
+        "mean": 909.315991902834,
+        "p99": 6457,
+        "max": 45208,
+        "nonzero_samples": 9202
+      }
+    },
+    "recovery": {
+      "new_ids": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 7063,
+        "mean": 0.7148785425101215,
+        "p99": 3,
+        "max": 5007,
+        "nonzero_samples": 884
+      },
+      "mp_pending": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 26996,
+        "mean": 2.7323886639676114,
+        "p99": 14,
+        "max": 24,
+        "nonzero_samples": 5839
+      },
+      "ap_entries": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 974,
+        "mean": 0.09858299595141701,
+        "p99": 1,
+        "max": 3,
+        "nonzero_samples": 879
+      },
+      "mp_entries": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 26753,
+        "mean": 2.7077935222672065,
+        "p99": 14,
+        "max": 24,
+        "nonzero_samples": 5786
+      },
+      "skill_entries": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 0,
+        "mean": 0.0,
+        "p99": 0,
+        "max": 0,
+        "nonzero_samples": 0
+      },
+      "stale_entries": {
+        "unit": "count",
+        "samples": 9880,
+        "total": 0,
+        "mean": 0.0,
+        "p99": 0,
+        "max": 0,
+        "nonzero_samples": 0
+      },
+      "ap_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 1430119,
+        "mean": 144.7488866396761,
+        "p99": 1333,
+        "max": 5375,
+        "nonzero_samples": 7435
+      },
+      "mp_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 21804349,
+        "mean": 2206.917914979757,
+        "p99": 10375,
+        "max": 23583,
+        "nonzero_samples": 8686
+      },
+      "skill_ns": {
+        "unit": "ns",
+        "samples": 9880,
+        "total": 181761,
+        "mean": 18.39686234817814,
+        "p99": 83,
+        "max": 708,
+        "nonzero_samples": 4114
+      }
+    }
+  },
+  "ordinary_step_summary": {
+    "samples": 9880,
+    "mean_ns": 236544.24463562752,
+    "p99_ns": 657084,
+    "max_ns": 2018042
+  },
+  "elapsed_seconds": 107.68290700006764,
+  "all_passed": true,
+  "scope": "fixed recorded input including warmup; compare mode interleaves diagnostic twin and is not controlled latency A/B or live capacity",
+  "step_raw": {
+    "file": "candidate-t1.steps.json.gz",
+    "sha256": "ed11114df8c5ade118341d99f7c26083b68856e13359986a6063b9d1e07acba4",
+    "bytes": 25521
+  },
+  "timing_raw": {
+    "file": "candidate-t1.timings.json.gz",
+    "sha256": "92bafe0edcda86f6d8eb9cbb3631200237057fe2d3fe02681862f23e22c3c710",
+    "bytes": 1123019
+  }
+}

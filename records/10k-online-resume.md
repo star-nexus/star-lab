@@ -1,13 +1,23 @@
 # 10K / 100% moving / 30 Hz — 恢复入口
 
-## 独立Rust并行任务恢复入口（2026-09-30）
+## 独立Rust并行任务：E1 ECS方案探索完成（2026-09-30）
 
-当前新任务见 [rust-ecs-parallel.md](rust-ecs-parallel.md)，工作树
-`/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main`，分支 `codex/rust-ecs-parallel`，
-从R4e annotated tag创建。P0完成读写依赖表及可关闭逐System计时探针；归因与冻结输入1/2/4线程核验已通过，checkpoint c058d75 / annotated rust-parallel-p0-attribution-2026-09-30。首个实际优化候选为已接纳连续查询的编码批次；先审计接纳顺序，尚未实施收益。
-进度：`恢复 █ | 依赖表 █ | 归因 █ | 并行实现 ░ | 容量 ░`。
-目标仍5000Units/1000Agents，5000Agents暂缓。原49删除、两个冻结测量目录和历史负结果保留。
-此任务当前状态优先于下方旧“下一步”；没有新的容量/发布或默认切换结论。
+按用户最新指示，活动任务转向**System之间及System内部并行**，详见
+[恢复入口](rust-ecs-parallel.md)及[E1正式方案/机制包](../experiments/2026-09-rust-ecs-parallel-design/README.md)。
+工作树 `/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main`，分支
+`codex/rust-ecs-parallel`，从R4e tag隔离；最新设计commit **be3867b3ad65749e0e34efd245359c4123189031**，
+annotated **rust-parallel-e1-design-2026-09-30**。P0完整依赖表/成本/等价性保留。
+进度：`恢复 █ | 归因 █ | ECS方案/机制 █ | 生产并行原型 ░ | 新容量 ░`。
+
+拆窄访问后Recovery/Lifecycle/Vision是System间候选；P0理想零开销重叠节省mean3.883µs。
+锁定Bevy0.19.1机制探针1/2/4验证窄组件重叠、冲突串行、100/5000活动子集；
+已有池2/4验证5000有序结果，空dispatch median9.125/7.084µs。这些不是实际游戏并行/净收益。
+**下一阶段E2：Statistics当前批次纯计算＋有序提交，先1线程拆分/分项归因，再决定2/4。**
+P0跨请求批次候选暂缓、原证据不改；不直接把全部System入池。
+
+目标仍5000Units/1000Agents，5000Agents暂缓；生产执行/API/schema/oracle/默认1线程未改。
+G008/G009/R001/R002原状态保留，无新已确认玩法GAP。原49删除、两个冻结测量目录和负结果保留。
+此状态优先于下方历史下一步；无新的容量/Frontier/发布或push/merge结论。
 
 
 新Session开展Rust并行工作，先读[专门交接入口](rust-parallel-handoff.md)（2026-09-30，含设计演变、负结果、代码/测试入口和冻结起点）。

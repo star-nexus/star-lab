@@ -1,0 +1,102 @@
+experiment:
+  id: 2026-09-rust-ecs-parallel-design
+  title: E1 between-System and within-System access/architecture exploration
+  date: 2026-09-30
+  status: validated
+  scope: source design and synthetic mechanisms only; no production parallel fix or capacity
+source:
+  repository: star-nexus/star
+  problem_commit: c058d75c0ad67a7c340c2a6ac74a9d5bc2888adf
+  measurement_commit: c058d75c0ad67a7c340c2a6ac74a9d5bc2888adf
+  fix_commit: null
+  validated_commit: be3867b3ad65749e0e34efd245359c4123189031
+  branch_at_time: codex/rust-ecs-parallel
+  validated_tag: rust-parallel-e1-design-2026-09-30
+  validated_tag_scope: design and mechanism checkpoint only
+  baseline_tag: rust-kernel-r4e-2026-09-29
+  tool_repository: star-nexus/star-lab
+  probe_tool_commit: 5f83b060fe6fb47db6ecbe9bea0633d02f7b550f
+  analyzer_tool_commit: adf399f96db5beef6427caba4ec83c491424755e
+hardware:
+  machine: Mac mini M4
+  cpu: Apple M4
+  memory: 16 GiB
+  gpu: unused
+  display: no rendered game
+software:
+  os: macOS-26.5.2-arm64-arm-64bit-Mach-O
+  python: 3.13.12
+  rust: 1.98.1
+  cargo: 1.98.1
+  bevy_ecs: 0.19.1
+  bevy_tasks: 0.19.1
+  build: release, thin LTO, codegen-units=1
+  dependency_lock: e86cb2bee26f1d95c1cde0abec61bdea575a73ae7218db60b7f06be735f15188
+  probe_lock: 53b8ae194f308bcb0e98e8d5e2ec32516be427e8455c7e76d3d1bbd566f7a659
+  environment: results/environment.json
+scenario:
+  name: standalone synthetic scheduler/subset/ReadPool mechanism
+  map_size: null
+  resident_units: 5000 synthetic component entities for active-subset probe
+  moving_units: null
+  agents: none
+  game_capacity_target: 5000 Units + 1000 Agents; 5000 Agents paused
+workload:
+  seed: none, deterministic literal integers
+  selected_entities: 100, IDs divisible by 50
+  independent_components: MovePoints and Vision from STAR
+  synthetic_hold_milliseconds: 2
+  overlap_rendezvous_timeout_seconds: 2
+  ordered_readpool_outputs: 5000
+  dispatch_warmup_iterations: 100
+  dispatch_sample_iterations: 1000
+  fog: not applicable
+  camera: not applicable
+  phase: five sequential isolated processes
+measurement:
+  startup: release binary built and launched by run_ecs_parallel_probe.py
+  commands: results/commands.json
+  primary_metrics: maximum simultaneously executing System bodies and exact selected/changed subset
+  secondary_metrics: empty scoped-job dispatch median/P99; P0 ideal overlap ceiling
+  quantiles: sorted array at floor(N*q), matching probe; no interpolation
+  gc_policy: not applicable to native probes
+  guards_required:
+    - clean exact measurement source SHA
+    - all resolved probe package versions/source identities occur in source lock
+    - build and five process commands exit zero
+    - expected access-conflict overlap counts, subset100/5000 and ordered5000 output equality
+    - analyzer verifies tools, raw inputs, commands, quantiles and P0 archive hash
+variables:
+  independent:
+    schedule_access_shape: [disjoint components, shared component, shared Resource fields, exclusive World]
+    schedule_threads: [1, 2, 4]
+    scoped_threads: [2, 4]
+  controlled: [same source/types/resolved versions, release build, synthetic inputs, sequential runs]
+artifacts:
+  formal:
+    - path: results/comparison.json
+    - path: results/overlap-ceiling.json
+    - path: results/metadata.json
+    - path: results/environment.json
+    - path: results/commands.json
+  external: []
+  integrity_index: artifacts/SHA256SUMS
+  package_locator_size_hash_index: results/packages.json
+  canonical_cost_input:
+    archive: ../2026-09-rust-system-attribution/artifacts/rust-system-attribution-raw.zip
+    archive_sha256: 93b8f7051c0ab8a4fdd67252a88e4ef0db54f531ddd740d00c976a0d18c86c28
+    member: results/candidate-t1.timings.json.gz
+    member_hash_and_values: results/overlap-ceiling.json
+    ticks: 9880
+    measurement_commit: 2ac2b29a7a3bf09d92370a0352dcf0fd47f741e5
+    seed: 42
+    scope: headless paired fixed R4e input including recorded warmup; not live A/B
+headline:
+  problem_signature: whole Runtime/World or monolithic mutable Resource prevents scheduler overlap
+  root_cause: broad access hides actual disjoint work; real ordering/structural/error edges also exist
+  resolution: choose serial Statistics leaf extraction and cost subdivision first
+  result: disjoint narrow Systems overlap2; conflict/exclusive cases1; subset100/5000 and ordered5000 pass
+revisit_when:
+  - real independent compute savings exceed measured dispatch/gather/ordered-commit costs
+  - high-active/high-dirty profiles materially change canonical costs
+  - writer, component, structural boundary, cache policy or error semantics changes

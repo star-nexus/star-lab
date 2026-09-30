@@ -1,0 +1,169 @@
+{
+  "all_passed": true,
+  "source_sha": "c058d75c0ad67a7c340c2a6ac74a9d5bc2888adf",
+  "analyzer_sha256": "ebd38f4fd9bb54a7afbc2a13682790606fc56b8f55e8f5e7f1dfa79e7d176101",
+  "raw_file_sha256": {
+    "metadata.json": "eb200408c5e3845730ddcc66ecd078163685550527af4b59392bc018f7365c77",
+    "commands.json": "16583be04ed2c425373fc5b08d4b25aa83a1c8df60cf65ff350906ff1ac3b00d",
+    "probe.Cargo.lock": "53b8ae194f308bcb0e98e8d5e2ec32516be427e8455c7e76d3d1bbd566f7a659",
+    "probe.Cargo.toml": "c530a334a7dc7b04cb1ff1fc3560a0c431be9ae1644edf045e6913ef89ff1fd0",
+    "schedule-t1.json": "70e275675267fbc34ff8e30adc4a4b9100eba654b1859b264864d046b41bf13b",
+    "schedule-t2.json": "5214481238fb58e93c276f5c506a7eefb371eca408ca8ad9567b30ff4cd7ea66",
+    "schedule-t4.json": "06394f47361123d511b78a8d9db5c378a04362fdbe1862ea6141c06714cf2b75",
+    "scoped-t2.json": "43ec472d19aa793111011802c6117ed77e6bdd1349583ae6a207c28ff6de75e6",
+    "scoped-t4.json": "52ef2847aa8184d1da70af75333f680d2df7570f7f8acef00943c4ecb6ed9ef9"
+  },
+  "schedule": [
+    {
+      "mode": "schedule",
+      "threads": 1,
+      "checks": [
+        {
+          "case": "disjoint_components",
+          "maximum_simultaneous_bodies": 1,
+          "passed": true
+        },
+        {
+          "case": "same_component",
+          "maximum_simultaneous_bodies": 1,
+          "passed": true
+        },
+        {
+          "case": "same_resource_different_fields",
+          "maximum_simultaneous_bodies": 1,
+          "passed": true
+        },
+        {
+          "case": "exclusive_world",
+          "maximum_simultaneous_bodies": 1,
+          "passed": true
+        }
+      ],
+      "active_subset": {
+        "case": "internal_unique_active_query",
+        "resident": 5000,
+        "selected": 100,
+        "changed": 100,
+        "passed": true,
+        "scope": "mechanism only; order and actual worker participation are not promised by par_iter"
+      },
+      "all_passed": true
+    },
+    {
+      "mode": "schedule",
+      "threads": 2,
+      "checks": [
+        {
+          "case": "disjoint_components",
+          "maximum_simultaneous_bodies": 2,
+          "passed": true
+        },
+        {
+          "case": "same_component",
+          "maximum_simultaneous_bodies": 1,
+          "passed": true
+        },
+        {
+          "case": "same_resource_different_fields",
+          "maximum_simultaneous_bodies": 1,
+          "passed": true
+        },
+        {
+          "case": "exclusive_world",
+          "maximum_simultaneous_bodies": 1,
+          "passed": true
+        }
+      ],
+      "active_subset": {
+        "case": "internal_unique_active_query",
+        "resident": 5000,
+        "selected": 100,
+        "changed": 100,
+        "passed": true,
+        "scope": "mechanism only; order and actual worker participation are not promised by par_iter"
+      },
+      "all_passed": true
+    },
+    {
+      "mode": "schedule",
+      "threads": 4,
+      "checks": [
+        {
+          "case": "disjoint_components",
+          "maximum_simultaneous_bodies": 2,
+          "passed": true
+        },
+        {
+          "case": "same_component",
+          "maximum_simultaneous_bodies": 1,
+          "passed": true
+        },
+        {
+          "case": "same_resource_different_fields",
+          "maximum_simultaneous_bodies": 1,
+          "passed": true
+        },
+        {
+          "case": "exclusive_world",
+          "maximum_simultaneous_bodies": 1,
+          "passed": true
+        }
+      ],
+      "active_subset": {
+        "case": "internal_unique_active_query",
+        "resident": 5000,
+        "selected": 100,
+        "changed": 100,
+        "passed": true,
+        "scope": "mechanism only; order and actual worker participation are not promised by par_iter"
+      },
+      "all_passed": true
+    }
+  ],
+  "scoped": [
+    {
+      "case": "existing_scoped_pool",
+      "threads": 2,
+      "ordered_5000_outputs_equal": true,
+      "dispatch_median_ns": 9125,
+      "dispatch_p99_ns": 13833,
+      "passed": true,
+      "scope": "empty job dispatch diagnostic; not System or frame speedup"
+    },
+    {
+      "case": "existing_scoped_pool",
+      "threads": 4,
+      "ordered_5000_outputs_equal": true,
+      "dispatch_median_ns": 7084,
+      "dispatch_p99_ns": 10625,
+      "passed": true,
+      "scope": "empty job dispatch diagnostic; not System or frame speedup"
+    }
+  ],
+  "p0_phase_mean_ns": {
+    "captures": 71.92267206477733,
+    "clock": 906.1956477732793,
+    "lifecycle": 428.70607287449394,
+    "movement": 27429.225910931174,
+    "recovery": 3623.9306680161944,
+    "statistics": 167296.7758097166,
+    "vision": 45143.008603238864,
+    "visuals": 10108.898279352226
+  },
+  "overlap_ceiling": {
+    "input_raw_sha256": "93b8f7051c0ab8a4fdd67252a88e4ef0db54f531ddd740d00c976a0d18c86c28",
+    "input_member": "results/candidate-t1.timings.json.gz",
+    "input_member_sha256": "fd9c6cfb2209309cf1869cb467510f912a12fd9322ae8a61c3b0632815cb2f34",
+    "ticks": 9880,
+    "group": [
+      "recovery",
+      "lifecycle",
+      "vision"
+    ],
+    "zero_overhead_per_tick_overlap_saving_mean_ns": 3882.5293522267207,
+    "p99_ns": 13292,
+    "maximum_ns": 49875,
+    "scope": "ideal per-tick overlap estimate, excludes conversion/scheduling/commit costs; not measured benefit"
+  },
+  "scope": "locked ECS/ReadPool mechanisms and P0 cost-derived prioritization; no production parallelism, equivalence or capacity claim"
+}

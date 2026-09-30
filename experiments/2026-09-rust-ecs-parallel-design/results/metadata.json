@@ -1,0 +1,38 @@
+{
+  "source_sha": "c058d75c0ad67a7c340c2a6ac74a9d5bc2888adf",
+  "source_lock_sha256": "e86cb2bee26f1d95c1cde0abec61bdea575a73ae7218db60b7f06be735f15188",
+  "runner_sha256": "e3af63b6dc263153ebeef8395e18a1314d4d70fdb233b35a3cc76d1e36b551f9",
+  "rust_probe_sha256": "a93e794be1a78830798652a52658a1b4d024c07e09116e0c4eac2f9abf142474",
+  "executable_sha256": "69b58d9d425df99a6e2a19883b883e4233641b9a6a37fa4361c6c73bc16e4851",
+  "probe_lock_sha256": "53b8ae194f308bcb0e98e8d5e2ec32516be427e8455c7e76d3d1bbd566f7a659",
+  "dependency_versions_match_source": true,
+  "build": "release",
+  "runs": [
+    {
+      "mode": "schedule",
+      "threads": 1,
+      "all_passed": true
+    },
+    {
+      "mode": "schedule",
+      "threads": 2,
+      "all_passed": true
+    },
+    {
+      "mode": "schedule",
+      "threads": 4,
+      "all_passed": true
+    },
+    {
+      "mode": "scoped",
+      "threads": 2,
+      "all_passed": true
+    },
+    {
+      "mode": "scoped",
+      "threads": 4,
+      "all_passed": true
+    }
+  ],
+  "scope": "synthetic access/concurrency/active-query mechanisms; not real Systems or capacity"
+}

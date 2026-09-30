@@ -1,0 +1,78 @@
+[
+  {
+    "name": "lock",
+    "argv": [
+      "cargo",
+      "generate-lockfile",
+      "--offline",
+      "--manifest-path",
+      "/Users/liyang/Developer/star-lab/runs/ecs-parallel-mechanism-probe/Cargo.toml"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/ecs-parallel-mechanism-probe",
+    "exit_status": 0
+  },
+  {
+    "name": "build",
+    "argv": [
+      "cargo",
+      "build",
+      "--release",
+      "--locked",
+      "--offline",
+      "--manifest-path",
+      "/Users/liyang/Developer/star-lab/runs/ecs-parallel-mechanism-probe/Cargo.toml"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/ecs-parallel-mechanism-probe",
+    "exit_status": 0
+  },
+  {
+    "name": "schedule-t1",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/ecs-parallel-mechanism-probe/target/release/ecs-parallel-mechanism-probe",
+      "schedule",
+      "1"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/ecs-parallel-mechanism-probe",
+    "exit_status": 0
+  },
+  {
+    "name": "schedule-t2",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/ecs-parallel-mechanism-probe/target/release/ecs-parallel-mechanism-probe",
+      "schedule",
+      "2"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/ecs-parallel-mechanism-probe",
+    "exit_status": 0
+  },
+  {
+    "name": "schedule-t4",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/ecs-parallel-mechanism-probe/target/release/ecs-parallel-mechanism-probe",
+      "schedule",
+      "4"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/ecs-parallel-mechanism-probe",
+    "exit_status": 0
+  },
+  {
+    "name": "scoped-t2",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/ecs-parallel-mechanism-probe/target/release/ecs-parallel-mechanism-probe",
+      "scoped",
+      "2"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/ecs-parallel-mechanism-probe",
+    "exit_status": 0
+  },
+  {
+    "name": "scoped-t4",
+    "argv": [
+      "/Users/liyang/Developer/star-lab/runs/ecs-parallel-mechanism-probe/target/release/ecs-parallel-mechanism-probe",
+      "scoped",
+      "4"
+    ],
+    "cwd": "/Users/liyang/Developer/star-lab/runs/ecs-parallel-mechanism-probe",
+    "exit_status": 0
+  }
+]

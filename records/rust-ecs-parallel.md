@@ -10,10 +10,46 @@ Target 5000 Units + 1000 Agents; 5000 Agents paused. Preserve rules, observation
 accepted action order, simulation clock and deterministic RNG. Rust executes world;
 Python keeps interface/ecosystem. Default Python/native threads=1 unchanged.
 
+## Current stage — E1 complete; E2 Statistics prototype next
+
+User's newest instruction selects ECS between-System and within-System exploration.
+P0 cross-request batch candidate is deferred; preserve its immutable experiment.
+E1 design commit **be3867b3ad65749e0e34efd245359c4123189031** / annotated
+**rust-parallel-e1-design-2026-09-30**. Lab probe tool
+5f83b060fe6fb47db6ecbe9bea0633d02f7b550f; analyzer
+adf399f96db5beef6427caba4ec83c491424755e. Measurement source remains c058d75;
+E1 changes production docs only. No extension rebuild or real System parallelism.
+
+Progress: `access audit █ | locked API mechanisms █ | design choice █ | production prototype ░ | capacity ░`.
+Read [E1 package](../experiments/2026-09-rust-ecs-parallel-design/README.md), analysis,
+decision and [production design](/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/docs/native-ecs-parallel-design.md)
+before historical P0 next-stage suggestions.
+
+Between Systems: after Visuals succeeds and structural changes finish, narrow
+Recovery/Lifecycle/Vision access is a candidate concurrent region, with ordered
+R→L→V side-effect commit. Statistics' old Position/MP/Fog sampling and partial
+errors, Movement new spatial positions and Visuals spawning prevent whole-method
+concurrency. These remain source-level candidates, not production-approved swaps.
+
+Within Systems: Statistics current128-row batch pure candidates first; Vision
+uncached geometry second; Movement active-unit arithmetic later. Keep cycle phases,
+first-error successful prefixes, insertion/history/LRU/spatial/Fog/event/RNG order.
+E2 first uses1thread serial leaf extraction + gather/compute/JSON/commit/trim attribution;
+only measured independent work then uses existing2/4workers with original-ordinal outputs.
+Complete response/presentation/authority/error-state equivalence precedes net performance
+and a new actual5000/1000window. Don't make a full resident scan to fill workers.
+
+All five mechanism processes pass: disjoint sample Systems max1/2/2 at1/2/4;
+shared component/Resource fields/exclusive World max1; selected100/5000 all exact;
+ReadPool5000ordered outputs equal. Empty dispatch median2/4=9125/7084ns;
+ideal P0 R/L/V overlap mean3882.529ns/P9913292ns. Different workloads, no measured
+net speedup. Compact/raw checksum chain and analyzer re-audit are archived.
+No new Frontier/capacity/closed GAP. Default Python/native1 remains unchanged.
+
 ## Read order
 
 1. [Original handoff](rust-parallel-handoff.md) and [PROTOCOL](../PROTOCOL.md).
-2. [P0 attribution package](../experiments/2026-09-rust-system-attribution/README.md), analysis and decision.
+2. [E1 design/mechanism package](../experiments/2026-09-rust-ecs-parallel-design/README.md), analysis and decision; then [P0 attribution package](../experiments/2026-09-rust-system-attribution/README.md), analysis and decision.
 3. Active source [System dependency/cost table](/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/docs/native-system-dependencies.md).
 4. Active source GAP ledger / state boundaries / runtime docs in that SAME worktree.
 5. R4e canonical evidence; don't overwrite frozen measurement or older negative controls.
@@ -43,7 +79,7 @@ Frozen Rust 5147e4d and Python 6a970dea worktrees remain unchanged. New worktree
 has complete tracked assets; it does not restore deleted files in original checkout.
 No push/merge. Subsequent merge only squash, with annotated milestone first.
 
-## P0 checkpoint and selected next stage
+## Historical P0 checkpoint and then-selected candidate (deferred by E1)
 
 Final documentation commit `c058d75c0ad67a7c340c2a6ac74a9d5bc2888adf`, annotated
 `rust-parallel-p0-attribution-2026-09-30`. Measured implementation remains2ac2b29.
@@ -60,7 +96,7 @@ visuals0.010109ms, recovery0.003624ms; native total0.256917ms. Including recorde
 warmup, headless paired replay; not a live/threads/overhead A-B.
 
 11007queries,6938segments; multi-query queries7097(64.48%),same-faction repeats1604
-(14.57%),panel repeats0. P1 SELECTED: ordered encoded read-batch ingress for
+(14.57%),panel repeats0. P0 THEN SELECTED P1 (now deferred): ordered encoded read-batch ingress for
 already-admitted adjacent faction queries. First audit admission/callback order;
 then avoid server dict decode/re-encode, reuse existing ObservationBatch facts.
 Do not wait/reorder/cross any write or tick/display/reset/VLM boundary. If queue
@@ -68,7 +104,7 @@ cannot supply the boundary, record a negative feasibility result, not a fabricat
 batch. This is a candidate, not an implemented speedup. Cost/small-negative and
 complete response/state checks precede a new real-window1000-Agent gate.
 
-## Current stage
+## P0 validated implementation (historical)
 
 P0 profiler/contract tests committed; 2239 Python regressions (22 new), 4 Rust
 contracts, fmt/Clippy and release wheel pass. New extension SHA256
@@ -80,6 +116,7 @@ Complete decoded responses/deltas and final state compare profiled vs ordinary
 candidate; frozen binary independently supplies full-output-stream hashes. Timing
 probe changes wall execution speed; this is not a live closed-loop/capacity rerun.
 
-P0 is complete; follow the selected P1 admission audit and gates above. Do
-not restore 5000-Agent tuning or assume all new cost is parallelizable. Keep
-release/integration/frontier status separate from instrumentation correctness.
+P0 is complete. E1 has superseded its next-stage priority: follow current E2
+Statistics serial split/cost gates at the top. Preserve the deferred P1 evidence.
+Do not restore5000-Agent tuning or assume all new cost is parallelizable. Keep
+release/integration/frontier status separate from design/mechanism correctness.

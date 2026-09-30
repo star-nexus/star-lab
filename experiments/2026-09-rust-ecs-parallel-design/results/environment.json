@@ -1,0 +1,20 @@
+{
+  "machine": "Mac mini M4",
+  "cpu": "Apple M4",
+  "memory": "16 GiB",
+  "os": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.12",
+  "rust": "rustc 1.98.1 (48a229cea 2026-09-01)",
+  "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+  "environment_overrides": {
+    "RUSTFLAGS": null,
+    "CARGO_BUILD_TARGET": null,
+    "CARGO_PROFILE_RELEASE_LTO": null,
+    "CARGO_PROFILE_RELEASE_CODEGEN_UNITS": null,
+    "BEVY_TASK_POOL_THREADS": null,
+    "HEADLESS": null,
+    "PYTHONHASHSEED": null
+  },
+  "path_prefix": "/Users/liyang/.cargo/bin",
+  "scope": "native release synthetic probes; no Python runtime or rendered game workload"
+}

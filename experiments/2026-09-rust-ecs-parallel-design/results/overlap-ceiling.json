@@ -1,0 +1,15 @@
+{
+  "input_raw_sha256": "93b8f7051c0ab8a4fdd67252a88e4ef0db54f531ddd740d00c976a0d18c86c28",
+  "input_member": "results/candidate-t1.timings.json.gz",
+  "input_member_sha256": "fd9c6cfb2209309cf1869cb467510f912a12fd9322ae8a61c3b0632815cb2f34",
+  "ticks": 9880,
+  "group": [
+    "recovery",
+    "lifecycle",
+    "vision"
+  ],
+  "zero_overhead_per_tick_overlap_saving_mean_ns": 3882.5293522267207,
+  "p99_ns": 13292,
+  "maximum_ns": 49875,
+  "scope": "ideal per-tick overlap estimate, excludes conversion/scheduling/commit costs; not measured benefit"
+}

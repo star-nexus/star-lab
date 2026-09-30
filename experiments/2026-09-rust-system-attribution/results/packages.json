@@ -1,0 +1,12 @@
+{
+  "raw": {
+    "path": "artifacts/rust-system-attribution-raw.zip",
+    "bytes": 2297355,
+    "sha256": "93b8f7051c0ab8a4fdd67252a88e4ef0db54f531ddd740d00c976a0d18c86c28"
+  },
+  "compact": {
+    "path": "artifacts/rust-system-attribution-compact.zip",
+    "bytes": 18174,
+    "sha256": "205d7061265c80589a68a63aba6f647d6f843047565012d7629477a9d0aaf74c"
+  }
+}

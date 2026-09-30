@@ -1,0 +1,87 @@
+{
+  "source_sha": "2ac2b29a7a3bf09d92370a0352dcf0fd47f741e5",
+  "tool_sha256": "fc63c284a0267e902c4fa2199a694ca38325fce7db788a3b8321a6c62c92fae0",
+  "extension_sha256": "a73c477263d792cd0c4f71e3ab6001a36223cf0afd7136f8e8975f16b584731f",
+  "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+  "initial_sha256": "8b594c465a63728222c57f257111d500c1c378e226b3496c63c0b11870629bc0",
+  "original_source": {
+    "path": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+    "sha": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+    "dirty": ""
+  },
+  "mode": "compare",
+  "threads": 4,
+  "counts": {
+    "request": 40994,
+    "step": 9880,
+    "presentation": 9880
+  },
+  "read_segment_histogram": {
+    "1": 3910,
+    "2": 2048,
+    "3": 921,
+    "4": 57,
+    "5": 2
+  },
+  "observations_in_shareable_segments": 7097,
+  "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+  "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf",
+  "phase_summary": {
+    "captures": {
+      "samples": 9880,
+      "mean_ns": 75.11032388663968,
+      "p99_ns": 250,
+      "max_ns": 7583
+    },
+    "clock": {
+      "samples": 9880,
+      "mean_ns": 847.6436234817813,
+      "p99_ns": 1833,
+      "max_ns": 15583
+    },
+    "lifecycle": {
+      "samples": 9880,
+      "mean_ns": 459.178036437247,
+      "p99_ns": 1209,
+      "max_ns": 9917
+    },
+    "movement": {
+      "samples": 9880,
+      "mean_ns": 27369.773380566803,
+      "p99_ns": 52459,
+      "max_ns": 177584
+    },
+    "recovery": {
+      "samples": 9880,
+      "mean_ns": 3637.6,
+      "p99_ns": 13042,
+      "max_ns": 440708
+    },
+    "statistics": {
+      "samples": 9880,
+      "mean_ns": 168927.33076923076,
+      "p99_ns": 603500,
+      "max_ns": 933875
+    },
+    "vision": {
+      "samples": 9880,
+      "mean_ns": 45697.01315789474,
+      "p99_ns": 130792,
+      "max_ns": 200875
+    },
+    "visuals": {
+      "samples": 9880,
+      "mean_ns": 10026.371558704453,
+      "p99_ns": 32000,
+      "max_ns": 68291
+    }
+  },
+  "elapsed_seconds": 120.51093170803506,
+  "all_passed": true,
+  "scope": "fixed input diagnostic, includes recorded warmup; not live capacity",
+  "timing_raw": {
+    "file": "candidate-t4.timings.json.gz",
+    "sha256": "1916dce525fc62a0f6e11e3f5a95aaaa8aa71639a0c57830a86caa01cacec6c8",
+    "bytes": 281115
+  }
+}

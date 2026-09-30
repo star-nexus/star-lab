@@ -1,5 +1,15 @@
 # Rust System并行：当前状态与边界（2026-09-29）
 
+## 独立Rust并行任务恢复入口（2026-09-30）
+
+当前新任务见 [rust-ecs-parallel.md](rust-ecs-parallel.md)，工作树
+`/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main`，分支 `codex/rust-ecs-parallel`，
+从R4e annotated tag创建。P0完成读写依赖表及可关闭逐System计时探针；归因与冻结输入1/2/4线程核验已通过，checkpoint c058d75 / annotated rust-parallel-p0-attribution-2026-09-30。首个实际优化候选为已接纳连续查询的编码批次；先审计接纳顺序，尚未实施收益。
+进度：`恢复 █ | 依赖表 █ | 归因 █ | 并行实现 ░ | 容量 ░`。
+目标仍5000Units/1000Agents，5000Agents暂缓。原49删除、两个冻结测量目录和历史负结果保留。
+此任务当前状态优先于下方旧“下一步”；没有新的容量/发布或默认切换结论。
+
+
 当前验收目标收回到5000 Units＋1000 Agents；5000-Agent扩展暂缓。用户Python接口、策略、窗口和网络编排继续保留Python。
 
 ## 已有能力与缺口

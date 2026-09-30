@@ -1,0 +1,96 @@
+{
+  "source_sha": "2ac2b29a7a3bf09d92370a0352dcf0fd47f741e5",
+  "commands": [
+    {
+      "argv": [
+        "uv",
+        "sync",
+        "--locked"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "uvx",
+        "--from",
+        "maturin==1.15.0",
+        "maturin",
+        "build",
+        "--release",
+        "--locked",
+        "--manifest-path",
+        "native/python/Cargo.toml",
+        "--interpreter",
+        ".venv/bin/python",
+        "--out",
+        "/tmp/star-rust-ecs-parallel-wheel"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "uv",
+        "pip",
+        "install",
+        "--python",
+        ".venv/bin/python",
+        "/tmp/star-rust-ecs-parallel-wheel/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "environment": {
+        "HEADLESS": "1",
+        "SDL_VIDEODRIVER": "dummy"
+      },
+      "exit_status": 0,
+      "passed": 2239
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "-p",
+        "star-core",
+        "-p",
+        "star-rotk",
+        "--locked"
+      ],
+      "exit_status": 0,
+      "tests_passed": 4
+    },
+    {
+      "argv": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--locked",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit_status": 0
+    }
+  ],
+  "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+  "toolchain_path": "/Users/liyang/.cargo/bin",
+  "source_note": "build/native source is identical at implementation commit; initial test/build preceded commit, no dirty runtime differences",
+  "new_contracts": 22
+}

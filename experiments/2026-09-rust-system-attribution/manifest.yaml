@@ -1,0 +1,91 @@
+experiment:
+  id: 2026-09-rust-system-attribution
+  title: P0 dependency audit and deterministic fixed-input System attribution
+  date: 2026-09-30
+  status: validated
+  scope: attribution and equivalence only; no parallel fix or capacity
+source:
+  repository: star-nexus/star
+  problem_commit: 5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5
+  measurement_commit: 2ac2b29a7a3bf09d92370a0352dcf0fd47f741e5
+  instrumentation_commit: 2ac2b29a7a3bf09d92370a0352dcf0fd47f741e5
+  fix_commit: null
+  validated_commit: c058d75c0ad67a7c340c2a6ac74a9d5bc2888adf
+  branch_at_time: codex/rust-ecs-parallel
+  validated_tag: rust-parallel-p0-attribution-2026-09-30
+  baseline_tag: rust-kernel-r4e-2026-09-29
+  probe_tool_commit: 31c93a3fc294df55810f384b2e3e36b72c507cb3
+  analyzer_tool_commit: 622c9e7441757c12d75cdf0d083cde4a7c6fd8dd
+hardware:
+  machine: Mac mini M4
+  cpu: Apple M4
+  memory: 16 GiB
+  gpu: unused
+  display: headless diagnostic replay; original Cocoa2480x1239 trace
+software:
+  os: macOS-26.5.2-arm64-arm-64bit-Mach-O
+  python: 3.13.12
+  rust: 1.98.1
+  build: release
+  api: 18
+  schema: 5
+  oracle: python-r0c-3cc4ffe
+  dependency_lock: results/environment.json lock_sha256
+  candidate_extension_sha256: a73c477263d792cd0c4f71e3ab6001a36223cf0afd7136f8e8975f16b584731f
+  frozen_extension_sha256: 324454a00ab8bd3559c9229e6c6c9644242d65c488585eba7d29a63b39d29405
+scenario:
+  name: R4e canonical120x120 actual recorded input
+  resident_units: 5000
+  agents: 1000
+  moving_units: original long run peak173; per-step counts retained
+workload:
+  seed: "42"
+  seed_source: "cli"
+  world_dt: 0.03333333333333333
+  accepted_inputs: canonical trace; never regenerate stochastic actions
+  original_thinking: truncated normal30+/-5s;15-45s;no polling
+  original_policy: per-Unit move/attack/wait50/25/25;illegal waits
+  fog: true
+  phase: full actual ordered replay including recorded warmup
+  camera: no rendered replay; original canonical profile
+measurement:
+  warmup_seconds: original30 included; no new wall-time warmup
+  sustained_seconds: not a live duration test; original300s measurement input
+  sample_window_frames: 9880
+  gc_policy: default replay Python; original finite-run realtime_defer
+  commands: results/commands.json
+  validation_commands: results/validation.json
+  guards_required:
+    - exact source, binary, trace and initial hashes
+    - canonical responses and events and final state hashes
+    - candidate full decoded responses/deltas/final state equality
+    - frozen and all1/2/4 full output stream equality
+    - all9880 timing rows retained and integrity-verified
+variables:
+  independent:
+    diagnostic_mode: [plain frozen, ordinary/profiled paired candidate]
+    observation_threads: [1,2,4]
+  controlled: [same trace, accepted order, dt, wall metadata, integer-string limit, initial state]
+artifacts:
+  formal:
+    - path: results/comparison.json
+    - path: results/commands.json
+    - path: results/environment.json
+    - path: results/validation.json
+  external: []
+  integrity_index: artifacts/SHA256SUMS
+  package_locator_size_hash_index: results/packages.json
+  canonical_input:
+    archive: ../2026-09-rust-1000-agent-validation/artifacts/r4e-1000-agents-raw.zip
+    members: [results/rust-300-r3.trace.json.gz, results/rust-300-r3.initial.json.gz]
+    trace_sha256: 1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77
+    initial_sha256: 8b594c465a63728222c57f257111d500c1c378e226b3496c63c0b11870629bc0
+headline:
+  problem_signature: per-System costs unknown; single-entry queries do not share across requests
+  root_cause: scoped attribution gap and absent read-batch integration; scheduler feasibility unproven
+  resolution: P0opt-in diagnostic validated; P1ordered encoded batch selected for audit
+  result: complete40994request/9880tick/9880display agreement; no speedup or new capacity claim
+revisit_when:
+  - admission/callback audit permits an already-admitted adjacent read segment
+  - high-dirty/high-contact costs justify within-System workers
+  - new writer or consumer changes component/index/event/RNG boundaries

@@ -1,0 +1,78 @@
+{
+  "all_passed": true,
+  "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+  "counts": {
+    "request": 40994,
+    "step": 9880,
+    "presentation": 9880
+  },
+  "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+  "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf",
+  "observations": 11007,
+  "read_segment_histogram": {
+    "1": 3910,
+    "2": 2048,
+    "3": 921,
+    "4": 57,
+    "5": 2
+  },
+  "queries_in_multi_read_segments": 7097,
+  "multi_read_query_fraction": 0.644771509039702,
+  "repeated_faction_requests_within_segment": 1604,
+  "repeated_faction_fraction": 0.14572544744253657,
+  "repeated_selected_panel_references_within_segment": 0,
+  "segment_end_barriers": {
+    "step": 1276,
+    "action:move": 5598,
+    "action:attack": 64
+  },
+  "candidates": {
+    "1": {
+      "phase_mean_ms": {
+        "captures": 7.192267206477733e-05,
+        "clock": 0.0009061956477732794,
+        "lifecycle": 0.0004287060728744939,
+        "movement": 0.027429225910931176,
+        "recovery": 0.0036239306680161945,
+        "statistics": 0.1672967758097166,
+        "vision": 0.04514300860323887,
+        "visuals": 0.010108898279352227
+      },
+      "native_mean_ms": 0.25691668157894737,
+      "mean_unattributed_timer_map_ns": 1908.0179149797477,
+      "scope": "phase wall time in paired replay; not thread performance A/B"
+    },
+    "2": {
+      "phase_mean_ms": {
+        "captures": 6.992125506072873e-05,
+        "clock": 0.0009000303643724696,
+        "lifecycle": 0.0005989869433198381,
+        "movement": 0.02678375657894737,
+        "recovery": 0.0035903027327935226,
+        "statistics": 0.1669427056680162,
+        "vision": 0.04498453613360324,
+        "visuals": 0.009933932692307692
+      },
+      "native_mean_ms": 0.2556256282388664,
+      "mean_unattributed_timer_map_ns": 1821.455870445352,
+      "scope": "phase wall time in paired replay; not thread performance A/B"
+    },
+    "4": {
+      "phase_mean_ms": {
+        "captures": 7.511032388663968e-05,
+        "clock": 0.0008476436234817813,
+        "lifecycle": 0.00045917803643724696,
+        "movement": 0.027369773380566804,
+        "recovery": 0.0036376,
+        "statistics": 0.16892733076923075,
+        "vision": 0.04569701315789474,
+        "visuals": 0.010026371558704453
+      },
+      "native_mean_ms": 0.2589146439271255,
+      "mean_unattributed_timer_map_ns": 1874.6230769230751,
+      "scope": "phase wall time in paired replay; not thread performance A/B"
+    }
+  },
+  "interpretation": "sharing opportunity only; not predicted latency reduction or scheduler feasibility",
+  "analyzer_sha256": "3e562e75c40f261684318bbf58f9ad73cd983dcc18b91cc93508f58d9642defd"
+}

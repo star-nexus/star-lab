@@ -1,0 +1,39 @@
+{
+  "os": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "cpu": "Apple M4",
+  "memory_bytes": 17179869184,
+  "production": {
+    "path": "/Users/liyang/Developer/star-main",
+    "head": "7e145d169433695cd4957e186a6b2fda06813c26",
+    "branch": "codex/rust-env-migration",
+    "status": "D rotk_agent/README.md\n D rotk_agent/adapters/__init__.py\n D rotk_agent/adapters/base.py\n D rotk_agent/adapters/chat_completions.py\n D rotk_agent/adapters/fake.py\n D rotk_agent/adapters/nemotron.py\n D rotk_agent/adapters/responses.py\n D rotk_agent/core/__init__.py\n D rotk_agent/core/agent.py\n D rotk_agent/core/bridge.py\n D rotk_agent/core/config.py\n D rotk_agent/core/console.py\n D rotk_agent/core/delays.py\n D rotk_agent/core/errors.py\n D rotk_agent/core/filters.py\n D rotk_agent/core/reachable_guard.py\n D rotk_agent/core/runner.py\n D rotk_agent/core/scoring.py\n D rotk_agent/core/stats.py\n D rotk_agent/core/tools.py\n D rotk_agent/core/types.py\n D rotk_agent/main.py\n D rotk_agent/modes/__init__.py\n D rotk_agent/modes/base.py\n D rotk_agent/modes/realtime.py\n D rotk_agent/modes/turn.py\n D rotk_agent/profiles.py\n D rotk_agent/prompts/system_prompt_realtime_cn.md\n D rotk_agent/prompts/system_prompt_realtime_cn_baseline.md\n D rotk_agent/prompts/system_prompt_realtime_en.md\n D rotk_agent/prompts/system_prompt_turn_cn.md\n D rotk_agent/prompts/system_prompt_turn_en.md\n D rotk_agent/tests/__init__.py\n D rotk_agent/tests/conftest.py\n D rotk_agent/tests/support.py\n D rotk_agent/tests/test_adapters.py\n D rotk_agent/tests/test_agent_loop.py\n D rotk_agent/tests/test_auto_test.py\n D rotk_agent/tests/test_config.py\n D rotk_agent/tests/test_errors.py\n D rotk_agent/tests/test_filters.py\n D rotk_agent/tests/test_profiles.py\n D rotk_agent/tests/test_reachable_guard.py\n D rotk_agent/tests/test_runner.py\n D rotk_agent/tests/test_scoring.py\n D rotk_agent/tests/test_stats.py\n D rotk_agent/tests/test_tools.py\n D rotk_agent/tests/test_turn_mode.py\n D rotk_env/assets/fonts/sh.otf"
+  },
+  "lab_initial_head": "d777f3319140eb5f883447125dc0899d9f8fd87c",
+  "source": {
+    "path": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+    "head": "2ac2b29a7a3bf09d92370a0352dcf0fd47f741e5",
+    "branch": "codex/rust-ecs-parallel",
+    "status": ""
+  },
+  "frozen": {
+    "rust": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+    "python": "6a970deaee7d9b8d3939edd102973f2377edd6ac"
+  },
+  "validation": {
+    "python_regression": {
+      "passed": 2239,
+      "seconds": 45.64,
+      "new_profile_contracts": 22
+    },
+    "rust_tests": 4,
+    "fmt": "passed",
+    "clippy": "passed",
+    "release_build": "passed"
+  },
+  "lock_sha256": {
+    "Cargo.lock": "e86cb2bee26f1d95c1cde0abec61bdea575a73ae7218db60b7f06be735f15188",
+    "uv.lock": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+    "rust-toolchain.toml": "887f9be066a15585a2c583578e84b0fcb541126d81546276bad3d2ff00d61167"
+  }
+}

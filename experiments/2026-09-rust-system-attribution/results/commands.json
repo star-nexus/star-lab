@@ -1,0 +1,126 @@
+[
+  {
+    "name": "frozen-t1",
+    "argv": [
+      "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/profile_system_trace.py",
+      "--source",
+      "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+      "--trace",
+      "/Users/liyang/Developer/star-lab/runs/rust-system-attribution-input/rust-300-r3.trace.json.gz",
+      "--trace-sha256",
+      "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+      "--source-sha",
+      "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+      "--extension-sha256",
+      "324454a00ab8bd3559c9229e6c6c9644242d65c488585eba7d29a63b39d29405",
+      "--mode",
+      "plain",
+      "--threads",
+      "1",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-system-attribution/results/frozen-t1.json"
+    ],
+    "cwd": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+    "environment": {
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy",
+      "PYTHONPATH": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main:/Users/liyang/Developer/star-lab/tools:/Users/liyang/Developer/star-lab/tools/rust_migration"
+    },
+    "tool_commit": "31c93a3fc294df55810f384b2e3e36b72c507cb3",
+    "exit_status": 0
+  },
+  {
+    "name": "candidate-t1",
+    "argv": [
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/profile_system_trace.py",
+      "--source",
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "--trace",
+      "/Users/liyang/Developer/star-lab/runs/rust-system-attribution-input/rust-300-r3.trace.json.gz",
+      "--trace-sha256",
+      "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+      "--source-sha",
+      "2ac2b29a7a3bf09d92370a0352dcf0fd47f741e5",
+      "--extension-sha256",
+      "a73c477263d792cd0c4f71e3ab6001a36223cf0afd7136f8e8975f16b584731f",
+      "--mode",
+      "compare",
+      "--threads",
+      "1",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-system-attribution/results/candidate-t1.json"
+    ],
+    "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+    "environment": {
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy",
+      "PYTHONPATH": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main:/Users/liyang/Developer/star-lab/tools:/Users/liyang/Developer/star-lab/tools/rust_migration"
+    },
+    "tool_commit": "31c93a3fc294df55810f384b2e3e36b72c507cb3",
+    "exit_status": 0
+  },
+  {
+    "name": "candidate-t2",
+    "argv": [
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/profile_system_trace.py",
+      "--source",
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "--trace",
+      "/Users/liyang/Developer/star-lab/runs/rust-system-attribution-input/rust-300-r3.trace.json.gz",
+      "--trace-sha256",
+      "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+      "--source-sha",
+      "2ac2b29a7a3bf09d92370a0352dcf0fd47f741e5",
+      "--extension-sha256",
+      "a73c477263d792cd0c4f71e3ab6001a36223cf0afd7136f8e8975f16b584731f",
+      "--mode",
+      "compare",
+      "--threads",
+      "2",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-system-attribution/results/candidate-t2.json"
+    ],
+    "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+    "environment": {
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy",
+      "PYTHONPATH": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main:/Users/liyang/Developer/star-lab/tools:/Users/liyang/Developer/star-lab/tools/rust_migration"
+    },
+    "tool_commit": "31c93a3fc294df55810f384b2e3e36b72c507cb3",
+    "exit_status": 0
+  },
+  {
+    "name": "candidate-t4",
+    "argv": [
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/bin/python",
+      "/Users/liyang/Developer/star-lab/tools/rust_migration/profile_system_trace.py",
+      "--source",
+      "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "--trace",
+      "/Users/liyang/Developer/star-lab/runs/rust-system-attribution-input/rust-300-r3.trace.json.gz",
+      "--trace-sha256",
+      "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+      "--source-sha",
+      "2ac2b29a7a3bf09d92370a0352dcf0fd47f741e5",
+      "--extension-sha256",
+      "a73c477263d792cd0c4f71e3ab6001a36223cf0afd7136f8e8975f16b584731f",
+      "--mode",
+      "compare",
+      "--threads",
+      "4",
+      "--output",
+      "/Users/liyang/Developer/star-lab/experiments/2026-09-rust-system-attribution/results/candidate-t4.json"
+    ],
+    "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+    "environment": {
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy",
+      "PYTHONPATH": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main:/Users/liyang/Developer/star-lab/tools:/Users/liyang/Developer/star-lab/tools/rust_migration"
+    },
+    "tool_commit": "31c93a3fc294df55810f384b2e3e36b72c507cb3",
+    "exit_status": 0
+  }
+]

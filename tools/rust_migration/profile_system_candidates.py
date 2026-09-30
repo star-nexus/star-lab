@@ -149,6 +149,8 @@ def main():
                     p99=ordered[min(len(values)-1, int(len(values)*.99))], max=max(values),
                     nonzero_samples=sum(value != 0 for value in values))
     result = dict(source_sha=actual_source, tool_sha256=sha(Path(__file__)),
+                  argv=sys.argv, environment={key: os.environ.get(key) for key in ('HEADLESS', 'SDL_VIDEODRIVER', 'PYGAME_HIDE_SUPPORT_PROMPT')},
+                  tooling_commit=subprocess.check_output(['git', '-C', str(Path(__file__).resolve().parents[2]), 'rev-parse', 'HEAD'], text=True).strip(),
                   extension_sha256=a.extension_sha256, trace_sha256=a.trace_sha256,
                   initial_sha256=sha(initial_path), original_source=trace['source'],
                   mode=a.mode, threads=a.threads, counts=dict(counts),

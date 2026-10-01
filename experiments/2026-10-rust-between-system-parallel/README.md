@@ -8,6 +8,10 @@
 
 候选只覆盖 native2/4、realtime/window/indexed、bootstrap/Fog 存在、Vision dirty 和 Recovery 活动。后台任务为空，调用线程保持 Recovery→Lifecycle→Vision→Capture。最多一个 worker＋caller，复用实例 ReadPool，scope 内捕获两侧 panic、join 后重新抛出。
 
+## 通俗总结（2026-10-02）
+
+这次 E4 检查的是：让不同 System 同时工作，能不能让当前 5000 Units＋1000 Agents 的世界执行更快。结果是，可重叠的工作量很小，而把任务交给其他线程、再等待汇合也需要时间；诊断中这笔额外成本超过了理想可省时间，完整耗时对照也没有表现出稳定收益。因此我们按计划在第一关保守停止，只保留调度对照工具，没有继续拆分 Vision，也没有启用真正的 System 之间并行。游戏规则、观测、动作顺序和默认配置保持原样；这说明当前负载下这条路线缺少继续投入的收益依据，并不代表所有 System 并行方案都没有价值，诊断本身的计时开销也限制了结论。
+
 ## 复现入口
 
 1. 按 E3 的 `prepare_system_candidates.py` 恢复 canonical R4e trace/initial 与 E2 contracts、E3 preserved wheel；校验链见 E3 manifest。

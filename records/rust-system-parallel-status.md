@@ -1,5 +1,17 @@
 # Rust System并行：当前状态与边界（2026-09-29）
 
+## E6 展示数据与 ECS 缓存（执行中）
+
+起点4657dd4，私有原型5f567d3，测试checkpoint0a297a8；native源码及838c693扩展保持。
+2385项Python回归通过；普通apply AST与起点一致。完整基线诊断通过40994请求/9880tick，
+探针成本仅作归因。完整像素对照曾在2711tick失败，当前补充控制展示墙钟后重新验证；
+在正确性完整通过前不进入性能或live。三个研究模式默认不接入普通展示。
+进度：`身份/契约 █ | 原型/回归 █ | 基线归因 █ | 完整等价 ░ | 配对/条件live ░ | 归档 ░`。
+
+[当前E6入口](../experiments/2026-10-rust-presentation-cache/README.md)与
+[成本/契约](../experiments/2026-10-rust-presentation-cache/analysis.md)。
+5000Units＋1000Agents；5000Agents暂缓。既有GAP及容量/Frontier状态不改，不push/merge。
+
 ## 整体性能评估完成：建议优先展示与观测（2026-10-02，未实施）
 
 进度：`运行链路 █ | canonical复算 █ | 源码/已有机制 █ | 投入排序 █ | 恢复/边界 █`。

@@ -195,10 +195,12 @@ def main():
                     delta=json.loads(wire);v=time.perf_counter_ns()
                     events=session.presentation._apply_research(delta,mode=mode);w=time.perf_counter_ns()
                     script(session,ticks)
-                    RMS.screen.fill((0,0,0));draw_start=time.perf_counter_ns()
+                    draw_start=time.perf_counter_ns();RMS.screen.fill((0,0,0))
                     session.update_display(1/30,inputs=False);draw_end=time.perf_counter_ns();RMS.update();draw_done=time.perf_counter_ns()
-                    phases=dict(encode_ns=u-t,decode_ns=v-u,apply_ns=w-v,display_ns=draw_end-draw_start,submit_ns=draw_done-draw_end)
-                    phases['chain_ns']=phases['decode_ns']+phases['apply_ns']+phases['display_ns']+phases['submit_ns']
+                    if a.driver=='cocoa':pygame.display.flip()
+                    platform_done=time.perf_counter_ns()
+                    phases=dict(encode_ns=u-t,decode_ns=v-u,apply_ns=w-v,display_ns=draw_end-draw_start,submit_ns=draw_done-draw_end,platform_ns=platform_done-draw_done)
+                    phases['chain_ns']=phases['decode_ns']+phases['apply_ns']+phases['display_ns']+phases['submit_ns']+phases['platform_ns']
                     phases['total_ns']=sum(pending[wi].values())+phases['encode_ns']+phases['chain_ns']
                     phases.update(pending[wi]);pending[wi]=dict(request_ns=0,step_ns=0)
                     samples[wi].append(phases)

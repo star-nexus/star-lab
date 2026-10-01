@@ -15,6 +15,7 @@ else:
     def read(name):return (a.runs/name).read_bytes()
 results=[]
 identities=[]
+diagnostics=[]
 for name in names:
     m=json.loads(read(name))
     assert m['source_sha']=='94913a4f836a3c106e08a1334cb81971cfd728c3'
@@ -30,6 +31,14 @@ for name in names:
             data=read(member);assert hashlib.sha256(data).hexdigest()==m[key]['sha256']
             rows=json.loads(gzip.decompress(data));assert len(rows)==(4 if key=='paired_raw' else 9880)
     identities.append(dict(run=Path(name).name,metadata_sha256=hashlib.sha256(read(name)).hexdigest(),threads=m['threads'],mode=m['probe_mode'],threshold=m['min_damage_rows'],paired=m['paired'],all_passed=True))
+    if 'timing_raw' in m:
+        rows=json.loads(gzip.decompress(read(str(Path(name).parent/m['timing_raw']['file']))))
+        selected=[r for r in rows if r['phases_ns'].get('e5_eligible',0)]
+        def metric(key):
+            values=[r['phases_ns'].get(key,0) for r in selected]
+            return dict(mean_ns=float(np.mean(values)) if values else 0.,p99_ns=float(np.sort(values)[int(len(values)*.99)]) if values else 0.)
+        overlap=[max(0,r['phases_ns'].get('movement',0)+r['phases_ns'].get('e5_compute',0)-r['phases_ns'].get('e5_region',0)) for r in selected if 'e5_region' in r['phases_ns'] and 'e5_compute' in r['phases_ns']]
+        diagnostics.append(dict(run=Path(name).name,threads=m['threads'],mode=m['probe_mode'],threshold=m['min_damage_rows'],selected_ticks=len(selected),phase_summary=m['phase_summary'],selected={key:metric(key) for key in ['e5_prepare','movement','e5_compute','e5_publish','e5_region','visuals']},overlap_lower_bound=dict(mean_ns=float(np.mean(overlap)) if overlap else 0.,positive_ticks=sum(v>0 for v in overlap)),interpretation='diagnostic only; timers and fixed ordering included; region overlaps Movement and compute, do not sum phases'))
     if not m.get('paired'):continue
     v=np.asarray(json.loads(gzip.decompress(read(str(Path(name).parent/m['paired_raw']['file'])))),dtype=float);assert v.shape==(4,9880)
     baseline=(v[0]+v[3])/2;candidate=(v[1]+v[2])/2;difference=baseline-candidate
@@ -64,5 +73,5 @@ for round_index in [1,2,3]:
     confirmation.append(dict(round=round_index,baseline=b,candidate=c,ci95_ns=ci,improvement_percent=float(difference.mean()/b['mean_ns']*100),passed=bool(c['mean_ns']<b['mean_ns'] and c['p99_ns']<=b['p99_ns'] and ci[0]>0)))
 main=[r for r in results if r['threshold']==8 and r['control_threshold']==2**64-1 and r['control_mode']=='parallel']
 gates={str(t):len([r for r in main if r['threads']==t])==3 and all(r['passed'] for r in main if r['threads']==t) for t in [2,4]}
-a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(dict(method=dict(tool_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),numpy_version=np.__version__,block_ticks=100,bootstrap=10000,seed=42,all_ticks=9880,diagnostics=False,p99='all 19760 individual step samples per side; no pair averaging'),results=results,primary_gates=gates,identity_checks=identities,confirmation=confirmation,confirmation_gate=len(confirmation)==3 and all(r['passed'] for r in confirmation)),indent=2)+'\n')
+a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(dict(method=dict(tool_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),numpy_version=np.__version__,block_ticks=100,bootstrap=10000,seed=42,all_ticks=9880,diagnostics=False,p99='all 19760 individual step samples per side; no pair averaging'),results=results,primary_gates=gates,identity_checks=identities,diagnostics=diagnostics,confirmation=confirmation,confirmation_gate=len(confirmation)==3 and all(r['passed'] for r in confirmation)),indent=2)+'\n')
 print(json.dumps(dict(primary_gates=gates,rounds=len(results))))

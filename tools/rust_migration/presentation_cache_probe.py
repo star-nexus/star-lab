@@ -43,9 +43,15 @@ class Diagnosis:
             original=getattr(obj,name)
             def timed(*args,**kwargs):
                 start=time.perf_counter_ns()
+                before=getattr(obj,'_faction_roster_members',None) if name=='_current_faction_counts' else None
                 try:return original(*args,**kwargs)
                 finally:
-                    row=self.rows[key];row[0]+=1;row[1]+=time.perf_counter_ns()-start
+                    elapsed=time.perf_counter_ns()-start
+                    row=self.rows[key];row[0]+=1;row[1]+=elapsed
+                    if name=='add_component':
+                        typed=self.rows['ecs.write.'+type(args[1]).__name__];typed[0]+=1;typed[1]+=elapsed
+                    if name=='_current_faction_counts' and getattr(obj,'_faction_roster_members',None)!=before:
+                        self.rows['reference.UI.roster_rebuild'][0]+=1
             setattr(obj,name,timed);self.originals.append((obj,name,original))
         original=wp._component
         def component(cls,state):
@@ -73,6 +79,7 @@ class Diagnosis:
             (session.presentation.visuals,'apply','visuals.compute'),(wp,'update_unit_spatial_index','spatial.update')]:wrap(obj,name,key)
         for system in session.world.systems:
             wrap(system,'update','display.'+type(system).__name__)
+            if hasattr(system,'_current_faction_counts'):wrap(system,'_current_faction_counts','reference.UI.roster')
     def finish(self):
         for obj,name,original in reversed(self.originals):setattr(obj,name,original)
         return {key:dict(calls=n,total_ns=ns) for key,(n,ns) in sorted(self.rows.items())}
@@ -153,17 +160,33 @@ def main():
             ui.view_faction=(Faction.WEI,Faction.SHU,Faction.WU,Faction.WEI)[phase]
             ids=session.world.query().with_component(c.Unit).ordered_entities()
             ui.selected_unit=ids[0] if phase in (1,3) and ids else None
-        def row_state(world,uid):
-            return {t.__name__:encode(v) for t,v in world.entities.get(uid,{}).items()}
-        # Every mutable presentation row is checked every tick. Terrain/cold
-        # resources are initialized identically and compared fully at boundaries.
-        def projection(session,ids):
-            w=session.world;index=get_unit_spatial_index(w)
-            return dict(rows={str(uid):row_state(w,uid) for uid in ids},
-                singletons={t.__name__:encode(v) for t,v in w._singleton_components.items() if t is not c.RngService},
-                spatial={str(k):encode(v) for k,v in index.by_entity.items()},
-                queries={cls.__name__:w.query().with_component(cls).ordered_entities() for cls in _UNIT_COLUMNS.values()},
-                entity_ids=tuple(w.entities),counter=w.entity_counter,revision=w.revision)
+        pixel_stream=hashlib.sha256();pixel_rows=[]
+        def compare_display(left,right,delta):
+            x=left.world;y=right.world
+            assert x.entities.keys()==y.entities.keys()
+            assert x.entity_counter==y.entity_counter and x.revision==y.revision
+            ids=set(x.query().with_component(c.Unit).ordered_entities())|set(left.presentation.visuals.entities)|set(delta['removed'])|set(delta['visuals']['removed'])|{r['id'] for r in delta['tiles']}
+            for uid in ids:
+                arow=x.entities.get(uid,{});brow=y.entities.get(uid,{})
+                assert arow.keys()==brow.keys(),('components',uid)
+                for cls,component in arow.items():
+                    assert vars(component)==vars(brow[cls]),('fields',uid,cls.__name__)
+            assert x._singleton_components.keys()==y._singleton_components.keys()
+            for cls,component in x._singleton_components.items():
+                if cls is not c.RngService:assert vars(component)==vars(y._singleton_components[cls]),('singleton',cls.__name__)
+                else:
+                    assert component.seed==y._singleton_components[cls].seed
+                    assert {k:v.getstate() for k,v in component._rngs.items()}=={k:v.getstate() for k,v in y._singleton_components[cls]._rngs.items()}
+            assert get_unit_spatial_index(x).by_entity==get_unit_spatial_index(y).by_entity
+            for cls in _UNIT_COLUMNS.values():
+                assert x.query().with_component(cls).ordered_entities()==y.query().with_component(cls).ordered_entities()
+            # Cold/terrain rows are never written by the candidate. Still inspect
+            # all their fields every 100 ticks and at the final boundary.
+            if ticks%100==0 or ticks==9880:
+                for uid,row in x.entities.items():
+                    other=y.entities[uid];assert row.keys()==other.keys()
+                    for cls,v in row.items():assert vars(v)==vars(other[cls]),('full world',uid,cls.__name__)
+                checks['full_cold_world']+=1
         for op in trace['entries']:
             assert op['seq']==sum(counts.values());kind=op['kind'];counts[kind]+=1
             order=[0,1,2,3] if ticks%2==0 else [1,0,3,2] if a.task=='paired' else list(range(len(sessions)))
@@ -206,12 +229,12 @@ def main():
                     samples[wi].append(phases)
                     assert digest(events)==op['events_sha256'];results.append(delta)
                     if a.task=='correctness':
-                        ids=set(session.world.query().with_component(c.Unit).ordered_entities())|set(session.presentation.visuals.entities)|set(delta['removed'])|set(delta['visuals']['removed'])
-                        actual=projection(session,ids)
                         rgb=hashlib.sha256(pygame.image.tobytes(RMS.screen,'RGB')).hexdigest()
-                        commands=(rgb,actual)
-                        if wi==0:baseline_display=commands
-                        else:assert commands==baseline_display,('presentation/pixels',ticks,mode)
+                        if wi==0:
+                            baseline_display=rgb;pixel_stream.update(bytes.fromhex(rgb));pixel_rows.append(rgb)
+                        else:
+                            assert rgb==baseline_display,('pixels',ticks,mode)
+                            compare_display(sessions[0],session,delta)
                         checks['pixels']+=1;checks['projection']+=1
                     if a.task=='diagnose':
                         stats=session.world.get_cache_stats()
@@ -244,6 +267,8 @@ def main():
             final_state_sha256=digest(finals[0]),checks=dict(checks),all_passed=True,formal=not bool(a.limit),
             diagnostic=a.task=='diagnose',elapsed_seconds=time.perf_counter()-began,memory=memory,raw=raw,
             summaries=[{key:summary([row[key] for row in rows]) for key in rows[0]} for rows in samples],
+            pixel_stream_sha256=pixel_stream.hexdigest() if pixel_rows else None,
+            pixel_raw=save(out.with_suffix('.pixels.json.gz'),pixel_rows) if pixel_rows else None,
             diagnosis=diag,diagnostic_raw=save(out.with_suffix('.diagnostic.json.gz'),diagnostic_rows) if diagnosis else None,
             dependency_lock_sha256=sha(src/'uv.lock'),python=sys.version,capacity_claim=False)
         # diag was restored above; save using the result rather than wrapper state.

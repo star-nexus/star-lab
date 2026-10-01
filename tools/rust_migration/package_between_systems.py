@@ -3,6 +3,7 @@ import argparse
 import hashlib
 from pathlib import Path
 import zipfile
+import subprocess
 
 
 def sha(data):
@@ -21,6 +22,10 @@ def main():
             # removed: every timing/step array and all validation logs are kept.
             if path.is_file() and not (folder=='replays' and path.suffix=='.log') and not (folder=='contracts' and path.name.endswith('.raw.json.gz')):
                 entries[f'{folder}/{path.name}']=path.read_bytes()
+    lab = Path(__file__).resolve().parents[2]
+    for name in ['profile_between_systems.py', 'analyze_between_systems.py', 'statistics_contract_matrix.py', 'package_between_systems.py', 'prepare_between_systems.py', 'prepare_system_candidates.py']:
+        entries['tools/'+name] = Path(__file__).with_name(name).read_bytes()
+    entries['tools/profile_between_systems-stage1.py'] = subprocess.check_output(['git','-C',str(lab),'show','28d5bf1:tools/rust_migration/profile_between_systems.py'])
     entries['SHA256SUMS']=''.join(f'{sha(data)}  {name}\n'for name,data in sorted(entries.items())).encode()
     output=a.experiment/'artifacts/between-systems-raw.zip'
     output.parent.mkdir(parents=True,exist_ok=True)

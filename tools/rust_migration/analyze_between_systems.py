@@ -54,8 +54,12 @@ def analyze(replays, e3):
               'seed':42, 'confidence':.95, 'tails_removed':False,
               'latency_boundary':'same private Python/FFI complete advancing step, diagnostics off'}, 'configurations':{}}
     identities = []
+    def identity(meta):
+        assert meta['all_passed'] and meta['counts']['step'] == 9880 and meta['counts']['request'] == 40994 and meta['counts']['presentation'] == 9880
+        return (meta['source_sha'],meta['extension_sha256'],meta['stream_sha256'],meta['final_state_sha256'])
     for threads in [2,4]:
         diagnostic = json.loads((replays/f'diagnostic-t{threads}.json').read_text())
+        identities.append(identity(diagnostic))
         rows = json.loads(gzip.decompress((replays/diagnostic['timing_raw']['file']).read_bytes()))
         assert sha((replays/diagnostic['timing_raw']['file']).read_bytes()) == diagnostic['timing_raw']['sha256']
         assert len(rows) == 9880
@@ -78,7 +82,7 @@ def analyze(replays, e3):
                 raw = (replays/meta['step_raw']['file']).read_bytes()
                 assert sha(raw) == meta['step_raw']['sha256']
                 assert meta['all_passed'] and meta['counts']['step'] == 9880
-                identities.append((meta['source_sha'],meta['extension_sha256'],meta['stream_sha256'],meta['final_state_sha256']))
+                identities.append(identity(meta))
                 samples[label] = np.array(json.loads(gzip.decompress(raw)),dtype=float)
             a = (samples['a1']+samples['a2'])/2
             b = (samples['b1']+samples['b2'])/2
@@ -95,6 +99,7 @@ def analyze(replays, e3):
         config['external_screen_exhausted_all_rounds'] = all(row['screen_exhausted'] for row in config['rounds'])
         config['diagnostic_screen_exhausted'] = config['diagnostic_residual_minus_bound_ci95_ns'][0] > 0
         matched_meta = json.loads((replays/f'matched-t{threads}.json').read_text())
+        identities.append(identity(matched_meta))
         matched_raw = (replays/matched_meta['timing_raw']['file']).read_bytes()
         assert sha(matched_raw) == matched_meta['timing_raw']['sha256']
         paired = json.loads(gzip.decompress(matched_raw))
@@ -112,6 +117,7 @@ def analyze(replays, e3):
         result['configurations'][str(threads)] = config
     assert len(set(identities)) == 1, identities
     result['identities'] = dict(zip(['source_sha','extension_sha256','stream_sha256','final_state_sha256'],identities[0]))
+    result['verified_replay_reports'] = len(identities)
     result['stop_split'] = all(x['stop_split'] for x in result['configurations'].values())
     result['interpretation'] = 'Conservative screen, not proof that every scheduler or larger workload must lose. E3 observer, timed fork residual and paired contemporary baseline diagnostic do not measure a real Vision split. Timed residual includes added diagnostic clocks; external same-FFI results are reported separately without discarding conflicting rounds.'
     return result

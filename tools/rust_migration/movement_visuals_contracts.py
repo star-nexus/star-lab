@@ -1,5 +1,5 @@
 """E5 independent binary prefix/state/delta oracle with archived exact inputs."""
-import argparse,gzip,hashlib,json,sys
+import argparse,gzip,hashlib,json,sys,subprocess
 from pathlib import Path
 p=argparse.ArgumentParser();p.add_argument('--source',type=Path,required=True);p.add_argument('--input',type=Path,required=True);p.add_argument('--output',type=Path);p.add_argument('--generate',action='store_true');p.add_argument('--native-package',type=Path);p.add_argument('--mode',default='ordinary');p.add_argument('--threads',type=int,default=1);p.add_argument('--extension-sha256');a=p.parse_args()
 sys.path.insert(0,str(a.source.resolve()))
@@ -28,4 +28,4 @@ for case in json.loads(gzip.decompress(a.input.read_bytes())):
     r.close();reports.append(dict(name=case['name'],rows=rows))
 a.output.parent.mkdir(parents=True,exist_ok=True)
 raw=a.output.with_suffix('.raw.json.gz');raw.write_bytes(gzip.compress(json.dumps(reports,sort_keys=True,separators=(',',':')).encode(),mtime=0))
-a.output.write_text(json.dumps(dict(argv=sys.argv,extension_sha256=a.extension_sha256,input_sha256=hashlib.sha256(a.input.read_bytes()).hexdigest(),mode=a.mode,threads=a.threads,cases=len(reports),steps=sum(len(c['rows'])-2 for c in reports),raw_sha256=hashlib.sha256(raw.read_bytes()).hexdigest()),indent=2)+'\n')
+a.output.write_text(json.dumps(dict(source_sha=subprocess.check_output(['git','rev-parse','HEAD'],cwd=a.source,text=True).strip(),tool_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),argv=sys.argv,extension_sha256=a.extension_sha256,input_sha256=hashlib.sha256(a.input.read_bytes()).hexdigest(),mode=a.mode,threads=a.threads,cases=len(reports),steps=sum(len(c['rows'])-2 for c in reports),raw_sha256=hashlib.sha256(raw.read_bytes()).hexdigest()),indent=2)+'\n')

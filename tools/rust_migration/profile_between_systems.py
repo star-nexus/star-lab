@@ -40,6 +40,7 @@ def main():
     p.add_argument('--extension-sha256', required=True)
     p.add_argument('--native-package', type=Path, help='parent containing a preserved star_native package')
     p.add_argument('--kernel-source-sha', help='identity of preserved binary if different from wrapper source')
+    p.add_argument('--reference-profile', action='store_true', help='paired baseline diagnostic; not unprofiled performance')
     p.add_argument('--probe-mode', choices=['baseline', 'empty_fork'], required=True)
     p.add_argument('--threads', type=int, choices=[1, 2, 4], default=1)
     p.add_argument('--mode', choices=['plain', 'compare'], required=True)
@@ -83,11 +84,17 @@ def main():
                 run = 0
             if kind == 'step':
                 step_start = time.perf_counter_ns()
-                plain._native._between_systems_step_json(op['dt'], op['wall_time'], a.probe_mode, False)
+                baseline_timing = None
+                if a.reference_profile:
+                    baseline_timing = json.loads(plain._native._between_systems_step_json(op['dt'], op['wall_time'], 'baseline', True))
+                else:
+                    plain._native._between_systems_step_json(op['dt'], op['wall_time'], a.probe_mode, False)
                 step_samples.append(time.perf_counter_ns() - step_start)
                 if measured:
                     # Diagnostic advancing call under the same instance lock.
                     timing = json.loads(measured._native._between_systems_step_json(op['dt'], op['wall_time'], a.probe_mode, True))
+                    if baseline_timing is not None:
+                        timing['baseline_phases_ns'] = baseline_timing['phases_ns']
                     timing['seq'] = index
                     timings.append(timing)
                 continue
@@ -150,7 +157,7 @@ def main():
                   initial_sha256=sha(initial_path), original_source=trace['source'],
                   mode=a.mode, threads=a.threads, counts=dict(counts),
                   kernel_source_sha=a.kernel_source_sha or actual_source,
-                  probe_mode=a.probe_mode,
+                  probe_mode=a.probe_mode, reference_profile=a.reference_profile,
                   read_segment_histogram=dict(sorted(segments.items())),
                   observations_in_shareable_segments=sum(n*c for n, c in segments.items() if n > 1),
                   stream_sha256=stream.hexdigest(), final_state_sha256=digest(final),

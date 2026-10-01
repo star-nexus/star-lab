@@ -1,0 +1,329 @@
+{
+  "source_sha": "5f567d36e89450da203b20fed212fd6b21fde1e1",
+  "diagnostic_only": true,
+  "all_ticks": 9880,
+  "component_costs": [
+    {
+      "component": "HexPosition",
+      "copy_us_per_tick": 114.96245101214575,
+      "calls": 1239642,
+      "normalize_us_per_tick": 42.42496902834008,
+      "construct_us_per_tick": 45.91036417004048
+    },
+    {
+      "component": "Unit",
+      "copy_us_per_tick": 191.45339271255062,
+      "calls": 1239642,
+      "normalize_us_per_tick": 99.2509843117409,
+      "construct_us_per_tick": 61.85724291497975
+    },
+    {
+      "component": "UnitCount",
+      "copy_us_per_tick": 107.02666082995951,
+      "calls": 1239642,
+      "normalize_us_per_tick": 40.24150829959515,
+      "construct_us_per_tick": 44.82468704453441
+    },
+    {
+      "component": "MovementAnimation",
+      "copy_us_per_tick": 606.1912841093117,
+      "calls": 1239477,
+      "normalize_us_per_tick": 74.0129625506073,
+      "construct_us_per_tick": 75.37420971659918
+    },
+    {
+      "component": "MovementPoints",
+      "copy_us_per_tick": 158.23484493927126,
+      "calls": 1239642,
+      "normalize_us_per_tick": 39.75782925101215,
+      "construct_us_per_tick": 60.19414089068826
+    },
+    {
+      "component": "ActionPoints",
+      "copy_us_per_tick": 105.71234746963563,
+      "calls": 1239642,
+      "normalize_us_per_tick": 40.41468917004049,
+      "construct_us_per_tick": 44.40820182186235
+    },
+    {
+      "component": "UnitStatus",
+      "copy_us_per_tick": 157.73102591093118,
+      "calls": 1239642,
+      "normalize_us_per_tick": 47.370670445344125,
+      "construct_us_per_tick": 54.90062793522267
+    },
+    {
+      "component": "SkillPoints",
+      "copy_us_per_tick": 0.0,
+      "calls": 0,
+      "normalize_us_per_tick": 0.0,
+      "construct_us_per_tick": 0.0
+    },
+    {
+      "component": "ConstructionPoints",
+      "copy_us_per_tick": 0.0,
+      "calls": 0,
+      "normalize_us_per_tick": 0.0,
+      "construct_us_per_tick": 0.0
+    }
+  ],
+  "phase_costs": {
+    "component.ActionPoints.construct": {
+      "calls": 1239642,
+      "total_ns": 438753034
+    },
+    "component.ActionPoints.copy": {
+      "calls": 1239642,
+      "total_ns": 1044437993
+    },
+    "component.ActionPoints.normalize": {
+      "calls": 1239642,
+      "total_ns": 399297129
+    },
+    "component.GameModeComponent.construct": {
+      "calls": 9880,
+      "total_ns": 11356857
+    },
+    "component.GameModeComponent.copy": {
+      "calls": 9880,
+      "total_ns": 7552885
+    },
+    "component.GameModeComponent.normalize": {
+      "calls": 9880,
+      "total_ns": 16608001
+    },
+    "component.GameState.construct": {
+      "calls": 9880,
+      "total_ns": 18474011
+    },
+    "component.GameState.copy": {
+      "calls": 9880,
+      "total_ns": 22518459
+    },
+    "component.GameState.normalize": {
+      "calls": 9880,
+      "total_ns": 14023022
+    },
+    "component.GameTime.construct": {
+      "calls": 9880,
+      "total_ns": 21100037
+    },
+    "component.GameTime.copy": {
+      "calls": 9880,
+      "total_ns": 23383178
+    },
+    "component.GameTime.normalize": {
+      "calls": 9880,
+      "total_ns": 10399338
+    },
+    "component.HexPosition.construct": {
+      "calls": 1239642,
+      "total_ns": 453594398
+    },
+    "component.HexPosition.copy": {
+      "calls": 1239642,
+      "total_ns": 1135829016
+    },
+    "component.HexPosition.normalize": {
+      "calls": 1239642,
+      "total_ns": 419158694
+    },
+    "component.MovementAnimation.construct": {
+      "calls": 1239477,
+      "total_ns": 744697192
+    },
+    "component.MovementAnimation.copy": {
+      "calls": 1239477,
+      "total_ns": 5989169887
+    },
+    "component.MovementAnimation.normalize": {
+      "calls": 1239477,
+      "total_ns": 731248070
+    },
+    "component.MovementPoints.construct": {
+      "calls": 1239642,
+      "total_ns": 594718112
+    },
+    "component.MovementPoints.copy": {
+      "calls": 1239642,
+      "total_ns": 1563360268
+    },
+    "component.MovementPoints.normalize": {
+      "calls": 1239642,
+      "total_ns": 392807353
+    },
+    "component.TurnManager.construct": {
+      "calls": 9880,
+      "total_ns": 12463319
+    },
+    "component.TurnManager.copy": {
+      "calls": 9880,
+      "total_ns": 16975672
+    },
+    "component.TurnManager.normalize": {
+      "calls": 9880,
+      "total_ns": 4466187
+    },
+    "component.Unit.construct": {
+      "calls": 1239642,
+      "total_ns": 611149560
+    },
+    "component.Unit.copy": {
+      "calls": 1239642,
+      "total_ns": 1891559520
+    },
+    "component.Unit.normalize": {
+      "calls": 1239642,
+      "total_ns": 980599725
+    },
+    "component.UnitCount.construct": {
+      "calls": 1239642,
+      "total_ns": 442867908
+    },
+    "component.UnitCount.copy": {
+      "calls": 1239642,
+      "total_ns": 1057423409
+    },
+    "component.UnitCount.normalize": {
+      "calls": 1239642,
+      "total_ns": 397586102
+    },
+    "component.UnitStatus.construct": {
+      "calls": 1239642,
+      "total_ns": 542418204
+    },
+    "component.UnitStatus.copy": {
+      "calls": 1239642,
+      "total_ns": 1558382536
+    },
+    "component.UnitStatus.normalize": {
+      "calls": 1239642,
+      "total_ns": 468022224
+    },
+    "display.AnimationSystem": {
+      "calls": 9880,
+      "total_ns": 13350378
+    },
+    "display.EffectRenderSystem": {
+      "calls": 9880,
+      "total_ns": 1717305092
+    },
+    "display.MapRenderSystem": {
+      "calls": 9880,
+      "total_ns": 26447392899
+    },
+    "display.MiniMapSystem": {
+      "calls": 9880,
+      "total_ns": 454038960
+    },
+    "display.PanelRenderSystem": {
+      "calls": 9880,
+      "total_ns": 1046610765
+    },
+    "display.UIRenderSystem": {
+      "calls": 9880,
+      "total_ns": 11063498553
+    },
+    "display.UnitRenderSystem": {
+      "calls": 9880,
+      "total_ns": 16226873190
+    },
+    "ecs.add_replace": {
+      "calls": 8758661,
+      "total_ns": 8671337217
+    },
+    "ecs.eviction": {
+      "calls": 36452,
+      "total_ns": 213029707
+    },
+    "ecs.invalidate": {
+      "calls": 8761673,
+      "total_ns": 2799213358
+    },
+    "ecs.remove": {
+      "calls": 2727353,
+      "total_ns": 459095650
+    },
+    "fog": {
+      "calls": 9880,
+      "total_ns": 45491020
+    },
+    "hud": {
+      "calls": 9880,
+      "total_ns": 280692443
+    },
+    "spatial.update": {
+      "calls": 1239642,
+      "total_ns": 2618366100
+    },
+    "visuals.compute": {
+      "calls": 9880,
+      "total_ns": 234225081
+    }
+  },
+  "summaries": [
+    {
+      "encode_ns": {
+        "samples": 9880,
+        "mean_ns": 233714.31528340082,
+        "p99_ns": 384166,
+        "max_ns": 650666
+      },
+      "decode_ns": {
+        "samples": 9880,
+        "mean_ns": 524272.16659919027,
+        "p99_ns": 733583,
+        "max_ns": 1845042
+      },
+      "apply_ns": {
+        "samples": 9880,
+        "mean_ns": 3971081.1560728746,
+        "p99_ns": 5431542,
+        "max_ns": 6126458
+      },
+      "display_ns": {
+        "samples": 9880,
+        "mean_ns": 6037634.881174089,
+        "p99_ns": 7425792,
+        "max_ns": 18100125
+      },
+      "submit_ns": {
+        "samples": 9880,
+        "mean_ns": 1963190.2611336033,
+        "p99_ns": 2446417,
+        "max_ns": 6701166
+      },
+      "platform_ns": {
+        "samples": 9880,
+        "mean_ns": 1366078.6898785424,
+        "p99_ns": 1677875,
+        "max_ns": 2027834
+      },
+      "chain_ns": {
+        "samples": 9880,
+        "mean_ns": 13862257.1548583,
+        "p99_ns": 16435124,
+        "max_ns": 26223625
+      },
+      "total_ns": {
+        "samples": 9880,
+        "mean_ns": 17667692.534109313,
+        "p99_ns": 25180584,
+        "max_ns": 76818166
+      },
+      "request_ns": {
+        "samples": 9880,
+        "mean_ns": 3309250.691194332,
+        "p99_ns": 9365542,
+        "max_ns": 52347457
+      },
+      "step_ns": {
+        "samples": 9880,
+        "mean_ns": 262470.3727732794,
+        "p99_ns": 658708,
+        "max_ns": 1027250
+      }
+    }
+  ],
+  "raw_sha256": "7d6f085fdbc6672b4acb050c210fe9fa3e6b745a95b2ce0df25a97846e2eeb57"
+}

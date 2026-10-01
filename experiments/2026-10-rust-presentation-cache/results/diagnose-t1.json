@@ -1,0 +1,516 @@
+{
+  "source_sha": "5f567d36e89450da203b20fed212fd6b21fde1e1",
+  "source_dirty": "",
+  "tool_sha256": "b9fdc1a202ff3457a7d02967b883f2119ed9319e72deeffb6c47a4b6227e7376",
+  "tooling_commit": "e1cf465655c8aa3bd0291d20483b506fee211341",
+  "extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
+  "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+  "initial_sha256": "8b594c465a63728222c57f257111d500c1c378e226b3496c63c0b11870629bc0",
+  "original_source": {
+    "path": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+    "sha": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+    "dirty": ""
+  },
+  "argv": [
+    "/Users/liyang/Developer/star-lab/tools/rust_migration/presentation_cache_probe.py",
+    "--source",
+    "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+    "--source-sha",
+    "5f567d36e89450da203b20fed212fd6b21fde1e1",
+    "--trace",
+    "/tmp/star-e6-20261002-run1/rust-300-r3.trace.json.gz",
+    "--output",
+    "/tmp/star-e6-20261002-run1/diagnose-t1.json",
+    "--task",
+    "diagnose",
+    "--driver",
+    "cocoa"
+  ],
+  "task": "diagnose",
+  "modes": [
+    "baseline"
+  ],
+  "threads": 1,
+  "display_script": "static",
+  "driver": "cocoa",
+  "surface": [
+    2480,
+    1239
+  ],
+  "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+  "counts": {
+    "request": 40994,
+    "step": 9880,
+    "presentation": 9880
+  },
+  "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+  "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf",
+  "checks": {},
+  "all_passed": true,
+  "formal": true,
+  "diagnostic": true,
+  "elapsed_seconds": 205.4293490840355,
+  "memory": [
+    {
+      "tick": 500,
+      "maxrss": 916127744,
+      "entities": [
+        19411
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 1000,
+      "maxrss": 921157632,
+      "entities": [
+        19407
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 1500,
+      "maxrss": 924286976,
+      "entities": [
+        19415
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 2000,
+      "maxrss": 928432128,
+      "entities": [
+        19411
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 2500,
+      "maxrss": 929480704,
+      "entities": [
+        19416
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 3000,
+      "maxrss": 931954688,
+      "entities": [
+        19412
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 3500,
+      "maxrss": 933314560,
+      "entities": [
+        19416
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 4000,
+      "maxrss": 934133760,
+      "entities": [
+        19413
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 4500,
+      "maxrss": 934133760,
+      "entities": [
+        19414
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 5000,
+      "maxrss": 934133760,
+      "entities": [
+        19415
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 5500,
+      "maxrss": 934133760,
+      "entities": [
+        19418
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 6000,
+      "maxrss": 934133760,
+      "entities": [
+        19418
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 6500,
+      "maxrss": 934133760,
+      "entities": [
+        19426
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 7000,
+      "maxrss": 934133760,
+      "entities": [
+        19427
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 7500,
+      "maxrss": 934133760,
+      "entities": [
+        19413
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 8000,
+      "maxrss": 934133760,
+      "entities": [
+        19420
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 8500,
+      "maxrss": 934133760,
+      "entities": [
+        19422
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 9000,
+      "maxrss": 934133760,
+      "entities": [
+        19417
+      ],
+      "rosters": [
+        5000
+      ]
+    },
+    {
+      "tick": 9500,
+      "maxrss": 935608320,
+      "entities": [
+        19416
+      ],
+      "rosters": [
+        5000
+      ]
+    }
+  ],
+  "raw": {
+    "file": "diagnose-t1.samples.json.gz",
+    "sha256": "b3a3401c2c3753d773e495bd0af073497c97bb51ee91a8c6bd0a54a2c57c5c93",
+    "bytes": 389292
+  },
+  "summaries": [
+    {
+      "encode_ns": {
+        "samples": 9880,
+        "mean_ns": 233714.31528340082,
+        "p99_ns": 384166,
+        "max_ns": 650666
+      },
+      "decode_ns": {
+        "samples": 9880,
+        "mean_ns": 524272.16659919027,
+        "p99_ns": 733583,
+        "max_ns": 1845042
+      },
+      "apply_ns": {
+        "samples": 9880,
+        "mean_ns": 3971081.1560728746,
+        "p99_ns": 5431542,
+        "max_ns": 6126458
+      },
+      "display_ns": {
+        "samples": 9880,
+        "mean_ns": 6037634.881174089,
+        "p99_ns": 7425792,
+        "max_ns": 18100125
+      },
+      "submit_ns": {
+        "samples": 9880,
+        "mean_ns": 1963190.2611336033,
+        "p99_ns": 2446417,
+        "max_ns": 6701166
+      },
+      "platform_ns": {
+        "samples": 9880,
+        "mean_ns": 1366078.6898785424,
+        "p99_ns": 1677875,
+        "max_ns": 2027834
+      },
+      "chain_ns": {
+        "samples": 9880,
+        "mean_ns": 13862257.1548583,
+        "p99_ns": 16435124,
+        "max_ns": 26223625
+      },
+      "total_ns": {
+        "samples": 9880,
+        "mean_ns": 17667692.534109313,
+        "p99_ns": 25180584,
+        "max_ns": 76818166
+      },
+      "request_ns": {
+        "samples": 9880,
+        "mean_ns": 3309250.691194332,
+        "p99_ns": 9365542,
+        "max_ns": 52347457
+      },
+      "step_ns": {
+        "samples": 9880,
+        "mean_ns": 262470.3727732794,
+        "p99_ns": 658708,
+        "max_ns": 1027250
+      }
+    }
+  ],
+  "diagnosis": {
+    "component.ActionPoints.construct": {
+      "calls": 1239642,
+      "total_ns": 438753034
+    },
+    "component.ActionPoints.copy": {
+      "calls": 1239642,
+      "total_ns": 1044437993
+    },
+    "component.ActionPoints.normalize": {
+      "calls": 1239642,
+      "total_ns": 399297129
+    },
+    "component.GameModeComponent.construct": {
+      "calls": 9880,
+      "total_ns": 11356857
+    },
+    "component.GameModeComponent.copy": {
+      "calls": 9880,
+      "total_ns": 7552885
+    },
+    "component.GameModeComponent.normalize": {
+      "calls": 9880,
+      "total_ns": 16608001
+    },
+    "component.GameState.construct": {
+      "calls": 9880,
+      "total_ns": 18474011
+    },
+    "component.GameState.copy": {
+      "calls": 9880,
+      "total_ns": 22518459
+    },
+    "component.GameState.normalize": {
+      "calls": 9880,
+      "total_ns": 14023022
+    },
+    "component.GameTime.construct": {
+      "calls": 9880,
+      "total_ns": 21100037
+    },
+    "component.GameTime.copy": {
+      "calls": 9880,
+      "total_ns": 23383178
+    },
+    "component.GameTime.normalize": {
+      "calls": 9880,
+      "total_ns": 10399338
+    },
+    "component.HexPosition.construct": {
+      "calls": 1239642,
+      "total_ns": 453594398
+    },
+    "component.HexPosition.copy": {
+      "calls": 1239642,
+      "total_ns": 1135829016
+    },
+    "component.HexPosition.normalize": {
+      "calls": 1239642,
+      "total_ns": 419158694
+    },
+    "component.MovementAnimation.construct": {
+      "calls": 1239477,
+      "total_ns": 744697192
+    },
+    "component.MovementAnimation.copy": {
+      "calls": 1239477,
+      "total_ns": 5989169887
+    },
+    "component.MovementAnimation.normalize": {
+      "calls": 1239477,
+      "total_ns": 731248070
+    },
+    "component.MovementPoints.construct": {
+      "calls": 1239642,
+      "total_ns": 594718112
+    },
+    "component.MovementPoints.copy": {
+      "calls": 1239642,
+      "total_ns": 1563360268
+    },
+    "component.MovementPoints.normalize": {
+      "calls": 1239642,
+      "total_ns": 392807353
+    },
+    "component.TurnManager.construct": {
+      "calls": 9880,
+      "total_ns": 12463319
+    },
+    "component.TurnManager.copy": {
+      "calls": 9880,
+      "total_ns": 16975672
+    },
+    "component.TurnManager.normalize": {
+      "calls": 9880,
+      "total_ns": 4466187
+    },
+    "component.Unit.construct": {
+      "calls": 1239642,
+      "total_ns": 611149560
+    },
+    "component.Unit.copy": {
+      "calls": 1239642,
+      "total_ns": 1891559520
+    },
+    "component.Unit.normalize": {
+      "calls": 1239642,
+      "total_ns": 980599725
+    },
+    "component.UnitCount.construct": {
+      "calls": 1239642,
+      "total_ns": 442867908
+    },
+    "component.UnitCount.copy": {
+      "calls": 1239642,
+      "total_ns": 1057423409
+    },
+    "component.UnitCount.normalize": {
+      "calls": 1239642,
+      "total_ns": 397586102
+    },
+    "component.UnitStatus.construct": {
+      "calls": 1239642,
+      "total_ns": 542418204
+    },
+    "component.UnitStatus.copy": {
+      "calls": 1239642,
+      "total_ns": 1558382536
+    },
+    "component.UnitStatus.normalize": {
+      "calls": 1239642,
+      "total_ns": 468022224
+    },
+    "display.AnimationSystem": {
+      "calls": 9880,
+      "total_ns": 13350378
+    },
+    "display.EffectRenderSystem": {
+      "calls": 9880,
+      "total_ns": 1717305092
+    },
+    "display.MapRenderSystem": {
+      "calls": 9880,
+      "total_ns": 26447392899
+    },
+    "display.MiniMapSystem": {
+      "calls": 9880,
+      "total_ns": 454038960
+    },
+    "display.PanelRenderSystem": {
+      "calls": 9880,
+      "total_ns": 1046610765
+    },
+    "display.UIRenderSystem": {
+      "calls": 9880,
+      "total_ns": 11063498553
+    },
+    "display.UnitRenderSystem": {
+      "calls": 9880,
+      "total_ns": 16226873190
+    },
+    "ecs.add_replace": {
+      "calls": 8758661,
+      "total_ns": 8671337217
+    },
+    "ecs.eviction": {
+      "calls": 36452,
+      "total_ns": 213029707
+    },
+    "ecs.invalidate": {
+      "calls": 8761673,
+      "total_ns": 2799213358
+    },
+    "ecs.remove": {
+      "calls": 2727353,
+      "total_ns": 459095650
+    },
+    "fog": {
+      "calls": 9880,
+      "total_ns": 45491020
+    },
+    "hud": {
+      "calls": 9880,
+      "total_ns": 280692443
+    },
+    "spatial.update": {
+      "calls": 1239642,
+      "total_ns": 2618366100
+    },
+    "visuals.compute": {
+      "calls": 9880,
+      "total_ns": 234225081
+    }
+  },
+  "diagnostic_raw": {
+    "file": "diagnose-t1.diagnostic.json.gz",
+    "sha256": "7d6f085fdbc6672b4acb050c210fe9fa3e6b745a95b2ce0df25a97846e2eeb57",
+    "bytes": 950042
+  },
+  "dependency_lock_sha256": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "capacity_claim": false
+}

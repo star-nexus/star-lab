@@ -20,6 +20,10 @@ for path in sorted(run.glob('*.json')):raw[path.name]=path.read_bytes()
 for name in ['profile_movement_visuals.py','movement_visuals_contracts.py','analyze_movement_visuals.py','run_movement_visuals.py','package_movement_visuals.py','prepare_movement_visuals.py','movement_visuals_cost_bounds.py']:
     path=Path(__file__).with_name(name)
     if path.exists():raw[f'tools/{name}']=path.read_bytes()
+builder=run/'final-report-builder.py'
+if builder.exists():raw['tools/final-report-builder.py']=builder.read_bytes()
+primary=run/'primary-stage-analyzer.py'
+if primary.exists():raw['tools/primary-stage-analyzer.py']=primary.read_bytes()
 stage=run/'stage-analyzer.py'
 if stage.exists():raw['tools/stage-analyzer.py']=stage.read_bytes()
 original=run/'original-launcher.py'

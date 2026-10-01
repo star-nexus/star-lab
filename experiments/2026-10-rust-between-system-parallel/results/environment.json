@@ -1,0 +1,33 @@
+{
+  "hardware": {
+    "machine": "Mac mini Mac16,10",
+    "cpu": "Apple M4",
+    "logical_cores": 10,
+    "memory_bytes": 17179869184
+  },
+  "software": {
+    "os": "macOS26.5.2 /25F84",
+    "python": "3.13.12",
+    "rust": "1.98.1",
+    "cargo": "1.98.1",
+    "maturin": "1.15.0",
+    "bevy": "0.19.1",
+    "pyo3": "0.29.2",
+    "cargo_lock": "e86cb2bee26f1d95c1cde0abec61bdea575a73ae7218db60b7f06be735f15188",
+    "uv_lock": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae"
+  },
+  "uname": {
+    "system": "Darwin",
+    "node": "liyuchendeMac-mini.local",
+    "release": "25.5.0",
+    "version": "Darwin Kernel Version 25.5.0: Tue Jun  9 22:26:22 PDT 2026; root:xnu-12377.121.10~1/RELEASE_ARM64_T8132",
+    "machine": "arm64",
+    "processor": "arm"
+  },
+  "os": "ProductName:\t\tmacOS\nProductVersion:\t\t26.5.2\nBuildVersion:\t\t25F84\n",
+  "cpu": "hw.model: Mac16,10\nhw.logicalcpu: 10\nhw.memsize: 17179869184\n",
+  "source_lock_sha256": {
+    "Cargo.lock": "e86cb2bee26f1d95c1cde0abec61bdea575a73ae7218db60b7f06be735f15188",
+    "uv.lock": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae"
+  }
+}

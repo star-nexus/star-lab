@@ -1,0 +1,266 @@
+{
+  "method": {
+    "order": "ABBA",
+    "rounds": 3,
+    "threads": [
+      2,
+      4
+    ],
+    "samples_per_replay": 9880,
+    "block_ticks": 100,
+    "bootstrap_draws": 10000,
+    "seed": 42,
+    "confidence": 0.95,
+    "tails_removed": false,
+    "latency_boundary": "same private Python/FFI complete advancing step, diagnostics off"
+  },
+  "configurations": {
+    "2": {
+      "diagnostic_fork_residual_ns": {
+        "samples": 8020,
+        "mean_ns": 5898.802867830424,
+        "p99_ns": 28915.0,
+        "max_ns": 363334.0
+      },
+      "diagnostic_residual_minus_bound_ci95_ns": [
+        447.2871733716475,
+        1078.3270841482356
+      ],
+      "eligible_ticks": 8020,
+      "all_ticks": 9880,
+      "e3_matched_zero_overhead_bound_ns": 5138.710847880299,
+      "e3_all_tick_bound_ns": 4283.330566801619,
+      "rounds": [
+        {
+          "round": 1,
+          "baseline": {
+            "samples": 19760,
+            "mean_ns": 222359.78937246965,
+            "p99_ns": 691834.0,
+            "max_ns": 6364083.0
+          },
+          "empty_fork": {
+            "samples": 19760,
+            "mean_ns": 232307.46680161942,
+            "p99_ns": 667959.0,
+            "max_ns": 9856041.0
+          },
+          "paired_all_overhead_ns": 9947.677429149797,
+          "paired_all_overhead_ci95_ns": [
+            4667.062201838364,
+            15183.194359848481
+          ],
+          "paired_eligible_overhead_ns": 12047.86801745636,
+          "paired_eligible_overhead_ci95_ns": [
+            6266.273501213998,
+            17875.357296436592
+          ],
+          "paired_ineligible_overhead_ns": 892.016935483871,
+          "screen_exhausted": true
+        },
+        {
+          "round": 2,
+          "baseline": {
+            "samples": 19760,
+            "mean_ns": 234995.72120445344,
+            "p99_ns": 765792.0,
+            "max_ns": 38043666.0
+          },
+          "empty_fork": {
+            "samples": 19760,
+            "mean_ns": 216465.5754554656,
+            "p99_ns": 638125.0,
+            "max_ns": 8900917.0
+          },
+          "paired_all_overhead_ns": -18530.145748987856,
+          "paired_all_overhead_ci95_ns": [
+            -28009.421633892278,
+            -10011.600613567074
+          ],
+          "paired_eligible_overhead_ns": -17181.954862842893,
+          "paired_eligible_overhead_ci95_ns": [
+            -27025.53734422846,
+            -8180.48928910993
+          ],
+          "paired_ineligible_overhead_ns": -24343.312903225808,
+          "screen_exhausted": false
+        },
+        {
+          "round": 3,
+          "baseline": {
+            "samples": 19760,
+            "mean_ns": 242843.8789979757,
+            "p99_ns": 788708.0,
+            "max_ns": 40329500.0
+          },
+          "empty_fork": {
+            "samples": 19760,
+            "mean_ns": 243480.74170040485,
+            "p99_ns": 695666.0,
+            "max_ns": 4429458.0
+          },
+          "paired_all_overhead_ns": 636.8627024291497,
+          "paired_all_overhead_ci95_ns": [
+            -10765.250712297571,
+            10960.67695332985
+          ],
+          "paired_eligible_overhead_ns": 1736.3073566084788,
+          "paired_eligible_overhead_ci95_ns": [
+            -11259.460195189251,
+            13014.025399698086
+          ],
+          "paired_ineligible_overhead_ns": -4103.753494623656,
+          "screen_exhausted": false
+        }
+      ],
+      "external_screen_exhausted_all_rounds": false,
+      "diagnostic_screen_exhausted": true,
+      "contemporary_paired_baseline_bound_ns": {
+        "samples": 8020,
+        "mean_ns": 7097.920822942643,
+        "p99_ns": 21500.0,
+        "max_ns": 99334.0
+      },
+      "contemporary_paired_fork_overhead_ns": {
+        "samples": 8020,
+        "mean_ns": 9511.711471321696,
+        "p99_ns": 32959.0,
+        "max_ns": 9234626.0
+      },
+      "contemporary_overhead_minus_bound_ci95_ns": [
+        456.16789761665063,
+        5384.773524206441
+      ],
+      "contemporary_screen_exhausted": true,
+      "stop_split": true
+    },
+    "4": {
+      "diagnostic_fork_residual_ns": {
+        "samples": 8020,
+        "mean_ns": 9051.997256857856,
+        "p99_ns": 33874.0,
+        "max_ns": 13322375.0
+      },
+      "diagnostic_residual_minus_bound_ci95_ns": [
+        1019.8356756112158,
+        8233.161742170774
+      ],
+      "eligible_ticks": 8020,
+      "all_ticks": 9880,
+      "e3_matched_zero_overhead_bound_ns": 5058.284289276808,
+      "e3_all_tick_bound_ns": 4210.765789473684,
+      "rounds": [
+        {
+          "round": 1,
+          "baseline": {
+            "samples": 19760,
+            "mean_ns": 223006.44084008096,
+            "p99_ns": 727333.0,
+            "max_ns": 8661458.0
+          },
+          "empty_fork": {
+            "samples": 19760,
+            "mean_ns": 212207.99504048584,
+            "p99_ns": 630042.0,
+            "max_ns": 4711541.0
+          },
+          "paired_all_overhead_ns": -10798.445799595142,
+          "paired_all_overhead_ci95_ns": [
+            -18706.59435096656,
+            -3621.8666151085768
+          ],
+          "paired_eligible_overhead_ns": -9758.429551122195,
+          "paired_eligible_overhead_ci95_ns": [
+            -17821.973067895105,
+            -2347.9657789613307
+          ],
+          "paired_ineligible_overhead_ns": -15282.81693548387,
+          "screen_exhausted": false
+        },
+        {
+          "round": 2,
+          "baseline": {
+            "samples": 19760,
+            "mean_ns": 190293.36877530365,
+            "p99_ns": 554083.0,
+            "max_ns": 2927084.0
+          },
+          "empty_fork": {
+            "samples": 19760,
+            "mean_ns": 209253.30627530365,
+            "p99_ns": 642250.0,
+            "max_ns": 21852708.0
+          },
+          "paired_all_overhead_ns": 18959.9375,
+          "paired_all_overhead_ci95_ns": [
+            13474.612834985855,
+            24587.651376564503
+          ],
+          "paired_eligible_overhead_ns": 21504.59295511222,
+          "paired_eligible_overhead_ci95_ns": [
+            15695.683398443996,
+            27647.724567193156
+          ],
+          "paired_ineligible_overhead_ns": 7987.820967741935,
+          "screen_exhausted": true
+        },
+        {
+          "round": 3,
+          "baseline": {
+            "samples": 19760,
+            "mean_ns": 199014.91826923078,
+            "p99_ns": 612875.0,
+            "max_ns": 13330084.0
+          },
+          "empty_fork": {
+            "samples": 19760,
+            "mean_ns": 222440.27105263158,
+            "p99_ns": 690708.0,
+            "max_ns": 7874542.0
+          },
+          "paired_all_overhead_ns": 23425.35278340081,
+          "paired_all_overhead_ci95_ns": [
+            17373.630074428496,
+            29943.01835472314
+          ],
+          "paired_eligible_overhead_ns": 24633.81253117207,
+          "paired_eligible_overhead_ci95_ns": [
+            18407.206060512923,
+            31260.110173626468
+          ],
+          "paired_ineligible_overhead_ns": 18214.682258064517,
+          "screen_exhausted": true
+        }
+      ],
+      "external_screen_exhausted_all_rounds": false,
+      "diagnostic_screen_exhausted": true,
+      "contemporary_paired_baseline_bound_ns": {
+        "samples": 8020,
+        "mean_ns": 7768.758852867831,
+        "p99_ns": 26250.0,
+        "max_ns": 316792.0
+      },
+      "contemporary_paired_fork_overhead_ns": {
+        "samples": 8020,
+        "mean_ns": 9047.616458852868,
+        "p99_ns": 45292.0,
+        "max_ns": 2611666.0
+      },
+      "contemporary_overhead_minus_bound_ci95_ns": [
+        255.56434911686557,
+        2421.015146274079
+      ],
+      "contemporary_screen_exhausted": true,
+      "stop_split": true
+    }
+  },
+  "identities": {
+    "source_sha": "dede5ca0ca3472abdb1d24589878e6a72d812f88",
+    "extension_sha256": "9c7eebe03257d1d6941e67b5e31a947e4c6cedf32db6979e624629fd5cf5dd91",
+    "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+    "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf"
+  },
+  "verified_replay_reports": 28,
+  "stop_split": true,
+  "interpretation": "Conservative screen, not proof that every scheduler or larger workload must lose. E3 observer, timed fork residual and paired contemporary baseline diagnostic do not measure a real Vision split. Timed residual includes added diagnostic clocks; external same-FFI results are reported separately without discarding conflicting rounds."
+}

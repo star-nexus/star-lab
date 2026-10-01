@@ -1,0 +1,59 @@
+{
+  "before": {
+    "original": {
+      "path": "/Users/liyang/Developer/star-main",
+      "head": "7e145d169433695cd4957e186a6b2fda06813c26",
+      "status": " D rotk_agent/README.md\n D rotk_agent/adapters/__init__.py\n D rotk_agent/adapters/base.py\n D rotk_agent/adapters/chat_completions.py\n D rotk_agent/adapters/fake.py\n D rotk_agent/adapters/nemotron.py\n D rotk_agent/adapters/responses.py\n D rotk_agent/core/__init__.py\n D rotk_agent/core/agent.py\n D rotk_agent/core/bridge.py\n D rotk_agent/core/config.py\n D rotk_agent/core/console.py\n D rotk_agent/core/delays.py\n D rotk_agent/core/errors.py\n D rotk_agent/core/filters.py\n D rotk_agent/core/reachable_guard.py\n D rotk_agent/core/runner.py\n D rotk_agent/core/scoring.py\n D rotk_agent/core/stats.py\n D rotk_agent/core/tools.py\n D rotk_agent/core/types.py\n D rotk_agent/main.py\n D rotk_agent/modes/__init__.py\n D rotk_agent/modes/base.py\n D rotk_agent/modes/realtime.py\n D rotk_agent/modes/turn.py\n D rotk_agent/profiles.py\n D rotk_agent/prompts/system_prompt_realtime_cn.md\n D rotk_agent/prompts/system_prompt_realtime_cn_baseline.md\n D rotk_agent/prompts/system_prompt_realtime_en.md\n D rotk_agent/prompts/system_prompt_turn_cn.md\n D rotk_agent/prompts/system_prompt_turn_en.md\n D rotk_agent/tests/__init__.py\n D rotk_agent/tests/conftest.py\n D rotk_agent/tests/support.py\n D rotk_agent/tests/test_adapters.py\n D rotk_agent/tests/test_agent_loop.py\n D rotk_agent/tests/test_auto_test.py\n D rotk_agent/tests/test_config.py\n D rotk_agent/tests/test_errors.py\n D rotk_agent/tests/test_filters.py\n D rotk_agent/tests/test_profiles.py\n D rotk_agent/tests/test_reachable_guard.py\n D rotk_agent/tests/test_runner.py\n D rotk_agent/tests/test_scoring.py\n D rotk_agent/tests/test_stats.py\n D rotk_agent/tests/test_tools.py\n D rotk_agent/tests/test_turn_mode.py\n D rotk_env/assets/fonts/sh.otf\n"
+    },
+    "active": {
+      "path": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "head": "ad02b75f2b83f97fe0bef4c1c9eee5742b1610fb",
+      "status": " M native/core/src/deadline.rs\n M native/core/src/read_pool.rs\n M native/python/src/lib.rs\n M native/rotk/src/runtime.rs\n?? rotk_env/tests/test_native_between_systems.py\n"
+    },
+    "lab": {
+      "path": "/Users/liyang/Developer/star-lab",
+      "head": "564950c953a8998f3e4049ef0cc46d4f09c24ec7",
+      "status": "?? tools/rust_migration/profile_between_systems.py\n"
+    },
+    "frozen_rust": {
+      "path": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+      "head": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+      "status": ""
+    },
+    "frozen_python": {
+      "path": "/Users/liyang/.codex/worktrees/python-capacity-baseline/star-main",
+      "head": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+      "status": ""
+    }
+  },
+  "after": {
+    "original": {
+      "path": "/Users/liyang/Developer/star-main",
+      "head": "7e145d169433695cd4957e186a6b2fda06813c26",
+      "status": " D rotk_agent/README.md\n D rotk_agent/adapters/__init__.py\n D rotk_agent/adapters/base.py\n D rotk_agent/adapters/chat_completions.py\n D rotk_agent/adapters/fake.py\n D rotk_agent/adapters/nemotron.py\n D rotk_agent/adapters/responses.py\n D rotk_agent/core/__init__.py\n D rotk_agent/core/agent.py\n D rotk_agent/core/bridge.py\n D rotk_agent/core/config.py\n D rotk_agent/core/console.py\n D rotk_agent/core/delays.py\n D rotk_agent/core/errors.py\n D rotk_agent/core/filters.py\n D rotk_agent/core/reachable_guard.py\n D rotk_agent/core/runner.py\n D rotk_agent/core/scoring.py\n D rotk_agent/core/stats.py\n D rotk_agent/core/tools.py\n D rotk_agent/core/types.py\n D rotk_agent/main.py\n D rotk_agent/modes/__init__.py\n D rotk_agent/modes/base.py\n D rotk_agent/modes/realtime.py\n D rotk_agent/modes/turn.py\n D rotk_agent/profiles.py\n D rotk_agent/prompts/system_prompt_realtime_cn.md\n D rotk_agent/prompts/system_prompt_realtime_cn_baseline.md\n D rotk_agent/prompts/system_prompt_realtime_en.md\n D rotk_agent/prompts/system_prompt_turn_cn.md\n D rotk_agent/prompts/system_prompt_turn_en.md\n D rotk_agent/tests/__init__.py\n D rotk_agent/tests/conftest.py\n D rotk_agent/tests/support.py\n D rotk_agent/tests/test_adapters.py\n D rotk_agent/tests/test_agent_loop.py\n D rotk_agent/tests/test_auto_test.py\n D rotk_agent/tests/test_config.py\n D rotk_agent/tests/test_errors.py\n D rotk_agent/tests/test_filters.py\n D rotk_agent/tests/test_profiles.py\n D rotk_agent/tests/test_reachable_guard.py\n D rotk_agent/tests/test_runner.py\n D rotk_agent/tests/test_scoring.py\n D rotk_agent/tests/test_stats.py\n D rotk_agent/tests/test_tools.py\n D rotk_agent/tests/test_turn_mode.py\n D rotk_env/assets/fonts/sh.otf\n"
+    },
+    "active": {
+      "path": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "head": "72bf05a2f6ec6d1d15ffad7914226c0c3e16b9cf",
+      "status": ""
+    },
+    "lab": {
+      "path": "/Users/liyang/Developer/star-lab",
+      "head": "02fa3f1710ede81f99d56fbaaedb1d94f5fd9e15",
+      "status": " M records/rust-ecs-parallel.md\n M records/rust-parallel-handoff.md\n M records/rust-system-parallel-status.md\n?? experiments/2026-10-rust-between-system-parallel/\n"
+    },
+    "frozen_rust": {
+      "path": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+      "head": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+      "status": "",
+      "extension_sha256": "324454a00ab8bd3559c9229e6c6c9644242d65c488585eba7d29a63b39d29405"
+    },
+    "frozen_python": {
+      "path": "/Users/liyang/.codex/worktrees/python-capacity-baseline/star-main",
+      "head": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+      "status": ""
+    }
+  },
+  "all_guards_passed": true,
+  "snapshot_phase": "before final archive commit"
+}

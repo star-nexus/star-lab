@@ -1,0 +1,87 @@
+{
+  "all_passed": true,
+  "measurement_commit": "dede5ca0ca3472abdb1d24589878e6a72d812f88",
+  "validated_commit": "a7508bce4b900ccf8465e761291adb7e7e2ce98d",
+  "documentation_commit": "72bf05a2f6ec6d1d15ffad7914226c0c3e16b9cf",
+  "native_code_identical_after_measurement": true,
+  "python_tests": 2330,
+  "new_python_tests": 15,
+  "rust_tests": 5,
+  "new_rust_tests": 1,
+  "contracts_variants": 7,
+  "contracts_cases_per_variant": 36,
+  "contracts_steps_per_variant": 174,
+  "replay_reports": 28,
+  "diagnostic_twin_reports": 4,
+  "fmt": true,
+  "clippy": true,
+  "release": true,
+  "validated_build_extension_sha256": "9c7eebe03257d1d6941e67b5e31a947e4c6cedf32db6979e624629fd5cf5dd91",
+  "commands": [
+    {
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "command": "HEADLESS=1 SDL_VIDEODRIVER=dummy .venv/bin/python -m pytest -q --capture=sys"
+    },
+    {
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "command": "HEADLESS=1 SDL_VIDEODRIVER=dummy .venv/bin/python -m pytest -q rotk_env/tests/test_native_between_systems.py"
+    },
+    {
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "command": "PATH=/Users/liyang/.cargo/bin:$PATH cargo test --locked -p star-core -p star-rotk"
+    },
+    {
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "command": "PATH=/Users/liyang/.cargo/bin:$PATH cargo fmt --all --check"
+    },
+    {
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "command": "PATH=/Users/liyang/.cargo/bin:$PATH cargo clippy --locked --workspace --all-targets -- -D warnings"
+    },
+    {
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "command": "PATH=/Users/liyang/.cargo/bin:$PATH uvx --from maturin==1.15.0 maturin build --release --locked --manifest-path native/python/Cargo.toml --interpreter .venv/bin/python --out /Users/liyang/Developer/star-lab/runs/ecs-e4/validation-build"
+    },
+    {
+      "cwd": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "command": "uv pip install --python .venv/bin/python --reinstall /Users/liyang/Developer/star-lab/runs/ecs-e4/wheels/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl"
+    }
+  ],
+  "logs": [
+    {
+      "member": "validation/build.log",
+      "sha256": "8d1869a30e31713f41972124458983c975ebd02028ae7ff82217e4b4688a6ceb",
+      "bytes": 516
+    },
+    {
+      "member": "validation/cargo-test.log",
+      "sha256": "6e4b5d56926c91ddd63444c3ef36809a125a83b1888428451dc3191c8871f7cd",
+      "bytes": 1142
+    },
+    {
+      "member": "validation/clippy.log",
+      "sha256": "22e0df986057b9ba5be07526ac5fb348862a3dedef42108383cc3e088acbb889",
+      "bytes": 72
+    },
+    {
+      "member": "validation/fmt.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "member": "validation/pytest.log",
+      "sha256": "bd3baf49af6e04cfac0a9cb9b45696a2c8ad622338984a298abd7b05b19e43b9",
+      "bytes": 2662
+    },
+    {
+      "member": "validation/targeted.log",
+      "sha256": "592c13a42c063e3a388a8da0ad0638fb24d465511749cd2501a7f6fba548067b",
+      "bytes": 99
+    }
+  ],
+  "scope": "validated conservative screen; instrumentation and paired diagnostic order limitations; no actual Vision parallel, no new live capacity",
+  "canonical_reanalysis": true,
+  "bundle_verify": true,
+  "input_and_wheel_restore": true,
+  "new_native_code_after_measurement": false
+}

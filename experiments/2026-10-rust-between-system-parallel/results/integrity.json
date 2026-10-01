@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "c15f4476ce9a7582fd0a33313cf5f8a21670c709d033f75746df2d1011131f4a",
+  "verified_members": 81,
+  "tool_versions": {
+    "tools/analyze_between_systems.py": "7fd55b1422d9396f70b7cdb5ab6a059e288e5e2b3251efa18f23149d8d0107c9",
+    "tools/package_between_systems.py": "ae620857d526f163996706d6abd2743653a2ea332b2dae57a6aadfcd3a64674a",
+    "tools/prepare_between_systems.py": "b27531798ec37150f13547dc07a8b60d060c46f040188c91d93dab9e9782327a",
+    "tools/prepare_system_candidates.py": "8a8ce0308a22273f1169e75bed9ea67518e1c9caf8defe3a1147d7fd6f8f0c17",
+    "tools/profile_between_systems-stage1.py": "1d247b24dcbc55ce5831db4305b500331559f9b4dd39a1677e2b9f345e99475d",
+    "tools/profile_between_systems.py": "1e3c76491ca7ebd0840160bd5f7bfa380e97c1207b78476e045109da5067b354",
+    "tools/statistics_contract_matrix.py": "19a81d1d2485ca40cdaa86a7a9da1e87b2518e34131c87c301867ecce09517f1"
+  },
+  "all_member_checksums_passed": true,
+  "source_bundle_verified": true,
+  "canonical_analysis_verified": true,
+  "restored_extension_sha256": "9c7eebe03257d1d6941e67b5e31a947e4c6cedf32db6979e624629fd5cf5dd91",
+  "restore_log": "{\"work_dir\": \"/Users/liyang/Developer/star-lab/runs/ecs-e4-reproduction/e3\", \"candidate_package\": \"/Users/liyang/Developer/star-lab/runs/ecs-e4-reproduction/e3/candidate\", \"baseline_package\": \"/Users/liyang/Developer/star-lab/runs/ecs-e4-reproduction/e3/baseline\", \"inputs\": \"/Users/liyang/Developer/star-lab/runs/ecs-e4-reproduction/e3/inputs\"}\n{\"work\": \"/Users/liyang/Developer/star-lab/runs/ecs-e4-reproduction\", \"wheel\": \"/Users/liyang/Developer/star-lab/runs/ecs-e4-reproduction/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl\", \"input_directory\": \"/Users/liyang/Developer/star-lab/runs/ecs-e4-reproduction/e3/inputs\", \"installed\": false}\n",
+  "contracts_hash": "9db82664ad15814eec53a603f0d5148ad4d431ef66a4f36871f21de38847078c"
+}

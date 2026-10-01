@@ -1,0 +1,195 @@
+{
+  "experiment": {
+    "id": "2026-10-rust-between-system-parallel",
+    "title": "E4 conservative between-System dispatch screen",
+    "started": "2026-10-01",
+    "completed": "2026-10-02",
+    "status": "validated",
+    "actual_parallel_systems_implemented": false,
+    "outcome": "conservative_negative_screen"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "ad02b75f2b83f97fe0bef4c1c9eee5742b1610fb",
+    "measurement_commit": "dede5ca0ca3472abdb1d24589878e6a72d812f88",
+    "fix_commit": null,
+    "validated_commit": "a7508bce4b900ccf8465e761291adb7e7e2ce98d",
+    "documentation_commit": "72bf05a2f6ec6d1d15ffad7914226c0c3e16b9cf",
+    "validated_tag": "rust-parallel-e4-dispatch-screen-2026-10-02",
+    "branch_at_time": "codex/rust-ecs-parallel",
+    "api": 18,
+    "schema": 5,
+    "oracle": "python-r0c-3cc4ffe",
+    "default_threads": 1,
+    "native_code_identical_measurement_to_documentation": true,
+    "source_bundle": {
+      "file": "artifacts/between-systems-source.bundle",
+      "sha256": "be239d1506083eb6878c90cafb38aaa3efa7c432a659ebd4856c375c93bef85d",
+      "requires": "ad02b75f2b83f97fe0bef4c1c9eee5742b1610fb"
+    }
+  },
+  "hardware": {
+    "machine": "Mac mini Mac16,10",
+    "cpu": "Apple M4",
+    "logical_cores": 10,
+    "memory_bytes": 17179869184
+  },
+  "software": {
+    "os": "macOS26.5.2 /25F84",
+    "python": "3.13.12",
+    "rust": "1.98.1",
+    "cargo": "1.98.1",
+    "maturin": "1.15.0",
+    "bevy": "0.19.1",
+    "pyo3": "0.29.2",
+    "cargo_lock": "e86cb2bee26f1d95c1cde0abec61bdea575a73ae7218db60b7f06be735f15188",
+    "uv_lock": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+    "numpy": "2.3.2"
+  },
+  "scenario": {
+    "name": "R4e canonical p3_runtime recorded live input",
+    "seed": 42,
+    "map_size": [
+      120,
+      120
+    ],
+    "resident_units": 5000,
+    "agents": 1000,
+    "fog": true,
+    "display": "recorded window state replayed headless; no rendering/live host",
+    "camera": "unchanged serialized state",
+    "paused_agents": 5000,
+    "think": "post-action;30\u00b15s truncated15\u201345; no polling while thinking",
+    "dt": "recorded fixed30Hz",
+    "includes_recorded_warmup": true,
+    "request_count": 40994,
+    "step_count": 9880,
+    "presentation_count": 9880,
+    "native_threads": [
+      1,
+      2,
+      4
+    ],
+    "default_native_threads": 1,
+    "moving_mean": 122.4673076923077,
+    "moving_max": 186
+  },
+  "measurement": {
+    "modes_implemented": [
+      "baseline",
+      "empty_fork"
+    ],
+    "modes_not_entered": [
+      "split_serial",
+      "parallel"
+    ],
+    "ordinary_step_unchanged": true,
+    "performance": "same private FFI;diagnostics off;3 rounds ABBA per2/4;9880ticks per complete replay;all tails retained",
+    "diagnostics": "2 original twins plus2 contemporary baseline-profile/empty-fork-profile twins;not causal unprofiled net benefit",
+    "region_max_execution_participants": 2,
+    "no_cpu_affinity": true,
+    "uncontrolled_background_apps": true,
+    "guards": [
+      "input/source/extension hashes",
+      "40994 requests,9880steps,9880presentation per report",
+      "recorded full wire/event/final hashes",
+      "four diagnostic twin complete objects equal",
+      "7contractvariants complete state/delta/error/reset bytes equal canonical",
+      "full regressions",
+      "frozen/original isolation",
+      "ZIP member hashes and canonical reanalysis"
+    ],
+    "bootstrap": {
+      "block_ticks": 100,
+      "draws": 10000,
+      "seed": 42,
+      "interval": 0.95,
+      "final80tick_tail_retained": true
+    },
+    "limitations": [
+      "diagnostic bookkeeping and fixed baseline-first order",
+      "independent full ABBA repeats have contradictory timings",
+      "E3 budget not current causal break-even",
+      "no measured Vision preparation/publish or real parallel benefit"
+    ]
+  },
+  "binary": {
+    "extension_sha256": "9c7eebe03257d1d6941e67b5e31a947e4c6cedf32db6979e624629fd5cf5dd91",
+    "wheel_member": "wheels/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+    "wheel_sha256": "4ffb0fbcec3e2502b415ceccb5a1a042ab9e34e7c779b2388ef729d38da42382"
+  },
+  "canonical_inputs": {
+    "trace": {
+      "archive": "../2026-09-rust-1000-agent-validation/artifacts/r4e-1000-agents-raw.zip",
+      "archive_sha256": "ad96be639d7e17e931d7984f87e4d5d2049653e769dc1a43b7d0d4d58f1d00c5",
+      "member": "results/rust-300-r3.trace.json.gz",
+      "sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77"
+    },
+    "initial": {
+      "archive": "../2026-09-rust-1000-agent-validation/artifacts/r4e-1000-agents-raw.zip",
+      "archive_sha256": "ad96be639d7e17e931d7984f87e4d5d2049653e769dc1a43b7d0d4d58f1d00c5",
+      "member": "results/rust-300-r3.initial.json.gz",
+      "sha256": "8b594c465a63728222c57f257111d500c1c378e226b3496c63c0b11870629bc0"
+    },
+    "contracts": {
+      "archive": "../2026-09-rust-statistics-compute/artifacts/statistics-compute-raw.zip",
+      "archive_sha256": "62c5e73a2356334fc0fa85e3b5f4054a46f5f759ad7cb6c9fcef41dcd7b190ba",
+      "member": "inputs/contracts.json.gz",
+      "sha256": "11b33c95ad2b22e1842e24e0d0ce6b8c24e25bf19f05ae0761b6ca7ca2ffcf75"
+    }
+  },
+  "contracts_raw": {
+    "archive": "../2026-09-rust-statistics-compute/artifacts/statistics-compute-raw.zip",
+    "archive_sha256": "62c5e73a2356334fc0fa85e3b5f4054a46f5f759ad7cb6c9fcef41dcd7b190ba",
+    "member": "results/contracts-canonical.raw.json.gz",
+    "sha256": "9db82664ad15814eec53a603f0d5148ad4d431ef66a4f36871f21de38847078c",
+    "reason": "all seven newly executed independent outputs byte-identical; retain one canonical raw"
+  },
+  "e3_reference": {
+    "archive": "../2026-10-rust-internal-system-candidates/artifacts/system-candidates-raw.zip",
+    "sha256": "c3e347b145fcc5edfda304bb35030d3d3d9320861f116a5507d2b92cbd9b6abd",
+    "frozen_extension_sha256": "e0f46cfbffd8542c08cd2b2e6b4a26c000da05ecb9bffd3466d77fa859a9834d",
+    "kernel_source_sha": "6d4018cc0c607a51a3783428867ba9259bb43f43"
+  },
+  "tooling": {
+    "repository": "star-nexus/star-lab",
+    "original_runner_commit": "28d5bf149da369a82774319000cdf5fd08931875",
+    "paired_runner_commit": "ed4a9ee62d4bfc20f9b837e02aca98b5e4e6faee",
+    "final_archive_checkpoint": "43ed23a5afb41751705976cdd336247aa45effee",
+    "exact_versions_preserved_in_raw": true,
+    "files": {
+      "profile_between_systems.py": "1e3c76491ca7ebd0840160bd5f7bfa380e97c1207b78476e045109da5067b354",
+      "analyze_between_systems.py": "7fd55b1422d9396f70b7cdb5ab6a059e288e5e2b3251efa18f23149d8d0107c9",
+      "statistics_contract_matrix.py": "19a81d1d2485ca40cdaa86a7a9da1e87b2518e34131c87c301867ecce09517f1",
+      "package_between_systems.py": "ae620857d526f163996706d6abd2743653a2ea332b2dae57a6aadfcd3a64674a",
+      "prepare_between_systems.py": "b27531798ec37150f13547dc07a8b60d060c46f040188c91d93dab9e9782327a",
+      "prepare_system_candidates.py": "8a8ce0308a22273f1169e75bed9ea67518e1c9caf8defe3a1147d7fd6f8f0c17"
+    },
+    "archive_tool_versions": {
+      "tools/analyze_between_systems.py": "7fd55b1422d9396f70b7cdb5ab6a059e288e5e2b3251efa18f23149d8d0107c9",
+      "tools/package_between_systems.py": "ae620857d526f163996706d6abd2743653a2ea332b2dae57a6aadfcd3a64674a",
+      "tools/prepare_between_systems.py": "b27531798ec37150f13547dc07a8b60d060c46f040188c91d93dab9e9782327a",
+      "tools/prepare_system_candidates.py": "8a8ce0308a22273f1169e75bed9ea67518e1c9caf8defe3a1147d7fd6f8f0c17",
+      "tools/profile_between_systems-stage1.py": "1d247b24dcbc55ce5831db4305b500331559f9b4dd39a1677e2b9f345e99475d",
+      "tools/profile_between_systems.py": "1e3c76491ca7ebd0840160bd5f7bfa380e97c1207b78476e045109da5067b354",
+      "tools/statistics_contract_matrix.py": "19a81d1d2485ca40cdaa86a7a9da1e87b2518e34131c87c301867ecce09517f1"
+    }
+  },
+  "commands": "results/commands.json",
+  "contracts_commands": "results/contract-commands.json",
+  "validation": "results/validation.json",
+  "analysis": "results/analysis.json",
+  "isolation": "results/isolation.json",
+  "raw": {
+    "file": "artifacts/between-systems-raw.zip",
+    "sha256": "c15f4476ce9a7582fd0a33313cf5f8a21670c709d033f75746df2d1011131f4a",
+    "bytes": 3953282,
+    "members": 81
+  },
+  "decision": "stop Vision split by conservative contemporary diagnostic budget screen;not a proof of unprofiled slowdown",
+  "confirmed_new_gap": false,
+  "frontier_update": false,
+  "live_entered": false,
+  "paused_agents": 5000,
+  "integrity": "results/integrity.json"
+}

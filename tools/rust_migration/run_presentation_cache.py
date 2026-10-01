@@ -23,7 +23,7 @@ def main():
     common=[lab/'tools/rust_migration/presentation_cache_probe.py','--source',a.source,'--source-sha',a.source_sha,'--trace',a.inputs/'rust-300-r3.trace.json.gz']
     for t in [1,4]:
         name=f'correctness-t{t}';out=root/(name+'.json')
-        run(name,common+['--output',out,'--task','correctness','--script','exercise','--threads',t],out)
+        run(name,common+['--output',out,'--task','correctness','--script','exercise','--overscan-clock','items','--threads',t],out)
         assert json.loads(out.read_text())['all_passed']
     for mode in ['baseline','reuse_constructed','reuse_typed']:
         for selected in [False,True]:

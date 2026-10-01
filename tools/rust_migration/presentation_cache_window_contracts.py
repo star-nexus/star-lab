@@ -21,8 +21,11 @@ def main():
     os.chdir(src);sys.path.insert(0,str(src));os.environ.update(HEADLESS='0',SDL_VIDEODRIVER='cocoa',PYGAME_HIDE_SUPPORT_PROMPT='1')
     import pygame
     from rotk_env.runtime.world_presentation import WorldPresentation
+    from rotk_env.systems.window_map_render_system import WindowMapRenderSystem
     import r3_window_presentation_probe as legacy
     ordinary=WorldPresentation.apply
+    old_budget=WindowMapRenderSystem.OVERSCAN_BUILD_BUDGET_MS
+    WindowMapRenderSystem.OVERSCAN_BUILD_BUDGET_MS=float('inf')
     if a.mode!='baseline':WorldPresentation.apply=lambda self,d:self._apply_research(d,mode=a.mode)
     old_time=time.time;time.time=lambda:1720000000.
     original_date=datetime.datetime
@@ -38,9 +41,10 @@ def main():
     try:legacy.main()
     finally:
         WorldPresentation.apply=ordinary;datetime.datetime=original_date;time.time=old_time;pygame.display.flip=flip
+        WindowMapRenderSystem.OVERSCAN_BUILD_BUDGET_MS=old_budget
     assert len(hashes)==480
     data=gzip.compress(json.dumps(hashes,separators=(',',':')).encode(),mtime=0);(out/'pixels.json.gz').write_bytes(data)
-    result=dict(mode=a.mode,selection=a.selection,frames=len(hashes),all_passed=True,driver='cocoa',
+    result=dict(mode=a.mode,selection=a.selection,frames=len(hashes),all_passed=True,driver='cocoa',overscan_clock='items',
         pixel_sha256=hashlib.sha256(data).hexdigest(),pixel_stream_sha256=hashlib.sha256(''.join(hashes).encode()).hexdigest(),
         legacy_tool_sha256=hashlib.sha256(Path(legacy.__file__).read_bytes()).hexdigest(),tool_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),capacity_claim=False)
     (out/'comparison.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result))

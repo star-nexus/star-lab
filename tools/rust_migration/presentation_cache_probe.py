@@ -92,6 +92,7 @@ def main():
     p.add_argument('--task',choices=['diagnose','correctness','paired','single'],required=True)
     p.add_argument('--candidate',choices=MODES,default='reuse_typed');p.add_argument('--threads',type=int,choices=[1,4],default=1)
     p.add_argument('--driver',choices=['dummy','cocoa'],default='dummy');p.add_argument('--script',choices=['static','exercise'],default='static')
+    p.add_argument('--overscan-clock',choices=['wall','items'],default='wall',help='Pixel contract only: fixed item quota, with the real performance clock unchanged')
     p.add_argument('--display-clock',choices=['fixed','wall'],default='fixed',help='Fixed display-only wall time is separate from real perf clocks')
     p.add_argument('--same-mode-control',action='store_true',help='Development baseline/baseline pixel control')
     p.add_argument('--limit',type=int,help='Development smoke only, never accepted as formal evidence')
@@ -147,6 +148,11 @@ def main():
             session.controls=LocalControls(session.runtime,session.presentation,initial,on_error=session._fail)
             session.controls.refresh()
             attach_battlefield_renderers(session.presentation)
+            if a.overscan_clock=='items':
+                assert a.task=='correctness', 'Fixed build quota cannot be used for performance'
+                for system in session.world.systems:
+                    if hasattr(system,'OVERSCAN_BUILD_BUDGET_MS'):
+                        system.OVERSCAN_BUILD_BUDGET_MS=float('inf')
             for system in (InputHandlingSystem(session.controls),UnitActionButtonSystem(session.controls),UIButtonSystem(session.controls),PanelRenderSystem(),UIRenderSystem(),MiniMapSystem()):session._mount(system)
             sessions.append(session)
         template.reset();template=None
@@ -271,7 +277,7 @@ def main():
         result=dict(source_sha=a.source_sha,source_dirty=git(src,'status','--porcelain','--untracked-files=no'),
             tool_sha256=sha(__file__),tooling_commit=git(Path(__file__).resolve().parents[2],'rev-parse','HEAD'),
             extension_sha256=EXT_SHA,trace_sha256=TRACE_SHA,initial_sha256=sha(initial_path),original_source=trace['source'],
-            argv=sys.argv,task=a.task,modes=modes,threads=a.threads,display_script=a.script,display_clock=a.display_clock,driver=pygame.display.get_driver(),
+            argv=sys.argv,task=a.task,modes=modes,threads=a.threads,display_script=a.script,display_clock=a.display_clock,overscan_clock=a.overscan_clock,driver=pygame.display.get_driver(),
             surface=list(RMS.screen.get_size()),fixture_sha256=fixture_sha,counts=dict(counts),stream_sha256=stream.hexdigest(),
             final_state_sha256=digest(finals[0]),checks=dict(checks),all_passed=True,formal=not bool(a.limit),
             diagnostic=a.task=='diagnose',elapsed_seconds=time.perf_counter()-began,memory=memory,raw=raw,

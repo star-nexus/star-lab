@@ -91,6 +91,7 @@ def main():
     p.add_argument('--extension-sha256')
     p.add_argument('--native-package', type=Path)
     p.add_argument('--threads', type=int, choices=[1,2,4], default=1)
+    p.add_argument('--between-mode', choices=['baseline', 'empty_fork'])
     p.add_argument('--min-rows', type=int, help='force experimental compute policy through private advancing probe')
     a = p.parse_args()
     source = a.source.resolve()
@@ -113,7 +114,9 @@ def main():
             error = None
             try:
                 wall = 1720000000. + index
-                if a.min_rows is None:
+                if a.between_mode is not None:
+                    runtime._between_systems_step_json(dt, wall, a.between_mode, False)
+                elif a.min_rows is None:
                     runtime.step(dt, wall)
                 else:
                     runtime._statistics_step_json(dt, wall, a.min_rows, False)
@@ -148,7 +151,7 @@ def main():
     raw.write_bytes(gzip.compress(json.dumps(reports, sort_keys=True, separators=(',', ':')).encode(), mtime=0))
     result = dict(source_sha=subprocess.check_output(['git','rev-parse','HEAD'],cwd=source,text=True).strip(),
                   extension_sha256=a.extension_sha256, tool_sha256=sha(Path(__file__).read_bytes()),
-                  input_sha256=sha(a.input.read_bytes()), threads=a.threads, min_rows=a.min_rows,
+                  input_sha256=sha(a.input.read_bytes()), threads=a.threads, min_rows=a.min_rows, between_mode=a.between_mode,
                   cases=len(cases), steps=sum(len(c['steps']) for c in cases), all_passed=True,
                   raw=dict(file=raw.name, sha256=sha(raw.read_bytes()), bytes=raw.stat().st_size),
                   scope='synthetic full exports, one-shot deltas, errors and reset/close; not capacity')

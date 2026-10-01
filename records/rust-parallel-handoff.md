@@ -1,5 +1,22 @@
 # Rust 并行工作：新 Session 交接入口
 
+## E5 活动研究：Movement ∥ Visuals（2026-10-02，尚无收益决策）
+
+进度：`依赖/窄接口 █ | 串行拆分/E4契约 █ | 真并行/回归 █ | 完整配对 ▒ | 决策/归档 ░`。
+恢复先读 [E5研究入口](../experiments/2026-10-rust-movement-visuals-parallel/README.md)，
+再读活动源码 `docs/native-movement-visuals-parallel.md`，E4/E3/E2历史保留。
+活动工作树不变；测量源码94913a4f836a3c106e08a1334cb81971cfd728c3，
+扩展838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544。
+四模式是新的 `_movement_visuals_step_json`，不是E4未实施Vision模式。
+普通step保持旧序，E2门槛/API18/schema5/默认1不变。
+
+2342Python/6Rust/fmt/Clippy/release通过；13独立E4/四模式合同输出字节一致，
+各13场景/377step，逐步state/error/delta及reset一致。完整split轨迹40994request/
+9880step/展示hash与E3/E4 canonical相同。正在做native2/4三轮主对照及split对照，
+后续单独四模式诊断及0/4/16敏感性；所有慢样本保留。没有净收益、live或容量结论，
+既有GAP不关闭，5000Agents暂缓。暂存证据在ignored `runs/ecs-e5`，尚非正式归档；
+已提交可复现工具入口 `tools/rust_migration/run_movement_visuals.py`。
+
 ## E4 System 之间并行研究完成：派发筛选负结果（2026-10-02）
 
 进度：`边界/理想预算 █ | scoped负对照 █ | 完整ABBA █ | 等价/决策 █ | canonical归档/复算 █`。

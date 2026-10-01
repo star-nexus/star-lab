@@ -1,0 +1,29 @@
+"""E5 deterministic Raw + Compact archive; never changes scientific gates."""
+import argparse,hashlib,json,zipfile
+from pathlib import Path
+p=argparse.ArgumentParser();p.add_argument('--experiment',type=Path,required=True);p.add_argument('--run',type=Path,required=True);a=p.parse_args()
+exp=a.experiment.resolve();run=a.run.resolve();art=exp/'artifacts';art.mkdir(parents=True,exist_ok=True)
+def checksum(data):return hashlib.sha256(data).hexdigest()
+def archive(path,members):
+    lines=[f'{checksum(data)}  {name}' for name,data in sorted(members.items())]
+    members=dict(members,SHA256SUMS=('\n'.join(lines)+'\n').encode())
+    with zipfile.ZipFile(path,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
+        for name,data in sorted(members.items()):
+            info=zipfile.ZipInfo(name,(2026,10,2,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;info.external_attr=0o644<<16;z.writestr(info,data)
+    return dict(file=str(path.relative_to(exp)),bytes=path.stat().st_size,sha256=checksum(path.read_bytes()),members=len(members)-1)
+raw={}
+for folder in ['replays','contracts','inputs','validation','wheels']:
+    for path in sorted((run/folder).glob('*')):
+        if not path.is_file() or (folder=='replays' and path.suffix=='.log'):continue
+        raw[f'{folder}/{path.name}']=path.read_bytes()
+for path in sorted(run.glob('*.json')):raw[path.name]=path.read_bytes()
+for name in ['profile_movement_visuals.py','movement_visuals_contracts.py','analyze_movement_visuals.py','run_movement_visuals.py','package_movement_visuals.py','prepare_movement_visuals.py']:
+    path=Path(__file__).with_name(name)
+    if path.exists():raw[f'tools/{name}']=path.read_bytes()
+original=run/'original-launcher.py'
+if original.exists():raw['tools/original-launcher.py']=original.read_bytes()
+raw_info=archive(art/'movement-visuals-raw.zip',raw)
+compact={f'results/{p.name}':p.read_bytes() for p in sorted((exp/'results').glob('*')) if p.is_file() and p.name!='artifact-index.json'}
+compact['raw-index.json']=(json.dumps(raw_info,indent=2)+'\n').encode()
+compact_info=archive(art/'movement-visuals-compact.zip',compact)
+index=dict(raw=raw_info,compact=compact_info);(exp/'results/artifact-index.json').write_text(json.dumps(index,indent=2)+'\n');print(json.dumps(index))

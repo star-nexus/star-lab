@@ -29,7 +29,7 @@ for name in names:
             member=str(Path(name).parent/m[key]['file'])
             data=read(member);assert hashlib.sha256(data).hexdigest()==m[key]['sha256']
             rows=json.loads(gzip.decompress(data));assert len(rows)==(4 if key=='paired_raw' else 9880)
-    identities.append(dict(run=name,metadata_sha256=hashlib.sha256(read(name)).hexdigest(),threads=m['threads'],mode=m['probe_mode'],threshold=m['min_damage_rows'],paired=m['paired'],all_passed=True))
+    identities.append(dict(run=Path(name).name,metadata_sha256=hashlib.sha256(read(name)).hexdigest(),threads=m['threads'],mode=m['probe_mode'],threshold=m['min_damage_rows'],paired=m['paired'],all_passed=True))
     if not m.get('paired'):continue
     v=np.asarray(json.loads(gzip.decompress(read(str(Path(name).parent/m['paired_raw']['file'])))),dtype=float);assert v.shape==(4,9880)
     baseline=(v[0]+v[3])/2;candidate=(v[1]+v[2])/2;difference=baseline-candidate

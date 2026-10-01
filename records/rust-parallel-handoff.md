@@ -13,7 +13,7 @@
 2342Python/6Rust/fmt/Clippy/release通过；13独立E4/四模式合同输出字节一致，
 各13场景/377step，逐步state/error/delta及reset一致。完整split轨迹40994request/
 9880step/展示hash与E3/E4 canonical相同。正在做native2/4三轮主对照及split对照，
-后续单独四模式诊断及0/4/16敏感性；所有慢样本保留。没有净收益、live或容量结论，
+native2/4主门槛均未通过；native2三轮mean改善0.593/0.688/−0.023%，native4 −0.747/−0.273/0.742%，各只一轮完整通过。后续单独四模式诊断及0/4/16敏感性；所有慢样本保留。无稳定净收益、live或容量结论，
 既有GAP不关闭，5000Agents暂缓。暂存证据在ignored `runs/ecs-e5`，尚非正式归档；
 已提交可复现工具入口 `tools/rust_migration/run_movement_visuals.py`。
 

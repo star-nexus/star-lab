@@ -1,6 +1,6 @@
 # E5：Movement 与 Visuals 的 System 之间并行
 
-状态：研究进行中；四模式与独立 E4 正确性已通过，无默认接入或容量结论。
+状态：主收益研究已完成，native2/4均未通过稳定门槛；正在补齐诊断、敏感性及正式归档。无默认接入或容量结论。
 
 目标为 5000 Units＋1000 Agents，5000 Agents 暂缓。E4 保守负筛选只适用于
 Vision∥Recovery/Lifecycle，不能否定本轮另一种实际重叠。

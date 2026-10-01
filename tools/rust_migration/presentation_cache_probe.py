@@ -92,6 +92,8 @@ def main():
     p.add_argument('--task',choices=['diagnose','correctness','paired','single'],required=True)
     p.add_argument('--candidate',choices=MODES,default='reuse_typed');p.add_argument('--threads',type=int,choices=[1,4],default=1)
     p.add_argument('--driver',choices=['dummy','cocoa'],default='dummy');p.add_argument('--script',choices=['static','exercise'],default='static')
+    p.add_argument('--display-clock',choices=['fixed','wall'],default='fixed',help='Fixed display-only wall time is separate from real perf clocks')
+    p.add_argument('--same-mode-control',action='store_true',help='Development baseline/baseline pixel control')
     p.add_argument('--limit',type=int,help='Development smoke only, never accepted as formal evidence')
     a=p.parse_args();src=a.source.resolve();out=a.output.resolve();out.parent.mkdir(parents=True,exist_ok=True)
     assert not out.exists(),out
@@ -126,12 +128,14 @@ def main():
     engine=GameEngine(title='STAR E6 presentation research',width=2480,height=1239,fps=30)
     template=None;sessions=[];diagnosis=None
     if a.task=='paired':modes=['baseline',a.candidate,a.candidate,'baseline']
-    elif a.task=='correctness':modes=list(MODES)
+    elif a.task=='correctness':modes=['baseline']*3 if a.same_mode_control else list(MODES)
     else:modes=[a.candidate if a.task=='single' else 'baseline']
     samples=[[] for _ in modes];pending=[dict(request_ns=0,step_ns=0) for _ in modes]
     counts=Counter();stream=hashlib.sha256();checks=Counter();ticks=0;diagnostic_rows=[];memory=[]
     baseline_display=None;mutable_ids=set();singletons_dirty=set();reference_rebuilds=Counter()
-    began=time.perf_counter()
+    began=time.perf_counter();original_wall=time.time
+    if a.display_clock=='fixed':time.time=lambda:1720000000.+ticks/30
+    baseline_rgb=None
     try:
         template,prepared=prepare_display_world(display='window',mode='real_time',scenario=scenario,seed=42,
             players={Faction.WEI:PlayerType.HUMAN,Faction.SHU:PlayerType.AI,Faction.WU:PlayerType.AI})
@@ -231,10 +235,15 @@ def main():
                     if a.task=='correctness':
                         rgb=hashlib.sha256(pygame.image.tobytes(RMS.screen,'RGB')).hexdigest()
                         if wi==0:
+                            baseline_rgb=pygame.image.tobytes(RMS.screen,'RGB')
                             baseline_display=rgb;pixel_stream.update(bytes.fromhex(rgb));pixel_rows.append(rgb)
                         else:
-                            assert rgb==baseline_display,('pixels',ticks,mode)
                             compare_display(sessions[0],session,delta)
+                            if rgb!=baseline_display:
+                                pygame.image.save(pygame.image.frombytes(baseline_rgb,RMS.screen.get_size(),'RGB'),str(out.with_suffix('.baseline-failure.png')))
+                                pygame.image.save(RMS.screen,str(out.with_suffix('.candidate-failure.png')))
+                                out.with_suffix('.failure.json').write_text(json.dumps(dict(tick=ticks,mode=mode,display_clock=a.display_clock,fields_equal=True,baseline=baseline_display,candidate=rgb),indent=2)+'\n')
+                                raise AssertionError(('pixels',ticks,mode))
                         checks['pixels']+=1;checks['projection']+=1
                     if a.task=='diagnose':
                         stats=session.world.get_cache_stats()
@@ -262,7 +271,7 @@ def main():
         result=dict(source_sha=a.source_sha,source_dirty=git(src,'status','--porcelain','--untracked-files=no'),
             tool_sha256=sha(__file__),tooling_commit=git(Path(__file__).resolve().parents[2],'rev-parse','HEAD'),
             extension_sha256=EXT_SHA,trace_sha256=TRACE_SHA,initial_sha256=sha(initial_path),original_source=trace['source'],
-            argv=sys.argv,task=a.task,modes=modes,threads=a.threads,display_script=a.script,driver=pygame.display.get_driver(),
+            argv=sys.argv,task=a.task,modes=modes,threads=a.threads,display_script=a.script,display_clock=a.display_clock,driver=pygame.display.get_driver(),
             surface=list(RMS.screen.get_size()),fixture_sha256=fixture_sha,counts=dict(counts),stream_sha256=stream.hexdigest(),
             final_state_sha256=digest(finals[0]),checks=dict(checks),all_passed=True,formal=not bool(a.limit),
             diagnostic=a.task=='diagnose',elapsed_seconds=time.perf_counter()-began,memory=memory,raw=raw,
@@ -275,6 +284,7 @@ def main():
         if diag is not None:result['diagnostic_raw']=save(out.with_suffix('.diagnostic.json.gz'),diagnostic_rows)
         out.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(dict(output=str(out),all_passed=True,formal=result['formal'])),flush=True)
     finally:
+        time.time=original_wall
         if diagnosis:diagnosis.finish()
         gc.enable()
         for session in sessions:session.close()

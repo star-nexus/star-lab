@@ -26,6 +26,8 @@ def main():
     p.add_argument('--legacy-python-cli', action='store_true', help='Use the original production Python CLI before backend selection existed')
     p.add_argument('--record-native-inputs', action='store_true')
     p.add_argument('--native-wire', action='store_true', help='Forward the native faction JSON; retain full client decoding')
+    p.add_argument('--presentation-research-mode', choices=['baseline','reuse_constructed','reuse_typed'], default='baseline', help='E6 Lab-only consumer selection; ordinary defaults unchanged')
+    p.add_argument('--presentation-research-profile', action='store_true', help='E6 diagnostic only; never capacity acceptance')
     p.add_argument('--native-threads', type=int, choices=[1,2,4], default=1)
     p.add_argument('--fps', type=int, default=30)
     p.add_argument('--clock-mode', choices=['wall', 'fixed'], default='wall')
@@ -50,6 +52,8 @@ def main():
     p.add_argument('--gc-policy', choices=['auto', 'realtime_defer'], default='auto')
     p.add_argument('--output', required=True)
     args = p.parse_args()
+    if args.backend != 'rust' and (args.presentation_research_mode != 'baseline' or args.presentation_research_profile):
+        p.error('E6 requires the Rust backend')
     if args.fps <= 0 or args.jitter_seconds < 0:
         p.error('FPS must be positive and jitter nonnegative')
     if args.backend == 'rust' and (args.attribute or args.movement_overlay or args.observation_mode != 'single'):
@@ -108,6 +112,27 @@ def main():
             from star_native import _native, API_VERSION
             holder['extension'] = {'api':API_VERSION, 'sha256':hashlib.sha256(Path(_native.__file__).read_bytes()).hexdigest()}
             session = scene.native_session
+            if args.presentation_research_mode != 'baseline':
+                research_apply = session.presentation._apply_research
+                session.presentation.apply = lambda delta: research_apply(delta, mode=args.presentation_research_mode)
+            if args.presentation_research_profile:
+                from rust_migration.presentation_cache_probe import Diagnosis
+                from contextlib import contextmanager
+                from framework.ecs import profiling as ecs_profiling
+                holder['presentation_diagnosis'] = Diagnosis(session)
+                original_timer = ecs_profiling.profiler.time_system
+                @contextmanager
+                def core_timer(name, *a, **kw):
+                    began = time.perf_counter()
+                    try:
+                        with original_timer(name, *a, **kw) as value:
+                            yield value
+                    finally:
+                        if name in ('screen_fill','input_system','scene_update','render_engine','display_present'):
+                            phases = holder.setdefault('phases',{})
+                            key = 'core_' + name + '_ms'
+                            phases[key] = phases.get(key,0.) + (time.perf_counter()-began)*1000
+                ecs_profiling.profiler.time_system = core_timer
             request_call = lambda owner, verb, params: session.runtime.execute_action(verb, params, agent_id=owner.agent_id)
             if args.native_wire:
                 observation_json_call = lambda owner, params: session.runtime.get_faction_state_json(**params, agent_id=owner.agent_id)
@@ -258,6 +283,8 @@ def main():
         entry.main()
     finally:
         (Path(args.source)/'rotk_env/maps'/f'{scenario}.json').unlink(missing_ok=True)
+        if 'presentation_diagnosis' in holder:
+            holder['presentation_diagnosis_result'] = holder['presentation_diagnosis'].finish()
     if not holder.get('finished'):
         raise RuntimeError('Runtime ended before complete measurement; inspect log')
     agents = holder['agents']
@@ -300,7 +327,7 @@ def main():
         'action_queue_p99':args.no_agents or ac.get('p99',float('inf')) <=100,
         'queue_bounded':args.no_agents or holder['final_agents']['oldest_overdue_ms']<=100,
         'offered_load_met':args.no_agents or completed_observations >= .95*nominal_observations,
-        'duration_formal':args.seconds>=60, 'not_diagnostic':not args.attribute,
+        'duration_formal':args.seconds>=60, 'not_diagnostic':not args.attribute and not args.presentation_research_profile,
         'fixed_clock':args.clock_mode != 'fixed' or all(abs(f['dt']-1/args.fps)<1e-12 for f in frames),
         'board_clock':args.clock_mode != 'fixed' or all(abs(c['board_time']-c['sim_time'])<1e-6 for c in censuses),
         'nonempty_move':args.policy != 'stochastic' or any(a['verb']=='move' and a['accepted'] for r in events for a in r.get('actions',[])),
@@ -323,6 +350,7 @@ def main():
         'native_phases_ms':{k:stats([f[k] for f in admitted]) for k in ('native_step_ms','delta_ms','presentation_apply_ms','inputs_ms','display_systems_ms') if admitted and k in admitted[0]},
         'native_recording':holder.get('native_recording'),'screenshot':holder.get('screenshot'),
         'display_driver':holder.get('display_driver'),'surface_size':holder.get('surface_size'),
+        'presentation_diagnosis':holder.get('presentation_diagnosis_result'),
         'extension':holder.get('extension'),'final_native':holder.get('final_native'),'cpu_seconds':holder.get('cpu_seconds'), 'blocks30':blocks,
         'nominal_observations':nominal_observations, 'completed_observations':completed_observations,
         'nominal_load_fraction':completed_observations/max(1,nominal_observations),

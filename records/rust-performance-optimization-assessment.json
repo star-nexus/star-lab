@@ -1,0 +1,324 @@
+{
+  "status": "planning_assessment_from_existing_evidence",
+  "audited_source_sha": "3b167b151c3bc32e1d54f6015d0f15d2c3dd6a74",
+  "tool_sha256": "0e8c36a2dd68f0a3ea18ffd4790695de52df8cf6571ea4383611d10eb11cb4fb",
+  "source_file_sha256": {
+    "framework/ecs/world.py": "6125ac17abc73ef75697674d5f3426dd946d43a2d1531ed592f7fc6dc8c139a5",
+    "framework/engine/renders.py": "396ad0531059158b35be5179c50af101b42fd8545bfc2b4825891957b08e5678",
+    "rotk_env/runtime/world_presentation.py": "b09c9de13ffa5d6b3a3f454e94d6fd3565e08e82631944380f7dc8be5dbcc0c3",
+    "rotk_env/runtime/session.py": "517af4a2a59fb6d59ac823ded9b90dc69878d6d5abf2be45524adc4d4b44cdf1",
+    "rotk_env/systems/window_unit_render_system.py": "830edc42bdacdd8469f8dd83aa16ddf581ad0a593befba61d554827e8c4d4604",
+    "rotk_env/systems/window_render_systems_base.py": "a11e526b5ac0d0bb23aae021691ba1bbc69c6a2e72af294792f9e0c69f62d057",
+    "rotk_env/systems/optimized_render_systems.py": "4cc604162e8454b5beeafdd9822662e054b0a3c63a2231fb0894077599714942",
+    "rotk_env/systems/fog_surface_presenter.py": "e766c6d1dc95223a57a12d781d3c31181c77a484b0b2cea927ccd70208d3282f",
+    "native/rotk/src/runtime.rs": "452860f53a6a348b5db9ed8e62d6d464a17a34af7c81f55b98dc1b1691ff868d",
+    "native/rotk/src/statistics.rs": "fa98c2dffd7cfc011f2b035d54adef1e55c59e04191518ad5ec12874d4cc3a56",
+    "native/rotk/src/vision.rs": "4f08f7b4163947971dd72f2fdd5e8ecf8740f62ed6e40d14e9e63eb3d765483c",
+    "native/rotk/src/observation.rs": "fde62e57d0ddf7de4c8e44099e100309e8de543b35b1a81e05d4cdc607e8267c",
+    "native/rotk/src/spatial.rs": "da31cde0db113d640675033a27bf7009e1d3395ddaaa48a519a33b4969e99560",
+    "native/core/src/world.rs": "259e5d60922a15e2b94cbaa8c36700e0be0ec1527ce850f2df9dbb273701836e"
+  },
+  "e2_archive_sha256": "62c5e73a2356334fc0fa85e3b5f4054a46f5f759ad7cb6c9fcef41dcd7b190ba",
+  "e3_archive_sha256": "c3e347b145fcc5edfda304bb35030d3d3d9320861f116a5507d2b92cbd9b6abd",
+  "capacity_comparison_sha256": "c1ec1ebb3e6f6da95c30148c4fb3e245674470d38b3c7c3f6881278aefd5d717",
+  "live_window": "E2 native4: 30s warmup + 300s measurement, source 2bc57d5; not E5 live",
+  "notes": [
+    "No new workload executed. Existing raw slow samples retained.",
+    "Per-frame means and per-request latency have different denominators.",
+    "Unattributed update remainder is not proven rendering or GC cost.",
+    "E3 overlap is diagnostic zero-cost upper bound, not implemented speedup.",
+    "No new capacity, Frontier, policy or GAP closure."
+  ],
+  "live": [
+    {
+      "run": "rust4-300-r1",
+      "source_sha": "2bc57d5f2241a578f61d71bb5774e7063a03ec25",
+      "raw_member": "results/rust4-300-r1.raw.json",
+      "raw_sha256": "e1a54bb0d3c257aa986d2bb26addf5ad9bb2aa6b4e62d4be5b92ba01d6d0aa79",
+      "frames": 8999,
+      "frame_mean_ms": 20.86605364023401,
+      "frame_p99_ms": 28.282501036301255,
+      "phase_mean_ms": {
+        "native_step_ms": 0.2595288160897966,
+        "delta_ms": 0.6906935872165655,
+        "presentation_apply_ms": 2.748205192320455,
+        "inputs_ms": 0.09123860340507901,
+        "display_systems_ms": 8.49108106773589
+      },
+      "agent_mean_ms": 3.446651354557538,
+      "unattributed_update_mean_ms": 5.114093624634008,
+      "native_step_fraction_pct": 1.243784860158569,
+      "display_systems_fraction_pct": 40.69327729208628,
+      "presentation_apply_fraction_pct": 13.170699355537717,
+      "observation_service": {
+        "build_ms": {
+          "count": 9938,
+          "min": 1.06095802038908,
+          "avg": 1.7604185094561897,
+          "p50": 1.8722920212894678,
+          "p95": 2.1400409750640392,
+          "p99": 2.276916988193989,
+          "max": 5.3177919471636415
+        },
+        "encode_ms": {
+          "count": 9938,
+          "min": 0.05437491927295923,
+          "avg": 0.07567921609157263,
+          "p50": 0.07529195863753557,
+          "p95": 0.08954200893640518,
+          "p99": 0.09654101449996233,
+          "max": 0.20316708832979202
+        },
+        "decode_ms": {
+          "count": 9938,
+          "min": 0.6767499726265669,
+          "avg": 1.029588837242348,
+          "p50": 1.0202499106526375,
+          "p95": 1.2945419875904918,
+          "p99": 1.3805829221382737,
+          "max": 1.8155419966205955
+        },
+        "service_ms": {
+          "count": 9938,
+          "min": 1.8433750374242663,
+          "avg": 2.8795223717745877,
+          "p50": 2.9080830281600356,
+          "p95": 3.333040978759527,
+          "p99": 3.4745000302791595,
+          "max": 6.3325000228360295
+        },
+        "bytes": {
+          "count": 9938,
+          "min": 166186,
+          "avg": 211461.84876232644,
+          "p50": 213697,
+          "p95": 242965,
+          "p99": 253143,
+          "max": 255580
+        }
+      },
+      "observation_queue": {
+        "count": 9938,
+        "min": 0.006439629942178726,
+        "avg": 16.508258078041607,
+        "p50": 16.45607256796211,
+        "p95": 31.561293988488615,
+        "p99": 40.34889256581664,
+        "max": 66.25355314463377
+      },
+      "action_queue": {
+        "count": 9938,
+        "min": 0.0019170111045241356,
+        "avg": 9.444749346453229,
+        "p50": 2.4211669806391,
+        "p95": 30.42199998162687,
+        "p99": 33.50787493400276,
+        "max": 66.5491659892723
+      }
+    },
+    {
+      "run": "rust4-300-r2",
+      "source_sha": "2bc57d5f2241a578f61d71bb5774e7063a03ec25",
+      "raw_member": "results/rust4-300-r2.raw.json",
+      "raw_sha256": "04575e724c3497655818da0ebbc46b1bb31cae6576642ea2b3f1399365bbc43b",
+      "frames": 8998,
+      "frame_mean_ms": 21.14629895081874,
+      "frame_p99_ms": 28.642917051911354,
+      "phase_mean_ms": {
+        "native_step_ms": 0.26424349206275155,
+        "delta_ms": 0.7010995762475054,
+        "presentation_apply_ms": 2.702237179842439,
+        "inputs_ms": 0.08888156032421574,
+        "display_systems_ms": 8.74779110158398
+      },
+      "agent_mean_ms": 3.4758704536192653,
+      "unattributed_update_mean_ms": 5.142732644170046,
+      "native_step_fraction_pct": 1.2495968806518771,
+      "display_systems_fraction_pct": 41.36795342735512,
+      "presentation_apply_fraction_pct": 12.778771292920807,
+      "observation_service": {
+        "build_ms": {
+          "count": 9940,
+          "min": 1.0632910998538136,
+          "avg": 1.7742332325797618,
+          "p50": 1.8792080227285624,
+          "p95": 2.2072079591453075,
+          "p99": 2.37370899412781,
+          "max": 5.836625001393259
+        },
+        "encode_ms": {
+          "count": 9940,
+          "min": 0.054750009439885616,
+          "avg": 0.0753961828391122,
+          "p50": 0.07491698488593102,
+          "p95": 0.08945900481194258,
+          "p99": 0.09804102592170238,
+          "max": 0.17508293967694044
+        },
+        "decode_ms": {
+          "count": 9940,
+          "min": 0.6644170498475432,
+          "avg": 1.0397743704725035,
+          "p50": 1.0238339891657233,
+          "p95": 1.3094579335302114,
+          "p99": 1.4021670212969184,
+          "max": 1.802499988116324
+        },
+        "service_ms": {
+          "count": 9940,
+          "min": 1.865832949988544,
+          "avg": 2.9030807633575995,
+          "p50": 2.9233749955892563,
+          "p95": 3.4202919341623783,
+          "p99": 3.6167079815641046,
+          "max": 7.316417060792446
+        },
+        "bytes": {
+          "count": 9940,
+          "min": 165460,
+          "avg": 214725.0060362173,
+          "p50": 216108,
+          "p95": 249419,
+          "p99": 256881,
+          "max": 260759
+        }
+      },
+      "observation_queue": {
+        "count": 9940,
+        "min": 0.004700152203440666,
+        "avg": 16.659091778253664,
+        "p50": 16.4699301822111,
+        "p95": 31.906443182379007,
+        "p99": 42.590104741975665,
+        "max": 120.49756362102926
+      },
+      "action_queue": {
+        "count": 9940,
+        "min": 0.0015830155462026596,
+        "avg": 9.478845992509719,
+        "p50": 2.419249969534576,
+        "p95": 30.602000071667135,
+        "p99": 35.488834022544324,
+        "max": 132.5080000096932
+      }
+    },
+    {
+      "run": "rust4-300-r3",
+      "source_sha": "2bc57d5f2241a578f61d71bb5774e7063a03ec25",
+      "raw_member": "results/rust4-300-r3.raw.json",
+      "raw_sha256": "b35367694a5fa470c9148a92183a7fd358c983bb20f11f00b083fc03e157e54a",
+      "frames": 9000,
+      "frame_mean_ms": 20.973417638671688,
+      "frame_p99_ms": 28.630917076952755,
+      "phase_mean_ms": {
+        "native_step_ms": 0.2633034514858284,
+        "delta_ms": 0.7011793522655757,
+        "presentation_apply_ms": 2.692978936312203,
+        "inputs_ms": 0.08888351875874731,
+        "display_systems_ms": 8.502225211549861
+      },
+      "agent_mean_ms": 3.53851741776129,
+      "unattributed_update_mean_ms": 5.163865359357765,
+      "native_step_fraction_pct": 1.2554150974438147,
+      "display_systems_fraction_pct": 40.53810093340769,
+      "presentation_apply_fraction_pct": 12.839962388136366,
+      "observation_service": {
+        "build_ms": {
+          "count": 9939,
+          "min": 1.0523329256102443,
+          "avg": 1.8042955510886125,
+          "p50": 1.8945829942822456,
+          "p95": 2.2665830329060555,
+          "p99": 2.3957500234246254,
+          "max": 3.034207969903946
+        },
+        "encode_ms": {
+          "count": 9939,
+          "min": 0.05437503568828106,
+          "avg": 0.0777212007539835,
+          "p50": 0.07691700011491776,
+          "p95": 0.0944589264690876,
+          "p99": 0.10433304123580456,
+          "max": 0.21612504497170448
+        },
+        "decode_ms": {
+          "count": 9939,
+          "min": 0.6809589685872197,
+          "avg": 1.0573677357879547,
+          "p50": 1.0426250519230962,
+          "p95": 1.3447500532492995,
+          "p99": 1.434791018255055,
+          "max": 1.781666069291532
+        },
+        "service_ms": {
+          "count": 9939,
+          "min": 1.8927499186247587,
+          "avg": 2.9531580332793324,
+          "p50": 2.9706249479204416,
+          "p95": 3.48883296828717,
+          "p99": 3.656374989077449,
+          "max": 4.340832936577499
+        },
+        "bytes": {
+          "count": 9939,
+          "min": 165044,
+          "avg": 219509.38585370762,
+          "p50": 221488,
+          "p95": 257033,
+          "p99": 262558,
+          "max": 264416
+        }
+      },
+      "observation_queue": {
+        "count": 9939,
+        "min": 0.004812260158360004,
+        "avg": 16.634010568961862,
+        "p50": 16.42657071352005,
+        "p95": 31.616939115338027,
+        "p99": 41.464926092885435,
+        "max": 84.07033828552812
+      },
+      "action_queue": {
+        "count": 9939,
+        "min": 0.0018749851733446121,
+        "avg": 9.439156284103296,
+        "p50": 2.4197909515351057,
+        "p95": 30.475292005576193,
+        "p99": 34.06983404420316,
+        "max": 93.4175830334425
+      }
+    }
+  ],
+  "statistics_movement_ideal": [
+    {
+      "threads": 1,
+      "ticks": 9880,
+      "member": "replays/candidate-t1.timings.json.gz",
+      "sha256": "92bafe0edcda86f6d8eb9cbb3631200237057fe2d3fe02681862f23e22c3c710",
+      "native_diagnostic_mean_us": 223.0337354251012,
+      "statistics_kernel_movement_ideal_mean_us": 10.458183400809716,
+      "ideal_fraction_pct": 4.689058980640964,
+      "statistics_trim_diagnostic_mean_us": 34.40838744939271
+    },
+    {
+      "threads": 2,
+      "ticks": 9880,
+      "member": "replays/candidate-t2.timings.json.gz",
+      "sha256": "95a91d71809ef3710673a85f3cb98aa7751553004a11f80bbbf1b1a199bdf15a",
+      "native_diagnostic_mean_us": 219.04127914979756,
+      "statistics_kernel_movement_ideal_mean_us": 11.103898076923077,
+      "ideal_fraction_pct": 5.069317582522591,
+      "statistics_trim_diagnostic_mean_us": 40.91851093117409
+    },
+    {
+      "threads": 4,
+      "ticks": 9880,
+      "member": "replays/candidate-t4.timings.json.gz",
+      "sha256": "ec78946c8e5923e99c81eed8bc4ac75af132f7431037a0dda802237267cba1d5",
+      "native_diagnostic_mean_us": 209.39363087044535,
+      "statistics_kernel_movement_ideal_mean_us": 10.598805364372469,
+      "ideal_fraction_pct": 5.061665591409556,
+      "statistics_trim_diagnostic_mean_us": 42.81840809716599
+    }
+  ]
+}

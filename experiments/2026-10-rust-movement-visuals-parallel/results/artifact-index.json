@@ -1,0 +1,14 @@
+{
+  "raw": {
+    "file": "artifacts/movement-visuals-raw.zip",
+    "bytes": 15916081,
+    "sha256": "a3593da48438e7c96c9e9c003b8374d4d8b393d45a806d1a2582a2d12e3c4f07",
+    "members": 133
+  },
+  "compact": {
+    "file": "artifacts/movement-visuals-compact.zip",
+    "bytes": 21057,
+    "sha256": "2b53b12dadc326ef04a4e43cd115b1e7c71c9dab473f71efdf9ccae4fe3bef65",
+    "members": 13
+  }
+}

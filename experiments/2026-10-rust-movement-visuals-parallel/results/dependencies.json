@@ -1,0 +1,166 @@
+{
+  "systems": [
+    {
+      "system": "Clock",
+      "reads": "dt/config",
+      "writes": "clock/revision/singleton",
+      "boundary": "\u5148\u4e8eStatistics"
+    },
+    {
+      "system": "Statistics",
+      "reads": "\u65e7Position/MP/Fog/current batch",
+      "writes": "observation/history/visibility/counts",
+      "boundary": "\u6210\u529f\u540e\u624d\u80fd\u51c6\u5907\u5e76\u884c\u533a"
+    },
+    {
+      "system": "Movement",
+      "reads": "Movement/Position/map",
+      "writes": "Position\u503c/animation/spatial/dirty/moving",
+      "boundary": "\u4e0d\u6539\u53d8Position\u5b58\u5728\u6027\u6216external ID\u8ba1\u6570"
+    },
+    {
+      "system": "Visuals compute",
+      "reads": "Position\u5b58\u5728\u6027/next ID/owned maps/raw dt",
+      "writes": "owned maps/\u6709\u5e8fSpawn-Remove journal",
+      "boundary": "\u4e0eMovement\u8ba1\u7b97\u91cd\u53e0\uff0c\u4e0d\u8bbf\u95eeWorld"
+    },
+    {
+      "system": "Visuals publish",
+      "reads": "journal\u6210\u529f\u524d\u7f00",
+      "writes": "World\u7ed3\u6784/InitialComponents/unit membership/Visuals",
+      "boundary": "join\u540e\uff0cRecovery\u524d\uff0c\u539f\u5e8f\u63d0\u4ea4"
+    },
+    {
+      "system": "Recovery",
+      "reads": "clock/components/deadlines/new IDs",
+      "writes": "AP/MP/SP/index/dirty",
+      "boundary": "\u5728Visuals\u5b8c\u6574\u53d1\u5e03\u540e"
+    },
+    {
+      "system": "Lifecycle",
+      "reads": "clock/mode/rules/living",
+      "writes": "GameState/GameOver event",
+      "boundary": "\u5728Recovery\u540e\u3001Vision\u524d"
+    },
+    {
+      "system": "Vision",
+      "reads": "\u65b0Position/Vision/terrain/rules",
+      "writes": "cache/Fog/Vision/presentation",
+      "boundary": "\u539f\u5e8f\uff0cGameOver\u4ecd\u6267\u884c"
+    },
+    {
+      "system": "Capture",
+      "reads": "\u65b0Position/capture/ownership",
+      "writes": "capture/ownership/events",
+      "boundary": "\u539f\u5e8f\uff1b\u9519\u8bef\u4fdd\u7559\u524d\u5e8f\u63d0\u4ea4"
+    }
+  ],
+  "baseline_diagnostic_all_tick_cost_ns": {
+    "2": {
+      "clock": {
+        "samples": 9880,
+        "mean_ns": 1070.7436234817815,
+        "p99_ns": 3542,
+        "max_ns": 57875
+      },
+      "statistics": {
+        "samples": 9880,
+        "mean_ns": 147732.437854251,
+        "p99_ns": 633958,
+        "max_ns": 5319041
+      },
+      "movement": {
+        "samples": 9880,
+        "mean_ns": 39866.29230769231,
+        "p99_ns": 120834,
+        "max_ns": 2823541
+      },
+      "visuals": {
+        "samples": 9880,
+        "mean_ns": 11061.300404858299,
+        "p99_ns": 35459,
+        "max_ns": 365042
+      },
+      "recovery": {
+        "samples": 9880,
+        "mean_ns": 4714.68967611336,
+        "p99_ns": 18334,
+        "max_ns": 424416
+      },
+      "lifecycle": {
+        "samples": 9880,
+        "mean_ns": 613.4555668016194,
+        "p99_ns": 2417,
+        "max_ns": 459417
+      },
+      "vision": {
+        "samples": 9880,
+        "mean_ns": 50671.34574898786,
+        "p99_ns": 173583,
+        "max_ns": 598750
+      },
+      "captures": {
+        "samples": 9880,
+        "mean_ns": 88.26062753036437,
+        "p99_ns": 334,
+        "max_ns": 30750
+      }
+    },
+    "4": {
+      "clock": {
+        "samples": 9880,
+        "mean_ns": 898.4347165991903,
+        "p99_ns": 2167,
+        "max_ns": 13833
+      },
+      "statistics": {
+        "samples": 9880,
+        "mean_ns": 128982.38178137652,
+        "p99_ns": 533833,
+        "max_ns": 2876834
+      },
+      "movement": {
+        "samples": 9880,
+        "mean_ns": 33671.71902834008,
+        "p99_ns": 74250,
+        "max_ns": 704417
+      },
+      "visuals": {
+        "samples": 9880,
+        "mean_ns": 10048.681578947368,
+        "p99_ns": 34000,
+        "max_ns": 2167000
+      },
+      "recovery": {
+        "samples": 9880,
+        "mean_ns": 4241.233299595142,
+        "p99_ns": 14208,
+        "max_ns": 603166
+      },
+      "lifecycle": {
+        "samples": 9880,
+        "mean_ns": 462.2668016194332,
+        "p99_ns": 1292,
+        "max_ns": 22125
+      },
+      "vision": {
+        "samples": 9880,
+        "mean_ns": 46206.410627530364,
+        "p99_ns": 132291,
+        "max_ns": 2374334
+      },
+      "captures": {
+        "samples": 9880,
+        "mean_ns": 69.1498987854251,
+        "p99_ns": 250,
+        "max_ns": 958
+      }
+    }
+  },
+  "classes": {
+    "between": "E5 Visuals compute vs Movement, publish serial",
+    "internal": "existing E2 Statistics rows; no new internal parallel in E5",
+    "cross_request_readonly": "existing observation segments; no new sharing/cache in E5"
+  },
+  "cost_scope": "diagnostic baseline full phase means, includes clocks; not an untimed speedup"
+}

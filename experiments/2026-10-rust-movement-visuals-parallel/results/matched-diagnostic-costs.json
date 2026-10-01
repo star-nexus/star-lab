@@ -1,0 +1,117 @@
+{
+  "results": [
+    {
+      "threads": 2,
+      "mode": "baseline",
+      "matched_ticks": 3772,
+      "actual_selected_ticks": 0,
+      "means_ns": {
+        "e5_prepare": 0.0,
+        "movement": 40221.060975609755,
+        "visuals": 16510.24019088017,
+        "e5_compute": 0.0,
+        "e5_publish": 0.0,
+        "e5_region": 0.0
+      }
+    },
+    {
+      "threads": 2,
+      "mode": "empty_fork",
+      "matched_ticks": 3772,
+      "actual_selected_ticks": 3772,
+      "means_ns": {
+        "e5_prepare": 0.0,
+        "movement": 42007.88600212089,
+        "visuals": 16446.524125132557,
+        "e5_compute": 0.0,
+        "e5_publish": 0.0,
+        "e5_region": 44237.08934252386
+      }
+    },
+    {
+      "threads": 2,
+      "mode": "split_serial",
+      "matched_ticks": 3772,
+      "actual_selected_ticks": 3772,
+      "means_ns": {
+        "e5_prepare": 213.22428419936372,
+        "movement": 38082.21155885472,
+        "visuals": 0.0,
+        "e5_compute": 15647.657741251325,
+        "e5_publish": 466.3862672322375,
+        "e5_region": 0.0
+      }
+    },
+    {
+      "threads": 2,
+      "mode": "parallel",
+      "matched_ticks": 3772,
+      "actual_selected_ticks": 3772,
+      "means_ns": {
+        "e5_prepare": 220.38255567338283,
+        "movement": 41095.40959703075,
+        "visuals": 0.0,
+        "e5_compute": 19143.630699893954,
+        "e5_publish": 499.0662778366914,
+        "e5_region": 43558.278366914106
+      }
+    },
+    {
+      "threads": 4,
+      "mode": "baseline",
+      "matched_ticks": 3772,
+      "actual_selected_ticks": 0,
+      "means_ns": {
+        "e5_prepare": 0.0,
+        "movement": 36384.24946977731,
+        "visuals": 16106.497879109225,
+        "e5_compute": 0.0,
+        "e5_publish": 0.0,
+        "e5_region": 0.0
+      }
+    },
+    {
+      "threads": 4,
+      "mode": "empty_fork",
+      "matched_ticks": 3772,
+      "actual_selected_ticks": 3772,
+      "means_ns": {
+        "e5_prepare": 0.0,
+        "movement": 37953.35710498409,
+        "visuals": 15036.6598621421,
+        "e5_compute": 0.0,
+        "e5_publish": 0.0,
+        "e5_region": 40559.61850477201
+      }
+    },
+    {
+      "threads": 4,
+      "mode": "split_serial",
+      "matched_ticks": 3772,
+      "actual_selected_ticks": 3772,
+      "means_ns": {
+        "e5_prepare": 206.33218451749735,
+        "movement": 37454.38812301167,
+        "visuals": 0.0,
+        "e5_compute": 15227.834835630965,
+        "e5_publish": 497.89103923647934,
+        "e5_region": 0.0
+      }
+    },
+    {
+      "threads": 4,
+      "mode": "parallel",
+      "matched_ticks": 3772,
+      "actual_selected_ticks": 3772,
+      "means_ns": {
+        "e5_prepare": 205.1373276776246,
+        "movement": 38451.02730646871,
+        "visuals": 0.0,
+        "e5_compute": 18244.81071049841,
+        "e5_publish": 479.9915164369035,
+        "e5_region": 41040.63255567339
+      }
+    }
+  ],
+  "scope": "same recorded tick mask, different diagnostic runs; includes nested clocks, not an untimed speedup"
+}

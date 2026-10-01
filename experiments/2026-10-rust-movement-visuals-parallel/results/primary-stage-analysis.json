@@ -1,0 +1,558 @@
+{
+  "method": {
+    "tool_sha256": "120436cda860b0ec723db7a1aeff010d39eea56974886128064219813bf5a797",
+    "numpy_version": "2.3.2",
+    "block_ticks": 100,
+    "bootstrap": 10000,
+    "seed": 42,
+    "all_ticks": 9880,
+    "diagnostics": false,
+    "p99": "all 19760 individual step samples per side; no pair averaging"
+  },
+  "results": [
+    {
+      "run": "primary-t2-r1.json",
+      "threads": 2,
+      "control_mode": "parallel",
+      "control_threshold": 18446744073709551615,
+      "candidate_mode": "parallel",
+      "threshold": 8,
+      "baseline": {
+        "mean_ns": 228304.04554655871,
+        "p99_ns": 629208.0,
+        "max_ns": 9927042.0
+      },
+      "candidate": {
+        "mean_ns": 226949.36756072874,
+        "p99_ns": 618709.0,
+        "max_ns": 5614917.0
+      },
+      "improvement_ns": 1354.6779858299594,
+      "improvement_percent": 0.5933657384768926,
+      "ci95_ns": [
+        553.4905190957477,
+        2109.4020786943315
+      ],
+      "passed": true,
+      "raw_sha256": "a1dbb2ce19e64ee67ddbc1007cd2857952d90054c63ab03f36838f36a5e700b7",
+      "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+      "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf"
+    },
+    {
+      "run": "primary-t2-r2.json",
+      "threads": 2,
+      "control_mode": "parallel",
+      "control_threshold": 18446744073709551615,
+      "candidate_mode": "parallel",
+      "threshold": 8,
+      "baseline": {
+        "mean_ns": 244482.58248987855,
+        "p99_ns": 763083.0,
+        "max_ns": 10584375.0
+      },
+      "candidate": {
+        "mean_ns": 242801.3249493927,
+        "p99_ns": 736167.0,
+        "max_ns": 12808834.0
+      },
+      "improvement_ns": 1681.2575404858298,
+      "improvement_percent": 0.6876798843350868,
+      "ci95_ns": [
+        -473.0374823232322,
+        3990.679477479757
+      ],
+      "passed": false,
+      "raw_sha256": "d57ecfbe9f2b98a93d188673853f707ad0242c1a05180fde0c87af2d6f220d87",
+      "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+      "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf"
+    },
+    {
+      "run": "primary-t2-r3.json",
+      "threads": 2,
+      "control_mode": "parallel",
+      "control_threshold": 18446744073709551615,
+      "candidate_mode": "parallel",
+      "threshold": 8,
+      "baseline": {
+        "mean_ns": 231081.1036437247,
+        "p99_ns": 655166.0,
+        "max_ns": 2994625.0
+      },
+      "candidate": {
+        "mean_ns": 231134.84736842106,
+        "p99_ns": 690583.0,
+        "max_ns": 8409041.0
+      },
+      "improvement_ns": -53.743724696356274,
+      "improvement_percent": -0.023257516018798777,
+      "ci95_ns": [
+        -1511.9005175438597,
+        1209.5634129631333
+      ],
+      "passed": false,
+      "raw_sha256": "e1dc8040109135ef49dd92f74d4d1798145ce125c0a9a5426af1a7c02c684a3c",
+      "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+      "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf"
+    },
+    {
+      "run": "primary-t4-r1.json",
+      "threads": 4,
+      "control_mode": "parallel",
+      "control_threshold": 18446744073709551615,
+      "candidate_mode": "parallel",
+      "threshold": 8,
+      "baseline": {
+        "mean_ns": 231088.31189271255,
+        "p99_ns": 673209.0,
+        "max_ns": 10789792.0
+      },
+      "candidate": {
+        "mean_ns": 232814.31320850202,
+        "p99_ns": 681625.0,
+        "max_ns": 26657791.0
+      },
+      "improvement_ns": -1726.0013157894737,
+      "improvement_percent": -0.7469011745565067,
+      "ci95_ns": [
+        -5422.707010803889,
+        1040.7761475202428
+      ],
+      "passed": false,
+      "raw_sha256": "946dc63c788f5a78dc9dc98b590624d2e7c3ae2b1ada085414f23a2e2cde7265",
+      "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+      "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf"
+    },
+    {
+      "run": "primary-t4-r2.json",
+      "threads": 4,
+      "control_mode": "parallel",
+      "control_threshold": 18446744073709551615,
+      "candidate_mode": "parallel",
+      "threshold": 8,
+      "baseline": {
+        "mean_ns": 248310.3157388664,
+        "p99_ns": 753666.0,
+        "max_ns": 24342459.0
+      },
+      "candidate": {
+        "mean_ns": 248988.5528340081,
+        "p99_ns": 738208.0,
+        "max_ns": 47265667.0
+      },
+      "improvement_ns": -678.2370951417004,
+      "improvement_percent": -0.2731409257499246,
+      "ci95_ns": [
+        -4883.988928774076,
+        2473.58639141414
+      ],
+      "passed": false,
+      "raw_sha256": "74481ae3a53762b4e9ed009fd5b29f5df6501e79e7fe74591664fc45b26dc91c",
+      "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+      "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf"
+    },
+    {
+      "run": "primary-t4-r3.json",
+      "threads": 4,
+      "control_mode": "parallel",
+      "control_threshold": 18446744073709551615,
+      "candidate_mode": "parallel",
+      "threshold": 8,
+      "baseline": {
+        "mean_ns": 220435.33294534413,
+        "p99_ns": 604583.0,
+        "max_ns": 2106625.0
+      },
+      "candidate": {
+        "mean_ns": 218800.69585020244,
+        "p99_ns": 582250.0,
+        "max_ns": 3620250.0
+      },
+      "improvement_ns": 1634.6370951417005,
+      "improvement_percent": 0.7415494935864029,
+      "ci95_ns": [
+        899.1732398989899,
+        2339.4649869555356
+      ],
+      "passed": true,
+      "raw_sha256": "14f6ac7082d9c118381b194a9dc6ff0571277a71ad49e86375001bf8634381c7",
+      "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+      "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf"
+    },
+    {
+      "run": "split-control-t2-r1.json",
+      "threads": 2,
+      "control_mode": "split_serial",
+      "control_threshold": 8,
+      "candidate_mode": "parallel",
+      "threshold": 8,
+      "baseline": {
+        "mean_ns": 241277.75495951416,
+        "p99_ns": 703625.0,
+        "max_ns": 17856000.0
+      },
+      "candidate": {
+        "mean_ns": 238880.0314271255,
+        "p99_ns": 707792.0,
+        "max_ns": 2962875.0
+      },
+      "improvement_ns": 2397.723532388664,
+      "improvement_percent": 0.9937607106759578,
+      "ci95_ns": [
+        808.4129795040486,
+        4608.294705157559
+      ],
+      "passed": false,
+      "raw_sha256": "12a84e41326841597228c745e2c97158b7c701f0a0da7043478c8064000fcc66",
+      "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+      "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf"
+    },
+    {
+      "run": "split-control-t2-r2.json",
+      "threads": 2,
+      "control_mode": "split_serial",
+      "control_threshold": 8,
+      "candidate_mode": "parallel",
+      "threshold": 8,
+      "baseline": {
+        "mean_ns": 235605.71649797572,
+        "p99_ns": 661417.0,
+        "max_ns": 5504458.0
+      },
+      "candidate": {
+        "mean_ns": 235075.20662955465,
+        "p99_ns": 672833.0,
+        "max_ns": 5185375.0
+      },
+      "improvement_ns": 530.5098684210526,
+      "improvement_percent": 0.22516850452803452,
+      "ci95_ns": [
+        -506.94502398989897,
+        1558.1408337687992
+      ],
+      "passed": false,
+      "raw_sha256": "41e7ec2bb20f276adf655eb076d26bde11277362acf68e202c0e124c2431ddb6",
+      "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+      "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf"
+    },
+    {
+      "run": "split-control-t2-r3.json",
+      "threads": 2,
+      "control_mode": "split_serial",
+      "control_threshold": 8,
+      "candidate_mode": "parallel",
+      "threshold": 8,
+      "baseline": {
+        "mean_ns": 234869.9539979757,
+        "p99_ns": 702458.0,
+        "max_ns": 3741125.0
+      },
+      "candidate": {
+        "mean_ns": 233975.24498987856,
+        "p99_ns": 658167.0,
+        "max_ns": 5523166.0
+      },
+      "improvement_ns": 894.709008097166,
+      "improvement_percent": 0.380938043741805,
+      "ci95_ns": [
+        -4.927249618394894,
+        1753.0855566801615
+      ],
+      "passed": false,
+      "raw_sha256": "b95b8cbbdc25ffee1f78bc5f749e53029be63a2763f114c080b6bcde6a142b5a",
+      "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+      "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf"
+    },
+    {
+      "run": "split-control-t4-r1.json",
+      "threads": 4,
+      "control_mode": "split_serial",
+      "control_threshold": 8,
+      "candidate_mode": "parallel",
+      "threshold": 8,
+      "baseline": {
+        "mean_ns": 256166.9826417004,
+        "p99_ns": 836084.0,
+        "max_ns": 33301125.0
+      },
+      "candidate": {
+        "mean_ns": 253914.04741902833,
+        "p99_ns": 807709.0,
+        "max_ns": 11455833.0
+      },
+      "improvement_ns": 2252.935222672065,
+      "improvement_percent": 0.8794791582579693,
+      "ci95_ns": [
+        -897.2729802226104,
+        6038.735321356273
+      ],
+      "passed": false,
+      "raw_sha256": "a3cefac46660d18b8f5dbe943dd95c6b05c2b723e912e099bd70b72caf9b0718",
+      "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+      "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf"
+    },
+    {
+      "run": "split-control-t4-r2.json",
+      "threads": 4,
+      "control_mode": "split_serial",
+      "control_threshold": 8,
+      "candidate_mode": "parallel",
+      "threshold": 8,
+      "baseline": {
+        "mean_ns": 227816.64630566802,
+        "p99_ns": 613166.0,
+        "max_ns": 7151125.0
+      },
+      "candidate": {
+        "mean_ns": 226880.84944331984,
+        "p99_ns": 666750.0,
+        "max_ns": 9367417.0
+      },
+      "improvement_ns": 935.7968623481781,
+      "improvement_percent": 0.4107675525574163,
+      "ci95_ns": [
+        173.93561253220463,
+        1701.8060422044985
+      ],
+      "passed": false,
+      "raw_sha256": "d0874a40f4f991e1fbdc5021265c9982d2d6b8d89193e2915061ceef6d3afbfd",
+      "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+      "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf"
+    }
+  ],
+  "primary_gates": {
+    "2": false,
+    "4": false
+  },
+  "identity_checks": [
+    {
+      "run": "primary-t2-r1.json",
+      "metadata_sha256": "60607e850def34401b10b421a6335bb528f582b06ccc5de04046c9d9490f7ff4",
+      "threads": 2,
+      "mode": "parallel",
+      "threshold": 8,
+      "paired": true,
+      "all_passed": true
+    },
+    {
+      "run": "primary-t2-r2.json",
+      "metadata_sha256": "68b1e9026fd05eb0ede497c3b11bf153b45beb06b803389d142fc7ed39cdd0e5",
+      "threads": 2,
+      "mode": "parallel",
+      "threshold": 8,
+      "paired": true,
+      "all_passed": true
+    },
+    {
+      "run": "primary-t2-r3.json",
+      "metadata_sha256": "3203fe32da6ca37a6ba3af890ed242c8b113e9b0a404d0c03620879ffdc421b6",
+      "threads": 2,
+      "mode": "parallel",
+      "threshold": 8,
+      "paired": true,
+      "all_passed": true
+    },
+    {
+      "run": "primary-t4-r1.json",
+      "metadata_sha256": "a1cf71258b64a227a15e46e4fdfa8620e1eea092ad9a7a48ca30f17482ccce77",
+      "threads": 4,
+      "mode": "parallel",
+      "threshold": 8,
+      "paired": true,
+      "all_passed": true
+    },
+    {
+      "run": "primary-t4-r2.json",
+      "metadata_sha256": "7334f4c14826eeaf37577122bb062b82cd48108e3f8d520dace38326ed63ae0d",
+      "threads": 4,
+      "mode": "parallel",
+      "threshold": 8,
+      "paired": true,
+      "all_passed": true
+    },
+    {
+      "run": "primary-t4-r3.json",
+      "metadata_sha256": "ef462d7048febdf767357b208a63b5171290a72ed4df2bf156f9ca98a2c2f660",
+      "threads": 4,
+      "mode": "parallel",
+      "threshold": 8,
+      "paired": true,
+      "all_passed": true
+    },
+    {
+      "run": "split-control-t2-r1.json",
+      "metadata_sha256": "a84e4fd284671fa51634cc6b1911bf117ee46ce5149b77c9fb0bc0993b054600",
+      "threads": 2,
+      "mode": "parallel",
+      "threshold": 8,
+      "paired": true,
+      "all_passed": true
+    },
+    {
+      "run": "split-control-t2-r2.json",
+      "metadata_sha256": "f54a62b07fca4fc1b15f64ab03403196e323def791641486c4d4568ee54fcf15",
+      "threads": 2,
+      "mode": "parallel",
+      "threshold": 8,
+      "paired": true,
+      "all_passed": true
+    },
+    {
+      "run": "split-control-t2-r3.json",
+      "metadata_sha256": "828ddfe1b5d3266ac9d7796ce4f95dbfb16e47f3dd4dd4da508ff7b3e40765b3",
+      "threads": 2,
+      "mode": "parallel",
+      "threshold": 8,
+      "paired": true,
+      "all_passed": true
+    },
+    {
+      "run": "split-control-t4-r1.json",
+      "metadata_sha256": "f98f006ea3f4193dd30343b9b69300b3403c38f870ec8e5987e24993b5732654",
+      "threads": 4,
+      "mode": "parallel",
+      "threshold": 8,
+      "paired": true,
+      "all_passed": true
+    },
+    {
+      "run": "split-control-t4-r2.json",
+      "metadata_sha256": "38d796b5a5d0d2ef237f6c35096f318adf2b6254caf39f33027881d3bc5b7e31",
+      "threads": 4,
+      "mode": "parallel",
+      "threshold": 8,
+      "paired": true,
+      "all_passed": true
+    },
+    {
+      "run": "split-serial-t1.json",
+      "metadata_sha256": "5f9f28e8b316e3ea4e6dceac6bfd9fb54f22d54b56098e8884a22656dfe86b31",
+      "threads": 1,
+      "mode": "split_serial",
+      "threshold": 0,
+      "paired": false,
+      "all_passed": true
+    }
+  ],
+  "diagnostics": [
+    {
+      "run": "split-serial-t1.json",
+      "threads": 1,
+      "mode": "split_serial",
+      "threshold": 0,
+      "selected_ticks": 9876,
+      "phase_summary": {
+        "captures": {
+          "samples": 9880,
+          "mean_ns": 87.67196356275304,
+          "p99_ns": 375,
+          "max_ns": 5792
+        },
+        "clock": {
+          "samples": 9880,
+          "mean_ns": 1008.3801619433199,
+          "p99_ns": 3417,
+          "max_ns": 147333
+        },
+        "e5_eligible": {
+          "samples": 9880,
+          "mean_ns": 0.9995951417004049,
+          "p99_ns": 1,
+          "max_ns": 1
+        },
+        "eligible": {
+          "samples": 9880,
+          "mean_ns": 0.0,
+          "p99_ns": 0,
+          "max_ns": 0
+        },
+        "lifecycle": {
+          "samples": 9880,
+          "mean_ns": 508.1255060728745,
+          "p99_ns": 2250,
+          "max_ns": 42459
+        },
+        "movement": {
+          "samples": 9880,
+          "mean_ns": 37415.722368421055,
+          "p99_ns": 109875,
+          "max_ns": 717250
+        },
+        "recovery": {
+          "samples": 9880,
+          "mean_ns": 4596.1578947368425,
+          "p99_ns": 18167,
+          "max_ns": 473792
+        },
+        "statistics": {
+          "samples": 9880,
+          "mean_ns": 162952.76518218624,
+          "p99_ns": 691125,
+          "max_ns": 26693416
+        },
+        "vision": {
+          "samples": 9880,
+          "mean_ns": 49527.7782388664,
+          "p99_ns": 163083,
+          "max_ns": 1304042
+        },
+        "visuals": {
+          "samples": 4,
+          "mean_ns": 1177.0,
+          "p99_ns": 1250,
+          "max_ns": 1250
+        },
+        "e5_compute": {
+          "samples": 9876,
+          "mean_ns": 10582.802652895909,
+          "p99_ns": 35375,
+          "max_ns": 951542
+        },
+        "e5_prepare": {
+          "samples": 9876,
+          "mean_ns": 146.96415552855407,
+          "p99_ns": 1084,
+          "max_ns": 31292
+        },
+        "e5_publish": {
+          "samples": 9876,
+          "mean_ns": 354.80852571891455,
+          "p99_ns": 2625,
+          "max_ns": 148958
+        }
+      },
+      "selected": {
+        "e5_prepare": {
+          "mean_ns": 146.96415552855407,
+          "p99_ns": 1084.0
+        },
+        "movement": {
+          "mean_ns": 37430.82594167679,
+          "p99_ns": 109875.0
+        },
+        "e5_compute": {
+          "mean_ns": 10582.802652895909,
+          "p99_ns": 35375.0
+        },
+        "e5_publish": {
+          "mean_ns": 354.80852571891455,
+          "p99_ns": 2625.0
+        },
+        "e5_region": {
+          "mean_ns": 0.0,
+          "p99_ns": 0.0
+        },
+        "visuals": {
+          "mean_ns": 0.0,
+          "p99_ns": 0.0
+        }
+      },
+      "overlap_lower_bound": {
+        "mean_ns": 0.0,
+        "positive_ticks": 0
+      },
+      "interpretation": "diagnostic only; timers and fixed ordering included; region overlaps Movement and compute, do not sum phases"
+    }
+  ],
+  "confirmation": [],
+  "confirmation_gate": false
+}

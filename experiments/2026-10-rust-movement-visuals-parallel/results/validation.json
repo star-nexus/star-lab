@@ -1,0 +1,34 @@
+{
+  "measurement_commit": "94913a4f836a3c106e08a1334cb81971cfd728c3",
+  "validated_commit": "3b167b151c3bc32e1d54f6015d0f15d2c3dd6a74",
+  "native_code_identical": true,
+  "python": {
+    "passed": 2345,
+    "log": "validation/final-python.log"
+  },
+  "rust": {
+    "passed": 6,
+    "log": "validation/rust.log"
+  },
+  "fmt": true,
+  "clippy": true,
+  "release": true,
+  "focused_gameover_multisegment_vision": {
+    "passed": 3,
+    "log": "validation/vision-gameover.log"
+  },
+  "full_replay_reports": 27,
+  "world_replays": 90,
+  "contracts": {
+    "variants": 13,
+    "cases_each": 13,
+    "steps_each": 377,
+    "all_byte_identical": true
+  },
+  "net_gates": {
+    "native2": false,
+    "native4": false
+  },
+  "single_instance_confirmation": "not_entered_prerequisite_failed",
+  "live_window": "not_entered_prerequisite_failed"
+}

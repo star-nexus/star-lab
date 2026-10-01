@@ -1,0 +1,144 @@
+{
+  "experiment": {
+    "id": "2026-10-rust-movement-visuals-parallel",
+    "date": "2026-10-02",
+    "status": "validated",
+    "result": "negative adoption; private prototype retained; ordinary step unchanged"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "72bf05a2f6ec6d1d15ffad7914226c0c3e16b9cf",
+    "measurement_commit": "94913a4f836a3c106e08a1334cb81971cfd728c3",
+    "candidate_commit": "94913a4f836a3c106e08a1334cb81971cfd728c3",
+    "fix_commit": null,
+    "validated_commit": "3b167b151c3bc32e1d54f6015d0f15d2c3dd6a74",
+    "validated_tag": "rust-parallel-e5-movement-visuals-2026-10-02",
+    "branch_at_time": "codex/rust-ecs-parallel",
+    "native_code_identical": true
+  },
+  "source_bundle": {
+    "file": "artifacts/movement-visuals-source.bundle",
+    "sha256": "ce9edc9079d70658f54c65c72b2bcd9922623797acb3092696a085f9b9411a28",
+    "prerequisite": "72bf05a2f6ec6d1d15ffad7914226c0c3e16b9cf"
+  },
+  "binary": {
+    "wheel_member": "wheels/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+    "wheel_sha256": "2a853d7f8d1ca9701d7ffcb39522d2c25d0824562d8ca436424f8c790cfd0e30",
+    "extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
+    "old_e4_extension_sha256": "9c7eebe03257d1d6941e67b5e31a947e4c6cedf32db6979e624629fd5cf5dd91",
+    "old_e4_validated_commit": "a7508bce4b900ccf8465e761291adb7e7e2ce98d"
+  },
+  "environment": {
+    "machine": "Mac16,10",
+    "cpu": "Apple M4",
+    "physical_cores": 10,
+    "logical_cpus": 10,
+    "memory_bytes": 17179869184,
+    "os_version": "26.5.2",
+    "os_build": "25F84",
+    "python": "Python 3.13.12",
+    "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+    "locks": {
+      "uv.lock": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+      "Cargo.lock": "e86cb2bee26f1d95c1cde0abec61bdea575a73ae7218db60b7f06be735f15188"
+    },
+    "experiment_environment": {
+      "HEADLESS": "1",
+      "SDL_VIDEODRIVER": "dummy",
+      "PYGAME_HIDE_SUPPORT_PROMPT": "1"
+    },
+    "build_interpreter": ".venv/bin/python",
+    "maturin": "1.15.0",
+    "cpu_affinity": null,
+    "live_window": false
+  },
+  "scenario": {
+    "name": "R4e-1000-agents-recorded-full-trajectory",
+    "resident_units": 5000,
+    "registered_agents": 1000,
+    "seed": 42,
+    "display": "window semantics; SDL dummy; no live window",
+    "moving_mean_e3": 122.47,
+    "moving_max_e3": 186,
+    "source_initial_sha256": "8b594c465a63728222c57f257111d500c1c378e226b3496c63c0b11870629bc0",
+    "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+    "canonical_input_restore": "prepare_movement_visuals.py -> E4 -> E3 -> R4e/E2",
+    "e3_raw_sha256": "c3e347b145fcc5edfda304bb35030d3d3d9320861f116a5507d2b92cbd9b6abd",
+    "boundary_input_sha256": "df9c450ea067ab81c914f9e054e46ed69f3921950d537986efdd236a4dcd79eb"
+  },
+  "measurement": {
+    "all_ticks": 9880,
+    "including_original_warmup": true,
+    "original_warmup_seconds": 30,
+    "original_measurement_seconds": 300,
+    "new_live_window": false,
+    "replay_reports": 27,
+    "world_replays": 90,
+    "requests_each": 40994,
+    "presentation_each": 9880,
+    "threads": [
+      2,
+      4
+    ],
+    "main_threshold": 8,
+    "control_threshold": 18446744073709551615,
+    "main_mode": "parallel for both sides",
+    "rounds_each": 3,
+    "paired_order": "alternating ABBA/BAAB per tick, four persistent independent worlds, no overlap across instances",
+    "ci": {
+      "block_ticks": 100,
+      "bootstrap": 10000,
+      "seed": 42,
+      "final_80_tick_block_retained": true
+    },
+    "p99": "19760 individual unaveraged samples per side",
+    "no_sample_filtering": true,
+    "diagnostics_closed_for_gates": true,
+    "gate": "each of three rounds mean improves, P99 no regression, paired improvement CI95 lower>0",
+    "gates": {
+      "native2": false,
+      "native4": false
+    },
+    "confirmation": "not entered: native4 prerequisite failed",
+    "live": "not entered: native4 prerequisite failed"
+  },
+  "constraints": {
+    "api": 18,
+    "schema": 5,
+    "oracle": "python-r0c-3cc4ffe",
+    "default_threads": 1,
+    "statistics_min_rows": 128,
+    "agents5000": "deferred",
+    "gaps": "existing OPEN/RISK unchanged",
+    "capacity_frontier": "not updated",
+    "push_merge": false
+  },
+  "evidence": {
+    "analysis": "results/analysis.json",
+    "bounds": "results/ideal-bounds.json",
+    "contracts": "results/contracts.json",
+    "diagnostics": "results/matched-diagnostic-costs.json",
+    "commands": "results/commands.json",
+    "contract_commands": "results/contract-commands.json",
+    "validation": "results/validation.json"
+  },
+  "raw": {
+    "file": "artifacts/movement-visuals-raw.zip",
+    "bytes": 15916081,
+    "sha256": "a3593da48438e7c96c9e9c003b8374d4d8b393d45a806d1a2582a2d12e3c4f07",
+    "members": 133
+  },
+  "compact": {
+    "file": "artifacts/movement-visuals-compact.zip",
+    "bytes": 21057,
+    "sha256": "2b53b12dadc326ef04a4e43cd115b1e7c71c9dab473f71efdf9ccae4fe3bef65",
+    "members": 13
+  },
+  "tooling_checkpoint": "9bc367d",
+  "contracts_raw": {
+    "member": "contracts/contracts-canonical.raw.json.gz",
+    "aliases": "contract-aliases.json",
+    "sha256": "53daf7b7840e39625d0969f47680e9912150b084cecf6894cd25df35d8c88e9e"
+  }
+}

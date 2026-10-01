@@ -1,0 +1,196 @@
+{
+  "tool_sha256": "c80665f9c19ca23e57ff08f52189f65304b5e94816a17a2248445f12d14cb55d",
+  "e3_raw_sha256": "c3e347b145fcc5edfda304bb35030d3d3d9320861f116a5507d2b92cbd9b6abd",
+  "results": [
+    {
+      "threads": 1,
+      "raw_member": "replays/candidate-t1.timings.json.gz",
+      "member_sha256": "92bafe0edcda86f6d8eb9cbb3631200237057fe2d3fe02681862f23e22c3c710",
+      "full_phase": {
+        "ticks": 9876,
+        "conditional_mean_ns": 9307.012353179425,
+        "p99_ns": 30208,
+        "max_ns": 259333,
+        "all_tick_weighted_mean_ns": 9303.244331983806
+      },
+      "narrow_loop": {
+        "ticks": 9876,
+        "conditional_mean_ns": 8135.902895909275,
+        "p99_ns": 26625,
+        "max_ns": 258584,
+        "all_tick_weighted_mean_ns": 8132.609008097166
+      },
+      "damage_thresholds": {
+        "0": {
+          "ticks": 9876,
+          "conditional_mean_ns": 8135.902895909275,
+          "p99_ns": 26625,
+          "max_ns": 258584,
+          "all_tick_weighted_mean_ns": 8132.609008097166
+        },
+        "1": {
+          "ticks": 9505,
+          "conditional_mean_ns": 8448.994634402945,
+          "p99_ns": 26666,
+          "max_ns": 258584,
+          "all_tick_weighted_mean_ns": 8128.309109311741
+        },
+        "4": {
+          "ticks": 7516,
+          "conditional_mean_ns": 9957.997072911123,
+          "p99_ns": 27584,
+          "max_ns": 258584,
+          "all_tick_weighted_mean_ns": 7575.334615384615
+        },
+        "8": {
+          "ticks": 3772,
+          "conditional_mean_ns": 12890.98515376458,
+          "p99_ns": 31042,
+          "max_ns": 53834,
+          "all_tick_weighted_mean_ns": 4921.538056680162
+        },
+        "16": {
+          "ticks": 234,
+          "conditional_mean_ns": 21519.764957264957,
+          "p99_ns": 42749,
+          "max_ns": 48458,
+          "all_tick_weighted_mean_ns": 509.67864372469637
+        },
+        "24": {
+          "ticks": 19,
+          "conditional_mean_ns": 30186.684210526317,
+          "p99_ns": 48458,
+          "max_ns": 48458,
+          "all_tick_weighted_mean_ns": 58.05131578947368
+        }
+      }
+    },
+    {
+      "threads": 2,
+      "raw_member": "replays/candidate-t2.timings.json.gz",
+      "member_sha256": "95a91d71809ef3710673a85f3cb98aa7751553004a11f80bbbf1b1a199bdf15a",
+      "full_phase": {
+        "ticks": 9876,
+        "conditional_mean_ns": 9453.293134872418,
+        "p99_ns": 29750,
+        "max_ns": 84416,
+        "all_tick_weighted_mean_ns": 9449.46589068826
+      },
+      "narrow_loop": {
+        "ticks": 9876,
+        "conditional_mean_ns": 8247.326650465775,
+        "p99_ns": 26833,
+        "max_ns": 69417,
+        "all_tick_weighted_mean_ns": 8243.987651821863
+      },
+      "damage_thresholds": {
+        "0": {
+          "ticks": 9876,
+          "conditional_mean_ns": 8247.326650465775,
+          "p99_ns": 26833,
+          "max_ns": 69417,
+          "all_tick_weighted_mean_ns": 8243.987651821863
+        },
+        "1": {
+          "ticks": 9505,
+          "conditional_mean_ns": 8564.330457653867,
+          "p99_ns": 27000,
+          "max_ns": 69417,
+          "all_tick_weighted_mean_ns": 8239.267307692307
+        },
+        "4": {
+          "ticks": 7516,
+          "conditional_mean_ns": 10050.856572645023,
+          "p99_ns": 27917,
+          "max_ns": 69417,
+          "all_tick_weighted_mean_ns": 7645.975506072875
+        },
+        "8": {
+          "ticks": 3772,
+          "conditional_mean_ns": 13071.993372216331,
+          "p99_ns": 31542,
+          "max_ns": 69417,
+          "all_tick_weighted_mean_ns": 4990.643623481781
+        },
+        "16": {
+          "ticks": 234,
+          "conditional_mean_ns": 22811.747863247863,
+          "p99_ns": 44416,
+          "max_ns": 68666,
+          "all_tick_weighted_mean_ns": 540.2782388663968
+        },
+        "24": {
+          "ticks": 19,
+          "conditional_mean_ns": 31261.0,
+          "p99_ns": 44416,
+          "max_ns": 44416,
+          "all_tick_weighted_mean_ns": 60.11730769230769
+        }
+      }
+    },
+    {
+      "threads": 4,
+      "raw_member": "replays/candidate-t4.timings.json.gz",
+      "member_sha256": "ec78946c8e5923e99c81eed8bc4ac75af132f7431037a0dda802237267cba1d5",
+      "full_phase": {
+        "ticks": 9876,
+        "conditional_mean_ns": 9241.624240583233,
+        "p99_ns": 31375,
+        "max_ns": 111833,
+        "all_tick_weighted_mean_ns": 9237.882692307692
+      },
+      "narrow_loop": {
+        "ticks": 9876,
+        "conditional_mean_ns": 8083.914844066424,
+        "p99_ns": 27833,
+        "max_ns": 111833,
+        "all_tick_weighted_mean_ns": 8080.642004048583
+      },
+      "damage_thresholds": {
+        "0": {
+          "ticks": 9876,
+          "conditional_mean_ns": 8083.914844066424,
+          "p99_ns": 27833,
+          "max_ns": 111833,
+          "all_tick_weighted_mean_ns": 8080.642004048583
+        },
+        "1": {
+          "ticks": 9505,
+          "conditional_mean_ns": 8395.629458179905,
+          "p99_ns": 28333,
+          "max_ns": 111833,
+          "all_tick_weighted_mean_ns": 8076.969433198381
+        },
+        "4": {
+          "ticks": 7516,
+          "conditional_mean_ns": 9930.776742948377,
+          "p99_ns": 29834,
+          "max_ns": 111833,
+          "all_tick_weighted_mean_ns": 7554.627327935223
+        },
+        "8": {
+          "ticks": 3772,
+          "conditional_mean_ns": 13170.470042417815,
+          "p99_ns": 35709,
+          "max_ns": 111833,
+          "all_tick_weighted_mean_ns": 5028.240182186235
+        },
+        "16": {
+          "ticks": 234,
+          "conditional_mean_ns": 24321.786324786324,
+          "p99_ns": 63460,
+          "max_ns": 75958,
+          "all_tick_weighted_mean_ns": 576.0423076923076
+        },
+        "24": {
+          "ticks": 19,
+          "conditional_mean_ns": 37554.84210526316,
+          "p99_ns": 58459,
+          "max_ns": 58459,
+          "all_tick_weighted_mean_ns": 72.22085020242915
+        }
+      }
+    }
+  ],
+  "scope": "diagnostic optimistic bound including timers; no cost deducted; not a net speedup"
+}

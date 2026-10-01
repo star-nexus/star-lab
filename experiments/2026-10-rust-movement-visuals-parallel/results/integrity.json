@@ -1,0 +1,13 @@
+{
+  "raw": {
+    "sha256": "a3593da48438e7c96c9e9c003b8374d4d8b393d45a806d1a2582a2d12e3c4f07",
+    "bytes": 15916081,
+    "members_checked": 133,
+    "all_passed": true
+  },
+  "canonical_analysis_byte_identical": true,
+  "canonical_diagnostic_costs_byte_identical": true,
+  "read_only_restore_chain": true,
+  "source_bundle_fresh_repo_restore": true,
+  "outer_checksum_file": "artifacts/SHA256SUMS"
+}

@@ -1,0 +1,12 @@
+experiment:
+  id: 2026-10-rust-presentation-cache
+  status: in_progress
+source:
+  base: 4657dd474c3b69eb849e11d30f32587ebb21bb70
+  extension_sha256: 838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544
+  api: 18
+  schema: 5
+policy:
+  production_enabled: false
+  default_threads: 1
+  paused_agents: 5000

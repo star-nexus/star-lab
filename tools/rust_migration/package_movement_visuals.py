@@ -15,7 +15,15 @@ raw={}
 for folder in ['replays','contracts','inputs','validation','wheels']:
     for path in sorted((run/folder).glob('*')):
         if not path.is_file() or (folder=='replays' and path.suffix=='.log'):continue
+        if folder=='contracts' and path.name.endswith('.raw.json.gz'):continue
         raw[f'{folder}/{path.name}']=path.read_bytes()
+contract_files=sorted((run/'contracts').glob('*.raw.json.gz'))
+assert len(contract_files)==13
+payload=contract_files[0].read_bytes()
+assert all(path.read_bytes()==payload for path in contract_files)
+canonical='contracts/contracts-canonical.raw.json.gz'
+raw[canonical]=payload
+raw['contract-aliases.json']=(json.dumps({f'contracts/{path.name}':dict(member=canonical,sha256=checksum(payload)) for path in contract_files},indent=2)+'\n').encode()
 for path in sorted(run.glob('*.json')):raw[path.name]=path.read_bytes()
 for name in ['profile_movement_visuals.py','movement_visuals_contracts.py','analyze_movement_visuals.py','run_movement_visuals.py','package_movement_visuals.py','prepare_movement_visuals.py','movement_visuals_cost_bounds.py']:
     path=Path(__file__).with_name(name)

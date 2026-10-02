@@ -44,5 +44,16 @@
   "formal_performance_started": false,
   "full_correctness_passed": false,
   "small_cache_retention_not_pipeline_proof": true,
-  "next": "serial bounded memory diagnosis, baseline/candidate and full-export/no-export; pressure/footprint guards before any full restart"
+  "next": "serial bounded memory diagnosis, baseline/candidate and full-export/no-export; pressure/footprint guards before any full restart",
+  "archive": {
+    "file": "display-preparation-memory-incident.zip",
+    "sha256": "dc1f0932f9b49bc01478c2a5ce04d6c57199957fa14f17dd6d7ec85e768bd2f2",
+    "members": 11
+  },
+  "restart_guard_verified": true,
+  "prior_single_process_diagnostic_maxrss_bytes": {
+    "baseline": 700006400,
+    "reuse_typed": 762363904
+  },
+  "prior_maxrss_limit": "flat high-water values from tick500 to9500; no current/compressed-footprint trend and no full-authority-per-tick export; cannot prove absence of leak"
 }

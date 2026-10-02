@@ -1,0 +1,34 @@
+{
+  "base": "068c1ecd17988ac6d884984e904aea924968e0ae",
+  "candidate": "67308329c3096119d65870d400bf4624f74803df",
+  "unchanged_methods": [
+    "__init__",
+    "_invalidate_fast_caches",
+    "_map_cache_key",
+    "_zoom_cache_key",
+    "_overscan_matches_view",
+    "_draw_overscan",
+    "_active_overscan_geometry_matches",
+    "_render_direct_outside_cached_overlap",
+    "_overscan_miss_reason",
+    "_build_job_matches_view",
+    "_cancel_overscan_build",
+    "_start_overscan_build",
+    "_scan_overscan_candidates",
+    "_include_job_rect",
+    "_raster_overscan_candidates",
+    "_install_completed_job",
+    "_advance_overscan_build",
+    "_acquire_overscan_surface",
+    "_build_overscan_surface",
+    "_install_overscan",
+    "_render_fog_of_war_optimized",
+    "_render_map_optimized"
+  ],
+  "new_methods": [
+    "_display_research_frame",
+    "_render_territory_boundaries_empty",
+    "cleanup"
+  ],
+  "ordinary_method_ast_unchanged": true
+}

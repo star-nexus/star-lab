@@ -6,7 +6,7 @@
   "extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
   "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
   "tools": {
-    "display_preparation_probe.py": "9ac0fa486bc18759b59838bad6a9db289b059f1d6bbd52e55b55a04253b4db59",
+    "display_preparation_probe.py": "64ef940f41b9d7c90cfa09f3ee3889b3d7469816c52c9ae80e91355d1f0d7b4f",
     "display_preparation_diagnosis.py": "10aa40bc4e0328c9c8f477360c554418913834a1b6c2a4f7795370b02dfc378e",
     "display_preparation_script.py": "a956a183cf5f80de33a557927849251b69c5db89cb91f0ba122d75d28c7c4f34",
     "display_preparation_contract.py": "abf0c007863a53bf5b76fc46230a5c7ae35a0efb5ef5739e2ab5d515e84174c1",
@@ -49,5 +49,9 @@
   "cache_contract": "Ordered validated integer coordinates only; tile IDs reread every frame; live ECS membership; any TerritoryControl/custom consumer uses old path",
   "reason": "P0 baseline territory traversal 2.3707ms/tick vs batch packing 0.1118ms/tick; zero TerritoryControl in initial and all 9880 deltas",
   "correctness": "full trace; complete native export before/after each display; ordered command and pixel comparison; fixed wall clock/items quota",
-  "performance": "fine diagnosis off; all 9880 ticks; ordinary and typed independently; static/exercise; native1/4; three rounds alternating ABBA/BAAB; 100 tick blocks/10000 bootstrap/seed42"
+  "performance": "fine diagnosis off; all 9880 ticks; ordinary and typed independently; static/exercise; native1/4; three rounds alternating ABBA/BAAB; 100 tick blocks/10000 bootstrap/seed42",
+  "performance_source_sha": "5d31d35fea9eb677338f854fefc36f64e3b5bf75",
+  "performance_source_difference": "docs/native-benchmark-gaps.md only since prototype6730832; execution unchanged",
+  "correctness_export": "complete raw native JSON before/after every display plus cross-instance SHA stream; no field omission",
+  "matrix_runner_sha256": "01eab7aca775e5cdcebc79e28ef7e8b632f86cacd67332a24af955d45f5c42cb"
 }

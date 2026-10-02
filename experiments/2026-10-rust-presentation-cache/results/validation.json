@@ -1,0 +1,151 @@
+{
+  "python_tests": 2385,
+  "log": "raw/full-tests.log",
+  "source": "0a297a868f589dd49eb514f3c73402142df05e2c",
+  "complete_correctness_threads": [
+    1,
+    4
+  ],
+  "pixel_checks_each": 29640,
+  "cocoa_frames": 2880,
+  "retention": {
+    "source_sha": "0a297a868f589dd49eb514f3c73402142df05e2c",
+    "reports": [
+      {
+        "mode": "baseline",
+        "updates": 50000,
+        "entities": 1,
+        "samples": [
+          {
+            "updates": 10000,
+            "current_bytes": 12104,
+            "peak_bytes": 13424,
+            "maxrss": 67764224
+          },
+          {
+            "updates": 20000,
+            "current_bytes": 12448,
+            "peak_bytes": 13768,
+            "maxrss": 67764224
+          },
+          {
+            "updates": 30000,
+            "current_bytes": 12760,
+            "peak_bytes": 14080,
+            "maxrss": 67764224
+          },
+          {
+            "updates": 40000,
+            "current_bytes": 13072,
+            "peak_bytes": 14392,
+            "maxrss": 67764224
+          },
+          {
+            "updates": 50000,
+            "current_bytes": 13384,
+            "peak_bytes": 14704,
+            "maxrss": 67764224
+          }
+        ],
+        "retained_growth_bytes": 1280,
+        "passed": true
+      },
+      {
+        "mode": "reuse_constructed",
+        "updates": 50000,
+        "entities": 1,
+        "samples": [
+          {
+            "updates": 10000,
+            "current_bytes": 11384,
+            "peak_bytes": 12704,
+            "maxrss": 67764224
+          },
+          {
+            "updates": 20000,
+            "current_bytes": 11728,
+            "peak_bytes": 13048,
+            "maxrss": 67764224
+          },
+          {
+            "updates": 30000,
+            "current_bytes": 12040,
+            "peak_bytes": 13360,
+            "maxrss": 67764224
+          },
+          {
+            "updates": 40000,
+            "current_bytes": 12352,
+            "peak_bytes": 13672,
+            "maxrss": 67764224
+          },
+          {
+            "updates": 50000,
+            "current_bytes": 12664,
+            "peak_bytes": 13984,
+            "maxrss": 67764224
+          }
+        ],
+        "retained_growth_bytes": 1280,
+        "passed": true
+      },
+      {
+        "mode": "reuse_typed",
+        "updates": 50000,
+        "entities": 1,
+        "samples": [
+          {
+            "updates": 10000,
+            "current_bytes": 10832,
+            "peak_bytes": 12152,
+            "maxrss": 67764224
+          },
+          {
+            "updates": 20000,
+            "current_bytes": 11176,
+            "peak_bytes": 12496,
+            "maxrss": 67764224
+          },
+          {
+            "updates": 30000,
+            "current_bytes": 11488,
+            "peak_bytes": 12808,
+            "maxrss": 67764224
+          },
+          {
+            "updates": 40000,
+            "current_bytes": 11800,
+            "peak_bytes": 13120,
+            "maxrss": 67764224
+          },
+          {
+            "updates": 50000,
+            "current_bytes": 12112,
+            "peak_bytes": 13432,
+            "maxrss": 67764224
+          }
+        ],
+        "retained_growth_bytes": 1280,
+        "passed": true
+      }
+    ],
+    "all_passed": true,
+    "performance_claim": false,
+    "capacity_claim": false,
+    "tool_sha256": "463d4219400b7e8cd783a34e1edcb1d15117a5d282fb669cda4496f417c1f659"
+  },
+  "analyzer_recomputed_identically": true,
+  "ordinary_apply_unchanged": true,
+  "native_code_unchanged": true,
+  "no_new_rust_build": true,
+  "live_comparison_all_six_pass": false,
+  "production_enabled": false,
+  "capacity_claim": false,
+  "validated_source": "068c1ecd17988ac6d884984e904aea924968e0ae",
+  "validated_tests": {
+    "command": "PYTHONHASHSEED=0 .venv/bin/python -m pytest -q",
+    "passed": 2385,
+    "seconds": 52.61,
+    "log": "raw/validated-tests.log"
+  }
+}

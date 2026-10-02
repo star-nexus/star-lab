@@ -1,0 +1,6 @@
+{
+  "diagnose-complete-t1.deltas.jsonl.gz": {
+    "canonical": "artifacts/presentation-cache-deltas.jsonl.gz",
+    "sha256": "2c88f598b034c3ac968405789d67b5db31241d7a55c4ec5e817dfac0d0bb32ce"
+  }
+}

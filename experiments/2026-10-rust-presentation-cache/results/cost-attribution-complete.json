@@ -1,0 +1,371 @@
+{
+  "source": "068c1ecd17988ac6d884984e904aea924968e0ae",
+  "diagnostic": true,
+  "ticks": 9880,
+  "components": {
+    "HexPosition": {
+      "copy": {
+        "calls": 1239642,
+        "total_ns": 1134141947
+      },
+      "normalize": {
+        "calls": 1239642,
+        "total_ns": 413154848
+      },
+      "construct": {
+        "calls": 1239642,
+        "total_ns": 445425585
+      },
+      "write": {
+        "calls": 1239642,
+        "total_ns": 1363600074
+      }
+    },
+    "Unit": {
+      "copy": {
+        "calls": 1239642,
+        "total_ns": 1838541561
+      },
+      "normalize": {
+        "calls": 1239642,
+        "total_ns": 1002962813
+      },
+      "construct": {
+        "calls": 1239642,
+        "total_ns": 601919155
+      },
+      "write": {
+        "calls": 1239642,
+        "total_ns": 1256212623
+      }
+    },
+    "UnitCount": {
+      "copy": {
+        "calls": 1239642,
+        "total_ns": 1050867786
+      },
+      "normalize": {
+        "calls": 1239642,
+        "total_ns": 384981064
+      },
+      "construct": {
+        "calls": 1239642,
+        "total_ns": 439309086
+      },
+      "write": {
+        "calls": 1239642,
+        "total_ns": 1098595653
+      }
+    },
+    "MovementAnimation": {
+      "copy": {
+        "calls": 1239477,
+        "total_ns": 5957345129
+      },
+      "normalize": {
+        "calls": 1239477,
+        "total_ns": 725061556
+      },
+      "construct": {
+        "calls": 1239477,
+        "total_ns": 734849218
+      },
+      "write": {
+        "calls": 1239477,
+        "total_ns": 1676196300
+      }
+    },
+    "MovementPoints": {
+      "copy": {
+        "calls": 1239642,
+        "total_ns": 1534721178
+      },
+      "normalize": {
+        "calls": 1239642,
+        "total_ns": 385032086
+      },
+      "construct": {
+        "calls": 1239642,
+        "total_ns": 582180513
+      },
+      "write": {
+        "calls": 1239642,
+        "total_ns": 1045192623
+      }
+    },
+    "ActionPoints": {
+      "copy": {
+        "calls": 1239642,
+        "total_ns": 1041304353
+      },
+      "normalize": {
+        "calls": 1239642,
+        "total_ns": 392346012
+      },
+      "construct": {
+        "calls": 1239642,
+        "total_ns": 440294557
+      },
+      "write": {
+        "calls": 1239642,
+        "total_ns": 1098391251
+      }
+    },
+    "UnitStatus": {
+      "copy": {
+        "calls": 1239642,
+        "total_ns": 1545531239
+      },
+      "normalize": {
+        "calls": 1239642,
+        "total_ns": 477514712
+      },
+      "construct": {
+        "calls": 1239642,
+        "total_ns": 560835166
+      },
+      "write": {
+        "calls": 1239642,
+        "total_ns": 1082337619
+      }
+    },
+    "SkillPoints": {
+      "copy": {
+        "calls": 0,
+        "total_ns": 0
+      },
+      "normalize": {
+        "calls": 0,
+        "total_ns": 0
+      },
+      "construct": {
+        "calls": 0,
+        "total_ns": 0
+      },
+      "write": {
+        "calls": 0,
+        "total_ns": 0
+      }
+    },
+    "ConstructionPoints": {
+      "copy": {
+        "calls": 0,
+        "total_ns": 0
+      },
+      "normalize": {
+        "calls": 0,
+        "total_ns": 0
+      },
+      "construct": {
+        "calls": 0,
+        "total_ns": 0
+      },
+      "write": {
+        "calls": 0,
+        "total_ns": 0
+      }
+    }
+  },
+  "blocks": {
+    "apply.block.events": {
+      "calls": 9880,
+      "total_ns": 14233991
+    },
+    "apply.block.fog": {
+      "calls": 9880,
+      "total_ns": 50447796
+    },
+    "apply.block.hud": {
+      "calls": 9880,
+      "total_ns": 282327883
+    },
+    "apply.block.other": {
+      "calls": 88920,
+      "total_ns": 34225080
+    },
+    "apply.block.players": {
+      "calls": 29640,
+      "total_ns": 9031968
+    },
+    "apply.block.removed": {
+      "calls": 9880,
+      "total_ns": 5805082
+    },
+    "apply.block.singleton": {
+      "calls": 9880,
+      "total_ns": 221554199
+    },
+    "apply.block.tiles": {
+      "calls": 9880,
+      "total_ns": 4979276
+    },
+    "apply.block.units": {
+      "calls": 9880,
+      "total_ns": 39714812825
+    },
+    "apply.block.visuals": {
+      "calls": 39520,
+      "total_ns": 493384200
+    }
+  },
+  "systems": {
+    "display.AnimationSystem": {
+      "calls": 9880,
+      "total_ns": 10137464
+    },
+    "display.EffectRenderSystem": {
+      "calls": 9880,
+      "total_ns": 2835404307
+    },
+    "display.MapRenderSystem": {
+      "calls": 9880,
+      "total_ns": 26808079743
+    },
+    "display.MiniMapSystem": {
+      "calls": 9880,
+      "total_ns": 443968290
+    },
+    "display.PanelRenderSystem": {
+      "calls": 9880,
+      "total_ns": 1034867259
+    },
+    "display.UIRenderSystem": {
+      "calls": 9880,
+      "total_ns": 10930131086
+    },
+    "display.UnitRenderSystem": {
+      "calls": 9880,
+      "total_ns": 15937145552
+    }
+  },
+  "spatial_updates": {
+    "calls": 1239642,
+    "total_ns": 2613319149
+  },
+  "spatial_changes": 80603,
+  "cache_invalidations": {
+    "calls": 8761673,
+    "total_ns": 2528077291
+  },
+  "actual_evictions": {
+    "calls": 36452,
+    "total_ns": 245676072
+  },
+  "query_counter_first": {
+    "cache_size": 5,
+    "cache_version": 2,
+    "hit_count": 0,
+    "miss_count": 7,
+    "hit_rate": 0.0,
+    "max_cache_size": 1000,
+    "selective_evictions": 2,
+    "global_invalidations": 0,
+    "tracked_types": 6
+  },
+  "query_counter_last": {
+    "cache_size": 5,
+    "cache_version": 36454,
+    "hit_count": 0,
+    "miss_count": 36459,
+    "hit_rate": 0.0,
+    "max_cache_size": 1000,
+    "selective_evictions": 36454,
+    "global_invalidations": 0,
+    "tracked_types": 6
+  },
+  "reference_version_changes": {
+    "HexPosition": 9876,
+    "Unit": 9876,
+    "UnitCount": 9876,
+    "MovementAnimation": 9876,
+    "MovementPoints": 9876,
+    "ActionPoints": 9876,
+    "UnitStatus": 9876,
+    "SkillPoints": 0,
+    "ConstructionPoints": 0
+  },
+  "ui_roster_rebuilds": 9876,
+  "dirty_entities": 1239642,
+  "wire_bytes": 869950883,
+  "phase_summaries": {
+    "encode_ns": {
+      "samples": 9880,
+      "mean_ns": 232225.73441295547,
+      "p99_ns": 383709,
+      "max_ns": 586125
+    },
+    "decode_ns": {
+      "samples": 9880,
+      "mean_ns": 507181.39504048583,
+      "p99_ns": 707000,
+      "max_ns": 1331833
+    },
+    "apply_ns": {
+      "samples": 9880,
+      "mean_ns": 4136945.412651822,
+      "p99_ns": 5707542,
+      "max_ns": 6398042
+    },
+    "display_ns": {
+      "samples": 9880,
+      "mean_ns": 6126108.202834008,
+      "p99_ns": 7331500,
+      "max_ns": 17185459
+    },
+    "submit_ns": {
+      "samples": 9880,
+      "mean_ns": 1941689.445445344,
+      "p99_ns": 2400542,
+      "max_ns": 6393917
+    },
+    "platform_ns": {
+      "samples": 9880,
+      "mean_ns": 1354772.4324898785,
+      "p99_ns": 1573125,
+      "max_ns": 3550250
+    },
+    "chain_ns": {
+      "samples": 9880,
+      "mean_ns": 14066696.888461538,
+      "p99_ns": 16631042,
+      "max_ns": 25470625
+    },
+    "total_ns": {
+      "samples": 9880,
+      "mean_ns": 17862760.644838057,
+      "p99_ns": 25379956,
+      "max_ns": 76085345
+    },
+    "request_ns": {
+      "samples": 9880,
+      "mean_ns": 3315168.440384615,
+      "p99_ns": 9337961,
+      "max_ns": 51969887
+    },
+    "step_ns": {
+      "samples": 9880,
+      "mean_ns": 248669.58157894737,
+      "p99_ns": 639084,
+      "max_ns": 1058250
+    }
+  },
+  "live_diagnostic": {
+    "samples": 1800,
+    "means_ms": {
+      "work_ms": 22.12352350910401,
+      "update_work_ms": 22.103986318300787,
+      "inputs_ms": 0.09811781915939516,
+      "native_step_ms": 0.2554152888478711,
+      "delta_ms": 0.6878246403842544,
+      "presentation_apply_ms": 4.316989538363284,
+      "display_systems_ms": 8.355460080137062,
+      "core_screen_fill_ms": 0.27976218397573877,
+      "core_input_system_ms": 0.028148256048249703,
+      "core_scene_update_ms": 13.786369785278415,
+      "core_render_engine_ms": 3.3486792377920613,
+      "core_display_present_ms": 1.476813580763216
+    },
+    "unattributed_update_ms": 3.184213274443108,
+    "nested": "scene includes inputs/native/delta/apply/display; update includes five core scopes; work includes agents+update"
+  }
+}

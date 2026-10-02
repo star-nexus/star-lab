@@ -1,0 +1,109 @@
+{
+  "run": "confirmation-combined.json",
+  "candidate": "reuse_typed",
+  "threads": 4,
+  "metrics": {
+    "apply_ns": {
+      "baseline": {
+        "samples": 19760,
+        "mean_ns": 2694568.1087044533,
+        "p99_ns": 3738708.0,
+        "max_ns": 7828916.0
+      },
+      "candidate": {
+        "samples": 19760,
+        "mean_ns": 1466298.4837550607,
+        "p99_ns": 2094500.0,
+        "max_ns": 2859792.0
+      },
+      "improvement_percent": 45.58317234519427,
+      "ci95_ns": [
+        1194344.7081098484,
+        1260304.1415667834
+      ],
+      "passed": true
+    },
+    "chain_ns": {
+      "baseline": {
+        "samples": 19760,
+        "mean_ns": 10235659.198734818,
+        "p99_ns": 13168750.0,
+        "max_ns": 28891291.0
+      },
+      "candidate": {
+        "samples": 19760,
+        "mean_ns": 8723874.62408907,
+        "p99_ns": 11831583.0,
+        "max_ns": 27282709.0
+      },
+      "improvement_percent": 14.769782241603096,
+      "ci95_ns": [
+        1440264.1999671715,
+        1581833.0868585526
+      ],
+      "passed": true
+    },
+    "total_ns": {
+      "baseline": {
+        "samples": 19760,
+        "mean_ns": 13893427.863512145,
+        "p99_ns": 21965750.0,
+        "max_ns": 79903011.0
+      },
+      "candidate": {
+        "samples": 19760,
+        "mean_ns": 12413552.766396761,
+        "p99_ns": 20853166.0,
+        "max_ns": 78654575.0
+      },
+      "improvement_percent": 10.651619684166873,
+      "ci95_ns": [
+        1395065.8713222202,
+        1564786.809340237
+      ],
+      "passed": true
+    },
+    "display_ns": {
+      "baseline": {
+        "samples": 19760,
+        "mean_ns": 5744594.120040486,
+        "p99_ns": 7717958.0,
+        "max_ns": 19256833.0
+      },
+      "candidate": {
+        "samples": 19760,
+        "mean_ns": 5445426.751467612,
+        "p99_ns": 7672958.0,
+        "max_ns": 24862542.0
+      },
+      "improvement_percent": 5.207806893252993,
+      "ci95_ns": [
+        237073.68051086928,
+        361539.4546338901
+      ],
+      "passed": true
+    },
+    "submit_ns": {
+      "baseline": {
+        "samples": 19760,
+        "mean_ns": 1277688.827125506,
+        "p99_ns": 1849250.0,
+        "max_ns": 6899208.0
+      },
+      "candidate": {
+        "samples": 19760,
+        "mean_ns": 1286362.8371963564,
+        "p99_ns": 1904750.0,
+        "max_ns": 6999625.0
+      },
+      "improvement_percent": -0.6788828302087175,
+      "ci95_ns": [
+        -13576.22182555781,
+        -3929.819247899033
+      ],
+      "passed": false
+    }
+  },
+  "passed": true,
+  "raw_sha256": "d4aa453efd31749b13ce8644d9723b7b9c3eb47730ad6ee8428e72d18f2a3be3"
+}

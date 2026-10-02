@@ -1,0 +1,119 @@
+{
+  "repositories": {
+    "active": {
+      "path": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "sha": "0a297a868f589dd49eb514f3c73402142df05e2c",
+      "branch": "codex/rust-ecs-parallel",
+      "status": []
+    },
+    "original": {
+      "path": "/Users/liyang/Developer/star-main",
+      "sha": "7e145d169433695cd4957e186a6b2fda06813c26",
+      "branch": "codex/rust-env-migration",
+      "status": [
+        "D rotk_agent/README.md",
+        " D rotk_agent/adapters/__init__.py",
+        " D rotk_agent/adapters/base.py",
+        " D rotk_agent/adapters/chat_completions.py",
+        " D rotk_agent/adapters/fake.py",
+        " D rotk_agent/adapters/nemotron.py",
+        " D rotk_agent/adapters/responses.py",
+        " D rotk_agent/core/__init__.py",
+        " D rotk_agent/core/agent.py",
+        " D rotk_agent/core/bridge.py",
+        " D rotk_agent/core/config.py",
+        " D rotk_agent/core/console.py",
+        " D rotk_agent/core/delays.py",
+        " D rotk_agent/core/errors.py",
+        " D rotk_agent/core/filters.py",
+        " D rotk_agent/core/reachable_guard.py",
+        " D rotk_agent/core/runner.py",
+        " D rotk_agent/core/scoring.py",
+        " D rotk_agent/core/stats.py",
+        " D rotk_agent/core/tools.py",
+        " D rotk_agent/core/types.py",
+        " D rotk_agent/main.py",
+        " D rotk_agent/modes/__init__.py",
+        " D rotk_agent/modes/base.py",
+        " D rotk_agent/modes/realtime.py",
+        " D rotk_agent/modes/turn.py",
+        " D rotk_agent/profiles.py",
+        " D rotk_agent/prompts/system_prompt_realtime_cn.md",
+        " D rotk_agent/prompts/system_prompt_realtime_cn_baseline.md",
+        " D rotk_agent/prompts/system_prompt_realtime_en.md",
+        " D rotk_agent/prompts/system_prompt_turn_cn.md",
+        " D rotk_agent/prompts/system_prompt_turn_en.md",
+        " D rotk_agent/tests/__init__.py",
+        " D rotk_agent/tests/conftest.py",
+        " D rotk_agent/tests/support.py",
+        " D rotk_agent/tests/test_adapters.py",
+        " D rotk_agent/tests/test_agent_loop.py",
+        " D rotk_agent/tests/test_auto_test.py",
+        " D rotk_agent/tests/test_config.py",
+        " D rotk_agent/tests/test_errors.py",
+        " D rotk_agent/tests/test_filters.py",
+        " D rotk_agent/tests/test_profiles.py",
+        " D rotk_agent/tests/test_reachable_guard.py",
+        " D rotk_agent/tests/test_runner.py",
+        " D rotk_agent/tests/test_scoring.py",
+        " D rotk_agent/tests/test_stats.py",
+        " D rotk_agent/tests/test_tools.py",
+        " D rotk_agent/tests/test_turn_mode.py",
+        " D rotk_env/assets/fonts/sh.otf"
+      ]
+    },
+    "lab": {
+      "path": "/Users/liyang/Developer/star-lab",
+      "sha": "72445abe076c31068cfde874ea2f26650cff4fac",
+      "branch": "main",
+      "status": []
+    },
+    "frozen_rust": {
+      "path": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+      "sha": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+      "branch": "",
+      "status": []
+    },
+    "frozen_python": {
+      "path": "/Users/liyang/.codex/worktrees/python-capacity-baseline/star-main",
+      "sha": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+      "branch": "",
+      "status": []
+    }
+  },
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "os_version": "26.5.2",
+  "os_build": "25F84",
+  "hardware": {
+    "hw.model": "Mac16,10",
+    "hw.physicalcpu": "10",
+    "hw.logicalcpu": "10",
+    "hw.memsize": "17179869184",
+    "machdep.cpu.brand_string": "Apple M4"
+  },
+  "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+  "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+  "versions": {
+    "numpy": "2.3.2",
+    "pygame": "2.6.1",
+    "pytest": "9.1.1"
+  },
+  "extension": {
+    "path": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/lib/python3.13/site-packages/star_native/_native.cpython-313-darwin.so",
+    "sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544"
+  },
+  "locks": {
+    "uv.lock": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+    "Cargo.lock": "e86cb2bee26f1d95c1cde0abec61bdea575a73ae7218db60b7f06be735f15188"
+  },
+  "tags": {
+    "rust-parallel-e1-design-2026-09-30": "be3867b3ad65749e0e34efd245359c4123189031",
+    "rust-parallel-e2-statistics-2026-10-01": "0aa28ac2ae0267048fcdb3998f9d76175ed4d699",
+    "rust-parallel-e3-internal-attribution-2026-10-01": "6d4018cc0c607a51a3783428867ba9259bb43f43",
+    "rust-parallel-e4-dispatch-screen-2026-10-02": "a7508bce4b900ccf8465e761291adb7e7e2ce98d",
+    "rust-parallel-e5-movement-visuals-2026-10-02": "3b167b151c3bc32e1d54f6015d0f15d2c3dd6a74",
+    "rust-parallel-p0-attribution-2026-09-30": "c058d75c0ad67a7c340c2a6ac74a9d5bc2888adf"
+  },
+  "cpu_affinity": null
+}

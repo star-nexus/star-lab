@@ -1,0 +1,12 @@
+{
+  "archive_analysis_byte_identical": true,
+  "raw_internal_members_verified": 505,
+  "source_bundle_verified": true,
+  "old_tags_unchanged": true,
+  "original_deletions_preserved": 49,
+  "frozen_worktrees_unchanged": true,
+  "active_source_clean": true,
+  "source_code_delta_since_measurement": "documentation only",
+  "production_enabled": false,
+  "capacity_claim": false
+}

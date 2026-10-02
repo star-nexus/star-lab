@@ -1,16 +1,22 @@
 # Rust 并行工作：新 Session 交接入口
 
-## E6 展示数据与 ECS 缓存（执行中）
+## E6 展示数据与 ECS 缓存研究完成（2026-10-02）
 
-起点4657dd4，私有原型5f567d3，测试checkpoint0a297a8；native源码及838c693扩展保持。
-2385项Python回归通过；普通apply AST与起点一致。完整基线诊断通过40994请求/9880tick，
-探针成本仅作归因。完整像素对照曾在2711tick失败，当前补充控制展示墙钟后重新验证；
-在正确性完整通过前不进入性能或live。三个研究模式默认不接入普通展示。
-进度：`身份/契约 █ | 原型/回归 █ | 基线归因 █ | 完整等价 ░ | 配对/条件live ░ | 归档 ░`。
+验证节点 `068c1ecd17988ac6d884984e904aea924968e0ae` / `rust-parallel-e6-presentation-cache-2026-10-02`；测量0a297a8，执行代码相同，native扩展838c693保持。
+2385回归、native1/4完整40994请求/9880tick的响应、权威、展示、查询和像素契约通过。
+reuse_typed六轮apply改善44.26–45.62%、完整链14.66–15.53%、总工作10.78–11.61%，
+均值/P99/区间门槛通过；native4单实例确认通过。reuse_constructed apply慢2.11–2.71%，不选择。
+候选三轮窗口guards通过，但baseline第二轮帧/队列超限，六次整体window gate未全通过。
+研究默认关闭，不声称容量或Frontier提升，既有GAP不关闭，5000Agents暂缓。
 
-[当前E6入口](../experiments/2026-10-rust-presentation-cache/README.md)与
-[成本/契约](../experiments/2026-10-rust-presentation-cache/analysis.md)。
-5000Units＋1000Agents；5000Agents暂缓。既有GAP及容量/Frontier状态不改，不push/merge。
+先读[E6 README](../experiments/2026-10-rust-presentation-cache/README.md)、
+[成本/完整结果](../experiments/2026-10-rust-presentation-cache/analysis.md)、
+[决策](../experiments/2026-10-rust-presentation-cache/decision.md)。原始样本/失败控制、完整重生成delta、
+wheel、source bundle和校验链均保留。像素契约固定游戏墙钟及地形构建条目配额；
+正式性能/实时窗口仍采用原时间预算，产品未因此修改。
+下一项：显示链路准备成本，先拆真实窗口约3.184ms未归因update和3.349ms RMS分项，并追踪baseline尾延迟。
+进度：`归因 █ | 契约/实现 █ | 等价 █ | 三轮收益/确认 █ | 窗口结论 █ | 证据/恢复 █`。
+原49删除/冻结目录/E2–E5标签保留，不push/merge。
 
 ## 整体性能评估完成：建议优先展示与观测（2026-10-02，未实施）
 

@@ -1,12 +1,253 @@
-experiment:
-  id: 2026-10-rust-presentation-cache
-  status: in_progress
-source:
-  base: 4657dd474c3b69eb849e11d30f32587ebb21bb70
-  extension_sha256: 838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544
-  api: 18
-  schema: 5
-policy:
-  production_enabled: false
-  default_threads: 1
-  paused_agents: 5000
+{
+  "experiment": {
+    "id": "2026-10-rust-presentation-cache",
+    "date": "2026-10-02",
+    "status": "validated_research_complete",
+    "result": "fixed-input positive typed reuse; candidate live passes; all-six window comparison fails; default off"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "4657dd474c3b69eb849e11d30f32587ebb21bb70",
+    "candidate_commit": "5f567d36e89450da203b20fed212fd6b21fde1e1",
+    "measurement_commit": "0a297a868f589dd49eb514f3c73402142df05e2c",
+    "validated_commit": "068c1ecd17988ac6d884984e904aea924968e0ae",
+    "validated_tag": "rust-parallel-e6-presentation-cache-2026-10-02",
+    "branch": "codex/rust-ecs-parallel",
+    "final_attribution_commit": "068c1ecd17988ac6d884984e904aea924968e0ae",
+    "execution_code_identical_between_measurement_and_validated": true
+  },
+  "source_bundle": {
+    "file": "artifacts/presentation-cache-source.bundle",
+    "bytes": 10108,
+    "sha256": "c531aca9e37d9545d89625c082128b3982d61514a868b8bf3e110db01e2abd66",
+    "prerequisite": "3b167b151c3bc32e1d54f6015d0f15d2c3dd6a74"
+  },
+  "binary": {
+    "wheel_member": "wheels/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+    "wheel_sha256": "2a853d7f8d1ca9701d7ffcb39522d2c25d0824562d8ca436424f8c790cfd0e30",
+    "extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
+    "build": "exact E5 wheel reused, no native source change"
+  },
+  "tooling": {
+    "formal_commit": "72445abe076c31068cfde874ea2f26650cff4fac",
+    "complete_attribution_commit": "a452abc",
+    "archived_snapshots": "raw ZIP tooling/*/tools",
+    "content_hashes": "results/artifact-index.json"
+  },
+  "environment": {
+    "repositories": {
+      "active": {
+        "path": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+        "sha": "0a297a868f589dd49eb514f3c73402142df05e2c",
+        "branch": "codex/rust-ecs-parallel",
+        "status": []
+      },
+      "original": {
+        "path": "/Users/liyang/Developer/star-main",
+        "sha": "7e145d169433695cd4957e186a6b2fda06813c26",
+        "branch": "codex/rust-env-migration",
+        "status": [
+          "D rotk_agent/README.md",
+          " D rotk_agent/adapters/__init__.py",
+          " D rotk_agent/adapters/base.py",
+          " D rotk_agent/adapters/chat_completions.py",
+          " D rotk_agent/adapters/fake.py",
+          " D rotk_agent/adapters/nemotron.py",
+          " D rotk_agent/adapters/responses.py",
+          " D rotk_agent/core/__init__.py",
+          " D rotk_agent/core/agent.py",
+          " D rotk_agent/core/bridge.py",
+          " D rotk_agent/core/config.py",
+          " D rotk_agent/core/console.py",
+          " D rotk_agent/core/delays.py",
+          " D rotk_agent/core/errors.py",
+          " D rotk_agent/core/filters.py",
+          " D rotk_agent/core/reachable_guard.py",
+          " D rotk_agent/core/runner.py",
+          " D rotk_agent/core/scoring.py",
+          " D rotk_agent/core/stats.py",
+          " D rotk_agent/core/tools.py",
+          " D rotk_agent/core/types.py",
+          " D rotk_agent/main.py",
+          " D rotk_agent/modes/__init__.py",
+          " D rotk_agent/modes/base.py",
+          " D rotk_agent/modes/realtime.py",
+          " D rotk_agent/modes/turn.py",
+          " D rotk_agent/profiles.py",
+          " D rotk_agent/prompts/system_prompt_realtime_cn.md",
+          " D rotk_agent/prompts/system_prompt_realtime_cn_baseline.md",
+          " D rotk_agent/prompts/system_prompt_realtime_en.md",
+          " D rotk_agent/prompts/system_prompt_turn_cn.md",
+          " D rotk_agent/prompts/system_prompt_turn_en.md",
+          " D rotk_agent/tests/__init__.py",
+          " D rotk_agent/tests/conftest.py",
+          " D rotk_agent/tests/support.py",
+          " D rotk_agent/tests/test_adapters.py",
+          " D rotk_agent/tests/test_agent_loop.py",
+          " D rotk_agent/tests/test_auto_test.py",
+          " D rotk_agent/tests/test_config.py",
+          " D rotk_agent/tests/test_errors.py",
+          " D rotk_agent/tests/test_filters.py",
+          " D rotk_agent/tests/test_profiles.py",
+          " D rotk_agent/tests/test_reachable_guard.py",
+          " D rotk_agent/tests/test_runner.py",
+          " D rotk_agent/tests/test_scoring.py",
+          " D rotk_agent/tests/test_stats.py",
+          " D rotk_agent/tests/test_tools.py",
+          " D rotk_agent/tests/test_turn_mode.py",
+          " D rotk_env/assets/fonts/sh.otf"
+        ]
+      },
+      "lab": {
+        "path": "/Users/liyang/Developer/star-lab",
+        "sha": "72445abe076c31068cfde874ea2f26650cff4fac",
+        "branch": "main",
+        "status": []
+      },
+      "frozen_rust": {
+        "path": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+        "sha": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+        "branch": "",
+        "status": []
+      },
+      "frozen_python": {
+        "path": "/Users/liyang/.codex/worktrees/python-capacity-baseline/star-main",
+        "sha": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+        "branch": "",
+        "status": []
+      }
+    },
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "os_version": "26.5.2",
+    "os_build": "25F84",
+    "hardware": {
+      "hw.model": "Mac16,10",
+      "hw.physicalcpu": "10",
+      "hw.logicalcpu": "10",
+      "hw.memsize": "17179869184",
+      "machdep.cpu.brand_string": "Apple M4"
+    },
+    "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+    "versions": {
+      "numpy": "2.3.2",
+      "pygame": "2.6.1",
+      "pytest": "9.1.1"
+    },
+    "extension": {
+      "path": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/lib/python3.13/site-packages/star_native/_native.cpython-313-darwin.so",
+      "sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544"
+    },
+    "locks": {
+      "uv.lock": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+      "Cargo.lock": "e86cb2bee26f1d95c1cde0abec61bdea575a73ae7218db60b7f06be735f15188"
+    },
+    "tags": {
+      "rust-parallel-e1-design-2026-09-30": "be3867b3ad65749e0e34efd245359c4123189031",
+      "rust-parallel-e2-statistics-2026-10-01": "0aa28ac2ae0267048fcdb3998f9d76175ed4d699",
+      "rust-parallel-e3-internal-attribution-2026-10-01": "6d4018cc0c607a51a3783428867ba9259bb43f43",
+      "rust-parallel-e4-dispatch-screen-2026-10-02": "a7508bce4b900ccf8465e761291adb7e7e2ce98d",
+      "rust-parallel-e5-movement-visuals-2026-10-02": "3b167b151c3bc32e1d54f6015d0f15d2c3dd6a74",
+      "rust-parallel-p0-attribution-2026-09-30": "c058d75c0ad67a7c340c2a6ac74a9d5bc2888adf"
+    },
+    "cpu_affinity": null
+  },
+  "scenario": {
+    "units": 5000,
+    "agents": 1000,
+    "seed": 42,
+    "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+    "initial_sha256": "8b594c465a63728222c57f257111d500c1c378e226b3496c63c0b11870629bc0",
+    "canonical_raw": "../2026-09-rust-1000-agent-validation/artifacts/r4e-1000-agents-raw.zip",
+    "canonical_sha256": "ad96be639d7e17e931d7984f87e4d5d2049653e769dc1a43b7d0d4d58f1d00c5",
+    "surface": [
+      2480,
+      1239
+    ],
+    "minimap_units": "off",
+    "fog": true,
+    "display_scripts": "static prepared camera; exercise camera=(1240+(phase2?80:0),619), zoom=(1,.5,1.25,1), faction=(Wei,Shu,Wu,Wei), selection phases1/3; phase=tick//300%4"
+  },
+  "measurement": {
+    "requests": 40994,
+    "ticks": 9880,
+    "threads": [
+      1,
+      4
+    ],
+    "modes": [
+      "baseline",
+      "reuse_constructed",
+      "reuse_typed"
+    ],
+    "rounds_each": 3,
+    "paired": "four persistent independent instances, alternating ABBA/BAAB every tick",
+    "including_warmup": true,
+    "no_sample_filter": true,
+    "diagnostics_closed": true,
+    "gc": "fixed replay collect then disable for finite epoch; live realtime_defer",
+    "driver": "dummy paired/confirmation, Cocoa contracts/diagnostics/live",
+    "clock": "display-only wall time fixed; recorded native clocks unchanged; real perf clocks",
+    "pixel_build_schedule": "fixed original 2048-item quota, infinite time budget, correctness only",
+    "performance_build_budget_ms": 1.5,
+    "metrics": "apply; decode+apply+clear/display+RMS submit; request+step+encode+chain; verification/hash/IO/initialization/pacing excluded",
+    "gate": "each round apply mean >=10% better; apply/chain/total mean better, CI95 lower>0, P99 not worse",
+    "bootstrap": {
+      "block_ticks": 100,
+      "resamples": 10000,
+      "seed": 42,
+      "last_block_ticks": 80,
+      "weighted_by_actual_block_size": true
+    },
+    "p99": "19760 original individual samples each side",
+    "fixed_gates": {
+      "reuse_constructed": {
+        "1": false,
+        "4": false
+      },
+      "reuse_typed": {
+        "1": true,
+        "4": true
+      }
+    },
+    "single_confirmation_pass": true,
+    "live_candidate_guards": true,
+    "live_all_six_guards": false,
+    "live": "AB/BA/AB, each30s warmup+300s measurement, fresh closed loops; not fixed-input paired causal effects"
+  },
+  "constraints": {
+    "production_enabled": false,
+    "default_native_threads": 1,
+    "api": 18,
+    "schema": 5,
+    "statistics_min_rows": 128,
+    "agents5000": "deferred",
+    "capacity_frontier": "unchanged",
+    "existing_gaps": "unchanged, no newly confirmed gameplay gap",
+    "push_merge": false
+  },
+  "raw": {
+    "file": "artifacts/presentation-cache-raw.zip",
+    "bytes": 59032775,
+    "sha256": "accdac58f19704c943083006be4f15d1fc44bb88fb1d6a91ec75bce791d6e620"
+  },
+  "regenerated_deltas": {
+    "file": "artifacts/presentation-cache-deltas.jsonl.gz",
+    "bytes": 69044574,
+    "sha256": "2c88f598b034c3ac968405789d67b5db31241d7a55c4ec5e817dfac0d0bb32ce"
+  },
+  "evidence": {
+    "analysis": "results/paired-analysis-complete.json",
+    "decision": "results/decision.json",
+    "costs": "results/cost-attribution-complete.json",
+    "commands": "results/commands.json",
+    "validation": "results/validation.json",
+    "delta_verification": "results/regenerated-delta-verification.json"
+  },
+  "compact": {
+    "file": "artifacts/presentation-cache-compact.zip",
+    "bytes": 306107,
+    "sha256": "392261382fb9d5760691f08cce3a79c2af311bac5664f430abf0f0e4c4a08571"
+  }
+}

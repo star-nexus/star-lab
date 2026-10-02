@@ -1,0 +1,48 @@
+{
+  "time": "2026-10-02T14:52:25.069531+08:00",
+  "status": "memory_guard_failure; all large tests stopped; no automatic restart",
+  "screenshot_app_memory_gb": 7.98,
+  "user_reported_app_memory_gb": 8.45,
+  "pre_stop_test_rss_kib": [
+    905376,
+    925920,
+    869888,
+    893840
+  ],
+  "pre_stop_swap_used_mib": 10258.5,
+  "pre_stop_free_pages": 3128,
+  "post_stop_free_pages": 194467,
+  "page_bytes": 16384,
+  "jobs": [
+    {
+      "log": "p2-correctness-t1-static.log",
+      "last_checkpoint": 2000,
+      "complete": false,
+      "reason": "stopped after user reported application memory exhaustion"
+    },
+    {
+      "log": "p2-correctness-t4-exercise.log",
+      "last_checkpoint": 2000,
+      "complete": false,
+      "reason": "stopped after user reported application memory exhaustion"
+    },
+    {
+      "log": "p2-correctness-typed-t1-exercise.log",
+      "last_checkpoint": 1500,
+      "complete": false,
+      "reason": "stopped after user reported application memory exhaustion"
+    },
+    {
+      "log": "p2-correctness-typed-t4-static.log",
+      "last_checkpoint": 1500,
+      "complete": false,
+      "reason": "stopped after user reported application memory exhaustion"
+    }
+  ],
+  "leak_cause": "unresolved; concurrent full-export processes, GC deferral, transient/native retention and app process group must be separated",
+  "candidate_adoption": false,
+  "formal_performance_started": false,
+  "full_correctness_passed": false,
+  "small_cache_retention_not_pipeline_proof": true,
+  "next": "serial bounded memory diagnosis, baseline/candidate and full-export/no-export; pressure/footprint guards before any full restart"
+}

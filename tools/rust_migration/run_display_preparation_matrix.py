@@ -2,6 +2,9 @@
 import argparse,json,subprocess,sys,time
 from pathlib import Path
 p=argparse.ArgumentParser();p.add_argument('--source',type=Path,required=True);p.add_argument('--source-sha',required=True);p.add_argument('--runs',type=Path,required=True);p.add_argument('--trace',type=Path,required=True);a=p.parse_args()
+incident=Path(__file__).resolve().parents[2]/'experiments/2026-10-rust-display-preparation/results/memory-exhaustion-incident.json'
+if incident.exists() and not json.loads(incident.read_text()).get('resolved_safety',False):
+ raise RuntimeError('E7 memory exhaustion incident unresolved; automatic performance restart is disabled')
 a.runs.mkdir(exist_ok=True);python=a.source/'.venv/bin/python';tool=Path(__file__).with_name('display_preparation_performance.py');commands=[]
 for round_id in (1,2,3):
  for script in ('static','exercise'):

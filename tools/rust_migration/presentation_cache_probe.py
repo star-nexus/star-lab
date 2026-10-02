@@ -38,12 +38,17 @@ class Diagnosis:
     """Inclusive timings. Component subphases are exclusive within _component."""
     def __init__(self, session):
         import rotk_env.runtime.world_presentation as wp
+        import ast
+        import inspect
+        import textwrap
+        from rotk_env.utils.unit_spatial_index import get_unit_spatial_index
         self.rows=defaultdict(lambda:[0,0]); self.originals=[]
         def wrap(obj,name,key):
             original=getattr(obj,name)
             def timed(*args,**kwargs):
                 start=time.perf_counter_ns()
                 before=getattr(obj,'_faction_roster_members',None) if name=='_current_faction_counts' else None
+                spatial_before=get_unit_spatial_index(args[0]).revision if key=='spatial.update' else None
                 try:return original(*args,**kwargs)
                 finally:
                     elapsed=time.perf_counter_ns()-start
@@ -52,6 +57,8 @@ class Diagnosis:
                         typed=self.rows['ecs.write.'+type(args[1]).__name__];typed[0]+=1;typed[1]+=elapsed
                     if name=='_current_faction_counts' and getattr(obj,'_faction_roster_members',None)!=before:
                         self.rows['reference.UI.roster_rebuild'][0]+=1
+                    if spatial_before is not None and get_unit_spatial_index(args[0]).revision!=spatial_before:
+                        self.rows['spatial.changed'][0]+=1
             setattr(obj,name,timed);self.originals.append((obj,name,original))
         original=wp._component
         def component(cls,state):
@@ -80,6 +87,31 @@ class Diagnosis:
         for system in session.world.systems:
             wrap(system,'update','display.'+type(system).__name__)
             if hasattr(system,'_current_faction_counts'):wrap(system,'_current_faction_counts','reference.UI.roster')
+        # Diagnostic-only AST instrumentation preserves the original statements,
+        # ordering and return/error prefix. It does not instrument research modes.
+        original=wp.WorldPresentation.apply
+        tree=ast.parse(textwrap.dedent(inspect.getsource(original)));fn=tree.body[0];body=[]
+        def finished(key,start):
+            row=self.rows['apply.block.'+key];row[0]+=1;row[1]+=time.perf_counter_ns()-start
+        for statement in fn.body:
+            literal=ast.unparse(statement)
+            key='other'
+            if 'delta[\'units\']' in literal:key='units'
+            elif 'delta[\'tiles\']' in literal:key='tiles'
+            elif 'delta[\'state\']' in literal:key='singleton'
+            elif literal.startswith(('players =','if players[','for row in players[')):key='players'
+            elif 'self._apply_fog' in literal:key='fog'
+            elif 'self._apply_hud' in literal:key='hud'
+            elif 'visual' in literal:key='visuals'
+            elif 'delta[\'removed\']' in literal:key='removed'
+            elif literal.startswith('return '):key='events'
+            body.extend(ast.parse('_e6_diag_t0 = _e6_diag_clock()').body)
+            final=ast.parse(f'_e6_diag_finished({key!r}, _e6_diag_t0)').body
+            body.append(ast.Try(body=[statement],handlers=[],orelse=[],finalbody=final))
+        fn.body=body;ast.fix_missing_locations(tree)
+        namespace=dict(wp.__dict__,_e6_diag_clock=time.perf_counter_ns,_e6_diag_finished=finished)
+        exec(compile(tree,'<E6 diagnosis: original apply statements>','exec'),namespace)
+        wp.WorldPresentation.apply=namespace['apply'];self.originals.append((wp.WorldPresentation,'apply',original))
     def finish(self):
         for obj,name,original in reversed(self.originals):setattr(obj,name,original)
         return {key:dict(calls=n,total_ns=ns) for key,(n,ns) in sorted(self.rows.items())}
@@ -93,6 +125,7 @@ def main():
     p.add_argument('--candidate',choices=MODES,default='reuse_typed');p.add_argument('--threads',type=int,choices=[1,4],default=1)
     p.add_argument('--driver',choices=['dummy','cocoa'],default='dummy');p.add_argument('--script',choices=['static','exercise'],default='static')
     p.add_argument('--overscan-clock',choices=['wall','items'],default='wall',help='Pixel contract only: fixed item quota, with the real performance clock unchanged')
+    p.add_argument('--archive-deltas',action='store_true',help='Diagnostic only: archive regenerated complete native JSONL outside timed intervals')
     p.add_argument('--display-clock',choices=['fixed','wall'],default='fixed',help='Fixed display-only wall time is separate from real perf clocks')
     p.add_argument('--same-mode-control',action='store_true',help='Development baseline/baseline pixel control')
     p.add_argument('--limit',type=int,help='Development smoke only, never accepted as formal evidence')
@@ -134,6 +167,10 @@ def main():
     samples=[[] for _ in modes];pending=[dict(request_ns=0,step_ns=0) for _ in modes]
     counts=Counter();stream=hashlib.sha256();checks=Counter();ticks=0;diagnostic_rows=[];memory=[]
     baseline_display=None;mutable_ids=set();singletons_dirty=set();reference_rebuilds=Counter()
+    delta_stream=None
+    if a.archive_deltas:
+        assert a.task=='diagnose'
+        delta_stream=gzip.GzipFile(filename=str(out.with_suffix('.deltas.jsonl.gz')),mode='wb',mtime=0)
     began=time.perf_counter();original_wall=time.time
     if a.display_clock=='fixed':time.time=lambda:1720000000.+ticks/30
     baseline_rgb=None
@@ -252,6 +289,7 @@ def main():
                                 raise AssertionError(('pixels',ticks,mode))
                         checks['pixels']+=1;checks['projection']+=1
                     if a.task=='diagnose':
+                        if delta_stream:delta_stream.write(wire.encode()+b'\n')
                         stats=session.world.get_cache_stats()
                         diagnostic_rows.append(dict(tick=ticks,**phases,units=len(delta['units']),bytes=len(wire.encode()),cache=stats,
                             reference_versions={cls.__name__:session.world.component_reference_version(cls) for cls in _UNIT_COLUMNS.values()},
@@ -274,6 +312,7 @@ def main():
             assert stream.hexdigest()=='e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b'
         raw=save(out.with_suffix('.samples.json.gz'),samples)
         diag=diagnosis.finish() if diagnosis else None;diagnosis=None
+        if delta_stream:delta_stream.close();delta_stream=None
         result=dict(source_sha=a.source_sha,source_dirty=git(src,'status','--porcelain','--untracked-files=no'),
             tool_sha256=sha(__file__),tooling_commit=git(Path(__file__).resolve().parents[2],'rev-parse','HEAD'),
             extension_sha256=EXT_SHA,trace_sha256=TRACE_SHA,initial_sha256=sha(initial_path),original_source=trace['source'],
@@ -288,8 +327,11 @@ def main():
             dependency_lock_sha256=sha(src/'uv.lock'),python=sys.version,capacity_claim=False)
         # diag was restored above; save using the result rather than wrapper state.
         if diag is not None:result['diagnostic_raw']=save(out.with_suffix('.diagnostic.json.gz'),diagnostic_rows)
+        if a.archive_deltas:
+            path=out.with_suffix('.deltas.jsonl.gz');result['regenerated_deltas']=dict(file=path.name,sha256=sha(path),bytes=path.stat().st_size,rows=ticks)
         out.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(dict(output=str(out),all_passed=True,formal=result['formal'])),flush=True)
     finally:
+        if delta_stream:delta_stream.close()
         time.time=original_wall
         if diagnosis:diagnosis.finish()
         gc.enable()

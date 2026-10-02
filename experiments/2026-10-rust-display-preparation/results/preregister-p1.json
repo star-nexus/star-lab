@@ -10,7 +10,8 @@
     "display_preparation_diagnosis.py": "10aa40bc4e0328c9c8f477360c554418913834a1b6c2a4f7795370b02dfc378e",
     "display_preparation_script.py": "a956a183cf5f80de33a557927849251b69c5db89cb91f0ba122d75d28c7c4f34",
     "display_preparation_contract.py": "abf0c007863a53bf5b76fc46230a5c7ae35a0efb5ef5739e2ab5d515e84174c1",
-    "analyze_display_preparation.py": "8d7a5b68f6a744be54e82dda47996c5842523909b038806720ecc06831b01c65"
+    "analyze_display_preparation.py": "8d7a5b68f6a744be54e82dda47996c5842523909b038806720ecc06831b01c65",
+    "display_preparation_performance.py": "216a178154b2dce2f93149e5145dd3c2d776fdcceb1a084f9a911ebcae6d7d86"
   },
   "consumer_layers": [
     "baseline",
@@ -53,5 +54,6 @@
   "performance_source_sha": "5d31d35fea9eb677338f854fefc36f64e3b5bf75",
   "performance_source_difference": "docs/native-benchmark-gaps.md only since prototype6730832; execution unchanged",
   "correctness_export": "complete raw native JSON before/after every display plus cross-instance SHA stream; no field omission",
-  "matrix_runner_sha256": "01eab7aca775e5cdcebc79e28ef7e8b632f86cacd67332a24af955d45f5c42cb"
+  "matrix_runner_sha256": "aae851223abd25c23212673dde66efb7e9974e220590ca8f198b7d0ebaa47147",
+  "formal_common_counts": "queue length inside Q, cache state after timed work; separate gzip arrays; no per-command fine timers"
 }

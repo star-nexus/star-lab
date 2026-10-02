@@ -123,6 +123,7 @@ def main():
     p.add_argument('--trace',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
     p.add_argument('--consumer',choices=['baseline','reuse_typed'],default='baseline')
     p.add_argument('--full-authority',action='store_true')
+    p.add_argument('--probe-control',action='store_true')
     p.add_argument('--task',choices=['diagnose','correctness','paired','single'],required=True)
     p.add_argument('--candidate',choices=MODES,default='record_runs');p.add_argument('--threads',type=int,choices=[1,4],default=1)
     p.add_argument('--driver',choices=['dummy','cocoa'],default='dummy');p.add_argument('--script',choices=['static','exercise'],default='static')
@@ -198,9 +199,9 @@ def main():
         # Initial query/reference rosters are warmed identically, outside measured work.
         for session in sessions:
             RMS.screen.fill((0,0,0));session.update_display(0,inputs=False);RMS.update()
-        if a.task=='diagnose':
+        if a.task=='diagnose' or a.probe_control:
             from display_preparation_diagnosis import DisplayDiagnosis
-            diagnosis=DisplayDiagnosis(sessions[0])
+            diagnosis=DisplayDiagnosis(sessions[1] if a.probe_control else sessions[0])
         gc.collect();gc.disable()
         from display_preparation_script import apply as display_script
         def script(session,tick):display_script(session,tick,a.script)
@@ -262,14 +263,17 @@ def main():
                     delta=json.loads(wire);v=time.perf_counter_ns()
                     events=session.presentation._apply_research(delta,mode=a.consumer);w=time.perf_counter_ns()
                     script(session,ticks)
-                    if diagnosis:diagnosis.begin_tick(ticks)
+                    if diagnosis and (not a.probe_control or wi==1):diagnosis.begin_tick(ticks)
                     authority_before=runtime.export_state() if a.full_authority else None
                     from contextlib import nullcontext
                     draw_start=time.perf_counter_ns()
                     with RMS._research_frame(mode) if hasattr(RMS,'_research_frame') else nullcontext():
                         if mode!='baseline' and not hasattr(RMS,'_research_frame'):raise RuntimeError('Render prototype not installed')
                         RMS.screen.fill((0,0,0));session.update_display(1/30,inputs=False)
-                        commands=RMS._research_command_fingerprint() if a.task=='correctness' and hasattr(RMS,'_research_command_fingerprint') else None
+                        commands=None
+                        if a.task=='correctness':
+                            from display_preparation_contract import fingerprint
+                            commands=fingerprint(RMS)
                         draw_end=time.perf_counter_ns();RMS.update()
                     draw_done=time.perf_counter_ns()
                     if a.full_authority:
@@ -282,7 +286,7 @@ def main():
                         if wi==0:baseline_commands=commands
                         else:assert commands==baseline_commands,('command stream',ticks,mode)
                         checks['command_stream']+=1
-                    if diagnosis:diagnosis.end_tick(ticks)
+                    if diagnosis and (not a.probe_control or wi==1):diagnosis.end_tick(ticks)
                     if a.driver=='cocoa':pygame.display.flip()
                     platform_done=time.perf_counter_ns()
                     phases=dict(encode_ns=u-t,decode_ns=v-u,apply_ns=w-v,display_ns=draw_end-draw_start,submit_ns=draw_done-draw_end,platform_ns=platform_done-draw_done)
@@ -305,7 +309,7 @@ def main():
                                 out.with_suffix('.failure.json').write_text(json.dumps(dict(tick=ticks,mode=mode,display_clock=a.display_clock,fields_equal=True,baseline=baseline_display,candidate=rgb),indent=2)+'\n')
                                 raise AssertionError(('pixels',ticks,mode))
                         checks['pixels']+=1;checks['projection']+=1
-                    if a.task=='diagnose':
+                    if a.task=='diagnose' or a.probe_control:
                         if delta_stream:delta_stream.write(wire.encode()+b'\n')
                         stats=session.world.get_cache_stats()
                         diagnostic_rows.append(dict(tick=ticks,**phases,units=len(delta['units']),bytes=len(wire.encode()),cache=stats,
@@ -336,7 +340,7 @@ def main():
             argv=sys.argv,task=a.task,modes=modes,consumer=a.consumer,full_authority=a.full_authority,threads=a.threads,display_script=a.script,display_script_sha256=sha(Path(__file__).with_name('display_preparation_script.py')),display_clock=a.display_clock,overscan_clock=a.overscan_clock,driver=pygame.display.get_driver(),
             surface=list(RMS.screen.get_size()),fixture_sha256=fixture_sha,counts=dict(counts),stream_sha256=stream.hexdigest(),
             final_state_sha256=digest(finals[0]),checks=dict(checks),all_passed=True,formal=not bool(a.limit),
-            diagnostic=a.task=='diagnose',elapsed_seconds=time.perf_counter()-began,memory=memory,raw=raw,
+            diagnostic=a.task=='diagnose' or a.probe_control,probe_control=a.probe_control,elapsed_seconds=time.perf_counter()-began,memory=memory,raw=raw,
             summaries=[{key:summary([row[key] for row in rows]) for key in rows[0]} for rows in samples],
             pixel_stream_sha256=pixel_stream.hexdigest() if pixel_rows else None,
             pixel_raw=save(out.with_suffix('.pixels.json.gz'),pixel_rows) if pixel_rows else None,

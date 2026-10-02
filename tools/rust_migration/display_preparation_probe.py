@@ -205,7 +205,7 @@ def main():
         gc.collect();gc.disable()
         from display_preparation_script import apply as display_script
         def script(session,tick):display_script(session,tick,a.script)
-        pixel_stream=hashlib.sha256();pixel_rows=[]
+        pixel_stream=hashlib.sha256();pixel_rows=[];authority_rows=[]
         def compare_display(left,right,delta):
             x=left.world;y=right.world
             assert x.entities.keys()==y.entities.keys()
@@ -264,7 +264,7 @@ def main():
                     events=session.presentation._apply_research(delta,mode=a.consumer);w=time.perf_counter_ns()
                     script(session,ticks)
                     if diagnosis and (not a.probe_control or wi==1):diagnosis.begin_tick(ticks)
-                    authority_before=runtime.export_state() if a.full_authority else None
+                    authority_before=runtime._native.export_state_json(None) if a.full_authority else None
                     from contextlib import ExitStack
                     draw_start=time.perf_counter_ns()
                     with ExitStack() as frame_scope:
@@ -279,9 +279,11 @@ def main():
                         draw_end=time.perf_counter_ns();RMS.update()
                     draw_done=time.perf_counter_ns()
                     if a.full_authority:
-                        assert runtime.export_state()==authority_before,('authority written by display',ticks,mode)
-                        authority_digest=digest(authority_before)
-                        if wi==0:baseline_authority_digest=authority_digest
+                        assert runtime._native.export_state_json(None)==authority_before,('authority written by display',ticks,mode)
+                        authority_digest=hashlib.sha256(authority_before.encode()).hexdigest()
+                        if wi==0:
+                            baseline_authority_digest=authority_digest
+                            authority_rows.append(dict(tick=ticks,sha256=authority_digest))
                         else:assert authority_digest==baseline_authority_digest,('authority',ticks,mode)
                         checks['full_authority']+=1
                     if commands is not None:
@@ -344,6 +346,8 @@ def main():
             final_state_sha256=digest(finals[0]),checks=dict(checks),all_passed=True,formal=not bool(a.limit),
             diagnostic=a.task=='diagnose' or a.probe_control,probe_control=a.probe_control,elapsed_seconds=time.perf_counter()-began,memory=memory,raw=raw,
             summaries=[{key:summary([row[key] for row in rows]) for key in rows[0]} for rows in samples],
+            authority_raw=save(out.with_suffix('.authority.json.gz'),authority_rows) if authority_rows else None,
+            authority_contract='complete native JSON bytes before/after display and between persistent instances',
             pixel_stream_sha256=pixel_stream.hexdigest() if pixel_rows else None,
             pixel_raw=save(out.with_suffix('.pixels.json.gz'),pixel_rows) if pixel_rows else None,
             diagnosis=diag,diagnostic_raw=save(out.with_suffix('.diagnostic.json.gz'),diagnostic_rows) if diagnosis else None,

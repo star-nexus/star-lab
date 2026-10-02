@@ -1,5 +1,15 @@
 # 10K 后续工作优先级
 
+## E7 显示链路与绘制准备：方案完成（2026-10-02，未实施）
+
+下一步先读 [E7方案](rust-display-preparation-plan.md)和[计量审计](rust-display-preparation-budget.json)，再读下方E6。
+执行起点仍为E6 `068c1ecd17988ac6d884984e904aea924968e0ae`；本次未实现原型或启动新性能实验。
+复算原E6同1800测量帧：旧约3.184ms update残差含3.077ms Agent服务，扣除后约0.108ms；
+不能作为未知渲染热点。display8.355ms/RMS3.349ms均带诊断，先拆准备与实际绘制。
+首选有序命令缓冲候选；P0成本/缓存契约决定是否进入，或转Unit分组准备。ordinary/typed分层隔离E6收益。
+进度：`恢复/计量审计 █ | 方案 █ | 新分项诊断 ░ | 原型 ░ | 正确性/收益 ░ | 条件窗口/归档 ░`。
+默认关闭，E6原窗口负结果与既有GAP保留；不更新容量/Frontier、5000Agents暂缓，不push/merge。
+
 ## E6 展示数据与 ECS 缓存研究完成（2026-10-02）
 
 验证节点 `068c1ecd17988ac6d884984e904aea924968e0ae` / `rust-parallel-e6-presentation-cache-2026-10-02`；测量0a297a8，执行代码相同，native扩展838c693保持。

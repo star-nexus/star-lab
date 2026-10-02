@@ -1,0 +1,101 @@
+{
+  "status": "existing_diagnostic_reanalysis_only",
+  "new_experiment": false,
+  "source": {
+    "path": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+    "sha": "0a297a868f589dd49eb514f3c73402142df05e2c",
+    "dirty": ""
+  },
+  "tooling": {
+    "path": "/Users/liyang/Developer/star-lab",
+    "sha": "72445abe076c31068cfde874ea2f26650cff4fac",
+    "dirty": ""
+  },
+  "hardware": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:07:20) [Clang 20.1.8 ]",
+    "machine": "arm64",
+    "chrome": "kept open; no slow frames removed",
+    "window": [
+      2480,
+      1239
+    ]
+  },
+  "workload": {
+    "source": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+    "backend": "rust",
+    "legacy_python_cli": false,
+    "record_native_inputs": false,
+    "native_wire": true,
+    "presentation_research_mode": "baseline",
+    "presentation_research_profile": true,
+    "native_threads": 4,
+    "fps": 30,
+    "clock_mode": "fixed",
+    "cycle_mode": "post-action",
+    "jitter_seconds": 5.0,
+    "units": 5000,
+    "agents": 1000,
+    "delay": "30",
+    "observation_mode": "single",
+    "observation_hz": null,
+    "scope": "selected",
+    "layout": "canonical",
+    "policy": "stochastic",
+    "seconds": 60.0,
+    "warmup": 30.0,
+    "budget_ms": 8.0,
+    "attribute": false,
+    "no_encode": false,
+    "synchronized": false,
+    "movement_overlay": false,
+    "no_agents": false,
+    "gc_policy": "realtime_defer",
+    "output": "/private/tmp/star-e6-20261002-run1/live-diagnostic-baseline.json"
+  },
+  "evidence": {
+    "archive": "experiments/2026-10-rust-presentation-cache/artifacts/presentation-cache-raw.zip",
+    "archive_sha256": "accdac58f19704c943083006be4f15d1fc44bb88fb1d6a91ec75bce791d6e620",
+    "raw_member": "raw/live-diagnostic-baseline.raw.json",
+    "raw_member_sha256": "794a98934b65c57db9161c87b488e85e219cc32e210ae507feff6491aecba854",
+    "metadata_member": "raw/live-diagnostic-baseline.json",
+    "metadata_member_sha256": "8b6da40fc54384da53545675519bad2c2749fde11d9f11b410a15b9a5261ed24",
+    "published_cost": "experiments/2026-10-rust-presentation-cache/results/cost-attribution-complete.json",
+    "published_cost_sha256": "cb44bcf94ca1b21fce8202a21c6dacb5eb965e5bb4e8c5ef1af01c47fdc63c98",
+    "audit_tool": "tools/rust_migration/audit_display_budget.py",
+    "audit_tool_sha256": "e361fab9384b8b8a46720847d8c1dd0dc89d54cf94f64066094688215b0749ec"
+  },
+  "selection": {
+    "predicate": "30.0 <= frame['t'] < 90.0",
+    "samples": 1800,
+    "first_raw_index": 883,
+    "last_raw_index": 2682,
+    "first_t": 30.00752987503074,
+    "last_t": 89.97520620794967
+  },
+  "means_ms": {
+    "work_ms": 22.12352350910401,
+    "update_work_ms": 22.103986318300787,
+    "agent_ms": 3.0765885847439574,
+    "core_screen_fill_ms": 0.27976218397573877,
+    "core_input_system_ms": 0.028148256048249703,
+    "core_scene_update_ms": 13.786369785278415,
+    "core_render_engine_ms": 3.3486792377920613,
+    "core_display_present_ms": 1.476813580763216
+  },
+  "five_core_mean_ms": 18.91977304385768,
+  "old_residual_mean_ms": 3.184213274443108,
+  "agent_share_of_old_residual_pct": 96.62005398435589,
+  "corrected_residual_mean_ms": 0.10762468969915062,
+  "frame_loop_outside_update_mean_ms": 0.019537190803223185,
+  "corrected_formula": "mean(update_work_ms - agent_ms - sum(five_core_fields))",
+  "nested_contract": [
+    "update_work_ms already includes agent_ms; do not add agent_ms again",
+    "scene_update includes inputs/native/delta/apply/display",
+    "five_core_fields partition the original GameEngine._update scopes",
+    "work_ms includes the wrapper update plus outer frame-loop work, excluding cap wait",
+    "corrected residual still includes harness census/recording/wrapper overhead",
+    "all values include diagnostic overhead and are not predicted optimization gains"
+  ],
+  "published_means_reproduced": true
+}

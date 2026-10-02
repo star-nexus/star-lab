@@ -21,7 +21,7 @@ import time
 
 TRACE_SHA = '1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77'
 EXT_SHA = '838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544'
-MODES = ('baseline', 'reuse_batches', 'record_runs')
+MODES = ('baseline', 'empty_territory')
 
 def sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def digest(value): return hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()
@@ -125,7 +125,7 @@ def main():
     p.add_argument('--full-authority',action='store_true')
     p.add_argument('--probe-control',action='store_true')
     p.add_argument('--task',choices=['diagnose','correctness','paired','single'],required=True)
-    p.add_argument('--candidate',choices=MODES,default='record_runs');p.add_argument('--threads',type=int,choices=[1,4],default=1)
+    p.add_argument('--candidate',choices=MODES,default='empty_territory');p.add_argument('--threads',type=int,choices=[1,4],default=1)
     p.add_argument('--driver',choices=['dummy','cocoa'],default='dummy');p.add_argument('--script',choices=['static','exercise'],default='static')
     p.add_argument('--overscan-clock',choices=['wall','items'],default='wall',help='Pixel contract only: fixed item quota, with the real performance clock unchanged')
     p.add_argument('--archive-deltas',action='store_true',help='Diagnostic only: archive regenerated complete native JSONL outside timed intervals')
@@ -265,10 +265,12 @@ def main():
                     script(session,ticks)
                     if diagnosis and (not a.probe_control or wi==1):diagnosis.begin_tick(ticks)
                     authority_before=runtime.export_state() if a.full_authority else None
-                    from contextlib import nullcontext
+                    from contextlib import ExitStack
                     draw_start=time.perf_counter_ns()
-                    with RMS._research_frame(mode) if hasattr(RMS,'_research_frame') else nullcontext():
-                        if mode!='baseline' and not hasattr(RMS,'_research_frame'):raise RuntimeError('Render prototype not installed')
+                    with ExitStack() as frame_scope:
+                        renderers=[system for system in session.world.systems if hasattr(system,'_display_research_frame')]
+                        if mode!='baseline' and not renderers:raise RuntimeError('Map prototype not installed')
+                        for renderer in renderers:frame_scope.enter_context(renderer._display_research_frame(mode))
                         RMS.screen.fill((0,0,0));session.update_display(1/30,inputs=False)
                         commands=None
                         if a.task=='correctness':

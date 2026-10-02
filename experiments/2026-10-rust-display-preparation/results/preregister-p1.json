@@ -1,0 +1,51 @@
+{
+  "stage": "P1/P2/P3",
+  "status": "prepared_before_measurement",
+  "source_sha": "pending prototype checkpoint",
+  "execution_base": "068c1ecd17988ac6d884984e904aea924968e0ae",
+  "extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
+  "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+  "tools": {
+    "display_preparation_probe.py": "ba98895fba517294f57fa389fde81fbf0d5f8106c6deb4deb7f44d7e2b17d60f",
+    "display_preparation_diagnosis.py": "f34518dce22c819e7581d9e204c2572370cac8092127a197061765e7e4b4b7cc",
+    "display_preparation_script.py": "a956a183cf5f80de33a557927849251b69c5db89cb91f0ba122d75d28c7c4f34"
+  },
+  "consumer_layers": [
+    "baseline",
+    "reuse_typed"
+  ],
+  "driver": "dummy",
+  "ticks": 9880,
+  "correctness_overscan": "items",
+  "performance_overscan": "wall_1.5ms",
+  "display_scripts": [
+    "static",
+    "exercise"
+  ],
+  "viewport": [
+    2480,
+    1239
+  ],
+  "resize": "separate_Cocoa_contracts",
+  "multi_selection": "UIState has single selected_unit; exercise multiple selected IDs sequentially; do not add capability",
+  "prototype_selected": "C: empty_territory",
+  "formal_gate": {
+    "render_mean_min_improvement_percent": 5,
+    "p99_no_regression": true,
+    "ci95_lower_positive": true,
+    "block_ticks": 100,
+    "bootstrap": 10000,
+    "seed": 42
+  },
+  "production_enabled": false,
+  "capacity_claim": false,
+  "modes": [
+    "baseline",
+    "empty_territory"
+  ],
+  "coordinate_cache_limit": 32768,
+  "cache_contract": "Ordered validated integer coordinates only; tile IDs reread every frame; live ECS membership; any TerritoryControl/custom consumer uses old path",
+  "reason": "P0 baseline territory traversal 2.3707ms/tick vs batch packing 0.1118ms/tick; zero TerritoryControl in initial and all 9880 deltas",
+  "correctness": "full trace; complete native export before/after each display; ordered command and pixel comparison; fixed wall clock/items quota",
+  "performance": "fine diagnosis off; all 9880 ticks; ordinary and typed independently; static/exercise; native1/4; three rounds alternating ABBA/BAAB; 100 tick blocks/10000 bootstrap/seed42"
+}

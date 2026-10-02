@@ -41,6 +41,7 @@ class DisplayDiagnosis:
                 elif name == '_render_unit_group_optimized':
                     self.counts['units.group_members'] += len(args[1])
                 return result
+            measured._e7_probe_original = original
             setattr(obj, name, measured)
             self.originals.append((obj, name, original))
 

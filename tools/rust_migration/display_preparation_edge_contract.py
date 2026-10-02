@@ -11,7 +11,7 @@ from rotk_env.prefabs.config import Faction
 from rotk_env.systems.window_map_render_system import WindowMapRenderSystem
 from display_preparation_contract import fingerprint
 engine=GameEngine(title='E7 territory edge contracts',width=320,height=200,fps=30)
-w=World();r=WindowMapRenderSystem();r.world=w;w.systems.append(r);ids=[w.create_entity() for _ in range(3)];data=MapData(width=2,height=2,tiles={(0,0):ids[0],(1,0):ids[1],(0,1):ids[2]});w.add_singleton_component(data)
+w=World();r=WindowMapRenderSystem();r.world=w;w.systems.append(r);w.create_entity();ids=[w.create_entity() for _ in range(3)];data=MapData(width=2,height=2,tiles={(0,0):ids[0],(1,0):ids[1],(0,1):ids[2]});w.add_singleton_component(data)
 rows=[]
 def check(name,cells={(0,0),(1,0),(0,1)},offset=(100,100),zoom=1):
  outcomes=[]
@@ -30,7 +30,11 @@ for faction in (Faction.WEI,Faction.SHU,Faction.WU,None):
  for progress,level in ((0,0),(.3,1),(.8,2),(1,3)):
   control.controlling_faction=faction;control.capture_progress=progress;control.fortification_level=level
   check(f'live_style_{faction}_{progress}_{level}')
-control.controlling_faction=Faction.WEI;control.capture_progress='bad';check('error_prefix')
+control.controlling_faction=Faction.WEI;control.capture_progress='bad'
+w.add_component(ids[1],TerritoryControl(controlling_faction=Faction.SHU))
+check('error_prefix')
+assert rows[-1]['error'][0]=='TypeError' and rows[-1]['command_sha256']!=rows[0]['command_sha256']
+w.remove_component(ids[1],TerritoryControl)
 w.remove_component(ids[0],TerritoryControl);check('remove')
 w.add_component(ids[1],TerritoryControl(controlling_faction=Faction.SHU));check('other_tile')
 w.add_component(ids[1],TerritoryControl(controlling_faction=Faction.WU,capture_progress=.9));check('replacement')

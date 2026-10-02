@@ -1,0 +1,33 @@
+{
+  "status": "supplemental_passed; full trace pending",
+  "files": [
+    {
+      "file": "p1-regression.log",
+      "sha256": "f32c33df1b41b380451f6adb99d010371e44687b149f52424dfa06d2bd9673c6"
+    },
+    {
+      "file": "p1-full-regression.log",
+      "sha256": "4fcb9a817f2081abf36fc8e6985d36f2968f584d9784dfe448eef792edbc7970"
+    },
+    {
+      "file": "p2-retention.json",
+      "sha256": "de703507682975ae7ec7e15e89722c2d21e1271128ba1dfff541822cc5f36018"
+    },
+    {
+      "file": "p2-edge-dummy.json",
+      "sha256": "79c09c2f69d5f0f130d9382fa6ec5ea7bd163ce0c59596b19614c47cb8676e71"
+    },
+    {
+      "file": "p2-edge-cocoa.json",
+      "sha256": "d52cc01222a3c1b41eb1b3fe35e3ad460962e0e27bab313de3a7dd1604eb22d8"
+    },
+    {
+      "file": "p2-edge-id-zero-control-dummy.json",
+      "sha256": "3e44af122f982c489f90d8f7cb85e359a46ee39f3a625ca472dfc7b9041db13b"
+    },
+    {
+      "file": "p2-edge-id-zero-control-cocoa.json",
+      "sha256": "ae248f4fcbafedf567eefc0af3f34eac3b95b2390e220b99ff985911fc4de402"
+    }
+  ]
+}

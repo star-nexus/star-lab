@@ -2,7 +2,7 @@
 import argparse,json,subprocess,sys,time
 from pathlib import Path
 p=argparse.ArgumentParser();p.add_argument('--source',type=Path,required=True);p.add_argument('--source-sha',required=True);p.add_argument('--runs',type=Path,required=True);p.add_argument('--trace',type=Path,required=True);a=p.parse_args()
-a.runs.mkdir(exist_ok=True);python=a.source/'.venv/bin/python';tool=Path(__file__).with_name('display_preparation_probe.py');commands=[]
+a.runs.mkdir(exist_ok=True);python=a.source/'.venv/bin/python';tool=Path(__file__).with_name('display_preparation_performance.py');commands=[]
 for round_id in (1,2,3):
  for script in ('static','exercise'):
   for consumer in ('baseline','reuse_typed'):
@@ -22,6 +22,9 @@ for name in correctness:
 # Metadata is emitted immediately before process cleanup; allow all lifecycle
 # teardown to finish before the sole formal timing process starts.
 time.sleep(15)
+while any(str(a.runs) in line and '--task correctness' in line and 'display_preparation_probe.py' in line
+          for line in subprocess.check_output(['ps','-ax','-o','command='],text=True).splitlines()):
+ time.sleep(15)
 for index,item in enumerate(commands):
  output=a.runs/(item['name']+'.json')
  if output.exists():raise RuntimeError('Refusing repeat/selection: '+str(output))

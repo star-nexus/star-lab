@@ -1,0 +1,42 @@
+{
+  "stage": "P0",
+  "status": "prepared_before_measurement",
+  "source_sha": "57b65203934d6fa283d67da68f9dc5a8efa03098",
+  "execution_base": "068c1ecd17988ac6d884984e904aea924968e0ae",
+  "extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
+  "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+  "tools": {
+    "display_preparation_probe.py": "ba98895fba517294f57fa389fde81fbf0d5f8106c6deb4deb7f44d7e2b17d60f",
+    "display_preparation_diagnosis.py": "f34518dce22c819e7581d9e204c2572370cac8092127a197061765e7e4b4b7cc",
+    "display_preparation_script.py": "a956a183cf5f80de33a557927849251b69c5db89cb91f0ba122d75d28c7c4f34"
+  },
+  "consumer_layers": [
+    "baseline",
+    "reuse_typed"
+  ],
+  "driver": "dummy",
+  "ticks": 9880,
+  "correctness_overscan": "items",
+  "performance_overscan": "wall_1.5ms",
+  "display_scripts": [
+    "static",
+    "exercise"
+  ],
+  "viewport": [
+    2480,
+    1239
+  ],
+  "resize": "separate_Cocoa_contracts",
+  "multi_selection": "UIState has single selected_unit; exercise multiple selected IDs sequentially; do not add capability",
+  "prototype_selected": null,
+  "formal_gate": {
+    "render_mean_min_improvement_percent": 5,
+    "p99_no_regression": true,
+    "ci95_lower_positive": true,
+    "block_ticks": 100,
+    "bootstrap": 10000,
+    "seed": 42
+  },
+  "production_enabled": false,
+  "capacity_claim": false
+}

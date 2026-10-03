@@ -1,6 +1,6 @@
 {
   "time": "2026-10-02T14:52:25.069531+08:00",
-  "status": "memory_guard_failure; all large tests stopped; no automatic restart",
+  "status": "user authorized guarded serial resumption; historical incident retained",
   "screenshot_app_memory_gb": 7.98,
   "user_reported_app_memory_gb": 8.45,
   "pre_stop_test_rss_kib": [
@@ -55,5 +55,12 @@
     "baseline": 700006400,
     "reuse_typed": 762363904
   },
-  "prior_maxrss_limit": "flat high-water values from tick500 to9500; no current/compressed-footprint trend and no full-authority-per-tick export; cannot prove absence of leak"
+  "prior_maxrss_limit": "flat high-water values from tick500 to9500; no current/compressed-footprint trend and no full-authority-per-tick export; cannot prove absence of leak",
+  "resume_authorization": {
+    "client_date": "2026-10-04",
+    "user_statement": "Memory cleaned; user attributes previous exhaustion to Chrome/editor and explicitly requests continuation",
+    "cause_status": "user attribution recorded; no independently confirmed product leak or absence thereof",
+    "strategy": "serial guarded smoke, then serial complete correctness and exclusive speed matrix"
+  },
+  "resolved_safety": true
 }

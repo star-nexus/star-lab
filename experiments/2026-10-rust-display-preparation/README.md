@@ -13,3 +13,15 @@
 复现命令见每次metadata的argv；Python使用活动源码.venv。完整正确性：display_preparation_probe.py --task correctness --full-authority --overscan-clock items；正式收益：--task paired --candidate empty_territory --overscan-clock wall，native1/4、baseline/reuse_typed、static/exercise各三轮。源SHA、输入SHA和扩展SHA由驱动强制校验。
 
 P0两次真实诊断的失败guards保留，不代表容量通过。已有E6窗口失败与所有GAP保留，不更新Frontier，不push/merge。
+
+## 2026-10-04 接续工具
+
+恢复预注册见[preregister-resume](results/preregister-resume.json)，精确工具快照及全部阶段已有证据由artifacts/SHA256SUMS覆盖。当前源码固定5b9658b，测量期间不提交产品文档，GAP进度暂记录[Lab台账](results/open-gap-status-resume.json)。
+
+P2/P3主进程运行中，不重复启动。条件监督器continue_display_preparation_confirmation.py等待resume-progress.json的P3完成状态，复算全部24组，只有普通native4两脚本各三轮通过才串行运行8个单实例完整重放；无诊断、原1.5ms预算、2.5GiB保护。确认方法控制仅为合成逻辑校验。P3或确认失败就归档负结果；确认通过后仍待三轮真实窗口对照和最终归档。
+
+接续命令（只允许一个监督器；已有confirmation-progress.json时拒绝重复）：
+
+```bash
+/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/bin/python tools/rust_migration/continue_display_preparation_confirmation.py --source /Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main --source-sha 5b9658bc668b7d13f801351162f255f30622b32a --trace /private/tmp/star-e7-20261002/inputs/rust-300-r3.trace.json.gz --runs /private/tmp/star-e7-20261004
+```

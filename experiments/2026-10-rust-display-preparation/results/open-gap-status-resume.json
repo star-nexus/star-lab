@@ -1,0 +1,12 @@
+{
+  "stage": "P2 running",
+  "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "product_gap_ledger": "docs/native-benchmark-gaps.md",
+  "ledger_write_deferred": "Keep pinned product HEAD unchanged until active measurements finish; Lab tracks current progress meanwhile",
+  "existing_gaps_closed": false,
+  "capacity_updated": false,
+  "frontier_updated": false,
+  "production_enabled": false,
+  "full_correctness_completed": false,
+  "memory_incident": "Historic interruption retained; serial guarded runs resumed by explicit user authorization"
+}

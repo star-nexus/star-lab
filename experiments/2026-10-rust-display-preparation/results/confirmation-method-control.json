@@ -1,0 +1,16 @@
+{
+  "classification": "synthetic method control, not performance evidence",
+  "formal": false,
+  "passed": true,
+  "checks": [
+    "Confirmation statistics equal existing paired analyzer including weighted final 80-tick block",
+    "Source/config identity mismatch rejected",
+    "Raw checksum mismatch rejected",
+    "All 24 preregistered P3 names inspected",
+    "Failed P3 gate starts no child"
+  ],
+  "tool_sha256": {
+    "analyze_display_preparation_confirmation.py": "ac173ed750daa495d1f5f661d519690ad071921484018588022042829ae0afe9",
+    "continue_display_preparation_confirmation.py": "a0c8d161a71efaa858fd8380e69ec49d2a4636941112c8fdc19e5f17a565eecf"
+  }
+}

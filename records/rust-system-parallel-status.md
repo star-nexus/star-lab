@@ -4,7 +4,7 @@
 
 用户已清理系统内存并明确授权继续，归因于Chrome/编辑器占用；历史事件保留，不据此断言产品存在或不存在泄漏。系统压力正常、可回收余量72%。带完整权威导出的100tick冒烟通过，footprint约0.75–0.78GB，压力始终normal。
 活动执行源码5b9658bc668b7d13f801351162f255f30622b32a（相对原型6730832仅GAP文档差异）。四组完整正确性在/private/tmp/star-e7-20261004顺序从头重放，每组由独立2.5GiB RSS/footprint及系统压力保护；之后24组无细探针性能对照顺序执行，性能阶段不用vmmap。
-恢复工具tools/rust_migration/resume_display_preparation.py；实时进度resume-progress.json、各组guard.json/supervisor.log。失败立即停止，保留全部记录；通过P3后仍需条件单实例/窗口决策，尚无正式收益结论。普通路径和研究默认关闭、所有GAP/容量/Frontier边界保持。
+恢复预注册与完整工具快照见E7 results/preregister-resume.json及artifacts/display-preparation-resume-tools.zip。恢复工具tools/rust_migration/resume_display_preparation.py；实时进度resume-progress.json、各组guard.json/supervisor.log。失败立即停止，保留全部记录；通过P3后仍需条件单实例/窗口决策，尚无正式收益结论。普通路径和研究默认关闭、所有GAP/容量/Frontier边界保持。
 进度：`P0 █ | 原型/小型契约 █ | 恢复冒烟 █ | 全轨迹 ▒ | 正式收益 ░ | 条件窗口/最终归档 ░`。
 
 ## E7：内存不足事件，重型校验与自动性能任务已停止

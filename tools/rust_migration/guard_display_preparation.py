@@ -1,7 +1,7 @@
 """Out-of-process E7 memory guard. Only signals its own child process group."""
 import argparse,json,os,re,signal,subprocess,time
 from pathlib import Path
-p=argparse.ArgumentParser();p.add_argument('--report',type=Path,required=True);p.add_argument('--limit-mib',type=float,default=2500);p.add_argument('command',nargs=argparse.REMAINDER);a=p.parse_args();cmd=a.command[1:] if a.command[:1]==['--'] else a.command
+p=argparse.ArgumentParser();p.add_argument('--report',type=Path,required=True);p.add_argument('--limit-mib',type=float,default=2500);p.add_argument('--no-vmmap',action='store_true');p.add_argument('command',nargs=argparse.REMAINDER);a=p.parse_args();cmd=a.command[1:] if a.command[:1]==['--'] else a.command
 assert cmd and not a.report.exists()
 def pressure():return int(subprocess.check_output(['sysctl','-n','kern.memorystatus_vm_pressure_level'],text=True))
 assert pressure()==1,'Memory pressure must be normal before starting'
@@ -14,7 +14,7 @@ with log.open('w') as out:
    if child.poll() is not None:break
    rss=int(rss_result.stdout.strip() or 0)*1024;level=pressure();warns=warns+1 if level!=1 else 0
    row=dict(elapsed_s=round(time.monotonic()-started,3),pid=child.pid,rss_bytes=rss,pressure=level)
-   if not rows or row['elapsed_s']-rows[-1].get('footprint_sample_s',-1000)>=30:
+   if not a.no_vmmap and (not rows or row['elapsed_s']-rows[-1].get('footprint_sample_s',-1000)>=30):
     vm=subprocess.run(['vmmap','-summary',str(child.pid)],capture_output=True,text=True)
     m=re.search(r'^Physical footprint:\s*([\d.]+)([BKMG])',vm.stdout,re.M)
     if m:row.update(footprint_bytes=int(float(m[1])*{'B':1,'K':1024,'M':1024**2,'G':1024**3}[m[2]]),footprint_sample_s=row['elapsed_s'])

@@ -32,6 +32,8 @@ for index,item in enumerate(commands):
  output=a.runs/(item['name']+'.json')
  if output.exists():raise RuntimeError('Refusing repeat/selection: '+str(output))
  print(json.dumps(dict(stage='P3',run=item['name'],index=index+1,total=len(commands))),flush=True)
- with (a.runs/(item['name']+'.log')).open('w') as log:subprocess.run(item['argv'],stdout=log,stderr=subprocess.STDOUT,check=True)
+ with (a.runs/(item['name']+'.log')).open('w') as log:
+  guarded=[str(python),str(Path(__file__).with_name('guard_display_preparation.py')),'--report',str(a.runs/(item['name']+'.guard.json')),'--no-vmmap','--',*item['argv']]
+  subprocess.run(guarded,stdout=log,stderr=subprocess.STDOUT,check=True)
  subprocess.run([str(python),str(Path(__file__).with_name('analyze_display_preparation.py')),'--runs',str(a.runs),'--output',str(a.runs/'p3-analysis.json')],check=True)
 print(json.dumps(dict(stage='P3',all_runs_complete=True)),flush=True)

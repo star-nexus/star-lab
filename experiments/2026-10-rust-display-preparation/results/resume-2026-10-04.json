@@ -1,0 +1,24 @@
+{
+  "client_date": "2026-10-04",
+  "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "execution_difference_from_prototype": "GAP documentation only",
+  "smoke_ticks": 100,
+  "smoke_pass": true,
+  "formal": false,
+  "full_authority": true,
+  "footprint_samples_bytes": [
+    10800332,
+    795030323,
+    820720435,
+    785488281
+  ],
+  "pressure_samples": [
+    1
+  ],
+  "guard_limit_mib": 2500,
+  "runs_dir": "/private/tmp/star-e7-20261004",
+  "full_pipeline": "serial guarded correctness x4, then exclusive guarded speed matrix x24",
+  "original_incident_preserved": true,
+  "user_attribution": "Chrome/editor memory pressure; product leak not independently confirmed",
+  "default_off": true
+}

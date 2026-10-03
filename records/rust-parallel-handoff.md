@@ -1,5 +1,11 @@
 # Rust 并行工作：新 Session 交接入口
 
+## E7继续与条件默认接入授权（2026-10-04）
+
+第一组native1/static完整40994请求/9880tick正确性通过，结果归档E7 results/p2-t1-static-completed.json。其余三组仍顺序执行，之后24组性能对照及有条件的8次单实例确认。continue_display_preparation_live.py等待确认通过后串行六次Cocoa窗口（AB/BA/AB；30+300秒），无诊断，保留全部失败和慢尾；live-progress.json为下一阶段入口。
+用户最新授权收益验证通过后默认接入，替代此前“本轮仅保留研究开关”的限制；测量期间旧默认保持，先满足完整P2/P3/确认/六窗口门槛，默认native1也必须获稳定正收益，再验证默认接入并归档。授权详见E7 results/default-adoption-authorization.json，不包含push/merge或容量/Frontier更新。
+进度：`P0 █ | P1 █ | P2 1/4 ▓ | P3 ░ | 确认 ░ | 窗口 ░ | 条件默认接入 ░`。
+
 ## E7恢复执行（2026-10-04）
 
 用户已清理系统内存并明确授权继续，归因于Chrome/编辑器占用；历史事件保留，不据此断言产品存在或不存在泄漏。系统压力正常、可回收余量72%。带完整权威导出的100tick冒烟通过，footprint约0.75–0.78GB，压力始终normal。

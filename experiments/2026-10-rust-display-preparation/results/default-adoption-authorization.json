@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-04",
+  "request": "继续完成E7研究，如果性能比原来的显示大，就让E7上线",
+  "meaning": "Authorize default adoption in active development branch after validation; no push/merge authorization inferred",
+  "previous_default_off_policy": "Superseded conditionally by user; keep old default throughout measurements",
+  "required": [
+    "All four full correctness jobs pass",
+    "Ordinary native4 static/exercise three rounds each meet preregistered mean/CI95/P99 gates",
+    "Single-instance native4 ABBA static/exercise pass",
+    "All six 30s warmup + 300s real-window runs pass all workload and latency guards",
+    "Default native1 ordinary static/exercise also pass three rounds before unconditional default adoption",
+    "Validate final default dispatch and regression before source milestone"
+  ],
+  "unchanged": [
+    "5000 Units + 1000 Agents",
+    "native default1/API18/schema5",
+    "No game-rule/observation/action-order/determinism change",
+    "5000 Agents deferred",
+    "No capacity/Frontier update or existing GAP closure",
+    "Original49 deletions/frozen worktrees untouched",
+    "No push/merge"
+  ]
+}

@@ -361,7 +361,7 @@ def main():
     raw_path.write_text(json.dumps(raw,separators=(',',':'))+'\n')
     result = {'source':source_id,'tooling':tooling_id,'workload':vars(args),
         'hardware':{'platform':platform.platform(),'python':sys.version,'machine':platform.machine(),
-                    'chrome':'kept open; no slow frames removed', 'window':holder['display']},
+                    'background_apps':'not controlled; no slow frames removed', 'window':holder['display']},
         'dependency_lock_sha256':hashlib.sha256((Path(args.source)/'uv.lock').read_bytes()).hexdigest(),
         'safe_environment':{k:os.environ.get(k) for k in ('STAR_SCALE_MINIMAP_UNITS','HEADLESS','SDL_VIDEODRIVER')},
         'fixture_sha256':fixture_hash, 'guards':guards, 'pass':all(guards.values()),

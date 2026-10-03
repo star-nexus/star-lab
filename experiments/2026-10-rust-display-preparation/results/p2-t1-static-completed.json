@@ -1,0 +1,21 @@
+{
+  "classification": "formal correctness only; no speed claim",
+  "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "counts": {
+    "request": 40994,
+    "step": 9880,
+    "presentation": 9880
+  },
+  "checks": {
+    "full_authority": 19760,
+    "command_stream": 19760,
+    "pixels": 19760,
+    "projection": 19760,
+    "full_cold_world": 99
+  },
+  "all_passed": true,
+  "elapsed_seconds": 13685.050809332984,
+  "file": "display-preparation-p2-t1-static-raw.zip",
+  "sha256": "07b63036cfa329d30dfda7c8223e948d50b828a859647a75ada6e46a7d1eff3e",
+  "bytes": 1746455
+}

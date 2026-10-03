@@ -1,0 +1,43 @@
+{
+  "prepared_before_measurement": true,
+  "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "prerequisite": "Full P2, all P3 runs complete, ordinary/native4 both scripts three rounds qualify, both single-instance confirmations pass",
+  "order": [
+    "AB",
+    "BA",
+    "AB"
+  ],
+  "modes": [
+    "baseline",
+    "empty_territory"
+  ],
+  "consumer": "baseline",
+  "threads": 4,
+  "warmup_seconds": 30,
+  "measurement_seconds": 300,
+  "units": 5000,
+  "agents": 1000,
+  "driver": "cocoa",
+  "surface": [
+    2480,
+    1239
+  ],
+  "gc_policy": "realtime_defer",
+  "failure": "No retry/selection. Retain six completed runs including valid workload failures; safety/incomplete run stops pipeline.",
+  "interpretation": "Operational guards, not paired causal estimate",
+  "raw_integrity": "Per-run SHA256 of metadata and complete raw JSON in p4-live-analysis.json",
+  "tool_archive": "display-preparation-live-tools.zip",
+  "tool_archive_sha256": "7c3103abb977c2bac03aedd484047d17694d3bcec3d7618a31e4c411021125a4",
+  "tools": {
+    "tools/rust_migration/continue_display_preparation_live.py": "bff2350bc7544cff7fbb8980802232d928e93f2c2eeb2bb6bac5c4cff25dcb99",
+    "tools/display_preparation_runtime.py": "6fa2347c9dad59228bac163ca23915f7d9788211b61e06a25db106c55e3b2240",
+    "tools/rust_migration/guard_display_preparation.py": "0723629182d4d4d10e843f175ea20105e433ea38e1640de0ba9787f6d27260d9"
+  },
+  "method_controls": [
+    "Synthetic full workload identity check",
+    "Extension mismatch rejection",
+    "Upstream failure starts no window"
+  ],
+  "method_controls_passed": true,
+  "performance_measured": false
+}

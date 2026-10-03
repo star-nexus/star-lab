@@ -25,3 +25,5 @@ P2/P3主进程运行中，不重复启动。条件监督器continue_display_prep
 ```bash
 /Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/bin/python tools/rust_migration/continue_display_preparation_confirmation.py --source /Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main --source-sha 5b9658bc668b7d13f801351162f255f30622b32a --trace /private/tmp/star-e7-20261002/inputs/rust-300-r3.trace.json.gz --runs /private/tmp/star-e7-20261004
 ```
+
+第一组完整P2已归档并通过原始载荷校验。后续窗口接续工具continue_display_preparation_live.py及配置见[窗口预注册](results/live-preregister.json)；等待confirmation-progress.json通过后才启动六次Cocoa运行。最新[默认接入授权](results/default-adoption-authorization.json)替代此前最终保持关闭的限定；测量期间仍保持原默认。

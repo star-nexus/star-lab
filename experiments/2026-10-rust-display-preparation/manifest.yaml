@@ -11,5 +11,8 @@
   "resume_preregistration": "results/preregister-resume.json",
   "resume_runs": "/private/tmp/star-e7-20261004",
   "production_enabled": false,
-  "capacity_claim": false
+  "capacity_claim": false,
+  "default_adoption_authorization": "results/default-adoption-authorization.json",
+  "live_preregistration": "results/live-preregister.json",
+  "completed_full_correctness_jobs": 1
 }

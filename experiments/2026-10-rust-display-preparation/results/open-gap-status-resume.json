@@ -8,5 +8,9 @@
   "frontier_updated": false,
   "production_enabled": false,
   "full_correctness_completed": false,
-  "memory_incident": "Historic interruption retained; serial guarded runs resumed by explicit user authorization"
+  "memory_incident": "Historic interruption retained; serial guarded runs resumed by explicit user authorization",
+  "full_correctness_completed_jobs": 2,
+  "full_correctness_total_jobs": 4,
+  "current": "p2-correctness-typed-t1-exercise",
+  "default_adoption": "Conditionally authorized; prepared patch isolated dispatch passed; not applied"
 }

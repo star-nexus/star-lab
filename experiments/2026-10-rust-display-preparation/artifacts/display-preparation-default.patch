@@ -1,0 +1,20 @@
+--- a/rotk_env/systems/window_map_render_system.py
++++ b/rotk_env/systems/window_map_render_system.py
+@@ -698,9 +698,16 @@
+         self._render_terrain_direct(map_data, visible_tiles, camera_offset, zoom)
+ 
+ 
++    def update(self, delta_time: float) -> None:
++        """Use the validated empty-territory policy unless a frame selects a mode."""
++        if getattr(self, "_e7_frame_active", False):
++            return super().update(delta_time)
++        with self._display_research_frame("empty_territory"):
++            return super().update(delta_time)
++
+     @contextmanager
+     def _display_research_frame(self, mode="baseline"):
+-        """Opt-in E7 frame scope; ordinary rendering never selects this policy."""
++        """E7 frame scope; explicit baseline retains the original rendering path."""
+         if mode not in ("baseline", "empty_territory"):
+             raise ValueError(f"Unknown display research mode: {mode}")
+         if getattr(self, "_e7_frame_active", False):

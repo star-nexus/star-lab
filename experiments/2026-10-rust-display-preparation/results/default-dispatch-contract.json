@@ -1,0 +1,15 @@
+{
+  "classification": "Isolated default-dispatch contract; not performance or full pixel evidence",
+  "applied_to_product": false,
+  "passed": true,
+  "checks": [
+    "Ordinary update selects existing candidate and restores inherited binding",
+    "Explicit baseline overrides default; retains original method",
+    "Explicit candidate does not nest or double-select frame scope",
+    "Exception identity retained; scope and custom instance binding restored"
+  ],
+  "source_file_sha256": "d3ce144ebeb8dd97197db9c6f11ea5bb9106e6038e502a222634406eccaa1aec",
+  "candidate_file_sha256": "a8d7f3a9b7dd6bdff519b007e03eae66d690eae702c900d3fdac0dc7e05e6c4f",
+  "patch_sha256": "c489b56a0ceeb02251de201bb48c6a6b14cb99d4ca8bfaacd40e5ce26494740f",
+  "tool_sha256": "327eeab9aaf2b7c8a034311b3a6e44f9d09f5437b3e4bdb771d4673d2a60b6cf"
+}

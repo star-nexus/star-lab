@@ -1,0 +1,21 @@
+{
+  "classification": "formal correctness only; no speed claim",
+  "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "counts": {
+    "request": 40994,
+    "step": 9880,
+    "presentation": 9880
+  },
+  "checks": {
+    "full_authority": 19760,
+    "command_stream": 19760,
+    "pixels": 19760,
+    "projection": 19760,
+    "full_cold_world": 99
+  },
+  "all_passed": true,
+  "elapsed_seconds": 13544.388330416987,
+  "file": "display-preparation-p2-t4-exercise-raw.zip",
+  "sha256": "be7d2945acf40896a2a8e2bcc767c7eb5ee954ab200461f5db3ff28acc9f96aa",
+  "bytes": 1623927
+}

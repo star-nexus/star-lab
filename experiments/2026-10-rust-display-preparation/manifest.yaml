@@ -14,5 +14,6 @@
   "capacity_claim": false,
   "default_adoption_authorization": "results/default-adoption-authorization.json",
   "live_preregistration": "results/live-preregister.json",
-  "completed_full_correctness_jobs": 1
+  "completed_full_correctness_jobs": 2,
+  "default_preparation": "results/default-patch-preparation.json"
 }

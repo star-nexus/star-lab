@@ -2,9 +2,9 @@
 
 ## E7继续与条件默认接入授权（2026-10-04）
 
-第一组native1/static完整40994请求/9880tick正确性通过，结果归档E7 results/p2-t1-static-completed.json。其余三组仍顺序执行，之后24组性能对照及有条件的8次单实例确认。continue_display_preparation_live.py等待确认通过后串行六次Cocoa窗口（AB/BA/AB；30+300秒），无诊断，保留全部失败和慢尾；live-progress.json为下一阶段入口。
-用户最新授权收益验证通过后默认接入，替代此前“本轮仅保留研究开关”的限制；测量期间旧默认保持，先满足完整P2/P3/确认/六窗口门槛，默认native1也必须获稳定正收益，再验证默认接入并归档。授权详见E7 results/default-adoption-authorization.json，不包含push/merge或容量/Frontier更新。
-进度：`P0 █ | P1 █ | P2 1/4 ▓ | P3 ░ | 确认 ░ | 窗口 ░ | 条件默认接入 ░`。
+native1/static与native4/exercise两组完整40994请求/9880tick正确性通过，结果归档E7 results/p2-t1-static-completed.json及p2-t4-exercise-completed.json。其余两组仍顺序执行，之后24组性能对照及有条件的8次单实例确认。continue_display_preparation_live.py等待确认通过后串行六次Cocoa窗口（AB/BA/AB；30+300秒），无诊断，保留全部失败和慢尾；live-progress.json为下一阶段入口。
+用户最新授权收益验证通过后默认接入，替代此前“本轮仅保留研究开关”的限制；测量期间旧默认保持，先满足完整P2/P3/确认/六窗口门槛，默认native1也必须获稳定正收益，再验证默认接入并归档。默认接入补丁及独立dispatch合同见E7 results/default-patch-preparation.json：只准备、未应用，完整回归和默认路径验证留待收益门槛通过后。授权详见E7 results/default-adoption-authorization.json，不包含push/merge或容量/Frontier更新。
+进度：`P0 █ | P1 █ | P2 2/4 ▓ | P3 ░ | 确认 ░ | 窗口 ░ | 条件默认接入 ░`。
 
 ## E7恢复执行（2026-10-04）
 

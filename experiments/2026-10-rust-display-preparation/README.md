@@ -27,3 +27,9 @@ P2/P3主进程运行中，不重复启动。条件监督器continue_display_prep
 ```
 
 第一组完整P2已归档并通过原始载荷校验。后续窗口接续工具continue_display_preparation_live.py及配置见[窗口预注册](results/live-preregister.json)；等待confirmation-progress.json通过后才启动六次Cocoa运行。最新[默认接入授权](results/default-adoption-authorization.json)替代此前最终保持关闭的限定；测量期间仍保持原默认。
+
+## P2第二组与默认接入准备
+
+native4/exercise完整40994请求/9880tick通过，见[第二组证据](results/p2-t4-exercise-completed.json)。四组仅完成两组；没有正式速度结论。
+
+[默认接入准备](results/default-patch-preparation.json)保存精确基线、补丁及结果文件SHA。补丁仅给WindowMapRenderSystem增加默认update frame scope，保留显式baseline控制；在临时模块验证默认选择、baseline、嵌套和异常恢复通过，未修改活动产品源码。未来所有采用门槛通过后，先应用补丁，再做完整回归及真实默认路径验证；不能把这四项dispatch检查当完整像素/性能验收。

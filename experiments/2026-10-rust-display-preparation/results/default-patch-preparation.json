@@ -1,0 +1,13 @@
+{
+  "status": "prepared only; not applied; all adoption gates remain pending",
+  "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "source_file_sha256": "d3ce144ebeb8dd97197db9c6f11ea5bb9106e6038e502a222634406eccaa1aec",
+  "patch_sha256": "c489b56a0ceeb02251de201bb48c6a6b14cb99d4ca8bfaacd40e5ce26494740f",
+  "result_file_sha256": "a8d7f3a9b7dd6bdff519b007e03eae66d690eae702c900d3fdac0dc7e05e6c4f",
+  "scope": "Default update selects the already-tested private frame policy; explicit baseline/candidate scopes continue working; no algorithm, ECS, cache, drawing, thread or native change",
+  "requires": "All recorded adoption gates; then full regression and default-path validation before activation milestone",
+  "contract_passed": true,
+  "contract_scope": "Default dispatch and frame lifetime only; not full visual equivalence or speed",
+  "tool_archive": "display-preparation-default-preparation.zip",
+  "tool_archive_sha256": "6925ee485b5fadbcb1a71b744c9f5b8c8bf4c744a88d2f12775cc0f9c81a00ae"
+}

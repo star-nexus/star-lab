@@ -1,5 +1,11 @@
 # Rust 并行工作：新 Session 交接入口
 
+## E7 P2最新核对：未完成，重复资源中断
+
+完整通过仍为2/4。第三组reuse_typed/native1/exercise的恢复尝试在最后记录3500tick后，被两次system warning压力样本停止（SIGINT，非已报告的等价错误）；第四组未启动，当前无测试进程。最新证据E7 results/p2-recovery-interruption.json。当前压力normal只证明检查时状态，不能外推整组数小时安全。
+临时automation e7-p2已PAUSED，按既定规则不反复自动重启或放宽保护。下一步先解决持续运行的资源条件或审查正确性harness资源成本，保留两组完整结果与两次不完整尝试，再重跑剩余两组；不进入P3或默认接入。
+进度：`P2完整通过 2/4 ▓ | 剩余两组受资源阻碍 ▒ | P3/窗口/默认接入 ░`。既有GAP不关闭，容量/Frontier不更新，产品测量HEAD5b9658b不变。
+
 ## E7 P2资源中断与剩余恢复（最新）
 
 第三组reuse_typed/native1/exercise在最后记录8500tick后被系统warning压力保护停止，不能计作通过；并非已检测到等价错误。完整事件归档E7 results/p2-warning-interruption.json。两组完整通过仍有效，旧P3/确认/窗口监督器均已随上游停止。

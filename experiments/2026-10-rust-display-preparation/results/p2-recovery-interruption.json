@@ -1,0 +1,33 @@
+{
+  "classification": "second incomplete resource interruption; no correctness or speed pass",
+  "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "last_logged_tick": 3500,
+  "stop_reason": "system memory pressure guard",
+  "last_samples": [
+    {
+      "elapsed_s": 4586.123,
+      "pid": 59669,
+      "rss_bytes": 1142521856,
+      "pressure": 2,
+      "footprint_sample_s": 4560.205
+    },
+    {
+      "elapsed_s": 4591.135,
+      "pid": 59669,
+      "rss_bytes": 1196195840,
+      "pressure": 2,
+      "footprint_bytes": 1288490188,
+      "footprint_sample_s": 4591.135
+    }
+  ],
+  "child_exit": -2,
+  "elapsed_seconds": 4593.320125041995,
+  "file": "display-preparation-p2-recovery-interruption.zip",
+  "sha256": "66f1ec6f49b06d0f2a1401f4f7afc06898818cf0164268a96aa1a58583b04956",
+  "bytes": 19767,
+  "completed_full_jobs": 2,
+  "total_full_jobs": 4,
+  "fourth_job_started": false,
+  "automation": "e7-p2 paused; no automatic repeated restart",
+  "current_pressure": "normal at live inspection; this does not establish sustained safety over a complete run"
+}

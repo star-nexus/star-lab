@@ -1,5 +1,5 @@
 {
-  "status": "running remaining P2; pressure normal at restart",
+  "status": "stopped by system memory pressure guard; 2/4 complete",
   "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
   "old_runs": "/private/tmp/star-e7-20261004",
   "new_runs": "/private/tmp/star-e7-20261004-p2-recovery",
@@ -24,6 +24,8 @@
     "frequency": "hourly",
     "scope": "same thread; P2 only",
     "notify": "phase change, failure requiring action, or all four completed",
-    "stop": "disable when P2 complete or blocked requiring user action"
-  }
+    "stop": "disable when P2 complete or blocked requiring user action",
+    "status": "PAUSED"
+  },
+  "interruption": "results/p2-recovery-interruption.json"
 }

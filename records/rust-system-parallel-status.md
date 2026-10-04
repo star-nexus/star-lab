@@ -4,7 +4,8 @@
 
 第三组reuse_typed/native1/exercise在最后记录8500tick后被系统warning压力保护停止，不能计作通过；并非已检测到等价错误。完整事件归档E7 results/p2-warning-interruption.json。两组完整通过仍有效，旧P3/确认/窗口监督器均已随上游停止。
 新恢复入口E7 results/p2-recovery.json及tools/rust_migration/resume_remaining_display_correctness.py，输出/private/tmp/star-e7-20261004-p2-recovery。复用两组经哈希验证的完成结果，只重跑剩余两组；压力normal连续一分钟才开始，原probe源码和2.5GiB守护不变。失败仍停止，保留全部尝试；本恢复工具只完成P2。
-进度：`P2完整通过 2/4 ▓ | 等待normal ▒ | 剩余完整校验 ░ | P3/窗口 ░`。默认接入尚未获门槛通过，产品HEAD5b9658b固定，既有GAP/容量/Frontier边界保持。
+压力已恢复normal，第三组正在从头重放。临时线程跟进automation e7-p2每小时检查同一个任务，不重复启动；第三组完成时归档，四组完成时核验/归档/报告并停用。资源或校验失败需处理时报告并停用，不自动反复重启。
+进度：`P2完整通过 2/4 ▓ | normal恢复 █ | 剩余完整校验 ▒ | P3/窗口 ░`。默认接入尚未获门槛通过，产品HEAD5b9658b固定，既有GAP/容量/Frontier边界保持。
 
 ## E7继续与条件默认接入授权（2026-10-04）
 

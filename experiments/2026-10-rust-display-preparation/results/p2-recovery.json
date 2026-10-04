@@ -1,5 +1,5 @@
 {
-  "status": "waiting for normal pressure; P2 not complete",
+  "status": "running remaining P2; pressure normal at restart",
   "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
   "old_runs": "/private/tmp/star-e7-20261004",
   "new_runs": "/private/tmp/star-e7-20261004-p2-recovery",
@@ -18,5 +18,12 @@
   "tool_sha256": "0b50537ab7e4b281b99cf3e3c472a714362a571fbf0fabea3070eb8bb37bee7e",
   "tool_archive": "display-preparation-p2-recovery-tools.zip",
   "tool_archive_sha256": "6c35feaa1a59891c12ba225b162cd251e7822eb69211d28a683c15ce21c5c8cd",
-  "method_controls": "Synthetic test passed: inherits two completed jobs without rerun, warning waits, stable normal required, only two remaining jobs launched; not correctness evidence"
+  "method_controls": "Synthetic test passed: inherits two completed jobs without rerun, warning waits, stable normal required, only two remaining jobs launched; not correctness evidence",
+  "temporary_followup": {
+    "automation_id": "e7-p2",
+    "frequency": "hourly",
+    "scope": "same thread; P2 only",
+    "notify": "phase change, failure requiring action, or all four completed",
+    "stop": "disable when P2 complete or blocked requiring user action"
+  }
 }

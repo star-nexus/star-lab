@@ -1,5 +1,5 @@
 {
-  "status": "P2_running_no_formal_performance_conclusion",
+  "status": "P2_resource_interrupted_waiting_normal_recovery",
   "source_sha": "57b65203934d6fa283d67da68f9dc5a8efa03098",
   "execution_base": "068c1ecd17988ac6d884984e904aea924968e0ae",
   "plan": "records/rust-display-preparation-plan.md",
@@ -15,5 +15,6 @@
   "default_adoption_authorization": "results/default-adoption-authorization.json",
   "live_preregistration": "results/live-preregister.json",
   "completed_full_correctness_jobs": 2,
-  "default_preparation": "results/default-patch-preparation.json"
+  "default_preparation": "results/default-patch-preparation.json",
+  "p2_recovery": "results/p2-recovery.json"
 }

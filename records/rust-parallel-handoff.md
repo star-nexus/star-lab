@@ -1,5 +1,11 @@
 # Rust 并行工作：新 Session 交接入口
 
+## E7 P2资源中断与剩余恢复（最新）
+
+第三组reuse_typed/native1/exercise在最后记录8500tick后被系统warning压力保护停止，不能计作通过；并非已检测到等价错误。完整事件归档E7 results/p2-warning-interruption.json。两组完整通过仍有效，旧P3/确认/窗口监督器均已随上游停止。
+新恢复入口E7 results/p2-recovery.json及tools/rust_migration/resume_remaining_display_correctness.py，输出/private/tmp/star-e7-20261004-p2-recovery。复用两组经哈希验证的完成结果，只重跑剩余两组；压力normal连续一分钟才开始，原probe源码和2.5GiB守护不变。失败仍停止，保留全部尝试；本恢复工具只完成P2。
+进度：`P2完整通过 2/4 ▓ | 等待normal ▒ | 剩余完整校验 ░ | P3/窗口 ░`。默认接入尚未获门槛通过，产品HEAD5b9658b固定，既有GAP/容量/Frontier边界保持。
+
 ## E7继续与条件默认接入授权（2026-10-04）
 
 native1/static与native4/exercise两组完整40994请求/9880tick正确性通过，结果归档E7 results/p2-t1-static-completed.json及p2-t4-exercise-completed.json。其余两组仍顺序执行，之后24组性能对照及有条件的8次单实例确认。continue_display_preparation_live.py等待确认通过后串行六次Cocoa窗口（AB/BA/AB；30+300秒），无诊断，保留全部失败和慢尾；live-progress.json为下一阶段入口。

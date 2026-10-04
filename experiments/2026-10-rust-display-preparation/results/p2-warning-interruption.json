@@ -1,0 +1,25 @@
+{
+  "classification": "incomplete correctness; resource guard interruption, not a correctness pass or speed result",
+  "last_logged_tick": 8500,
+  "stop_reason": "system memory pressure guard",
+  "last_samples": [
+    {
+      "elapsed_s": 11731.126,
+      "pid": 32930,
+      "rss_bytes": 1381662720,
+      "pressure": 2,
+      "footprint_sample_s": 11725.061
+    },
+    {
+      "elapsed_s": 11736.136,
+      "pid": 32930,
+      "rss_bytes": 1432420352,
+      "pressure": 2,
+      "footprint_sample_s": 11725.061
+    }
+  ],
+  "file": "display-preparation-p2-warning-interruption.zip",
+  "sha256": "2c8db7e6092c0b34fa2d96a94f40805747b209689a1bf49220d1f72a12154ec3",
+  "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "recovery": "Retain two completed jobs, wait for normal system pressure, retry two remaining complete jobs in fresh directory with identical source/tool/guard; no threshold relaxation"
+}

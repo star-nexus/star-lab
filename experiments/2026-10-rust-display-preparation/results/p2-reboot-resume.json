@@ -8,7 +8,7 @@
   "inherited": "two completed correctness groups restored byte-identically from canonical archives",
   "guard": "unchanged",
   "extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
-  "status": "prepared to resume remaining P2 after reboot; not complete",
+  "status": "P2 incomplete; reboot attempt interrupted by system pressure",
   "base_directory": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261005",
   "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261005/runs",
   "completed_jobs": 2,
@@ -23,5 +23,7 @@
     "guard_display_preparation.py": "0723629182d4d4d10e843f175ea20105e433ea38e1640de0ba9787f6d27260d9"
   },
   "automatic_finalization": "All four complete jobs must pass exact counts, authority/command/pixel checks, raw SHA and resource guard; archive and update recovery/GAP; never start P3",
-  "method_control": "Two real completed records verified; incomplete counts, corrupted raw and interrupted guard rejected; no new correctness result"
+  "method_control": "Two real completed records verified; incomplete counts, corrupted raw and interrupted guard rejected; no new correctness result",
+  "p2_latest_interruption": "results/p2-reboot-interruption.json",
+  "full_correctness_completed": false
 }

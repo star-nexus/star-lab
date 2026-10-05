@@ -1,5 +1,7 @@
 # STAR Lab
 
+> E7最新（2026-10-05）：P2仍为2/4；重启后第三组再次触发系统压力守护，自动跟进已暂停。[中断证据](experiments/2026-10-rust-display-preparation/results/p2-reboot-interruption.json)与[恢复入口](records/rust-parallel-handoff.md)。
+
 **Engineering evidence, reproducibility, and scalability records for [STAR / StarBench](https://github.com/star-nexus/star).**
 
 STAR Lab is intentionally separate from the production/runtime repository.

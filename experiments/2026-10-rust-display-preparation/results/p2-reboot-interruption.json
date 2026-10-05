@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-05",
+  "classification": "intermediate / invalid-but-informative",
+  "status": "P2 incomplete; reboot retry stopped by system memory pressure guard",
+  "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "run": "p2-correctness-typed-t1-exercise",
+  "completed_full_jobs": 2,
+  "total_full_jobs": 4,
+  "fourth_job_started": false,
+  "formal_pass": false,
+  "performance_claim": false,
+  "capacity_claim": false,
+  "production_enabled": false,
+  "stop_reason": "system memory pressure guard",
+  "child_exit": -2,
+  "elapsed_seconds": 180.94989437499999,
+  "limit_mib": 2500,
+  "last_samples": [
+    {
+      "elapsed_s": 175.16,
+      "pid": 3919,
+      "rss_bytes": 869515264,
+      "pressure": 2,
+      "footprint_sample_s": 154.399
+    },
+    {
+      "elapsed_s": 180.166,
+      "pid": 3919,
+      "rss_bytes": 1022033920,
+      "pressure": 2,
+      "footprint_sample_s": 154.399
+    }
+  ],
+  "peak_rss_bytes": 1371127808,
+  "peak_sampled_footprint_bytes": 1001494937,
+  "last_logged_tick": null,
+  "last_logged_tick_note": "No tick milestone logged before interruption; no partial tick count inferred",
+  "interrupt_stack": "display_preparation_probe.py:267 runtime._native.export_state_json(None); KeyboardInterrupt",
+  "correctness_mismatch_reported": false,
+  "mismatch_scope": "No mismatch in retained log; interrupted execution is not a pass",
+  "file": "display-preparation-p2-reboot-interruption.zip",
+  "sha256": "31b51e55d325f51c44b51ab1d957d8e4223326ea5d017546391fff9811e2bdee",
+  "bytes": 6048,
+  "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261005/runs",
+  "automation": "e7-p2 PAUSED after detecting failure; no automatic repeated restart",
+  "next_action": "Investigate sustained system pressure and correctness harness memory costs before another full run; do not modify pinned source/probe/guard under this follow-up",
+  "existing_completed_jobs_reverified": true
+}

@@ -1,5 +1,5 @@
 {
-  "stage": "P2 reboot recovery remaining two",
+  "stage": "P2 2/4; resource interruption after reboot",
   "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
   "product_gap_ledger": "docs/native-benchmark-gaps.md",
   "ledger_write_deferred": "Keep pinned product HEAD unchanged until active measurements finish; Lab tracks current progress meanwhile",
@@ -8,9 +8,11 @@
   "frontier_updated": false,
   "production_enabled": false,
   "full_correctness_completed": false,
-  "memory_incident": "Prior incomplete attempts retained; user rebooted and authorized fresh serial run on 2026-10-05",
+  "memory_incident": "2026-10-05 reboot retry stopped after 180.95s; system warning twice; diagnostic root cause unresolved",
   "full_correctness_completed_jobs": 2,
   "full_correctness_total_jobs": 4,
-  "current": "p2-correctness-typed-t1-exercise",
-  "default_adoption": "Conditionally authorized; prepared patch isolated dispatch passed; not applied"
+  "current": null,
+  "default_adoption": "Conditionally authorized; prepared patch isolated dispatch passed; not applied",
+  "status": "P2 incomplete; reboot attempt interrupted by system pressure",
+  "p2_latest_interruption": "results/p2-reboot-interruption.json"
 }

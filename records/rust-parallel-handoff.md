@@ -1,5 +1,12 @@
 # Rust 并行工作：新 Session 交接入口
 
+## E7 P2重启恢复（2026-10-05，最新）
+
+用户已重启机器并授权全力完成P2。系统压力normal、可回收余量60%，固定源码5b9658b及native扩展/原probe保持。原临时目录已被重启清除；从R4e canonical归档恢复输入，从E7 canonical ZIP恢复两组完整结果，内外SHA均验证。历史49删除、冻结工作树保持。
+本轮持久目录/Users/liyang/Developer/star-lab-runs/e7-p2-20261005，inputs、inherited与runs分开。入口tools/rust_migration/run_remaining_display_p2.py，串行只重跑剩余两组并保留原2.5GiB/system pressure守护；全部通过后调用finalize_display_correctness.py自动核验/归档/更新Lab阶段记录。
+恢复记录E7 results/p2-reboot-resume.json。实时状态runs/resume-progress.json，收尾状态runs/p2-finalization.json。自动跟进e7-p2需恢复并使用新持久路径；未变化保持安静，失败需处理或四组全部完成时报告、停用，不自动反复重启。
+进度：`输入/完成证据恢复 █ | P2完整通过 2/4 ▓ | 剩余两组 ▒ | P2最终归档 ░ | P3/默认接入 ░`。不启动P3，不修改产品源码，不push/merge，不更新容量或Frontier、关闭既有GAP。
+
 ## E7 P2最新核对：未完成，重复资源中断
 
 完整通过仍为2/4。第三组reuse_typed/native1/exercise的恢复尝试在最后记录3500tick后，被两次system warning压力样本停止（SIGINT，非已报告的等价错误）；第四组未启动，当前无测试进程。最新证据E7 results/p2-recovery-interruption.json。当前压力normal只证明检查时状态，不能外推整组数小时安全。

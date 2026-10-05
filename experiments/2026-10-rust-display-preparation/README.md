@@ -1,3 +1,5 @@
+> 2026-10-05最新：重启后以正常内存压力重新恢复P2。持久目录/Users/liyang/Developer/star-lab-runs/e7-p2-20261005；前两组归档结果已验证复用，剩余两组串行运行并自动收尾。尚未完成P2；历史中断继续保留。
+
 > 最新核对：P2未完成，仅2/4完整通过。恢复第三组再次被system warning守护中断；第四组未启动。e7-p2自动跟进已暂停。见results/p2-recovery-interruption.json；此前运行中状态是历史快照。
 
 > 2026-10-04用户清理内存并授权恢复；100tick守护冒烟通过，四组完整正确性正顺序重跑，随后自动进入24组顺序性能对照。实时恢复入口见records/rust-parallel-handoff.md，既有中断数据保留。

@@ -82,16 +82,19 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--runs', type=Path, required=True)
     p.add_argument('--remaining-limit-mib', type=float, default=2500)
+    p.add_argument('--third-limit-mib', type=float)
     p.add_argument('--run-date', default='2026-10-05')
     a = p.parse_args()
     assert math.isfinite(a.remaining_limit_mib) and a.remaining_limit_mib > 0
+    third_limit = a.remaining_limit_mib if a.third_limit_mib is None else a.third_limit_mib
+    assert math.isfinite(third_limit) and third_limit > 0
     date.fromisoformat(a.run_date)
     lab = Path(__file__).resolve().parents[2]
     exp = lab / 'experiments/2026-10-rust-display-preparation'
     rows = []
     reference = None
     for index, job in enumerate(JOBS):
-        expected_limit = 2500 if index < 2 else a.remaining_limit_mib
+        expected_limit = (2500, 2500, third_limit, a.remaining_limit_mib)[index]
         m, guard = verify_job(a.runs, job, expected_limit)
         identity = {key: m[key] for key in ('source_sha', 'tool_sha256', 'extension_sha256',
                     'trace_sha256', 'initial_sha256', 'display_script_sha256',
@@ -117,7 +120,7 @@ def main():
                    identity=reference, results=rows, capacity_claim=False, performance_claim=False,
                    production_enabled=False, next_stage='P3 not started by this tool',
                    scope='Full canonical 40994 requests/9880 ticks per group; complete authority, display, events, command and pixel contracts. Resource guards cover these successful executions; do not prove all-use absence of leaks.',
-                   interrupted_attempts='Oct4 and Oct5 incomplete resource attempts retained separately; excluded from pass counts',
+                   interrupted_attempts='Oct4, Oct5 and Oct6 incomplete resource attempts retained separately; excluded from pass counts',
                    run_date=a.run_date,
                    resource_budget_note='First two groups retain 2500MiB guards; remaining groups use explicitly recorded authorized limits. Correctness thresholds unchanged; budgets are not a uniform memory-safety or performance comparison.',
                    runs_directory=str(a.runs), finalizer_sha256=sha(Path(__file__)))
@@ -125,6 +128,8 @@ def main():
     filenames = ['manifest.yaml', 'results/open-gap-status-resume.json', 'results/p2-reboot-resume.json']
     if (exp / 'results/p2-budget-resume.json').exists():
         filenames.append('results/p2-budget-resume.json')
+    if (exp / 'results/p2-fourth-retry.json').exists():
+        filenames.append('results/p2-fourth-retry.json')
     for filename in filenames:
         path = exp / filename
         value = json.loads(path.read_text())
@@ -132,15 +137,20 @@ def main():
                      completed_full_correctness_jobs=4, p2_completion='results/p2-complete.json')
         if filename.endswith('open-gap-status-resume.json'):
             value.update(stage='P2 complete; P3 pending', current=None, full_correctness_completed_jobs=4)
+        for key in ('completed_full_jobs', 'completed_jobs'):
+            if key in value:
+                value[key] = 4
+        if 'current' in value:
+            value['current'] = None
         path.write_text(json.dumps(value, indent=2) + '\n')
     report = (f'\n## E7 P2完整通过（恢复运行，{a.run_date}）\n\n'
               '四组完整40994请求/9880tick校验全部通过：ordinary native1/static、ordinary native4/exercise、'
               'reuse_typed native1/exercise与native4/static。每组完整权威、展示/事件、绘制命令、像素、'
               '查询顺序及最终权威指纹通过，原始样本/指纹和内存守护全部保留。'
               '结论只覆盖P2正确性及本次完整执行的资源保护；不代表性能收益、容量提升或一般无泄漏证明。\n'
-              '证据入口E7 results/p2-complete.json。前两组归档复用，后两组重启后新完整运行；'
+              '证据入口E7 results/p2-complete.json。已完成组的完整证据复用，缺失组新完整运行；'
               '历史不完整资源中断继续保留，未计作通过。测量源码5b9658b、原probe/扩展/系统压力策略保持；'
-              f'前两组限额2500MiB、剩余两组限额{a.remaining_limit_mib:g}MiB，不能据此宣称统一内存预算验收。\n'
+              f'各组限额依次为2500/2500/{third_limit:g}/{a.remaining_limit_mib:g}MiB，不能据此宣称统一内存预算验收。\n'
               '进度：`P2完整正确性 4/4 █ | 证据与校验 █ | P3/窗口/默认接入 ░`。'
               '未启动P3、未启用默认路径、未push/merge；既有GAP、容量和Frontier保持。\n')
     for filename in ('records/rust-parallel-handoff.md', 'records/rust-system-parallel-status.md'):

@@ -1,5 +1,5 @@
 {
-  "status": "P2 three groups verified; fourth running",
+  "status": "P2 incomplete; fourth group system-pressure interruption",
   "source_sha": "57b65203934d6fa283d67da68f9dc5a8efa03098",
   "execution_base": "068c1ecd17988ac6d884984e904aea924968e0ae",
   "plan": "records/rust-display-preparation-plan.md",
@@ -17,7 +17,7 @@
   "completed_full_correctness_jobs": 3,
   "default_preparation": "results/default-patch-preparation.json",
   "p2_recovery": "results/p2-recovery.json",
-  "p2_latest_interruption": "results/p2-reboot-interruption.json",
+  "p2_latest_interruption": "results/p2-fourth-interruption.json",
   "p2_reboot_resume": "results/p2-reboot-resume.json",
   "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261006/runs",
   "full_correctness_completed": false,

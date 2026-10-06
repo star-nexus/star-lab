@@ -1,5 +1,5 @@
 {
-  "stage": "P2 3/4; new pause guard prepared, not deployed",
+  "stage": "P2 3/4; fourth-only restart prepared",
   "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
   "product_gap_ledger": "docs/native-benchmark-gaps.md",
   "ledger_write_deferred": "Keep pinned product HEAD unchanged until active measurements finish; Lab tracks current progress meanwhile",
@@ -11,11 +11,11 @@
   "memory_incident": "2026-10-07 01:46 warning twice stops fourth-only run after 8500 logged ticks, below 6144MiB",
   "full_correctness_completed_jobs": 3,
   "full_correctness_total_jobs": 4,
-  "current": null,
+  "current": "p2-correctness-typed-t4-static",
   "default_adoption": "Conditionally authorized; prepared patch isolated dispatch passed; not applied",
-  "status": "P2 3/4; live pause method control passed; no replay restarted",
+  "status": "P2 3/4; fourth-only pause-only restart prepared",
   "p2_latest_interruption": "results/p2-fourth-retry-interruption.json",
-  "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261006-fourth-retry/runs",
+  "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261007-pause-only/runs",
   "p2_budget_resume": "results/p2-budget-resume.json",
   "remaining_limit_mib": 5120,
   "p2_third_completed": "results/p2-typed-t1-exercise-completed.json",
@@ -27,7 +27,10 @@
     6144
   ],
   "p2_pause_guard_control": "results/p2-pause-guard-control.json",
-  "pause_guard_connected_to_runner": false,
+  "pause_guard_connected_to_runner": true,
   "durable_checkpoint": false,
-  "full_replay_started": false
+  "full_replay_started": false,
+  "p2_pause_only_resume": "results/p2-pause-only-resume.json",
+  "fourth_budget_enforced": false,
+  "fourth_automatic_termination": false
 }

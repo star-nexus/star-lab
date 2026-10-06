@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-06",
+  "status": "prepared; restart authorized with increased child budget",
+  "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261006/runs",
+  "previous_runs": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261005/inherited",
+  "argv": [
+    "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/bin/python",
+    "/Users/liyang/Developer/star-lab/tools/rust_migration/run_remaining_display_p2.py",
+    "--source",
+    "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+    "--source-sha",
+    "5b9658bc668b7d13f801351162f255f30622b32a",
+    "--trace",
+    "/Users/liyang/Developer/star-lab-runs/e7-p2-20261005/inputs/rust-300-r3.trace.json.gz",
+    "--previous-runs",
+    "/Users/liyang/Developer/star-lab-runs/e7-p2-20261005/inherited",
+    "--runs",
+    "/Users/liyang/Developer/star-lab-runs/e7-p2-20261006/runs",
+    "--limit-mib",
+    "5120",
+    "--run-date",
+    "2026-10-06"
+  ],
+  "user_authorization": "User rebooted, reports 6GB unused; requests rerun and substantially relaxed 2500MiB process limit",
+  "remaining_limit_mib": 5120,
+  "inherited_limit_mib": 2500,
+  "system_pressure_policy": "unchanged: normal at startup; critical or two consecutive non-normal samples stops child",
+  "pressure_at_preflight": 1,
+  "query_available_percentage_at_preflight": 78,
+  "probe_unchanged": true,
+  "guard_code_unchanged": true,
+  "correctness_thresholds_unchanged": true,
+  "completed_full_jobs": 2,
+  "total_full_jobs": 4,
+  "full_correctness_completed": false,
+  "capacity_claim": false,
+  "performance_claim": false,
+  "production_enabled": false,
+  "resource_budget_scope": "Mixed limits: first two passed at 2500MiB; remaining two authorized at 5120MiB. No uniform memory-safety claim. Increasing child limit does not address previous warning-triggered stops.",
+  "tool_archive": {
+    "file": "display-preparation-p2-budget-tools.zip",
+    "sha256": "e490390de19f46bd14bf7fd0f543fa1363c0774fca97e5f8e95bb3b1bd54df3c",
+    "bytes": 16959
+  },
+  "tools": {
+    "run_remaining_display_p2.py": "ede0a73573b0b1c5f502873f61f20640087bceb2ddae202be8fa32bcbca34309",
+    "resume_remaining_display_correctness.py": "a489f772b8eebb96e619e403d026c3d1bec3daac82b976626b01e9ce423e265d",
+    "finalize_display_correctness.py": "9621a96e516329c45294745c20b7d7d57418d2917ca0132fa46ddd43e12f5ffd",
+    "guard_display_preparation.py": "0723629182d4d4d10e843f175ea20105e433ea38e1640de0ba9787f6d27260d9",
+    "display_preparation_probe.py": "64ef940f41b9d7c90cfa09f3ee3889b3d7469816c52c9ae80e91355d1f0d7b4f"
+  },
+  "method_control": "Verified inherited full records and raw SHA; explicit expected 5120 guard accepted in copied synthetic metadata; wrong budget and stopped guard rejected; wrapper forwards budget/date only to remaining runs and P2 finalizer",
+  "historical_interruptions": [
+    "results/p2-warning-interruption.json",
+    "results/p2-recovery-interruption.json",
+    "results/p2-reboot-interruption.json"
+  ]
+}

@@ -3,6 +3,8 @@ import argparse
 import gzip
 import hashlib
 import json
+import math
+from datetime import date
 import subprocess
 import zipfile
 from pathlib import Path
@@ -21,7 +23,7 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def verify_job(runs, job):
+def verify_job(runs, job, limit_mib=2500):
     name, threads, consumer, script = job
     path = runs / (name + '.json')
     m = json.loads(path.read_text())
@@ -51,7 +53,7 @@ def verify_job(runs, job):
             assert [r['tick'] for r in rows] == list(range(1, 9881))
     guard = json.loads((runs / (name + '.guard.json')).read_text())
     assert guard['status'] == 'passed' and guard['child_exit'] == 0 and guard['stop_reason'] is None
-    assert guard['limit_mib'] == 2500
+    assert guard['limit_mib'] == limit_mib
     return m, guard
 
 
@@ -79,13 +81,18 @@ def archive_job(exp, runs, name):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--runs', type=Path, required=True)
+    p.add_argument('--remaining-limit-mib', type=float, default=2500)
+    p.add_argument('--run-date', default='2026-10-05')
     a = p.parse_args()
+    assert math.isfinite(a.remaining_limit_mib) and a.remaining_limit_mib > 0
+    date.fromisoformat(a.run_date)
     lab = Path(__file__).resolve().parents[2]
     exp = lab / 'experiments/2026-10-rust-display-preparation'
     rows = []
     reference = None
-    for job in JOBS:
-        m, guard = verify_job(a.runs, job)
+    for index, job in enumerate(JOBS):
+        expected_limit = 2500 if index < 2 else a.remaining_limit_mib
+        m, guard = verify_job(a.runs, job, expected_limit)
         identity = {key: m[key] for key in ('source_sha', 'tool_sha256', 'extension_sha256',
                     'trace_sha256', 'initial_sha256', 'display_script_sha256',
                     'fixture_sha256', 'dependency_lock_sha256')}
@@ -104,16 +111,21 @@ def main():
                          script=m['display_script'], counts=m['counts'], checks=m['checks'],
                          metadata_sha256=sha(a.runs / (name + '.json')), raw=m['raw'],
                          authority=m['authority_raw'], pixels=m['pixel_raw'], artifact=evidence,
-                         memory_guard='passed with unchanged 2500MiB and system-pressure limits',
+                         memory_guard=f'passed with {expected_limit:g}MiB and unchanged system-pressure policy',
                          elapsed_seconds=m['elapsed_seconds']))
     summary = dict(stage='P2 complete', passed=True, completed_jobs=4, total_jobs=4,
                    identity=reference, results=rows, capacity_claim=False, performance_claim=False,
                    production_enabled=False, next_stage='P3 not started by this tool',
                    scope='Full canonical 40994 requests/9880 ticks per group; complete authority, display, events, command and pixel contracts. Resource guards cover these successful executions; do not prove all-use absence of leaks.',
-                   interrupted_attempts='Both Oct4 incomplete resource attempts retained separately; excluded from pass counts',
+                   interrupted_attempts='Oct4 and Oct5 incomplete resource attempts retained separately; excluded from pass counts',
+                   run_date=a.run_date,
+                   resource_budget_note='First two groups retain 2500MiB guards; remaining groups use explicitly recorded authorized limits. Correctness thresholds unchanged; budgets are not a uniform memory-safety or performance comparison.',
                    runs_directory=str(a.runs), finalizer_sha256=sha(Path(__file__)))
     (exp / 'results/p2-complete.json').write_text(json.dumps(summary, indent=2) + '\n')
-    for filename in ('manifest.yaml', 'results/open-gap-status-resume.json', 'results/p2-reboot-resume.json'):
+    filenames = ['manifest.yaml', 'results/open-gap-status-resume.json', 'results/p2-reboot-resume.json']
+    if (exp / 'results/p2-budget-resume.json').exists():
+        filenames.append('results/p2-budget-resume.json')
+    for filename in filenames:
         path = exp / filename
         value = json.loads(path.read_text())
         value.update(status='P2 complete; P3 pending', full_correctness_completed=True,
@@ -121,13 +133,14 @@ def main():
         if filename.endswith('open-gap-status-resume.json'):
             value.update(stage='P2 complete; P3 pending', current=None, full_correctness_completed_jobs=4)
         path.write_text(json.dumps(value, indent=2) + '\n')
-    report = ('\n## E7 P2完整通过（重启恢复运行，2026-10-05）\n\n'
+    report = (f'\n## E7 P2完整通过（恢复运行，{a.run_date}）\n\n'
               '四组完整40994请求/9880tick校验全部通过：ordinary native1/static、ordinary native4/exercise、'
               'reuse_typed native1/exercise与native4/static。每组完整权威、展示/事件、绘制命令、像素、'
               '查询顺序及最终权威指纹通过，原始样本/指纹和内存守护全部保留。'
               '结论只覆盖P2正确性及本次完整执行的资源保护；不代表性能收益、容量提升或一般无泄漏证明。\n'
               '证据入口E7 results/p2-complete.json。前两组归档复用，后两组重启后新完整运行；'
-              '两次不完整资源中断继续保留，未计作通过。测量源码5b9658b、原probe/扩展/守护保持。\n'
+              '历史不完整资源中断继续保留，未计作通过。测量源码5b9658b、原probe/扩展/系统压力策略保持；'
+              f'前两组限额2500MiB、剩余两组限额{a.remaining_limit_mib:g}MiB，不能据此宣称统一内存预算验收。\n'
               '进度：`P2完整正确性 4/4 █ | 证据与校验 █ | P3/窗口/默认接入 ░`。'
               '未启动P3、未启用默认路径、未push/merge；既有GAP、容量和Frontier保持。\n')
     for filename in ('records/rust-parallel-handoff.md', 'records/rust-system-parallel-status.md'):

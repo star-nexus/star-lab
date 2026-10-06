@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import math
 import shutil
 import subprocess
 import time
@@ -15,7 +16,9 @@ def main():
     p.add_argument('--trace', type=Path, required=True)
     p.add_argument('--previous-runs', type=Path, required=True)
     p.add_argument('--runs', type=Path, required=True)
+    p.add_argument('--limit-mib', type=float, default=2500)
     a = p.parse_args()
+    assert math.isfinite(a.limit_mib) and a.limit_mib > 0
     assert a.runs.resolve() != a.previous_runs.resolve()
     a.runs.mkdir(exist_ok=False)
     python = a.source / '.venv/bin/python'
@@ -25,7 +28,8 @@ def main():
 
     def status(stage, **extra):
         value = dict(stage=stage, completed=completed, source_sha=a.source_sha,
-                     updated_unix=time.time(), capacity_claim=False, **extra)
+                     updated_unix=time.time(), capacity_claim=False,
+                     remaining_limit_mib=a.limit_mib, **extra)
         (a.runs / 'resume-progress.json').write_text(json.dumps(value, indent=2) + '\n')
         print(json.dumps(value), flush=True)
 
@@ -56,7 +60,7 @@ def main():
         for name, threads, script in (('p2-correctness-typed-t1-exercise', 1, 'exercise'),
                                      ('p2-correctness-typed-t4-static', 4, 'static')):
             status('waiting for normal memory pressure', current=name)
-            # Stable normal pressure for a full minute; preserve original guard.
+            # Stable normal pressure for a full minute; system-pressure policy unchanged.
             normal = 0
             while normal < 3:
                 level = int(subprocess.check_output(['sysctl', '-n', 'kern.memorystatus_vm_pressure_level'], text=True))
@@ -66,7 +70,8 @@ def main():
                     time.sleep(30)
             status('P2 full correctness', current=name)
             command = [str(python), str(here / 'guard_display_preparation.py'),
-                       '--report', str(a.runs / (name + '.guard.json')), '--',
+                       '--report', str(a.runs / (name + '.guard.json')),
+                       '--limit-mib', str(a.limit_mib), '--',
                        str(python), str(here / 'display_preparation_probe.py'),
                        '--source', str(a.source), '--source-sha', a.source_sha,
                        '--trace', str(a.trace), '--output', str(a.runs / (name + '.json')),

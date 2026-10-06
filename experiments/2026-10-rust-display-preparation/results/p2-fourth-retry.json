@@ -1,6 +1,6 @@
 {
   "date": "2026-10-06",
-  "status": "prepared; fourth-only retry authorized",
+  "status": "fourth-only complete replay started; three completed groups reused",
   "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
   "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261006-fourth-retry/runs",
   "previous_runs": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261006/runs",
@@ -55,5 +55,32 @@
   },
   "method_control": "Three real completed full records verified; mock runner only launches one native4/static job and forwards 6144 fourth/5120 third budgets; wrong inherited budget rejected. Method control is not a new correctness pass.",
   "historical_interruption": "results/p2-fourth-interruption.json",
-  "automatic_finalization": "After fourth complete, verifies all four full counts/checks/raw SHA and each guard budget; archives fourth and updates Lab recovery/GAP, never starts P3"
+  "automatic_finalization": "After fourth complete, verifies all four full counts/checks/raw SHA and each guard budget; archives fourth and updates Lab recovery/GAP, never starts P3",
+  "launch_snapshot": {
+    "stage": "P2 full correctness",
+    "completed": [
+      "p2-correctness-t1-static",
+      "p2-correctness-t4-exercise",
+      "p2-correctness-typed-t1-exercise"
+    ],
+    "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+    "fourth_limit_mib": 6144.0,
+    "updated_unix": 1791296057.6145012,
+    "capacity_claim": false,
+    "current": "p2-correctness-typed-t4-static"
+  },
+  "guard_snapshot": {
+    "status": "running",
+    "limit_mib": 6144.0,
+    "last_sample": {
+      "elapsed_s": 37.186,
+      "pid": 39034,
+      "rss_bytes": 1416380416,
+      "pressure": 1,
+      "footprint_sample_s": 31.229
+    }
+  },
+  "automation": "e7-p2 ACTIVE; current fourth-only directory; quiet unless completion/failure",
+  "execution_session": 39848,
+  "sleep_prevention": "caffeinate -i while fourth-only runner executes"
 }

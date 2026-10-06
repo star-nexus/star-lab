@@ -1,5 +1,7 @@
 # STAR Lab
 
+> E7最新（2026-10-07）：P2完整通过3/4；第四组6GiB重试在8500里程碑后由系统warning策略停止，跟进暂停。[证据](experiments/2026-10-rust-display-preparation/results/p2-fourth-retry-interruption.json)，[恢复入口](records/rust-parallel-handoff.md)。
+
 > E7最新（2026-10-06）：P2完整通过3/4；第四组于20:32再次由系统warning策略停止，跟进已暂停。[中断证据](experiments/2026-10-rust-display-preparation/results/p2-fourth-interruption.json)，[恢复入口](records/rust-parallel-handoff.md)。
 
 > E7最新（2026-10-05）：P2仍为2/4；重启后第三组再次触发系统压力守护，自动跟进已暂停。[中断证据](experiments/2026-10-rust-display-preparation/results/p2-reboot-interruption.json)与[恢复入口](records/rust-parallel-handoff.md)。

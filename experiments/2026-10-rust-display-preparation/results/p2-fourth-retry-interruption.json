@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-07",
+  "stopped_at": "2026-10-07T01:46:47.205260+08:00",
+  "classification": "intermediate / invalid-but-informative",
+  "status": "P2 incomplete; fourth-only retry stopped by system warning policy",
+  "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "run": "p2-correctness-typed-t4-static",
+  "completed_full_jobs": 3,
+  "total_full_jobs": 4,
+  "completed_jobs_reverified": true,
+  "formal_pass": false,
+  "performance_claim": false,
+  "capacity_claim": false,
+  "production_enabled": false,
+  "stop_reason": "system memory pressure guard",
+  "child_exit": -2,
+  "elapsed_seconds": 12749.643047290996,
+  "limit_mib": 6144.0,
+  "last_samples": [
+    {
+      "elapsed_s": 12742.667,
+      "pid": 39034,
+      "rss_bytes": 1333428224,
+      "pressure": 2,
+      "footprint_sample_s": 12736.623
+    },
+    {
+      "elapsed_s": 12747.683,
+      "pid": 39034,
+      "rss_bytes": 1458782208,
+      "pressure": 2,
+      "footprint_sample_s": 12736.623
+    }
+  ],
+  "peak_rss_bytes": 1693810688,
+  "peak_sampled_footprint_bytes": 1503238553,
+  "last_logged_tick": 8500,
+  "interrupt_stack": "display_preparation_probe.py:282 runtime._native.export_state_json(None); KeyboardInterrupt",
+  "correctness_mismatch_reported": false,
+  "mismatch_scope": "No state/command/pixel mismatch reported; interrupted assertion expression is not an AssertionError; incomplete replay is not a pass",
+  "file": "display-preparation-p2-fourth-retry-interruption.zip",
+  "sha256": "2331d93cdd9d4c361386caa590b6f84cecfc86e3897c06b655b804f120964760",
+  "bytes": 46611,
+  "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261006-fourth-retry/runs",
+  "automation": "e7-p2 PAUSED; no automatic repeated restart",
+  "decision": "Increasing child budget 5120 to 6144MiB did not change the independent warning stop. Before any new fourth-only retry, examine kernel pressure vs Activity Monitor and guard-policy validity; do not claim actual OOM or product leak from these stops.",
+  "system_pressure_policy": "unchanged warning twice/critical; child memory budget did not trigger"
+}

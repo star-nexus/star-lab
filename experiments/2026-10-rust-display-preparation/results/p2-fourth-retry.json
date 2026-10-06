@@ -1,6 +1,6 @@
 {
   "date": "2026-10-06",
-  "status": "fourth-only complete replay started; three completed groups reused",
+  "status": "P2 incomplete; fourth retry system-warning interruption",
   "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
   "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261006-fourth-retry/runs",
   "previous_runs": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261006/runs",
@@ -82,5 +82,7 @@
   },
   "automation": "e7-p2 ACTIVE; current fourth-only directory; quiet unless completion/failure",
   "execution_session": 39848,
-  "sleep_prevention": "caffeinate -i while fourth-only runner executes"
+  "sleep_prevention": "caffeinate -i while fourth-only runner executes",
+  "p2_latest_interruption": "results/p2-fourth-retry-interruption.json",
+  "current": null
 }

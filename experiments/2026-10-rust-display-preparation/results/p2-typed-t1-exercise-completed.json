@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-06",
+  "status": "third full correctness group passed and integrity verified",
+  "run": "p2-correctness-typed-t1-exercise",
+  "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "identity": {
+    "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+    "tool_sha256": "64ef940f41b9d7c90cfa09f3ee3889b3d7469816c52c9ae80e91355d1f0d7b4f",
+    "extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
+    "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+    "initial_sha256": "8b594c465a63728222c57f257111d500c1c378e226b3496c63c0b11870629bc0",
+    "display_script_sha256": "a956a183cf5f80de33a557927849251b69c5db89cb91f0ba122d75d28c7c4f34",
+    "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+    "dependency_lock_sha256": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae"
+  },
+  "counts": {
+    "request": 40994,
+    "step": 9880,
+    "presentation": 9880
+  },
+  "checks": {
+    "full_authority": 19760,
+    "command_stream": 19760,
+    "pixels": 19760,
+    "projection": 19760,
+    "full_cold_world": 99
+  },
+  "threads": 1,
+  "consumer": "reuse_typed",
+  "script": "exercise",
+  "stream_sha256": "e01f2147b0fba41b27d15634c552bfb96ee84480a7628926890e57027a65b76b",
+  "final_state_sha256": "d069c7173464d787c28f86120f1f173105f9f2c3f5cf959a758ab84290780dbf",
+  "metadata_sha256": "7e36586adfa95204df6f8d4346cbd423c5ab0a52f10ef68bdff7e1a84c6909a2",
+  "raw": {
+    "file": "p2-correctness-typed-t1-exercise.samples.json.gz",
+    "sha256": "25beeef074621867a415b007ff7b0fae479495d59fbd8a5685fbc4d754abf285",
+    "bytes": 916412
+  },
+  "authority": {
+    "file": "p2-correctness-typed-t1-exercise.authority.json.gz",
+    "sha256": "ee47e1e1121569af31d35239094a633cc64d818e6f307056098553d61da9f166",
+    "bytes": 413050
+  },
+  "pixels": {
+    "file": "p2-correctness-typed-t1-exercise.pixels.json.gz",
+    "sha256": "e43be0a96d377cb37801c73185384da623db3230336c8215bb53f46a0821e608",
+    "bytes": 244454
+  },
+  "guard_status": "passed",
+  "limit_mib": 5120.0,
+  "peak_rss_bytes": 1893285888,
+  "peak_sampled_footprint_bytes": 1717986918,
+  "pressure_levels": [
+    1
+  ],
+  "elapsed_seconds": 13624.317537333,
+  "completed_jobs": 3,
+  "total_jobs": 4,
+  "full_correctness_completed": false,
+  "performance_claim": false,
+  "capacity_claim": false,
+  "production_enabled": false,
+  "file": "display-preparation-p2-correctness-typed-t1-exercise-raw.zip",
+  "sha256": "28db7f90d50a79f0ad49561275b512cd08a4bac813e10f44e3dbce25a9b4e964",
+  "bytes": 1622855
+}

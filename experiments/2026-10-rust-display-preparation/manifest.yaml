@@ -1,5 +1,5 @@
 {
-  "status": "P2 authorized budget restart remaining two",
+  "status": "P2 three groups verified; fourth running",
   "source_sha": "57b65203934d6fa283d67da68f9dc5a8efa03098",
   "execution_base": "068c1ecd17988ac6d884984e904aea924968e0ae",
   "plan": "records/rust-display-preparation-plan.md",
@@ -14,7 +14,7 @@
   "capacity_claim": false,
   "default_adoption_authorization": "results/default-adoption-authorization.json",
   "live_preregistration": "results/live-preregister.json",
-  "completed_full_correctness_jobs": 2,
+  "completed_full_correctness_jobs": 3,
   "default_preparation": "results/default-patch-preparation.json",
   "p2_recovery": "results/p2-recovery.json",
   "p2_latest_interruption": "results/p2-reboot-interruption.json",
@@ -22,5 +22,6 @@
   "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261006/runs",
   "full_correctness_completed": false,
   "p2_budget_resume": "results/p2-budget-resume.json",
-  "remaining_limit_mib": 5120
+  "remaining_limit_mib": 5120,
+  "p2_third_completed": "results/p2-typed-t1-exercise-completed.json"
 }

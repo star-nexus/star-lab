@@ -1,6 +1,6 @@
 {
   "date": "2026-10-06",
-  "status": "third group started; fourth waits serially",
+  "status": "P2 three groups verified; fourth running",
   "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
   "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261006/runs",
   "previous_runs": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261005/inherited",
@@ -31,7 +31,7 @@
   "probe_unchanged": true,
   "guard_code_unchanged": true,
   "correctness_thresholds_unchanged": true,
-  "completed_full_jobs": 2,
+  "completed_full_jobs": 3,
   "total_full_jobs": 4,
   "full_correctness_completed": false,
   "capacity_claim": false,
@@ -81,5 +81,7 @@
   },
   "automation": "e7-p2 ACTIVE; checks current durable directory; quiet unless phase change/failure/completion",
   "execution_session": 58226,
-  "sleep_prevention": "caffeinate -i while wrapper runs"
+  "sleep_prevention": "caffeinate -i while wrapper runs",
+  "p2_third_completed": "results/p2-typed-t1-exercise-completed.json",
+  "current": "p2-correctness-typed-t4-static"
 }

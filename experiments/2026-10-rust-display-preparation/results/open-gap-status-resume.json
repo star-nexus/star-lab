@@ -1,5 +1,5 @@
 {
-  "stage": "P2 3/4; fourth-only retry stopped",
+  "stage": "P2 3/4; new pause guard prepared, not deployed",
   "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
   "product_gap_ledger": "docs/native-benchmark-gaps.md",
   "ledger_write_deferred": "Keep pinned product HEAD unchanged until active measurements finish; Lab tracks current progress meanwhile",
@@ -13,7 +13,7 @@
   "full_correctness_total_jobs": 4,
   "current": null,
   "default_adoption": "Conditionally authorized; prepared patch isolated dispatch passed; not applied",
-  "status": "P2 incomplete; fourth retry system-warning interruption",
+  "status": "P2 3/4; live pause method control passed; no replay restarted",
   "p2_latest_interruption": "results/p2-fourth-retry-interruption.json",
   "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261006-fourth-retry/runs",
   "p2_budget_resume": "results/p2-budget-resume.json",
@@ -25,5 +25,9 @@
     2500,
     5120,
     6144
-  ]
+  ],
+  "p2_pause_guard_control": "results/p2-pause-guard-control.json",
+  "pause_guard_connected_to_runner": false,
+  "durable_checkpoint": false,
+  "full_replay_started": false
 }

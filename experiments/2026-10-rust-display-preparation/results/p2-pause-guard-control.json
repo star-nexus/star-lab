@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-07",
+  "classification": "method-control / not full E7 correctness",
+  "status": "live pause guard prepared and tested; not connected to frozen P2 runner",
+  "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "completed_full_jobs": 3,
+  "total_full_jobs": 4,
+  "full_replay_started": false,
+  "old_8500_tick_resume_possible": false,
+  "durable_checkpoint": false,
+  "guard_tool": "tools/rust_migration/guard_display_preparation_resumable.py",
+  "control_tool": "tools/rust_migration/test_resumable_display_guard.py",
+  "controls": {
+    "passed": true,
+    "kind": "synthetic guard lifecycle; not E7 correctness",
+    "guard_sha256": "b23e947be9710ef21a73e062c5ef8cff647eee4252fb07e1f0f32fec77aee208",
+    "control_sha256": "9b9fce2e2faf8699fdc0b56dc9a7089b072eea86a6ee81c28d0d263d8b2264d6",
+    "cases": [
+      "warning pauses",
+      "same PID resumes",
+      "progress stops while paused",
+      "all 40 progress rows preserved exactly once",
+      "critical while paused terminates",
+      "child budget still terminates",
+      "unknown pressure fails closed",
+      "60s default normal-recovery policy"
+    ],
+    "production_defaults_changed": false
+  },
+  "policy": {
+    "warning": "two consecutive samples -> SIGSTOP entire child process group",
+    "normal": "continuous 60 seconds -> SIGCONT same PID",
+    "critical": "terminate after unpausing for cleanup",
+    "child_limit_mib": 6144,
+    "unknown": "terminate",
+    "snapshot": "vm_stat, vm.swapusage, memory_pressure -Q at pause",
+    "timing_scope": "correctness only; not valid for formal performance measurement"
+  },
+  "legacy_guard_sha256": "0723629182d4d4d10e843f175ea20105e433ea38e1640de0ba9787f6d27260d9",
+  "legacy_guard_unchanged": true,
+  "probe_and_product_unchanged": true,
+  "old_runner_unchanged": true,
+  "automation": "e7-p2 PAUSED",
+  "limitations": [
+    "Prior interrupted process already exited and closed native/renderer state; 8500 log milestone is not a checkpoint",
+    "Pause retains memory; it does not free the test world",
+    "No recovery after process death or reboot; critical/budget termination still loses live state",
+    "Synthetic method controls do not prove E7 state/pixel correctness or performance benefit",
+    "No warning-time vm_stat or swap-rate evidence in old run; exact OS warning cause unknown"
+  ],
+  "sources": [
+    "https://support.apple.com/en-lb/guide/activity-monitor/actmntr1004/mac",
+    "https://github.com/apple-oss-distributions/xnu/blob/main/doc/vm/memorystatus_notify.md",
+    "https://github.com/apple-oss-distributions/xnu/blob/main/bsd/kern/kern_memorystatus_notify.c"
+  ],
+  "file": "display-preparation-p2-pause-guard-control.zip",
+  "sha256": "cb107dfe0d01e702495e41ade5f8799049fd707277137cea53e489166a15d0fb",
+  "bytes": 13402,
+  "production_enabled": false,
+  "capacity_updated": false,
+  "frontier_updated": false,
+  "existing_gaps_closed": false
+}

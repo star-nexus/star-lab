@@ -1,5 +1,5 @@
 {
-  "status": "P2 incomplete; fourth retry system-warning interruption",
+  "status": "P2 3/4; live pause method control passed; no replay restarted",
   "source_sha": "57b65203934d6fa283d67da68f9dc5a8efa03098",
   "execution_base": "068c1ecd17988ac6d884984e904aea924968e0ae",
   "plan": "records/rust-display-preparation-plan.md",
@@ -30,5 +30,7 @@
     2500,
     5120,
     6144
-  ]
+  ],
+  "p2_pause_guard_control": "results/p2-pause-guard-control.json",
+  "pause_guard_connected_to_runner": false
 }

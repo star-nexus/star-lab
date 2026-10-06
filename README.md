@@ -1,5 +1,7 @@
 # STAR Lab
 
+> E7最新（2026-10-07）：**P2完整通过4/4并归档**，每组40994请求/9880tick，全权威/展示/命令/像素与原始证据内外SHA独立复核完成，临时跟进已暂停。仅为正确性验收，P3性能测量尚未开始，默认尚未启用。见[完整结果](experiments/2026-10-rust-display-preparation/results/p2-complete.json)与[复核记录](experiments/2026-10-rust-display-preparation/results/p2-integrity-review.json)。
+
 > E7最新（2026-10-07）：用户授权第四组重新执行且取消自动退出。压力仅暂停现场、normal一分钟后继续，6GiB仅监测参考；前三组复用，P2仍3/4。见[恢复配置](experiments/2026-10-rust-display-preparation/results/p2-pause-only-resume.json)。
 
 > E7最新（2026-10-07）：P2仍3/4。已验证warning时暂停并恢复同一活进程的新守护；不支持恢复已退出的8500tick现场，未重启完整重放，旧runner未接入。见[方法控制](experiments/2026-10-rust-display-preparation/results/p2-pause-guard-control.json)与[恢复入口](records/rust-parallel-handoff.md)。

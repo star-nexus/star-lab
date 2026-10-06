@@ -1,0 +1,228 @@
+{
+  "stage": "P2 complete",
+  "passed": true,
+  "completed_jobs": 4,
+  "total_jobs": 4,
+  "identity": {
+    "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+    "tool_sha256": "64ef940f41b9d7c90cfa09f3ee3889b3d7469816c52c9ae80e91355d1f0d7b4f",
+    "extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
+    "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+    "initial_sha256": "8b594c465a63728222c57f257111d500c1c378e226b3496c63c0b11870629bc0",
+    "display_script_sha256": "a956a183cf5f80de33a557927849251b69c5db89cb91f0ba122d75d28c7c4f34",
+    "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+    "dependency_lock_sha256": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae"
+  },
+  "results": [
+    {
+      "run": "p2-correctness-t1-static",
+      "threads": 1,
+      "consumer": "baseline",
+      "script": "static",
+      "counts": {
+        "request": 40994,
+        "step": 9880,
+        "presentation": 9880
+      },
+      "checks": {
+        "full_authority": 19760,
+        "command_stream": 19760,
+        "pixels": 19760,
+        "projection": 19760,
+        "full_cold_world": 99
+      },
+      "metadata_sha256": "ee9143699e0e51db01081d73e79a9d3e53036d7f4e6b69a3cbf5c20299fa6132",
+      "raw": {
+        "file": "p2-correctness-t1-static.samples.json.gz",
+        "sha256": "edebe9c4edfe51c57bb8221177cbd46e0111e8b30336280d762895a3937f3444",
+        "bytes": 909261
+      },
+      "authority": {
+        "file": "p2-correctness-t1-static.authority.json.gz",
+        "sha256": "ee47e1e1121569af31d35239094a633cc64d818e6f307056098553d61da9f166",
+        "bytes": 413050
+      },
+      "pixels": {
+        "file": "p2-correctness-t1-static.pixels.json.gz",
+        "sha256": "33eeebeb9d8fde37f5c1a0b3446133e7d4c08e86c056b2bc5bd598cf16c3722b",
+        "bytes": 375675
+      },
+      "artifact": {
+        "classification": "formal correctness only; no speed claim",
+        "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+        "counts": {
+          "request": 40994,
+          "step": 9880,
+          "presentation": 9880
+        },
+        "checks": {
+          "full_authority": 19760,
+          "command_stream": 19760,
+          "pixels": 19760,
+          "projection": 19760,
+          "full_cold_world": 99
+        },
+        "all_passed": true,
+        "elapsed_seconds": 13685.050809332984,
+        "file": "display-preparation-p2-t1-static-raw.zip",
+        "sha256": "07b63036cfa329d30dfda7c8223e948d50b828a859647a75ada6e46a7d1eff3e",
+        "bytes": 1746455
+      },
+      "memory_guard": "passed with original 2500MiB enforced budget/system-pressure policy",
+      "guard_policy": "legacy terminating guard",
+      "elapsed_seconds": 13685.050809332984
+    },
+    {
+      "run": "p2-correctness-t4-exercise",
+      "threads": 4,
+      "consumer": "baseline",
+      "script": "exercise",
+      "counts": {
+        "request": 40994,
+        "step": 9880,
+        "presentation": 9880
+      },
+      "checks": {
+        "full_authority": 19760,
+        "command_stream": 19760,
+        "pixels": 19760,
+        "projection": 19760,
+        "full_cold_world": 99
+      },
+      "metadata_sha256": "9c86d71c68c4ced8f525d9baf63aca1562e5b64d6375ae55185367d4f3589193",
+      "raw": {
+        "file": "p2-correctness-t4-exercise.samples.json.gz",
+        "sha256": "9c4e95e706fccab3350e602f5bdfa0429d0fe33d4d8549c7328c9b045fe61920",
+        "bytes": 918063
+      },
+      "authority": {
+        "file": "p2-correctness-t4-exercise.authority.json.gz",
+        "sha256": "ee47e1e1121569af31d35239094a633cc64d818e6f307056098553d61da9f166",
+        "bytes": 413050
+      },
+      "pixels": {
+        "file": "p2-correctness-t4-exercise.pixels.json.gz",
+        "sha256": "e43be0a96d377cb37801c73185384da623db3230336c8215bb53f46a0821e608",
+        "bytes": 244454
+      },
+      "artifact": {
+        "classification": "formal correctness only; no speed claim",
+        "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+        "counts": {
+          "request": 40994,
+          "step": 9880,
+          "presentation": 9880
+        },
+        "checks": {
+          "full_authority": 19760,
+          "command_stream": 19760,
+          "pixels": 19760,
+          "projection": 19760,
+          "full_cold_world": 99
+        },
+        "all_passed": true,
+        "elapsed_seconds": 13544.388330416987,
+        "file": "display-preparation-p2-t4-exercise-raw.zip",
+        "sha256": "be7d2945acf40896a2a8e2bcc767c7eb5ee954ab200461f5db3ff28acc9f96aa",
+        "bytes": 1623927
+      },
+      "memory_guard": "passed with original 2500MiB enforced budget/system-pressure policy",
+      "guard_policy": "legacy terminating guard",
+      "elapsed_seconds": 13544.388330416987
+    },
+    {
+      "run": "p2-correctness-typed-t1-exercise",
+      "threads": 1,
+      "consumer": "reuse_typed",
+      "script": "exercise",
+      "counts": {
+        "request": 40994,
+        "step": 9880,
+        "presentation": 9880
+      },
+      "checks": {
+        "full_authority": 19760,
+        "command_stream": 19760,
+        "pixels": 19760,
+        "projection": 19760,
+        "full_cold_world": 99
+      },
+      "metadata_sha256": "7e36586adfa95204df6f8d4346cbd423c5ab0a52f10ef68bdff7e1a84c6909a2",
+      "raw": {
+        "file": "p2-correctness-typed-t1-exercise.samples.json.gz",
+        "sha256": "25beeef074621867a415b007ff7b0fae479495d59fbd8a5685fbc4d754abf285",
+        "bytes": 916412
+      },
+      "authority": {
+        "file": "p2-correctness-typed-t1-exercise.authority.json.gz",
+        "sha256": "ee47e1e1121569af31d35239094a633cc64d818e6f307056098553d61da9f166",
+        "bytes": 413050
+      },
+      "pixels": {
+        "file": "p2-correctness-typed-t1-exercise.pixels.json.gz",
+        "sha256": "e43be0a96d377cb37801c73185384da623db3230336c8215bb53f46a0821e608",
+        "bytes": 244454
+      },
+      "artifact": {
+        "file": "display-preparation-p2-correctness-typed-t1-exercise-raw.zip",
+        "sha256": "28db7f90d50a79f0ad49561275b512cd08a4bac813e10f44e3dbce25a9b4e964",
+        "bytes": 1622855
+      },
+      "memory_guard": "passed with original 5120MiB enforced budget/system-pressure policy",
+      "guard_policy": "legacy terminating guard",
+      "elapsed_seconds": 13624.317537333
+    },
+    {
+      "run": "p2-correctness-typed-t4-static",
+      "threads": 4,
+      "consumer": "reuse_typed",
+      "script": "static",
+      "counts": {
+        "request": 40994,
+        "step": 9880,
+        "presentation": 9880
+      },
+      "checks": {
+        "full_authority": 19760,
+        "command_stream": 19760,
+        "pixels": 19760,
+        "projection": 19760,
+        "full_cold_world": 99
+      },
+      "metadata_sha256": "a4e431cfa8476f42110fe858e0e6e8d8fbf55ef63c78ae878ba016e7eb0b213d",
+      "raw": {
+        "file": "p2-correctness-typed-t4-static.samples.json.gz",
+        "sha256": "f6c6f23f7fbc4edcbff11370d727d2276d5d30cf95bf0c596fa93935382c18c3",
+        "bytes": 937547
+      },
+      "authority": {
+        "file": "p2-correctness-typed-t4-static.authority.json.gz",
+        "sha256": "ee47e1e1121569af31d35239094a633cc64d818e6f307056098553d61da9f166",
+        "bytes": 413050
+      },
+      "pixels": {
+        "file": "p2-correctness-typed-t4-static.pixels.json.gz",
+        "sha256": "33eeebeb9d8fde37f5c1a0b3446133e7d4c08e86c056b2bc5bd598cf16c3722b",
+        "bytes": 375675
+      },
+      "artifact": {
+        "file": "display-preparation-p2-correctness-typed-t4-static-raw.zip",
+        "sha256": "53e04b527567c408446600c12705899006099599a7786f7313008576b213cf88",
+        "bytes": 1777481
+      },
+      "memory_guard": "pause-only monitor completed; 6144MiB telemetry, not enforced budget",
+      "guard_policy": "pressure pause only; memory budget telemetry; no automatic termination",
+      "elapsed_seconds": 14515.762748832996
+    }
+  ],
+  "capacity_claim": false,
+  "performance_claim": false,
+  "production_enabled": false,
+  "next_stage": "P3 not started by this tool",
+  "scope": "Full canonical 40994 requests/9880 ticks per group; complete authority, display, events, command and pixel contracts. First three executions passed original resource guards; fourth execution used pause-only telemetry without an enforced budget. Does not prove all-use absence of leaks.",
+  "interrupted_attempts": "Oct4 through Oct7 incomplete resource attempts retained separately; excluded from pass counts",
+  "run_date": "2026-10-07",
+  "resource_budget_note": "First three groups retain 2500/2500/5120MiB enforced guards. User authorized fourth group pause-only pressure monitoring, 6144MiB telemetry reference with no budget or pressure termination. Correctness thresholds unchanged; fourth run is not an enforced-resource-limit pass.",
+  "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261007-pause-only/runs",
+  "finalizer_sha256": "4dad2e683f772113864ee06ddea9f70e7c0184a41cb7a86108deec168a9630e9"
+}

@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-07",
+  "completed_at": "2026-10-07T06:46:36.152938+08:00",
+  "status": "P2 complete; four groups independently reverified and raw archives byte-matched",
+  "p2_completion": "results/p2-complete.json",
+  "completed_jobs": 4,
+  "counts_per_group": {
+    "request": 40994,
+    "step": 9880,
+    "presentation": 9880
+  },
+  "checks_per_group": {
+    "full_authority": 19760,
+    "command_stream": 19760,
+    "pixels": 19760,
+    "projection": 19760,
+    "full_cold_world": 99
+  },
+  "all_raw_sha_verified": true,
+  "all_four_zip_inner_outer_sha_verified": true,
+  "raw_archives_match_persistent_files": true,
+  "pinned_product_extension_probe_lock_and_tools_verified": true,
+  "original_49_deletions_and_two_frozen_worktrees_preserved": true,
+  "product_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "lab_parent": "f36a63383bba8fd564944aa1e1736240fbd8784f",
+  "fourth": {
+    "elapsed_seconds": 14515.762748832996,
+    "guard_elapsed_seconds": 14524.170848958995,
+    "peak_rss_bytes": 1855635456,
+    "peak_sampled_footprint_bytes": 1610612736,
+    "pressure_levels": [
+      1
+    ],
+    "paused_seconds": 0,
+    "samples": 2824,
+    "automatic_termination": false,
+    "budget_enforced": false,
+    "reference_mib": 6144
+  },
+  "resource_scope": "First three enforced 2500/2500/5120MiB guards; fourth pause-only monitoring, no enforced budget. No actual pause in successful fourth replay; pause mechanism previously verified only with synthetic controls.",
+  "automation": "e7-p2 PAUSED after completion",
+  "p3_started": false,
+  "production_enabled": false,
+  "performance_claim": false,
+  "capacity_updated": false,
+  "frontier_updated": false,
+  "existing_gaps_closed": false,
+  "file": "display-preparation-p2-finalization-raw.zip",
+  "sha256": "8a2e34f237db6657d45a9f0a95e41ab0d17d94749d63142a1507994cce351c56",
+  "bytes": 2859
+}

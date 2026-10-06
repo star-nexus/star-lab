@@ -1,9 +1,9 @@
 {
   "date": "2026-10-07",
-  "status": "fourth-only full replay running under pause-only monitoring",
+  "status": "P2 complete; fourth full replay passed and integrity independently verified",
   "authorization": "User explicitly requests continue fourth group without automatic exit; overrides prior critical/budget termination policy for this attempt",
   "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
-  "completed_full_jobs": 3,
+  "completed_full_jobs": 4,
   "total_full_jobs": 4,
   "completed_reverified": true,
   "run": "p2-correctness-typed-t4-static",
@@ -58,5 +58,9 @@
   "test_pid": 65533,
   "launched_unix": 1791312210.937118,
   "launch_verified": true,
-  "automation": "e7-p2 ACTIVE; hourly change/completion/failure follow-up"
+  "automation": "e7-p2 PAUSED after completion",
+  "full_correctness_completed": true,
+  "p2_completion": "results/p2-complete.json",
+  "integrity_review": "results/p2-integrity-review.json",
+  "completed_at": "2026-10-07T06:46:36.152938+08:00"
 }

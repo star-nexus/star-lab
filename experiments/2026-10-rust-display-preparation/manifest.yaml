@@ -1,5 +1,5 @@
 {
-  "status": "P2 3/4; fourth-only full replay running with no automatic termination",
+  "status": "P2 complete; P3 pending",
   "source_sha": "57b65203934d6fa283d67da68f9dc5a8efa03098",
   "execution_base": "068c1ecd17988ac6d884984e904aea924968e0ae",
   "plan": "records/rust-display-preparation-plan.md",
@@ -14,13 +14,13 @@
   "capacity_claim": false,
   "default_adoption_authorization": "results/default-adoption-authorization.json",
   "live_preregistration": "results/live-preregister.json",
-  "completed_full_correctness_jobs": 3,
+  "completed_full_correctness_jobs": 4,
   "default_preparation": "results/default-patch-preparation.json",
   "p2_recovery": "results/p2-recovery.json",
   "p2_latest_interruption": "results/p2-fourth-retry-interruption.json",
   "p2_reboot_resume": "results/p2-reboot-resume.json",
   "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261007-pause-only/runs",
-  "full_correctness_completed": false,
+  "full_correctness_completed": true,
   "p2_budget_resume": "results/p2-budget-resume.json",
   "remaining_limit_mib": 5120,
   "p2_third_completed": "results/p2-typed-t1-exercise-completed.json",
@@ -35,5 +35,10 @@
   "pause_guard_connected_to_runner": true,
   "p2_pause_only_resume": "results/p2-pause-only-resume.json",
   "fourth_budget_enforced": false,
-  "fourth_automatic_termination": false
+  "fourth_automatic_termination": false,
+  "p2_completion": "results/p2-complete.json",
+  "integrity_review": "results/p2-integrity-review.json",
+  "automation": "e7-p2 PAUSED after completion",
+  "completed_at": "2026-10-07T06:46:36.152938+08:00",
+  "fourth_reference_mib": 6144
 }

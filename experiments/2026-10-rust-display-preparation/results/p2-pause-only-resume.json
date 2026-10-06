@@ -1,6 +1,6 @@
 {
   "date": "2026-10-07",
-  "status": "preflight passed; fourth-only launch pending",
+  "status": "fourth-only full replay running under pause-only monitoring",
   "authorization": "User explicitly requests continue fourth group without automatic exit; overrides prior critical/budget termination policy for this attempt",
   "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
   "completed_full_jobs": 3,
@@ -53,5 +53,10 @@
   "existing_gaps_closed": false,
   "file": "display-preparation-p2-pause-only-tools.zip",
   "sha256": "cd335c6738a250b9765f764eb8a1602eb51418687d594589f12a83c6ca78ea86",
-  "bytes": 31774
+  "bytes": 31774,
+  "parent_pid": 65461,
+  "test_pid": 65533,
+  "launched_unix": 1791312210.937118,
+  "launch_verified": true,
+  "automation": "e7-p2 ACTIVE; hourly change/completion/failure follow-up"
 }

@@ -1,5 +1,5 @@
 {
-  "status": "P2 3/4; fourth-only pause-only restart prepared",
+  "status": "P2 3/4; fourth-only full replay running with no automatic termination",
   "source_sha": "57b65203934d6fa283d67da68f9dc5a8efa03098",
   "execution_base": "068c1ecd17988ac6d884984e904aea924968e0ae",
   "plan": "records/rust-display-preparation-plan.md",

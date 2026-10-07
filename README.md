@@ -1,6 +1,6 @@
 # STAR Lab
 
-> 下一项E8：已接纳观测只读段复用方案已制定，保留逐请求顺序与预算，复用已有ObservationBatch事实。仅方案，尚未实施/测量；先验证合法段与最小净收益。见[算法方案](records/rust-observation-admission-plan.md)与[阶段台账](records/rust-observation-admission-status.json)。
+> E8：已接纳观测只读段复用P0/P1已归档；P2完整轨迹串行校验执行中，targeted检查待完成。逐请求顺序/预算保持，默认关闭，无正式提速结论。见[算法方案](records/rust-observation-admission-plan.md)与[阶段台账](records/rust-observation-admission-status.json)。
 
 > E7 P3完成并独立复核：24次全部执行，23次计时有效、1次无效保留。候选empty_territory在7个完整分层未通过原收益门槛、1个分层证据不足，保持关闭；未进入窗口或默认接入。见[决策汇总](experiments/2026-10-rust-display-preparation/results/p3-decision-summary.json)和[恢复入口](records/rust-parallel-handoff.md)。
 

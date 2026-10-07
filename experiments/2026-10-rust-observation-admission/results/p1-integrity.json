@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "scope": "Independent P1 ZIP inner/outer SHA and final wheel extension identity; source bundle verified; no performance acceptance",
+  "raw": {
+    "file": "artifacts/e8-p1-20261007-raw.zip",
+    "bytes": 5668314,
+    "sha256": "cc1f158fd56de1d4ed58cdbd372992c17cf5708903f35f57ba70e46b149877c0",
+    "inner_sha_verified": true
+  },
+  "wheel": {
+    "file": "/Users/liyang/Developer/star-lab-runs/e8-p1-20261007/wheels-final/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+    "sha256": "9dbde223bfd5e603372a69f8fd20e3a5b2295e4f63184fb4daa58431409fa80b",
+    "bytes": 1577681,
+    "embedded_extension_sha256": "3e0ebb663e7dc081948658ed2d61bb70ecc56e76fc87c405f70d098a807b7fc6"
+  },
+  "source_bundle": {
+    "file": "/Users/liyang/Developer/star-lab-runs/e8-p1-20261007/admitted-observation-source.bundle",
+    "sha256": "4e7dab937f79d64b01fdb490cde9ff6c5dad683f98cd1840336bb056fcdfad40",
+    "prerequisite_commit": "5b9658bc668b7d13f801351162f255f30622b32a",
+    "prerequisite_packages": [
+      {
+        "path": "experiments/2026-10-rust-display-preparation/artifacts/display-preparation-source.bundle",
+        "sha256": "76e615f52ded98c2207ef8b39673f4f9853e5b24b857df5342f022fd69c94ebd",
+        "bytes": 55977371
+      },
+      {
+        "path": "experiments/2026-10-rust-display-preparation/artifacts/display-preparation-resume-source.bundle",
+        "sha256": "4383d39a8b9b9b3ba269245c34ff25722e9c3dc553423350ecb6ac6bef4384f6",
+        "bytes": 55979538
+      }
+    ]
+  },
+  "source": {
+    "source_sha": "6ec8e05d68c82d2731a382e00411bd58f2ed6f56",
+    "extension_sha256": "3e0ebb663e7dc081948658ed2d61bb70ecc56e76fc87c405f70d098a807b7fc6"
+  }
+}

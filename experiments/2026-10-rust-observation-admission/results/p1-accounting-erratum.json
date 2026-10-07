@@ -1,0 +1,31 @@
+{
+  "problem_source": "6ec8e05d68c82d2731a382e00411bd58f2ed6f56",
+  "corrected_source": "11d9927f7a1bffa32dd85c9009944424826508e5",
+  "corrected_extension_sha256": "9bb2fa4412bc810fbd751c42f525614f8cddb42e8c136612a51495fa0679f0d9",
+  "defect": "action_count_by_agent/faction read absent keys; actual names action_counts_by_agent/faction; both diagnostic and expected helper produced nulls",
+  "invalidated_claim": "Per-request agent/faction counter assertions before v2",
+  "still_valid": [
+    "Complete response wire equality",
+    "Complete authoritative exports at recorded checkpoints",
+    "Complete presentation deltas/events",
+    "Queue/consumer/RNG order contracts"
+  ],
+  "regression_reproduced": true,
+  "regression_log": {
+    "path": "/Users/liyang/Developer/star-lab-runs/e8-accounting-v2-20261007/accounting-regression-old-extension.log",
+    "sha256": "75e0fdd715b2774ef0a0ba98cf6466505f58aeebf3d170f0b8ae18adace96142"
+  },
+  "corrected_pytest_passed": 88,
+  "corrected_pytest_log": {
+    "path": "/Users/liyang/Developer/star-lab-runs/e8-accounting-v2-20261007/contracts.log",
+    "sha256": "47a082a3bc6baf7861469dd427df66192935c2505b47c27af259b0ccf757cee5"
+  },
+  "representative_non_null_counter_snapshots": 36,
+  "representative_wire_command_state_match": true,
+  "ordinary_active_process": "Retained 6ec8e05 installed extension unchanged; does not call small accounting diagnostic; continues existing full ordinary oracle",
+  "old_matrix_policy": "After current child completes, source guard prevents additional v1 launches. Its future prelaunch failure is expected source supersession, not a memory/correctness failure.",
+  "v2_extension_staged": true,
+  "resource_policy": "telemetry only; no pause/kill/timeout",
+  "P2_complete": false,
+  "P3_started": false
+}

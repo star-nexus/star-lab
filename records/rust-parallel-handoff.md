@@ -1,3 +1,21 @@
+## E8 计数诊断修订与继续运行（2026-10-07，最新）
+
+原计数诊断及其expected helper取了不存在的单数字段，两侧比较null不能证明逐请求计数。已保留旧包并用p1-accounting-erratum.json纠正范围；完整wire、全authority、展示/事件及队列RNG证明保持其原适用范围。源码11d9927只修正私有诊断字段和加强测试；旧扩展非空计数回归失败、修正扩展88项通过，代表诊断有真实整数计数且响应/命令/状态不变。
+
+已运行的v1 canonical-single-t1保留同PID/同3e0ebb扩展继续跑；不修改其冻结oracle或监测器。源码身份门槛使v1在当前组完成后不再启动cached组，之后的prelaunch source失败属于预期修订。v2入口run_observation_admission_p2_v2.py与oracle v2使用隔离9bb2fa扩展；先等旧parent和child全退出，不重复/并发运行轨迹，再按p2-v2-preregister.json校验。先读/Users/liyang/Developer/star-lab-runs/e8-p2-v2-20261007/p2-progress.json及旧runs/p2-progress.json/当前组progress/monitor；若v2仍waiting，实际进度看旧canonical-single-t1。
+
+内存只遥测，无自动暂停/kill/超时。P2 targeted仍pending，不进入P3/默认，不关闭GAP或改容量/Frontier。
+
+进度：`P0 █ | P1修订 █ | P2普通完整轨迹 ▓ | v2矩阵 等待 | targeted ░ | P3 ░`。
+
+## E8 P1已归档、P2串行校验（2026-10-07）
+
+P1 source `6ec8e05d68c82d2731a382e00411bd58f2ed6f56`、88项契约通过，代表段完整响应/消费命令/最终状态一致；独立旧扩展短宿主轨迹全节点核验通过。小屏幕计时仅筛选，不作正式提速；ordinary与旧扩展单次未配对差异已保留。P2恢复先读 `/Users/liyang/Developer/star-lab-runs/e8-p2-20261007/p2-progress.json`、当前组 `.progress.json` 和 `.monitor.json`。只串行校验，不启动P3；不得重复启动活进程。
+
+压力仅监测，不自动暂停/终止/超时；所有尝试保留，不重跑择优。P2轨迹全通过后仍须完成targeted错误/故障/VLM检查，不能把轨迹矩阵通过称全部P2完成。
+
+进度：`P0 █ | P1 █ | P2轨迹 ▓ | P2 targeted ░ | P3 ░ | 默认 ░`。既有GAP、容量、Frontier及5000Agents暂缓保持。
+
 # Rust 并行工作：新 Session 交接入口
 
 ## E8 P0 完成、P1 下一步（2026-10-07，最新）

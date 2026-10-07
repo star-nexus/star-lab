@@ -1,8 +1,8 @@
 # E8：已接纳观测请求的只读段复用算法方案（2026-10-07）
 
-状态：方案与源码边界审查完成，尚未实施或测量。对应[整体评估](rust-performance-optimization-assessment.md)第三项。目标保持5000 Units＋1000 Agents；5000 Agents暂缓。
+当前执行：P0/P1已归档，P2串行完整轨迹校验执行中、targeted待完成；默认关闭、无正式收益结论。以下算法保留原预注册边界。对应[整体评估](rust-performance-optimization-assessment.md)第三项。目标保持5000 Units＋1000 Agents；5000 Agents暂缓。
 
-进度：`源码/历史证据 █ | 算法/契约 █ | P0接纳诊断 ░ | P1最小原型 ░ | P2正确性 ░ | P3收益 ░ | 条件窗口/默认接入 ░`。
+进度：`源码/历史证据 █ | 算法/契约 █ | P0接纳诊断 █ | P1最小原型 █ | P2正确性 ▓ | P3收益 ░ | 条件窗口/默认接入 ░`。
 
 ## 1. 选择与范围
 
@@ -151,12 +151,12 @@ P2完整校验覆盖所有40994请求/9880tick规范操作与全部响应、逐�
 
 ## 9. 资源、停止与Lab交付
 
-沿用用户已授权的pressure pause only：warning/critical/未知压力保留同PID暂停，normal连续60秒恢复；不自动kill、不设运行超时，6GiB仅为当前监测参考，不能称强制内存预算。正式计时发生任何压力非normal/暂停/监测事件，则该整次计时无效，raw保留，不自动补跑择优；不把后台Chrome使用与性能差异直接归因为因果。计划的有限样本/阶段完成正常退出，与资源守护自动退出不同。
+2026-10-07用户新授权覆盖旧pressure pause only：只记录warning/critical/未知压力，不自动暂停、kill或设置运行超时；6GiB仅为监测参考，没有强制内存预算。正式计时发生任何压力非normal/暂停/监测事件，则该整次计时无效，raw保留，不自动补跑择优；不把后台Chrome使用与性能差异直接归因为因果。计划的有限样本/阶段完成正常退出，与资源守护自动退出不同。
 
-采用缓存必须通过反复开关段/跨帧/写入/reset的有界驻留检查，不能只用峰值RSS证明无泄漏。失败保留具体状态和完整尝试，暂停临时跟进，不自动反复重启。当前仅制定方案，没有自动化、测试或后台进程被启动。
+采用缓存必须通过反复开关段/跨帧/写入/reset的有界驻留检查，不能只用峰值RSS证明无泄漏。失败保留具体状态和完整尝试，暂停临时跟进，不自动反复重启。创建方案时尚未执行；当前P2测试已启动，没有新增E8自动跟进，旧E7跟进保持暂停。
 
 实施时建立experiments/2026-10-rust-observation-admission/，按PROTOCOL保存README/manifest/analysis/decision、P0成本/段分布、三个模式与每轮指标、源码/同二进制single/独立旧扩展/wheel身份、接纳与回调输入、raw与compact、工具和ZIP内外SHA。负结果同样完成研究记录。每阶段附进度条，更新恢复入口与[Lab阶段台账](rust-observation-admission-status.json)。
 
-保持既有GAP/容量/Frontier不变、5000Agents暂缓，不push/merge。本轮默认关闭，用户只授权了制定算法方案；实施和收益验证尚未开始。
+保持既有GAP/容量/Frontier不变、5000Agents暂缓，不push/merge。本轮默认关闭，用户随后已授权执行方案；当前实施与小型验证完成，完整正确性执行中，正式收益未开始。
 
 方案文件完整性：从Lab根目录运行 `shasum -a 256 -c records/rust-observation-admission-SHA256SUMS`。这不是正式性能证据或采用验收。

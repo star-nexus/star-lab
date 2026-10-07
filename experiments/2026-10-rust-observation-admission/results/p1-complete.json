@@ -1,0 +1,88 @@
+{
+  "stage": "P1",
+  "passed": true,
+  "source": {
+    "source_sha": "6ec8e05d68c82d2731a382e00411bd58f2ed6f56",
+    "extension_sha256": "3e0ebb663e7dc081948658ed2d61bb70ecc56e76fc87c405f70d098a807b7fc6"
+  },
+  "raw": {
+    "file": "artifacts/e8-p1-20261007-raw.zip",
+    "bytes": 5668314,
+    "sha256": "cc1f158fd56de1d4ed58cdbd372992c17cf5708903f35f57ba70e46b149877c0",
+    "inner_sha_verified": true
+  },
+  "pytest_passed": 88,
+  "rust_library_tests_passed": 1,
+  "host_oracle": {
+    "stage": "P2 correctness only",
+    "passed": true,
+    "mode": "single",
+    "threads": 1,
+    "input_sha256": "74a1488edeaceb077635c13ab5c2c3d9a476cf05eda3cfd73c7b9d3166aa2d0b",
+    "counts": {
+      "full_authority_checkpoints": 2545,
+      "requests": 2392,
+      "operations": 2698,
+      "ticks": 153,
+      "presentation": 153,
+      "queries": 200
+    },
+    "failure": null,
+    "source_extension_sha256": "3e0ebb663e7dc081948658ed2d61bb70ecc56e76fc87c405f70d098a807b7fc6",
+    "baseline_extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
+    "full_authority_scope": "Every non-query request and step, plus singleton/segment-end queries; per-query small snapshots inside scopes",
+    "admission_scope": "Canonical world-sequence runs only; not host admission proof",
+    "state_checkpoint_stream_sha256": "da776dd91bcde812812a593a8ff4d7a590b96de1da098e86c37290a7998c4f69",
+    "response_stream_sha256": "fef001e52dd078da18baf91635f27219250d591c3c06160712304ff3a6190733",
+    "raw_sha256": "b01b3d83f229d1b7b9cc5123b4668337e0c8d739047b7de264d04aab2e505182",
+    "elapsed_s": 1174.1315186669963,
+    "performance_claim": false,
+    "default_adoption": false
+  },
+  "screening": [
+    {
+      "mode": "single",
+      "requests": 570,
+      "extension_sha256": "3e0ebb663e7dc081948658ed2d61bb70ecc56e76fc87c405f70d098a807b7fc6",
+      "mean_service_ms": 2.579050142105263,
+      "formal_performance": false,
+      "excludes": "host prefix scan and full moving-world/order/budget replay; not P2/P3 acceptance"
+    },
+    {
+      "mode": "segment_no_reuse",
+      "requests": 570,
+      "extension_sha256": "3e0ebb663e7dc081948658ed2d61bb70ecc56e76fc87c405f70d098a807b7fc6",
+      "mean_service_ms": 2.662119442105263,
+      "formal_performance": false,
+      "excludes": "host prefix scan and full moving-world/order/budget replay; not P2/P3 acceptance"
+    },
+    {
+      "mode": "segment_encoded",
+      "requests": 570,
+      "extension_sha256": "3e0ebb663e7dc081948658ed2d61bb70ecc56e76fc87c405f70d098a807b7fc6",
+      "mean_service_ms": 2.0064377280701757,
+      "formal_performance": false,
+      "excludes": "host prefix scan and full moving-world/order/budget replay; not P2/P3 acceptance"
+    },
+    {
+      "mode": "single",
+      "requests": 570,
+      "extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
+      "mean_service_ms": 2.3927829631578947,
+      "formal_performance": false,
+      "excludes": "host prefix scan and full moving-world/order/budget replay; not P2/P3 acceptance"
+    }
+  ],
+  "ordinary_old_comparison": "Unpaired small screen; candidate ordinary ~7.8% slower in this attempt, drift not isolated",
+  "performance_acceptance": false,
+  "default_adoption": false,
+  "dependency_proof": "cached facts do not read wall metadata or action counters; available_skills reads sorted cold UnitSkills only",
+  "source_bundle_prerequisite": "5b9658bc668b7d13f801351162f255f30622b32a; E7 display-preparation source/resume bundles preserved",
+  "remaining_targeted_checks": [
+    "cold GameStats",
+    "revision exhaustion",
+    "encoding failure commit prefix",
+    "panic/poison scope",
+    "VLM barrier"
+  ]
+}

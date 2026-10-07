@@ -17,3 +17,11 @@ Original window operational guards failed; P0 is diagnosis. Existing GAPs/capaci
 ## Provenance
 
 [Results](results/p0-complete.json), [Integrity](results/p0-integrity.json), [Raw](artifacts/e8-p0-20261007-raw.zip).
+
+## P1 decision
+
+小型契约及独立旧扩展短宿主对照通过；公共build下降且代表service未明显恶化，允许进入P2。单次screen不是正式收益，candidate普通路径对旧扩展的未配对回退保留，不隐藏。P2以固定6ec8e05、同wheel和独立旧扩展比较。只正确性校验，不进入P3或默认；targeted全部通过后才宣布P2完成。
+
+## Accounting correction decision
+
+发现null==null断言后不把旧计数检查称通过；原始证据完整保留并单独勘误。允许当前普通全状态轨迹自然结束，身份门槛阻止旧诊断进一步进入cached模式。隔离修正wheel、修正oracle新预注册后按序继续，不因本缺陷杀掉正在执行的有效ordinary轨迹，不启动P3。

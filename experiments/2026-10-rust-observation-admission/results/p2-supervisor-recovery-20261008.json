@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-08",
+  "type": "supervisor_loss_and_ENOSPC",
+  "workload_pid": 57758,
+  "workload_still_running": true,
+  "workload_restarted": false,
+  "old_supervisors_not_alive": true,
+  "known_error": "v2 supervisor detected active child after old supervisor exited, then failed writing failure progress with OSError errno28 No space left on device",
+  "original_supervisor_exit_reason": "not captured; log empty, original monitor stale",
+  "disk_available_now_gib": 9.1,
+  "recovered_monitor_pid": 18628,
+  "recovered_supervisor_pid": 19105,
+  "resource_policy": "telemetry only; no automatic pause/kill/timeout",
+  "old_progress_stale": true,
+  "v2_progress_stale": true,
+  "live_recovery_root": "/Users/liyang/Developer/star-lab-runs/e8-p2-recovery-20261008",
+  "native_source_changed": false,
+  "oracle_and_monitor_unchanged": true,
+  "started_tests_not_repeated": true,
+  "v2_unstarted_job_count": 5,
+  "proposed_reduction_not_applied": true,
+  "performance_claim": false,
+  "P2_complete": false,
+  "log": {
+    "file": "/Users/liyang/Developer/star-lab-runs/e8-p2-v2-20261007/parent.log",
+    "sha256": "f9f10f6ab364d1c3bc04294cba8b794661702d774087bce644639c384771a6bf",
+    "text": "Traceback (most recent call last):\n  File \"/Users/liyang/Developer/star-lab/tools/rust_migration/run_observation_admission_p2_v2.py\", line 83, in main\n    assert not active(guard['child_pid']), 'Supervisor exited but child remains; preserve it and report'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Supervisor exited but child remains; preserve it and report\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/liyang/Developer/star-lab/tools/rust_migration/run_observation_admission_p2_v2.py\", line 131, in <module>\n    main()\n    ~~~~^^\n  File \"/Users/liyang/Developer/star-lab/tools/rust_migration/run_observation_admission_p2_v2.py\", line 125, in main\n    common.write(progress, dict(status='failed', error=repr(error), completed=completed,\n    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                                automatic_restart=False, raw_preserved=True))\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/liyang/Developer/star-lab/tools/rust_migration/run_observation_admission_p2.py\", line 40, in write\n    tmp.replace(path)\n    ~~~~~~~~~~~^^^^^^\n  File \"/Users/liyang/miniconda3/lib/python3.13/pathlib/_local.py\", line 780, in replace\n    os.replace(self, target)\n    ~~~~~~~~~~^^^^^^^^^^^^^^\nOSError: [Errno 28] No space left on device: '/Users/liyang/Developer/star-lab-runs/e8-p2-v2-20261007/p2-progress.json.tmp' -> '/Users/liyang/Developer/star-lab-runs/e8-p2-v2-20261007/p2-progress.json'\n"
+  },
+  "progress_at_recovery": {
+    "status": "running",
+    "seq": 60000,
+    "total": 60754,
+    "counts": {
+      "full_authority_checkpoints": 50248,
+      "requests": 40495,
+      "operations": 60001,
+      "ticks": 9753,
+      "presentation": 9753,
+      "queries": 10867
+    },
+    "elapsed_s": 33132.488178832995
+  }
+}

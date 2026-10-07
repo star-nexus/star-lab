@@ -3,7 +3,7 @@
     "id": "2026-10-rust-observation-admission",
     "title": "E8 admitted observation segment reuse",
     "date": "2026-10-07",
-    "status": "P1 diagnostic corrected; active v1 ordinary P2 plus queued v2 matrix"
+    "status": "P2 ordinary child retained; new telemetry/recovery supervisor active"
   },
   "source": {
     "repository": "star-nexus/star",
@@ -69,12 +69,15 @@
       "results/p2-preregister.json",
       "artifacts/e8-p1-20261007-raw.zip",
       "results/p1-accounting-erratum.json",
-      "results/p2-v2-preregister.json"
+      "results/p2-v2-preregister.json",
+      "results/p2-supervisor-recovery-20261008.json",
+      "results/p2-recovery-preregister-20261008.json"
     ],
     "external": [
       "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007",
       "/Users/liyang/Developer/star-lab-runs/e8-p1-20261007",
-      "/Users/liyang/Developer/star-lab-runs/e8-p2-20261007"
+      "/Users/liyang/Developer/star-lab-runs/e8-p2-20261007",
+      "/Users/liyang/Developer/star-lab-runs/e8-p2-recovery-20261008"
     ]
   },
   "headline": {

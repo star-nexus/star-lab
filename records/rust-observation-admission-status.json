@@ -1,5 +1,5 @@
 {
-  "stage": "P1 accounting diagnostic corrected; original ordinary P2 run active; v2 matrix queued",
+  "stage": "P2 ordinary child retained; supervisors recovered after ENOSPC; v2 five jobs remain queued",
   "source_sha": "11d9927f7a1bffa32dd85c9009944424826508e5",
   "plan": "records/rust-observation-admission-plan.md",
   "identity": "records/rust-observation-admission-plan.json",
@@ -8,7 +8,7 @@
     "algorithm_plan": "complete",
     "P0_admission_diagnosis": "complete; 1943 measured queries; candidate coverage about 57%; full replay passed",
     "P1_owned_cache_prototype": "corrected 88 contracts passed; old null-count claim superseded by p1-accounting-erratum.json",
-    "P2_correctness": "ordinary v1 full trajectory running; corrected v2 matrix waits, no concurrent trajectory processes",
+    "P2_correctness": "ordinary full trajectory near completion, same PID; recovery waits then continues same five unstarted v2 jobs",
     "P3_performance": "not started",
     "P4_conditional_window": "not started",
     "default_adoption": "not enabled"
@@ -32,8 +32,12 @@
   "authorization": "2026-10-07 user execution authorized",
   "experiment": "experiments/2026-10-rust-observation-admission",
   "resource_policy": "telemetry only; no automatic pause/kill/timeout",
-  "persistent_runs": "/Users/liyang/Developer/star-lab-runs/e8-p2-v2-20261007",
+  "persistent_runs": "/Users/liyang/Developer/star-lab-runs/e8-p2-recovery-20261008",
   "installed_extension": "6ec8e05/3e0ebb retained for active v1 child",
   "candidate_extension": "9bb2fa4412bc810fbd751c42f525614f8cddb42e8c136612a51495fa0679f0d9",
-  "active_previous_runs": "/Users/liyang/Developer/star-lab-runs/e8-p2-20261007"
+  "active_previous_runs": "/Users/liyang/Developer/star-lab-runs/e8-p2-20261007",
+  "previous_stale_runs": [
+    "/Users/liyang/Developer/star-lab-runs/e8-p2-20261007",
+    "/Users/liyang/Developer/star-lab-runs/e8-p2-v2-20261007"
+  ]
 }

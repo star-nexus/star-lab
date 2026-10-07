@@ -1,3 +1,13 @@
+## E8 监督器恢复（2026-10-08，最新）
+
+当前普通全轨迹子进程57758始终保留，未重启/暂停；旧监督器已退出，旧monitor/progress的running状态可能过期。接续监督器日志明确有ENOSPC写入失败，原监督器实际退出原因未捕获；当前磁盘余量约9GiB。incident结果p2-supervisor-recovery-20261008.json保存日志/哈希和事实范围。
+
+新遥测PID18628接管同一活PID；恢复父任务PID19105使用独立recover_observation_admission_p2.py与p2-recovery-preregister-20261008.json。优先读/Users/liyang/Developer/star-lab-runs/e8-p2-recovery-20261008/p2-progress.json、parent.log及ordinary-adopted.monitor.json；当前实际节点进度仍由旧目录canonical-single-t1.progress.json与checks.jsonl给出。原v2队列已退出但旧progress仍waiting，不要据此认为它活着。
+
+当前组完成后验证所有60754节点、raw哈希和报告，再归档。adopted PID的OS退出码无法回收，必须明确unknown，不能伪造原guard passed。完整oracle结果/原始流独立验证才能接受其正确性范围，不计性能。后续5组规格保持原预注册；用户尚未选择精简方案，不擅自缩减。P2 targeted未完成，P3/默认未启动。源/原probe/冻结oracles与monitor保持，不改变既有GAP/容量/Frontier或5000Agents暂缓。
+
+进度：`当前普通组 接近完成 | 监督恢复 █ | v2五组 等待 | targeted ░ | P3 ░`。
+
 ## E8 计数诊断修订与继续运行（2026-10-07，最新）
 
 原计数诊断及其expected helper取了不存在的单数字段，两侧比较null不能证明逐请求计数。已保留旧包并用p1-accounting-erratum.json纠正范围；完整wire、全authority、展示/事件及队列RNG证明保持其原适用范围。源码11d9927只修正私有诊断字段和加强测试；旧扩展非空计数回归失败、修正扩展88项通过，代表诊断有真实整数计数且响应/命令/状态不变。

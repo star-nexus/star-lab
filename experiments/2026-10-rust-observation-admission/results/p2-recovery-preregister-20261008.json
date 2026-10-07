@@ -1,0 +1,81 @@
+{
+  "stage": "P2 trajectory preregistration",
+  "source_sha": "11d9927f7a1bffa32dd85c9009944424826508e5",
+  "extension_sha256": "9bb2fa4412bc810fbd751c42f525614f8cddb42e8c136612a51495fa0679f0d9",
+  "jobs": [
+    {
+      "name": "canonical-single-t1",
+      "mode": "single",
+      "threads": 1,
+      "trace": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261005/inputs/rust-300-r3.trace.json.gz",
+      "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77"
+    },
+    {
+      "name": "canonical-segment_no_reuse-t1",
+      "mode": "segment_no_reuse",
+      "threads": 1,
+      "trace": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261005/inputs/rust-300-r3.trace.json.gz",
+      "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77"
+    },
+    {
+      "name": "canonical-segment_encoded-t1",
+      "mode": "segment_encoded",
+      "threads": 1,
+      "trace": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261005/inputs/rust-300-r3.trace.json.gz",
+      "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77"
+    },
+    {
+      "name": "admitted-encoded-t1",
+      "mode": "segment_encoded",
+      "threads": 1,
+      "trace": "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007/window.trace.json.gz",
+      "trace_sha256": "27a890fd65cff5cac5eb653f25e4490d22e23558826c52da84bfa4427e0c61b4",
+      "admission": "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007/window.admission.json",
+      "admission_sha256": "c11c41d18a669e6769fabf44226bc3a9174da6709396fff10f88960ac432d9d2"
+    },
+    {
+      "name": "admitted-encoded-t4",
+      "mode": "segment_encoded",
+      "threads": 4,
+      "trace": "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007/window.trace.json.gz",
+      "trace_sha256": "27a890fd65cff5cac5eb653f25e4490d22e23558826c52da84bfa4427e0c61b4",
+      "admission": "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007/window.admission.json",
+      "admission_sha256": "c11c41d18a669e6769fabf44226bc3a9174da6709396fff10f88960ac432d9d2"
+    }
+  ],
+  "canonical_counts": {
+    "requests": 40994,
+    "ticks": 9880,
+    "presentation": 9880,
+    "total": 60754
+  },
+  "authority_scope": "Every world write/request and every step; all single queries full export; each scoped query small accounting snapshot then full export at segment end. Complete response wire/delta/event comparisons.",
+  "canonical_admission_claim": false,
+  "admitted_scope": "Actual P0 recorded heap admission identities; replayed world operations do not re-run realtime host budget or consumer.",
+  "P1_prerequisite": "Corrected 88 contracts pass; original extension now fails non-vacuous counter test; representative v2 diagnostics have real integer counts and unchanged wire/commands/full world.",
+  "resource_policy": "Telemetry only, no automatic pause/kill/timeout or enforced memory cap",
+  "correctness_pressure_validity": "Pressure recorded; no pressure-based correctness rejection",
+  "formal_timing_claim": false,
+  "automatic_retry": false,
+  "automatic_P3": false,
+  "completion": "Trajectory matrix only; targeted lifecycle/fault/VLM checks still required before P2 complete",
+  "runner_sha256": "5ab736197108f504523b2496e06077bac0d1b00990315f4bca301045418cad08",
+  "oracle_sha256": "74b55dcac9fe3b8c051cfe466e1baf6f4282ad4477691c6e813594754ec3d79b",
+  "monitor_sha256": "962eaf163ae9a73fb2e6458d3e37f07397dbc209b1ee9685b4a42035958a7117",
+  "persistent_runs": "/Users/liyang/Developer/star-lab-runs/e8-p2-recovery-20261008",
+  "expected_duration": "Hours per full canonical mode, dominated by full authority exports; do not infer a memory-pressure pause from slow progress.",
+  "extension_dir": "/Users/liyang/Developer/star-lab-runs/e8-accounting-v2-20261007/extension",
+  "common_runner_sha256": "c5a36e5f3eaa0bb7fbc68f7ca6780a22c9b2b1ec6fad117f304759d07d3be215",
+  "revision_reason": "Per-query diagnostic and expected oracle incorrectly read singular count keys; corrected plural keys and enforce non-null typed counters. Old successful wire/full-authority checks remain scoped evidence, not per-query count proof.",
+  "previous_run": "Retain active ordinary child and wait for completion; verify complete checks/response/state, preserve original stale monitors, annotate unknown adopted exit status. Resume same five unstarted v2 jobs serially, no change of gates.",
+  "original_tool_preserved": true,
+  "recovery": {
+    "existing_child_pid": 57758,
+    "adopted_monitor": "/Users/liyang/Developer/star-lab-runs/e8-p2-recovery-20261008/ordinary-adopted.monitor.json",
+    "adopted_monitor_pid": 18628,
+    "old_supervisors_exited": true,
+    "old_workload_not_restarted": true,
+    "historical_error": "ENOSPC",
+    "disk_now_available_gib": 9.1
+  }
+}

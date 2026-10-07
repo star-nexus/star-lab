@@ -1,6 +1,6 @@
 {
   "date": "2026-10-07",
-  "status": "P3 prepared; first timing run not started",
+  "status": "P3 first full paired timing running",
   "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
   "p2_completion": "results/p2-complete.json",
   "p2_completion_sha256": "8e8db4b4cd7a180176a72c6a861702db14a2981d846c791810b5a152c8dcc9df",
@@ -282,5 +282,25 @@
   "production_enabled": false,
   "capacity_claim": false,
   "confirmation_or_live_autolaunch": false,
-  "existing_gaps_closed": false
+  "existing_gaps_closed": false,
+  "parent_pid": 8072,
+  "first_test_pid": 8136,
+  "launched_unix": 1791338393.0587049,
+  "machine": {
+    "captured_unix": 1791338426.877016,
+    "os": "ProductName:\t\tmacOS\nProductVersion:\t\t26.5.2\nBuildVersion:\t\t25F84\n",
+    "hardware": "hw.model: Mac16,10\nhw.memsize: 17179869184\nhw.physicalcpu: 10\nhw.logicalcpu: 10\n",
+    "resource_snapshot": "kern.memorystatus_vm_pressure_level: 1\nvm.swapusage: total = 2048.00M  used = 1257.75M  free = 790.25M  (encrypted)\n",
+    "sleep_prevention": {
+      "command": [
+        "caffeinate",
+        "-i",
+        "-w",
+        "8072"
+      ],
+      "pid": 8110
+    }
+  },
+  "launch_verified": true,
+  "automation": "e7-p2 ACTIVE, renamed E7 P3 \u5b8c\u6210\u8ddf\u8fdb"
 }

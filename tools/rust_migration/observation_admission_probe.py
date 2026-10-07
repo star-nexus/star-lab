@@ -146,6 +146,14 @@ def main():
     p3_runtime.LocalAgents = CapturedAgents
     sys.argv = [sys.argv[0], *runtime_args]
     meta = p3_runtime.main()
+    # Frozen runner contains a historical Chrome note and has no knowledge of
+    # this probe. Do not propagate those labels as current environment/proof.
+    meta['hardware'].pop('chrome', None)
+    meta['hardware']['other_applications'] = 'not controlled; diagnostic only'
+    meta['guards']['not_diagnostic'] = False
+    meta['pass'] = False
+    meta['e8_diagnostic'] = True
+    Path(meta['workload']['output']).write_text(json.dumps(meta,indent=2)+'\n')
     assert len(instances) == 1
     agent = instances[0]
     assert len(agent.admission) == len(agent.records)

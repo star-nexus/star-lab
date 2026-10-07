@@ -85,7 +85,7 @@ def main():
                 n.step(op['dt'], op['wall_time'])
                 checked['ticks'] += 1
             elif op['kind'] == 'presentation':
-                delta = json.loads(n.take_presentation_delta_json())
+                delta = json.loads(n.take_presentation_delta_json(None))
                 assert digest(delta['events']) == op['events_sha256']
                 checked['presentation'] += 1
             else:

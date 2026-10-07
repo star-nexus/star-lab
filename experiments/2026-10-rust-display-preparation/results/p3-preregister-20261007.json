@@ -1,0 +1,286 @@
+{
+  "date": "2026-10-07",
+  "status": "P3 prepared; first timing run not started",
+  "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "p2_completion": "results/p2-complete.json",
+  "p2_completion_sha256": "8e8db4b4cd7a180176a72c6a861702db14a2981d846c791810b5a152c8dcc9df",
+  "p2_integrity": "results/p2-integrity-review.json",
+  "p2_rerun": false,
+  "p2_runs": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261007-pause-only/runs",
+  "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p3-20261007/runs",
+  "identity": {
+    "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+    "tool_sha256": "64ef940f41b9d7c90cfa09f3ee3889b3d7469816c52c9ae80e91355d1f0d7b4f",
+    "extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
+    "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+    "initial_sha256": "8b594c465a63728222c57f257111d500c1c378e226b3496c63c0b11870629bc0",
+    "display_script_sha256": "a956a183cf5f80de33a557927849251b69c5db89cb91f0ba122d75d28c7c4f34",
+    "fixture_sha256": "1eeff5d72863206587e852c85fb5b594dc5489488bf40556e848fe13a9fc1a52",
+    "dependency_lock_sha256": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae"
+  },
+  "tool_sha256": {
+    "run_display_preparation_p3.py": "995eaead058e0c6f5d99dda45d690d06cd56d87b740951851549ec1f63b98871",
+    "test_display_preparation_p3_control.py": "7c57162b5a2c286c76a43ba39878d7c87f9f14488945cc6dd93d446bc7af8f80",
+    "display_preparation_performance.py": "216a178154b2dce2f93149e5145dd3c2d776fdcceb1a084f9a911ebcae6d7d86",
+    "display_preparation_probe.py": "64ef940f41b9d7c90cfa09f3ee3889b3d7469816c52c9ae80e91355d1f0d7b4f",
+    "analyze_display_preparation.py": "8d7a5b68f6a744be54e82dda47996c5842523909b038806720ecc06831b01c65",
+    "display_preparation_script.py": "a956a183cf5f80de33a557927849251b69c5db89cb91f0ba122d75d28c7c4f34",
+    "display_preparation_diagnosis.py": "10aa40bc4e0328c9c8f477360c554418913834a1b6c2a4f7795370b02dfc378e",
+    "display_preparation_contract.py": "abf0c007863a53bf5b76fc46230a5c7ae35a0efb5ef5739e2ab5d515e84174c1",
+    "finalize_display_correctness_pause.py": "4dad2e683f772113864ee06ddea9f70e7c0184a41cb7a86108deec168a9630e9",
+    "guard_display_preparation_pause_only.py": "5a42fa0b3c93cfdcb64c71df2856ff361ea609d036ed20f73bbf33e4f85febb3",
+    "guard_display_preparation_resumable.py": "b23e947be9710ef21a73e062c5ef8cff647eee4252fb07e1f0f32fec77aee208"
+  },
+  "command": [
+    "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/bin/python",
+    "/Users/liyang/Developer/star-lab/tools/rust_migration/run_display_preparation_p3.py",
+    "--source",
+    "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+    "--trace",
+    "/Users/liyang/Developer/star-lab-runs/e7-p2-20261005/inputs/rust-300-r3.trace.json.gz",
+    "--p2-runs",
+    "/Users/liyang/Developer/star-lab-runs/e7-p2-20261007-pause-only/runs",
+    "--runs",
+    "/Users/liyang/Developer/star-lab-runs/e7-p3-20261007/runs"
+  ],
+  "jobs": [
+    {
+      "name": "p3-baseline-t1-static-r1",
+      "consumer": "baseline",
+      "threads": 1,
+      "script": "static",
+      "round": 1
+    },
+    {
+      "name": "p3-baseline-t4-static-r1",
+      "consumer": "baseline",
+      "threads": 4,
+      "script": "static",
+      "round": 1
+    },
+    {
+      "name": "p3-reuse_typed-t1-static-r1",
+      "consumer": "reuse_typed",
+      "threads": 1,
+      "script": "static",
+      "round": 1
+    },
+    {
+      "name": "p3-reuse_typed-t4-static-r1",
+      "consumer": "reuse_typed",
+      "threads": 4,
+      "script": "static",
+      "round": 1
+    },
+    {
+      "name": "p3-baseline-t1-exercise-r1",
+      "consumer": "baseline",
+      "threads": 1,
+      "script": "exercise",
+      "round": 1
+    },
+    {
+      "name": "p3-baseline-t4-exercise-r1",
+      "consumer": "baseline",
+      "threads": 4,
+      "script": "exercise",
+      "round": 1
+    },
+    {
+      "name": "p3-reuse_typed-t1-exercise-r1",
+      "consumer": "reuse_typed",
+      "threads": 1,
+      "script": "exercise",
+      "round": 1
+    },
+    {
+      "name": "p3-reuse_typed-t4-exercise-r1",
+      "consumer": "reuse_typed",
+      "threads": 4,
+      "script": "exercise",
+      "round": 1
+    },
+    {
+      "name": "p3-baseline-t1-static-r2",
+      "consumer": "baseline",
+      "threads": 1,
+      "script": "static",
+      "round": 2
+    },
+    {
+      "name": "p3-baseline-t4-static-r2",
+      "consumer": "baseline",
+      "threads": 4,
+      "script": "static",
+      "round": 2
+    },
+    {
+      "name": "p3-reuse_typed-t1-static-r2",
+      "consumer": "reuse_typed",
+      "threads": 1,
+      "script": "static",
+      "round": 2
+    },
+    {
+      "name": "p3-reuse_typed-t4-static-r2",
+      "consumer": "reuse_typed",
+      "threads": 4,
+      "script": "static",
+      "round": 2
+    },
+    {
+      "name": "p3-baseline-t1-exercise-r2",
+      "consumer": "baseline",
+      "threads": 1,
+      "script": "exercise",
+      "round": 2
+    },
+    {
+      "name": "p3-baseline-t4-exercise-r2",
+      "consumer": "baseline",
+      "threads": 4,
+      "script": "exercise",
+      "round": 2
+    },
+    {
+      "name": "p3-reuse_typed-t1-exercise-r2",
+      "consumer": "reuse_typed",
+      "threads": 1,
+      "script": "exercise",
+      "round": 2
+    },
+    {
+      "name": "p3-reuse_typed-t4-exercise-r2",
+      "consumer": "reuse_typed",
+      "threads": 4,
+      "script": "exercise",
+      "round": 2
+    },
+    {
+      "name": "p3-baseline-t1-static-r3",
+      "consumer": "baseline",
+      "threads": 1,
+      "script": "static",
+      "round": 3
+    },
+    {
+      "name": "p3-baseline-t4-static-r3",
+      "consumer": "baseline",
+      "threads": 4,
+      "script": "static",
+      "round": 3
+    },
+    {
+      "name": "p3-reuse_typed-t1-static-r3",
+      "consumer": "reuse_typed",
+      "threads": 1,
+      "script": "static",
+      "round": 3
+    },
+    {
+      "name": "p3-reuse_typed-t4-static-r3",
+      "consumer": "reuse_typed",
+      "threads": 4,
+      "script": "static",
+      "round": 3
+    },
+    {
+      "name": "p3-baseline-t1-exercise-r3",
+      "consumer": "baseline",
+      "threads": 1,
+      "script": "exercise",
+      "round": 3
+    },
+    {
+      "name": "p3-baseline-t4-exercise-r3",
+      "consumer": "baseline",
+      "threads": 4,
+      "script": "exercise",
+      "round": 3
+    },
+    {
+      "name": "p3-reuse_typed-t1-exercise-r3",
+      "consumer": "reuse_typed",
+      "threads": 1,
+      "script": "exercise",
+      "round": 3
+    },
+    {
+      "name": "p3-reuse_typed-t4-exercise-r3",
+      "consumer": "reuse_typed",
+      "threads": 4,
+      "script": "exercise",
+      "round": 3
+    }
+  ],
+  "total_jobs": 24,
+  "formal_gate": {
+    "render_min_improvement_percent": 5,
+    "render_chain_total_mean_improves": true,
+    "ci95_lower_positive": true,
+    "p99_no_regression": true,
+    "rounds_per_stratum": 3,
+    "block_ticks": 100,
+    "bootstrap": 10000,
+    "seed": 42,
+    "last_block_weighted": true
+  },
+  "method": {
+    "driver": "dummy",
+    "surface": [
+      2480,
+      1239
+    ],
+    "ticks": 9880,
+    "consumer_layers": [
+      "baseline",
+      "reuse_typed"
+    ],
+    "threads": [
+      1,
+      4
+    ],
+    "scripts": [
+      "static",
+      "exercise"
+    ],
+    "modes": [
+      "baseline",
+      "empty_territory"
+    ],
+    "order": "ABBA/BAAB by alternating tick, persistent 4 independent instances",
+    "diagnostic": false,
+    "fine_timers": false,
+    "full_authority_export": false,
+    "pixel_hashes": false,
+    "performance_clock": "wall, overscan original 1.5ms",
+    "display_clock": "fixed display-only time",
+    "gc": "driver collects then disables GC equally for both sides; unchanged from original preregistration",
+    "vmmap": false
+  },
+  "resource_policy": {
+    "automatic_termination": false,
+    "budget_enforced": false,
+    "reference_mib": 6144,
+    "warning_critical_unknown": "same PID pause; normal continuous60s resumes",
+    "monitor_errors": "pause/retry preserving live child",
+    "timing_validity": "entire run requires all pressure samples normal, no pause, no monitor events, child exit0; otherwise archive entire run invalid and stop matrix after child finishes, no retry or sample exclusion"
+  },
+  "control": {
+    "passed": true,
+    "result": "method-control/result.json",
+    "scope": "synthetic only; no STAR performance or correctness claim",
+    "environment_attempt": "System python lacks numpy; no test child or output was created. Controls executed with source .venv as all formal runs do."
+  },
+  "artifact": {
+    "file": "display-preparation-p3-20261007-tools-control.zip",
+    "sha256": "a12b2dc53c3642ba7678ed5af39a79ce431315b34d5854aed23a985937804cd6",
+    "bytes": 43335
+  },
+  "measurement_scope": "Complete render D+Q; chain decode+apply+D+Q+P; total request+step+encode+chain. Ordinary consumer main result; typed separate interaction. All slow/warm samples retained.",
+  "performance_claim": false,
+  "production_enabled": false,
+  "capacity_claim": false,
+  "confirmation_or_live_autolaunch": false,
+  "existing_gaps_closed": false
+}

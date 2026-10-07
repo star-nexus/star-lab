@@ -1,5 +1,5 @@
 {
-  "status": "P2 complete; P3 pending",
+  "status": "P2 complete; P3 serial matrix prepared",
   "source_sha": "57b65203934d6fa283d67da68f9dc5a8efa03098",
   "execution_base": "068c1ecd17988ac6d884984e904aea924968e0ae",
   "plan": "records/rust-display-preparation-plan.md",
@@ -40,5 +40,9 @@
   "integrity_review": "results/p2-integrity-review.json",
   "automation": "e7-p2 PAUSED after completion",
   "completed_at": "2026-10-07T06:46:36.152938+08:00",
-  "fourth_reference_mib": 6144
+  "fourth_reference_mib": 6144,
+  "p3_preregister": "results/p3-preregister-20261007.json",
+  "p3_runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p3-20261007/runs",
+  "p3_completed_jobs": 0,
+  "p3_total_jobs": 24
 }

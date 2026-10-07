@@ -1,5 +1,7 @@
 # STAR Lab
 
+> E7最新（2026-10-07）：P2完整4/4保持，用户授权开启P3。串行24组完整轨迹，原门槛、driver与分析不改，压力暂停的运行整体无效且保留。见[P3预注册](experiments/2026-10-rust-display-preparation/results/p3-preregister-20261007.json)。
+
 > E7最新（2026-10-07）：**P2完整通过4/4并归档**，每组40994请求/9880tick，全权威/展示/命令/像素与原始证据内外SHA独立复核完成，临时跟进已暂停。仅为正确性验收，P3性能测量尚未开始，默认尚未启用。见[完整结果](experiments/2026-10-rust-display-preparation/results/p2-complete.json)与[复核记录](experiments/2026-10-rust-display-preparation/results/p2-integrity-review.json)。
 
 > E7最新（2026-10-07）：用户授权第四组重新执行且取消自动退出。压力仅暂停现场、normal一分钟后继续，6GiB仅监测参考；前三组复用，P2仍3/4。见[恢复配置](experiments/2026-10-rust-display-preparation/results/p2-pause-only-resume.json)。

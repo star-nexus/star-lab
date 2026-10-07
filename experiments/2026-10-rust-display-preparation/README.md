@@ -1,3 +1,11 @@
+## E7 P3正式收益矩阵接续（2026-10-07，最新）
+
+用户授权开启P3。P2四组完整结果/raw/身份已再次核验，不重跑。固定源码5b9658b、原性能driver/analyzer/native扩展/依赖不改；新增P3-only监督器tools/rust_migration/run_display_preparation_p3.py，持久目录/Users/liyang/Developer/star-lab-runs/e7-p3-20261007/runs。原24组矩阵（三轮×static/exercise×baseline/reuse_typed×native1/4）逐组串行，每组四个持续实例、完整9880tick、逐tick ABBA/BAAB；全部预热和慢尾保留。
+正式计时关闭完整权威/像素哈希、细诊断及vmmap，保留原dummy2480×1239/1.5ms overscan wall预算和同侧GC策略。收益门槛仍是每轮render D+Q均值≥5%、chain/total均值正改善、100tick/10000bootstrap/seed42的95%下界>0及各自P99不回退；ordinary为主结论，typed独立交互，不跨层归因。
+沿用用户不自动退出授权：压力仅暂停现场，6GiB仅监测参考，normal一分钟恢复。计时正式有效必须整次压力样本全部normal且无暂停/监测事件；发生干扰仍保留完整raw，该次不能用于收益，结束当前运行后停止剩余矩阵，不自动重跑或筛慢样本。只在无干扰的完整结果上复算；新的方法控制覆盖24组/三轮及无效资源事件和5%门槛，不计为速度结论。
+预注册与冻结工具/控制内外SHA见E7 results/p3-preregister-20261007.json。各组完整后自动归档，全部24组后收尾结果到p3-complete.json；异常到p3-interruption-20261007.json。仅本轮P3，不自动启动单实例确认/窗口/默认接入，不关闭既有GAP或更新容量/Frontier，不改产品GAP或push/merge，5000Agents暂缓。
+进度：`P2 ██████████ 4/4 | P3预注册/控制 █ | P3完整计时 0/24 ░░░░░░░░░░ | 确认/窗口/默认接入 ░`。
+
 ## E7 P2独立复核完成（2026-10-07，最新）
 
 P2四组完整正确性全部通过并归档；自动收尾于06:46:36（Asia/Shanghai）结束。每组40994请求/9880tick，完整权威/展示投影/绘制命令/像素各19760次及冷World99次，流、最终权威和所有raw/四组ZIP内外SHA与持久目录逐字节复核通过。见E7 results/p2-complete.json、p2-integrity-review.json。

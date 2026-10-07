@@ -1,12 +1,12 @@
 {
-  "stage": "E8 algorithm plan complete; P0 not started",
+  "stage": "E8 P0 executing",
   "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
   "plan": "records/rust-observation-admission-plan.md",
   "identity": "records/rust-observation-admission-plan.json",
   "phases": {
     "boundary_review": "complete",
     "algorithm_plan": "complete",
-    "P0_admission_diagnosis": "not started",
+    "P0_admission_diagnosis": "preregistered; probe contract checks passed; live window next",
     "P1_owned_cache_prototype": "not started",
     "P2_correctness": "not started",
     "P3_performance": "not started",
@@ -21,12 +21,14 @@
     "adopted": false
   },
   "product_gap_ledger": "docs/native-benchmark-gaps.md",
-  "ledger_write_deferred": "Plan-only task; product source unchanged; Lab phase records current next item",
+  "ledger_write_deferred": "P0 measurement source fixed; Lab phase ledger records execution; existing product GAPs unchanged",
   "existing_gaps_closed": false,
   "capacity_updated": false,
   "frontier_updated": false,
   "g009_production_network": "OPEN; first research adapter is audited Lab local request boundary",
   "agents5000": "deferred",
   "automation": "no E8 automation created; E7 e7-p2 PAUSED",
-  "push_or_merge": false
+  "push_or_merge": false,
+  "authorization": "2026-10-07 user execution authorized",
+  "experiment": "experiments/2026-10-rust-observation-admission"
 }

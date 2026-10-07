@@ -1,0 +1,82 @@
+{
+  "stage": "P0 preregistered; no product changes",
+  "authorization": "2026-10-07 user: \u5f00\u59cb\u6267\u884c\u6b64\u65b9\u6848",
+  "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "source_file_sha256": {
+    "rotk_env/runtime/native.py": "98505b570626e51d9be5c6a5603574b516dfd2bbff502068804b436e7f5bb122",
+    "native/rotk/src/observation.rs": "fde62e57d0ddf7de4c8e44099e100309e8de543b35b1a81e05d4cdc607e8267c",
+    "native/rotk/src/actions.rs": "b278e1c8ea8a5b75afc0543099f8105f7207e92dd295e7c30b9d86ce6bf48e1c",
+    "native/rotk/src/named_observation.rs": "c68dbe10d46e501d8da819e255541ff60c7bd4e66f851a111ad4ac2040cde77d",
+    "native/python/src/lib.rs": "3daf24b0682d1d53b50f535604876ff33b2ef938afbfd36f654d974e416a0d55",
+    "rotk_env/systems/llm_system.py": "22f015f84461c36a7fc46d5fbd9e56e84f7d5fcbe2cc5cb830bd5d2df2338c53",
+    "rotk_env/runtime/session.py": "517af4a2a59fb6d59ac823ded9b90dc69878d6d5abf2be45524adc4d4b44cdf1"
+  },
+  "repositories": {
+    "active": {
+      "path": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+      "sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+      "branch": "codex/rust-ecs-parallel",
+      "tracked_status": ""
+    },
+    "original": {
+      "path": "/Users/liyang/Developer/star-main",
+      "sha": "7e145d169433695cd4957e186a6b2fda06813c26",
+      "branch": "codex/rust-env-migration",
+      "tracked_status": "D rotk_agent/README.md\n D rotk_agent/adapters/__init__.py\n D rotk_agent/adapters/base.py\n D rotk_agent/adapters/chat_completions.py\n D rotk_agent/adapters/fake.py\n D rotk_agent/adapters/nemotron.py\n D rotk_agent/adapters/responses.py\n D rotk_agent/core/__init__.py\n D rotk_agent/core/agent.py\n D rotk_agent/core/bridge.py\n D rotk_agent/core/config.py\n D rotk_agent/core/console.py\n D rotk_agent/core/delays.py\n D rotk_agent/core/errors.py\n D rotk_agent/core/filters.py\n D rotk_agent/core/reachable_guard.py\n D rotk_agent/core/runner.py\n D rotk_agent/core/scoring.py\n D rotk_agent/core/stats.py\n D rotk_agent/core/tools.py\n D rotk_agent/core/types.py\n D rotk_agent/main.py\n D rotk_agent/modes/__init__.py\n D rotk_agent/modes/base.py\n D rotk_agent/modes/realtime.py\n D rotk_agent/modes/turn.py\n D rotk_agent/profiles.py\n D rotk_agent/prompts/system_prompt_realtime_cn.md\n D rotk_agent/prompts/system_prompt_realtime_cn_baseline.md\n D rotk_agent/prompts/system_prompt_realtime_en.md\n D rotk_agent/prompts/system_prompt_turn_cn.md\n D rotk_agent/prompts/system_prompt_turn_en.md\n D rotk_agent/tests/__init__.py\n D rotk_agent/tests/conftest.py\n D rotk_agent/tests/support.py\n D rotk_agent/tests/test_adapters.py\n D rotk_agent/tests/test_agent_loop.py\n D rotk_agent/tests/test_auto_test.py\n D rotk_agent/tests/test_config.py\n D rotk_agent/tests/test_errors.py\n D rotk_agent/tests/test_filters.py\n D rotk_agent/tests/test_profiles.py\n D rotk_agent/tests/test_reachable_guard.py\n D rotk_agent/tests/test_runner.py\n D rotk_agent/tests/test_scoring.py\n D rotk_agent/tests/test_stats.py\n D rotk_agent/tests/test_tools.py\n D rotk_agent/tests/test_turn_mode.py\n D rotk_env/assets/fonts/sh.otf"
+    },
+    "frozen_rust": {
+      "path": "/Users/liyang/.codex/worktrees/rust-wire-observation/star-main",
+      "sha": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+      "branch": "",
+      "tracked_status": ""
+    },
+    "frozen_python": {
+      "path": "/Users/liyang/.codex/worktrees/python-capacity-baseline/star-main",
+      "sha": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+      "branch": "",
+      "tracked_status": ""
+    }
+  },
+  "extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
+  "runs_directory": "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007",
+  "window": {
+    "warmup": 30,
+    "measure": 60,
+    "units": 5000,
+    "agents": 1000,
+    "delay": 30,
+    "jitter": 5,
+    "budget_ms": 8,
+    "threads": 1,
+    "scope": "selected",
+    "layout": "canonical",
+    "policy": "stochastic",
+    "clock_mode": "fixed",
+    "fps": 30,
+    "gc": "realtime_defer",
+    "fog": true,
+    "display": [
+      2480,
+      1239
+    ]
+  },
+  "resource_policy": "pressure pause only; 6GiB telemetry; no automatic kill/timeout/retry",
+  "diagnostic_only": true,
+  "minimum_segment": 2,
+  "maximum_segment": 4,
+  "smoke_contracts": "300 randomized heap prefixes; identical single pump records/queue/request ids/consume/RNG; inserted-head barrier",
+  "cost_profile": "separate offline replay; no extra live queries",
+  "frozen_tools": {
+    "tools/p3_runtime.py": "2952f4944ee4f3a24740d5013e2e729ed1ac0ebdfea94ea0ef1e17fac43bf4a9",
+    "tools/p3_local_agents.py": "a7f3bb1a7817f487ac748f93f36c902426c104fcffdfef554cade73671eda45b",
+    "tools/rust_migration/native_loop_trace.py": "b1337144eec8ed7d6dcb37e336dc189e54ba9a51aacccadfcd24d347464a904b",
+    "tools/rust_migration/guard_display_preparation_pause_only.py": "5a42fa0b3c93cfdcb64c71df2856ff361ea609d036ed20f73bbf33e4f85febb3",
+    "tools/rust_migration/guard_display_preparation_resumable.py": "b23e947be9710ef21a73e062c5ef8cff647eee4252fb07e1f0f32fec77aee208"
+  },
+  "new_tools": {
+    "tools/rust_migration/observation_admission_probe.py": "d47c9ed94fc512a2925441f170a0d4ad3c5fa06f2c7344f9b360693a3d4e774b",
+    "tools/rust_migration/test_observation_admission_probe.py": "672003abfc4611cfc7f392dcdd46122b7cc4fd3ab0f4054aac7087a24011bb5e"
+  },
+  "speedup_claim": false,
+  "capacity_claim": false
+}

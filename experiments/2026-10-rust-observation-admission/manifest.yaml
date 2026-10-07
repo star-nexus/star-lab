@@ -1,0 +1,70 @@
+{
+  "experiment": {
+    "id": "2026-10-rust-observation-admission",
+    "title": "E8 admitted observation segment reuse",
+    "date": "2026-10-07",
+    "status": "P0 in progress"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "5b9658bc668b7d13f801351162f255f30622b32a",
+    "measurement_commit": "5b9658bc668b7d13f801351162f255f30622b32a",
+    "fix_commit": null,
+    "validated_commit": null,
+    "validated_tag": null,
+    "branch_at_time": "codex/rust-ecs-parallel"
+  },
+  "hardware": {
+    "machine": "Apple M4",
+    "cpu": "10 physical/logical",
+    "memory": "16 GiB",
+    "display": "2480x1239 cocoa"
+  },
+  "software": {
+    "os": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "dependency_lock": null
+  },
+  "scenario": {
+    "name": "canonical",
+    "resident_units": 5000,
+    "fog": true
+  },
+  "workload": {
+    "warmup": 30,
+    "measure": 60,
+    "units": 5000,
+    "agents": 1000,
+    "delay": 30,
+    "jitter": 5,
+    "budget_ms": 8,
+    "threads": 1,
+    "scope": "selected",
+    "layout": "canonical",
+    "policy": "stochastic",
+    "clock_mode": "fixed",
+    "fps": 30,
+    "gc": "realtime_defer",
+    "fog": true,
+    "display": [
+      2480,
+      1239
+    ]
+  },
+  "measurement": {
+    "diagnostic_only": true,
+    "resource_policy": "pressure pause only; 6GiB telemetry; no automatic kill/timeout/retry"
+  },
+  "artifacts": {
+    "formal": [
+      "results/p0-preregister.json"
+    ],
+    "external": [
+      "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007"
+    ]
+  },
+  "headline": {
+    "problem_signature": "Repeated public facts may be rebuilt across admitted queries",
+    "resolution": "P0 eligibility/cost first",
+    "result": "pending"
+  }
+}

@@ -1,5 +1,11 @@
 # Rust 并行工作：新 Session 交接入口
 
+## E8 P0 执行入口（2026-10-07，最新）
+
+用户已授权开始执行 E8。P0 探针契约通过，5000/1000 短诊断下一步；产品仍固定 5b9658b。证据入口：`experiments/2026-10-rust-observation-admission/results/p0-preregister.json`；持久目录 `/Users/liyang/Developer/star-lab-runs/e8-p0-20261007`。
+
+进度：`P0 ▰▰▱▱▱ | P1/P2/P3/P4 ▱`。已有 GAP 不关闭，E7 不采用，不 push/merge。
+
 ## E8 已接纳观测只读段算法方案（2026-10-07，当前下一项）
 
 E7 P3已归档4370070，empty_territory不采用。按整体评估第三项推进请求接入，算法方案records/rust-observation-admission-plan.md与身份/阶段台账已完成；本次仅方案，没有实施、测试或后台进程启动。

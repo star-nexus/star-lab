@@ -1,5 +1,5 @@
 {
-  "status": "P2 complete; P3 serial timing running",
+  "status": "P3 continuation active; original11 executed,10 valid and1 resource-invalid",
   "source_sha": "57b65203934d6fa283d67da68f9dc5a8efa03098",
   "execution_base": "068c1ecd17988ac6d884984e904aea924968e0ae",
   "plan": "records/rust-display-preparation-plan.md",
@@ -43,8 +43,12 @@
   "fourth_reference_mib": 6144,
   "p3_preregister": "results/p3-preregister-20261007.json",
   "p3_runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p3-20261007/runs",
-  "p3_completed_jobs": 0,
+  "p3_completed_jobs": 10,
   "p3_total_jobs": 24,
   "p3_continuation": "results/p3-continuation-20261007.json",
-  "p3_resource_stop_policy": "User authorizes continuing untouched jobs; invalid timings retained/excluded, no retry"
+  "p3_resource_stop_policy": "User authorizes continuing untouched jobs; invalid timings retained/excluded, no retry",
+  "p3_evidence": "results/p3-interruption-20261007.json",
+  "p3_executed_jobs": 11,
+  "p3_invalid_jobs": 1,
+  "p3_resource_interruption": "results/p3-first-resource-interruption-20261007.json"
 }

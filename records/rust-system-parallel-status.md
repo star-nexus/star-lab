@@ -1,12 +1,18 @@
 # Rust System并行：当前状态与边界（2026-09-29）
 
+## E7 P3阶段收尾（2026-10-07）
+
+P3 stopped or timing invalid; no automatic retry；完整计时通过资源有效性核验的组数10/24。原始样本、慢尾、失败尝试全部保留；门槛和分析见E7 results/p3-interruption-20261007.json。P2完整正确性4/4保持，不启用默认、不进入单实例确认或窗口，不改容量/Frontier或关闭既有GAP。
+进度：`P2 █ | P3 10/24 | 单实例确认/窗口/默认接入 ░`。
+
 ## E7 P3资源干扰后继续剩余组（2026-10-07，最新）
 
 用户看到当前仍有5GB物理空闲/约1.2GB交换，明确要求继续跑。这授权覆盖“当前受干扰完成后停止后续矩阵”规则，不改变计时有效性/收益门槛。当前前10组完整资源有效，原第11组reuse_typed/native1/static/r2在6000tick因warning保留同PID暂停约255.86秒后已恢复；不中断它，不抹掉干扰记录。
 新增continuation-only入口tools/rust_migration/continue_display_preparation_p3.py，等待原parent8072及当前子进程完成、原收尾退出后，验证复用前11次完整尝试，继续原第12–24组（13组）。不并发、不重跑任何已启动组、不更改冻结原工具、driver/analyzer/产品。预注册修订及控制内外SHA见E7 results/p3-continuation-20261007.json；状态优先读持久runs/p3-continuation-progress.json、p3-continuation-analysis.json、p3-continuation-completed-evidence.json，原p3-progress.json保留历史停止。
 后续压力仍只暂停不退出，normal一分钟恢复；每次完整raw归档。发生资源干扰的尝试保留并从正式收益排除，然后继续未启动组；真实正确性/child失败仍停止。正式分析只调用显式资源有效名单，禁止原glob分析器误纳第11组。该分层若缺三轮有效数据，报告inconclusive、不采用，不自动补跑或择优。原24次全部执行后分别报告executed/valid/invalid，不能把执行完成当正式24组全有效。
 仅P3，单实例确认/窗口/默认接入仍不自动启动；P2完整4/4、既有GAP/容量/Frontier、5000Agents暂缓边界保持，不改产品GAP或push/merge。
-进度：`P3有效完整 10/24 ████░░░░░░ | 第11组干扰后继续 ▒ | 剩余13组接续准备 ▒ | 确认/窗口/默认接入 ░`。
+第11组已经完整结束，driver正确性/stream/final通过但计时资源无效；原监督器已退出，接续parent24970已核验前11次，准备从第12组reuse_typed/native4/static/r2继续。历史停止已独立归档p3-first-resource-interruption-20261007.json，跟进保持ACTIVE并优先接续状态。
+进度：`P3原任务执行 11/24 | 正式有效 10 ████░░░░░░ | 资源无效保留 1 | 剩余13组接续 ▒ | 确认/窗口/默认接入 ░`。
 
 ## E7 P3正式收益矩阵接续（2026-10-07，最新）
 

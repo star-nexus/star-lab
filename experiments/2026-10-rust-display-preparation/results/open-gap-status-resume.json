@@ -1,5 +1,5 @@
 {
-  "stage": "P3 serial timing running",
+  "stage": "P3 continuation active",
   "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
   "product_gap_ledger": "docs/native-benchmark-gaps.md",
   "ledger_write_deferred": "Keep pinned product HEAD unchanged until active measurements finish; Lab tracks current progress meanwhile",
@@ -11,9 +11,9 @@
   "memory_incident": "2026-10-07 01:46 warning twice stops fourth-only run after 8500 logged ticks, below 6144MiB",
   "full_correctness_completed_jobs": 4,
   "full_correctness_total_jobs": 4,
-  "current": "p3-baseline-t1-static-r1",
+  "current": "p3-reuse_typed-t4-static-r2",
   "default_adoption": "Conditionally authorized; prepared patch isolated dispatch passed; not applied",
-  "status": "P2 complete; P3 serial timing running",
+  "status": "P3 continuation active; original11 executed,10 valid and1 resource-invalid",
   "p2_latest_interruption": "results/p2-fourth-retry-interruption.json",
   "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261007-pause-only/runs",
   "p2_budget_resume": "results/p2-budget-resume.json",
@@ -42,8 +42,12 @@
   "full_replay_finished": true,
   "p3_preregister": "results/p3-preregister-20261007.json",
   "p3_runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p3-20261007/runs",
-  "p3_completed_jobs": 0,
+  "p3_completed_jobs": 10,
   "p3_total_jobs": 24,
   "p3_continuation": "results/p3-continuation-20261007.json",
-  "p3_resource_stop_policy": "User authorizes continuing untouched jobs; invalid timings retained/excluded, no retry"
+  "p3_resource_stop_policy": "User authorizes continuing untouched jobs; invalid timings retained/excluded, no retry",
+  "p3_evidence": "results/p3-interruption-20261007.json",
+  "p3_executed_jobs": 11,
+  "p3_invalid_jobs": 1,
+  "p3_resource_interruption": "results/p3-first-resource-interruption-20261007.json"
 }

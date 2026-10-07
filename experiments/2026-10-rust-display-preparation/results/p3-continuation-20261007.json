@@ -1,6 +1,6 @@
 {
   "date": "2026-10-07",
-  "status": "authorized continuation prepared; waiting for resource-invalid job11 and previous parent to finish",
+  "status": "Continuation attached; prior job11 and supervisor finished; validated11 attempts,10 valid/1 invalid; waiting normal preflight for job12",
   "authorization": "User: still 5GB physical free, swap only1.2GB; continue running. This overrides stopping later jobs after resource interference, not timing validity or benefit gates.",
   "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
   "runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p3-20261007/runs",
@@ -71,5 +71,9 @@
   "production_enabled": false,
   "performance_claim": false,
   "capacity_claim": false,
-  "confirmation_or_live_autolaunch": false
+  "confirmation_or_live_autolaunch": false,
+  "parent_pid": 24970,
+  "launch_verified": true,
+  "prior_resource_failure_retained": "results/p3-first-resource-interruption-20261007.json",
+  "automation": "e7-p2 ACTIVE, prioritizes continuation progress"
 }

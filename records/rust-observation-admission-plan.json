@@ -1,0 +1,82 @@
+{
+  "status": "plan only; no implementation or new measurement",
+  "date": "2026-10-07",
+  "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+  "source_directory": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+  "source_repository": "star-nexus/star",
+  "branch": "codex/rust-ecs-parallel",
+  "lab_start_sha": "4370070cb1eb5eeccf444039a486a34059bf6f9a",
+  "source_file_sha256": {
+    "rotk_env/runtime/native.py": "98505b570626e51d9be5c6a5603574b516dfd2bbff502068804b436e7f5bb122",
+    "native/rotk/src/observation.rs": "fde62e57d0ddf7de4c8e44099e100309e8de543b35b1a81e05d4cdc607e8267c",
+    "native/rotk/src/actions.rs": "b278e1c8ea8a5b75afc0543099f8105f7207e92dd295e7c30b9d86ce6bf48e1c",
+    "native/rotk/src/named_observation.rs": "c68dbe10d46e501d8da819e255541ff60c7bd4e66f851a111ad4ac2040cde77d",
+    "native/python/src/lib.rs": "3daf24b0682d1d53b50f535604876ff33b2ef938afbfd36f654d974e416a0d55",
+    "rotk_env/systems/llm_system.py": "22f015f84461c36a7fc46d5fbd9e56e84f7d5fcbe2cc5cb830bd5d2df2338c53",
+    "rotk_env/runtime/session.py": "517af4a2a59fb6d59ac823ded9b90dc69878d6d5abf2be45524adc4d4b44cdf1"
+  },
+  "lab_reference_sha256": {
+    "tools/p3_local_agents.py": "a7f3bb1a7817f487ac748f93f36c902426c104fcffdfef554cade73671eda45b",
+    "tools/p3_runtime.py": "2952f4944ee4f3a24740d5013e2e729ed1ac0ebdfea94ea0ef1e17fac43bf4a9",
+    "records/rust-performance-optimization-assessment.md": "127215dd29d80bbf627637f10f704425e5c70d3552e39b174bba771191b820e3",
+    "records/10k-online-p3-read-batch-plan.md": "4724b3498e76905f1b1f36ee03dc681cfb12dbdf98cccff4be5b3a0271efcbda"
+  },
+  "codegraph_project": "/Users/liyang/Developer/star-main",
+  "codegraph_files_match_active": {
+    "rotk_env/runtime/native.py": true,
+    "native/rotk/src/observation.rs": true,
+    "native/rotk/src/actions.rs": true,
+    "native/rotk/src/named_observation.rs": true,
+    "native/python/src/lib.rs": false,
+    "rotk_env/systems/llm_system.py": true,
+    "rotk_env/runtime/session.py": true
+  },
+  "native_python_difference": "Only 51 added E2-E5 private step research lines; inspected single/batch/with_runtime methods unchanged",
+  "native_python_diff_sha256": "23735acbbb16278b1374578841bfcbc9f421383fa1bbc2e60cb2be048647e2cc",
+  "extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
+  "dependency_lock_sha256": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+  "api": 18,
+  "schema": 5,
+  "target": {
+    "units": 5000,
+    "agents": 1000,
+    "native_default": 1
+  },
+  "candidate": "owner-scoped owned ObservationBatch cache; per-request execution/return",
+  "modes": [
+    "single",
+    "segment_no_reuse",
+    "segment_encoded"
+  ],
+  "max_requests": 4,
+  "min_requests": 2,
+  "wait_for_future_requests": false,
+  "ffi_calls_reduced": false,
+  "full_response_and_client_decode": true,
+  "production_network_in_first_scope": false,
+  "g009_closed": false,
+  "cache_keys": "instance_nonce/epoch/owner_thread/segment_generation plus proven per-cache facts; no cached authorization",
+  "statistics_order": "original per-request wall/stats/authorization/action counting/revision/serialization and callback order",
+  "initial_barriers": "all non-segment native calls; mutations, VLM, unknown callbacks and owner yields",
+  "formal_gate": {
+    "observation_full_service_mean_min_improvement_percent": 5,
+    "observation_service_p99_no_regression": true,
+    "total_work_mean_improves": true,
+    "total_work_p99_no_regression": true,
+    "paired_ci95_lower_positive": true,
+    "rounds": 3,
+    "block_ticks": 100,
+    "bootstrap": 10000,
+    "seed": 42,
+    "all_ticks": true
+  },
+  "resource_policy": "pressure pause only; no automatic kill/timeout; non-normal pressure invalidates entire timing attempt",
+  "default_enabled": false,
+  "capacity_updated": false,
+  "frontier_updated": false,
+  "existing_gaps_closed": false,
+  "product_changed": false,
+  "tests_started": false,
+  "plan_sha256": "d1753431a51dad5658d6be073aa8a50f395138e7ecb50f68e146e64e5efc31e1",
+  "independent_design_review": "Existing e7_measurement_review agent reviewed supplied constraints; no code exploration or edits delegated; ownership, accounting, token invalidation and staged fair comparisons incorporated"
+}

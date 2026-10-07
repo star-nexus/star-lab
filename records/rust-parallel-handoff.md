@@ -1,5 +1,15 @@
 # Rust 并行工作：新 Session 交接入口
 
+## E8 已接纳观测只读段算法方案（2026-10-07，当前下一项）
+
+E7 P3已归档4370070，empty_territory不采用。按整体评估第三项推进请求接入，算法方案records/rust-observation-admission-plan.md与身份/阶段台账已完成；本次仅方案，没有实施、测试或后台进程启动。
+
+选择逐请求执行/返回＋owner-scoped owned ObservationBatch缓存：保留原时钟、预算检查、权限、计数、JSON直传/client decode/消费与回调顺序；已接纳连续query段最少2、最多4，不等待未来、不按阵营重排、不跨动作/step/VLM/未知回调/owner yield复用。private token绑定实例/epoch/owner/generation，所有非段native入口先失效；自定义action kind不是query回到原路径。single/segment_no_reuse/segment_encoded分开调度机制与缓存收益；首版不减少FFI次数、不改观测算法，不把execute_actions_json的整组解码/延后计数当单条host等价。
+
+先P0真实合法段/成本诊断，再小型no_reuse/encoded契约和无诊断收益筛选；通过才做完整正确性与native1三轮正式收益，之后单列native4和条件窗口。当前Rust Lab/post-action/native-wire仅支持single，需要研究适配；真实网络G009仍OPEN，不能称生产已接通。研究开关默认关闭、5000/1000目标、既有GAP/容量/Frontier保持，5000Agents暂缓。产品仍5b9658b、原49删除/冻结目录/历史标签保持，不push/merge。
+
+进度：`源码/边界 █ | 算法方案 █ | P0 ░ | P1 ░ | P2 ░ | P3 ░ | 窗口/默认 ░`。恢复先读方案及records/rust-observation-admission-status.json；以下E7段落为已完成的前一项与历史证据。
+
 ## E7 P3 完成、独立复核与决策（2026-10-07，当前）
 
 原24次全部执行结束（14:59:44 Asia/Shanghai），23次正式有效、1次压力暂停无效；全部raw/四侧9880样本及工作量、40994请求、流/最终指纹、ZIP内外SHA与冻结身份核验通过，23次原统计门槛独立复算一致。候选empty_territory的D+Q均值变化-1.668%～+0.614%，全部有效运行均未达到5%改善门槛。四个ordinary主分层三轮均未通过；typed三个完整分层未通过，typed/native1/static只有两轮有效、inconclusive。7个已评估未通过、1个证据不足，不采用，不自动补跑，不进入单实例确认/Cocoa窗口/默认接入。

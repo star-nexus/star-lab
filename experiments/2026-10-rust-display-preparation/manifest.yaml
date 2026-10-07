@@ -1,5 +1,5 @@
 {
-  "status": "P3 continuation active; original11 executed,10 valid and1 resource-invalid",
+  "status": "P3 independently reviewed; no candidate adoption",
   "source_sha": "57b65203934d6fa283d67da68f9dc5a8efa03098",
   "execution_base": "068c1ecd17988ac6d884984e904aea924968e0ae",
   "plan": "records/rust-display-preparation-plan.md",
@@ -38,17 +38,37 @@
   "fourth_automatic_termination": false,
   "p2_completion": "results/p2-complete.json",
   "integrity_review": "results/p2-integrity-review.json",
-  "automation": "e7-p2 PAUSED after completion",
+  "automation": "e7-p2 PAUSED after P3 completion",
   "completed_at": "2026-10-07T06:46:36.152938+08:00",
   "fourth_reference_mib": 6144,
   "p3_preregister": "results/p3-preregister-20261007.json",
   "p3_runs_directory": "/Users/liyang/Developer/star-lab-runs/e7-p3-20261007/runs",
-  "p3_completed_jobs": 10,
+  "p3_completed_jobs": 23,
   "p3_total_jobs": 24,
   "p3_continuation": "results/p3-continuation-20261007.json",
   "p3_resource_stop_policy": "User authorizes continuing untouched jobs; invalid timings retained/excluded, no retry",
-  "p3_evidence": "results/p3-interruption-20261007.json",
-  "p3_executed_jobs": 11,
+  "p3_evidence": "results/p3-complete.json",
+  "p3_executed_jobs": 24,
   "p3_invalid_jobs": 1,
-  "p3_resource_interruption": "results/p3-first-resource-interruption-20261007.json"
+  "p3_resource_interruption": "results/p3-first-resource-interruption-20261007.json",
+  "p3_valid_jobs": 23,
+  "p3_evaluated_strata": 7,
+  "p3_inconclusive_strata": 1,
+  "p3_passed_strata": 0,
+  "p3_completion": "results/p3-complete.json",
+  "p3_integrity_review": "results/p3-integrity-review.json",
+  "p3_decision": "results/p3-decision-summary.json",
+  "p3_completed_at": "2026-10-07T14:59:44.041111+08:00",
+  "p3_compact": {
+    "file": "display-preparation-p3-20261007-compact.zip",
+    "sha256": "3693e647232150272c1b19964f7b541142d06acb09549c619f0f81005953c39e",
+    "bytes": 71998
+  },
+  "p3_finalization_raw": {
+    "file": "display-preparation-p3-20261007-finalization-raw.zip",
+    "sha256": "63b048877720219764c637aa142fb208d72d58eeef9e93e84609f237b81337cd",
+    "bytes": 105560
+  },
+  "p3_repository_review": "results/p3-repository-review.json",
+  "p3_review_tool_sha256": "907148ccc8ac810ed8baad03c866a50fd264f61f3bd4e214b292fae23f86b941"
 }

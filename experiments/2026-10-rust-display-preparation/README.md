@@ -1,3 +1,52 @@
+## E7 P3 独立复核与最终决策（2026-10-07）
+
+原24次全部执行完成，结束时间 **2026-10-07T14:59:44.041111+08:00**；23次正式计时有效，1次完整执行但资源无效。每次40994请求/9880tick、四侧完整样本/工作量、响应流与最终权威指纹、工具/扩展/输入身份、24个raw ZIP内外SHA及持久文件逐字节核验通过。23次有效分析均按原100-tick分块/10000次bootstrap/seed42独立复算，最后80tick按实际大小加权，P99/max来自每侧19760个原始帧；保留全部预热和慢尾。未重跑任何原任务，也未把无效第11次混入收益分析。
+
+本轮候选为 `empty_territory`。正值表示改善：有效运行完整显示段D+Q均值变化 **-1.668%～+0.614%**，完整展示链 **-0.992%～+0.502%**，固定轨迹总工作 **-1.153%～+0.466%**。这些是各独立运行的范围，不是跨配置合并加速比。全部23次D+Q均值均未达到5%门槛；部分区间/P99也不满足门槛。四个ordinary主结果分层均有三轮有效数据并未通过；typed独立交互的三个完整分层也未通过，typed/native1/static仅r1/r3有效，报告inconclusive，不能把缺失轮当负收益或以其他配置补齐。
+
+| consumer / native / 镜头 | 有效轮数 | 各有效轮 D+Q 均值改善（%） | 决策 |
+|---|---:|---|---|
+| baseline/native1/static | 3/3 | r1 -0.215, r2 -0.476, r3 -0.689 | 未通过，不采用 |
+| baseline/native1/exercise | 3/3 | r1 -0.403, r2 -0.861, r3 -0.207 | 未通过，不采用 |
+| baseline/native4/static | 3/3 | r1 -0.873, r2 -0.309, r3 +0.614 | 未通过，不采用 |
+| baseline/native4/exercise | 3/3 | r1 -0.231, r2 -1.668, r3 -0.356 | 未通过，不采用 |
+| reuse_typed/native1/static | 2/3 | r1 -0.236, r3 -0.738 | 证据不足，不采用 |
+| reuse_typed/native1/exercise | 3/3 | r1 -0.304, r2 -0.774, r3 -0.150 | 未通过，不采用 |
+| reuse_typed/native4/static | 3/3 | r1 -0.022, r2 +0.069, r3 -0.071 | 未通过，不采用 |
+| reuse_typed/native4/exercise | 3/3 | r1 -0.378, r2 -0.232, r3 -0.293 | 未通过，不采用 |
+
+第11次reuse_typed/native1/static/r2因warning暂停255.863秒；完整raw保留为invalid-but-informative，未调用正式分析。后13次由用户授权继续，压力仅暂停同PID，6GiB为监测参考而非强制上限。其他23次guard passed、压力全部normal且无暂停/监测事件。P3的轻量流/最终指纹不代替逐tick完整权威/命令/像素；此前P2完整4/4正确性结果独立保持，本次资源通过也不是一般无泄漏证明。
+
+**决策：该候选保持研究开关关闭，不进入单实例确认、Cocoa窗口或默认接入。** 已完成预定P3执行与可用证据的验收，7个分层未通过、1个分层证据不足；不称24组全部正式有效。收益不足是本次负结果，未证明所有显示准备优化都无价值。实际回归/不稳定的具体原因仍需新的独立成本诊断，不能从微小差异直接归因于缓存、调度、Chrome或GC；补跑原无效轮不会使已有ordinary三轮满足5%门槛，本次不自动补跑择优。
+
+产品HEAD固定5b9658bc668b7d13f801351162f255f30622b32a，native扩展838c6933…与uv.lock一致；原49项删除、冻结Rust/Python目录及历史标签保留。Lab GAP仅更新本阶段，产品GAP源码、既有GAP、容量/Frontier不改，5000Agents暂缓。测试与监督器已退出，e7-p2跟进已PAUSED，不push/merge。
+
+证据：[完整结果](results/p3-complete.json)、[独立复核](results/p3-integrity-review.json)、[决策级汇总](results/p3-decision-summary.json)、[逐轮指标CSV](results/p3-valid-round-metrics.csv)。复核工具仅用于测后读取与复算，未改任何冻结测量工具。
+
+进度：`P2 ██████████ 4/4 | P3执行 ██████████ 24/24 | 正式有效 23/24 | 独立复核/归档 █ | 采用 0/8 | 单实例/窗口/默认接入 未启动`。
+
+### 测后复核与复现
+
+原24次命令、环境/机器和身份见 `results/p3-preregister-20261007.json`；资源干扰后的明确授权与剩余13次入口见 `results/p3-continuation-20261007.json`。四侧逐tick ABBA/BAAB和冻结 driver/analyzer 均未更改。全部原始运行各自有唯一 `display-preparation-p3-20261007-p3-*-raw.zip`，无效r2 raw也保留；最终监督器日志/状态/审查工具在 finalization-raw.zip。现有source bundle/wheel与P2输入沿原canonical引用，未另建产品版本或validated tag，负结果不需要生产验证标签。
+
+独立复算只能读取测后结果，输出到新文件；禁止对包含无效第11次的目录运行原glob analyzer CLI：
+
+```bash
+cd /Users/liyang/Developer/star-lab
+/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/bin/python tools/rust_migration/review_display_preparation_p3.py --runs /Users/liyang/Developer/star-lab-runs/e7-p3-20261007/runs --output /tmp/e7-p3-review.json
+cd experiments/2026-10-rust-display-preparation
+shasum -a 256 -c artifacts/SHA256SUMS
+```
+
+review工具先验证24个完整运行/ZIP、计时资源策略，再仅对23个有效名单调用原analyze并独立复算统计；不启动游戏、不改测量源码。持久目录若迁移，按各ZIP的raw成员名还原到同一目录；输入与源码使用预注册的精确SHA。复核输出的outer_checksums_verified计数可随后续归档新增文件变化，原始指标与正式有效名单必须相同。P3紧凑包保存全部决策指标与raw的SHA/大小引用，不能替代原始样本。
+
+### 以下为历史阶段记录（按各自时间解释；当前状态以上文为准）
+
+## E7 P3阶段收尾（2026-10-07）
+
+P3 original 24 jobs executed; resource-invalid strata remain inconclusive；完整计时通过资源有效性核验的组数23/24。原始样本、慢尾、失败尝试全部保留；门槛和分析见E7 results/p3-complete.json。P2完整正确性4/4保持，不启用默认、不进入单实例确认或窗口，不改容量/Frontier或关闭既有GAP。
+进度：`P2 █ | P3 23/24 | 单实例确认/窗口/默认接入 ░`。
+
 ## E7 P3阶段收尾（2026-10-07）
 
 P3 stopped or timing invalid; no automatic retry；完整计时通过资源有效性核验的组数10/24。原始样本、慢尾、失败尝试全部保留；门槛和分析见E7 results/p3-interruption-20261007.json。P2完整正确性4/4保持，不启用默认、不进入单实例确认或窗口，不改容量/Frontier或关闭既有GAP。

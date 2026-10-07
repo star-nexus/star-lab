@@ -1,5 +1,9 @@
 # STAR Lab
 
+> E7 P3完成并独立复核：24次全部执行，23次计时有效、1次无效保留。候选empty_territory在7个完整分层未通过原收益门槛、1个分层证据不足，保持关闭；未进入窗口或默认接入。见[决策汇总](experiments/2026-10-rust-display-preparation/results/p3-decision-summary.json)和[恢复入口](records/rust-parallel-handoff.md)。
+
+以下E7条目为历史阶段快照，当前状态以上述结果为准。
+
 > E7 P3最新：用户授权资源干扰后继续原剩余13组；前10组有效，第11组干扰保留且不计收益，不重跑。见[接续修订](experiments/2026-10-rust-display-preparation/results/p3-continuation-20261007.json)。
 
 > E7最新（2026-10-07）：P2完整4/4保持，用户授权开启P3。串行24组完整轨迹，原门槛、driver与分析不改，压力暂停的运行整体无效且保留。见[P3预注册](experiments/2026-10-rust-display-preparation/results/p3-preregister-20261007.json)。

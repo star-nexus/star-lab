@@ -1,5 +1,20 @@
 # Rust 并行工作：新 Session 交接入口
 
+## E7 P3 完成、独立复核与决策（2026-10-07，当前）
+
+原24次全部执行结束（14:59:44 Asia/Shanghai），23次正式有效、1次压力暂停无效；全部raw/四侧9880样本及工作量、40994请求、流/最终指纹、ZIP内外SHA与冻结身份核验通过，23次原统计门槛独立复算一致。候选empty_territory的D+Q均值变化-1.668%～+0.614%，全部有效运行均未达到5%改善门槛。四个ordinary主分层三轮均未通过；typed三个完整分层未通过，typed/native1/static只有两轮有效、inconclusive。7个已评估未通过、1个证据不足，不采用，不自动补跑，不进入单实例确认/Cocoa窗口/默认接入。
+
+当前证据E7 results/p3-complete.json、p3-integrity-review.json、p3-decision-summary.json、p3-valid-round-metrics.csv；原第11次完整raw无效保留且从收益分析排除，历史p3-interruption不是活跃失败。两个监督器/测试均已退出，e7-p2已PAUSED。源码仍5b9658b、原49删除/冻结目录/标签保留，产品GAP暂缓，既有GAP/容量/Frontier不改，5000Agents继续暂缓、不push/merge。P2完整4/4只说明正确性，P3没有稳定净收益；结果只覆盖本候选与固定dummy重放，不扩展为所有显示方案无价值或一般无泄漏证明。
+
+进度：`P2 █ 4/4 | P3执行 ██████████ 24/24 | 正式有效 23/24 | 独立核验/归档 █ | 采用 0/8 | 确认/窗口/默认 未启动`。
+
+### 以下为历史记录；后续恢复请以上述当前结论及决策级汇总为入口
+
+## E7 P3阶段收尾（2026-10-07）
+
+P3 original 24 jobs executed; resource-invalid strata remain inconclusive；完整计时通过资源有效性核验的组数23/24。原始样本、慢尾、失败尝试全部保留；门槛和分析见E7 results/p3-complete.json。P2完整正确性4/4保持，不启用默认、不进入单实例确认或窗口，不改容量/Frontier或关闭既有GAP。
+进度：`P2 █ | P3 23/24 | 单实例确认/窗口/默认接入 ░`。
+
 ## E7 P3阶段收尾（2026-10-07）
 
 P3 stopped or timing invalid; no automatic retry；完整计时通过资源有效性核验的组数10/24。原始样本、慢尾、失败尝试全部保留；门槛和分析见E7 results/p3-interruption-20261007.json。P2完整正确性4/4保持，不启用默认、不进入单实例确认或窗口，不改容量/Frontier或关闭既有GAP。

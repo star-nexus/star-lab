@@ -29,6 +29,7 @@ def main():
     assert not a.output.exists()
     sys.path.insert(0, str(a.source))
     from star_native import NativeRuntime, _native
+    from rotk_env.runtime.native import ActionRequest
     meta = json.loads(a.run.read_text())
     admission = json.loads(a.admission.read_text())
     trace_path = a.run.with_suffix('.trace.json.gz')
@@ -46,6 +47,8 @@ def main():
         by_serial[r['entry'][1]] = op
     segment_at = {by_serial[s['executed'][0]]['seq']: s for s in admission['segments'] if s['executed']}
     n = NativeRuntime(json.dumps(initial,separators=(',',':')), 1)
+    # Recorder begins after the session's initial presentation refresh.
+    n.take_presentation_delta_json(None)
     profiles = []
     counts = Counter()
     checked = Counter()
@@ -75,11 +78,16 @@ def main():
                                          single_profiles=times, combined_report=combined,
                                          combined_profile=json.loads(timing)))
             if op['kind'] == 'request':
-                wire = n.execute_action_json(json.dumps({k:v for k,v in op.items() if k not in ('kind','seq','response_sha256','response_wire_sha256','response_wire_format')}))
+                # Preserve ingress normalization, notably registration URL and
+                # null-vs-empty registration metadata. Trace operations are not
+                # already-normalized native Request envelopes.
+                request = ActionRequest(op['agent_id'],op['action'],op['parameters'],
+                                        op['wall_time'],op['registration_time']).to_wire()
+                wire = n.execute_action_json(json.dumps(request,allow_nan=False))
                 if op['action']=='get_faction_state':
                     assert hashlib.sha256(wire.encode()).hexdigest() == op['response_wire_sha256']
                 else:
-                    assert digest(json.loads(wire)) == op['response_sha256']
+                    assert digest(json.loads(wire)) == op['response_sha256'], f"response at seq {op['seq']}"
                 checked['requests'] += 1
             elif op['kind'] == 'step':
                 n.step(op['dt'], op['wall_time'])

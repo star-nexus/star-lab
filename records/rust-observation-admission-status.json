@@ -1,13 +1,13 @@
 {
-  "stage": "E8 P0 executing",
+  "stage": "P0 complete; P1 owned-cache prototype next",
   "source_sha": "5b9658bc668b7d13f801351162f255f30622b32a",
   "plan": "records/rust-observation-admission-plan.md",
   "identity": "records/rust-observation-admission-plan.json",
   "phases": {
     "boundary_review": "complete",
     "algorithm_plan": "complete",
-    "P0_admission_diagnosis": "preregistered; probe contract checks passed; live window next",
-    "P1_owned_cache_prototype": "not started",
+    "P0_admission_diagnosis": "complete; 1943 measured queries; candidate coverage about 57%; full replay passed",
+    "P1_owned_cache_prototype": "starting",
     "P2_correctness": "not started",
     "P3_performance": "not started",
     "P4_conditional_window": "not started",
@@ -30,5 +30,6 @@
   "automation": "no E8 automation created; E7 e7-p2 PAUSED",
   "push_or_merge": false,
   "authorization": "2026-10-07 user execution authorized",
-  "experiment": "experiments/2026-10-rust-observation-admission"
+  "experiment": "experiments/2026-10-rust-observation-admission",
+  "resource_policy": "telemetry only; no automatic pause/kill/timeout, per latest user override"
 }

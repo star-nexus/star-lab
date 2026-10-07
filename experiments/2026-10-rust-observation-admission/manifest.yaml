@@ -3,7 +3,7 @@
     "id": "2026-10-rust-observation-admission",
     "title": "E8 admitted observation segment reuse",
     "date": "2026-10-07",
-    "status": "P0 in progress"
+    "status": "P0 complete; P1 next"
   },
   "source": {
     "repository": "star-nexus/star",
@@ -52,11 +52,14 @@
   },
   "measurement": {
     "diagnostic_only": true,
-    "resource_policy": "pressure pause only; 6GiB telemetry; no automatic kill/timeout/retry"
+    "resource_policy": "User now authorizes telemetry only; no automatic pause/kill/timeout. Completed window had no pressure event under old policy."
   },
   "artifacts": {
     "formal": [
-      "results/p0-preregister.json"
+      "results/p0-preregister.json",
+      "results/p0-complete.json",
+      "results/p0-integrity.json",
+      "artifacts/e8-p0-20261007-raw.zip"
     ],
     "external": [
       "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007"
@@ -65,6 +68,6 @@
   "headline": {
     "problem_signature": "Repeated public facts may be rebuilt across admitted queries",
     "resolution": "P0 eligibility/cost first",
-    "result": "pending"
+    "result": "57% eligible queries; shared builds demonstrated; no speedup/capacity claim"
   }
 }

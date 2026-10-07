@@ -1,0 +1,182 @@
+{
+  "stage": "P0 complete; proceed to P1",
+  "source": {
+    "path": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+    "sha": "5b9658bc668b7d13f801351162f255f30622b32a",
+    "dirty": ""
+  },
+  "measurement_tool_sha": "42a585ddb258ff8e50444d837015b915bf20c0a5",
+  "extension": {
+    "api": 18,
+    "sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544"
+  },
+  "all_operation_replay": {
+    "requests": 12148,
+    "ticks": 2617,
+    "presentation": 2617
+  },
+  "final_state_sha256": "a51169f82e6a3e3de337444685704445beb350d79368e0d8e5ea3f1e6d3a6977",
+  "measured_observations": 1943,
+  "eligible_observations": 1106,
+  "eligible_fraction": 0.5692228512609367,
+  "segment_histogram_by_first_measured_request": {
+    "1": 837,
+    "2": 334,
+    "3": 144,
+    "4": 1
+  },
+  "boundary_note": "A segment starting before warmup may contribute measured queries; eligible_fraction uses each query membership, histogram assigns by first request",
+  "observed_service_ms": 3.139028151787897,
+  "observed_build_ms": 2.062849226431433,
+  "observed_client_decode_ms": 0.9864326695575102,
+  "cost_table": [
+    {
+      "kind": "1-same",
+      "all_run_segments": 1238,
+      "profile_samples": 10,
+      "single_faction_inclusive_ms": 1.1811585,
+      "single_census_nested_ms": 0.48986240000000003,
+      "single_panels_ms": 0.2289001,
+      "shared_faction_inclusive_ms": 0.9856167,
+      "shared_census_nested_ms": 0.4435043,
+      "shared_panels_ms": 0.1603126,
+      "public_builds_single": 1,
+      "public_builds_shared": 1,
+      "panel_builds_single": 5,
+      "panel_builds_shared": 5
+    },
+    {
+      "kind": "2-mixed",
+      "all_run_segments": 335,
+      "profile_samples": 10,
+      "single_faction_inclusive_ms": 2.3773207,
+      "single_census_nested_ms": 0.9797749,
+      "single_panels_ms": 0.4858001,
+      "shared_faction_inclusive_ms": 1.6592086,
+      "shared_census_nested_ms": 0.4850125,
+      "shared_panels_ms": 0.4128249,
+      "public_builds_single": 2,
+      "public_builds_shared": 2,
+      "panel_builds_single": 10,
+      "panel_builds_shared": 10
+    },
+    {
+      "kind": "2-same",
+      "all_run_segments": 172,
+      "profile_samples": 10,
+      "single_faction_inclusive_ms": 2.4989829,
+      "single_census_nested_ms": 1.0932749,
+      "single_panels_ms": 0.4766166,
+      "shared_faction_inclusive_ms": 0.9676791,
+      "shared_census_nested_ms": 0.419225,
+      "shared_panels_ms": 0.3397165,
+      "public_builds_single": 2,
+      "public_builds_shared": 1,
+      "panel_builds_single": 10,
+      "panel_builds_shared": 10
+    },
+    {
+      "kind": "3-mixed",
+      "all_run_segments": 192,
+      "profile_samples": 10,
+      "single_faction_inclusive_ms": 3.6450416,
+      "single_census_nested_ms": 1.4871416,
+      "single_panels_ms": 0.715925,
+      "shared_faction_inclusive_ms": 1.7516289,
+      "shared_census_nested_ms": 0.4387455,
+      "shared_panels_ms": 0.573504,
+      "public_builds_single": 3,
+      "public_builds_shared": 2.2,
+      "panel_builds_single": 14.9,
+      "panel_builds_shared": 14.9
+    },
+    {
+      "kind": "3-same",
+      "all_run_segments": 22,
+      "profile_samples": 10,
+      "single_faction_inclusive_ms": 3.8137707,
+      "single_census_nested_ms": 1.6407791999999999,
+      "single_panels_ms": 0.6979127,
+      "shared_faction_inclusive_ms": 1.0823333,
+      "shared_census_nested_ms": 0.4418166,
+      "shared_panels_ms": 0.5628,
+      "public_builds_single": 3,
+      "public_builds_shared": 1,
+      "panel_builds_single": 15,
+      "panel_builds_shared": 15
+    },
+    {
+      "kind": "4-mixed",
+      "all_run_segments": 28,
+      "profile_samples": 10,
+      "single_faction_inclusive_ms": 4.2280622,
+      "single_census_nested_ms": 1.7482418,
+      "single_panels_ms": 0.8954875,
+      "shared_faction_inclusive_ms": 1.7903542,
+      "shared_census_nested_ms": 0.3957291,
+      "shared_panels_ms": 0.7000834,
+      "public_builds_single": 4,
+      "public_builds_shared": 2.5,
+      "panel_builds_single": 20,
+      "panel_builds_shared": 20
+    },
+    {
+      "kind": "4-same",
+      "all_run_segments": 1,
+      "profile_samples": 1,
+      "single_faction_inclusive_ms": 4.733917,
+      "single_census_nested_ms": 1.928126,
+      "single_panels_ms": 0.857957,
+      "shared_faction_inclusive_ms": 0.954625,
+      "shared_census_nested_ms": 0.388541,
+      "shared_panels_ms": 0.652833,
+      "public_builds_single": 4,
+      "public_builds_shared": 1,
+      "panel_builds_single": 20,
+      "panel_builds_shared": 20
+    }
+  ],
+  "profile_order_limitation": "Singles precede shared profile; even singleton differs through warmth/noise. Profile times are screening diagnostics, not measured speedup.",
+  "peak_rss_mib": 695.90625,
+  "peak_sampled_footprint_mib": 567.5,
+  "window_guard_results": {
+    "complete": true,
+    "source_clean": true,
+    "tooling_clean": true,
+    "fog_on": true,
+    "world_alive": true,
+    "position_progress": true,
+    "frame_p99": true,
+    "world_hz": false,
+    "observation_p99": false,
+    "observation_queue_p99": false,
+    "action_queue_p99": false,
+    "queue_bounded": true,
+    "offered_load_met": true,
+    "duration_formal": true,
+    "not_diagnostic": false,
+    "fixed_clock": true,
+    "board_clock": true,
+    "nonempty_move": true,
+    "nonempty_attack": true,
+    "initial_resident_units": true,
+    "live_workload_95pct": true
+  },
+  "pressure_all_normal": true,
+  "pause_count": 0,
+  "resource_override": "User now authorizes telemetry only; no automatic pause/kill/timeout. Completed window had no pressure event under old policy.",
+  "failed_attempts": [
+    {
+      "name": "smoke",
+      "reason": "Pressure pause consumed wall-time smoke duration; zero measured frames/queries; not passed workload"
+    },
+    {
+      "name": "cost",
+      "reason": "Diagnostic replay passed unnormalized trace envelope directly; registration ingress fields differed. Fixed with existing ActionRequest.to_wire and initial presentation drain; original failure retained."
+    }
+  ],
+  "default_adoption": false,
+  "capacity_claim": false,
+  "existing_gaps_closed": false,
+  "actual_owned_cache_bytes": "P1 pending; batch metrics are item counts, not allocated memory proof"
+}

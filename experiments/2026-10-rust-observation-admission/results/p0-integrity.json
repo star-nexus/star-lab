@@ -1,0 +1,11 @@
+{
+  "archive_sha256": "d986b68cf0af0d2ac024e67f2a8b90772ac6bf9e6c92a73c8ac60a906af30db5",
+  "inner_sha256_verified": 30,
+  "archive_bytes": 5576025,
+  "inputs": {
+    "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007/window.trace.json.gz": "27a890fd65cff5cac5eb653f25e4490d22e23558826c52da84bfa4427e0c61b4",
+    "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007/window.initial.json.gz": "13b808d8dab91b19feb053f20dbd256fcd886ad5328c06e9d155ea1a5249647a",
+    "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007/window.admission.json": "c11c41d18a669e6769fabf44226bc3a9174da6709396fff10f88960ac432d9d2"
+  },
+  "frozen_native": true
+}

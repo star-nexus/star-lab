@@ -1,5 +1,11 @@
 # Rust 并行工作：新 Session 交接入口
 
+## E8 P0 完成、P1 下一步（2026-10-07，最新）
+
+1943 条测量观测约 57% 有合法连续段；全 17382 项操作重放一致。先进入 owned cache/no_reuse 契约原型；不开默认。证据：`experiments/2026-10-rust-observation-admission/results/p0-complete.json`。用户新授权覆盖旧压力暂停：今后只监测，不自动暂停/kill/超时，正式计时有效性仍单列。
+
+进度：`P0 █████ | P1 ▰▱▱▱▱ | P2/P3/P4 ▱`；原49删除、冻结树、历史标签和 GAP/容量/Frontier不变。
+
 ## E8 P0 执行入口（2026-10-07，最新）
 
 用户已授权开始执行 E8。P0 探针契约通过，5000/1000 短诊断下一步；产品仍固定 5b9658b。证据入口：`experiments/2026-10-rust-observation-admission/results/p0-preregister.json`；持久目录 `/Users/liyang/Developer/star-lab-runs/e8-p0-20261007`。

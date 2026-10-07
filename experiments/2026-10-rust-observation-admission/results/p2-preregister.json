@@ -1,0 +1,67 @@
+{
+  "stage": "P2 trajectory preregistration",
+  "source_sha": "6ec8e05d68c82d2731a382e00411bd58f2ed6f56",
+  "extension_sha256": "3e0ebb663e7dc081948658ed2d61bb70ecc56e76fc87c405f70d098a807b7fc6",
+  "jobs": [
+    {
+      "name": "canonical-single-t1",
+      "mode": "single",
+      "threads": 1,
+      "trace": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261005/inputs/rust-300-r3.trace.json.gz",
+      "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77"
+    },
+    {
+      "name": "canonical-segment_no_reuse-t1",
+      "mode": "segment_no_reuse",
+      "threads": 1,
+      "trace": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261005/inputs/rust-300-r3.trace.json.gz",
+      "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77"
+    },
+    {
+      "name": "canonical-segment_encoded-t1",
+      "mode": "segment_encoded",
+      "threads": 1,
+      "trace": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261005/inputs/rust-300-r3.trace.json.gz",
+      "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77"
+    },
+    {
+      "name": "admitted-encoded-t1",
+      "mode": "segment_encoded",
+      "threads": 1,
+      "trace": "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007/window.trace.json.gz",
+      "trace_sha256": "27a890fd65cff5cac5eb653f25e4490d22e23558826c52da84bfa4427e0c61b4",
+      "admission": "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007/window.admission.json",
+      "admission_sha256": "c11c41d18a669e6769fabf44226bc3a9174da6709396fff10f88960ac432d9d2"
+    },
+    {
+      "name": "admitted-encoded-t4",
+      "mode": "segment_encoded",
+      "threads": 4,
+      "trace": "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007/window.trace.json.gz",
+      "trace_sha256": "27a890fd65cff5cac5eb653f25e4490d22e23558826c52da84bfa4427e0c61b4",
+      "admission": "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007/window.admission.json",
+      "admission_sha256": "c11c41d18a669e6769fabf44226bc3a9174da6709396fff10f88960ac432d9d2"
+    }
+  ],
+  "canonical_counts": {
+    "requests": 40994,
+    "ticks": 9880,
+    "presentation": 9880,
+    "total": 60754
+  },
+  "authority_scope": "Every world write/request and every step; all single queries full export; each scoped query small accounting snapshot then full export at segment end. Complete response wire/delta/event comparisons.",
+  "canonical_admission_claim": false,
+  "admitted_scope": "Actual P0 recorded heap admission identities; replayed world operations do not re-run realtime host budget or consumer.",
+  "P1_prerequisite": "Independent frozen extension short host trace fully passes; 88 contracts pass; screening complete wires/commands/final states match.",
+  "resource_policy": "Telemetry only, no automatic pause/kill/timeout or enforced memory cap",
+  "correctness_pressure_validity": "Pressure recorded; no pressure-based correctness rejection",
+  "formal_timing_claim": false,
+  "automatic_retry": false,
+  "automatic_P3": false,
+  "completion": "Trajectory matrix only; targeted lifecycle/fault/VLM checks still required before P2 complete",
+  "runner_sha256": "c5a36e5f3eaa0bb7fbc68f7ca6780a22c9b2b1ec6fad117f304759d07d3be215",
+  "oracle_sha256": "ddcc69ded5a42b2731b562e31e6773971f5c5ddee8139d65712a3ba2fabde8e6",
+  "monitor_sha256": "962eaf163ae9a73fb2e6458d3e37f07397dbc209b1ee9685b4a42035958a7117",
+  "persistent_runs": "/Users/liyang/Developer/star-lab-runs/e8-p2-20261007",
+  "expected_duration": "Hours per full canonical mode, dominated by full authority exports; do not infer a memory-pressure pause from slow progress."
+}

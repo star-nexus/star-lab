@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "raw": {
+    "file": "artifacts/e8-p3-service-screen-controls-20261008-raw.zip",
+    "bytes": 15447,
+    "sha256": "2ef0bd46034f98c377c75a71deb37746ed63353acdd92cd54c2332cfb4ccdad8",
+    "inner_sha_verified": true
+  },
+  "smoke_report": "/Users/liyang/Developer/star-lab-runs/e8-p3-screen-smoke-v2-20261008.json",
+  "synthetic_validation": true,
+  "performance_evidence": false
+}

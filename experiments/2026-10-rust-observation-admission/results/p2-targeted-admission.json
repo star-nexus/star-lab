@@ -1,0 +1,217 @@
+{
+  "passed": true,
+  "edges": {
+    "passed": true,
+    "checks": [
+      {
+        "case": "cold_stats",
+        "threads": 1,
+        "passed": true,
+        "errors": [],
+        "owned_responses": 4
+      },
+      {
+        "case": "game_over",
+        "threads": 1,
+        "passed": true,
+        "errors": [],
+        "owned_responses": 4
+      },
+      {
+        "case": "clock_barrier",
+        "threads": 1,
+        "passed": true,
+        "errors": [],
+        "owned_responses": 4
+      },
+      {
+        "case": "vlm_barrier",
+        "threads": 1,
+        "passed": true,
+        "errors": [],
+        "owned_responses": 4
+      },
+      {
+        "case": "invalid_stats",
+        "threads": 1,
+        "passed": true,
+        "errors": [
+          [
+            "RuntimeError",
+            "invalid GameStats"
+          ],
+          [
+            "RuntimeError",
+            "invalid GameStats"
+          ]
+        ],
+        "owned_responses": 0
+      },
+      {
+        "case": "panic_poison",
+        "threads": 1,
+        "passed": true,
+        "errors": [
+          [
+            "PanicException",
+            "cannot access key \"alpha\" in JSON array"
+          ],
+          [
+            "PanicException",
+            "cannot access key \"alpha\" in JSON array"
+          ]
+        ],
+        "owned_responses": 0
+      },
+      {
+        "case": "cold_stats",
+        "threads": 4,
+        "passed": true,
+        "errors": [],
+        "owned_responses": 4
+      },
+      {
+        "case": "game_over",
+        "threads": 4,
+        "passed": true,
+        "errors": [],
+        "owned_responses": 4
+      },
+      {
+        "case": "clock_barrier",
+        "threads": 4,
+        "passed": true,
+        "errors": [],
+        "owned_responses": 4
+      },
+      {
+        "case": "vlm_barrier",
+        "threads": 4,
+        "passed": true,
+        "errors": [],
+        "owned_responses": 4
+      },
+      {
+        "case": "invalid_stats",
+        "threads": 4,
+        "passed": true,
+        "errors": [
+          [
+            "RuntimeError",
+            "invalid GameStats"
+          ],
+          [
+            "RuntimeError",
+            "invalid GameStats"
+          ]
+        ],
+        "owned_responses": 0
+      },
+      {
+        "case": "panic_poison",
+        "threads": 4,
+        "passed": true,
+        "errors": [
+          [
+            "PanicException",
+            "cannot access key \"alpha\" in JSON array"
+          ],
+          [
+            "PanicException",
+            "cannot access key \"alpha\" in JSON array"
+          ]
+        ],
+        "owned_responses": 0
+      }
+    ],
+    "failure": null,
+    "source_extension_sha256": "9bb2fa4412bc810fbd751c42f525614f8cddb42e8c136612a51495fa0679f0d9",
+    "baseline_extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
+    "tool_sha256": "d3d530926acd1c549bfbc50ae631394ba8f51c05c83b2579e835e434a6096904",
+    "initial_sha256": "35a132702f019e791e5cb364f912554e8a8e966419f0b1e0ed91f40621d0e401",
+    "deferred": [
+      "revision exhaustion injection",
+      "synthetic final encoder fault injection",
+      "bounded retained cache lifecycle"
+    ],
+    "scope": "12 small exported-entry checks; no performance or general leak claim"
+  },
+  "faults": {
+    "passed": true,
+    "returncode": 0,
+    "command": [
+      "/Users/liyang/.cargo/bin/cargo",
+      "+1.98.1",
+      "test",
+      "--offline",
+      "--manifest-path",
+      "/Users/liyang/Developer/star-lab-runs/e8-p2-faults-v6-20261008/Cargo.toml",
+      "--lib",
+      "--",
+      "--test-threads=1"
+    ],
+    "python_libdir": "/Users/liyang/miniconda3/lib",
+    "tool_sha256": "64ff587a80f9064d17d23574cf74c1633d2da0487a382b376ff6a8d16e780715",
+    "companion_sha256": "f98f035b769bd14ea5dfcac1b18ee448b25fb071ac6fc3050869c0049fe77d82",
+    "product_boundary_sha256": "606b71f523704b47be2fd824a3a45ce899f9dd7d3f3b24b2e66d69d1faefbf07",
+    "diagnostic_boundary_sha256": "8dbc802b7d43f5ec108de99717640a121f0c99047a6a858b8bc5959e3360b2fa",
+    "fixture_sha256": "35a132702f019e791e5cb364f912554e8a8e966419f0b1e0ed91f40621d0e401",
+    "cargo_log_sha256": "e181c82a7e198f4f7cc919edd1f37086ca76e6b5c6ca543bcdbed3b1eeb4f20d",
+    "source_unchanged": true,
+    "scope": "Debug diagnostic copy of exact pinned boundary/dependencies, three serializer call sites wrap one synthetic error seam; not release-wheel fault injection or performance proof",
+    "bounded_cache_scope": "64 tiny 4-query scopes / 7 resets, current cache summary stable and absent at each end; not general RSS leak proof"
+  },
+  "actual_admission": {
+    "passed": true,
+    "failure": null,
+    "mode": "segment_encoded",
+    "threads": 1,
+    "counts": {
+      "full_authority_checkpoints": 28,
+      "requests": 12148,
+      "operations": 17382,
+      "ticks": 2617,
+      "presentation": 2617,
+      "segments": 750,
+      "queries": 3010,
+      "scoped_query_accounting_snapshots": 1772
+    },
+    "elapsed_s": 54.2336006659898,
+    "input_sha256": "27a890fd65cff5cac5eb653f25e4490d22e23558826c52da84bfa4427e0c61b4",
+    "admission_sha256": "c11c41d18a669e6769fabf44226bc3a9174da6709396fff10f88960ac432d9d2",
+    "source_extension_sha256": "9bb2fa4412bc810fbd751c42f525614f8cddb42e8c136612a51495fa0679f0d9",
+    "baseline_extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
+    "tool_sha256": "9fd50d6ba0a2930873e4aa3f80a210d58e29183f6db1b1e7fc2bef676a85e223",
+    "raw_sha256": "17bd9f80baa41ddd816962995293a967606903b4584fbccb9c1944554dadb2fc",
+    "checks_stream_sha256": "8af98305e62a25ea318393d2f96d0248cd3c4a40b53a013724209119fc81f970",
+    "final_state_sha256": "a51169f82e6a3e3de337444685704445beb350d79368e0d8e5ea3f1e6d3a6977",
+    "authority_scope": "Initial, every 100 steps, final; canonical exact world-write/step authority is a separate prerequisite",
+    "accounting_scope": "Every actual scoped query: actual candidate metadata/counts versus lightweight current no-reuse witness; singleton authority covered by canonical and final",
+    "admission_scope": "Frozen recorded accepted segment serials; no realtime pump budget or production network capacity claim",
+    "performance_claim": false,
+    "default_adoption": false
+  },
+  "raw": {
+    "file": "artifacts/e8-p2-targeted-admission-pinned-20261008-raw.zip",
+    "bytes": 7532049,
+    "sha256": "d9705ee821dcc481c62a6a909931a9b5de3f1e49e352d7902508402d59b1230d",
+    "inner_sha_verified": true
+  },
+  "prior_attempts_raw": {
+    "file": "artifacts/e8-p2-targeted-admission-20261008-raw.zip",
+    "sha256": "fe5bbf647f95dc2b6fcbb6de7bf8df7f892f36c277d0f7f258f4af39917e7264"
+  },
+  "dependency_versions_checksums_match_product": true,
+  "tooling_attempts_preserved": [
+    "compile type errors",
+    "libpython rpath",
+    "export map-shape assertion",
+    "private-field compile error",
+    "transitive patch drift: v5 not exact dependency evidence, v6 inherits product lock"
+  ],
+  "tooling_failures_not_product_failures": true,
+  "canonical_candidate_pending": true,
+  "P2_complete": false,
+  "performance_claim": false,
+  "scope": "Release edge checks native1/4; pinned debug-copy revision/generation/encoder faults, 64 scopes/7 resets; actual admitted native1 complete wire/delta/event and 28 authority checkpoints. Canonical exact world-write/step authority still running."
+}

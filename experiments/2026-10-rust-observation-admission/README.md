@@ -1,3 +1,5 @@
+> 当前有界执行：真实接纳native1 17382节点（54.23秒）、12个release短边界及4个锁依赖诊断故障测试通过。规范候选继续同PID；通过后仅一次90秒录制输入ABBA服务筛选，排除live heap/显示链，不称正式全宿主采用。见[证据](results/p2-targeted-admission.json)和[唯一筛选预注册](results/p3-single-service-screen-preregister.json)。
+
 > 2026-10-08 精简修订：普通完整参考两次已通过，不再重跑。旧no_reuse完整组按用户要求取消，7543节点前缀只归档不计通过。当前仅执行规范encoded候选并复用已核验的旧扩展完整指纹；targeted/实际接纳仍待完成。见[预注册](results/p2-streamlined-preregister-20261008.json)。早期矩阵描述为历史计划，已被本修订覆盖。
 
 > 2026-10-08恢复：原普通校验同PID继续，旧监督器/旧v2队列已退出；优先读[恢复记录](results/p2-supervisor-recovery-20261008.json)和[恢复预注册](results/p2-recovery-preregister-20261008.json)。新遥测和恢复父任务等待原组完成，无重跑。

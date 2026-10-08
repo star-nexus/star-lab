@@ -1,3 +1,5 @@
+> 2026-10-08 测试量修订（用户要求合理安排）：ordinary完整证据复用；仅保留当前规范encoded正确性。真实接纳native1和16个边界/故障检查已通过，范围见实验results/p2-targeted-admission.json。候选通过后只做一次native1移动世界服务筛选，使用现有完整90秒接纳输入（2617tick）。筛选排除live heap与显示链，不满足原正式全宿主验收或默认采用；无收益停止，干扰inconclusive，有收益才补足正式三轮。native4/300秒窗口不自动展开。
+
 # E8：已接纳观测请求的只读段复用算法方案（2026-10-07）
 
 当前执行：P0/P1已归档，P2串行完整轨迹校验执行中、targeted待完成；默认关闭、无正式收益结论。以下算法保留原预注册边界。对应[整体评估](rust-performance-optimization-assessment.md)第三项。目标保持5000 Units＋1000 Agents；5000 Agents暂缓。

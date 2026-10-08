@@ -1,3 +1,9 @@
+## E8 有界后续执行（2026-10-08，当前）
+
+接纳/边界检查已归档；等待现有规范候选后只做一次服务收益筛选。优先读 `/Users/liyang/Developer/star-lab-runs/e8-p3-single-screen-20261008/progress.json`、`parent.log`、`screen.json` 和 `screen.monitor.json`，不要重启任何已开始的测试。等待原规范候选父任务退出后核验原始哈希，复用真实接纳与16个边界/故障检查；仅做一轮native1完整90秒录制输入的服务ABBA筛选，不自动加轮或进入正式窗口。筛选包括cache开关、wire/bytes、decode与固定消费，排除实时heap扫描及显示apply/render/submit，不是完整宿主收益门槛；计时受压力干扰则inconclusive，不自动补跑。默认/GAP/容量/Frontier不变。
+
+进度：`完整参考 █ | 规范候选 ▓ | 接纳/边界 █ | 一轮收益筛选 ░ | 正式宿主/默认 ░`。
+
 ## E8 精简候选校验（2026-10-08，当前）
 
 普通完整参考已归档复用；仅运行规范 encoded 候选，targeted/实际接纳待完成。恢复先读 `/Users/liyang/Developer/star-lab-runs/e8-p2-streamlined-20261008/candidate-progress.json`、`encoded-t1.progress.json`、`encoded-t1.monitor.json` 与 `parent.log`。普通完整轨迹两次结果已归档，不重跑；no_reuse 冗长组按用户精简要求取消，未完成前缀保留而不算通过。候选复用独立旧二进制的已核验完整状态指纹，仍检查每个写入/step、单条或段末全状态、全部响应/展示及逐查询计数。本阶段仅规范轨迹候选，targeted 与实际接纳校验仍待完成；P2不宣称完成，P3/默认未启动。不因压力自动暂停/终止；不关闭GAP，不改容量/Frontier/5000Agents暂缓。

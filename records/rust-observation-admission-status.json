@@ -1,5 +1,5 @@
 {
-  "stage": "普通完整参考已归档复用；仅运行规范 encoded 候选，targeted/实际接纳待完成",
+  "stage": "接纳/边界检查已归档；等待现有规范候选后只做一次服务收益筛选",
   "source_sha": "11d9927f7a1bffa32dd85c9009944424826508e5",
   "plan": "records/rust-observation-admission-plan.md",
   "identity": "records/rust-observation-admission-plan.json",
@@ -8,8 +8,8 @@
     "algorithm_plan": "complete",
     "P0_admission_diagnosis": "complete; 1943 measured queries; candidate coverage about 57%; full replay passed",
     "P1_owned_cache_prototype": "complete; 88 contracts and independent short host oracle passed",
-    "P2_correctness": "普通完整参考已归档复用；仅运行规范 encoded 候选，targeted/实际接纳待完成",
-    "P3_performance": "not started",
+    "P2_correctness": "Canonical encoded native1 running; actual admission native1 and 16 edges/faults complete within declared scope",
+    "P3_performance": "queued after P2; no matrix",
     "P4_conditional_window": "not started",
     "default_adoption": "not enabled"
   },
@@ -42,5 +42,7 @@
   ],
   "preregister": "experiments/2026-10-rust-observation-admission/results/p2-streamlined-preregister-20261008.json",
   "scope_reduction_authorization": "2026-10-08 user rejects redundant repeat, active no_reuse intentionally truncated",
-  "prior_full_reference_count": 2
+  "prior_full_reference_count": 2,
+  "followup_runs": "/Users/liyang/Developer/star-lab-runs/e8-p3-single-screen-20261008",
+  "followup_preregister": "experiments/2026-10-rust-observation-admission/results/p3-single-service-screen-preregister.json"
 }

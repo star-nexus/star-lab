@@ -1,0 +1,119 @@
+{
+  "experiment": {
+    "id": "2026-10-rust-observation-service",
+    "title": "E8 observation service allocation and ECS scan research",
+    "date": "2026-10-08",
+    "completed": "2026-10-09",
+    "status": "reproduced; service gain supported; combined adoption gate failed"
+  },
+  "source": {
+    "repository": "star-nexus/star",
+    "problem_commit": "11d9927f7a1bffa32dd85c9009944424826508e5",
+    "measurement_commits": [
+      "455ab9937de5134fcd1ac70610544c1b0a43b9f3",
+      "8c2afd7153ebc8ec6c80dd9f3a1406be440405e0"
+    ],
+    "fix_commit": "8c2afd7153ebc8ec6c80dd9f3a1406be440405e0",
+    "validated_commit": null,
+    "validated_tag": null,
+    "branch_at_time": "codex/rust-ecs-parallel",
+    "validation_scope": "131 targeted contracts and full short accepted-input replay; no new canonical 9880-tick, native4 live-host, or default validation",
+    "bundles": "runs/scan-source.bundle requires 11d9927; runs/census/source.bundle requires 455ab99; parent source bundle in canonical E8 accounting archive"
+  },
+  "hardware": {
+    "machine": "Mac16,10 Apple M4",
+    "cpu": "10 physical/logical",
+    "memory_bytes": 17179869184,
+    "gpu": "integrated Apple M4",
+    "display": "not rendered in this service screen"
+  },
+  "software": {
+    "os": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.12 Anaconda CPython",
+    "numpy": "2.3.2",
+    "rust": "1.98.1",
+    "maturin": "1.15.0",
+    "uv": "0.12.5",
+    "uv_lock_sha256": "c3f1b848acf98504c9a2f6c0234ac66163c9f26dc06128986e5a0b1aeb7379ae",
+    "cargo_lock_sha256": "e86cb2bee26f1d95c1cde0abec61bdea575a73ae7218db60b7f06be735f15188"
+  },
+  "scenario": {
+    "name": "recorded canonical window admission",
+    "resident_units": 5000,
+    "agents": 1000,
+    "fog": true
+  },
+  "workload": {
+    "seed": 42,
+    "requests": 12148,
+    "ticks": 2617,
+    "observations": 3010,
+    "operations": 17382,
+    "retained_scopes": 750,
+    "max_scope_requests": 4,
+    "threads": 1,
+    "display_consumer": "not applied/rendered; delta extracted",
+    "input_canonical": "2026-10-rust-observation-admission/artifacts/e8-p0-20261007-raw.zip",
+    "trace_sha256": "27a890fd65cff5cac5eb653f25e4490d22e23558826c52da84bfa4427e0c61b4",
+    "admission_sha256": "c11c41d18a669e6769fabf44226bc3a9174da6709396fff10f88960ac432d9d2"
+  },
+  "measurement": {
+    "pairing": "four persistent worlds, ABBA/BAAB alternate per enclosing tick",
+    "warmup": "all recorded warm ticks retained; descriptive warm label first900 ticks",
+    "sustained": "complete recorded90s input, each screen about40s wall time",
+    "gc_policy": "same ordinary interpreter policy; no forced collection or sample pruning",
+    "resource_policy": "telemetry only; no pause/kill/timeout; all recorded pressure normal",
+    "guards_required": [
+      "all response wire hashes match independent input",
+      "four-side full deltas/events and consumer commands equal",
+      "final full state matches input",
+      "source/extension/tool identity",
+      "all 3010/2617 samples; complete phase accounting;750 opens/drops each side",
+      "weighted100-tick/10000-bootstrap/seed42 intervals",
+      "service>=2%, both CI lower>0, pooled/worst P99 non-regression"
+    ]
+  },
+  "variables": {
+    "independent": [
+      "entity_ref vs baseline, first screen",
+      "borrowed_census vs baseline, second screen, not stacked"
+    ],
+    "controlled": [
+      "same binary within each screen",
+      "same inputs/cache scopes/consumption",
+      "same native1 and four persistent worlds"
+    ]
+  },
+  "artifacts": {
+    "formal": [
+      "results/complete.json",
+      "results/preregister.json",
+      "results/census-preregister.json",
+      "results/diagnosis.json",
+      "results/scan.json",
+      "results/scan-analysis.json",
+      "results/census-screen.json",
+      "results/census-analysis.json",
+      "results/census-profile.json",
+      "results/integrity.json",
+      "results/portable-integrity.json"
+    ],
+    "raw": {
+      "path": "artifacts/e8-service-20261008-09-raw.zip",
+      "sha256": "975774d1fb3d28b6cd6de2e57d6891b154a51d8f6cd3cd543c6ac9cb933a48ed",
+      "bytes": 4197618,
+      "inner_checked_members": 38
+    },
+    "canonical_parent": "2026-10-rust-observation-admission/artifacts/e8-accounting-v2-20261007-raw.zip"
+  },
+  "headline": {
+    "problem_signature": "Cold and singleton service still builds census and faction facts; no completely reused requested panel in recorded diagnostic",
+    "root_cause": "Census eagerly clones String map keys per Unit; borrowed key accumulation removes temporary copies, owned cache remains",
+    "resolution": "opt-in borrowed_census retained; default baseline unchanged",
+    "result": "service -9.1569%, selected total -1.6956% but total CI crosses zero; not adopted"
+  },
+  "revisit_when": [
+    "explicit complete-host/total-cost investigation shows useful stable net gain",
+    "new workload changes number of factions or cache hit mix"
+  ]
+}

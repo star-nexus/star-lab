@@ -1,0 +1,247 @@
+{
+  "passed": true,
+  "failure": null,
+  "diagnostic_only": true,
+  "counts": {
+    "requests": 12148,
+    "operations": 17382,
+    "ticks": 2617,
+    "presentation": 2617,
+    "contexts": 1988,
+    "queries": 3010
+  },
+  "elapsed_s": 12.637944750022143,
+  "extension_sha256": "9bb2fa4412bc810fbd751c42f525614f8cddb42e8c136612a51495fa0679f0d9",
+  "tool_sha256": "09c10ebc6be62f7d61ab5625ad2850342d042865ce815a7c4527d020c693313e",
+  "inputs": {
+    "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007/window.trace.json.gz": "27a890fd65cff5cac5eb653f25e4490d22e23558826c52da84bfa4427e0c61b4",
+    "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007/window.admission.json": "c11c41d18a669e6769fabf44226bc3a9174da6709396fff10f88960ac432d9d2"
+  },
+  "summary": {
+    "role": {
+      "segment_first": {
+        "count": 750,
+        "phases_us": {
+          "native": {
+            "count": 750,
+            "min": 896.959,
+            "avg": 1149.5703906666665,
+            "p50": 1133.458,
+            "p95": 1344.708,
+            "p99": 1551.25,
+            "max": 2021.875
+          },
+          "bytes": {
+            "count": 750,
+            "min": 2.167,
+            "avg": 6.9218839999999995,
+            "p50": 3.0,
+            "p95": 20.791,
+            "p99": 115.167,
+            "max": 224.333
+          },
+          "decode": {
+            "count": 750,
+            "min": 581.834,
+            "avg": 989.0579453333334,
+            "p50": 785.083,
+            "p95": 907.667,
+            "p99": 972.792,
+            "max": 80517.5
+          },
+          "consume": {
+            "count": 750,
+            "min": 4.0,
+            "avg": 6.568438666666666,
+            "p50": 6.083,
+            "p95": 10.083,
+            "p99": 15.292,
+            "max": 32.375
+          }
+        }
+      },
+      "segment_later": {
+        "count": 1022,
+        "phases_us": {
+          "native": {
+            "count": 1022,
+            "min": 152.666,
+            "avg": 566.3001771037182,
+            "p50": 708.125,
+            "p95": 910.917,
+            "p99": 1071.458,
+            "max": 1346.792
+          },
+          "bytes": {
+            "count": 1022,
+            "min": 2.041,
+            "avg": 4.201647749510763,
+            "p50": 2.75,
+            "p95": 9.583,
+            "p99": 42.167,
+            "max": 112.209
+          },
+          "decode": {
+            "count": 1022,
+            "min": 566.209,
+            "avg": 900.9300978473581,
+            "p50": 751.791,
+            "p95": 876.833,
+            "p99": 985.25,
+            "max": 79524.916
+          },
+          "consume": {
+            "count": 1022,
+            "min": 3.541,
+            "avg": 5.685989236790607,
+            "p50": 5.291,
+            "p95": 8.166,
+            "p99": 13.584,
+            "max": 40.458
+          }
+        }
+      },
+      "singleton": {
+        "count": 1238,
+        "phases_us": {
+          "native": {
+            "count": 1238,
+            "min": 909.083,
+            "avg": 1159.4430662358643,
+            "p50": 1146.625,
+            "p95": 1351.541,
+            "p99": 1535.291,
+            "max": 2670.833
+          },
+          "bytes": {
+            "count": 1238,
+            "min": 2.125,
+            "avg": 6.54088691437803,
+            "p50": 3.0,
+            "p95": 18.875,
+            "p99": 96.083,
+            "max": 191.208
+          },
+          "decode": {
+            "count": 1238,
+            "min": 576.625,
+            "avg": 780.7626930533119,
+            "p50": 783.875,
+            "p95": 922.084,
+            "p99": 1007.542,
+            "max": 1147.666
+          },
+          "consume": {
+            "count": 1238,
+            "min": 4.25,
+            "avg": 6.4077003231017775,
+            "p50": 5.958,
+            "p95": 9.667,
+            "p99": 12.958,
+            "max": 18.542
+          }
+        }
+      }
+    },
+    "reuse": {
+      "public_built": {
+        "count": 2604,
+        "phases_us": {
+          "native": {
+            "count": 2604,
+            "min": 538.958,
+            "avg": 1070.0040499231952,
+            "p50": 1108.834,
+            "p95": 1323.667,
+            "p99": 1513.75,
+            "max": 2670.833
+          },
+          "bytes": {
+            "count": 2604,
+            "min": 2.041,
+            "avg": 6.1467119815668205,
+            "p50": 2.917,
+            "p95": 15.083,
+            "p99": 85.75,
+            "max": 224.333
+          },
+          "decode": {
+            "count": 2604,
+            "min": 566.209,
+            "avg": 864.4300307219661,
+            "p50": 775.291,
+            "p95": 912.25,
+            "p99": 994.542,
+            "max": 80517.5
+          },
+          "consume": {
+            "count": 2604,
+            "min": 4.0,
+            "avg": 6.309455069124424,
+            "p50": 5.833,
+            "p95": 9.666,
+            "p99": 13.791,
+            "max": 32.375
+          }
+        }
+      },
+      "public_reused_panels_built": {
+        "count": 406,
+        "phases_us": {
+          "native": {
+            "count": 406,
+            "min": 152.666,
+            "avg": 221.76488669950737,
+            "p50": 215.958,
+            "p95": 285.292,
+            "p99": 336.042,
+            "max": 537.917
+          },
+          "bytes": {
+            "count": 406,
+            "min": 2.083,
+            "avg": 3.884426108374384,
+            "p50": 2.708,
+            "p95": 4.25,
+            "p99": 38.25,
+            "max": 112.209
+          },
+          "decode": {
+            "count": 406,
+            "min": 570.208,
+            "avg": 931.4099334975369,
+            "p50": 749.084,
+            "p95": 864.625,
+            "p99": 936.75,
+            "max": 76588.208
+          },
+          "consume": {
+            "count": 406,
+            "min": 3.541,
+            "avg": 5.518034482758621,
+            "p50": 5.083,
+            "p95": 7.5,
+            "p99": 10.833,
+            "max": 40.458
+          }
+        }
+      }
+    }
+  },
+  "bare_handler_samples": {
+    "4-mixed": 5,
+    "1-same": 5,
+    "2-mixed": 5,
+    "3-mixed": 5,
+    "2-same": 5,
+    "3-same": 5,
+    "4-same": 1
+  },
+  "raw": {
+    "file": "diagnosis.raw.json.gz",
+    "sha256": "f1f31977d83c5cb9d099322882fa28f0531a23ba1a0773f9cb23e9e8c49adfa1"
+  },
+  "scope": "Singletons use 1-request diagnostic scope; timing includes diagnostic cache/accounting overhead. Fresh Session consumer, fixed recorded accepted input; not live pump.",
+  "performance_claim": false,
+  "default_adoption": false
+}

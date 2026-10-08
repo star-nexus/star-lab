@@ -1,0 +1,87 @@
+{
+  "passed": true,
+  "reports": [
+    {
+      "factor": "shared entity lookup",
+      "passed": true,
+      "queries": 3010,
+      "ticks": 2617,
+      "scopes_per_side": 750,
+      "screening_positive": false
+    },
+    {
+      "factor": "borrowed census keys",
+      "passed": true,
+      "queries": 3010,
+      "ticks": 2617,
+      "scopes_per_side": 750,
+      "screening_positive": false
+    }
+  ],
+  "files": [
+    {
+      "path": "/Users/liyang/Developer/star-lab-runs/e8-service-20261008/wheels/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl::star_native/_native.cpython-313-darwin.so",
+      "sha256": "ef0e10a668d9a1048e2007d855c6a6fa87077ea6f67c419db9424941f60fd619",
+      "bytes": 3706336
+    },
+    {
+      "path": "/Users/liyang/Developer/star-lab-runs/e8-service-20261008/scan.json",
+      "sha256": "6cf484d303dc941d3df61a948eadc7dcb7f3d8f3452085cc7c3f4f16e79ee7da",
+      "bytes": 1889
+    },
+    {
+      "path": "/Users/liyang/Developer/star-lab-runs/e8-service-20261008/scan-analysis.json",
+      "sha256": "59c711b33cda3504530d9ebab82b42967c8ce5bcfb103f37ee476c2a130d88ca",
+      "bytes": 13628
+    },
+    {
+      "path": "/Users/liyang/Developer/star-lab-runs/e8-service-20261008/scan.monitor.json",
+      "sha256": "cf076cb8e3243ebeac7d7bf9cb699d38ec133350ce12b334323ec464fd98283b",
+      "bytes": 2499
+    },
+    {
+      "path": "/Users/liyang/Developer/star-lab-runs/e8-service-20261008/scan.samples.json.gz",
+      "sha256": "c2b4199c0b63105fabce36d6c5f80138fcda49f292923a4bc719220675438356",
+      "bytes": 322734
+    },
+    {
+      "path": "/Users/liyang/Developer/star-lab-runs/e8-service-20261008/wheels/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+      "sha256": "cc4540f894ba25e7397a1ead6f32a8a4786bd3b79d09702ea2d559271b520688",
+      "bytes": 1580119
+    },
+    {
+      "path": "/Users/liyang/Developer/star-lab-runs/e8-service-20261008/census/wheels/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl::star_native/_native.cpython-313-darwin.so",
+      "sha256": "c6a60a42fdafeee481620e89248a1a8604b7e3b3835b7b2a0f43053999977d88",
+      "bytes": 3729648
+    },
+    {
+      "path": "/Users/liyang/Developer/star-lab-runs/e8-service-20261008/census/screen.json",
+      "sha256": "2303a018d5900dff2abc7ae3a8f79ee4406479e9998b1ef0020b1922a815d1a2",
+      "bytes": 2064
+    },
+    {
+      "path": "/Users/liyang/Developer/star-lab-runs/e8-service-20261008/census/analysis.json",
+      "sha256": "f77099ead516e2705112a3df1ca9de314ae3cd0612c1a39efc884753dd77d1e0",
+      "bytes": 13623
+    },
+    {
+      "path": "/Users/liyang/Developer/star-lab-runs/e8-service-20261008/census/screen.monitor.json",
+      "sha256": "0ef24266300cb0f951d4ccaaa5f221128521f20de8d121563996c5e940c0d226",
+      "bytes": 2521
+    },
+    {
+      "path": "/Users/liyang/Developer/star-lab-runs/e8-service-20261008/census/screen.samples.json.gz",
+      "sha256": "7804ce6ae11036661a995eb32ad3937036ef3d38c4f1d39127eec06f921d757a",
+      "bytes": 338535
+    },
+    {
+      "path": "/Users/liyang/Developer/star-lab-runs/e8-service-20261008/census/wheels/star_native-0.1.0-cp313-cp313-macosx_11_0_arm64.whl",
+      "sha256": "cfcbc0f1daae0241e9f7466d098077e205c92427832242550d37fd14ec2a1742",
+      "bytes": 1592552
+    }
+  ],
+  "profile_rows": 20,
+  "diagnostic_queries": 3010,
+  "method": "Independent reconstruction of 27-block weighted bootstrap and nearest-rank raw quantiles; no kernel replay",
+  "tool_sha256": "b053229e88f7b26dcd85ededbf14f9aeecc35153cccdb82300d9def0858824d9"
+}

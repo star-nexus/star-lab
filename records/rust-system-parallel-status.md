@@ -1,3 +1,20 @@
+## E8 观测服务专项首轮完成（2026-10-09，当前）
+
+活动源 `8c2afd7153ebc8ec6c80dd9f3a1406be440405e0`，研究开关默认 baseline；entity_ref 和 borrowed_census 互斥。原49项删除、两个冻结目录及历史标签、已安装3e0ebb扩展保持，不push/merge。
+
+完成成本诊断和两个独立短筛选，不重跑长P2或补跑择优。最终131项契约通过；每个因子12148请求/2617 tick/3010观测、四持续World、同二进制ABBA/BAAB，全部响应wire/增量/事件/消费命令/最终状态与原输入或四侧一致。新源码验证范围仅此次契约和短轨迹，不自动继承旧11d9927全9880-tick/native4宿主/像素范围。
+
+- entity_ref：服务+2.773%，改善区间跨零，总工作−3.138%；不采用。
+- borrowed_census：服务2.3733→2.1560ms，减少9.1569%，改善区间0.1561–0.2884ms；服务P99 3.4066→3.0226ms。总工作减少1.6956%，区间−0.0598–0.1878ms跨零，组合门槛未过，默认关闭。小诊断census0.3795→0.1717ms仅支持归因，不是宿主收益。
+
+恢复先读 `experiments/2026-10-rust-observation-service/README.md`、analysis/decision、results/complete.json、census-analysis.json 和 portable-integrity.json。原始包 `artifacts/e8-service-20261008-09-raw.zip` SHA `975774d1fb3d28b6cd6de2e57d6891b154a51d8f6cd3cd543c6ac9cb933a48ed`，38个内部成员及外部校验通过；含原始样本、wheel、增量源bundle和冻结工具。规范输入/11d9927父源继续引用原E8包，不重复归档。
+
+所有测试和监督进程已结束，不从progress最后running checkpoint重启。持久目录 `/Users/liyang/Developer/star-lab-runs/e8-service-20261008`。此轮停止于组合门槛；保留census服务候选供有界总成本/宿主研究，不自动重跑、叠加或加矩阵。默认/G009及既有GAP/容量/Frontier保持；5000Agents暂缓。
+
+进度：`诊断 █████ 100% | 原型 █████ 100% | 相关正确性 █████ 100% | 两项筛选 █████ 100% | 采用门槛 未通过`。
+
+以下为此前 E8 源码与阶段的历史记录，以各自 source SHA 为适用范围。
+
 ## E8 完整Lab宿主筛选结束（2026-10-08，当前）
 
 4/4次ABBA完整结束，全部原运行guards通过且全部pressure normal；每次正式1800帧，观测1944/1943/1944/1944条。所有预热、正式样本、慢尾、失败冒烟guard记录均保留，116项归档/内外哈希及非配对100帧bootstrap统计独立复算通过。源11d9927、9bb2fa隔离扩展与d475e23工具节点固定；活动/冻结HEAD、原49删除及安装扩展3e0ebb均保留。

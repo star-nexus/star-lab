@@ -1,0 +1,509 @@
+{
+  "timing_resource_valid": true,
+  "metrics": {
+    "query_service": {
+      "baseline": {
+        "samples": 6020,
+        "mean_ns": 2373324.035548173,
+        "p99_ns": 3406625.0,
+        "max_ns": 99847916.0
+      },
+      "candidate": {
+        "samples": 6020,
+        "mean_ns": 2156000.7553156144,
+        "p99_ns": 3022625.0,
+        "max_ns": 97148292.0
+      },
+      "sides": [
+        {
+          "samples": 3010,
+          "mean_ns": 2401024.143189369,
+          "p99_ns": 3398666.0,
+          "max_ns": 98310750.0
+        },
+        {
+          "samples": 3010,
+          "mean_ns": 2199625.1411960134,
+          "p99_ns": 3061125.0,
+          "max_ns": 97148292.0
+        },
+        {
+          "samples": 3010,
+          "mean_ns": 2112376.369435216,
+          "p99_ns": 2957833.0,
+          "max_ns": 78542875.0
+        },
+        {
+          "samples": 3010,
+          "mean_ns": 2345623.9279069765,
+          "p99_ns": 3407542.0,
+          "max_ns": 99847916.0
+        }
+      ],
+      "improvement_percent": 9.156915658268401,
+      "ci95_improvement_ns": [
+        156058.44580000103,
+        288351.03062680364
+      ],
+      "passed": true,
+      "p99_passed": true,
+      "block_counts": [
+        139.0,
+        112.0,
+        99.0,
+        117.0,
+        99.0,
+        124.0,
+        127.0,
+        163.0,
+        119.0,
+        72.0,
+        98.0,
+        115.0,
+        91.0,
+        125.0,
+        137.0,
+        125.0,
+        116.0,
+        98.0,
+        110.0,
+        106.0,
+        91.0,
+        134.0,
+        122.0,
+        113.0,
+        114.0,
+        134.0,
+        10.0
+      ]
+    },
+    "selected_total_work": {
+      "baseline": {
+        "samples": 5234,
+        "mean_ns": 3657741.456247612,
+        "p99_ns": 9732124.0,
+        "max_ns": 105626249.0
+      },
+      "candidate": {
+        "samples": 5234,
+        "mean_ns": 3595720.401413833,
+        "p99_ns": 8946002.0,
+        "max_ns": 108987877.0
+      },
+      "sides": [
+        {
+          "samples": 2617,
+          "mean_ns": 3712610.348108521,
+          "p99_ns": 9807958.0,
+          "max_ns": 99198209.0
+        },
+        {
+          "samples": 2617,
+          "mean_ns": 3665171.953763852,
+          "p99_ns": 9242877.0,
+          "max_ns": 102974290.0
+        },
+        {
+          "samples": 2617,
+          "mean_ns": 3526268.8490638137,
+          "p99_ns": 8745499.0,
+          "max_ns": 108987877.0
+        },
+        {
+          "samples": 2617,
+          "mean_ns": 3602872.564386702,
+          "p99_ns": 9682916.0,
+          "max_ns": 105626249.0
+        }
+      ],
+      "improvement_percent": 1.6956106814997534,
+      "ci95_improvement_ns": [
+        -59809.54533820709,
+        187774.8772684831
+      ],
+      "passed": false,
+      "p99_passed": true,
+      "block_counts": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        17.0
+      ]
+    }
+  },
+  "descriptions": {
+    "singleton": {
+      "count": 1238,
+      "service_sides": [
+        {
+          "samples": 1238,
+          "mean_ns": 2788668.5323101776,
+          "p99_ns": 3456041.0,
+          "max_ns": 98310750.0
+        },
+        {
+          "samples": 1238,
+          "mean_ns": 2403615.891760905,
+          "p99_ns": 3170625.0,
+          "max_ns": 4119166.0
+        },
+        {
+          "samples": 1238,
+          "mean_ns": 2318483.366720517,
+          "p99_ns": 3050958.0,
+          "max_ns": 3809916.0
+        },
+        {
+          "samples": 1238,
+          "mean_ns": 2729039.98546042,
+          "p99_ns": 3577375.0,
+          "max_ns": 99847916.0
+        }
+      ],
+      "mean_phases_ns": [
+        {
+          "open_ns": 0.0,
+          "wire_interval_ns": 1788550.755250404,
+          "bytes_ns": 7166.344103392568,
+          "decode_ns": 981398.3836833603,
+          "consume_ns": 10540.666397415185,
+          "drop_ns": 0.0,
+          "host_overhead_ns": 1012.3828756058158
+        },
+        {
+          "open_ns": 0.0,
+          "wire_interval_ns": 1561802.4329563812,
+          "bytes_ns": 7254.587237479806,
+          "decode_ns": 823168.1025848142,
+          "consume_ns": 10390.422455573505,
+          "drop_ns": 0.0,
+          "host_overhead_ns": 1000.3465266558966
+        },
+        {
+          "open_ns": 0.0,
+          "wire_interval_ns": 1495220.0323101778,
+          "bytes_ns": 8482.550080775445,
+          "decode_ns": 805824.1704361874,
+          "consume_ns": 8268.71324717286,
+          "drop_ns": 0.0,
+          "host_overhead_ns": 687.9006462035542
+        },
+        {
+          "open_ns": 0.0,
+          "wire_interval_ns": 1821905.4620355412,
+          "bytes_ns": 9627.612277867529,
+          "decode_ns": 888267.5113085622,
+          "consume_ns": 8566.298061389338,
+          "drop_ns": 0.0,
+          "host_overhead_ns": 673.1017770597738
+        }
+      ]
+    },
+    "segment_first": {
+      "count": 750,
+      "service_sides": [
+        {
+          "samples": 750,
+          "mean_ns": 2681991.772,
+          "p99_ns": 3315791.0,
+          "max_ns": 93978375.0
+        },
+        {
+          "samples": 750,
+          "mean_ns": 2326102.084,
+          "p99_ns": 2973083.0,
+          "max_ns": 3291459.0
+        },
+        {
+          "samples": 750,
+          "mean_ns": 2324145.604,
+          "p99_ns": 2900834.0,
+          "max_ns": 78542875.0
+        },
+        {
+          "samples": 750,
+          "mean_ns": 2561626.488,
+          "p99_ns": 3306500.0,
+          "max_ns": 3486833.0
+        }
+      ],
+      "mean_phases_ns": [
+        {
+          "open_ns": 5368.105333333333,
+          "wire_interval_ns": 1713670.8933333333,
+          "bytes_ns": 9024.701333333333,
+          "decode_ns": 942487.1253333334,
+          "consume_ns": 10939.937333333333,
+          "drop_ns": 0.0,
+          "host_overhead_ns": 501.00933333333336
+        },
+        {
+          "open_ns": 5412.209333333333,
+          "wire_interval_ns": 1483559.8506666666,
+          "bytes_ns": 9181.490666666667,
+          "decode_ns": 816596.0106666667,
+          "consume_ns": 10856.14,
+          "drop_ns": 0.0,
+          "host_overhead_ns": 496.3826666666667
+        },
+        {
+          "open_ns": 3471.316,
+          "wire_interval_ns": 1406771.9453333332,
+          "bytes_ns": 8262.562666666667,
+          "decode_ns": 897087.464,
+          "consume_ns": 8207.984,
+          "drop_ns": 0.0,
+          "host_overhead_ns": 344.332
+        },
+        {
+          "open_ns": 3426.1666666666665,
+          "wire_interval_ns": 1743726.2573333334,
+          "bytes_ns": 8458.725333333334,
+          "decode_ns": 797072.3613333333,
+          "consume_ns": 8595.590666666667,
+          "drop_ns": 0.0,
+          "host_overhead_ns": 347.38666666666666
+        }
+      ]
+    },
+    "segment_later": {
+      "count": 1022,
+      "service_sides": [
+        {
+          "samples": 1022,
+          "mean_ns": 1725261.4471624265,
+          "p99_ns": 2703125.0,
+          "max_ns": 2858125.0
+        },
+        {
+          "samples": 1022,
+          "mean_ns": 1859705.1252446184,
+          "p99_ns": 2740125.0,
+          "max_ns": 97148292.0
+        },
+        {
+          "samples": 1022,
+          "mean_ns": 1707300.6467710373,
+          "p99_ns": 2689042.0,
+          "max_ns": 3147208.0
+        },
+        {
+          "samples": 1022,
+          "mean_ns": 1722658.1751467711,
+          "p99_ns": 2807083.0,
+          "max_ns": 2979917.0
+        }
+      ],
+      "mean_phases_ns": [
+        {
+          "open_ns": 0.0,
+          "wire_interval_ns": 746642.2906066537,
+          "bytes_ns": 5810.10469667319,
+          "decode_ns": 782798.7035225049,
+          "consume_ns": 7311.905088062622,
+          "drop_ns": 181967.5362035225,
+          "host_overhead_ns": 730.9070450097847
+        },
+        {
+          "open_ns": 0.0,
+          "wire_interval_ns": 788578.656555773,
+          "bytes_ns": 5576.932485322896,
+          "decode_ns": 876418.6653620353,
+          "consume_ns": 7267.003913894325,
+          "drop_ns": 181148.198630137,
+          "host_overhead_ns": 715.6682974559687
+        },
+        {
+          "open_ns": 0.0,
+          "wire_interval_ns": 744963.5988258317,
+          "bytes_ns": 6993.946183953033,
+          "decode_ns": 776825.8111545988,
+          "consume_ns": 6911.374755381605,
+          "drop_ns": 170950.53522504892,
+          "host_overhead_ns": 655.380626223092
+        },
+        {
+          "open_ns": 0.0,
+          "wire_interval_ns": 757055.404109589,
+          "bytes_ns": 7115.13698630137,
+          "decode_ns": 779550.2964774951,
+          "consume_ns": 6931.554794520548,
+          "drop_ns": 171342.28473581214,
+          "host_overhead_ns": 663.4980430528376
+        }
+      ]
+    },
+    "warm": {
+      "count": 1099,
+      "service_sides": [
+        {
+          "samples": 1099,
+          "mean_ns": 1953152.286624204,
+          "p99_ns": 2785042.0,
+          "max_ns": 3423417.0
+        },
+        {
+          "samples": 1099,
+          "mean_ns": 1862656.9872611465,
+          "p99_ns": 2560416.0,
+          "max_ns": 2903792.0
+        },
+        {
+          "samples": 1099,
+          "mean_ns": 1869179.5777979982,
+          "p99_ns": 2501917.0,
+          "max_ns": 78542875.0
+        },
+        {
+          "samples": 1099,
+          "mean_ns": 2058691.3039126478,
+          "p99_ns": 2789833.0,
+          "max_ns": 99847916.0
+        }
+      ],
+      "mean_phases_ns": [
+        {
+          "open_ns": 1292.958143767061,
+          "wire_interval_ns": 1170262.1119199272,
+          "bytes_ns": 4929.843494085532,
+          "decode_ns": 716301.8662420382,
+          "consume_ns": 8652.043676069154,
+          "drop_ns": 51002.717925386714,
+          "host_overhead_ns": 710.7452229299363
+        },
+        {
+          "open_ns": 1255.0400363967242,
+          "wire_interval_ns": 1083149.6296633303,
+          "bytes_ns": 5503.426751592357,
+          "decode_ns": 711826.1537761601,
+          "consume_ns": 8550.166515013649,
+          "drop_ns": 51677.51410373067,
+          "host_overhead_ns": 695.0564149226569
+        },
+        {
+          "open_ns": 769.666060054595,
+          "wire_interval_ns": 1032651.2638762512,
+          "bytes_ns": 5842.513193812557,
+          "decode_ns": 772851.0118289354,
+          "consume_ns": 7130.160145586897,
+          "drop_ns": 49408.93357597816,
+          "host_overhead_ns": 526.0291173794359
+        },
+        {
+          "open_ns": 779.3903548680619,
+          "wire_interval_ns": 1200652.6478616924,
+          "bytes_ns": 6052.217470427661,
+          "decode_ns": 793519.4713375797,
+          "consume_ns": 7250.899909008189,
+          "drop_ns": 49909.26933575978,
+          "host_overhead_ns": 527.4076433121019
+        }
+      ]
+    },
+    "steady": {
+      "count": 1911,
+      "service_sides": [
+        {
+          "samples": 1911,
+          "mean_ns": 2658591.4746206175,
+          "p99_ns": 3430708.0,
+          "max_ns": 98310750.0
+        },
+        {
+          "samples": 1911,
+          "mean_ns": 2393412.687598116,
+          "p99_ns": 3116500.0,
+          "max_ns": 97148292.0
+        },
+        {
+          "samples": 1911,
+          "mean_ns": 2252236.795395081,
+          "p99_ns": 3018000.0,
+          "max_ns": 3809916.0
+        },
+        {
+          "samples": 1911,
+          "mean_ns": 2510636.462585034,
+          "p99_ns": 3442125.0,
+          "max_ns": 4450541.0
+        }
+      ],
+      "mean_phases_ns": [
+        {
+          "open_ns": 1363.222396650968,
+          "wire_interval_ns": 1557524.5238095238,
+          "bytes_ns": 8456.561486132914,
+          "decode_ns": 1012371.0450026165,
+          "consume_ns": 10056.760334903192,
+          "drop_ns": 67984.73835688121,
+          "host_overhead_ns": 834.6232339089482
+        },
+        {
+          "open_ns": 1402.3380429094714,
+          "wire_interval_ns": 1392845.2349555206,
+          "bytes_ns": 8120.699110413396,
+          "decode_ns": 913098.9283097854,
+          "consume_ns": 9961.11616954474,
+          "drop_ns": 67158.48822605965,
+          "host_overhead_ns": 825.8827838827839
+        },
+        {
+          "open_ns": 919.7404500261644,
+          "wire_interval_ns": 1325290.6425954998,
+          "bytes_ns": 9118.372579801151,
+          "decode_ns": 845096.0952380953,
+          "consume_ns": 8173.748822605966,
+          "drop_ns": 63009.43432757718,
+          "host_overhead_ns": 628.7613814756672
+        },
+        {
+          "open_ns": 896.4285714285714,
+          "wire_interval_ns": 1579019.89429618,
+          "bytes_ns": 9881.376766091053,
+          "decode_ns": 848823.6284667713,
+          "consume_ns": 8460.010465724752,
+          "drop_ns": 62931.20251177394,
+          "host_overhead_ns": 623.9215070643642
+        }
+      ]
+    }
+  },
+  "screening_positive": false,
+  "decision": "stop this census ownership factor",
+  "method": {
+    "block_ticks": 100,
+    "bootstrap": 10000,
+    "seed": 42,
+    "partial_block_actual_counts": true,
+    "query_min_improvement_percent": 2,
+    "p99": "nearest rank, pooled plus worst-side envelope",
+    "all_warm_and_tails_retained": true
+  },
+  "scope": "Moving-world census ownership service screen only (open/drop charged exactly once); excludes live heap admission scan and display apply/render/submit",
+  "default_adoption": false,
+  "formal_full_host_acceptance": false,
+  "automatic_retry": false
+}

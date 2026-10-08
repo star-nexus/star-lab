@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "failure": null,
+  "counts": {
+    "requests": 12148,
+    "operations": 17382,
+    "ticks": 2617,
+    "presentation": 2617,
+    "queries": 3010
+  },
+  "elapsed_s": 42.56447737501003,
+  "input_sha256": "27a890fd65cff5cac5eb653f25e4490d22e23558826c52da84bfa4427e0c61b4",
+  "admission_sha256": "c11c41d18a669e6769fabf44226bc3a9174da6709396fff10f88960ac432d9d2",
+  "extension_sha256": "c6a60a42fdafeee481620e89248a1a8604b7e3b3835b7b2a0f43053999977d88",
+  "raw": {
+    "file": "screen.samples.json.gz",
+    "sha256": "7804ce6ae11036661a995eb32ad3937036ef3d38c4f1d39127eec06f921d757a"
+  },
+  "tool_sha256": "c7bffc174d5b09151120fe92f7e9b29e425877b96cdf505e3c43b0424e95a402",
+  "consumer_sha256": "a7f3bb1a7817f487ac748f93f36c902426c104fcffdfef554cade73671eda45b",
+  "commands_sha256": [
+    "ea2061b79ed4d80d3746c96b04d71fc3f9659bb1dba1e2904d3fc34e6afb6385",
+    "ea2061b79ed4d80d3746c96b04d71fc3f9659bb1dba1e2904d3fc34e6afb6385",
+    "ea2061b79ed4d80d3746c96b04d71fc3f9659bb1dba1e2904d3fc34e6afb6385",
+    "ea2061b79ed4d80d3746c96b04d71fc3f9659bb1dba1e2904d3fc34e6afb6385"
+  ],
+  "smoke": false,
+  "modes": [
+    "baseline",
+    "borrowed_census",
+    "borrowed_census",
+    "baseline"
+  ],
+  "cache_mode": "segment_encoded on both sides",
+  "scope_open_count": [
+    750,
+    750,
+    750,
+    750
+  ],
+  "scope_drop_count": [
+    750,
+    750,
+    750,
+    750
+  ],
+  "source_sha": "8c2afd7153ebc8ec6c80dd9f3a1406be440405e0",
+  "pairing": "Four persistent worlds, per-tick alternating ABBA/BAAB",
+  "workload": "Complete accepted input including warm and all tails; fixed fresh-session deterministic consumer at each query, not original host callback/deadline replay",
+  "scope": "Moving-world census ownership service screen only (open/drop charged exactly once); excludes live heap admission scan and display apply/render/submit",
+  "group_policy": "Retained 2-4-executed-query recorded groups on every side; singleton includes early length1 groups; not original live scope replay",
+  "formal_acceptance": false,
+  "default_adoption": false
+}

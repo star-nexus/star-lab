@@ -1,0 +1,359 @@
+{
+  "status": "Complete bounded observation service study; service candidate positive, combined gate not met",
+  "completed_date": "2026-10-09",
+  "problem_source": "11d9927f7a1bffa32dd85c9009944424826508e5",
+  "entity_ref_source": "455ab9937de5134fcd1ac70610544c1b0a43b9f3",
+  "census_source": "8c2afd7153ebc8ec6c80dd9f3a1406be440405e0",
+  "contracts": {
+    "first_factor": 114,
+    "final_factor": 131
+  },
+  "screen_counts_per_factor": {
+    "requests": 12148,
+    "ticks": 2617,
+    "queries": 3010,
+    "operations": 17382,
+    "worlds": 4
+  },
+  "entity_ref_metrics": {
+    "query_service": {
+      "baseline": {
+        "samples": 6020,
+        "mean_ns": 2186601.238372093,
+        "p99_ns": 2934916.0,
+        "max_ns": 94427208.0
+      },
+      "candidate": {
+        "samples": 6020,
+        "mean_ns": 2125966.076245847,
+        "p99_ns": 2855875.0,
+        "max_ns": 101132959.0
+      },
+      "sides": [
+        {
+          "samples": 3010,
+          "mean_ns": 2242908.7511627907,
+          "p99_ns": 2983750.0,
+          "max_ns": 94427208.0
+        },
+        {
+          "samples": 3010,
+          "mean_ns": 2132614.2176079736,
+          "p99_ns": 2864917.0,
+          "max_ns": 101132959.0
+        },
+        {
+          "samples": 3010,
+          "mean_ns": 2119317.9348837207,
+          "p99_ns": 2838584.0,
+          "max_ns": 71605375.0
+        },
+        {
+          "samples": 3010,
+          "mean_ns": 2130293.7255813954,
+          "p99_ns": 2868667.0,
+          "max_ns": 90635875.0
+        }
+      ],
+      "improvement_percent": 2.7730324607054664,
+      "ci95_improvement_ns": [
+        -923.9381747573037,
+        123878.54056033955
+      ],
+      "passed": false,
+      "p99_passed": true,
+      "block_counts": [
+        139.0,
+        112.0,
+        99.0,
+        117.0,
+        99.0,
+        124.0,
+        127.0,
+        163.0,
+        119.0,
+        72.0,
+        98.0,
+        115.0,
+        91.0,
+        125.0,
+        137.0,
+        125.0,
+        116.0,
+        98.0,
+        110.0,
+        106.0,
+        91.0,
+        134.0,
+        122.0,
+        113.0,
+        114.0,
+        134.0,
+        10.0
+      ]
+    },
+    "selected_total_work": {
+      "baseline": {
+        "samples": 5234,
+        "mean_ns": 3378524.106037447,
+        "p99_ns": 8601624.0,
+        "max_ns": 96398084.0
+      },
+      "candidate": {
+        "samples": 5234,
+        "mean_ns": 3484549.223156286,
+        "p99_ns": 8570877.0,
+        "max_ns": 107216835.0
+      },
+      "sides": [
+        {
+          "samples": 2617,
+          "mean_ns": 3461609.4906381355,
+          "p99_ns": 8665249.0,
+          "max_ns": 95518916.0
+        },
+        {
+          "samples": 2617,
+          "mean_ns": 3508426.7432174245,
+          "p99_ns": 8570877.0,
+          "max_ns": 107216835.0
+        },
+        {
+          "samples": 2617,
+          "mean_ns": 3460671.703095147,
+          "p99_ns": 8565083.0,
+          "max_ns": 102559374.0
+        },
+        {
+          "samples": 2617,
+          "mean_ns": 3295438.7214367595,
+          "p99_ns": 8499001.0,
+          "max_ns": 96398084.0
+        }
+      ],
+      "improvement_percent": -3.138208098896518,
+      "ci95_improvement_ns": [
+        -220194.3309436505,
+        13340.961685185177
+      ],
+      "passed": false,
+      "p99_passed": true,
+      "block_counts": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        17.0
+      ]
+    }
+  },
+  "census_metrics": {
+    "query_service": {
+      "baseline": {
+        "samples": 6020,
+        "mean_ns": 2373324.035548173,
+        "p99_ns": 3406625.0,
+        "max_ns": 99847916.0
+      },
+      "candidate": {
+        "samples": 6020,
+        "mean_ns": 2156000.7553156144,
+        "p99_ns": 3022625.0,
+        "max_ns": 97148292.0
+      },
+      "sides": [
+        {
+          "samples": 3010,
+          "mean_ns": 2401024.143189369,
+          "p99_ns": 3398666.0,
+          "max_ns": 98310750.0
+        },
+        {
+          "samples": 3010,
+          "mean_ns": 2199625.1411960134,
+          "p99_ns": 3061125.0,
+          "max_ns": 97148292.0
+        },
+        {
+          "samples": 3010,
+          "mean_ns": 2112376.369435216,
+          "p99_ns": 2957833.0,
+          "max_ns": 78542875.0
+        },
+        {
+          "samples": 3010,
+          "mean_ns": 2345623.9279069765,
+          "p99_ns": 3407542.0,
+          "max_ns": 99847916.0
+        }
+      ],
+      "improvement_percent": 9.156915658268401,
+      "ci95_improvement_ns": [
+        156058.44580000103,
+        288351.03062680364
+      ],
+      "passed": true,
+      "p99_passed": true,
+      "block_counts": [
+        139.0,
+        112.0,
+        99.0,
+        117.0,
+        99.0,
+        124.0,
+        127.0,
+        163.0,
+        119.0,
+        72.0,
+        98.0,
+        115.0,
+        91.0,
+        125.0,
+        137.0,
+        125.0,
+        116.0,
+        98.0,
+        110.0,
+        106.0,
+        91.0,
+        134.0,
+        122.0,
+        113.0,
+        114.0,
+        134.0,
+        10.0
+      ]
+    },
+    "selected_total_work": {
+      "baseline": {
+        "samples": 5234,
+        "mean_ns": 3657741.456247612,
+        "p99_ns": 9732124.0,
+        "max_ns": 105626249.0
+      },
+      "candidate": {
+        "samples": 5234,
+        "mean_ns": 3595720.401413833,
+        "p99_ns": 8946002.0,
+        "max_ns": 108987877.0
+      },
+      "sides": [
+        {
+          "samples": 2617,
+          "mean_ns": 3712610.348108521,
+          "p99_ns": 9807958.0,
+          "max_ns": 99198209.0
+        },
+        {
+          "samples": 2617,
+          "mean_ns": 3665171.953763852,
+          "p99_ns": 9242877.0,
+          "max_ns": 102974290.0
+        },
+        {
+          "samples": 2617,
+          "mean_ns": 3526268.8490638137,
+          "p99_ns": 8745499.0,
+          "max_ns": 108987877.0
+        },
+        {
+          "samples": 2617,
+          "mean_ns": 3602872.564386702,
+          "p99_ns": 9682916.0,
+          "max_ns": 105626249.0
+        }
+      ],
+      "improvement_percent": 1.6956106814997534,
+      "ci95_improvement_ns": [
+        -59809.54533820709,
+        187774.8772684831
+      ],
+      "passed": false,
+      "p99_passed": true,
+      "block_counts": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        17.0
+      ]
+    }
+  },
+  "attribution": {
+    "baseline": {
+      "samples": 10,
+      "mean_census_ns": 379487.5,
+      "mean_batch_ns": 1072775.0,
+      "mean_native_ns": 1141679.0
+    },
+    "borrowed_census": {
+      "samples": 10,
+      "mean_census_ns": 171699.8,
+      "mean_batch_ns": 766591.7,
+      "mean_native_ns": 831883.2
+    }
+  },
+  "default_adoption": false,
+  "stable_multi_round": false,
+  "full_host": false,
+  "capacity_updated": false,
+  "frontier_updated": false,
+  "existing_gaps_closed": false,
+  "agents5000": "deferred",
+  "no_automatic_rerun": true,
+  "next": "Retain borrowed_census as opt-in service candidate; current combined gate failed. Investigate complete-chain cost/tail attribution before any host/default adoption; do not tune cache size or stack rejected entity_ref.",
+  "resource_valid": [
+    true,
+    true
+  ],
+  "source_boundary": {
+    "active_clean": true,
+    "original_deletions": 49,
+    "frozen_heads_unchanged": true,
+    "installed_extension_sha256": "3e0ebb663e7dc081948658ed2d61bb70ecc56e76fc87c405f70d098a807b7fc6"
+  }
+}

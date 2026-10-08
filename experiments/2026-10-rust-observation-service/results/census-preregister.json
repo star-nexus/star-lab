@@ -1,0 +1,168 @@
+{
+  "date": "2026-10-08",
+  "name": "E8 observation service scan specialization",
+  "status": "second independent hypothesis registered before its screen",
+  "problem_source": "11d9927f7a1bffa32dd85c9009944424826508e5",
+  "hypothesis": "Census eagerly clones faction String on every map.entry, including existing keys. Eliminating O(Units) ephemeral string allocations may reduce cold request construction.",
+  "primary_variable": "census map key ownership only: borrow faction str per entity, convert to owned String once per resulting key; baseline component accesses/enemy scan/cache scope unchanged",
+  "modes": [
+    "baseline",
+    "borrowed_census",
+    "borrowed_census",
+    "baseline"
+  ],
+  "tests": "targeted missing components/Fog/native1+4, scope/mode/reset isolation; existing observation/admission suites; short complete recorded input hash oracle",
+  "screen": {
+    "input": "e8-p0-20261007/window.trace.json.gz",
+    "ticks": 2617,
+    "queries": 3010,
+    "threads": 1,
+    "pairing": "four persistent worlds ABBA/BAAB alternates per enclosing presentation tick",
+    "min_service_improvement_percent": 2,
+    "service_and_total_ci_lower_positive": true,
+    "p99_no_regression": true,
+    "bootstrap": 10000,
+    "block_ticks": 100,
+    "seed": 42,
+    "partial_block_weighted": true,
+    "keep_all_samples": true,
+    "reruns": 0,
+    "scope_boundary": "Same retained 2-4-query recorded groups on every side; 1-query early groups use ordinary path; not original live scope/heap deadlines",
+    "p99": "Pooled nearest rank and worst-side envelope both must not regress",
+    "blocks": "Uniform enclosing presentation ticks; all 27 blocks incl actual tail counts"
+  },
+  "limits": {
+    "default_off": true,
+    "full_host": false,
+    "no_capacity_or_frontier": true,
+    "no_existing_gap_closure": true,
+    "agents5000_deferred": true,
+    "no_push_merge": true
+  },
+  "resource_policy": "telemetry only, no pause/kill/timeout, non-normal invalidates timing; no automatic retry",
+  "diagnostic": {
+    "source": "11d9927f7a1bffa32dd85c9009944424826508e5",
+    "raw_sha256": "f1f31977d83c5cb9d099322882fa28f0531a23ba1a0773f9cb23e9e8c49adfa1",
+    "bare_profile_group_costs": {
+      "1-same": {
+        "samples": 5,
+        "means_us": {
+          "batch_ns": 996.9084,
+          "final_encode_ns": 6.408600000000001,
+          "drop_ns": 56.4416
+        },
+        "profile_us": {
+          "census_ns": 345.76640000000003,
+          "faction_ns": 832.3334,
+          "public_encode_ns": 12.733799999999999,
+          "panels_ns": 157.8004
+        }
+      },
+      "2-mixed": {
+        "samples": 5,
+        "means_us": {
+          "batch_ns": 1568.4661999999998,
+          "final_encode_ns": 22.083599999999997,
+          "drop_ns": 101.8082
+        },
+        "profile_us": {
+          "census_ns": 351.525,
+          "faction_ns": 1231.3582,
+          "public_encode_ns": 26.8082,
+          "panels_ns": 323.95
+        }
+      },
+      "2-same": {
+        "samples": 5,
+        "means_us": {
+          "batch_ns": 1102.9332,
+          "final_encode_ns": 18.8418,
+          "drop_ns": 56.0
+        },
+        "profile_us": {
+          "census_ns": 346.6916,
+          "faction_ns": 795.1748,
+          "public_encode_ns": 13.2416,
+          "panels_ns": 298.43359999999996
+        }
+      },
+      "3-mixed": {
+        "samples": 5,
+        "means_us": {
+          "batch_ns": 1858.3498,
+          "final_encode_ns": 28.25,
+          "drop_ns": 123.4666
+        },
+        "profile_us": {
+          "census_ns": 356.0748,
+          "faction_ns": 1369.0748,
+          "public_encode_ns": 32.425599999999996,
+          "panels_ns": 472.60859999999997
+        }
+      },
+      "3-same": {
+        "samples": 5,
+        "means_us": {
+          "batch_ns": 1394.5996,
+          "final_encode_ns": 28.6918,
+          "drop_ns": 73.275
+        },
+        "profile_us": {
+          "census_ns": 395.2586,
+          "faction_ns": 899.6836,
+          "public_encode_ns": 11.6082,
+          "panels_ns": 482.1834
+        }
+      },
+      "4-mixed": {
+        "samples": 5,
+        "means_us": {
+          "batch_ns": 2525.1,
+          "final_encode_ns": 46.5668,
+          "drop_ns": 155.6912
+        },
+        "profile_us": {
+          "census_ns": 418.5252,
+          "faction_ns": 1738.1168,
+          "public_encode_ns": 47.0336,
+          "panels_ns": 726.317
+        }
+      },
+      "4-same": {
+        "samples": 1,
+        "means_us": {
+          "batch_ns": 1439.208,
+          "final_encode_ns": 53.583,
+          "drop_ns": 76.916
+        },
+        "profile_us": {
+          "census_ns": 348.375,
+          "faction_ns": 847.0,
+          "public_encode_ns": 11.792,
+          "panels_ns": 579.583
+        }
+      }
+    },
+    "nested": "faction_ns includes census/public encode; do not sum inclusive costs",
+    "not_performance_claim": true
+  },
+  "software": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "prior_factor": {
+    "source": "455ab9937de5134fcd1ac70610544c1b0a43b9f3",
+    "result_sha256": "59c711b33cda3504530d9ebab82b42967c8ce5bcfb103f37ee476c2a130d88ca",
+    "adopted": false,
+    "rerun": false
+  },
+  "measurement_date": "2026-10-09",
+  "candidate_source": "8c2afd7153ebc8ec6c80dd9f3a1406be440405e0",
+  "candidate_identity": {
+    "wheel_sha256": "cfcbc0f1daae0241e9f7466d098077e205c92427832242550d37fd14ec2a1742",
+    "extension_sha256": "c6a60a42fdafeee481620e89248a1a8604b7e3b3835b7b2a0f43053999977d88",
+    "extension": "/Users/liyang/Developer/star-lab-runs/e8-service-20261008/census/extension/star_native/_native.cpython-313-darwin.so"
+  },
+  "tools": {
+    "screen_observation_census.py": "c7bffc174d5b09151120fe92f7e9b29e425877b96cdf505e3c43b0424e95a402",
+    "analyze_observation_census.py": "ffd749c6f0fb5861ee3968ceae600b5f38baae73d1b9366d7b1a2b72800cabe0",
+    "monitor_observation_admission.py": "962eaf163ae9a73fb2e6458d3e37f07397dbc209b1ee9685b4a42035958a7117"
+  }
+}

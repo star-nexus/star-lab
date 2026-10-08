@@ -1,6 +1,6 @@
 {
-  "stage": "完整Lab宿主ABBA 4/4完成；运行guards通过，净收益采用门槛未通过",
-  "source_sha": "11d9927f7a1bffa32dd85c9009944424826508e5",
+  "stage": "观测专项首轮完成；census服务有正收益，组合净收益门槛未通过，默认关闭",
+  "source_sha": "8c2afd7153ebc8ec6c80dd9f3a1406be440405e0",
   "plan": "records/rust-observation-admission-plan.md",
   "identity": "records/rust-observation-admission-plan.json",
   "phases": {
@@ -8,10 +8,11 @@
     "algorithm_plan": "complete",
     "P0_admission_diagnosis": "complete; 1943 measured queries; candidate coverage about 57%; full replay passed",
     "P1_owned_cache_prototype": "complete; 88 contracts and independent short host oracle passed",
-    "P2_correctness": "complete native1 within revised recorded/canonical/edge scope; native4 full admission deferred",
-    "P3_performance": "service positive; full Lab live-host screen complete 4/4 resource valid, frame CI crosses zero/service P99 regression; default off",
+    "P2_correctness": "historical source11d9927: complete native1 within revised recorded/canonical/edge scope; native4 full admission deferred; latest source has separately listed targeted/short validation",
+    "P3_performance": "historical source11d9927: service positive; live-host4/4 valid, frame CI crosses0/service P99 regression; latest census service screen positive but selected total CI crosses0",
     "P4_conditional_window": "not started",
-    "default_adoption": "not enabled"
+    "default_adoption": "not enabled",
+    "service_specialization": "complete two independent screens; census service+9.157%, total CI crosses zero; default off"
   },
   "prior_e7": {
     "lab_commit": "4370070",
@@ -32,9 +33,9 @@
   "authorization": "2026-10-07 user execution authorized",
   "experiment": "experiments/2026-10-rust-observation-admission",
   "resource_policy": "telemetry only; no automatic pause/kill/timeout",
-  "persistent_runs": "/Users/liyang/Developer/star-lab-runs/e8-p2-streamlined-20261008",
-  "installed_extension": "original 6ec8e05/3e0ebb unchanged; all current verification uses staged corrected 9bb2fa",
-  "candidate_extension": "9bb2fa4412bc810fbd751c42f525614f8cddb42e8c136612a51495fa0679f0d9",
+  "persistent_runs": "/Users/liyang/Developer/star-lab-runs/e8-service-20261008",
+  "installed_extension": "original6ec8e05/3e0ebb unchanged; prior admission used staged9bb2fa; latest service candidate uses stagedc6a60a",
+  "candidate_extension": "c6a60a42fdafeee481620e89248a1a8604b7e3b3835b7b2a0f43053999977d88",
   "active_previous_runs": "/Users/liyang/Developer/star-lab-runs/e8-p2-20261007",
   "previous_stale_runs": [
     "/Users/liyang/Developer/star-lab-runs/e8-p2-20261007",
@@ -48,5 +49,26 @@
   "full_host_runs": "/Users/liyang/Developer/star-lab-runs/e8-full-host-screen-20261008",
   "full_host_preregister": "experiments/2026-10-rust-observation-admission/results/full-host-screen-preregister.json",
   "full_host_result": "experiments/2026-10-rust-observation-admission/results/full-host-screen.json",
-  "next": "Bounded attribution of singleton/segment-start service tail and preparation/encoding/consumer cost if further optimization pursued; no automatic repeat or default adoption"
+  "next": "Bounded complete-chain/tail attribution if further pursued; no automatic repeat/default/cache-policy change",
+  "current_validation": "131 targeted contracts + each complete short12148/2617/3010 input; previous canonical full P2 applies to source11d9927 only",
+  "service_specialization": {
+    "experiment": "experiments/2026-10-rust-observation-service",
+    "first_source": "455ab9937de5134fcd1ac70610544c1b0a43b9f3",
+    "source": "8c2afd7153ebc8ec6c80dd9f3a1406be440405e0",
+    "extension": "c6a60a42fdafeee481620e89248a1a8604b7e3b3835b7b2a0f43053999977d88",
+    "runs": "/Users/liyang/Developer/star-lab-runs/e8-service-20261008",
+    "result": "experiments/2026-10-rust-observation-service/results/complete.json",
+    "archive_sha256": "975774d1fb3d28b6cd6de2e57d6891b154a51d8f6cd3cd543c6ac9cb933a48ed",
+    "progress": "diagnosis/prototype/targeted/screen/archive complete; adoption gate failed",
+    "adopted": false
+  },
+  "lab_gap_stage": {
+    "G009": "OPEN; no production request adapter/default adoption",
+    "native4_full_admission": "deferred; native4 contracts alone do not replace full-host validation",
+    "current_census_net_gain": "unconfirmed; total interval crosses zero",
+    "existing_gap_closure": false
+  },
+  "prior_admission_source_sha": "11d9927f7a1bffa32dd85c9009944424826508e5",
+  "prior_admission_extension": "9bb2fa4412bc810fbd751c42f525614f8cddb42e8c136612a51495fa0679f0d9",
+  "prior_p2_runs": "/Users/liyang/Developer/star-lab-runs/e8-p2-streamlined-20261008"
 }

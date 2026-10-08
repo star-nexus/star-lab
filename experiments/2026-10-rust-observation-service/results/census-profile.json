@@ -1,0 +1,386 @@
+{
+  "passed": true,
+  "diagnostic_only": true,
+  "performance_claim": false,
+  "rows": [
+    {
+      "round": 0,
+      "mode": "baseline",
+      "timing": {
+        "parse_ns": 6500,
+        "batch_ns": 1253250,
+        "profile": {
+          "census_ns": 425208,
+          "faction_ns": 978875,
+          "public_encode_ns": 16834,
+          "panels_ns": 246084
+        },
+        "final_encode_ns": 7166,
+        "drop_ns": 56584,
+        "native_ns": 1323750
+      }
+    },
+    {
+      "round": 0,
+      "mode": "borrowed_census",
+      "timing": {
+        "parse_ns": 1666,
+        "batch_ns": 768458,
+        "profile": {
+          "census_ns": 188166,
+          "faction_ns": 616375,
+          "public_encode_ns": 13958,
+          "panels_ns": 145458
+        },
+        "final_encode_ns": 8792,
+        "drop_ns": 58834,
+        "native_ns": 837875
+      }
+    },
+    {
+      "round": 0,
+      "mode": "borrowed_census",
+      "timing": {
+        "parse_ns": 1291,
+        "batch_ns": 1002167,
+        "profile": {
+          "census_ns": 177500,
+          "faction_ns": 833958,
+          "public_encode_ns": 18125,
+          "panels_ns": 163042
+        },
+        "final_encode_ns": 14959,
+        "drop_ns": 67416,
+        "native_ns": 1086333
+      }
+    },
+    {
+      "round": 0,
+      "mode": "baseline",
+      "timing": {
+        "parse_ns": 1583,
+        "batch_ns": 1024250,
+        "profile": {
+          "census_ns": 370500,
+          "faction_ns": 878458,
+          "public_encode_ns": 19666,
+          "panels_ns": 140875
+        },
+        "final_encode_ns": 9375,
+        "drop_ns": 44833,
+        "native_ns": 1080083
+      }
+    },
+    {
+      "round": 1,
+      "mode": "borrowed_census",
+      "timing": {
+        "parse_ns": 1166,
+        "batch_ns": 715500,
+        "profile": {
+          "census_ns": 160583,
+          "faction_ns": 576000,
+          "public_encode_ns": 29416,
+          "panels_ns": 134417
+        },
+        "final_encode_ns": 8042,
+        "drop_ns": 44166,
+        "native_ns": 768958
+      }
+    },
+    {
+      "round": 1,
+      "mode": "baseline",
+      "timing": {
+        "parse_ns": 2542,
+        "batch_ns": 897250,
+        "profile": {
+          "census_ns": 341417,
+          "faction_ns": 741084,
+          "public_encode_ns": 19208,
+          "panels_ns": 149291
+        },
+        "final_encode_ns": 5625,
+        "drop_ns": 50041,
+        "native_ns": 955583
+      }
+    },
+    {
+      "round": 1,
+      "mode": "baseline",
+      "timing": {
+        "parse_ns": 5958,
+        "batch_ns": 1730292,
+        "profile": {
+          "census_ns": 482458,
+          "faction_ns": 1442209,
+          "public_encode_ns": 23417,
+          "panels_ns": 274083
+        },
+        "final_encode_ns": 12708,
+        "drop_ns": 56292,
+        "native_ns": 1805375
+      }
+    },
+    {
+      "round": 1,
+      "mode": "borrowed_census",
+      "timing": {
+        "parse_ns": 2500,
+        "batch_ns": 779834,
+        "profile": {
+          "census_ns": 213542,
+          "faction_ns": 628750,
+          "public_encode_ns": 18458,
+          "panels_ns": 145208
+        },
+        "final_encode_ns": 10625,
+        "drop_ns": 52166,
+        "native_ns": 845166
+      }
+    },
+    {
+      "round": 2,
+      "mode": "baseline",
+      "timing": {
+        "parse_ns": 1750,
+        "batch_ns": 981958,
+        "profile": {
+          "census_ns": 379500,
+          "faction_ns": 811417,
+          "public_encode_ns": 12042,
+          "panels_ns": 165167
+        },
+        "final_encode_ns": 14834,
+        "drop_ns": 54625,
+        "native_ns": 1053208
+      }
+    },
+    {
+      "round": 2,
+      "mode": "borrowed_census",
+      "timing": {
+        "parse_ns": 1750,
+        "batch_ns": 742000,
+        "profile": {
+          "census_ns": 172833,
+          "faction_ns": 593417,
+          "public_encode_ns": 15375,
+          "panels_ns": 143667
+        },
+        "final_encode_ns": 10542,
+        "drop_ns": 53958,
+        "native_ns": 808333
+      }
+    },
+    {
+      "round": 2,
+      "mode": "borrowed_census",
+      "timing": {
+        "parse_ns": 958,
+        "batch_ns": 690125,
+        "profile": {
+          "census_ns": 158708,
+          "faction_ns": 539459,
+          "public_encode_ns": 15750,
+          "panels_ns": 146666
+        },
+        "final_encode_ns": 8542,
+        "drop_ns": 53292,
+        "native_ns": 753000
+      }
+    },
+    {
+      "round": 2,
+      "mode": "baseline",
+      "timing": {
+        "parse_ns": 1542,
+        "batch_ns": 1176167,
+        "profile": {
+          "census_ns": 343500,
+          "faction_ns": 975833,
+          "public_encode_ns": 18292,
+          "panels_ns": 193416
+        },
+        "final_encode_ns": 15500,
+        "drop_ns": 97500,
+        "native_ns": 1290833
+      }
+    },
+    {
+      "round": 3,
+      "mode": "borrowed_census",
+      "timing": {
+        "parse_ns": 1584,
+        "batch_ns": 808375,
+        "profile": {
+          "census_ns": 152250,
+          "faction_ns": 669417,
+          "public_encode_ns": 17416,
+          "panels_ns": 134000
+        },
+        "final_encode_ns": 7625,
+        "drop_ns": 44375,
+        "native_ns": 862042
+      }
+    },
+    {
+      "round": 3,
+      "mode": "baseline",
+      "timing": {
+        "parse_ns": 1000,
+        "batch_ns": 920041,
+        "profile": {
+          "census_ns": 374792,
+          "faction_ns": 775458,
+          "public_encode_ns": 17708,
+          "panels_ns": 139958
+        },
+        "final_encode_ns": 8750,
+        "drop_ns": 49541,
+        "native_ns": 979458
+      }
+    },
+    {
+      "round": 3,
+      "mode": "baseline",
+      "timing": {
+        "parse_ns": 1250,
+        "batch_ns": 959250,
+        "profile": {
+          "census_ns": 367875,
+          "faction_ns": 798458,
+          "public_encode_ns": 14666,
+          "panels_ns": 156125
+        },
+        "final_encode_ns": 5000,
+        "drop_ns": 55458,
+        "native_ns": 1020958
+      }
+    },
+    {
+      "round": 3,
+      "mode": "borrowed_census",
+      "timing": {
+        "parse_ns": 1334,
+        "batch_ns": 701250,
+        "profile": {
+          "census_ns": 191958,
+          "faction_ns": 567083,
+          "public_encode_ns": 10458,
+          "panels_ns": 129542
+        },
+        "final_encode_ns": 4375,
+        "drop_ns": 54625,
+        "native_ns": 761625
+      }
+    },
+    {
+      "round": 4,
+      "mode": "baseline",
+      "timing": {
+        "parse_ns": 958,
+        "batch_ns": 867667,
+        "profile": {
+          "census_ns": 348875,
+          "faction_ns": 723958,
+          "public_encode_ns": 9625,
+          "panels_ns": 139792
+        },
+        "final_encode_ns": 3584,
+        "drop_ns": 53959,
+        "native_ns": 926250
+      }
+    },
+    {
+      "round": 4,
+      "mode": "borrowed_census",
+      "timing": {
+        "parse_ns": 1833,
+        "batch_ns": 797333,
+        "profile": {
+          "census_ns": 164875,
+          "faction_ns": 621083,
+          "public_encode_ns": 12833,
+          "panels_ns": 170250
+        },
+        "final_encode_ns": 9500,
+        "drop_ns": 65583,
+        "native_ns": 874458
+      }
+    },
+    {
+      "round": 4,
+      "mode": "borrowed_census",
+      "timing": {
+        "parse_ns": 750,
+        "batch_ns": 660875,
+        "profile": {
+          "census_ns": 136583,
+          "faction_ns": 535666,
+          "public_encode_ns": 10042,
+          "panels_ns": 121625
+        },
+        "final_encode_ns": 3709,
+        "drop_ns": 55542,
+        "native_ns": 721042
+      }
+    },
+    {
+      "round": 4,
+      "mode": "baseline",
+      "timing": {
+        "parse_ns": 917,
+        "batch_ns": 917625,
+        "profile": {
+          "census_ns": 360750,
+          "faction_ns": 777750,
+          "public_encode_ns": 10542,
+          "panels_ns": 135542
+        },
+        "final_encode_ns": 4000,
+        "drop_ns": 58625,
+        "native_ns": 981292
+      }
+    }
+  ],
+  "summary": {
+    "baseline": {
+      "samples": 10,
+      "mean_census_ns": 379487.5,
+      "mean_batch_ns": 1072775.0,
+      "mean_native_ns": 1141679.0
+    },
+    "borrowed_census": {
+      "samples": 10,
+      "mean_census_ns": 171699.8,
+      "mean_batch_ns": 766591.7,
+      "mean_native_ns": 831883.2
+    }
+  },
+  "metrics": {
+    "census_builds": 1,
+    "faction_builds": 1,
+    "panel_builds": 5,
+    "enemy_builds": 26,
+    "tile_builds": 1974,
+    "census_entities_visited": 5000,
+    "enemy_entities_visited": 5000,
+    "terrain_cells_visited": 1974,
+    "attack_cell_lookups": 35,
+    "attack_distance_checks": 0,
+    "attack_rule_checks": 0,
+    "public_encodes": 1,
+    "panel_encodes": 5,
+    "shared_public_results": 1,
+    "shared_panel_results": 5,
+    "parallel_panel_batches": 0,
+    "panel_tasks": 0,
+    "panel_worker_threads": 0
+  },
+  "source": "same native1 binary, first recorded pre-query state, 5 short ABBA/BAAB diagnostic cycles",
+  "extension_sha256": "c6a60a42fdafeee481620e89248a1a8604b7e3b3835b7b2a0f43053999977d88",
+  "trace_sha256": "27a890fd65cff5cac5eb653f25e4490d22e23558826c52da84bfa4427e0c61b4",
+  "tool_sha256": "02588ba8540a7be465e16d34d7e205c66ebb78e017909baf7c76f0e74d611e1b",
+  "state_unchanged_sha256": "0364da6483112f66c8ae893cb3e41ef6cf4aa766d89f2ffba111d23843008ca4"
+}

@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "failure": null,
+  "counts": {
+    "requests": 12148,
+    "operations": 17382,
+    "ticks": 2617,
+    "presentation": 2617,
+    "queries": 3010
+  },
+  "elapsed_s": 40.288768500002334,
+  "input_sha256": "27a890fd65cff5cac5eb653f25e4490d22e23558826c52da84bfa4427e0c61b4",
+  "admission_sha256": "c11c41d18a669e6769fabf44226bc3a9174da6709396fff10f88960ac432d9d2",
+  "extension_sha256": "ef0e10a668d9a1048e2007d855c6a6fa87077ea6f67c419db9424941f60fd619",
+  "raw": {
+    "file": "scan.samples.json.gz",
+    "sha256": "c2b4199c0b63105fabce36d6c5f80138fcda49f292923a4bc719220675438356"
+  },
+  "tool_sha256": "8f9d1b62b6ad57acbfb376b573cd8389b5a6b9f6e4a66a41585db94e5aef370f",
+  "consumer_sha256": "a7f3bb1a7817f487ac748f93f36c902426c104fcffdfef554cade73671eda45b",
+  "commands_sha256": [
+    "ea2061b79ed4d80d3746c96b04d71fc3f9659bb1dba1e2904d3fc34e6afb6385",
+    "ea2061b79ed4d80d3746c96b04d71fc3f9659bb1dba1e2904d3fc34e6afb6385",
+    "ea2061b79ed4d80d3746c96b04d71fc3f9659bb1dba1e2904d3fc34e6afb6385",
+    "ea2061b79ed4d80d3746c96b04d71fc3f9659bb1dba1e2904d3fc34e6afb6385"
+  ],
+  "smoke": false,
+  "modes": [
+    "baseline",
+    "entity_ref",
+    "entity_ref",
+    "baseline"
+  ],
+  "cache_mode": "segment_encoded on both sides",
+  "scope_open_count": [
+    750,
+    750,
+    750,
+    750
+  ],
+  "scope_drop_count": [
+    750,
+    750,
+    750,
+    750
+  ],
+  "source_sha": "455ab9937de5134fcd1ac70610544c1b0a43b9f3",
+  "pairing": "Four persistent worlds, per-tick alternating ABBA/BAAB",
+  "workload": "Complete accepted input including warm and all tails; fixed fresh-session deterministic consumer at each query, not original host callback/deadline replay",
+  "scope": "Moving-world scan service screen only (open/drop charged exactly once); excludes live heap admission scan and display apply/render/submit",
+  "formal_acceptance": false,
+  "default_adoption": false
+}

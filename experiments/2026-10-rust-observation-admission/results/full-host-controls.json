@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "controls": "Owned response, no full export, callback guard, exact 10% analysis including 17-frame partial tail, resource rejection, frozen admitted pump tests",
+  "smoke": "5 seconds target 5000/1000; 170 queries and payloads, 46 closed segments; runtime/callback correct. P99 37.27ms and duration_formal false in smoke; not performance acceptance",
+  "window": [
+    2480,
+    1235
+  ],
+  "raw": {
+    "file": "artifacts/e8-full-host-controls-20261008-raw.zip",
+    "bytes": 212086,
+    "sha256": "1fcc105432a34164814f36f744988bd8fa5e6af6d5b3e7b3b4600cf9f46e5b64",
+    "inner_sha_verified": true
+  },
+  "performance_claim": false
+}

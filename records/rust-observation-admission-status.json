@@ -1,5 +1,5 @@
 {
-  "stage": "单轮服务收益筛选完成：worth formal full-host investigation",
+  "stage": "完整Lab宿主单轮ABBA准备完成",
   "source_sha": "11d9927f7a1bffa32dd85c9009944424826508e5",
   "plan": "records/rust-observation-admission-plan.md",
   "identity": "records/rust-observation-admission-plan.json",
@@ -9,7 +9,7 @@
     "P0_admission_diagnosis": "complete; 1943 measured queries; candidate coverage about 57%; full replay passed",
     "P1_owned_cache_prototype": "complete; 88 contracts and independent short host oracle passed",
     "P2_correctness": "complete native1 within revised recorded/canonical/edge scope; native4 full admission deferred",
-    "P3_performance": "one bounded moving-world service screen complete; formal full-host validation not started",
+    "P3_performance": "service screen positive; exactly one full Lab live-host ABBA now authorized",
     "P4_conditional_window": "not started",
     "default_adoption": "not enabled"
   },
@@ -44,5 +44,7 @@
   "scope_reduction_authorization": "2026-10-08 user rejects redundant repeat, active no_reuse intentionally truncated",
   "prior_full_reference_count": 2,
   "followup_runs": "/Users/liyang/Developer/star-lab-runs/e8-p3-single-screen-20261008",
-  "followup_preregister": "experiments/2026-10-rust-observation-admission/results/p3-single-service-screen-preregister.json"
+  "followup_preregister": "experiments/2026-10-rust-observation-admission/results/p3-single-service-screen-preregister.json",
+  "full_host_runs": "/Users/liyang/Developer/star-lab-runs/e8-full-host-screen-20261008",
+  "full_host_preregister": "experiments/2026-10-rust-observation-admission/results/full-host-screen-preregister.json"
 }

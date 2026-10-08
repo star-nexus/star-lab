@@ -3,7 +3,7 @@
     "id": "2026-10-rust-observation-admission",
     "title": "E8 admitted observation segment reuse",
     "date": "2026-10-07",
-    "status": "P2 revised native1 scope complete; one service screen complete, full-host gate pending"
+    "status": "Positive service screen; complete live Lab host ABBA preregistered"
   },
   "source": {
     "repository": "star-nexus/star",
@@ -91,7 +91,10 @@
       "artifacts/e8-p3-single-service-screen-20261008-raw.zip",
       "results/p2-streamlined-candidate.json",
       "artifacts/e8-p2-streamlined-20261008-encoded-t1-raw.zip",
-      "results/completion-integrity-20261008.json"
+      "results/completion-integrity-20261008.json",
+      "results/full-host-screen-preregister.json",
+      "results/full-host-controls.json",
+      "artifacts/e8-full-host-controls-20261008-raw.zip"
     ],
     "external": [
       "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007",
@@ -102,7 +105,8 @@
       "/Users/liyang/Developer/star-lab-runs/e8-p2-edges-20261008",
       "/Users/liyang/Developer/star-lab-runs/e8-p2-faults-v6-20261008",
       "/Users/liyang/Developer/star-lab-runs/e8-p2-admitted-20261008",
-      "/Users/liyang/Developer/star-lab-runs/e8-p3-single-screen-20261008"
+      "/Users/liyang/Developer/star-lab-runs/e8-p3-single-screen-20261008",
+      "/Users/liyang/Developer/star-lab-runs/e8-full-host-screen-20261008"
     ]
   },
   "headline": {

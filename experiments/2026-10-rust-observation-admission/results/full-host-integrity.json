@@ -1,0 +1,88 @@
+{
+  "passed": true,
+  "hash_entries_verified": 116,
+  "independent_ci_equal": true,
+  "runs": [
+    {
+      "mode": "single",
+      "frames": 1800,
+      "queries": 1944,
+      "phases_mean_ms": {
+        "agent_ms": 3.103075106660577,
+        "native_step_ms": 0.2504764808367731,
+        "delta_ms": 0.6312374863935273,
+        "presentation_apply_ms": 2.6429360303801435,
+        "inputs_ms": 0.08649480432116737,
+        "display_systems_ms": 7.711965031630825
+      },
+      "nominal_load_fraction": 1.002061855670103,
+      "minimum_living_units": 5000,
+      "maximum_rss_mib": 709.28125
+    },
+    {
+      "mode": "segment_encoded",
+      "frames": 1800,
+      "queries": 1943,
+      "phases_mean_ms": {
+        "agent_ms": 2.843853907284534,
+        "native_step_ms": 0.24956587787730516,
+        "delta_ms": 0.6282878159901075,
+        "presentation_apply_ms": 2.632173145878672,
+        "inputs_ms": 0.08013133693667543,
+        "display_systems_ms": 7.48580861055719
+      },
+      "nominal_load_fraction": 1.0015463917525773,
+      "minimum_living_units": 5000,
+      "maximum_rss_mib": 645.078125
+    },
+    {
+      "mode": "segment_encoded",
+      "frames": 1800,
+      "queries": 1944,
+      "phases_mean_ms": {
+        "agent_ms": 2.884602760879918,
+        "native_step_ms": 0.2533343761751894,
+        "delta_ms": 0.6352924194490899,
+        "presentation_apply_ms": 2.6671786121409644,
+        "inputs_ms": 0.08222512166766036,
+        "display_systems_ms": 7.6565702688337
+      },
+      "nominal_load_fraction": 1.002061855670103,
+      "minimum_living_units": 5000,
+      "maximum_rss_mib": 717.390625
+    },
+    {
+      "mode": "single",
+      "frames": 1800,
+      "queries": 1944,
+      "phases_mean_ms": {
+        "agent_ms": 3.097566172881569,
+        "native_step_ms": 0.25138850110427785,
+        "delta_ms": 0.6270157727703918,
+        "presentation_apply_ms": 2.6282248682885743,
+        "inputs_ms": 0.08292785790723024,
+        "display_systems_ms": 7.523603444553576
+      },
+      "nominal_load_fraction": 1.002061855670103,
+      "minimum_living_units": 5000,
+      "maximum_rss_mib": 703.78125
+    }
+  ],
+  "full_host_screening_passed": false,
+  "existing_gaps_closed": false,
+  "repository_boundaries_verified": true,
+  "installed_extension_unchanged": true,
+  "cost_interpretation": {
+    "baseline_agent_pump_ms_per_frame": 3.100320639771073,
+    "candidate_agent_pump_ms_per_frame": 2.8642283340822257,
+    "baseline_agent_share_full_frame_percent": 16.44378868357626,
+    "service_reduction_scale_ms_per_frame": 0.2319910569091684,
+    "scope": "Descriptive scale only; includes frozen coarse phases and census; do not causally attribute other display phase differences to cache"
+  },
+  "raw": {
+    "file": "artifacts/e8-full-host-independent-20261008-raw.zip",
+    "bytes": 952,
+    "sha256": "cf2afdee29b31835d0aed6174b22d33c853ab46cc180df65c1e29fab7119c86c",
+    "inner_sha_verified": true
+  }
+}

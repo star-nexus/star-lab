@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "selection_once_before_warmup": true,
+  "ordinary_owned_wire": true,
+  "unrelated_mode_rejected": true,
+  "positive_exact_ci": true,
+  "partial_tail_17_frames": true,
+  "pressure_rejection": true,
+  "queue_tail_rejection": true,
+  "performance_evidence": false
+}

@@ -1,3 +1,11 @@
+## E8 census普通宿主短ABBA（2026-10-09，当前执行阶段）
+
+用户授权下一步：源8c2afd7／c6a60a隔离扩展，两边普通single观测、缓存复用关闭，只切换baseline/borrowed_census。仅一轮ABBA四次串行，每次30秒预热＋60秒测量；相关131项与短轨迹复用，不重跑长P2。新选择/统计负控通过；目标负载5秒smoke与正式四次下一步。
+
+恢复先读实验results/census-host-preregister.json，持久目录 `/Users/liyang/Developer/star-lab-runs/e8-census-host-20261009/progress.json` 和父日志。工具run_census_host.py；若活跃禁止重复启动。实际宿主输入轨迹随时序不同，统计非配对，不冒充固定输入因果收益。保留原帧/队列/频率/负载guards和全部慢样本；压力仅监测不自动暂停/kill/超时，资源无效完整保留不重试。四次结束后归档分析，不自动启用默认、push/merge、改容量/Frontier或关闭G009/既有GAP。
+
+进度：`身份 █████ | 新边界/统计控制 █████ | 目标smoke 未开始 | 宿主ABBA 0/4 | 默认 关闭`。
+
 ## E8 观测服务专项首轮完成（2026-10-09，当前）
 
 活动源 `8c2afd7153ebc8ec6c80dd9f3a1406be440405e0`，研究开关默认 baseline；entity_ref 和 borrowed_census 互斥。原49项删除、两个冻结目录及历史标签、已安装3e0ebb扩展保持，不push/merge。

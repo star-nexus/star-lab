@@ -1,5 +1,5 @@
 {
-  "stage": "观测专项首轮完成；census服务有正收益，组合净收益门槛未通过，默认关闭",
+  "stage": "用户授权census普通宿主短ABBA；控制通过，smoke/4次正式下一步",
   "source_sha": "8c2afd7153ebc8ec6c80dd9f3a1406be440405e0",
   "plan": "records/rust-observation-admission-plan.md",
   "identity": "records/rust-observation-admission-plan.json",
@@ -70,5 +70,17 @@
   },
   "prior_admission_source_sha": "11d9927f7a1bffa32dd85c9009944424826508e5",
   "prior_admission_extension": "9bb2fa4412bc810fbd751c42f525614f8cddb42e8c136612a51495fa0679f0d9",
-  "prior_p2_runs": "/Users/liyang/Developer/star-lab-runs/e8-p2-streamlined-20261008"
+  "prior_p2_runs": "/Users/liyang/Developer/star-lab-runs/e8-p2-streamlined-20261008",
+  "census_host": {
+    "preregister": "experiments/2026-10-rust-observation-service/results/census-host-preregister.json",
+    "runs": "/Users/liyang/Developer/star-lab-runs/e8-census-host-20261009",
+    "order": [
+      "baseline",
+      "borrowed_census",
+      "borrowed_census",
+      "baseline"
+    ],
+    "host_mode": "ordinary single on all4",
+    "adopted": false
+  }
 }

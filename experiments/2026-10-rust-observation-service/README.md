@@ -1,6 +1,6 @@
 # E8：观测服务专项——ECS 定位与人口统计分配
 
-**Status:** REPRODUCED；服务候选有收益，组合收益门槛未通过，默认关闭。
+**Status:** REPRODUCED；普通宿主4/4完成，服务收益确认、完整帧区间跨零，默认关闭。
 **STAR repository:** `star-nexus/star`
 **Problem commit:** `11d9927f7a1bffa32dd85c9009944424826508e5`
 **Entity lookup candidate:** `455ab9937de5134fcd1ac70610544c1b0a43b9f3`
@@ -80,3 +80,31 @@ shasum -a 256 -c artifacts/SHA256SUMS
 最终 131 项通过；每次短完整重放校验所有 wire、四侧展示增量、事件、消费命令和最终权威状态。不是新源完整 9880-tick、多轮稳定性、native4 宿主或像素验收。原始 ZIP 内另有 SHA256SUMS，38 个成员已逐项核验。wheel、两个源码 bundle、冻结执行/分析/监督工具和两次全部样本均在原始包；原输入不重复归档。
 
 当前运行全部结束。旧 `.progress.json` 可能保留最后 running checkpoint，以最终报告和 monitor 为准，勿从该 checkpoint 重启。
+
+
+## 8. Ordinary-host census confirmation (2026-10-09)
+
+本阶段已完成，复用131项契约及短完整输入验证，没有重复长P2。普通single路径、段缓存关闭，baseline→borrowed_census→borrowed_census→baseline，四个独立进程串行。每次30秒预热＋60秒测量，真实Lab队列/预算/持久Session/RNG/消费、世界/delta/普通展示/绘制/SDL flip均在范围内；帧work排除FPS等待，生产网络未覆盖。四次窗口Cocoa2480×1235、native1、5000 Units＋1000 Agents、Fog、fixed30Hz、post-action、realtime_defer GC；其余参数/安全环境和完整启动命令在preregister及各monitor中。5秒冷启动smoke仅用于接线，失败的性能guards保留，未纳入正式收益。
+
+结果：服务2.690759→2.442516ms，改善9.225759%，改善95%区间0.206009–0.291126ms；完整帧19.253022→18.997800ms，改善1.325623%，区间−0.173029–0.685167ms跨零。所有原运行guards与资源检查通过，五项P99包络未回退。完整帧门槛未通过，默认关闭，不自动补跑。实时轨迹不同，统计为非配对100帧分块/10000/seed42，不宣称固定输入因果或多轮稳定性。
+
+原始包 `artifacts/e8-census-host-20261009-raw.zip` 含全部四次预热/正式原始样本、遥测、最终截图、空段记录、smoke、冻结测量工具、注册方案和分析。完整结论/门槛从results/census-host-complete.json读取；独立复算、边界保留证明及compact索引分别为census-host-integrity.json、census-host-boundaries.json和census-host-artifact-integrity.json。原wheel/源bundle仍引用第3节原服务包。没有新的validated生产commit/tag：完整帧门槛未通过。
+
+从raw包离线复核，无需重新运行游戏（解压后低层文件位于raw/）：
+
+```bash
+python tools/rust_migration/verify_census_host.py \
+  --runs /path/to/extracted/raw \
+  --experiment /path/to/star-lab/experiments/2026-10-rust-observation-service \
+  --output /path/to/new/integrity.json
+```
+
+需要重现运行时，先恢复源8c2afd7和c6a60a wheel、依赖及测量工具节点1c9e5fe；注册方案见results/census-host-preregister.json。在新注册文件中仅调整source、extension_dir、runs及runtime_args里的source路径，使用新的空输出目录并提交该注册文件，使Lab与产品tracked状态均clean；其余窗口、参数、顺序、冻结工具哈希和门槛保持。然后从Lab启动：
+
+```bash
+PYTHONPATH=/path/to/census/extension:/path/to/source \
+  /path/to/source/.venv/bin/python tools/rust_migration/run_census_host.py \
+  --preregister /path/to/new-preregister.json
+```
+
+该命令包含四次独立监测子进程。不要在已有progress的目录重复启动；复现产物归档到实验指定文件名，应使用独立Lab checkout，避免覆盖既有证据。预期signature是服务改善而整帧改善区间可能跨零；一次实时复现不保证相同数字，使用原门槛判定。原证据从compact/raw校验链离线复算可精确重现。

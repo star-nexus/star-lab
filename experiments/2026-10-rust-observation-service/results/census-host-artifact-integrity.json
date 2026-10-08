@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "compact": {
+    "path": "artifacts/e8-census-host-20261009-compact.zip",
+    "sha256": "79b7fe722e56d1302e7aafd563f5181102b12bca3e6684aac6249dc267952cc9",
+    "bytes": 31553,
+    "members_checked": 16
+  },
+  "raw": {
+    "path": "artifacts/e8-census-host-20261009-raw.zip",
+    "sha256": "4aa198064c41336d1f0fdd6f014dbc45448e43cb4e1a6ace005bd0333a6927b1",
+    "bytes": 3870984,
+    "members": 52
+  },
+  "portable_extracted_audit_matches": true,
+  "raw_inner_members_checked": 52,
+  "decision_gates_unchanged": true
+}

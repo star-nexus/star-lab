@@ -1,6 +1,6 @@
 # Decision — E8 观测服务专项
 
-**Status:** accepted research decision; production adoption rejected for this screen
+**Status:** ordinary-host confirmation complete; service gain supported, frame gate not met; default off
 **Decision date:** 2026-10-09
 **Research STAR commit:** `8c2afd7153ebc8ec6c80dd9f3a1406be440405e0`
 **Validated production commit/tag:** N/A
@@ -36,3 +36,10 @@
 ## 7. Revisit conditions
 
 进一步投入应先有界定位总工作和实际宿主中的剩余成本/慢尾，或做明确预注册的短宿主净收益确认。不得将此次服务改善当作默认上线条件，也不得自动重复这两轮筛选。当前进程均已结束。
+
+
+## 8. Ordinary-host follow-up decision (2026-10-09)
+
+按用户授权执行一个有界ABBA，四次运行/资源guards通过。普通single观测service改善9.225759%、CI全正、P99未回退；完整帧改善1.325623%，CI −0.173029–0.685167ms跨零，因此预注册组合门槛未通过。默认baseline保持，保留borrowed_census研究候选，不自动进入正式代码采用、不加轮择优。此次不否定局部收益，也不证明整帧没有收益；“完整净收益未确认”是准确结论。
+
+先前encoded服务筛选与这次ordinary宿主是不同条件，结果分别保留。无需靠新增长矩阵来追求显著性；进一步工程投入应有明确新目标，例如观测吞吐或更大的已测成本来源，再制定有界单因子验证。当前不继续自动测试，不更改缓存策略或叠加EntityRef失败因子。源8c2/安装3e0ebb/原49删除/冻结HEAD保持，只提交Lab。G009和既有GAP不关闭，容量/Frontier不变、5000 Agents暂缓，无push/merge或validated生产tag。

@@ -1,0 +1,269 @@
+{
+  "status": "complete",
+  "completed": 4,
+  "total": 4,
+  "failure": null,
+  "analysis": {
+    "stage": "One census-only ordinary-ingestion live-host ABBA screen",
+    "order": [
+      "A",
+      "B",
+      "B",
+      "A"
+    ],
+    "metrics": {
+      "frame_work_ms": {
+        "per_run": [
+          {
+            "count": 1800,
+            "min": 13.914667011704296,
+            "avg": 19.136073164020974,
+            "p50": 18.889833008870482,
+            "p95": 24.546333006583154,
+            "p99": 26.216874975943938,
+            "max": 28.37941699544899
+          },
+          {
+            "count": 1800,
+            "min": 14.097582985414192,
+            "avg": 18.898929465099677,
+            "p50": 18.637500004842877,
+            "p95": 24.204541026847437,
+            "p99": 26.05924996896647,
+            "max": 29.131249990314245
+          },
+          {
+            "count": 1800,
+            "min": 13.801291002891958,
+            "avg": 19.09667013890511,
+            "p50": 18.872124957852066,
+            "p95": 24.47349898284301,
+            "p99": 26.32658398943022,
+            "max": 30.500249995384365
+          },
+          {
+            "count": 1800,
+            "min": 13.778916996670887,
+            "avg": 19.369971462712986,
+            "p50": 19.142498989822343,
+            "p95": 24.933582986705005,
+            "p99": 26.674124994315207,
+            "max": 29.319207998923957
+          }
+        ],
+        "baseline_mean": 19.25302231336698,
+        "candidate_mean": 18.997799802002394,
+        "improvement_percent": 1.3256231006774988,
+        "ci95_live_block_difference_ms": [
+          -0.17302899041230094,
+          0.6851673383102436
+        ],
+        "p99_envelope_no_regression": true,
+        "screening_passed": false
+      },
+      "observation_service_ms": {
+        "per_run": [
+          {
+            "count": 1943,
+            "min": 1.8086250056512654,
+            "avg": 2.6955639011528807,
+            "p50": 2.72904199664481,
+            "p95": 3.1374160025734454,
+            "p99": 3.29054199391976,
+            "max": 3.431499993894249
+          },
+          {
+            "count": 1944,
+            "min": 1.6658749955240637,
+            "avg": 2.4218939475242314,
+            "p50": 2.4610839900560677,
+            "p95": 2.805458992952481,
+            "p99": 3.002957993885502,
+            "max": 3.2514589838683605
+          },
+          {
+            "count": 1944,
+            "min": 1.6877499874681234,
+            "avg": 2.4631384463354165,
+            "p50": 2.5019170134328306,
+            "p95": 2.8378750139381737,
+            "p99": 2.96529199113138,
+            "max": 3.701332985656336
+          },
+          {
+            "count": 1942,
+            "min": 1.8816250085365027,
+            "avg": 2.6859544281069434,
+            "p50": 2.7163340128026903,
+            "p95": 3.1448749941773713,
+            "p99": 3.311250009573996,
+            "max": 3.531249996740371
+          }
+        ],
+        "baseline_mean": 2.6907591646299123,
+        "candidate_mean": 2.442516196929824,
+        "improvement_percent": 9.22575944228854,
+        "ci95_live_block_difference_ms": [
+          0.20600904564370293,
+          0.2911257517803662
+        ],
+        "p99_envelope_no_regression": true,
+        "screening_passed": true
+      }
+    },
+    "resource_valid": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "runtime_guards": [
+      {
+        "complete": true,
+        "source_clean": true,
+        "tooling_clean": true,
+        "fog_on": true,
+        "world_alive": true,
+        "position_progress": true,
+        "frame_p99": true,
+        "world_hz": true,
+        "observation_p99": true,
+        "observation_queue_p99": true,
+        "action_queue_p99": true,
+        "queue_bounded": true,
+        "offered_load_met": true,
+        "duration_formal": true,
+        "not_diagnostic": true,
+        "fixed_clock": true,
+        "board_clock": true,
+        "nonempty_move": true,
+        "nonempty_attack": true,
+        "initial_resident_units": true,
+        "live_workload_95pct": true
+      },
+      {
+        "complete": true,
+        "source_clean": true,
+        "tooling_clean": true,
+        "fog_on": true,
+        "world_alive": true,
+        "position_progress": true,
+        "frame_p99": true,
+        "world_hz": true,
+        "observation_p99": true,
+        "observation_queue_p99": true,
+        "action_queue_p99": true,
+        "queue_bounded": true,
+        "offered_load_met": true,
+        "duration_formal": true,
+        "not_diagnostic": true,
+        "fixed_clock": true,
+        "board_clock": true,
+        "nonempty_move": true,
+        "nonempty_attack": true,
+        "initial_resident_units": true,
+        "live_workload_95pct": true
+      },
+      {
+        "complete": true,
+        "source_clean": true,
+        "tooling_clean": true,
+        "fog_on": true,
+        "world_alive": true,
+        "position_progress": true,
+        "frame_p99": true,
+        "world_hz": true,
+        "observation_p99": true,
+        "observation_queue_p99": true,
+        "action_queue_p99": true,
+        "queue_bounded": true,
+        "offered_load_met": true,
+        "duration_formal": true,
+        "not_diagnostic": true,
+        "fixed_clock": true,
+        "board_clock": true,
+        "nonempty_move": true,
+        "nonempty_attack": true,
+        "initial_resident_units": true,
+        "live_workload_95pct": true
+      },
+      {
+        "complete": true,
+        "source_clean": true,
+        "tooling_clean": true,
+        "fog_on": true,
+        "world_alive": true,
+        "position_progress": true,
+        "frame_p99": true,
+        "world_hz": true,
+        "observation_p99": true,
+        "observation_queue_p99": true,
+        "action_queue_p99": true,
+        "queue_bounded": true,
+        "offered_load_met": true,
+        "duration_formal": true,
+        "not_diagnostic": true,
+        "fixed_clock": true,
+        "board_clock": true,
+        "nonempty_move": true,
+        "nonempty_attack": true,
+        "initial_resident_units": true,
+        "live_workload_95pct": true
+      }
+    ],
+    "operational_guards_passed": true,
+    "queue_envelopes": {
+      "observation_response_ms": {
+        "per_run_p99": [
+          39.99198609380983,
+          37.99071631510742,
+          36.14381153602153,
+          38.154949725139886
+        ],
+        "baseline_worst": 39.99198609380983,
+        "candidate_worst": 37.99071631510742,
+        "no_regression": true
+      },
+      "observation_queue_ms": {
+        "per_run_p99": [
+          36.98727808659896,
+          35.524758335668594,
+          33.789012872148305,
+          35.61603373964317
+        ],
+        "baseline_worst": 36.98727808659896,
+        "candidate_worst": 35.524758335668594,
+        "no_regression": true
+      },
+      "action_queue_ms": {
+        "per_run_p99": [
+          33.20637499564327,
+          32.97495798324235,
+          33.025333017576486,
+          33.226333995116875
+        ],
+        "baseline_worst": 33.226333995116875,
+        "candidate_worst": 33.025333017576486,
+        "no_regression": true
+      }
+    },
+    "screening_positive": false,
+    "decision": "host screen did not meet net-benefit/operational gates",
+    "method": "Unpaired live 100-frame block resampling, 10000 draws, seed42, actual event/tail weights; equal run weights",
+    "live_trajectories_differ": true,
+    "fixed_input_causal_speedup": false,
+    "formal_full_host_acceptance": false,
+    "default_adoption": false,
+    "scope": "Live Lab local request queue through SDL flip; production network excluded",
+    "automatic_retry": false,
+    "automatic_additional_round": false
+  },
+  "raw": {
+    "path": "artifacts/e8-census-host-20261009-raw.zip",
+    "sha256": "4aa198064c41336d1f0fdd6f014dbc45448e43cb4e1a6ace005bd0333a6927b1",
+    "bytes": 3870984,
+    "members": 52
+  },
+  "default_adoption": false,
+  "automatic_retry": false
+}

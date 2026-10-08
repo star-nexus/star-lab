@@ -1,10 +1,21 @@
-## E8 census普通宿主短ABBA（2026-10-09，当前执行阶段）
+## E8 census 普通宿主确认完成（2026-10-09，当前恢复入口）
 
-用户授权下一步：源8c2afd7／c6a60a隔离扩展，两边普通single观测、缓存复用关闭，只切换baseline/borrowed_census。仅一轮ABBA四次串行，每次30秒预热＋60秒测量；相关131项与短轨迹复用，不重跑长P2。新选择/统计负控通过；目标负载5秒smoke与正式四次下一步。
+源 `8c2afd7153ebc8ec6c80dd9f3a1406be440405e0`／隔离扩展 `c6a60a`，测量工具节点 `1c9e5fe9af7450f2c7946e244bc070b995e5ec7b`。用户授权的一轮 ABBA 四次已全部完成，四次均使用普通 single 观测、段缓存关闭，仅切换 baseline/borrowed_census。每次30秒预热＋60秒测量，5000 Units＋1000 Agents、native1、Cocoa 2480×1235、普通展示、Fog和原队列/预算/Session消费保持。
 
-恢复先读实验results/census-host-preregister.json，持久目录 `/Users/liyang/Developer/star-lab-runs/e8-census-host-20261009/progress.json` 和父日志。工具run_census_host.py；若活跃禁止重复启动。实际宿主输入轨迹随时序不同，统计非配对，不冒充固定输入因果收益。保留原帧/队列/频率/负载guards和全部慢样本；压力仅监测不自动暂停/kill/超时，资源无效完整保留不重试。四次结束后归档分析，不自动启用默认、push/merge、改容量/Frontier或关闭G009/既有GAP。
+| 指标 | baseline 两次均值 | census 两次均值 | 本轮结果 |
+|---|---:|---:|---|
+| 完整观测 service | 2.6908ms | 2.4425ms | 改善9.2258%；改善95%区间0.2060–0.2911ms，服务门槛通过 |
+| 完整帧 work（不含FPS等待） | 19.2530ms | 18.9978ms | 改善1.3256%；改善95%区间−0.1730–0.6852ms，跨零，未通过 |
+| frame P99 最差运行 | 26.6741ms | 26.3266ms | 未回退，低于33.33ms |
+| service P99 最差运行 | 3.3113ms | 3.0030ms | 未回退 |
 
-进度：`身份 █████ | 新边界/统计控制 █████ | 目标smoke 未开始 | 宿主ABBA 0/4 | 默认 关闭`。
+四次正式各1800帧，观测1943/1944/1944/1942条；含预热每次3011条。原运行guards全部通过，世界30Hz、5000 Units存活；压力全normal，无暂停/kill/超时/强制预算。第四次最终有1条逾期约1.034ms，在既定≤100ms积压guard内，未添加“零逾期”门槛。全部预热和慢尾保留；帧max分别28.3794/29.1312/30.5002/29.3192ms，不称所有尾部改善。
+
+独立 nearest-rank 统计及非配对100帧分块/10000次bootstrap/seed42复算通过；实时轨迹随时序不同，不能称同输入配对因果加速或三轮稳定性。确认服务收益可出现在普通路径，无需依赖未采用的段缓存；完整帧净收益仍未确认。保留研究候选、默认关闭，不补跑择优、不继续扩矩阵。G009/既有GAP仍OPEN，native4完整宿主/生产网络未覆盖，容量/Frontier和5000 Agents暂缓保持。
+
+恢复先读本实验 README、analysis/decision、results/census-host-complete.json、census-host-integrity.json 和 census-host-boundaries.json。原始包 `artifacts/e8-census-host-20261009-raw.zip` SHA `4aa198064c41336d1f0fdd6f014dbc45448e43cb4e1a6ace005bd0333a6927b1`，3870984 bytes，52个内部成员逐项核验；compact包含全部门槛数值与raw引用，外部SHA另列。持久目录 `/Users/liyang/Developer/star-lab-runs/e8-census-host-20261009` 最终progress为complete，父/子进程已退出，不重新启动。活动源、安装3e0ebb扩展、原49删除和两个冻结HEAD保持。只提交Lab记录；不push/merge。
+
+进度：`工具/边界 █████ | 宿主ABBA █████ 4/4 | 独立复算/归档 █████ | 服务门槛 通过 | 整帧门槛 未通过 | 默认 关闭`。
 
 ## E8 观测服务专项首轮完成（2026-10-09，当前）
 

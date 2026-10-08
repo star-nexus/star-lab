@@ -4,7 +4,7 @@
     "title": "E8 observation service allocation and ECS scan research",
     "date": "2026-10-08",
     "completed": "2026-10-09",
-    "status": "reproduced; service gain supported; combined adoption gate failed"
+    "status": "ordinary-host 4/4 complete; service gain supported; frame CI crosses zero; default off"
   },
   "source": {
     "repository": "star-nexus/star",
@@ -115,5 +115,33 @@
   "revisit_when": [
     "explicit complete-host/total-cost investigation shows useful stable net gain",
     "new workload changes number of factions or cache hit mix"
-  ]
+  ],
+  "ordinary_host_confirmation": {
+    "source_sha": "8c2afd7153ebc8ec6c80dd9f3a1406be440405e0",
+    "measurement_tool_sha": "1c9e5fe9af7450f2c7946e244bc070b995e5ec7b",
+    "preregister": "results/census-host-preregister.json",
+    "result": "results/census-host-complete.json",
+    "integrity": "results/census-host-integrity.json",
+    "boundaries": "results/census-host-boundaries.json",
+    "runtime": "one serial ABBA;30s warmup+60s measure each; native1;5000 Units+1000 Agents;Cocoa2480x1235",
+    "independent_variable": "baseline versus borrowed_census, both ordinary single-query ingestion, zero segments",
+    "method": "100-frame unpaired live blocks,10000 bootstrap,seed42,actual counts and empty/tail blocks,equal per-run weights",
+    "scope": "Lab local queue through SDL flip; excludes FPS wait and production network",
+    "result_signature": "service+9.225759%; frame+1.325623% with CI crossing0; all original guards and resource validity pass",
+    "raw": {
+      "path": "artifacts/e8-census-host-20261009-raw.zip",
+      "sha256": "4aa198064c41336d1f0fdd6f014dbc45448e43cb4e1a6ace005bd0333a6927b1",
+      "bytes": 3870984,
+      "members": 52
+    },
+    "default_adoption": false,
+    "native4_or_canonical_full_revalidation": false,
+    "compact": {
+      "path": "artifacts/e8-census-host-20261009-compact.zip",
+      "sha256": "79b7fe722e56d1302e7aafd563f5181102b12bca3e6684aac6249dc267952cc9",
+      "bytes": 31553,
+      "members_checked": 16
+    },
+    "artifact_integrity": "results/census-host-artifact-integrity.json"
+  }
 }

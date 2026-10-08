@@ -1,0 +1,82 @@
+{
+  "passed": true,
+  "attempts": 4,
+  "formal_frames": [
+    1800,
+    1800,
+    1800,
+    1800
+  ],
+  "formal_observations": [
+    1943,
+    1944,
+    1944,
+    1942
+  ],
+  "all_observations": [
+    3011,
+    3011,
+    3011,
+    3011
+  ],
+  "final_overdue_events": [
+    0,
+    0,
+    0,
+    1
+  ],
+  "final_oldest_overdue_ms": [
+    0,
+    0,
+    0,
+    1.0338945139665157
+  ],
+  "raw_hashes_checked": [
+    "1-baseline.raw.json",
+    "1-baseline.final.png",
+    "1-baseline.segments.json",
+    "2-borrowed_census.raw.json",
+    "2-borrowed_census.final.png",
+    "2-borrowed_census.segments.json",
+    "3-borrowed_census.raw.json",
+    "3-borrowed_census.final.png",
+    "3-borrowed_census.segments.json",
+    "4-baseline.raw.json",
+    "4-baseline.final.png",
+    "4-baseline.segments.json"
+  ],
+  "inner_members_checked": 52,
+  "metrics_recomputed": {
+    "frame_work_ms": {
+      "baseline": 19.25302231336698,
+      "candidate": 18.997799802002394,
+      "improvement_percent": 1.3256231006774988,
+      "ci95_ms": [
+        -0.17302899041230094,
+        0.6851673383102436
+      ],
+      "passed": false
+    },
+    "observation_service_ms": {
+      "baseline": 2.6907591646299123,
+      "candidate": 2.442516196929824,
+      "improvement_percent": 9.22575944228854,
+      "ci95_ms": [
+        0.20600904564370293,
+        0.2911257517803662
+      ],
+      "passed": true
+    }
+  },
+  "method": "Independent nearest-rank statistics and bisect 100-frame blocks,10000 bootstrap,seed42,equal run weights",
+  "raw": {
+    "path": "artifacts/e8-census-host-20261009-raw.zip",
+    "sha256": "4aa198064c41336d1f0fdd6f014dbc45448e43cb4e1a6ace005bd0333a6927b1",
+    "bytes": 3870984,
+    "members": 52
+  },
+  "all_guards": true,
+  "all_pressure_normal": true,
+  "verdict": "service gain supported; full-frame CI crosses zero; default stays off",
+  "full_canonical_or_native4_or_production_network_validation": false
+}

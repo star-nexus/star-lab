@@ -1,6 +1,6 @@
 # STAR Lab
 
-> E8观测专项首轮完成：131项契约和两次短完整输入一致性通过。census借用键服务改善9.157%，总工作区间跨零，保持研究开关、默认关闭。完整证据见[专项报告](experiments/2026-10-rust-observation-service/README.md)与[恢复入口](records/rust-parallel-handoff.md)。
+> E8 census普通宿主确认4/4结束：观测service改善9.226%，完整帧均值改善1.326%但区间跨零；运行与完整性检查通过，默认关闭，不追加矩阵。见[专项报告](experiments/2026-10-rust-observation-service/README.md)和[恢复入口](records/rust-parallel-handoff.md)。
 
 > E7 P3完成并独立复核：24次全部执行，23次计时有效、1次无效保留。候选empty_territory在7个完整分层未通过原收益门槛、1个分层证据不足，保持关闭；未进入窗口或默认接入。见[决策汇总](experiments/2026-10-rust-display-preparation/results/p3-decision-summary.json)和[恢复入口](records/rust-parallel-handoff.md)。
 

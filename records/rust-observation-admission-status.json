@@ -1,5 +1,5 @@
 {
-  "stage": "census普通宿主：smoke接线完成（非性能），正式ABBA待启动",
+  "stage": "census普通宿主4/4完成；service正收益，完整帧CI跨零，默认关闭",
   "source_sha": "8c2afd7153ebc8ec6c80dd9f3a1406be440405e0",
   "plan": "records/rust-observation-admission-plan.md",
   "identity": "records/rust-observation-admission-plan.json",
@@ -12,7 +12,8 @@
     "P3_performance": "historical source11d9927: service positive; live-host4/4 valid, frame CI crosses0/service P99 regression; latest census service screen positive but selected total CI crosses0",
     "P4_conditional_window": "not started",
     "default_adoption": "not enabled",
-    "service_specialization": "complete two independent screens; census service+9.157%, total CI crosses zero; default off"
+    "service_specialization": "complete two independent screens; census service+9.157%, total CI crosses zero; default off",
+    "census_host": "complete 4/4 valid; service+9.225759%, frame+1.325623% CI crosses0; default off"
   },
   "prior_e7": {
     "lab_commit": "4370070",
@@ -30,10 +31,10 @@
   "agents5000": "deferred",
   "automation": "no E8 automation created; E7 e7-p2 PAUSED",
   "push_or_merge": false,
-  "authorization": "2026-10-07 user execution authorized",
+  "authorization": "2026-10-09 user: 好，那就按照你的建议执行下一步吧；one bounded census ordinary-host ABBA",
   "experiment": "experiments/2026-10-rust-observation-admission",
   "resource_policy": "telemetry only; no automatic pause/kill/timeout",
-  "persistent_runs": "/Users/liyang/Developer/star-lab-runs/e8-service-20261008",
+  "persistent_runs": "/Users/liyang/Developer/star-lab-runs/e8-census-host-20261009",
   "installed_extension": "original6ec8e05/3e0ebb unchanged; prior admission used staged9bb2fa; latest service candidate uses stagedc6a60a",
   "candidate_extension": "c6a60a42fdafeee481620e89248a1a8604b7e3b3835b7b2a0f43053999977d88",
   "active_previous_runs": "/Users/liyang/Developer/star-lab-runs/e8-p2-20261007",
@@ -49,7 +50,7 @@
   "full_host_runs": "/Users/liyang/Developer/star-lab-runs/e8-full-host-screen-20261008",
   "full_host_preregister": "experiments/2026-10-rust-observation-admission/results/full-host-screen-preregister.json",
   "full_host_result": "experiments/2026-10-rust-observation-admission/results/full-host-screen.json",
-  "next": "Bounded complete-chain/tail attribution if further pursued; no automatic repeat/default/cache-policy change",
+  "next": "No automatic repeat/default adoption; a new bounded objective is required before further testing",
   "current_validation": "131 targeted contracts + each complete short12148/2617/3010 input; previous canonical full P2 applies to source11d9927 only",
   "service_specialization": {
     "experiment": "experiments/2026-10-rust-observation-service",
@@ -65,7 +66,7 @@
   "lab_gap_stage": {
     "G009": "OPEN; no production request adapter/default adoption",
     "native4_full_admission": "deferred; native4 contracts alone do not replace full-host validation",
-    "current_census_net_gain": "unconfirmed; total interval crosses zero",
+    "current_census_net_gain": "ordinary host service confirmed; full-frame CI crosses0, unconfirmed",
     "existing_gap_closure": false
   },
   "prior_admission_source_sha": "11d9927f7a1bffa32dd85c9009944424826508e5",
@@ -82,6 +83,17 @@
     ],
     "host_mode": "ordinary single on all4",
     "adopted": false,
-    "smoke": "setup valid; five-second startup performance guards fail and retained; no performance claim"
+    "smoke": "setup valid; five-second startup performance guards fail and retained; no performance claim",
+    "result": "experiments/2026-10-rust-observation-service/results/census-host-complete.json",
+    "integrity": "experiments/2026-10-rust-observation-service/results/census-host-integrity.json",
+    "completed": 4,
+    "timing_valid": 4,
+    "progress": "4/4 archive and independent audit complete",
+    "service_improvement_percent": 9.22575944228854,
+    "frame_improvement_percent": 1.3256231006774988,
+    "frame_ci95_ms": [
+      -0.17302899041230094,
+      0.6851673383102436
+    ]
   }
 }

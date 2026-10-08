@@ -3,19 +3,19 @@
     "id": "2026-10-rust-observation-admission",
     "title": "E8 admitted observation segment reuse",
     "date": "2026-10-07",
-    "status": "P2 ordinary child retained; new telemetry/recovery supervisor active"
+    "status": "P2 streamlined: validated full reference reused; canonical encoded candidate only; targeted/admission pending"
   },
   "source": {
     "repository": "star-nexus/star",
     "problem_commit": "5b9658bc668b7d13f801351162f255f30622b32a",
-    "measurement_commit": "6ec8e05d68c82d2731a382e00411bd58f2ed6f56",
-    "fix_commit": "6ec8e05d68c82d2731a382e00411bd58f2ed6f56",
+    "measurement_commit": "11d9927f7a1bffa32dd85c9009944424826508e5",
+    "fix_commit": "11d9927f7a1bffa32dd85c9009944424826508e5",
     "validated_commit": null,
     "validated_tag": null,
     "branch_at_time": "codex/rust-ecs-parallel",
     "baseline_extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
     "candidate_extension_sha256": "9bb2fa4412bc810fbd751c42f525614f8cddb42e8c136612a51495fa0679f0d9",
-    "scope": "P1 short correctness passed; full canonical P2 in progress, no adopted/fully validated commit",
+    "scope": "Ordinary full equivalence passed twice; no repeated baseline; true candidate full trajectory pending, not fully validated",
     "candidate_commit": "11d9927f7a1bffa32dd85c9009944424826508e5"
   },
   "hardware": {
@@ -71,13 +71,22 @@
       "results/p1-accounting-erratum.json",
       "results/p2-v2-preregister.json",
       "results/p2-supervisor-recovery-20261008.json",
-      "results/p2-recovery-preregister-20261008.json"
+      "results/p2-recovery-preregister-20261008.json",
+      "results/p2-recovered-ordinary.json",
+      "results/p2-v2-trajectory-progress.json",
+      "results/p2-streamlined-preregister-20261008.json",
+      "artifacts/e8-accounting-v2-20261007-raw.zip",
+      "artifacts/e8-p2-recovered-ordinary-20261008-raw.zip",
+      "artifacts/e8-p2-recovery-20261008-canonical-single-t1-raw.zip",
+      "artifacts/e8-p2-scope-cancel-20261008-raw.zip",
+      "artifacts/e8-p2-checkpoint-validation-20261008-raw.zip"
     ],
     "external": [
       "/Users/liyang/Developer/star-lab-runs/e8-p0-20261007",
       "/Users/liyang/Developer/star-lab-runs/e8-p1-20261007",
       "/Users/liyang/Developer/star-lab-runs/e8-p2-20261007",
-      "/Users/liyang/Developer/star-lab-runs/e8-p2-recovery-20261008"
+      "/Users/liyang/Developer/star-lab-runs/e8-p2-recovery-20261008",
+      "/Users/liyang/Developer/star-lab-runs/e8-p2-streamlined-20261008"
     ]
   },
   "headline": {

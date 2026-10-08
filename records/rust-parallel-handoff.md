@@ -1,3 +1,9 @@
+## E8 精简候选校验（2026-10-08，当前）
+
+普通完整参考已归档复用；仅运行规范 encoded 候选，targeted/实际接纳待完成。恢复先读 `/Users/liyang/Developer/star-lab-runs/e8-p2-streamlined-20261008/candidate-progress.json`、`encoded-t1.progress.json`、`encoded-t1.monitor.json` 与 `parent.log`。普通完整轨迹两次结果已归档，不重跑；no_reuse 冗长组按用户精简要求取消，未完成前缀保留而不算通过。候选复用独立旧二进制的已核验完整状态指纹，仍检查每个写入/step、单条或段末全状态、全部响应/展示及逐查询计数。本阶段仅规范轨迹候选，targeted 与实际接纳校验仍待完成；P2不宣称完成，P3/默认未启动。不因压力自动暂停/终止；不关闭GAP，不改容量/Frontier/5000Agents暂缓。
+
+进度：`普通完整参考 █ | encoded候选 ▓ | targeted/实际接纳 ░ | P3 ░ | 默认 ░`。
+
 ## E8 监督器恢复（2026-10-08，最新）
 
 当前普通全轨迹子进程57758始终保留，未重启/暂停；旧监督器已退出，旧monitor/progress的running状态可能过期。接续监督器日志明确有ENOSPC写入失败，原监督器实际退出原因未捕获；当前磁盘余量约9GiB。incident结果p2-supervisor-recovery-20261008.json保存日志/哈希和事实范围。

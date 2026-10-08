@@ -1,0 +1,65 @@
+{
+  "stage": "P2 revised scope; reuse proven ordinary anchors, only canonical encoded candidate now",
+  "source_sha": "11d9927f7a1bffa32dd85c9009944424826508e5",
+  "extension_sha256": "9bb2fa4412bc810fbd751c42f525614f8cddb42e8c136612a51495fa0679f0d9",
+  "extension_dir": "/Users/liyang/Developer/star-lab-runs/e8-accounting-v2-20261007/extension",
+  "persistent_runs": "/Users/liyang/Developer/star-lab-runs/e8-p2-streamlined-20261008",
+  "reference_report": "/Users/liyang/Developer/star-lab-runs/e8-p2-recovery-20261008/canonical-single-t1.json",
+  "reference_report_sha256": "ca0af03b971878759c010ffe3dc0c3ba7218083fe6327c692fc65b312a53aaf1",
+  "reference_raw_sha256": "3be2bea9530d66586793f499636646021eeefafe1ef81660d7f8754cb0099b2e",
+  "reference_scope": "60754 nodes, 40994 requests, 9880 tick/presentation, independent E7 binary and corrected ordinary extension complete equivalence",
+  "trace": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261005/inputs/rust-300-r3.trace.json.gz",
+  "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+  "terminated_old_pids": [
+    19105,
+    53115
+  ],
+  "mini_validation": "/Users/liyang/Developer/star-lab-runs/e8-p2-streamlined-20261008/mini-v2/validation.json",
+  "mini_raw": {
+    "file": "artifacts/e8-p2-checkpoint-validation-20261008-raw.zip",
+    "bytes": 41227,
+    "sha256": "d283fd192d1bb6e61fbf9ccf0b7211bc04ae08d010fc5c8a30bcf750d9a27e8d",
+    "inner_sha_verified": true
+  },
+  "canceled_raw": {
+    "file": "artifacts/e8-p2-scope-cancel-20261008-raw.zip",
+    "bytes": 500396,
+    "sha256": "0c6946aac8930785303836c8e8f0d7229d63a0279a3402417eb7eee2208a4938",
+    "inner_sha_verified": true
+  },
+  "canceled_counts": {
+    "full_authority_checkpoints": 6062,
+    "requests": 5513,
+    "operations": 7543,
+    "ticks": 1015,
+    "presentation": 1015,
+    "segments": 324,
+    "queries": 1160,
+    "query_accounting_snapshots": 790
+  },
+  "cancel_reason": "User scope reduction of redundant full negative control, not resource or gameplay failure",
+  "partial_not_pass": true,
+  "ordinary_not_repeated": true,
+  "no_full_no_reuse_retry": true,
+  "tools": {
+    "verify_observation_checkpoints.py": "fd8e4807e9da30caedf792816db78204c3b01642da40c5181f99c756ba4c3946",
+    "check_observation_checkpoint_oracle.py": "9b782ce89ac9573a5cfd98ea28103e47e9119965a6eb35eb2ed96dc695edfa58",
+    "run_observation_checkpoint_candidate.py": "1b9c1fb8123776670d36fab85cd3b3f09e10467125cc8f807046160cbafd604d",
+    "run_observation_admission_p2.py": "c5a36e5f3eaa0bb7fbc68f7ca6780a22c9b2b1ec6fad117f304759d07d3be215",
+    "monitor_observation_admission.py": "962eaf163ae9a73fb2e6458d3e37f07397dbc209b1ee9685b4a42035958a7117"
+  },
+  "authority_scope": "Candidate exact full SHA at each world write/step, singleton query and segment end; reference fingerprints already independently validated",
+  "accounting_scope": "Every query; same-version no-reuse diagnostic witness grounded by independent old small fixture and full ordinary baseline; candidate scoped native metadata/counters, singleton full export counts/epoch/revision with supplied wall metadata",
+  "admission_scope": "Canonical adjacent query groups only. Actual recorded admission and targeted checks remain pending; no host admission claim",
+  "completion": "Canonical candidate only. P2_complete=false, P3 not started",
+  "further_scope": "Do targeted faults/lifecycle and admitted trace once, defer full native4 until native1 benefit justifies. First formal native1 ABBA round only after P2; expand performance rounds only positive",
+  "resource_policy": "telemetry only; no automatic pause/kill/timeout",
+  "correctness_pressure_rejection": false,
+  "performance_claim": false,
+  "automatic_retry": false,
+  "automatic_P3": false,
+  "default_adoption": false,
+  "existing_GAPs_closed": false,
+  "capacity_updated": false,
+  "frontier_updated": false
+}

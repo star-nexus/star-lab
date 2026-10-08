@@ -1,3 +1,9 @@
+## E8 精简验证（2026-10-08，当前）
+
+两次完整普通轨迹已通过并归档，计数诊断修正未改玩法执行；第二次完整普通组耗时约8小时53分，属于应避免的重复。按用户精简要求停止旧调度器和no_reuse冗长组，已完成7543/60754节点保存，不能计为通过。只运行encoded候选，复用已核验独立旧扩展的完整指纹；小世界native1/4正例与篡改指纹/计数负例通过。预注册results/p2-streamlined-preregister-20261008.json，恢复见handoff/status。规范候选通过后仍待targeted/实际接纳；P3、默认未启动。G009/其他GAP、容量/Frontier保持，5000Agents暂缓。
+
+进度：`普通参考 █ | encoded ▓ | targeted/接纳 ░ | P3 ░`。
+
 ## E8 监督器恢复（2026-10-08，最新）
 
 当前普通全轨迹子进程57758始终保留，未重启/暂停；旧监督器已退出，旧monitor/progress的running状态可能过期。接续监督器日志明确有ENOSPC写入失败，原监督器实际退出原因未捕获；当前磁盘余量约9GiB。incident结果p2-supervisor-recovery-20261008.json保存日志/哈希和事实范围。

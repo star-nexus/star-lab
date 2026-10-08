@@ -1,0 +1,49 @@
+{
+  "completed": [
+    {
+      "spec": {
+        "name": "canonical-single-t1",
+        "mode": "single",
+        "threads": 1,
+        "trace": "/Users/liyang/Developer/star-lab-runs/e7-p2-20261005/inputs/rust-300-r3.trace.json.gz",
+        "trace_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77"
+      },
+      "report": {
+        "stage": "P2 correctness only; accounting oracle v2",
+        "passed": true,
+        "mode": "single",
+        "threads": 1,
+        "input_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+        "counts": {
+          "full_authority_checkpoints": 50874,
+          "requests": 40994,
+          "operations": 60754,
+          "ticks": 9880,
+          "presentation": 9880,
+          "queries": 11007
+        },
+        "failure": null,
+        "tool_sha256": "74b55dcac9fe3b8c051cfe466e1baf6f4282ad4477691c6e813594754ec3d79b",
+        "source_extension_sha256": "9bb2fa4412bc810fbd751c42f525614f8cddb42e8c136612a51495fa0679f0d9",
+        "baseline_extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
+        "full_authority_scope": "Every non-query request and step, plus singleton/segment-end queries; per-query small snapshots inside scopes",
+        "admission_scope": "Canonical world-sequence runs only; not host admission proof",
+        "state_checkpoint_stream_sha256": "4523e3de0aa887b8326e0261605c67e9e3df97c8cef738f669e7c5b3baa55fd5",
+        "response_stream_sha256": "92371cf579fea8e4c7bcd5652311e67707f8692c961fbce24dd56158e8e276d0",
+        "raw_sha256": "3be2bea9530d66586793f499636646021eeefafe1ef81660d7f8754cb0099b2e",
+        "elapsed_s": 31981.85635704201,
+        "performance_claim": false,
+        "default_adoption": false
+      },
+      "raw": {
+        "file": "artifacts/e8-p2-recovery-20261008-canonical-single-t1-raw.zip",
+        "bytes": 3897412,
+        "sha256": "c2da26fc2d7cc9b521226e923a1334e9386ae618d5584f17b65affef0e03e015",
+        "inner_sha_verified": true
+      },
+      "resource_events": 1
+    }
+  ],
+  "planned": 5,
+  "correctness_only": true
+}

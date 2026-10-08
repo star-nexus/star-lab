@@ -1,0 +1,55 @@
+{
+  "setup_passed": true,
+  "performance_evidence": false,
+  "formal_guards_passed": false,
+  "guards": {
+    "complete": true,
+    "source_clean": true,
+    "tooling_clean": true,
+    "fog_on": true,
+    "world_alive": true,
+    "position_progress": true,
+    "frame_p99": false,
+    "world_hz": false,
+    "observation_p99": false,
+    "observation_queue_p99": false,
+    "action_queue_p99": false,
+    "queue_bounded": true,
+    "offered_load_met": true,
+    "duration_formal": false,
+    "not_diagnostic": true,
+    "fixed_clock": true,
+    "board_clock": true,
+    "nonempty_move": true,
+    "nonempty_attack": true,
+    "initial_resident_units": true,
+    "live_workload_95pct": true
+  },
+  "frame": {
+    "count": 134,
+    "min": 11.394166009267792,
+    "avg": 23.01044148564992,
+    "p50": 15.66129201091826,
+    "p95": 38.889584015123546,
+    "p99": 42.43645799579099,
+    "max": 562.8240420192014
+  },
+  "source": {
+    "path": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main",
+    "sha": "8c2afd7153ebc8ec6c80dd9f3a1406be440405e0",
+    "dirty": ""
+  },
+  "extension": {
+    "api": 18,
+    "sha256": "c6a60a42fdafeee481620e89248a1a8604b7e3b3835b7b2a0f43053999977d88"
+  },
+  "surface_size": [
+    2480,
+    1235
+  ],
+  "driver": "cocoa",
+  "monitor_sha256": "228cf705d281b93c31a3d4a6c7e473f0d77436790cda9e1ae5af73477f54893a",
+  "meta_sha256": "3d9a85b9d899b6c428a034352dcf9079f45364c7076d34f01b82019e392b2ab8",
+  "scope": "5 seconds, no warmup; startup sample retained, not benefit acceptance",
+  "next": "Only the four declared30warm+60measure attempts"
+}

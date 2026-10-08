@@ -1,5 +1,5 @@
 {
-  "stage": "用户授权census普通宿主短ABBA；控制通过，smoke/4次正式下一步",
+  "stage": "census普通宿主：smoke接线完成（非性能），正式ABBA待启动",
   "source_sha": "8c2afd7153ebc8ec6c80dd9f3a1406be440405e0",
   "plan": "records/rust-observation-admission-plan.md",
   "identity": "records/rust-observation-admission-plan.json",
@@ -81,6 +81,7 @@
       "baseline"
     ],
     "host_mode": "ordinary single on all4",
-    "adopted": false
+    "adopted": false,
+    "smoke": "setup valid; five-second startup performance guards fail and retained; no performance claim"
   }
 }

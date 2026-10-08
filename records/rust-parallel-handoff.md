@@ -1,3 +1,23 @@
+## E8 本轮完成（2026-10-08，当前）
+
+修订后的native1 P2通过：40994请求、9880 tick、11007观测及计数、46807完整权威检查点；全部响应、展示增量、事件及最终状态一致。真实接纳轨迹12148请求/2617 tick/750段及12个release边界、4个锁定依赖诊断故障检查已复用，不再运行。native4完整接纳验收暂缓，诊断注错不等于release wheel注错或一般内存安全证明。
+
+唯一native1 ABBA/BAAB服务筛选完成且计时资源有效：观测服务均值3.068→2.765ms，改善9.882%，P99 4.199→4.101ms；所测总工作均值4.625→4.367ms，改善5.584%，P99 12.307→11.621ms。改善95%区间分别0.211–0.388ms、0.112–0.408ms。保留全部2617 tick/3010观测和慢尾，最大值分别111.36→123.34ms、116.23→142.73ms，最大值并非本轮门槛但不能称所有尾部都改善。
+
+结论：有继续验证完整宿主链路的价值；本轮只证明请求/cache服务筛选收益，未计入实时heap扫描与显示apply/render/submit，不构成整帧提速、稳定多轮收益或上线验收。默认关闭，正式宿主/窗口未启动，无自动补跑/加轮。G009及其他GAP、容量、Frontier和5000Agents暂缓保持。
+
+进度：`完整参考 █ | 规范候选 █ | 接纳/边界 █ | 一轮收益筛选 █ | 正式宿主/默认 ░`。
+
+恢复先读实验results/p2-native1-complete.json、p3-single-service-screen.json、completion-integrity-20261008.json及records/rust-observation-admission-status.json。两父任务与子进程已退出；旧逐组progress可能保留最后running checkpoint，以完成报告和最终raw为准，不重启历史运行。
+
+以下为历史恢复快照，不表示当前活跃测试。
+
+## E8 精简候选校验（2026-10-08，当前）
+
+规范 encoded 候选完整通过；targeted/实际接纳待完成。恢复先读 `/Users/liyang/Developer/star-lab-runs/e8-p2-streamlined-20261008/candidate-progress.json`、`encoded-t1.progress.json`、`encoded-t1.monitor.json` 与 `parent.log`。普通完整轨迹两次结果已归档，不重跑；no_reuse 冗长组按用户精简要求取消，未完成前缀保留而不算通过。候选复用独立旧二进制的已核验完整状态指纹，仍检查每个写入/step、单条或段末全状态、全部响应/展示及逐查询计数。本阶段仅规范轨迹候选，targeted 与实际接纳校验仍待完成；P2不宣称完成，P3/默认未启动。不因压力自动暂停/终止；不关闭GAP，不改容量/Frontier/5000Agents暂缓。
+
+进度：`普通完整参考 █ | encoded候选 ▓ | targeted/实际接纳 ░ | P3 ░ | 默认 ░`。
+
 ## E8 有界后续执行（2026-10-08，当前）
 
 接纳/边界检查已归档；等待现有规范候选后只做一次服务收益筛选。优先读 `/Users/liyang/Developer/star-lab-runs/e8-p3-single-screen-20261008/progress.json`、`parent.log`、`screen.json` 和 `screen.monitor.json`，不要重启任何已开始的测试。等待原规范候选父任务退出后核验原始哈希，复用真实接纳与16个边界/故障检查；仅做一轮native1完整90秒录制输入的服务ABBA筛选，不自动加轮或进入正式窗口。筛选包括cache开关、wire/bytes、decode与固定消费，排除实时heap扫描及显示apply/render/submit，不是完整宿主收益门槛；计时受压力干扰则inconclusive，不自动补跑。默认/GAP/容量/Frontier不变。

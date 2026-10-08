@@ -1,5 +1,5 @@
 {
-  "stage": "接纳/边界检查已归档；等待现有规范候选后只做一次服务收益筛选",
+  "stage": "单轮服务收益筛选完成：worth formal full-host investigation",
   "source_sha": "11d9927f7a1bffa32dd85c9009944424826508e5",
   "plan": "records/rust-observation-admission-plan.md",
   "identity": "records/rust-observation-admission-plan.json",
@@ -8,8 +8,8 @@
     "algorithm_plan": "complete",
     "P0_admission_diagnosis": "complete; 1943 measured queries; candidate coverage about 57%; full replay passed",
     "P1_owned_cache_prototype": "complete; 88 contracts and independent short host oracle passed",
-    "P2_correctness": "Canonical encoded native1 running; actual admission native1 and 16 edges/faults complete within declared scope",
-    "P3_performance": "queued after P2; no matrix",
+    "P2_correctness": "complete native1 within revised recorded/canonical/edge scope; native4 full admission deferred",
+    "P3_performance": "one bounded moving-world service screen complete; formal full-host validation not started",
     "P4_conditional_window": "not started",
     "default_adoption": "not enabled"
   },

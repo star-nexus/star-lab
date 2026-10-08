@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "canonical_raw_rows": 60754,
+  "sha_entries_independently_verified": 45,
+  "new_archives_inner_sha_verified": true,
+  "screen_analysis_recomputed_equal": true,
+  "repository_boundaries_verified": {
+    "active_head": "11d9927f7a1bffa32dd85c9009944424826508e5",
+    "active_clean": true,
+    "original_head": "7e145d169433695cd4957e186a6b2fda06813c26",
+    "original_49_deletions_preserved": true,
+    "frozen_rust_head": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+    "frozen_python_head": "6a970deaee7d9b8d3939edd102973f2377edd6ac",
+    "frozen_both_clean": true
+  },
+  "timing_resource_valid": true,
+  "formal_full_host_acceptance": false,
+  "default_adoption": false,
+  "push_or_merge": false
+}

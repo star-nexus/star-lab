@@ -1,0 +1,51 @@
+{
+  "status": "canonical_encoded_passed",
+  "report": {
+    "stage": "P2 checkpoint reuse, correctness only",
+    "passed": true,
+    "failure": null,
+    "mode": "segment_encoded",
+    "threads": 1,
+    "counts": {
+      "full_authority_checkpoints": 46807,
+      "requests": 40994,
+      "operations": 60754,
+      "ticks": 9880,
+      "presentation": 9880,
+      "segments": 3028,
+      "queries": 11007,
+      "query_accounting_snapshots": 11007
+    },
+    "elapsed_s": 17872.666633249988,
+    "input_sha256": "1f9b155129de9e43780c8885b40aba805e4c4794755fd2af70747058a7824b77",
+    "source_extension_sha256": "9bb2fa4412bc810fbd751c42f525614f8cddb42e8c136612a51495fa0679f0d9",
+    "baseline_extension_sha256": "838c693398d9f8cbfd62e4ed898d3c287b657aadce91e9ccf5c20e5a9bd48544",
+    "reference_report_sha256": "ca0af03b971878759c010ffe3dc0c3ba7218083fe6327c692fc65b312a53aaf1",
+    "reference_raw_sha256": "3be2bea9530d66586793f499636646021eeefafe1ef81660d7f8754cb0099b2e",
+    "tool_sha256": "fd8e4807e9da30caedf792816db78204c3b01642da40c5181f99c756ba4c3946",
+    "raw_sha256": "3cc32d99960b99bf573bc49cd522f28664009c072fa9a992717311ea442b5f32",
+    "state_checkpoint_stream_sha256": "0515a2f73102468a43465292435c348fd031634a87c359f2eb8aa948af66ccff",
+    "response_stream_sha256": "92371cf579fea8e4c7bcd5652311e67707f8692c961fbce24dd56158e8e276d0",
+    "full_authority_scope": "Every world write and step, singleton query and segment end; exact frozen full export SHA",
+    "query_accounting_scope": "Every query: lightweight no-reuse witness, scoped actual native wall/epoch/revision/counts; singleton full state counts/epoch/revision plus supplied wall metadata",
+    "reference_strategy": "Prevalidated independent-old authority/wire; transient current no-reuse accounting witness; no reference full exports except final",
+    "admission_scope": "canonical adjacent runs, not host admission evidence",
+    "performance_claim": false,
+    "default_adoption": false
+  },
+  "raw": {
+    "file": "artifacts/e8-p2-streamlined-20261008-encoded-t1-raw.zip",
+    "bytes": 4215950,
+    "sha256": "6bccbf53b436ee39d185bb58904eb266ceffaf17216f2a9e5351b229c04976ed",
+    "inner_sha_verified": true
+  },
+  "reference_reused": true,
+  "P2_complete": false,
+  "targeted_complete": false,
+  "actual_admission_complete": false,
+  "P3_started": false,
+  "performance_claim": false,
+  "default_adoption": false,
+  "resource_policy": "telemetry only",
+  "resource_events": 1793
+}

@@ -1,0 +1,134 @@
+{
+  "status": "single_screen_complete",
+  "analysis": {
+    "stage": "P3 single moving-world service screen",
+    "timing_resource_valid": true,
+    "metrics": {
+      "query_service": {
+        "baseline": {
+          "samples": 6020,
+          "mean_ns": 3068175.288538206,
+          "p99_ns": 4199375.0,
+          "max_ns": 111361041.0
+        },
+        "candidate": {
+          "samples": 6020,
+          "mean_ns": 2764980.660963455,
+          "p99_ns": 4101250.0,
+          "max_ns": 123340084.0
+        },
+        "improvement_percent": 9.881920003312592,
+        "ci95_improvement_ns": [
+          210945.05874641388,
+          388243.9886340186
+        ],
+        "passed": true,
+        "block_counts": [
+          142,
+          109,
+          100,
+          116,
+          100,
+          127,
+          123,
+          164,
+          120,
+          71,
+          99,
+          114,
+          90,
+          126,
+          138,
+          123,
+          117,
+          98,
+          111,
+          104,
+          93,
+          133,
+          123,
+          113,
+          114,
+          132,
+          10
+        ]
+      },
+      "selected_total_work": {
+        "baseline": {
+          "samples": 5234,
+          "mean_ns": 4624920.556171188,
+          "p99_ns": 12306750.0,
+          "max_ns": 116230290.0
+        },
+        "candidate": {
+          "samples": 5234,
+          "mean_ns": 4366652.961788307,
+          "p99_ns": 11620831.0,
+          "max_ns": 142734208.0
+        },
+        "improvement_percent": 5.584260123955339,
+        "ci95_improvement_ns": [
+          112262.51200425425,
+          408214.37656140403
+        ],
+        "passed": true,
+        "block_counts": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          17
+        ]
+      }
+    },
+    "screening_positive": true,
+    "decision": "worth formal full-host investigation",
+    "method": {
+      "block_ticks": 100,
+      "bootstrap": 10000,
+      "seed": 42,
+      "partial_block_actual_counts": true,
+      "all_ticks": 2617,
+      "all_queries": 3010,
+      "query_min_improvement_percent": 5,
+      "p99": "all two original side samples; nearest rank",
+      "all_warm_and_tails_retained": true
+    },
+    "scope": "Moving-world request/cache service screen only; excludes live heap admission scan and display apply/render/submit",
+    "formal_full_host_acceptance": false,
+    "default_adoption": false,
+    "automatic_retry": false
+  },
+  "raw": {
+    "file": "artifacts/e8-p3-single-service-screen-20261008-raw.zip",
+    "bytes": 121031,
+    "sha256": "fae03d1a6c00df5119fee6fc1bbc5bc4593cd2d90ae17057a3bcc589c97f5226",
+    "inner_sha_verified": true
+  },
+  "automatic_retry": false,
+  "automatic_next_round": false,
+  "formal_full_host_acceptance": false,
+  "default_adoption": false
+}

@@ -1,4 +1,16 @@
-## E8 census 普通宿主确认完成（2026-10-09，当前恢复入口）
+## E8 census 已收敛为正式默认实现（2026-10-09，当前）
+
+用户明确授权正式采用并推送GitHub。产品提交 `b2aae3d2b47cf58b8aeddac56be1a9feaae8ecf9`，分支 `codex/rust-ecs-parallel` 已推送并设置origin上游。Rust普通人口统计直接使用借用键累积/拥有键发布，删除三模式控制与未采用EntityRef分支。API18/schema5、规则/观测内容/ID及动作顺序、native默认1保持；默认游戏后端仍Python，普通宿主读段缓存未启用，E6/E7等研究默认不变。活动工作树已安装新release扩展 `1921d2`；原目录49删除和冻结Rust/Python两个HEAD保持。
+
+115项观测/边界契约、6Rust测试、fmt/Clippy/release通过，安装后2个生命周期冒烟通过。独立旧c6默认baseline与新二进制各重放同一短规范输入：12148请求/2617tick/3010观测/17382操作，逐操作响应、完整wire、全部展示增量/事件、消费命令及最终完整状态一致；另16个native1/4缺组件/Fog边界投影与全部计数一致。此前完整长P2仍只属于旧源；本轮没有重跑长性能矩阵/新live/native4完整宿主/像素/生产网络。
+
+采用依据是已测局部service收益（普通宿主旧源8c2：9.2258%、CI正、P99包络通过）、移除冗余分配的有界改动、回归和用户明确授权。旧完整帧改善1.3256%、CI跨零的预注册门槛仍未通过，旧结论和raw不改判；没有将新源码宣称为新性能测量。这是后续局部采用决策，不是整帧/容量/Frontier/G009验收。GAP保持、5000Agents暂缓，产品分支尚未合并main或发布wheel版本。
+
+恢复先读本实验README第9节、decision第9节、results/census-adoption.json与census-adoption-artifact-integrity.json。原始包 `artifacts/e8-census-adoption-20261009-raw.zip`（97793a9785c04e46dadbe935f52408c9b576d0ff261f94cbbd2b909d8f509e9a，2862889 bytes，25项内SHA），含wheel、源码增量bundle/patch、全部回归/重放和测试工具。compact与外SHA另列。持久目录 `/Users/liyang/Developer/star-lab-runs/e8-census-adoption-20261009`。新测试中曾有两个错误预期（鉴权与缺Position）和一次driver录制字段假设错误，已纠正且日志分类保留，不是生产行为差异或性能证据；不重启已完成重放。
+
+进度：`正式收敛 █████ | 回归/安装 █████ | 短重放 █████ | 原始证据 █████ | 产品默认 已采用 | GitHub产品已推送`。
+
+## E8 census 普通宿主确认完成（2026-10-09，采用前历史）
 
 源 `8c2afd7153ebc8ec6c80dd9f3a1406be440405e0`／隔离扩展 `c6a60a`，测量工具节点 `1c9e5fe9af7450f2c7946e244bc070b995e5ec7b`。用户授权的一轮 ABBA 四次已全部完成，四次均使用普通 single 观测、段缓存关闭，仅切换 baseline/borrowed_census。每次30秒预热＋60秒测量，5000 Units＋1000 Agents、native1、Cocoa 2480×1235、普通展示、Fog和原队列/预算/Session消费保持。
 

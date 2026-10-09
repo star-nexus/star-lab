@@ -1,0 +1,88 @@
+{
+  "status": "adopted in ordinary Rust path on codex/rust-ecs-parallel",
+  "date": "2026-10-09",
+  "authorization": "user: 好，那就上线作为正式实现吧。另外...你帮我提交到github",
+  "source_sha": "b2aae3d2b47cf58b8aeddac56be1a9feaae8ecf9",
+  "source_url": "https://github.com/star-nexus/star/commit/b2aae3d2b47cf58b8aeddac56be1a9feaae8ecf9",
+  "extension_sha256": "1921d2fb037a9ab0a16b561a12c6ecc8054e5fdd4b3bd8fe3e218a6a050363b9",
+  "installation": {
+    "installed": true,
+    "source_sha": "b2aae3d2b47cf58b8aeddac56be1a9feaae8ecf9",
+    "path": "/Users/liyang/.codex/worktrees/rust-ecs-parallel/star-main/.venv/lib/python3.13/site-packages/star_native/_native.cpython-313-darwin.so",
+    "extension_sha256": "1921d2fb037a9ab0a16b561a12c6ecc8054e5fdd4b3bd8fe3e218a6a050363b9",
+    "wheel_sha256": "c0fa3ff3f7c9d92571f5001b425f93f14dc3837d439c3f78fa2e8a496ea9e8d9",
+    "previous_extension_sha256": "3e0ebb663e7dc081948658ed2d61bb70ecc56e76fc87c405f70d098a807b7fc6",
+    "active_worktree_only": true
+  },
+  "regression": {
+    "passed": true,
+    "source_sha": "b2aae3d2b47cf58b8aeddac56be1a9feaae8ecf9",
+    "baseline_binary_source_sha": "8c2afd7153ebc8ec6c80dd9f3a1406be440405e0",
+    "python_wrapper_source_sha": "b2aae3d2b47cf58b8aeddac56be1a9feaae8ecf9",
+    "baseline_extension_sha256": "c6a60a42fdafeee481620e89248a1a8604b7e3b3835b7b2a0f43053999977d88",
+    "extension_sha256": "1921d2fb037a9ab0a16b561a12c6ecc8054e5fdd4b3bd8fe3e218a6a050363b9",
+    "counts": {
+      "requests": 12148,
+      "operations": 17382,
+      "ticks": 2617,
+      "presentation": 2617,
+      "queries": 3010
+    },
+    "edge_probes": 16,
+    "per_operation_rows_equal": true,
+    "stream_hashes": {
+      "responses": "99afda2a0cddf037900846a4f17733b326753f9e902a09dcd9e2e56b5efe9481",
+      "wires": "7cd75ebd181e40a5b7dd3a82fb8d62fc075219ddaa1514ce1e00beb3164f0654",
+      "deltas": "cf68d4c93cad5ef3ef8c17bc7538593ab51e07d7dd766559498a1edd8ad4fa7a",
+      "commands": "ea2061b79ed4d80d3746c96b04d71fc3f9659bb1dba1e2904d3fc34e6afb6385"
+    },
+    "final_state_sha256": "a51169f82e6a3e3de337444685704445beb350d79368e0d8e5ea3f1e6d3a6977",
+    "contracts_passed": 115,
+    "rust_tests_passed": 6,
+    "fmt_passed": true,
+    "clippy_passed": true,
+    "release_build_passed": true,
+    "default_census_enabled": true,
+    "private_scan_modes_removed": true,
+    "old_performance_gate_reclassified": false,
+    "new_performance_claim": false,
+    "scope": "Targeted contracts and one short12148-request/2617-tick ordinary-path replay per old/new binary; native1 complete short trace, native1/4 edge contracts; not new full canonical/native4 live-host/pixel/network/capacity acceptance",
+    "failures_classification": {
+      "contracts-test-control-failure.log": "new test wrongly compared bare unregistered projection with authenticated error; test corrected, permissions unchanged",
+      "contracts-test-position-control-failure.log": "new test wrongly assumed missing Position removes census alive membership/panel; test corrected, original semantics preserved",
+      "driver-key-control-failure": "replay driver initially assumed response_sha256 exists on encoded observation entries; these use response_wire_sha256; corrected before complete run"
+    }
+  },
+  "boundaries": {
+    "original_sha": "7e145d169433695cd4957e186a6b2fda06813c26",
+    "original_deletions": 49,
+    "frozen": {
+      "rust": "5147e4d8e0c33c997bd86960d87fa4b5b3ca90c5",
+      "python": "6a970deaee7d9b8d3939edd102973f2377edd6ac"
+    }
+  },
+  "raw": {
+    "path": "artifacts/e8-census-adoption-20261009-raw.zip",
+    "sha256": "97793a9785c04e46dadbe935f52408c9b576d0ff261f94cbbd2b909d8f509e9a",
+    "bytes": 2862889,
+    "inner_members_checked": 25
+  },
+  "adopted": true,
+  "default_census_enabled": true,
+  "research_scan_interfaces_removed": true,
+  "default_backend": "Python unchanged",
+  "native_threads_default": 1,
+  "observation_segment_reuse_default": false,
+  "prior_full_frame_gate_passed": false,
+  "adoption_basis": "Explicitly authorized bounded local allocation/service optimization after review of positive service and inconclusive full-frame evidence; original ABBA thresholds and results preserved",
+  "new_performance_claim": false,
+  "new_capacity_or_frontier": false,
+  "existing_gaps_closed": false,
+  "agents5000": "deferred",
+  "source_main_merge": false,
+  "published_wheel_release": false,
+  "scope": "New source default tested with115 targeted contracts+6Rust tests/fmt/clippy/release,old/new complete short replay,16native1/4 edge probes; no new canonical long/native4 live/network/pixel acceptance",
+  "baseline_binary": "Old source8c2/stagedc6 default baseline; Python wrapper for both replays from new sourceb2aae3d",
+  "measurement_reference": "results/census-host-complete.json",
+  "persistent_runs": "/Users/liyang/Developer/star-lab-runs/e8-census-adoption-20261009"
+}

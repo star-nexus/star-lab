@@ -1,0 +1,15 @@
+{
+  "raw": {
+    "path": "artifacts/e8-census-adoption-20261009-raw.zip",
+    "sha256": "97793a9785c04e46dadbe935f52408c9b576d0ff261f94cbbd2b909d8f509e9a",
+    "bytes": 2862889,
+    "inner_members_checked": 25
+  },
+  "compact": {
+    "path": "artifacts/e8-census-adoption-20261009-compact.zip",
+    "sha256": "eee14e479ee410035c730c4373f3a0580096c11d094fe60288283385c8dbccc4",
+    "bytes": 6937,
+    "inner_members_checked": 5
+  },
+  "passed": true
+}

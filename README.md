@@ -1,6 +1,6 @@
 # STAR Lab
 
-> E8 census普通宿主确认4/4结束：观测service改善9.226%，完整帧均值改善1.326%但区间跨零；运行与完整性检查通过，默认关闭，不追加矩阵。见[专项报告](experiments/2026-10-rust-observation-service/README.md)和[恢复入口](records/rust-parallel-handoff.md)。
+> E8人口统计优化已正式默认采用：产品源b2aae3d，115契约/6Rust及短完整输入回归通过，分支已推送GitHub并设置上游。局部service旧源收益9.226%，完整帧区间跨零仍保留；未改变容量或生产网络GAP。见[采用报告](experiments/2026-10-rust-observation-service/README.md)。
 
 > E7 P3完成并独立复核：24次全部执行，23次计时有效、1次无效保留。候选empty_territory在7个完整分层未通过原收益门槛、1个分层证据不足，保持关闭；未进入窗口或默认接入。见[决策汇总](experiments/2026-10-rust-display-preparation/results/p3-decision-summary.json)和[恢复入口](records/rust-parallel-handoff.md)。
 

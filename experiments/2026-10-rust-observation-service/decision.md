@@ -1,9 +1,9 @@
 # Decision — E8 观测服务专项
 
-**Status:** ordinary-host confirmation complete; service gain supported, frame gate not met; default off
+**Status:** bounded default census adoption authorized; historical frame gate remains not met
 **Decision date:** 2026-10-09
-**Research STAR commit:** `8c2afd7153ebc8ec6c80dd9f3a1406be440405e0`
-**Validated production commit/tag:** N/A
+**Measured research STAR commit:** `8c2afd7153ebc8ec6c80dd9f3a1406be440405e0`
+**Validated default implementation commit:** `b2aae3d2b47cf58b8aeddac56be1a9feaae8ecf9` (bounded scope below; no main merge/published wheel tag)
 
 ## 1. Decision
 
@@ -43,3 +43,10 @@
 按用户授权执行一个有界ABBA，四次运行/资源guards通过。普通single观测service改善9.225759%、CI全正、P99未回退；完整帧改善1.325623%，CI −0.173029–0.685167ms跨零，因此预注册组合门槛未通过。默认baseline保持，保留borrowed_census研究候选，不自动进入正式代码采用、不加轮择优。此次不否定局部收益，也不证明整帧没有收益；“完整净收益未确认”是准确结论。
 
 先前encoded服务筛选与这次ordinary宿主是不同条件，结果分别保留。无需靠新增长矩阵来追求显著性；进一步工程投入应有明确新目标，例如观测吞吐或更大的已测成本来源，再制定有界单因子验证。当前不继续自动测试，不更改缓存策略或叠加EntityRef失败因子。源8c2/安装3e0ebb/原49删除/冻结HEAD保持，只提交Lab。G009和既有GAP不关闭，容量/Frontier不变、5000 Agents暂缓，无push/merge或validated生产tag。
+
+
+## 9. Explicit bounded adoption after result review
+
+2026-10-09用户明确要求正式采用并提交GitHub。采用人口统计借用键一项，正式源b2aae3d直接使用其算法，删除该扫描研究入口/EntityRef负候选；其他研究机制不默认启用。局部service改善有正区间、全部原运行guards和P99包络通过；低侵入、同复杂度但减少冗余分配，支持局部CPU工作削减。新默认路径已通过115契约/6Rust及独立旧新短完整输入/16边界对照、活动安装验证。
+
+此前组合采用门槛确实未通过，不重设或改判旧实验。这是审阅结果后、由用户明确授权的后续局部采用政策；不承诺整帧稳定提速，不以未来服务器放大收益作为依据。容量/Frontier/G009和其他GAP不关闭、5000Agents暂缓。源码推送到研究分支并设置上游，实验记录同步到Lab专用分支；没有将整条Rust迁移分支合并main或发布公共wheel。

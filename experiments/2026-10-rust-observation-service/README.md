@@ -1,11 +1,11 @@
 # E8：观测服务专项——ECS 定位与人口统计分配
 
-**Status:** REPRODUCED；普通宿主4/4完成，服务收益确认、完整帧区间跨零，默认关闭。
+**Status:** ADOPTED（有界局部优化）；普通Rust观测默认采用，旧完整帧区间跨零结论保留。
 **STAR repository:** `star-nexus/star`
 **Problem commit:** `11d9927f7a1bffa32dd85c9009944424826508e5`
 **Entity lookup candidate:** `455ab9937de5134fcd1ac70610544c1b0a43b9f3`
 **Census candidate:** `8c2afd7153ebc8ec6c80dd9f3a1406be440405e0`
-**Validated production commit/tag:** N/A
+**Validated default implementation commit:** `b2aae3d2b47cf58b8aeddac56be1a9feaae8ecf9`（本节末尾第9节的有界回归范围；非main合并/公开wheel发布）
 
 ## 1. Problem
 
@@ -108,3 +108,32 @@ PYTHONPATH=/path/to/census/extension:/path/to/source \
 ```
 
 该命令包含四次独立监测子进程。不要在已有progress的目录重复启动；复现产物归档到实验指定文件名，应使用独立Lab checkout，避免覆盖既有证据。预期signature是服务改善而整帧改善区间可能跨零；一次实时复现不保证相同数字，使用原门槛判定。原证据从compact/raw校验链离线复算可精确重现。
+
+
+## 9. Authorized default implementation (2026-10-09)
+
+用户在审阅局部收益与整帧证据的区别后，明确授权正式采用和GitHub推送。新源b2aae3d直接调用build_census借用键算法，拥有键/响应边界保持；移除旧扫描实验flags、getter/setter和EntityRef分支，避免生产保留三个算法。其他研究路径、API18/schema5、默认native1和Python后端保持。`codex/rust-ecs-parallel` 分支已推送并设置上游；未合并main或发布wheel版本。活动工作树安装的release扩展SHA为1921d2fb037a9ab0a16b561a12c6ecc8054e5fdd4b3bd8fe3e218a6a050363b9。
+
+原115项观测相关契约（其中18项默认census用例取代34项旧双模式用例）、6项Rust测试、fmt/Clippy/release均通过；安装后2项reset/实例生命周期检查通过。对独立旧c6二进制baseline和新1921d2分别完整重放同一短输入：12148请求/2617tick/3010观测/17382操作，原录制wire/请求/事件/最终状态哈希全部通过，旧新逐操作响应和完整展示增量、消费命令摘要、最终状态相同；16个native1/4缺组件/Fog边界的完整投影和计数一致。两次使用新Python wrapper，native基线身份是旧8c2/c6，不能把baseline报告中的wrapper源SHA当作旧native源码身份。
+
+该采用是后续工程决策：局部减少分配有明确service收益，回归范围充分支撑这项有界改动。没有改变旧ABBA门槛或把整帧CI跨零改判为通过；新源码没有新的性能数字，不宣称9.23%整帧提速。长规范输入/native4完整宿主/像素/生产网络未新增验收，GAP/容量/Frontier与5000Agents暂缓保持。
+
+原始包artifacts/e8-census-adoption-20261009-raw.zip内有新wheel、source.bundle（要求父8c2）、源码patch、冻结回归工具和所有日志/每操作hash。compact包含采用记录、全部关键摘要和raw SHA/size引用。精简测试/driver配置错误的完整日志标为工具控制失败保留；正式最终回归全通过，未修改生产鉴权/缺组件规则来满足测试。
+
+恢复源可从GitHub精确checkout b2aae3d，或先按第3节恢复8c2，再fetch新source.bundle。使用第4节锁定工具链构建。复核/重放：
+
+```bash
+SDL_VIDEODRIVER=dummy PYTHONPATH=/path/to/default/extension:/path/to/source \
+  /path/to/source/.venv/bin/python -m pytest -q \
+  rotk_env/tests/test_native_observation_census.py \
+  rotk_env/tests/test_native_admitted_observation.py rotk_env/tests/test_native_observation.py \
+  rotk_env/tests/test_native_encoded_observation.py rotk_env/tests/test_native_observation_profile.py \
+  rotk_env/tests/test_native_parallel_observation.py
+SDL_VIDEODRIVER=dummy /path/to/source/.venv/bin/python \
+  tools/rust_migration/verify_census_adoption.py --source /path/to/source \
+  --extension-dir /path/to/default/extension \
+  --extension-sha256 1921d2fb037a9ab0a16b561a12c6ecc8054e5fdd4b3bd8fe3e218a6a050363b9 \
+  --trace /path/to/canonical/window.trace.json.gz --output /path/to/new/default-replay.json
+```
+
+旧二进制复现改用旧c6解压extension及其SHA，加`--baseline-binary`，仍用新源Python wrapper。预期counts固定，所有counts/stream_hashes/final_state_sha256/edge_probes和逐操作rows必须相同；输出目录不得复用已有报告。源默认算法不存在切换接口，旧性能screen必须用旧源/旧工具节点复现。

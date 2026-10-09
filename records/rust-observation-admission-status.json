@@ -1,6 +1,6 @@
 {
-  "stage": "census普通宿主4/4完成；service正收益，完整帧CI跨零，默认关闭",
-  "source_sha": "8c2afd7153ebc8ec6c80dd9f3a1406be440405e0",
+  "stage": "census正式默认实现b2aae3d已回归/安装/推送产品分支；历史整帧门槛未过保持",
+  "source_sha": "b2aae3d2b47cf58b8aeddac56be1a9feaae8ecf9",
   "plan": "records/rust-observation-admission-plan.md",
   "identity": "records/rust-observation-admission-plan.json",
   "phases": {
@@ -11,7 +11,7 @@
     "P2_correctness": "historical source11d9927: complete native1 within revised recorded/canonical/edge scope; native4 full admission deferred; latest source has separately listed targeted/short validation",
     "P3_performance": "historical source11d9927: service positive; live-host4/4 valid, frame CI crosses0/service P99 regression; latest census service screen positive but selected total CI crosses0",
     "P4_conditional_window": "not started",
-    "default_adoption": "not enabled",
+    "default_adoption": "census key ownership only: enabled; other E8 segment/E6/E7 research not enabled",
     "service_specialization": "complete two independent screens; census service+9.157%, total CI crosses zero; default off",
     "census_host": "complete 4/4 valid; service+9.225759%, frame+1.325623% CI crosses0; default off"
   },
@@ -34,9 +34,9 @@
   "authorization": "2026-10-09 user: 好，那就按照你的建议执行下一步吧；one bounded census ordinary-host ABBA",
   "experiment": "experiments/2026-10-rust-observation-admission",
   "resource_policy": "telemetry only; no automatic pause/kill/timeout",
-  "persistent_runs": "/Users/liyang/Developer/star-lab-runs/e8-census-host-20261009",
-  "installed_extension": "original6ec8e05/3e0ebb unchanged; prior admission used staged9bb2fa; latest service candidate uses stagedc6a60a",
-  "candidate_extension": "c6a60a42fdafeee481620e89248a1a8604b7e3b3835b7b2a0f43053999977d88",
+  "persistent_runs": "/Users/liyang/Developer/star-lab-runs/e8-census-adoption-20261009",
+  "installed_extension": "active worktree installed b2aae3d/1921d2; original/frozen environments unchanged",
+  "candidate_extension": "1921d2fb037a9ab0a16b561a12c6ecc8054e5fdd4b3bd8fe3e218a6a050363b9",
   "active_previous_runs": "/Users/liyang/Developer/star-lab-runs/e8-p2-20261007",
   "previous_stale_runs": [
     "/Users/liyang/Developer/star-lab-runs/e8-p2-20261007",
@@ -50,7 +50,7 @@
   "full_host_runs": "/Users/liyang/Developer/star-lab-runs/e8-full-host-screen-20261008",
   "full_host_preregister": "experiments/2026-10-rust-observation-admission/results/full-host-screen-preregister.json",
   "full_host_result": "experiments/2026-10-rust-observation-admission/results/full-host-screen.json",
-  "next": "No automatic repeat/default adoption; a new bounded objective is required before further testing",
+  "next": "No automatic further test matrix; default census adopted on product branch, main merge and public release are separate",
   "current_validation": "131 targeted contracts + each complete short12148/2617/3010 input; previous canonical full P2 applies to source11d9927 only",
   "service_specialization": {
     "experiment": "experiments/2026-10-rust-observation-service",
@@ -64,7 +64,7 @@
     "adopted": false
   },
   "lab_gap_stage": {
-    "G009": "OPEN; no production request adapter/default adoption",
+    "G009": "OPEN; census ordinary implementation adopted, production request network adapter not migrated",
     "native4_full_admission": "deferred; native4 contracts alone do not replace full-host validation",
     "current_census_net_gain": "ordinary host service confirmed; full-frame CI crosses0, unconfirmed",
     "existing_gap_closure": false
@@ -95,5 +95,15 @@
       -0.17302899041230094,
       0.6851673383102436
     ]
+  },
+  "default_census_adoption": {
+    "adopted": true,
+    "source_sha": "b2aae3d2b47cf58b8aeddac56be1a9feaae8ecf9",
+    "result": "experiments/2026-10-rust-observation-service/results/census-adoption.json",
+    "branch": "codex/rust-ecs-parallel",
+    "main_merge": false,
+    "published_wheel_release": false,
+    "upstream": "origin/codex/rust-ecs-parallel",
+    "validation": "New source default tested with115 targeted contracts+6Rust tests/fmt/clippy/release,old/new complete short replay,16native1/4 edge probes; no new canonical long/native4 live/network/pixel acceptance"
   }
 }

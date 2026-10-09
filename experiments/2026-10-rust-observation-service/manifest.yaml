@@ -4,7 +4,7 @@
     "title": "E8 observation service allocation and ECS scan research",
     "date": "2026-10-08",
     "completed": "2026-10-09",
-    "status": "ordinary-host 4/4 complete; service gain supported; frame CI crosses zero; default off"
+    "status": "bounded default census adoption authorized and regressed; historical full-frame gate remains failed"
   },
   "source": {
     "repository": "star-nexus/star",
@@ -13,11 +13,11 @@
       "455ab9937de5134fcd1ac70610544c1b0a43b9f3",
       "8c2afd7153ebc8ec6c80dd9f3a1406be440405e0"
     ],
-    "fix_commit": "8c2afd7153ebc8ec6c80dd9f3a1406be440405e0",
-    "validated_commit": null,
+    "fix_commit": "b2aae3d2b47cf58b8aeddac56be1a9feaae8ecf9",
+    "validated_commit": "b2aae3d2b47cf58b8aeddac56be1a9feaae8ecf9",
     "validated_tag": null,
     "branch_at_time": "codex/rust-ecs-parallel",
-    "validation_scope": "131 targeted contracts and full short accepted-input replay; no new canonical 9880-tick, native4 live-host, or default validation",
+    "validation_scope": "New source default tested with115 targeted contracts+6Rust tests/fmt/clippy/release,old/new complete short replay,16native1/4 edge probes; no new canonical long/native4 live/network/pixel acceptance",
     "bundles": "runs/scan-source.bundle requires 11d9927; runs/census/source.bundle requires 455ab99; parent source bundle in canonical E8 accounting archive"
   },
   "hardware": {
@@ -143,5 +143,27 @@
       "members_checked": 16
     },
     "artifact_integrity": "results/census-host-artifact-integrity.json"
+  },
+  "default_census_adoption": {
+    "source_sha": "b2aae3d2b47cf58b8aeddac56be1a9feaae8ecf9",
+    "result": "results/census-adoption.json",
+    "artifacts": {
+      "raw": {
+        "path": "artifacts/e8-census-adoption-20261009-raw.zip",
+        "sha256": "97793a9785c04e46dadbe935f52408c9b576d0ff261f94cbbd2b909d8f509e9a",
+        "bytes": 2862889,
+        "inner_members_checked": 25
+      },
+      "compact": {
+        "path": "artifacts/e8-census-adoption-20261009-compact.zip",
+        "sha256": "eee14e479ee410035c730c4373f3a0580096c11d094fe60288283385c8dbccc4",
+        "bytes": 6937,
+        "inner_members_checked": 5
+      },
+      "passed": true
+    },
+    "adoption_basis": "Explicitly authorized bounded local allocation/service optimization after review of positive service and inconclusive full-frame evidence; original ABBA thresholds and results preserved",
+    "scope": "New source default tested with115 targeted contracts+6Rust tests/fmt/clippy/release,old/new complete short replay,16native1/4 edge probes; no new canonical long/native4 live/network/pixel acceptance",
+    "main_merge": false
   }
 }
